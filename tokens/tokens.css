@@ -1,0 +1,81 @@
+/**
+ * Milet Design System - CSS Custom Properties
+ * Brand: Milet (Energia em Mais Liberdade)
+ */
+
+:root {
+  /* Primitive Colors */
+  --milet-color-carvao: #1A1A1A;
+  --milet-color-marfim: #F7F3EA;
+  --milet-color-areia-mineral: #C9B89F;
+  --milet-color-ambar: #D39B3D;
+  --milet-color-ambar-light: #F3C878;
+  --milet-color-ambar-dark: #8C4E18;
+  --milet-color-cobre: #B87333;
+
+  /* Semantic Light Mode */
+  --milet-bg-canvas: var(--milet-color-marfim);
+  --milet-bg-surface: #FFFFFF;
+  --milet-bg-surface-secondary: #EFECE3;
+  --milet-bg-mineral: var(--milet-color-areia-mineral);
+  --milet-text-primary: var(--milet-color-carvao);
+  --milet-text-secondary: #635E55;
+  --milet-text-muted: #8E887E;
+  --milet-border-hairline: rgba(26, 26, 26, 0.08);
+  --milet-border-strong: rgba(26, 26, 26, 0.2);
+
+  /* Typography */
+  --milet-font-display: 'Playfair Display', 'Canela', 'PP Editorial New', Georgia, serif;
+  --milet-font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --milet-font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Spacing Scale (8pt / 4pt) */
+  --milet-space-1: 4px;
+  --milet-space-2: 8px;
+  --milet-space-3: 12px;
+  --milet-space-4: 16px;
+  --milet-space-5: 20px;
+  --milet-space-6: 24px;
+  --milet-space-8: 32px;
+  --milet-space-10: 40px;
+  --milet-space-12: 48px;
+  --milet-space-16: 64px;
+  --milet-space-24: 96px;
+  --milet-space-32: 128px;
+
+  /* Border Radii */
+  --milet-radius-sm: 6px;
+  --milet-radius-md: 12px;
+  --milet-radius-lg: 20px;
+  --milet-radius-xl: 28px;
+  --milet-radius-2xl: 36px;
+  --milet-radius-pill: 9999px;
+
+  /* Shadows */
+  --milet-shadow-subtle: 0 4px 16px rgba(26, 26, 26, 0.04);
+  --milet-shadow-card: 0 12px 36px rgba(26, 26, 26, 0.06);
+  --milet-shadow-popover: 0 24px 60px rgba(26, 26, 26, 0.1);
+  --milet-shadow-amber-glow: 0 0 32px rgba(211, 155, 61, 0.35);
+
+  /* Motion Curves */
+  --milet-ease-natural: cubic-bezier(0.32, 0.72, 0, 1);
+  --milet-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --milet-duration-fast: 200ms;
+  --milet-duration-normal: 350ms;
+  --milet-duration-slow: 700ms;
+}
+
+/* Dark Theme Overrides (OLED & Low Light) */
+[data-theme="dark"],
+.theme-dark {
+  --milet-bg-canvas: var(--milet-color-carvao);
+  --milet-bg-surface: #222222;
+  --milet-bg-surface-secondary: #2B2B2B;
+  --milet-bg-mineral: #3D3830;
+  --milet-text-primary: var(--milet-color-marfim);
+  --milet-text-secondary: var(--milet-color-areia-mineral);
+  --milet-text-muted: #807B73;
+  --milet-border-hairline: rgba(247, 243, 234, 0.1);
+  --milet-border-strong: rgba(247, 243, 234, 0.25);
+  --milet-shadow-card: 0 12px 36px rgba(0, 0, 0, 0.4);
+}

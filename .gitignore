@@ -19,3 +19,4 @@ Thumbs.db
 # Logs & scratch
 *.log
 scratch/
+*_preview.png

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/v1/schema.json",
+  "name": "Milet Design Tokens",
+  "version": "1.0.0",
+  "description": "Design tokens oficiais para a marca Milet - Energia em Mais Liberdade",
+  "color": {
+    "primitive": {
+      "carvao": {
+        "value": "#1A1A1A",
+        "type": "color",
+        "description": "Carvão: Equilíbrio e confiança. Base sólida, OLED/dark surface, tipografia principal."
+      },
+      "marfim": {
+        "value": "#F7F3EA",
+        "type": "color",
+        "description": "Marfim: Clareza e respiro. Fundo editorial primário e espaço negativo."
+      },
+      "areia-mineral": {
+        "value": "#C9B89F",
+        "type": "color",
+        "description": "Areia Mineral: Base e permanência. Tons neutros quentes e divisores táteis."
+      },
+      "ambar": {
+        "value": "#D39B3D",
+        "type": "color",
+        "description": "Âmbar: Energia e origem. Cor essencial da marca, dados ativos e pulso luminoso."
+      },
+      "cobre": {
+        "value": "#B87333",
+        "type": "color",
+        "description": "Cobre: Conexão e futuro. Condução, acentuações metálicas e transição energética."
+      }
+    },
+    "semantic": {
+      "surface": {
+        "canvas-light": { "value": "{color.primitive.marfim.value}", "type": "color" },
+        "canvas-dark": { "value": "{color.primitive.carvao.value}", "type": "color" },
+        "card-light": { "value": "#FFFFFF", "type": "color" },
+        "card-dark": { "value": "#242424", "type": "color" },
+        "card-mineral": { "value": "{color.primitive.areia-mineral.value}", "type": "color" }
+      },
+      "text": {
+        "primary-light": { "value": "{color.primitive.carvao.value}", "type": "color" },
+        "primary-dark": { "value": "{color.primitive.marfim.value}", "type": "color" },
+        "secondary-light": { "value": "#6B655D", "type": "color" },
+        "secondary-dark": { "value": "{color.primitive.areia-mineral.value}", "type": "color" },
+        "accent": { "value": "{color.primitive.ambar.value}", "type": "color" }
+      },
+      "interactive": {
+        "primary": { "value": "{color.primitive.carvao.value}", "type": "color" },
+        "primary-hover": { "value": "#2C2C2C", "type": "color" },
+        "accent": { "value": "{color.primitive.ambar.value}", "type": "color" },
+        "accent-hover": { "value": "#E0A747", "type": "color" },
+        "focus-ring": { "value": "rgba(211, 155, 61, 0.4)", "type": "color" }
+      },
+      "border": {
+        "hairline-light": { "value": "rgba(26, 26, 26, 0.08)", "type": "color" },
+        "hairline-dark": { "value": "rgba(247, 243, 234, 0.12)", "type": "color" },
+        "accent": { "value": "{color.primitive.ambar.value}", "type": "color" }
+      }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "display": {
+        "value": "'Playfair Display', 'Canela', 'PP Editorial New', Georgia, serif",
+        "type": "fontFamily",
+        "description": "Milet Serif customizada para títulos de alto impacto e elegância editorial."
+      },
+      "sans": {
+        "value": "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        "type": "fontFamily",
+        "description": "Sans geométrica limpa e legível para interface, corpo de texto e controles."
+      },
+      "mono": {
+        "value": "'JetBrains Mono', 'SF Mono', Consolas, monospace",
+        "type": "fontFamily",
+        "description": "Monospace para dados de consumo (kWh), percentuais, medições e códigos."
+      }
+    },
+    "fontSizes": {
+      "xs": { "value": "0.75rem", "type": "fontSize" },
+      "sm": { "value": "0.875rem", "type": "fontSize" },
+      "base": { "value": "1rem", "type": "fontSize" },
+      "lg": { "value": "1.125rem", "type": "fontSize" },
+      "xl": { "value": "1.25rem", "type": "fontSize" },
+      "2xl": { "value": "1.5rem", "type": "fontSize" },
+      "3xl": { "value": "1.875rem", "type": "fontSize" },
+      "4xl": { "value": "2.25rem", "type": "fontSize" },
+      "5xl": { "value": "3rem", "type": "fontSize" },
+      "6xl": { "value": "3.75rem", "type": "fontSize" },
+      "display": { "value": "clamp(2.5rem, 6vw, 5rem)", "type": "fontSize" }
+    },
+    "letterSpacing": {
+      "tight": { "value": "-0.02em", "type": "letterSpacing" },
+      "normal": { "value": "0", "type": "letterSpacing" },
+      "wide": { "value": "0.05em", "type": "letterSpacing" },
+      "tagline": { "value": "0.32em", "type": "letterSpacing" }
+    }
+  },
+  "spacing": {
+    "1": { "value": "4px", "type": "spacing" },
+    "2": { "value": "8px", "type": "spacing" },
+    "3": { "value": "12px", "type": "spacing" },
+    "4": { "value": "16px", "type": "spacing" },
+    "5": { "value": "20px", "type": "spacing" },
+    "6": { "value": "24px", "type": "spacing" },
+    "8": { "value": "32px", "type": "spacing" },
+    "10": { "value": "40px", "type": "spacing" },
+    "12": { "value": "48px", "type": "spacing" },
+    "16": { "value": "64px", "type": "spacing" },
+    "24": { "value": "96px", "type": "spacing" },
+    "32": { "value": "128px", "type": "spacing" }
+  },
+  "radii": {
+    "sm": { "value": "6px", "type": "borderRadius" },
+    "md": { "value": "12px", "type": "borderRadius" },
+    "lg": { "value": "18px", "type": "borderRadius" },
+    "xl": { "value": "24px", "type": "borderRadius" },
+    "2xl": { "value": "32px", "type": "borderRadius" },
+    "pill": { "value": "9999px", "type": "borderRadius" }
+  },
+  "shadows": {
+    "whisper": { "value": "0 2px 8px rgba(26, 26, 26, 0.04)", "type": "boxShadow" },
+    "subtle": { "value": "0 8px 24px rgba(26, 26, 26, 0.06)", "type": "boxShadow" },
+    "card": { "value": "0 16px 40px rgba(26, 26, 26, 0.08)", "type": "boxShadow" },
+    "amber-glow": { "value": "0 0 28px rgba(211, 155, 61, 0.28)", "type": "boxShadow" }
+  },
+  "motion": {
+    "spring": {
+      "stiffness": 100,
+      "damping": 20,
+      "mass": 1
+    },
+    "easing": {
+      "natural": "cubic-bezier(0.32, 0.72, 0, 1)",
+      "amberPulse": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "duration": {
+      "fast": "200ms",
+      "normal": "350ms",
+      "slow": "700ms"
+    }
+  }
+}
