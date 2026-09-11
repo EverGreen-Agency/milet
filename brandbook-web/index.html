@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Milet — Brandbook Interativo & Manual de Marca</title>
   <meta name="description" content="Manual de Identidade Oficial, Brandbook Interativo e Design System da Milet. Energia em mais liberdade.">
-  <link rel="icon" type="image/png" href="../assets/logo/png/solid/favicon-32x32.png">
+  <!-- Favicons Dinâmicos (Claro / Escuro / Apple) -->
+  <link id="siteFavicon" rel="icon" type="image/png" href="../assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="apple-touch-icon" href="../assets/logo/png/solid/milet-app-icon-180x180.png">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,22 +99,23 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (Inspirado no Website Canônico — Imagem 4 & Slide 02) -->
   <section id="hero" class="milet-hero">
     <div class="hero-container">
       <div class="hero-eyebrow">
         <span class="eyebrow-pill">MANUAL DE IDENTIDADE OFICIAL</span>
         <span class="eyebrow-divider">•</span>
-        <span class="eyebrow-text">SISTEMA V1.0</span>
+        <span class="eyebrow-text">BRANDBOOK INTERATIVO V1.0</span>
       </div>
 
       <div class="hero-split-grid">
         <div class="hero-content">
-          <h1 class="hero-title">
-            Da origem da eletricidade a uma nova forma de acessá-la.
+          <span class="hero-brand-overline">ENERGIA EM MAIS LIBERDADE</span>
+          <h1 class="hero-title hero-title-grand">
+            Tecnologia que liberta o amanhã.
           </h1>
           <p class="hero-subtitle">
-            O sistema operacional independente da energia do consumidor. Inspirada no saber ancestral de Mileto e forjada na inteligência de dados, a Milet liberta a autonomia energética de pessoas e negócios.
+            Da origem da eletricidade a uma nova forma de acessá-la. Dados, escolhas e possibilidades em um sistema inteligente.
           </p>
 
           <div class="hero-values-strip">
@@ -125,27 +128,45 @@
             <span class="value-item">VISIONÁRIA</span>
           </div>
 
-          <!-- Refined buttons matching panel 06 -->
+          <!-- Refined buttons matching Image 4 & Panel 06 -->
           <div class="hero-ctas">
-            <a href="#logo" class="btn-primary-milet">
-              <span>Começar agora</span>
+            <a href="#logo" class="btn-hero-primary">
+              <span>Conheça a Milet</span>
               <span class="btn-clean-arrow">→</span>
             </a>
-            <a href="#origem" class="btn-secondary-milet">
-              <span>Saiba mais</span>
+            <a href="#origem" class="btn-hero-secondary">
+              <span>Ver soluções</span>
             </a>
             <a href="#drive" class="btn-tertiary-milet">
-              <span>Acessar Drive</span>
+              <span>Acessar Drive ↓</span>
             </a>
           </div>
         </div>
 
-        <!-- Símbolo Vivo: A Pedra de Âmbar Original na Montanha -->
-        <div class="hero-visual-card">
-          <img src="../assets/imagery/milet-natural-amber-stone.jpg" alt="A Rocha de Âmbar Natural de Mileto" class="hero-visual-img">
+        <!-- Símbolo Vivo & Escultura de Âmbar (Slide 02 & Imagem 04) -->
+        <div class="hero-visual-card hero-sculpture-card">
+          <!-- View switcher toggle inside card -->
+          <div class="hero-card-switcher">
+            <button class="hero-switch-btn active" id="heroSwitchSculptureBtn" data-view="sculpture">✦ Escultura em Basalto</button>
+            <button class="hero-switch-btn" id="heroSwitchMockupBtn" data-view="mockup">💻 Website (Painel 01)</button>
+          </div>
+
+          <div class="hero-media-wrapper" onclick="openActiveHeroLightbox()" title="Clique para expandir em alta resolução (100%)">
+            <img id="heroActiveImg" src="../assets/imagery/milet-hero-rocha-ambar-polida.png" alt="Tecnologia que liberta o amanhã — Âmbar Polido sobre Basalto" class="hero-visual-img">
+            
+            <!-- Tagline Badge matching Image 4 -->
+            <div class="sculpture-hero-badge" id="sculptureHeroBadge">
+              <span class="badge-tagline">MESMA ENERGIA.</span>
+              <span class="badge-tagline">MAIS POSSIBILIDADES.</span>
+              <span class="badge-accent-line"></span>
+            </div>
+
+            <div class="hero-zoom-hint">🔍 Expandir em Alta Resolução</div>
+          </div>
+
           <div class="hero-visual-caption">
-            <span class="caption-tag">SÍMBOLO VIVO • A ROCHA DE ÂMBAR</span>
-            <span class="caption-desc">A pedra fóssil sobre a montanha de Mileto que acendeu a faísca da eletricidade e originou a forma do logotipo</span>
+            <span class="caption-tag" id="heroCaptionTag">SÍMBOLO VIVO • ESCULTURA DE ÂMBAR & LUZ</span>
+            <span class="caption-desc" id="heroCaptionDesc">A resina fóssil polida sobre o basalto de Mileto ao nascer do sol, simbolizando a fusão entre a centelha ancestral e a inteligência moderna.</span>
           </div>
         </div>
       </div>
@@ -615,73 +636,73 @@
           <h4 class="matrix-title">Grade Dimensional de Ícones (Painel 13 Canônico)</h4>
           <div class="resolutions-grid">
             <!-- 1024x1024 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="1024">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-1024x1024.png" alt="1024x1024" class="res-thumb-icon size-1024">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-1024x1024.png" alt="1024x1024" class="res-thumb-icon size-1024">
               </div>
               <span class="res-size-label">1024×1024</span>
               <span class="res-target">App Store / macOS</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-1024x1024.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-1024x1024.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 512x512 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="512">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-512x512.png" alt="512x512" class="res-thumb-icon size-512">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-512x512.png" alt="512x512" class="res-thumb-icon size-512">
               </div>
               <span class="res-size-label">512×512</span>
               <span class="res-target">Google Play / PWA</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-512x512.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-512x512.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 180x180 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="180">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-180x180.png" alt="180x180" class="res-thumb-icon size-180">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-180x180.png" alt="180x180" class="res-thumb-icon size-180">
               </div>
               <span class="res-size-label">180×180</span>
               <span class="res-target">iOS Home Screen</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-180x180.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-180x180.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 128x128 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="128">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-128x128.png" alt="128x128" class="res-thumb-icon size-128">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-128x128.png" alt="128x128" class="res-thumb-icon size-128">
               </div>
               <span class="res-size-label">128×128</span>
               <span class="res-target">Desktop Dock</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-128x128.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-128x128.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 64x64 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="64">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-64x64.png" alt="64x64" class="res-thumb-icon size-64">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-64x64.png" alt="64x64" class="res-thumb-icon size-64">
               </div>
               <span class="res-size-label">64×64</span>
               <span class="res-target">HiDPI Tab Favicon</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-64x64.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-64x64.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 32x32 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="32">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-32x32.png" alt="32x32" class="res-thumb-icon size-32">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-32x32.png" alt="32x32" class="res-thumb-icon size-32">
               </div>
               <span class="res-size-label">32×32</span>
               <span class="res-target">Browser Standard</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-32x32.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-32x32.png" download class="res-dl-link">Baixar</a>
             </div>
 
             <!-- 16x16 -->
-            <div class="res-item">
+            <div class="res-item" data-res-size="16">
               <div class="res-preview-box">
-                <img src="../assets/logo/png/solid/milet-app-icon-16x16.png" alt="16x16" class="res-thumb-icon size-16">
+                <img src="../assets/logo/png/solid/milet-app-icon-dark-16x16.png" alt="16x16" class="res-thumb-icon size-16">
               </div>
               <span class="res-size-label">16×16</span>
               <span class="res-target">Barra de Favoritos</span>
-              <a href="../assets/logo/png/solid/milet-app-icon-16x16.png" download class="res-dl-link">Baixar</a>
+              <a href="../assets/logo/png/solid/milet-app-icon-dark-16x16.png" download class="res-dl-link">Baixar</a>
             </div>
           </div>
         </div>

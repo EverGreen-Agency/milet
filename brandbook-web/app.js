@@ -7,6 +7,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
+  initFaviconAutoListener();
+  initHeroVisualToggle();
   initMobileMenu();
   initLightboxKeyHandler();
   initLogoViewer();
@@ -35,8 +37,40 @@ function showToast(message) {
 }
 
 // -------------------------------------------------------------
-// 2. Theme Toggle (Light / Dark)
+// 2. Theme Toggle & Dynamic Favicon Synchronization
 // -------------------------------------------------------------
+function updateSiteFavicon(styleKey) {
+  const favLink = document.getElementById('siteFavicon');
+  if (!favLink) return;
+
+  let target = '../assets/logo/png/solid/favicon-light-32x32.png';
+  if (styleKey === 'dark') {
+    target = '../assets/logo/png/solid/favicon-dark-32x32.png';
+  } else if (styleKey === 'light') {
+    target = '../assets/logo/png/solid/favicon-light-32x32.png';
+  } else if (styleKey === 'glow') {
+    target = '../assets/logo/png/solid/milet-app-icon-glow-32x32.png';
+  } else {
+    // Sincroniza dinamicamente com o tema ativo
+    const isDark = document.body.classList.contains('theme-dark');
+    target = isDark
+      ? '../assets/logo/png/solid/favicon-dark-32x32.png'
+      : '../assets/logo/png/solid/favicon-light-32x32.png';
+  }
+  favLink.href = target;
+}
+
+function initFaviconAutoListener() {
+  updateSiteFavicon();
+
+  // Ouvir mudanca de tema nativo do sistema operacional/navegador
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      updateSiteFavicon(e.matches ? 'dark' : 'light');
+    });
+  }
+}
+
 function initThemeToggle() {
   const btn = document.getElementById('themeToggleBtn');
   if (!btn) return;
@@ -45,9 +79,11 @@ function initThemeToggle() {
     if (document.body.classList.contains('theme-light')) {
       document.body.classList.replace('theme-light', 'theme-dark');
       showToast('Tema Escuro Ativado');
+      updateSiteFavicon('dark');
     } else {
       document.body.classList.replace('theme-dark', 'theme-light');
       showToast('Tema Claro Ativado');
+      updateSiteFavicon('light');
     }
   });
 }
@@ -108,6 +144,69 @@ function initLightboxKeyHandler() {
     }
   });
 }
+
+// -------------------------------------------------------------
+// 4.1 Hero Visual Switcher (Slide 02 Âmbar Polido vs Imagem 04 Website)
+// -------------------------------------------------------------
+let currentHeroView = 'sculpture';
+
+const HERO_DATA = {
+  sculpture: {
+    src: '../assets/imagery/milet-hero-rocha-ambar-polida.png',
+    tag: 'SÍMBOLO VIVO • ESCULTURA DE ÂMBAR & LUZ',
+    desc: 'A resina fóssil polida sobre o basalto de Mileto ao nascer do sol, simbolizando a fusão entre a centelha ancestral e a inteligência moderna.',
+    title: 'Âmbar Polido sobre Basalto Vulcânico (Slide 02 Canônico)'
+  },
+  mockup: {
+    src: '../assets/imagery/milet-mockup-website-laptop.png',
+    tag: 'WEBSITE CANÔNICO • 01 PÁGINA PRINCIPAL',
+    desc: 'Composição de ponta em laptop luxury: "Tecnologia que liberta o amanhã" com tipografia editorial Playfair Display e CTAs canônicos.',
+    title: 'Milet — Website Principal em Laptop (Painel 01)'
+  }
+};
+
+function initHeroVisualToggle() {
+  const btnSculpture = document.getElementById('heroSwitchSculptureBtn');
+  const btnMockup = document.getElementById('heroSwitchMockupBtn');
+  const heroImg = document.getElementById('heroActiveImg');
+  const badge = document.getElementById('sculptureHeroBadge');
+  const tagEl = document.getElementById('heroCaptionTag');
+  const descEl = document.getElementById('heroCaptionDesc');
+
+  if (!btnSculpture || !btnMockup || !heroImg) return;
+
+  function switchHero(viewKey) {
+    if (currentHeroView === viewKey) return;
+    currentHeroView = viewKey;
+
+    btnSculpture.classList.toggle('active', viewKey === 'sculpture');
+    btnMockup.classList.toggle('active', viewKey === 'mockup');
+
+    heroImg.style.opacity = '0.25';
+    heroImg.style.transform = 'scale(0.97)';
+
+    setTimeout(() => {
+      const data = HERO_DATA[viewKey];
+      heroImg.src = data.src;
+      if (tagEl) tagEl.textContent = data.tag;
+      if (descEl) descEl.textContent = data.desc;
+      if (badge) {
+        badge.style.display = viewKey === 'sculpture' ? 'flex' : 'none';
+      }
+
+      heroImg.style.opacity = '1';
+      heroImg.style.transform = 'scale(1)';
+    }, 140);
+  }
+
+  btnSculpture.addEventListener('click', () => switchHero('sculpture'));
+  btnMockup.addEventListener('click', () => switchHero('mockup'));
+}
+
+window.openActiveHeroLightbox = function() {
+  const data = HERO_DATA[currentHeroView] || HERO_DATA.sculpture;
+  openLightbox(data.src, data.title, data.tag);
+};
 
 // -------------------------------------------------------------
 // 5. Interactive Logo Viewer Matrix (Refined Master Assets)
@@ -296,6 +395,7 @@ function initFaviconsSwitcher() {
   const heroImg = document.getElementById('masterAppIconImg');
   const heroTitle = document.getElementById('appIconTitle');
   const dlMaster = document.getElementById('dlIconMasterBtn');
+  const gridItems = document.querySelectorAll('.resolutions-grid .res-item');
 
   if (!buttons.length || !heroImg) return;
 
@@ -303,17 +403,17 @@ function initFaviconsSwitcher() {
     dark: {
       src: '../assets/logo/png/solid/milet-app-icon-squircle-dark.png',
       title: 'Milet App Icon — Dark Carvão',
-      dl: '../assets/logo/png/solid/milet-app-icon-1024x1024.png'
+      dl: '../assets/logo/png/solid/milet-app-icon-dark-1024x1024.png'
     },
     light: {
       src: '../assets/logo/png/solid/milet-app-icon-squircle-light.png',
       title: 'Milet App Icon — Light Marfim',
-      dl: '../assets/logo/png/solid/milet-app-icon-squircle-light.png'
+      dl: '../assets/logo/png/solid/milet-app-icon-light-1024x1024.png'
     },
     glow: {
       src: '../assets/logo/png/solid/milet-app-icon-squircle-gold-glow.png',
       title: 'Milet App Icon — Gold Glow Âmbar',
-      dl: '../assets/logo/png/solid/milet-app-icon-squircle-gold-glow.png'
+      dl: '../assets/logo/png/solid/milet-app-icon-glow-1024x1024.png'
     }
   };
 
@@ -325,8 +425,15 @@ function initFaviconsSwitcher() {
       buttons.forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
 
+      // 1. Fade no ícone master
       heroImg.style.opacity = '0.3';
       heroImg.style.transform = 'scale(0.95)';
+
+      // 2. Fade na grade dimensional de resoluções
+      gridItems.forEach(item => {
+        const thumb = item.querySelector('.res-thumb-icon');
+        if (thumb) thumb.style.opacity = '0.3';
+      });
 
       setTimeout(() => {
         const item = STYLES_DATA[styleKey];
@@ -336,6 +443,22 @@ function initFaviconsSwitcher() {
 
         heroImg.style.opacity = '1';
         heroImg.style.transform = 'scale(1)';
+
+        // 3. Atualiza todos os 7 tamanhos da grade dimensional
+        gridItems.forEach(gridItem => {
+          const size = gridItem.dataset.resSize;
+          const thumb = gridItem.querySelector('.res-thumb-icon');
+          const dlLink = gridItem.querySelector('.res-dl-link');
+          if (size && thumb && dlLink) {
+            const assetPath = `../assets/logo/png/solid/milet-app-icon-${styleKey}-${size}x${size}.png`;
+            thumb.src = assetPath;
+            dlLink.href = assetPath;
+            thumb.style.opacity = '1';
+          }
+        });
+
+        // 4. Sincroniza o favicon dinâmico do navegador na aba
+        updateSiteFavicon(styleKey);
       }, 140);
     });
   });
