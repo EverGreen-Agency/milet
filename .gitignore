@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Vercel
+.vercel/
+
+# System & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.codex-history/
+
+# Logs & scratch
+*.log
+scratch/
