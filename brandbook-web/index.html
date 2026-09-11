@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <!-- Header Institucional -->
+  <!-- Header Institucional com Navegacao Estruturada em Pilares -->
   <header class="milet-header">
     <div class="header-container">
       <a href="#hero" class="brand-signature">
@@ -55,18 +55,108 @@
         <span class="header-tagline-badge">BRANDBOOK</span>
       </a>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Nav com Pilares Semanticos e Dropdowns Elegantes -->
       <nav class="header-nav" id="mainNav">
-        <a href="#origem" class="nav-link">Origem</a>
-        <a href="#logo" class="nav-link">Logotipo & Normas</a>
-        <a href="#cores" class="nav-link">Cores</a>
-        <a href="#tipografia" class="nav-link">Tipografia</a>
-        <a href="#iconografia" class="nav-link">Ícones</a>
-        <a href="#favicons" class="nav-link">Favicons & App</a>
-        <a href="#ui-lab" class="nav-link">Componentes</a>
-        <a href="#motion" class="nav-link">Motion & 3D</a>
-        <a href="#universo" class="nav-link">Universo Visual</a>
-        <a href="#drive" class="nav-link nav-link-highlight">Arquivos & Drive</a>
+        <!-- Pilar 1: Fundamentos -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Fundamentos</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#origem" class="dropdown-link">
+              <span class="drop-num">01</span>
+              <div class="drop-info">
+                <strong>A Origem & A Rocha</strong>
+                <small>Tales de Mileto e a resina fóssil</small>
+              </div>
+            </a>
+            <a href="#logo" class="dropdown-link">
+              <span class="drop-num">02</span>
+              <div class="drop-info">
+                <strong>Logotipo & Normas</strong>
+                <small>Versões canônicas e grid de proteção</small>
+              </div>
+            </a>
+            <a href="#cores" class="dropdown-link">
+              <span class="drop-num">03</span>
+              <div class="drop-info">
+                <strong>Paleta Cromática</strong>
+                <small>Âmbar, Carvão e Areia Mineral</small>
+              </div>
+            </a>
+            <a href="#tipografia" class="dropdown-link">
+              <span class="drop-num">04</span>
+              <div class="drop-info">
+                <strong>Tipografia Oficial</strong>
+                <small>Playfair Display & Plus Jakarta Sans</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 2: Sistema UI -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Sistema UI</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#iconografia" class="dropdown-link">
+              <span class="drop-num">05</span>
+              <div class="drop-info">
+                <strong>Iconografia Canônica</strong>
+                <small>Grid 24px com espessura 1.5px</small>
+              </div>
+            </a>
+            <a href="#favicons" class="dropdown-link">
+              <span class="drop-num">06</span>
+              <div class="drop-info">
+                <strong>Favicons & App Icons</strong>
+                <small>Arquitetura Squircle em 7 tamanhos</small>
+              </div>
+            </a>
+            <a href="#ui-lab" class="dropdown-link">
+              <span class="drop-num">07</span>
+              <div class="drop-info">
+                <strong>Componentes & Tokens</strong>
+                <small>Botões, inputs e glassmorphism</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Mídia & 3D -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Mídia & 3D</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#motion" class="dropdown-link">
+              <span class="drop-num">08</span>
+              <div class="drop-info">
+                <strong>Motion & 3D Lab</strong>
+                <small>WebGL Three.js & Metamorfose 2D</small>
+              </div>
+            </a>
+            <a href="#universo" class="dropdown-link">
+              <span class="drop-num">09</span>
+              <div class="drop-info">
+                <strong>Universo Visual</strong>
+                <small>Slider editorial em 8 pranchas</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Botão Pill: Capítulos Completos -->
+        <button class="nav-chapters-btn" id="openChaptersBtn" type="button" title="Abrir Índice Completo com os 10 Capítulos">
+          <span class="nav-chapters-icon">☰</span>
+          <span>Capítulos</span>
+        </button>
+
+        <a href="#drive" class="nav-link nav-link-highlight">Drive de Assets</a>
       </nav>
 
       <div class="header-actions">
@@ -77,26 +167,116 @@
           <span>Baixar Assets</span>
           <span class="btn-arrow-icon">↓</span>
         </a>
-        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir Menu">
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir Menu Completo">
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
         </button>
       </div>
     </div>
 
-    <!-- Mobile / Small Laptop Drawer -->
-    <div id="mobileDrawer" class="mobile-drawer">
-      <a href="#origem" class="drawer-link" onclick="toggleMobileMenu()">01. Origem & A Rocha Mineral</a>
-      <a href="#logo" class="drawer-link" onclick="toggleMobileMenu()">02. Logotipo & Normas Canônicas</a>
-      <a href="#cores" class="drawer-link" onclick="toggleMobileMenu()">03. Paleta Cromática</a>
-      <a href="#tipografia" class="drawer-link" onclick="toggleMobileMenu()">04. Tipografia</a>
-      <a href="#iconografia" class="drawer-link" onclick="toggleMobileMenu()">05. Iconografia</a>
-      <a href="#favicons" class="drawer-link" onclick="toggleMobileMenu()">06. Favicons & Ícones de App</a>
-      <a href="#ui-lab" class="drawer-link" onclick="toggleMobileMenu()">07. Componentes UI</a>
-      <a href="#motion" class="drawer-link" onclick="toggleMobileMenu()">08. Motion & 3D Lab</a>
-      <a href="#universo" class="drawer-link" onclick="toggleMobileMenu()">09. Universo Visual (Slider)</a>
-      <a href="#drive" class="drawer-link highlight" onclick="toggleMobileMenu()">10. Drive de Arquivos</a>
-    </div>
+    <!-- Drawer Lateral Elegante de Capítulos (Todos os 10 Capítulos) -->
+    <div id="chaptersDrawerBackdrop" class="chapters-drawer-backdrop" onclick="closeChaptersDrawer()"></div>
+    <aside id="chaptersDrawer" class="chapters-drawer" aria-label="Índice de Capítulos do Brandbook">
+      <div class="drawer-top-bar">
+        <div class="drawer-header-title">
+          <span class="drawer-tagline">BRANDBOOK INTERATIVO</span>
+          <h3>Índice de Capítulos</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeChaptersDrawer()" title="Fechar Menu (Esc)">✕</button>
+      </div>
+
+      <div class="drawer-chapters-list">
+        <a href="#origem" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">01</span>
+          <div class="d-info">
+            <strong>A Marca & A Origem</strong>
+            <p>Herança de Mileto e a filosofia da Rocha Mineral</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#logo" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">02</span>
+          <div class="d-info">
+            <strong>Logotipo & Normas Canônicas</strong>
+            <p>Master Assets, matriz interativa e grid de proteção</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#cores" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">03</span>
+          <div class="d-info">
+            <strong>Paleta Cromática</strong>
+            <p>Cores primárias, complementares e cópia HEX</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#tipografia" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">04</span>
+          <div class="d-info">
+            <strong>Tipografia</strong>
+            <p>Playfair Display editorial e Plus Jakarta Sans</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#iconografia" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">05</span>
+          <div class="d-info">
+            <strong>Iconografia</strong>
+            <p>8 ícones de conceito e cópia instantânea de SVG</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#favicons" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">06</span>
+          <div class="d-info">
+            <strong>Favicons & Ícones de App</strong>
+            <p>Arquitetura Squircle em 7 resoluções (Painel 13)</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#ui-lab" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">07</span>
+          <div class="d-info">
+            <strong>Componentes UI & Design Tokens</strong>
+            <p>Design System vivo com botões, cards e simulador</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#motion" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">08</span>
+          <div class="d-info">
+            <strong>Motion & 3D Lab</strong>
+            <p>WebGL Three.js interativo e Metamorfose 2D</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#universo" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">09</span>
+          <div class="d-info">
+            <strong>Universo Visual da Marca</strong>
+            <p>Slider fotográfico editorial em 8 pranchas master</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#drive" class="drawer-chapter-item highlight-drive" onclick="closeChaptersDrawer()">
+          <span class="d-num">10</span>
+          <div class="d-info">
+            <strong>Drive de Arquivos & Assets</strong>
+            <p>Pacotes de download em SVG, PNG, PDF e ZIP</p>
+          </div>
+          <span class="d-arrow">↓</span>
+        </a>
+      </div>
+    </aside>
   </header>
 
   <!-- Hero Section (Inspirado no Website Canônico — Imagem 4 & Slide 02) -->

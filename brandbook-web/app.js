@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initFaviconAutoListener();
   initHeroVisualToggle();
-  initMobileMenu();
+  initNavigation();
   initLightboxKeyHandler();
   initLogoViewer();
   initFaviconsSwitcher();
@@ -89,24 +89,75 @@ function initThemeToggle() {
 }
 
 // -------------------------------------------------------------
-// 3. Mobile Menu Toggle
+// 3. Navigation System (Dropdowns & Chapters Drawer)
 // -------------------------------------------------------------
-function initMobileMenu() {
-  const btn = document.getElementById('mobileMenuBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  if (!btn || !drawer) return;
+window.openChaptersDrawer = function() {
+  const drawer = document.getElementById('chaptersDrawer');
+  const backdrop = document.getElementById('chaptersDrawerBackdrop');
+  if (drawer) drawer.classList.add('open');
+  if (backdrop) backdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
 
-  btn.addEventListener('click', () => {
-    drawer.classList.toggle('open');
-  });
-}
+window.closeChaptersDrawer = function() {
+  const drawer = document.getElementById('chaptersDrawer');
+  const backdrop = document.getElementById('chaptersDrawerBackdrop');
+  if (drawer) drawer.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+};
 
-window.toggleMobileMenu = function() {
-  const drawer = document.getElementById('mobileDrawer');
-  if (drawer) {
-    drawer.classList.remove('open');
+window.toggleDrawer = function(forceOpen) {
+  const drawer = document.getElementById('chaptersDrawer');
+  if (!drawer) return;
+  if (forceOpen || !drawer.classList.contains('open')) {
+    openChaptersDrawer();
+  } else {
+    closeChaptersDrawer();
   }
 };
+
+function initNavigation() {
+  const btnChapters = document.getElementById('openChaptersBtn');
+  const btnMobile = document.getElementById('mobileMenuBtn');
+
+  if (btnChapters) {
+    btnChapters.addEventListener('click', () => openChaptersDrawer());
+  }
+  if (btnMobile) {
+    btnMobile.addEventListener('click', () => openChaptersDrawer());
+  }
+
+  // Dropdown touch/click toggle for touch screens
+  const dropdownItems = document.querySelectorAll('.nav-dropdown-item');
+  dropdownItems.forEach(item => {
+    const trigger = item.querySelector('.nav-dropdown-trigger');
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        dropdownItems.forEach(other => {
+          if (other !== item) other.classList.remove('open');
+        });
+        item.classList.toggle('open', !isOpen);
+      });
+    }
+  });
+
+  // Fechar dropdowns ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown-item')) {
+      dropdownItems.forEach(item => item.classList.remove('open'));
+    }
+  });
+
+  // Fechar drawer com tecla Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeChaptersDrawer();
+    }
+  });
+}
 
 // -------------------------------------------------------------
 // 4. Dynamic Lightbox Modal (Zoom & High-Resolution Inspection)
