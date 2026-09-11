@@ -279,76 +279,68 @@
     </aside>
   </header>
 
-  <!-- Hero Section (Inspirado no Website Canônico — Imagem 4 & Slide 02) -->
-  <section id="hero" class="milet-hero">
-    <div class="hero-container">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-pill">MANUAL DE IDENTIDADE OFICIAL</span>
-        <span class="eyebrow-divider">•</span>
-        <span class="eyebrow-text">BRANDBOOK INTERATIVO V1.0</span>
+  <!-- Hero Section: Experiência Panorâmica Imersiva Full-Bleed (Idêntica à Imagem 04) -->
+  <section id="hero" class="milet-hero milet-hero-panoramic">
+    <!-- Atmosfera de Luz & Degradê Suave para Legibilidade Editorial -->
+    <div class="hero-panoramic-atmosphere"></div>
+
+    <div class="hero-container hero-panoramic-container">
+      <div class="hero-panoramic-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-pill">MANUAL DE IDENTIDADE OFICIAL</span>
+          <span class="eyebrow-divider">•</span>
+          <span class="eyebrow-text">BRANDBOOK INTERATIVO V1.0</span>
+        </div>
+
+        <span class="hero-brand-overline">ENERGIA EM MAIS LIBERDADE</span>
+        <h1 class="hero-title hero-title-panoramic">
+          Tecnologia<br>
+          que liberta<br>
+          o amanhã.
+        </h1>
+
+        <p class="hero-subtitle hero-subtitle-panoramic">
+          Da origem da eletricidade a uma nova forma de acessá-la. Dados, escolhas e possibilidades em um sistema inteligente.
+        </p>
+
+        <div class="hero-values-strip">
+          <span class="value-item">SÓLIDA</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">ELEGANTE</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">ATEMPORAL</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">VISIONÁRIA</span>
+        </div>
+
+        <!-- Botões oficiais idênticos à imagem 04 -->
+        <div class="hero-ctas">
+          <a href="#logo" class="btn-hero-panoramic-primary">
+            <span>Conheça a Milet</span>
+            <span class="btn-clean-arrow">→</span>
+          </a>
+          <a href="#origem" class="btn-hero-panoramic-secondary">
+            <span>Ver soluções</span>
+          </a>
+          <a href="#drive" class="btn-hero-panoramic-tertiary">
+            <span>Acessar Drive ↓</span>
+          </a>
+        </div>
       </div>
 
-      <div class="hero-split-grid">
-        <div class="hero-content">
-          <span class="hero-brand-overline">ENERGIA EM MAIS LIBERDADE</span>
-          <h1 class="hero-title hero-title-grand">
-            Tecnologia que liberta o amanhã.
-          </h1>
-          <p class="hero-subtitle">
-            Da origem da eletricidade a uma nova forma de acessá-la. Dados, escolhas e possibilidades em um sistema inteligente.
-          </p>
-
-          <div class="hero-values-strip">
-            <span class="value-item">SÓLIDA</span>
-            <span class="value-dot">/</span>
-            <span class="value-item">ELEGANTE</span>
-            <span class="value-dot">/</span>
-            <span class="value-item">ATEMPORAL</span>
-            <span class="value-dot">/</span>
-            <span class="value-item">VISIONÁRIA</span>
-          </div>
-
-          <!-- Refined buttons matching Image 4 & Panel 06 -->
-          <div class="hero-ctas">
-            <a href="#logo" class="btn-hero-primary">
-              <span>Conheça a Milet</span>
-              <span class="btn-clean-arrow">→</span>
-            </a>
-            <a href="#origem" class="btn-hero-secondary">
-              <span>Ver soluções</span>
-            </a>
-            <a href="#drive" class="btn-tertiary-milet">
-              <span>Acessar Drive ↓</span>
-            </a>
-          </div>
+      <!-- Elemento Conceitual Flutuante à Direita (Acima do Âmbar Polido) -->
+      <div class="hero-panoramic-aside">
+        <div class="hero-ambient-badge" title="Milet — Princípio Fundamental da Marca">
+          <span class="ambient-badge-line">MESMA</span>
+          <span class="ambient-badge-line">ENERGIA.</span>
+          <span class="ambient-badge-line">MAIS</span>
+          <span class="ambient-badge-line">POSSIBILIDADES.</span>
+          <span class="ambient-badge-rule"></span>
         </div>
 
-        <!-- Símbolo Vivo & Escultura de Âmbar (Slide 02 & Imagem 04) -->
-        <div class="hero-visual-card hero-sculpture-card">
-          <!-- View switcher toggle inside card -->
-          <div class="hero-card-switcher">
-            <button class="hero-switch-btn active" id="heroSwitchSculptureBtn" data-view="sculpture">✦ Escultura em Basalto</button>
-            <button class="hero-switch-btn" id="heroSwitchMockupBtn" data-view="mockup">💻 Website (Painel 01)</button>
-          </div>
-
-          <div class="hero-media-wrapper" onclick="openActiveHeroLightbox()" title="Clique para expandir em alta resolução (100%)">
-            <img id="heroActiveImg" src="../assets/imagery/milet-hero-rocha-ambar-polida.png" alt="Tecnologia que liberta o amanhã — Âmbar Polido sobre Basalto" class="hero-visual-img">
-            
-            <!-- Tagline Badge matching Image 4 -->
-            <div class="sculpture-hero-badge" id="sculptureHeroBadge">
-              <span class="badge-tagline">MESMA ENERGIA.</span>
-              <span class="badge-tagline">MAIS POSSIBILIDADES.</span>
-              <span class="badge-accent-line"></span>
-            </div>
-
-            <div class="hero-zoom-hint">🔍 Expandir em Alta Resolução</div>
-          </div>
-
-          <div class="hero-visual-caption">
-            <span class="caption-tag" id="heroCaptionTag">SÍMBOLO VIVO • ESCULTURA DE ÂMBAR & LUZ</span>
-            <span class="caption-desc" id="heroCaptionDesc">A resina fóssil polida sobre o basalto de Mileto ao nascer do sol, simbolizando a fusão entre a centelha ancestral e a inteligência moderna.</span>
-          </div>
-        </div>
+        <button class="hero-full-inspect-btn" onclick="openLightbox('../assets/imagery/milet-hero-rocha-ambar-polida.png', 'Âmbar Polido sobre Basalto Vulcânico', 'ESCULTURA & LUZ • PAINEL 01 CANÔNICO')" title="Inspecionar Escultura em Tela Cheia">
+          <span>🔍 Inspecionar Obra em 100%</span>
+        </button>
       </div>
     </div>
   </section>

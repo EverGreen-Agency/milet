@@ -600,26 +600,79 @@ body {
   transform: translateX(4px);
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Hero Section — Panorâmica Imersiva Full-Bleed (Idêntica à Imagem 04)
+   ========================================================================== */
 .milet-hero {
   position: relative;
-  min-height: clamp(580px, 75vh, 760px);
+  min-height: clamp(620px, 86vh, 840px);
   display: flex;
   align-items: center;
   padding: 56px 28px;
 }
 
-.hero-container {
+.milet-hero-panoramic {
+  background-color: var(--milet-bg-canvas);
+  background-image: url('../assets/imagery/milet-hero-rocha-ambar-polida.png');
+  background-position: right 25% center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-bottom: 1px solid var(--milet-border-hairline);
+}
+
+/* Atmosfera de luz suave à esquerda para contraste e leitura perfeita */
+.hero-panoramic-atmosphere {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(247, 243, 234, 0.98) 0%,
+    rgba(247, 243, 234, 0.94) 30%,
+    rgba(247, 243, 234, 0.80) 44%,
+    rgba(247, 243, 234, 0.35) 58%,
+    rgba(247, 243, 234, 0.08) 72%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: background var(--milet-duration-normal);
+}
+
+.theme-dark .hero-panoramic-atmosphere {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 26, 26, 0.98) 0%,
+    rgba(26, 26, 26, 0.94) 30%,
+    rgba(26, 26, 26, 0.80) 44%,
+    rgba(26, 26, 26, 0.35) 58%,
+    rgba(26, 26, 26, 0.08) 72%,
+    transparent 100%
+  );
+}
+
+.hero-panoramic-container {
   max-width: 1360px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 20px 0;
+}
+
+.hero-panoramic-content {
+  max-width: 580px;
+  flex-shrink: 0;
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .eyebrow-pill {
@@ -643,46 +696,32 @@ body {
   color: var(--milet-text-muted);
 }
 
-.hero-split-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: center;
-}
-
 .hero-brand-overline {
   display: block;
   font-family: var(--milet-font-sans);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--milet-color-ambar);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   text-transform: uppercase;
 }
 
-.hero-title {
+.hero-title-panoramic {
   font-family: var(--milet-font-display);
-  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  font-size: clamp(2.6rem, 4.4vw, 4.5rem);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  margin-bottom: 20px;
-}
-
-.hero-title-grand {
-  font-family: var(--milet-font-display);
-  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
-  font-weight: 600;
-  line-height: 1.12;
+  line-height: 1.08;
   letter-spacing: -0.02em;
+  color: var(--milet-text-primary);
+  margin-bottom: 22px;
 }
 
-.hero-subtitle {
+.hero-subtitle-panoramic {
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--milet-text-secondary);
-  max-width: 54ch;
+  max-width: 48ch;
   margin-bottom: 28px;
 }
 
@@ -713,8 +752,8 @@ body {
   flex-wrap: wrap;
 }
 
-/* Luxury Website Buttons (Imagem 4 & Painel 06) */
-.btn-hero-primary {
+/* Luxury Website Buttons (Imagem 04) */
+.btn-hero-panoramic-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -722,11 +761,11 @@ body {
   background: linear-gradient(135deg, #D39B3D 0%, #B87A24 100%);
   color: #FFFFFF !important;
   text-decoration: none;
-  padding: 13px 28px;
+  padding: 14px 30px;
   border-radius: var(--milet-radius-pill);
   font-family: var(--milet-font-sans);
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   letter-spacing: 0.01em;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -735,142 +774,45 @@ body {
   transition: all var(--milet-duration-fast) var(--milet-ease-natural);
 }
 
-.btn-hero-primary:hover {
+.btn-hero-panoramic-primary:hover {
   transform: translateY(-2px);
   background: linear-gradient(135deg, #E2AA4C 0%, #C4852B 100%);
-  box-shadow: 0 12px 28px -4px rgba(211, 155, 61, 0.6);
+  box-shadow: 0 12px 30px -4px rgba(211, 155, 61, 0.6);
 }
 
-.btn-hero-primary:active {
-  transform: translateY(0);
-}
-
-.btn-hero-secondary {
+.btn-hero-panoramic-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 26px;
+  padding: 14px 28px;
   border-radius: var(--milet-radius-pill);
   border: 1px solid rgba(26, 26, 26, 0.25);
-  background-color: rgba(247, 243, 234, 0.6);
+  background-color: rgba(247, 243, 234, 0.7);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--milet-color-carvao);
   text-decoration: none;
   font-family: var(--milet-font-sans);
   font-weight: 500;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   cursor: pointer;
   line-height: 1;
   transition: all var(--milet-duration-fast) var(--milet-ease-natural);
 }
 
-.theme-dark .btn-hero-secondary {
+.theme-dark .btn-hero-panoramic-secondary {
   background-color: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
 }
 
-.btn-hero-secondary:hover {
-  border-color: var(--milet-color-carvao);
-  background-color: rgba(26, 26, 26, 0.08);
+.btn-hero-panoramic-secondary:hover {
+  border-color: var(--milet-color-ambar);
+  background-color: rgba(211, 155, 61, 0.1);
   transform: translateY(-2px);
 }
 
-.theme-dark .btn-hero-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-/* Buttons System — Faithful to Panel 06 */
-.btn-primary-milet {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: var(--milet-color-carvao);
-  color: var(--milet-color-marfim);
-  text-decoration: none;
-  padding: 11px 24px;
-  border-radius: var(--milet-radius-pill);
-  font-family: var(--milet-font-sans);
-  font-weight: 500;
-  font-size: 0.88rem;
-  letter-spacing: 0.01em;
-  border: 1px solid transparent;
-  cursor: pointer;
-  line-height: 1;
-  transition: all var(--milet-duration-fast) var(--milet-ease-natural);
-}
-
-.theme-dark .btn-primary-milet {
-  background-color: var(--milet-color-marfim);
-  color: var(--milet-color-carvao);
-}
-
-.btn-primary-milet:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.18);
-  background-color: #000000;
-}
-
-.theme-dark .btn-primary-milet:hover {
-  background-color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(247, 243, 234, 0.25);
-}
-
-.btn-primary-milet:active {
-  transform: translateY(0);
-}
-
-.btn-clean-arrow {
-  display: inline-block;
-  font-family: var(--milet-font-sans);
-  font-size: 1.05rem;
-  font-weight: 400;
-  transition: transform var(--milet-duration-fast) var(--milet-ease-natural);
-  line-height: 1;
-}
-
-.btn-primary-milet:hover .btn-clean-arrow {
-  transform: translateX(4px);
-}
-
-.btn-secondary-milet {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 24px;
-  border-radius: var(--milet-radius-pill);
-  border: 1px solid rgba(26, 26, 26, 0.2);
-  background-color: var(--milet-color-marfim);
-  color: var(--milet-color-carvao);
-  text-decoration: none;
-  font-family: var(--milet-font-sans);
-  font-weight: 500;
-  font-size: 0.88rem;
-  cursor: pointer;
-  line-height: 1;
-  transition: all var(--milet-duration-fast) var(--milet-ease-natural);
-}
-
-.theme-dark .btn-secondary-milet {
-  background-color: transparent;
-  border-color: rgba(247, 243, 234, 0.25);
-  color: var(--milet-color-marfim);
-}
-
-.btn-secondary-milet:hover {
-  border-color: var(--milet-color-carvao);
-  background-color: rgba(26, 26, 26, 0.05);
-  transform: translateY(-2px);
-}
-
-.theme-dark .btn-secondary-milet:hover {
-  border-color: var(--milet-color-marfim);
-  background-color: rgba(247, 243, 234, 0.08);
-}
-
-.btn-tertiary-milet {
+.btn-hero-panoramic-tertiary {
   display: inline-flex;
   align-items: center;
   padding: 11px 20px;
@@ -884,175 +826,115 @@ body {
   letter-spacing: 0.05em;
   transition: all var(--milet-duration-fast);
 }
-.theme-dark .btn-tertiary-milet {
+
+.theme-dark .btn-hero-panoramic-tertiary {
   color: var(--milet-color-ambar-light);
 }
-.btn-tertiary-milet:hover {
+
+.btn-hero-panoramic-tertiary:hover {
   color: var(--milet-color-ambar);
   text-decoration: underline;
 }
 
-.btn-sm {
-  padding: 8px 16px;
-  font-size: 0.8rem;
-}
-
-/* Hero Visual Card (Inspirado no Website Canônico — Imagem 4 & Slide 02) */
-.hero-visual-card {
-  position: relative;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 20px 48px -10px rgba(211, 155, 61, 0.25), 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(211, 155, 61, 0.25);
-  background: #0D0D0D;
-  max-width: 620px;
-  width: 100%;
-  margin: 0 auto;
-  transition: transform var(--milet-duration-normal) var(--milet-ease-natural), box-shadow var(--milet-duration-normal);
-}
-
-.hero-visual-card:hover {
-  box-shadow: 0 24px 56px -8px rgba(211, 155, 61, 0.35), 0 6px 24px rgba(0, 0, 0, 0.12);
-  border-color: rgba(211, 155, 61, 0.45);
-}
-
-/* Card View Switcher Pill Bar */
-.hero-card-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  background: rgba(18, 18, 18, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  gap: 8px;
-}
-
-.hero-switch-btn {
-  flex: 1;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #A0A0A0;
-  font-family: var(--milet-font-sans);
-  font-size: 0.76rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: var(--milet-radius-pill);
-  cursor: pointer;
-  transition: all var(--milet-duration-fast);
-  white-space: nowrap;
-  text-align: center;
-}
-
-.hero-switch-btn:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.hero-switch-btn.active {
-  background: rgba(211, 155, 61, 0.2);
-  border-color: var(--milet-color-ambar);
-  color: #FFD285;
-}
-
-.hero-media-wrapper {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: #080808;
-}
-
-.hero-visual-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 16 / 9;
-  transition: transform 700ms var(--milet-ease-natural), opacity 250ms ease;
-}
-
-.hero-media-wrapper:hover .hero-visual-img {
-  transform: scale(1.03);
-}
-
-/* Tagline Badge matching Image 4 */
-.sculpture-hero-badge {
-  position: absolute;
-  top: 18px;
-  right: 20px;
+/* Lado Direito da Hero Panoramica */
+.hero-panoramic-aside {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  pointer-events: none;
-  z-index: 2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  gap: 180px;
+  align-self: stretch;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-.badge-tagline {
+.hero-ambient-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: rgba(247, 243, 234, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.theme-dark .hero-ambient-badge {
+  background: rgba(20, 20, 20, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.ambient-badge-line {
   font-family: var(--milet-font-sans);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #FFFFFF;
+  letter-spacing: 0.22em;
+  color: var(--milet-text-primary);
   line-height: 1.35;
-  text-transform: uppercase;
 }
 
-.badge-accent-line {
+.ambient-badge-rule {
   display: block;
   width: 32px;
   height: 2px;
   background-color: var(--milet-color-ambar);
-  margin-top: 6px;
+  margin-top: 8px;
   border-radius: 2px;
 }
 
-.hero-zoom-hint {
-  position: absolute;
-  bottom: 14px;
-  right: 16px;
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #F7D78A;
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: var(--milet-radius-pill);
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: all 250ms ease;
-  z-index: 3;
-}
-
-.hero-media-wrapper:hover .hero-zoom-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-visual-caption {
-  position: relative;
-  padding: 16px 20px;
-  background: #121212;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+.hero-full-inspect-btn {
+  background: rgba(14, 14, 14, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
+  font-family: var(--milet-font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--milet-radius-pill);
+  cursor: pointer;
+  transition: all var(--milet-duration-fast);
 }
 
-.caption-tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  color: var(--milet-color-ambar);
-  margin-bottom: 4px;
+.hero-full-inspect-btn:hover {
+  background: var(--milet-color-ambar);
+  color: var(--milet-color-carvao);
+  border-color: var(--milet-color-ambar);
 }
 
-.caption-desc {
-  display: block;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: #C8C8C8;
+/* Responsividade da Hero Panorâmica */
+@media (max-width: 1024px) {
+  .milet-hero-panoramic {
+    background-position: right 15% center;
+  }
+  .hero-panoramic-atmosphere {
+    background: linear-gradient(
+      90deg,
+      rgba(247, 243, 234, 0.97) 0%,
+      rgba(247, 243, 234, 0.92) 50%,
+      rgba(247, 243, 234, 0.55) 75%,
+      rgba(247, 243, 234, 0.2) 100%
+    );
+  }
+  .theme-dark .hero-panoramic-atmosphere {
+    background: linear-gradient(
+      90deg,
+      rgba(26, 26, 26, 0.97) 0%,
+      rgba(26, 26, 26, 0.92) 50%,
+      rgba(26, 26, 26, 0.55) 75%,
+      rgba(26, 26, 26, 0.2) 100%
+    );
+  }
+  .hero-panoramic-aside {
+    display: none;
+  }
+  .hero-panoramic-content {
+    max-width: 100%;
+  }
 }
 
 /* Sections */
