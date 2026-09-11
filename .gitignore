@@ -20,3 +20,8 @@ Thumbs.db
 *.log
 scratch/
 *_preview.png
+
+# Raw Generation Inputs
+novas-imgs/
+novas-imgs2/
+
