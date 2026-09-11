@@ -2,13 +2,1385 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=brandbook-web/index.html">
-  <title>Milet — Redirecionando para o Brandbook</title>
-  <script>
-    window.location.href = "brandbook-web/index.html";
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Brandbook Interativo & Manual de Marca</title>
+  <meta name="description" content="Manual de Identidade Oficial, Brandbook Interativo e Design System da Milet. Energia em mais liberdade.">
+  <!-- Favicons Dinâmicos (Claro / Escuro / Apple) -->
+  <link id="siteFavicon" rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="apple-touch-icon" href="assets/logo/png/solid/milet-app-icon-180x180.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- GSAP 3 & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="font-family: sans-serif; background: #1A1A1A; color: #F7F3EA; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
-  <p>Acessando o <a href="brandbook-web/index.html" style="color: #D39B3D; text-decoration: underline;">Brandbook Interativo Milet</a>...</p>
+<body class="theme-light">
+  <!-- Toast Notification -->
+  <div id="toast" class="milet-toast" role="alert" aria-live="polite"></div>
+
+  <!-- Lightbox Modal Dinâmico -->
+  <div id="lightboxModal" class="milet-lightbox" style="display: none;" aria-hidden="true" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <div class="lightbox-header">
+        <div>
+          <span class="lightbox-tag" id="lightboxTag">PRANCHA MESTRA EM ALTA RESOLUÇÃO</span>
+          <h3 class="lightbox-title" id="lightboxTitle">Milet — Visão Holística da Identidade</h3>
+        </div>
+        <button class="lightbox-close-btn" onclick="closeLightbox()" title="Fechar (Esc)">✕</button>
+      </div>
+      <div class="lightbox-img-wrapper">
+        <img id="lightboxImg" src="assets/imagery/milet-master-brand-board.jpg" alt="Visualização em Alta Resolução" class="lightbox-full-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Institucional com Navegacao Estruturada em Pilares -->
+  <header class="milet-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-signature">
+        <!-- Master reference symbol icon -->
+        <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Símbolo Oficial" class="header-logo-icon">
+        <span class="header-brand-name">Milet</span>
+        <span class="header-tagline-badge">BRANDBOOK</span>
+      </a>
+
+      <!-- Desktop Nav com Pilares Semanticos e Dropdowns Elegantes -->
+      <nav class="header-nav" id="mainNav">
+        <!-- Pilar 1: Fundamentos -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Fundamentos</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#origem" class="dropdown-link">
+              <span class="drop-num">01</span>
+              <div class="drop-info">
+                <strong>A Origem & A Rocha</strong>
+                <small>Tales de Mileto e a resina fóssil</small>
+              </div>
+            </a>
+            <a href="#logo" class="dropdown-link">
+              <span class="drop-num">02</span>
+              <div class="drop-info">
+                <strong>Logotipo & Normas</strong>
+                <small>Versões canônicas e grid de proteção</small>
+              </div>
+            </a>
+            <a href="#cores" class="dropdown-link">
+              <span class="drop-num">03</span>
+              <div class="drop-info">
+                <strong>Paleta Cromática</strong>
+                <small>Âmbar, Carvão e Areia Mineral</small>
+              </div>
+            </a>
+            <a href="#tipografia" class="dropdown-link">
+              <span class="drop-num">04</span>
+              <div class="drop-info">
+                <strong>Tipografia Oficial</strong>
+                <small>Playfair Display & Plus Jakarta Sans</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 2: Sistema UI -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Sistema UI</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#iconografia" class="dropdown-link">
+              <span class="drop-num">05</span>
+              <div class="drop-info">
+                <strong>Iconografia Canônica</strong>
+                <small>Grid 24px com espessura 1.5px</small>
+              </div>
+            </a>
+            <a href="#favicons" class="dropdown-link">
+              <span class="drop-num">06</span>
+              <div class="drop-info">
+                <strong>Favicons & App Icons</strong>
+                <small>Arquitetura Squircle em 7 tamanhos</small>
+              </div>
+            </a>
+            <a href="#ui-lab" class="dropdown-link">
+              <span class="drop-num">07</span>
+              <div class="drop-info">
+                <strong>Componentes & Tokens</strong>
+                <small>Botões, inputs e glassmorphism</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Mídia & Motion -->
+        <div class="nav-dropdown-item">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
+            <span>Mídia & Motion</span>
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#motion" class="dropdown-link">
+              <span class="drop-num">08</span>
+              <div class="drop-info">
+                <strong>Motion Frame a Frame</strong>
+                <small>Metamorfose Canônica em 6 Etapas</small>
+              </div>
+            </a>
+            <a href="#universo" class="dropdown-link">
+              <span class="drop-num">09</span>
+              <div class="drop-info">
+                <strong>Universo Visual</strong>
+                <small>Slider editorial em 8 pranchas</small>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Botão Pill: Capítulos Completos -->
+        <button class="nav-chapters-btn" id="openChaptersBtn" type="button" title="Abrir Índice Completo com os 10 Capítulos">
+          <span class="nav-chapters-icon">☰</span>
+          <span>Capítulos</span>
+        </button>
+
+        <a href="#drive" class="nav-link nav-link-highlight">Drive de Assets</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Alternar Tema Claro/Escuro" title="Alternar Modo Escuro / Claro">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#drive" class="btn-header-cta">
+          <span>Baixar Assets</span>
+          <span class="btn-arrow-icon">↓</span>
+        </a>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir Menu Completo">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Drawer Lateral Elegante de Capítulos (Todos os 10 Capítulos) -->
+    <div id="chaptersDrawerBackdrop" class="chapters-drawer-backdrop" onclick="closeChaptersDrawer()"></div>
+    <aside id="chaptersDrawer" class="chapters-drawer" aria-label="Índice de Capítulos do Brandbook">
+      <div class="drawer-top-bar">
+        <div class="drawer-header-title">
+          <span class="drawer-tagline">BRANDBOOK INTERATIVO</span>
+          <h3>Índice de Capítulos</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeChaptersDrawer()" title="Fechar Menu (Esc)">✕</button>
+      </div>
+
+      <div class="drawer-chapters-list">
+        <a href="#origem" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">01</span>
+          <div class="d-info">
+            <strong>A Marca & A Origem</strong>
+            <p>Herança de Mileto e a filosofia da Rocha Mineral</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#logo" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">02</span>
+          <div class="d-info">
+            <strong>Logotipo & Normas Canônicas</strong>
+            <p>Master Assets, matriz interativa e grid de proteção</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#cores" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">03</span>
+          <div class="d-info">
+            <strong>Paleta Cromática</strong>
+            <p>Cores primárias, complementares e cópia HEX</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#tipografia" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">04</span>
+          <div class="d-info">
+            <strong>Tipografia</strong>
+            <p>Playfair Display editorial e Plus Jakarta Sans</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#iconografia" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">05</span>
+          <div class="d-info">
+            <strong>Iconografia</strong>
+            <p>8 ícones de conceito e cópia instantânea de SVG</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#favicons" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">06</span>
+          <div class="d-info">
+            <strong>Favicons & Ícones de App</strong>
+            <p>Arquitetura Squircle em 7 resoluções (Painel 13)</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#ui-lab" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">07</span>
+          <div class="d-info">
+            <strong>Componentes UI & Design Tokens</strong>
+            <p>Design System vivo com botões, cards e simulador</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#motion" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">08</span>
+          <div class="d-info">
+            <strong>Motion Frame a Frame</strong>
+            <p>Metamorfose Canônica em 6 Etapas (Painel 11)</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#universo" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
+          <span class="d-num">09</span>
+          <div class="d-info">
+            <strong>Universo Visual da Marca</strong>
+            <p>Slider fotográfico editorial em 8 pranchas master</p>
+          </div>
+          <span class="d-arrow">→</span>
+        </a>
+
+        <a href="#drive" class="drawer-chapter-item highlight-drive" onclick="closeChaptersDrawer()">
+          <span class="d-num">10</span>
+          <div class="d-info">
+            <strong>Drive de Arquivos & Assets</strong>
+            <p>Pacotes de download em SVG, PNG, PDF e ZIP</p>
+          </div>
+          <span class="d-arrow">↓</span>
+        </a>
+      </div>
+    </aside>
+  </header>
+
+  <!-- Hero Section: Experiência Panorâmica Imersiva Full-Bleed (Idêntica à Imagem 04) -->
+  <section id="hero" class="milet-hero milet-hero-panoramic">
+    <!-- Atmosfera de Luz & Degradê Suave para Legibilidade Editorial -->
+    <div class="hero-panoramic-atmosphere"></div>
+
+    <div class="hero-container hero-panoramic-container">
+      <div class="hero-panoramic-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-pill">MANUAL DE IDENTIDADE OFICIAL</span>
+          <span class="eyebrow-divider">•</span>
+          <span class="eyebrow-text">BRANDBOOK INTERATIVO V1.0</span>
+        </div>
+
+        <span class="hero-brand-overline">ENERGIA EM MAIS LIBERDADE</span>
+        <h1 class="hero-title hero-title-panoramic">
+          Tecnologia<br>
+          que liberta<br>
+          o amanhã.
+        </h1>
+
+        <p class="hero-subtitle hero-subtitle-panoramic">
+          Da origem da eletricidade a uma nova forma de acessá-la. Dados, escolhas e possibilidades em um sistema inteligente.
+        </p>
+
+        <div class="hero-values-strip">
+          <span class="value-item">SÓLIDA</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">ELEGANTE</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">ATEMPORAL</span>
+          <span class="value-dot">/</span>
+          <span class="value-item">VISIONÁRIA</span>
+        </div>
+
+        <!-- Botões oficiais idênticos à imagem 04 -->
+        <div class="hero-ctas">
+          <a href="#logo" class="btn-hero-panoramic-primary">
+            <span>Conheça a Milet</span>
+            <span class="btn-clean-arrow">→</span>
+          </a>
+          <a href="#origem" class="btn-hero-panoramic-secondary">
+            <span>Ver soluções</span>
+          </a>
+          <a href="#drive" class="btn-hero-panoramic-tertiary">
+            <span>Acessar Drive ↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01. Origem e Conceito -->
+  <section id="origem" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">A Marca & A Origem</h2>
+        <p class="section-lead">A história do saber que acendeu o mundo e a tecnologia que liberta o amanhã.</p>
+      </div>
+
+      <div class="editorial-grid">
+        <div class="editorial-card mineral-card">
+          <span class="card-kicker">HERANÇA HISTÓRICA</span>
+          <h3 class="card-heading">Tales de Mileto & O Âmbar</h3>
+          <p class="card-body">
+            Por volta de 600 a.C., em Mileto, nascia a observação científica pioneira da eletricidade quando o filósofo Tales friccionou uma resina fóssil dourada chamada âmbar (<em>ēlektron</em>). Aquela faísca transformou a história da humanidade.
+          </p>
+          <p class="card-body">
+            A Milet honra esse marco transformando a energia contemporânea em um sistema transparente, onde o consumidor não é mais um pagador passivo, mas o gestor autônomo do seu próprio consumo.
+          </p>
+        </div>
+
+        <div class="editorial-card quote-card">
+          <span class="card-kicker">MANIFESTO</span>
+          <blockquote class="manifesto-quote">
+            “Mais que energia. Mais liberdade.”
+          </blockquote>
+          <p class="quote-author">O princípio soberano do consumidor Milet</p>
+          <div class="quote-footer-bar">
+            <span>MESMA ENERGIA. MAIS POSSIBILIDADES.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight Hero: A Rocha Mineral de Âmbar (Foto Canônica) -->
+      <div class="origin-stone-spotlight">
+        <div class="stone-spotlight-media" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-mineral-sol.png', 'A Rocha de Âmbar Mineral ao Pôr do Sol', 'MATÉRIA PRIMORDIAL • MILETO 600 A.C.')" title="Clique para expandir em tela cheia">
+          <img src="assets/imagery/milet-hero-rocha-ambar-mineral-sol.png" alt="A Rocha Mineral de Âmbar ao Pôr do Sol em Mileto" class="stone-spotlight-img">
+          <div class="stone-spotlight-overlay">
+            <div class="stone-spotlight-top-tags">
+              <span class="spotlight-pill">SÓLIDA • ELEGANTE • ATEMPORAL • VISIONÁRIA</span>
+              <span class="spotlight-pill-subtle">PESSOAS • TECNOLOGIA • LIBERDADE</span>
+            </div>
+            <div class="stone-spotlight-bottom-info">
+              <h3>ENERGIA NATURALMENTE MAIS LIVRE</h3>
+              <p>Da terra para mais possibilidades — O âmbar fóssil banhado pelo sol poente que inspirou o volume, a cor e a alma do logotipo Milet.</p>
+              <span class="zoom-cue">🔍 Clique para inspecionar em alta resolução</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. Logotipo & Geometria -->
+  <section id="logo" class="milet-section section-contrast">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Sistema de Logotipo Oficial</h2>
+        <p class="section-lead">Fidelidade absoluta ao logotipo original da prancha mestra, geometria do loop e proporções.</p>
+      </div>
+
+      <!-- Interactive Logo Viewer with Master Reference Files -->
+      <div class="logo-interactive-viewer">
+        <div class="viewer-controls">
+          <div class="control-group">
+            <span class="control-label">VARIAÇÃO:</span>
+            <button class="viewer-btn active" data-variant="primary">Logo Principal</button>
+            <button class="viewer-btn" data-variant="horizontal">Horizontal</button>
+            <button class="viewer-btn" data-variant="symbol">Símbolo Isolado</button>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">FUNDO & COR:</span>
+            <button class="viewer-bg-btn active" data-bg="light" title="Fundo Marfim">Marfim</button>
+            <button class="viewer-bg-btn" data-bg="dark" title="Fundo Carvão">Carvão</button>
+            <button class="viewer-bg-btn" data-bg="mono" title="Monocromático">Mono</button>
+          </div>
+        </div>
+
+        <div id="logoDisplayStage" class="logo-display-stage stage-light">
+          <div class="stage-grid-lines"></div>
+          <!-- Refined Master Logo rendered with pixel-perfect fidelity -->
+          <img id="logoStageImage" src="assets/logo/png/transparent/milet-logo-vertical-dark.png" alt="Logotipo Oficial Milet" class="stage-active-logo">
+          <div class="stage-spec-overlay">
+            <span class="spec-tag" id="stageSpecFilename">milet-logo-vertical-dark.png</span>
+            <span class="spec-tag" id="stageSpecFormat">Ativo Mestre Canônico • Versão Refinada Oficial</span>
+          </div>
+        </div>
+
+        <div class="viewer-footer-actions">
+          <div class="format-links">
+            <span class="format-label">DOWNLOAD DIRETO:</span>
+            <a id="dlPngTransLink" href="assets/logo/png/transparent/milet-logo-vertical-dark.png" download class="dl-pill">PNG Transparente Oficial</a>
+            <a id="dlSvgLink" href="assets/logo/svg/milet-logo-primary-dark.svg" download class="dl-pill">SVG Vetorial</a>
+            <a id="dlPngSolidLink" href="assets/logo/png/solid/milet-logo-vertical-marfim.png" download class="dl-pill">PNG com Fundo Sólido</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Construction Rules Cards -->
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h4>Área de Não-Interferência</h4>
+          <p>A margem de respiro mínima ao redor do logotipo equivale à altura total da letra <strong>"M"</strong> do wordmark Milet em todos os quatro quadrantes.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Redução Mínima Recomendada</h4>
+          <p>Digital: 120px de largura para o logo vertical, 24px para o símbolo.<br>Impresso: 30mm de largura mínima para assegurar a nitidez do descritor.</p>
+        </div>
+        <div class="rule-card">
+          <h4>Integridade da Geometria</h4>
+          <p>É estritamente proibido alterar proporções, aplicar filtros neon estranhos à paleta ou substituir as fontes oficiais da marca.</p>
+        </div>
+      </div>
+
+      <!-- Galeria Técnica de Normas Canônicas (Painel 02 Oficial) -->
+      <div class="technical-standards-section">
+        <div class="standards-header-row">
+          <div>
+            <span class="standards-kicker">MANUAL DE NORMAS TÉCNICAS (PAINEL 02)</span>
+            <h3 class="standards-title">Pranchas Oficiais de Aplicação e Conformidade</h3>
+          </div>
+          <span class="standards-badge">4 NORMAS HOMOLOGADAS</span>
+        </div>
+
+        <div class="standards-grid">
+          <!-- Norma 01: Área de Proteção -->
+          <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-01-area-de-protecao.png', 'Norma 01: Área de Não-Interferência e Margem de Segurança', 'SISTEMA DE LOGOTIPO • NORMA 01')">
+            <div class="standard-img-wrap">
+              <img src="assets/imagery/milet-norma-01-area-de-protecao.png" alt="Norma 01: Área de Proteção" class="standard-img">
+              <div class="standard-zoom-badge">🔍 Inspecionar</div>
+            </div>
+            <div class="standard-meta">
+              <span class="standard-id">NORMA 01</span>
+              <h4>Área de Não-Interferência (X = M)</h4>
+              <p>A margem de respiro mínima absoluta em todos os quadrantes é proporcional à altura da letra capital "M".</p>
+            </div>
+          </div>
+
+          <!-- Norma 02: Redução Mínima -->
+          <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-02-reducao-minima.png', 'Norma 02: Limites de Redução Mínima Recomendada', 'SISTEMA DE LOGOTIPO • NORMA 02')">
+            <div class="standard-img-wrap">
+              <img src="assets/imagery/milet-norma-02-reducao-minima.png" alt="Norma 02: Redução Mínima" class="standard-img">
+              <div class="standard-zoom-badge">🔍 Inspecionar</div>
+            </div>
+            <div class="standard-meta">
+              <span class="standard-id">NORMA 02</span>
+              <h4>Limites de Redução Mínima</h4>
+              <p>Diretrizes dimensionais para assegurar legibilidade em impressos (offset/serigrafia) e telas digitais de alta densidade.</p>
+            </div>
+          </div>
+
+          <!-- Norma 03: Fundos Permitidos -->
+          <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-03-fundos-permitidos.png', 'Norma 03: Contrastes e Fundos Permitidos', 'SISTEMA DE LOGOTIPO • NORMA 03')">
+            <div class="standard-img-wrap">
+              <img src="assets/imagery/milet-norma-03-fundos-permitidos.png" alt="Norma 03: Fundos Permitidos" class="standard-img">
+              <div class="standard-zoom-badge">🔍 Inspecionar</div>
+            </div>
+            <div class="standard-meta">
+              <span class="standard-id">NORMA 03</span>
+              <h4>Fundos e Contrastes Permitidos</h4>
+              <p>Aplicações homologadas sobre superfícies Marfim, Carvão, neutras minerais e sobreposições fotográficas controladas.</p>
+            </div>
+          </div>
+
+          <!-- Norma 04: Usos Incorretos -->
+          <div class="standard-card danger-standard" onclick="openLightbox('assets/imagery/milet-norma-04-usos-incorretos.png', 'Norma 04: Usos Estritamente Proibidos e Distorções', 'SISTEMA DE LOGOTIPO • NORMA 04')">
+            <div class="standard-img-wrap">
+              <img src="assets/imagery/milet-norma-04-usos-incorretos.png" alt="Norma 04: Usos Incorretos" class="standard-img">
+              <div class="standard-zoom-badge">🔍 Inspecionar</div>
+            </div>
+            <div class="standard-meta">
+              <span class="standard-id text-danger">NORMA 04 • PROIBIÇÕES</span>
+              <h4>Usos Incorretos e Distorções</h4>
+              <p>Práticas vetadas: alteração de proporção, rotação arbitrária, efeitos neon espúrios e desconstrução tipográfica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. Paleta de Cores -->
+  <section id="cores" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Paleta Cromática Oficial</h2>
+        <p class="section-lead">Calibração baseada em minerais e na radiação solar do âmbar. Clique em qualquer cartão para copiar o código HEX.</p>
+      </div>
+
+      <div class="palette-grid">
+        <!-- Carvão -->
+        <div class="color-swatch-card" data-hex="#1A1A1A" onclick="copyColorHex('#1A1A1A')">
+          <div class="swatch-color" style="background-color: #1A1A1A;">
+            <span class="copy-hint">Copiar HEX</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name-row">
+              <strong class="color-name">CARVÃO</strong>
+              <span class="hex-badge">#1A1A1A</span>
+            </div>
+            <p class="color-role">Equilíbrio e confiança. Fundo de telas OLED, texto principal em superfícies claras e botões primários.</p>
+            <div class="color-specs">
+              <span>RGB: 26, 26, 26</span>
+              <span>CMYK: 70, 65, 64, 75</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marfim -->
+        <div class="color-swatch-card" data-hex="#F7F3EA" onclick="copyColorHex('#F7F3EA')">
+          <div class="swatch-color" style="background-color: #F7F3EA; border-bottom: 1px solid rgba(26,26,26,0.08);">
+            <span class="copy-hint" style="color: #1A1A1A;">Copiar HEX</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name-row">
+              <strong class="color-name">MARFIM</strong>
+              <span class="hex-badge">#F7F3EA</span>
+            </div>
+            <p class="color-role">Clareza e respiro. Fundo editorial primário, espaço negativo amplo e cartões acolhedores.</p>
+            <div class="color-specs">
+              <span>RGB: 247, 243, 234</span>
+              <span>CMYK: 3, 3, 8, 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Areia Mineral -->
+        <div class="color-swatch-card" data-hex="#C9B89F" onclick="copyColorHex('#C9B89F')">
+          <div class="swatch-color" style="background-color: #C9B89F;">
+            <span class="copy-hint">Copiar HEX</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name-row">
+              <strong class="color-name">AREIA MINERAL</strong>
+              <span class="hex-badge">#C9B89F</span>
+            </div>
+            <p class="color-role">Base e permanência. Tonalidade neutra quente, linhas de divisão táteis e cartões de manifesto.</p>
+            <div class="color-specs">
+              <span>RGB: 201, 184, 159</span>
+              <span>CMYK: 22, 24, 37, 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Âmbar -->
+        <div class="color-swatch-card" data-hex="#D39B3D" onclick="copyColorHex('#D39B3D')">
+          <div class="swatch-color" style="background-color: #D39B3D;">
+            <span class="copy-hint">Copiar HEX</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name-row">
+              <strong class="color-name">ÂMBAR</strong>
+              <span class="hex-badge">#D39B3D</span>
+            </div>
+            <p class="color-role">Energia e origem. A alma pulsante da marca; métricas ativas de telemetria, gráficos e destaque luminoso.</p>
+            <div class="color-specs">
+              <span>RGB: 211, 155, 61</span>
+              <span>CMYK: 14, 38, 92, 1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cobre -->
+        <div class="color-swatch-card" data-hex="#B87333" onclick="copyColorHex('#B87333')">
+          <div class="swatch-color" style="background-color: #B87333;">
+            <span class="copy-hint">Copiar HEX</span>
+          </div>
+          <div class="swatch-info">
+            <div class="swatch-name-row">
+              <strong class="color-name">COBRE</strong>
+              <span class="hex-badge">#B87333</span>
+            </div>
+            <p class="color-role">Conexão e futuro. Condutividade elétrica física, nobreza metálica e elementos de alta precisão.</p>
+            <div class="color-specs">
+              <span>RGB: 184, 115, 51</span>
+              <span>CMYK: 22, 57, 91, 10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. Tipografia -->
+  <section id="tipografia" class="milet-section section-contrast">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Tipografia Institucional</h2>
+        <p class="section-lead">Equilíbrio rigoroso entre o classicismo editorial e a precisão da engenharia de software.</p>
+      </div>
+
+      <div class="type-specimen-grid">
+        <!-- Display Serif -->
+        <div class="type-card">
+          <div class="type-badge">TÍTULOS & MANIFESTOS</div>
+          <h3 class="type-family-title">Milet Serif (Custom / Playfair)</h3>
+          <div class="type-sample display-sample">
+            Energia em mais liberdade.
+          </div>
+          <p class="type-alphabet">
+            Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>
+            0123456789 • SÓLIDA. ELEGANTE. ATEMPORAL. VISIONÁRIA.
+          </p>
+        </div>
+
+        <!-- Body & UI Sans -->
+        <div class="type-card">
+          <div class="type-badge">TEXTO & INTERFACE</div>
+          <h3 class="type-family-title">Milet Sans (Plus Jakarta / Inter)</h3>
+          <div class="type-sample sans-sample">
+            Tecnologia para um consumidor mais livre, hoje e amanhã.
+          </div>
+          <p class="type-alphabet sans-alphabet">
+            Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>
+            0123456789 • Claro. Confiante. Próximo. Inspirador.
+          </p>
+        </div>
+
+        <!-- Metrics Mono -->
+        <div class="type-card">
+          <div class="type-badge">MÉTRICAS & TELEMETRIA</div>
+          <h3 class="type-family-title">Milet Mono (JetBrains Mono)</h3>
+          <div class="type-sample mono-sample">
+            14.2 kWh • +28% EQ • -22% CO2
+          </div>
+          <p class="type-alphabet mono-alphabet">
+            Alinhamento tabular matemático para faturas, grandezas elétricas e relatórios de auditoria.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. Iconografia -->
+  <section id="iconografia" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Iconografia Oficial</h2>
+        <p class="section-lead">Traço fino (1.5px), formas geométricas abertas e puras. Clique para copiar o SVG.</p>
+      </div>
+
+      <div class="icons-grid">
+        <div class="icon-card" onclick="copyIconSvg('energia')">
+          <div class="icon-preview">
+            <img src="assets/icons/energia.svg" alt="Energia" class="icon-svg-img">
+          </div>
+          <span class="icon-label">ENERGIA</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('dados')">
+          <div class="icon-preview">
+            <img src="assets/icons/dados.svg" alt="Dados" class="icon-svg-img">
+          </div>
+          <span class="icon-label">DADOS</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('consumidor')">
+          <div class="icon-preview">
+            <img src="assets/icons/consumidor.svg" alt="Consumidor" class="icon-svg-img">
+          </div>
+          <span class="icon-label">CONSUMIDOR</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('escolhas')">
+          <div class="icon-preview">
+            <img src="assets/icons/escolhas.svg" alt="Escolhas" class="icon-svg-img">
+          </div>
+          <span class="icon-label">ESCOLHAS</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('integracao')">
+          <div class="icon-preview">
+            <img src="assets/icons/integracao.svg" alt="Integração" class="icon-svg-img">
+          </div>
+          <span class="icon-label">INTEGRAÇÃO</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('tecnologia')">
+          <div class="icon-preview">
+            <img src="assets/icons/tecnologia.svg" alt="Tecnologia" class="icon-svg-img">
+          </div>
+          <span class="icon-label">TECNOLOGIA</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('independencia')">
+          <div class="icon-preview">
+            <img src="assets/icons/independencia.svg" alt="Independência" class="icon-svg-img">
+          </div>
+          <span class="icon-label">INDEPENDÊNCIA</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+
+        <div class="icon-card" onclick="copyIconSvg('possibilidades')">
+          <div class="icon-preview">
+            <img src="assets/icons/possibilidades.svg" alt="Possibilidades" class="icon-svg-img">
+          </div>
+          <span class="icon-label">POSSIBILIDADES</span>
+          <span class="icon-action">Copiar SVG</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06. Favicon & Ícones de Aplicativo (Painel 13 Oficial) -->
+  <section id="favicons" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Favicon & Ícones de Aplicativo (Painel 13)</h2>
+        <p class="section-lead">Arquitetura Squircle em múltiplos formatos e resoluções para ecossistemas Apple iOS/macOS, Android e navegadores Web.</p>
+      </div>
+
+      <div class="favicons-showcase-box">
+        <!-- Squircle Variant Switcher -->
+        <div class="favicons-controls-bar">
+          <div class="control-group">
+            <span class="control-label">ESTILO DE SQUIRCLE:</span>
+            <button class="favicon-style-btn active" data-icon-style="dark">Dark Carvão</button>
+            <button class="favicon-style-btn" data-icon-style="light">Light Marfim</button>
+            <button class="favicon-style-btn" data-icon-style="glow">Gold Glow Âmbar</button>
+          </div>
+          <div class="favicons-dl-all">
+            <a href="assets/logo/png/solid/favicon.ico" download class="btn-primary-milet btn-sm">
+              <span>Baixar favicon.ico Multi-Tamanho</span>
+              <span class="btn-clean-arrow">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Master App Icon Preview Stage -->
+        <div class="app-icon-preview-stage">
+          <div class="app-icon-hero-wrapper">
+            <div class="app-icon-squircle large-squircle" id="masterAppIconSquircle">
+              <img id="masterAppIconImg" src="assets/logo/png/solid/milet-app-icon-squircle-dark.png" alt="Milet App Icon Master" class="app-icon-img-hero">
+            </div>
+            <div class="app-icon-hero-info">
+              <span class="app-icon-badge">MASTER HIGH RESOLUTION</span>
+              <h3 id="appIconTitle">Milet App Icon — Dark Carvão</h3>
+              <p>Formato de superelipse contínua com curvatura Apple Squircle, fundo em Carvão OLED (#1A1A1A) e o símbolo Möbius de âmbar com caustics centrais de alta fidelidade.</p>
+              <div class="app-icon-actions-row">
+                <a id="dlIconMasterBtn" href="assets/logo/png/solid/milet-app-icon-1024x1024.png" download class="dl-pill">Download 1024×1024 PNG</a>
+                <a href="assets/logo/png/solid/milet-app-icon-180x180.png" download class="dl-pill">Apple Touch Icon (180×180)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Multi-Resolution Grid matching Panel 13 -->
+        <div class="icon-resolutions-matrix">
+          <h4 class="matrix-title">Grade Dimensional de Ícones (Painel 13 Canônico)</h4>
+          <div class="resolutions-grid">
+            <!-- 1024x1024 -->
+            <div class="res-item" data-res-size="1024">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-1024x1024.png" alt="1024x1024" class="res-thumb-icon size-1024">
+              </div>
+              <span class="res-size-label">1024×1024</span>
+              <span class="res-target">App Store / macOS</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-1024x1024.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 512x512 -->
+            <div class="res-item" data-res-size="512">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-512x512.png" alt="512x512" class="res-thumb-icon size-512">
+              </div>
+              <span class="res-size-label">512×512</span>
+              <span class="res-target">Google Play / PWA</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-512x512.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 180x180 -->
+            <div class="res-item" data-res-size="180">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-180x180.png" alt="180x180" class="res-thumb-icon size-180">
+              </div>
+              <span class="res-size-label">180×180</span>
+              <span class="res-target">iOS Home Screen</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-180x180.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 128x128 -->
+            <div class="res-item" data-res-size="128">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-128x128.png" alt="128x128" class="res-thumb-icon size-128">
+              </div>
+              <span class="res-size-label">128×128</span>
+              <span class="res-target">Desktop Dock</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-128x128.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 64x64 -->
+            <div class="res-item" data-res-size="64">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-64x64.png" alt="64x64" class="res-thumb-icon size-64">
+              </div>
+              <span class="res-size-label">64×64</span>
+              <span class="res-target">HiDPI Tab Favicon</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-64x64.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 32x32 -->
+            <div class="res-item" data-res-size="32">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-32x32.png" alt="32x32" class="res-thumb-icon size-32">
+              </div>
+              <span class="res-size-label">32×32</span>
+              <span class="res-target">Browser Standard</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-32x32.png" download class="res-dl-link">Baixar</a>
+            </div>
+
+            <!-- 16x16 -->
+            <div class="res-item" data-res-size="16">
+              <div class="res-preview-box">
+                <img src="assets/logo/png/solid/milet-app-icon-dark-16x16.png" alt="16x16" class="res-thumb-icon size-16">
+              </div>
+              <span class="res-size-label">16×16</span>
+              <span class="res-target">Barra de Favoritos</span>
+              <a href="assets/logo/png/solid/milet-app-icon-dark-16x16.png" download class="res-dl-link">Baixar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07. Componentes UI Lab -->
+  <section id="ui-lab" class="milet-section section-contrast">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Laboratório de Componentes UI</h2>
+        <p class="section-lead">Interações táteis, arquitetura Double-Bezel e botões refinados idênticos ao painel 06.</p>
+      </div>
+
+      <div class="ui-lab-grid">
+        <!-- Live Energy Card -->
+        <div class="ui-widget-card double-bezel">
+          <div class="bezel-inner">
+            <div class="widget-header">
+              <span class="widget-tag">TELEMETRIA ATIVA</span>
+              <span class="pulse-indicator"><span class="pulse-dot"></span> Online</span>
+            </div>
+
+            <div class="widget-metric-row">
+              <div>
+                <span class="metric-caption">Seu consumo em equilíbrio</span>
+                <div class="metric-value-large" id="metricPercent">+ 28%</div>
+              </div>
+              <div class="metric-badge-status">
+                <span>EFICIÊNCIA A+</span>
+              </div>
+            </div>
+
+            <!-- Wave Graph -->
+            <div class="chart-container">
+              <svg viewBox="0 0 400 120" class="amber-wave-chart">
+                <defs>
+                  <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#D39B3D" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#D39B3D" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path id="chartArea" d="M 0 70 Q 50 40 100 65 T 200 45 T 300 75 T 400 35 L 400 120 L 0 120 Z" fill="url(#chartGrad)"/>
+                <path id="chartLine" d="M 0 70 Q 50 40 100 65 T 200 45 T 300 75 T 400 35" fill="none" stroke="#D39B3D" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Interactive Slider -->
+            <div class="slider-control-box">
+              <div class="slider-label">
+                <span>Simulador de Autonomia Energética:</span>
+                <strong id="sliderValueDisplay">72% Livre</strong>
+              </div>
+              <input type="range" id="energySlider" min="20" max="100" value="72" class="milet-range-slider" aria-label="Simulador de Autonomia Energética">
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification & Button Showcase -->
+        <div class="ui-controls-column">
+          <!-- Status Banner Card -->
+          <div class="notification-pill-card">
+            <div class="notif-icon-circle">
+              <img src="assets/icons/energia.svg" alt="Energia" width="20" height="20">
+            </div>
+            <div class="notif-text">
+              <strong>Sistema ativo</strong>
+              <p>Mais controle para as suas escolhas de energia.</p>
+            </div>
+            <span class="notif-arrow">→</span>
+          </div>
+
+          <!-- Buttons Showcase Matching Panel 06 -->
+          <div class="buttons-showcase-card">
+            <h4>Padrões Oficiais de Botão (Painel 06)</h4>
+            <div class="button-row">
+              <button class="btn-primary-milet" onclick="showToast('Ação Primária Executada!')">
+                <span>Começar agora</span>
+                <span class="btn-clean-arrow">→</span>
+              </button>
+
+              <button class="btn-secondary-milet" onclick="showToast('Ação Secundária Selecionada!')">
+                <span>Saiba mais</span>
+              </button>
+            </div>
+
+            <div class="toggle-row">
+              <label class="toggle-switch-wrap">
+                <input type="checkbox" id="demoToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label-text">Otimização Automática de Tarifa</span>
+            </div>
+          </div>
+
+          <!-- Editorial Card -->
+          <div class="editorial-quote-pill">
+            <p>“Liberdade é uma nova medida de progresso.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08. Motion Frame a Frame (Painel 11 Canônico) -->
+  <section id="motion" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">08</span>
+        <h2 class="section-title">Motion Frame a Frame</h2>
+        <p class="section-lead">“Forma que acende. Marca que vive.” — A metamorfose sequencial do traço elétrico ao símbolo vivo de âmbar em 6 etapas canônicas (Painel 11).</p>
+      </div>
+
+      <div class="frame-by-frame-card">
+        <!-- Panoramic Full Strip Preview -->
+        <div class="panoramic-sequence-banner" onclick="openLightbox('assets/imagery/milet-motion-sequencia-completa-6-etapas.png', 'Sequência Completa de Motion — 6 Etapas da Metamorfose', 'PAINEL 11 • MOTION CANÔNICO')" title="Clique para expandir o panorama completo">
+          <img src="assets/imagery/milet-motion-sequencia-completa-6-etapas.png" alt="Sequência Completa do Motion Milet em 6 Etapas" class="panoramic-img">
+          <div class="panoramic-tag">🔍 Inspecionar Linha Temporal Completa em Alta Resolução (2172×724px)</div>
+        </div>
+
+        <!-- Active Single Stage Display with Stepper -->
+        <div class="active-stage-viewer">
+          <div class="stage-frame-media" id="stageFrameMedia" style="cursor: pointer;" title="Clique para avançar para a próxima etapa">
+            <img id="activeStageImg" src="assets/imagery/milet-motion-stage-01-arco-eletrico.png" alt="Etapa Ativa do Motion" class="stage-active-frame-img">
+            <div class="stage-frame-overlay">
+              <span class="stage-phase-badge" id="stagePhaseBadge">ETAPA 01 / 06</span>
+              <h3 class="stage-phase-title" id="stagePhaseTitle">01. Traço Elétrico Inicial</h3>
+              <p class="stage-phase-desc" id="stagePhaseDesc">A centelha original. O arco de energia primitiva gerado pelo atrito do âmbar que acendeu o saber humano.</p>
+            </div>
+            <span class="stage-click-hint">Clique para avançar ›</span>
+          </div>
+
+          <!-- Stepper Controller -->
+          <div class="stage-stepper-bar">
+            <div class="stage-pills-row" id="stagePillsRow">
+              <button class="stage-pill-btn active" data-stage="1" type="button">1. Centelha</button>
+              <button class="stage-pill-btn" data-stage="2" type="button">2. Senoide AC</button>
+              <button class="stage-pill-btn" data-stage="3" type="button">3. Wireframe</button>
+              <button class="stage-pill-btn" data-stage="4" type="button">4. Circuito</button>
+              <button class="stage-pill-btn" data-stage="5" type="button">5. Torção</button>
+              <button class="stage-pill-btn" data-stage="6" type="button">6. Símbolo Vivo</button>
+            </div>
+
+            <div class="stage-controls-action-row">
+              <button id="stagePrevBtn" class="motion-nav-btn" title="Etapa Anterior" type="button">‹ Anterior</button>
+              <button id="stagePlayBtn" class="motion-play-btn" type="button">▶ Auto-Avanço</button>
+              <button id="stageNextBtn" class="motion-nav-btn" title="Próxima Etapa" type="button">Próxima ›</button>
+              <input type="range" id="stageScrubber" min="1" max="6" value="1" class="motion-scrubber-slider" aria-label="Passo da Sequência">
+              <span id="stageStepIndicator" class="motion-time">1 / 6</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Princípios Oficiais de Motion (Painel 11) -->
+        <div class="motion-principles-block">
+          <h4 class="principles-title">Princípios Oficiais de Motion (Painel 11)</h4>
+          <div class="principles-grid">
+            <div class="principle-card">
+              <strong>NATURAL</strong>
+              <p>Movimentos fluidos e orgânicos inspirados no comportamento de ondas elétricas e na gravidade terrena.</p>
+            </div>
+            <div class="principle-card">
+              <strong>SIGNIFICATIVO</strong>
+              <p>Transições que comunicam progresso, evolução de autonomia e transformação de energia.</p>
+            </div>
+            <div class="principle-card">
+              <strong>ELEGANTE</strong>
+              <p>Ritmo calmo, transições desaceleradas (cubic-bezier) e sofisticação visual sem ruídos.</p>
+            </div>
+            <div class="principle-card">
+              <strong>FUNCIONAL</strong>
+              <p>A serviço da experiência do usuário, guiando a atenção para tomadas de decisão claras.</p>
+            </div>
+            <div class="principle-card">
+              <strong>COERENTE</strong>
+              <p>Sempre alinhado à essência da marca: solidez, transparência e liberdade soberana.</p>
+            </div>
+          </div>
+          <div class="principles-quote-footer">
+            <p>“Mais que energia. Mais liberdade.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09. Universo Visual (Slider Interativo) -->
+  <section id="universo" class="milet-section section-contrast">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">09</span>
+        <h2 class="section-title">Universo Visual & Aplicações (Slider)</h2>
+        <p class="section-lead">Navegue pelas expressões fotográficas, digitais e materiais da marca Milet em resolução máxima.</p>
+      </div>
+
+      <!-- Interactive Carousel Slider -->
+      <div class="brand-slider-container">
+        <div class="slider-track" id="sliderTrack">
+          <!-- Slide 1: A Rocha de Âmbar Mineral ao Pôr do Sol -->
+          <div class="slide-item active">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-mineral-sol.png', 'A Rocha de Âmbar Mineral ao Pôr do Sol em Mileto', 'ORIGEM MINERAL • MILETO')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-hero-rocha-ambar-mineral-sol.png" alt="A Rocha de Âmbar Mineral ao Pôr do Sol" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">ORIGEM MINERAL</span>
+                <h3>A Rocha de Âmbar Mineral ao Pôr do Sol</h3>
+                <p>O monólito fóssil de Mileto sob os últimos raios dourados, simbolizando a centelha inaugural da eletricidade observada por Tales.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-mineral-sol.png', 'A Rocha de Âmbar Mineral ao Pôr do Sol em Mileto', 'ORIGEM MINERAL • MILETO')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: A Rocha de Âmbar Polida sobre Basalto -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-polida.png', 'A Rocha de Âmbar Polida sobre Basalto Vulcânico', 'ESCULTURA & LUZ')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-hero-rocha-ambar-polida.png" alt="A Rocha de Âmbar Polida sobre Basalto" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">ESCULTURA & LUZ</span>
+                <h3>Âmbar Polido sobre Basalto Vulcânico</h3>
+                <p>Geometria orgânica polida com refração interna e veios dourados que deram origem ao volume escultural do Loop Möbius.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-polida.png', 'A Rocha de Âmbar Polida sobre Basalto Vulcânico', 'ESCULTURA & LUZ')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Prancha Mestra Canônica (11 Módulos) -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-master-brand-board.jpg', 'Milet — Visão Holística da Identidade', 'PRANCHA MESTRA EM ALTA RESOLUÇÃO')" title="Clique para abrir em tela cheia com zoom 100%">
+                <img src="assets/imagery/milet-master-brand-board.jpg" alt="Prancha Mestra Milet" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução (100%)</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">VISÃO HOLÍSTICA</span>
+                <h3>Prancha Mestra Canônica (11 Módulos)</h3>
+                <p>A síntese visual completa integrando o símbolo, logotipo, paleta de cores, tipografia, iconografia, componentes UI, grid e fotografia.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-master-brand-board.jpg', 'Milet — Visão Holística da Identidade', 'PRANCHA MESTRA EM ALTA RESOLUÇÃO')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Livro da Marca Hardcover de Luxo -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-livro-marca-hardcover.png', 'Brandbook Institucional Hardcover de Luxo', 'DOCUMENTAÇÃO FÍSICA')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-mockup-livro-marca-hardcover.png" alt="Livro da Marca Hardcover de Luxo" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">DOCUMENTAÇÃO FÍSICA</span>
+                <h3>Brandbook Institucional Hardcover</h3>
+                <p>Livro oficial de diretrizes da marca em encadernação de alto luxo, capa rígida com gravação em baixo-relevo dourado sobre tecido nobre.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-mockup-livro-marca-hardcover.png', 'Brandbook Institucional Hardcover de Luxo', 'DOCUMENTAÇÃO FÍSICA')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: Cartões de Visita Duo em Papel Algodão -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-cartoes-visita-duo.png', 'Cartões de Visita Duo & Papelaria em Papel Algodão', 'PAPELARIA CORPORATIVA')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-mockup-cartoes-visita-duo.png" alt="Cartões de Visita Duo Milet" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">PAPELARIA DE LUXO</span>
+                <h3>Cartões de Visita Duo em Papel Algodão</h3>
+                <p>Cartões de visita executivos em papel algodão Carvão e Marfim com estamparia quente (hot-stamping) em folha de ouro âmbar.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-mockup-cartoes-visita-duo.png', 'Cartões de Visita Duo & Papelaria em Papel Algodão', 'PAPELARIA CORPORATIVA')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6: Papel Timbrado Executivo & Envelope -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-papel-timbrado.png', 'Papel Timbrado Executivo & Envelope Corporativo', 'EXPEDIENTE OFICIAL')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-mockup-papel-timbrado.png" alt="Papel Timbrado Executivo Milet" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">EXPEDIENTE OFICIAL</span>
+                <h3>Papel Timbrado Executivo & Envelope</h3>
+                <p>Sistema de correspondência e contratos corporativos com marca d'água sutil e cabeçalho institucional rigorosamente calibrado.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-mockup-papel-timbrado.png', 'Papel Timbrado Executivo & Envelope Corporativo', 'EXPEDIENTE OFICIAL')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7: Crachás Institucionais com Lanyard -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-crachas-lanyard.png', 'Crachás Institucionais com Fita Lanyard', 'IDENTIFICAÇÃO CORPORATIVA')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-mockup-crachas-lanyard.png" alt="Crachás Institucionais Milet" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">IDENTIFICAÇÃO CORPORATIVA</span>
+                <h3>Crachás de Acesso com Fita Lanyard</h3>
+                <p>Credenciais de colaboradores e visitantes em policarbonato fosco antirreflexo com fita de pescoço personalizada.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-mockup-crachas-lanyard.png', 'Crachás Institucionais com Fita Lanyard', 'IDENTIFICAÇÃO CORPORATIVA')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 8: O Símbolo Möbius sobre os Montes de Mileto -->
+          <div class="slide-item">
+            <div class="slide-card">
+              <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-universo-loop-montanha-sol.png', 'O Símbolo Möbius nos Montes de Mileto', 'VISÃO DE LIBERDADE')" title="Clique para expandir em 100%">
+                <img src="assets/imagery/milet-universo-loop-montanha-sol.png" alt="O Símbolo Möbius nos Montes de Mileto" class="slide-img clickable-zoom">
+                <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
+              </div>
+              <div class="slide-caption-box">
+                <span class="slide-badge">VISÃO DE LIBERDADE</span>
+                <h3>O Símbolo Möbius nos Montes de Mileto</h3>
+                <p>A fita perpétua de ouro âmbar pairando sobre os cumes montanhosos no alvorecer de um mercado descentralizado e livre de energia.</p>
+                <button class="btn-primary-milet btn-sm" onclick="openLightbox('assets/imagery/milet-universo-loop-montanha-sol.png', 'O Símbolo Möbius nos Montes de Mileto', 'VISÃO DE LIBERDADE')">
+                  <span>Inspecionar em Tela Cheia</span>
+                  <span class="btn-clean-arrow">⤢</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Navigation Controls -->
+        <div class="slider-controls-bar">
+          <div class="slider-arrows">
+            <button id="sliderPrevBtn" class="slider-nav-btn" aria-label="Slide Anterior">←</button>
+            <button id="sliderNextBtn" class="slider-nav-btn" aria-label="Próximo Slide">→</button>
+          </div>
+
+          <div class="slider-dots" id="sliderDots">
+            <span class="slider-dot active" data-index="0"></span>
+            <span class="slider-dot" data-index="1"></span>
+            <span class="slider-dot" data-index="2"></span>
+            <span class="slider-dot" data-index="3"></span>
+            <span class="slider-dot" data-index="4"></span>
+            <span class="slider-dot" data-index="5"></span>
+            <span class="slider-dot" data-index="6"></span>
+            <span class="slider-dot" data-index="7"></span>
+          </div>
+
+          <div class="slider-counter" id="sliderCounter">01 / 08</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Arquivos & Drive Hub -->
+  <section id="drive" class="milet-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-number">10</span>
+        <h2 class="section-title">Drive de Ativos & Propriedade Intelectual</h2>
+        <p class="section-lead">Repositório completo de arquivos organizados prontos para download, gráfica e desenvolvimento.</p>
+      </div>
+
+      <div class="drive-hub-grid">
+        <!-- Pasta de Logos Oficiais -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Logos Oficiais Canônicos</h3>
+              <span class="folder-count">PNGs Transparentes & Sólidos</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="assets/logo/png/transparent/milet-logo-vertical-dark.png" download>milet-logo-vertical-dark.png</a> <span class="file-meta">Principal</span></li>
+            <li><a href="assets/logo/png/transparent/milet-logo-vertical-light.png" download>milet-logo-vertical-light.png</a> <span class="file-meta">Dark Mode</span></li>
+            <li><a href="assets/logo/png/transparent/milet-logo-horizontal-dark.png" download>milet-logo-horizontal-dark.png</a> <span class="file-meta">Horizontal</span></li>
+            <li><a href="assets/logo/png/transparent/milet-logo-horizontal-light.png" download>milet-logo-horizontal-light.png</a> <span class="file-meta">H. Dark Mode</span></li>
+            <li><a href="assets/logo/png/transparent/milet-symbol-amber.png" download>milet-symbol-amber.png</a> <span class="file-meta">Símbolo</span></li>
+            <li><a href="assets/logo/png/solid/milet-logo-vertical-marfim.png" download>milet-logo-marfim.png</a> <span class="file-meta">#F7F3EA</span></li>
+            <li><a href="assets/logo/png/solid/milet-logo-vertical-carvao.png" download>milet-logo-carvao.png</a> <span class="file-meta">#1A1A1A</span></li>
+          </ul>
+        </div>
+
+        <!-- Pasta de Logos Vetoriais (SVG) -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Logos Vetoriais (SVG)</h3>
+              <span class="folder-count">13 arquivos • Validação XML 100%</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="assets/logo/svg/milet-logo-primary-dark.svg" download>milet-logo-primary-dark.svg</a> <span class="file-meta">Fundo Claro</span></li>
+            <li><a href="assets/logo/svg/milet-logo-primary-light.svg" download>milet-logo-primary-light.svg</a> <span class="file-meta">Fundo Escuro</span></li>
+            <li><a href="assets/logo/svg/milet-logo-horizontal-dark.svg" download>milet-logo-horizontal-dark.svg</a> <span class="file-meta">Horizontal</span></li>
+            <li><a href="assets/logo/svg/milet-symbol-amber.svg" download>milet-symbol-amber.svg</a> <span class="file-meta">Símbolo</span></li>
+            <li><a href="assets/logo/svg/milet-logo-primary-mono-black.svg" download>milet-logo-mono-black.svg</a> <span class="file-meta">Mono Preto</span></li>
+            <li><a href="assets/logo/svg/milet-logo-primary-mono-white.svg" download>milet-logo-mono-white.svg</a> <span class="file-meta">Mono Branco</span></li>
+          </ul>
+        </div>
+
+        <!-- Pasta de Imagens e Mockups -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Universo Visual & Renders</h3>
+              <span class="folder-count">Fotografia e Mockups 8K</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="assets/imagery/milet-hero-rocha-ambar-mineral-sol.png" download>milet-rocha-ambar-sol.png</a> <span class="file-meta">Pedra Origem</span></li>
+            <li><a href="assets/imagery/milet-hero-rocha-ambar-polida.png" download>milet-rocha-ambar-polida.png</a> <span class="file-meta">Escultura 3D</span></li>
+            <li><a href="assets/imagery/milet-master-brand-board.jpg" download>milet-master-brand-board.jpg</a> <span class="file-meta">Prancha Mestra</span></li>
+            <li><a href="assets/imagery/milet-mockup-livro-marca-hardcover.png" download>milet-livro-marca-hardcover.png</a> <span class="file-meta">Brandbook Hardcover</span></li>
+            <li><a href="assets/imagery/milet-mockup-cartoes-visita-duo.png" download>milet-cartoes-visita-duo.png</a> <span class="file-meta">Papelaria Duo</span></li>
+            <li><a href="assets/imagery/milet-mockup-papel-timbrado.png" download>milet-papel-timbrado.png</a> <span class="file-meta">Expediente</span></li>
+            <li><a href="assets/imagery/milet-mockup-crachas-lanyard.png" download>milet-crachas-lanyard.png</a> <span class="file-meta">Crachás</span></li>
+            <li><a href="assets/imagery/milet-universo-loop-montanha-sol.png" download>milet-loop-montanha-sol.png</a> <span class="file-meta">Paisagem</span></li>
+          </ul>
+        </div>
+
+        <!-- Pasta de Normas & Motion Canônico -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Normas Técnicas & Motion</h3>
+              <span class="folder-count">Pranchas Homologadas (Painéis 02 e 11)</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="assets/imagery/milet-norma-01-area-de-protecao.png" download>milet-norma-01-area-protecao.png</a> <span class="file-meta">Norma 01</span></li>
+            <li><a href="assets/imagery/milet-norma-02-reducao-minima.png" download>milet-norma-02-reducao-minima.png</a> <span class="file-meta">Norma 02</span></li>
+            <li><a href="assets/imagery/milet-norma-03-fundos-permitidos.png" download>milet-norma-03-fundos.png</a> <span class="file-meta">Norma 03</span></li>
+            <li><a href="assets/imagery/milet-norma-04-usos-incorretos.png" download>milet-norma-04-usos-incorretos.png</a> <span class="file-meta">Norma 04</span></li>
+            <li><a href="assets/imagery/milet-motion-sequencia-completa-6-etapas.png" download>milet-motion-6-etapas.png</a> <span class="file-meta">Sequência HD</span></li>
+          </ul>
+        </div>
+
+        <!-- Pasta de Favicons & App Icons -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Favicon & App Icon Suite</h3>
+              <span class="folder-count">Suíte Completa iOS, Android e Web</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="assets/logo/png/solid/favicon.ico" download>favicon.ico</a> <span class="file-meta">Multi-Size ICO</span></li>
+            <li><a href="assets/logo/png/solid/milet-app-icon-1024x1024.png" download>milet-app-icon-1024x1024.png</a> <span class="file-meta">App Store</span></li>
+            <li><a href="assets/logo/png/solid/milet-app-icon-512x512.png" download>milet-app-icon-512x512.png</a> <span class="file-meta">Google Play</span></li>
+            <li><a href="assets/logo/png/solid/milet-app-icon-180x180.png" download>milet-apple-touch-icon-180.png</a> <span class="file-meta">iOS Home</span></li>
+            <li><a href="assets/logo/png/solid/milet-app-icon-squircle-dark.png" download>milet-squircle-dark.png</a> <span class="file-meta">Dark OLED</span></li>
+            <li><a href="assets/logo/png/solid/milet-app-icon-squircle-gold-glow.png" download>milet-squircle-gold.png</a> <span class="file-meta">Gold Glow</span></li>
+          </ul>
+        </div>
+
+        <!-- Pasta de Documentos & Tokens -->
+        <div class="drive-folder-card">
+          <div class="folder-header">
+            <span class="folder-icon">📁</span>
+            <div>
+              <h3 class="folder-title">Documentos & Código</h3>
+              <span class="folder-count">Manuais e Tokens W3C</span>
+            </div>
+          </div>
+          <ul class="file-list">
+            <li><a href="docs/brand/BRANDBOOK.md" target="_blank">BRANDBOOK.md</a> <span class="file-meta">Manual Oficial</span></li>
+            <li><a href="docs/design-system/DESIGN_SYSTEM.md" target="_blank">DESIGN_SYSTEM.md</a> <span class="file-meta">Design System</span></li>
+            <li><a href="tokens/design-tokens.json" download>design-tokens.json</a> <span class="file-meta">Tokens W3C</span></li>
+            <li><a href="tokens/tokens.css" download>tokens.css</a> <span class="file-meta">Variáveis CSS</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé Institucional -->
+  <footer class="milet-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-block">
+          <img src="assets/logo/png/transparent/milet-logo-horizontal-light.png" alt="Milet" class="footer-logo-img">
+          <p class="footer-tagline">Da origem da eletricidade a uma nova forma de acessá-la.</p>
+        </div>
+        <div class="footer-meta-block">
+          <span class="footer-pills">SÓLIDA • ELEGANTE • ATEMPORAL • VISIONÁRIA</span>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p>© 2026 Milet Tecnologia em Energia S.A. Todos os direitos reservados. Ativos de Propriedade Intelectual.</p>
+        <div class="footer-links">
+          <a href="#hero">Voltar ao Topo ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
