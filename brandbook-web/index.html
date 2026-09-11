@@ -18,10 +18,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  <!-- Three.js & OrbitControls for Procedural 3D WebGL (/img2threejs) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
   <link rel="stylesheet" href="../tokens/tokens.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -126,18 +122,18 @@
           </div>
         </div>
 
-        <!-- Pilar 3: Mídia & 3D -->
+        <!-- Pilar 3: Mídia & Motion -->
         <div class="nav-dropdown-item">
           <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
-            <span>Mídia & 3D</span>
+            <span>Mídia & Motion</span>
             <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
           </button>
           <div class="nav-dropdown-menu">
             <a href="#motion" class="dropdown-link">
               <span class="drop-num">08</span>
               <div class="drop-info">
-                <strong>Motion & 3D Lab</strong>
-                <small>WebGL Three.js & Metamorfose 2D</small>
+                <strong>Motion Frame a Frame</strong>
+                <small>Metamorfose Canônica em 6 Etapas</small>
               </div>
             </a>
             <a href="#universo" class="dropdown-link">
@@ -252,8 +248,8 @@
         <a href="#motion" class="drawer-chapter-item" onclick="closeChaptersDrawer()">
           <span class="d-num">08</span>
           <div class="d-info">
-            <strong>Motion & 3D Lab</strong>
-            <p>WebGL Three.js interativo e Metamorfose 2D</p>
+            <strong>Motion Frame a Frame</strong>
+            <p>Metamorfose Canônica em 6 Etapas (Painel 11)</p>
           </div>
           <span class="d-arrow">→</span>
         </a>
@@ -966,170 +962,82 @@
     </div>
   </section>
 
-  <!-- 08. Motion & Tridimensionalidade (Painel 11 & Three.js Lab) -->
+  <!-- 08. Motion Frame a Frame (Painel 11 Canônico) -->
   <section id="motion" class="milet-section">
     <div class="section-container">
       <div class="section-header">
         <span class="section-number">08</span>
-        <h2 class="section-title">Motion & Tridimensionalidade</h2>
-        <p class="section-lead">“Forma que acende. Marca que vive.” — A metamorfose do traço elétrico em objeto 3D procedural vivo de âmbar.</p>
+        <h2 class="section-title">Motion Frame a Frame</h2>
+        <p class="section-lead">“Forma que acende. Marca que vive.” — A metamorfose sequencial do traço elétrico ao símbolo vivo de âmbar em 6 etapas canônicas (Painel 11).</p>
       </div>
 
-      <!-- Motion Views Tab Switcher -->
-      <div class="motion-tab-nav">
-        <button class="motion-tab-btn active" data-motion-tab="threejs">
-          <span class="tab-icon">✦</span> 3D Interativo (Three.js WebGL)
-        </button>
-        <button class="motion-tab-btn" data-motion-tab="framebyframe">
-          <span class="tab-icon">🎞️</span> Motion Frame a Frame (Painel 11)
-        </button>
-        <button class="motion-tab-btn" data-motion-tab="wavesim">
-          <span class="tab-icon">〰️</span> Metamorfose AC (Canvas 2D)
-        </button>
-      </div>
-
-      <!-- VIEW 1: Three.js 3D WebGL Canvas (/img2threejs) -->
-      <div id="viewThreejs" class="motion-view-panel active">
-        <div class="three-stage-card">
-          <div class="three-viewport" id="threeViewport">
-            <canvas id="threeCanvas"></canvas>
-            
-            <!-- Floating 3D HUD Specs -->
-            <div class="three-hud-overlay">
-              <div class="hud-top-row">
-                <span class="hud-chip"><span class="hud-dot"></span> THREE.JS R128 WEBGL</span>
-                <span class="hud-chip">IOR: 1.54 (ÂMBAR BÁLTICO)</span>
-                <span class="hud-chip" id="threeFpsDisplay">60 FPS</span>
-              </div>
-              <div class="hud-instruction-badge">
-                <span>🖱️ Arraste para girar em 360° • Role para zoom • Toque móvel interativo</span>
-              </div>
-            </div>
-
-            <!-- Floating 3D Toolbar Controls -->
-            <div class="three-toolbar-floating">
-              <div class="toolbar-group">
-                <span class="toolbar-label">MATERIAL PBR:</span>
-                <button class="three-mat-btn active" data-mat="amber">Âmbar Fóssil</button>
-                <button class="three-mat-btn" data-mat="gold">Ouro Nobre</button>
-                <button class="three-mat-btn" data-mat="wireframe">Wireframe Técnico</button>
-              </div>
-
-              <div class="toolbar-divider"></div>
-
-              <div class="toolbar-group">
-                <button id="threeToggleAutoRotate" class="three-action-btn active" title="Alternar rotação contínua">⟳ Auto-Rotação</button>
-                <button id="threeResetCamBtn" class="three-action-btn" title="Resetar câmera">⌂ Resetar Câmera</button>
-              </div>
-            </div>
-          </div>
-          <div class="three-footer-caption">
-            <span class="caption-lead">MODELAGEM PROCEDURAL CONFORME /img2threejs:</span>
-            <p>Geometria paramétrica contínua do Loop Möbius com torção espacial de 3 vértices suavizados, espessura volumétrica chanfrada e iluminação estúdio de 3 pontos com reflexão e caustics especulares.</p>
-          </div>
+      <div class="frame-by-frame-card">
+        <!-- Panoramic Full Strip Preview -->
+        <div class="panoramic-sequence-banner" onclick="openLightbox('../assets/imagery/milet-motion-sequencia-completa-6-etapas.png', 'Sequência Completa de Motion — 6 Etapas da Metamorfose', 'PAINEL 11 • MOTION CANÔNICO')" title="Clique para expandir o panorama completo">
+          <img src="../assets/imagery/milet-motion-sequencia-completa-6-etapas.png" alt="Sequência Completa do Motion Milet em 6 Etapas" class="panoramic-img">
+          <div class="panoramic-tag">🔍 Inspecionar Linha Temporal Completa em Alta Resolução (2172×724px)</div>
         </div>
-      </div>
 
-      <!-- VIEW 2: Frame a Frame Sequência Completa (Painel 11) -->
-      <div id="viewFrameByFrame" class="motion-view-panel">
-        <div class="frame-by-frame-card">
-          <!-- Panoramic Full Strip Preview -->
-          <div class="panoramic-sequence-banner" onclick="openLightbox('../assets/imagery/milet-motion-sequencia-completa-6-etapas.png', 'Sequência Completa de Motion — 6 Etapas da Metamorfose', 'PAINEL 11 • MOTION CANÔNICO')" title="Clique para expandir o panorama completo">
-            <img src="../assets/imagery/milet-motion-sequencia-completa-6-etapas.png" alt="Sequência Completa do Motion Milet em 6 Etapas" class="panoramic-img">
-            <div class="panoramic-tag">🔍 Inspecionar Linha Temporal Completa em Alta Resolução (2172×724px)</div>
+        <!-- Active Single Stage Display with Stepper -->
+        <div class="active-stage-viewer">
+          <div class="stage-frame-media" id="stageFrameMedia" style="cursor: pointer;" title="Clique para avançar para a próxima etapa">
+            <img id="activeStageImg" src="../assets/imagery/milet-motion-stage-01-arco-eletrico.png" alt="Etapa Ativa do Motion" class="stage-active-frame-img">
+            <div class="stage-frame-overlay">
+              <span class="stage-phase-badge" id="stagePhaseBadge">ETAPA 01 / 06</span>
+              <h3 class="stage-phase-title" id="stagePhaseTitle">01. Traço Elétrico Inicial</h3>
+              <p class="stage-phase-desc" id="stagePhaseDesc">A centelha original. O arco de energia primitiva gerado pelo atrito do âmbar que acendeu o saber humano.</p>
+            </div>
+            <span class="stage-click-hint">Clique para avançar ›</span>
           </div>
 
-          <!-- Active Single Stage Display with Stepper -->
-          <div class="active-stage-viewer">
-            <div class="stage-frame-media">
-              <img id="activeStageImg" src="../assets/imagery/milet-motion-stage-01-arco-eletrico.png" alt="Etapa Ativa do Motion" class="stage-active-frame-img">
-              <div class="stage-frame-overlay">
-                <span class="stage-phase-badge" id="stagePhaseBadge">ETAPA 01 / 06</span>
-                <h3 class="stage-phase-title" id="stagePhaseTitle">01. Traço Elétrico Inicial</h3>
-                <p class="stage-phase-desc" id="stagePhaseDesc">A centelha original. O arco de energia primitiva gerado pelo atrito do âmbar que acendeu o saber humano.</p>
-              </div>
+          <!-- Stepper Controller -->
+          <div class="stage-stepper-bar">
+            <div class="stage-pills-row" id="stagePillsRow">
+              <button class="stage-pill-btn active" data-stage="1" type="button">1. Centelha</button>
+              <button class="stage-pill-btn" data-stage="2" type="button">2. Senoide AC</button>
+              <button class="stage-pill-btn" data-stage="3" type="button">3. Wireframe</button>
+              <button class="stage-pill-btn" data-stage="4" type="button">4. Circuito</button>
+              <button class="stage-pill-btn" data-stage="5" type="button">5. Torção</button>
+              <button class="stage-pill-btn" data-stage="6" type="button">6. Símbolo Vivo</button>
             </div>
 
-            <!-- Stepper Controller -->
-            <div class="stage-stepper-bar">
-              <div class="stage-pills-row" id="stagePillsRow">
-                <button class="stage-pill-btn active" data-stage="1">1. Centelha</button>
-                <button class="stage-pill-btn" data-stage="2">2. Senoide AC</button>
-                <button class="stage-pill-btn" data-stage="3">3. Wireframe</button>
-                <button class="stage-pill-btn" data-stage="4">4. Circuito</button>
-                <button class="stage-pill-btn" data-stage="5">5. Torção</button>
-                <button class="stage-pill-btn" data-stage="6">6. Símbolo Vivo</button>
-              </div>
-
-              <div class="stage-controls-action-row">
-                <button id="stagePlayBtn" class="motion-play-btn">▶ Auto-Avanço</button>
-                <input type="range" id="stageScrubber" min="1" max="6" value="1" class="motion-scrubber-slider" aria-label="Passo da Sequência">
-                <span id="stageStepIndicator" class="motion-time">1 / 6</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Princípios Oficiais de Motion (Painel 11) -->
-          <div class="motion-principles-block">
-            <h4 class="principles-title">Princípios Oficiais de Motion (Painel 11)</h4>
-            <div class="principles-grid">
-              <div class="principle-card">
-                <strong>NATURAL</strong>
-                <p>Movimentos fluidos e orgânicos inspirados no comportamento de ondas elétricas e na gravidade terrena.</p>
-              </div>
-              <div class="principle-card">
-                <strong>SIGNIFICATIVO</strong>
-                <p>Transições que comunicam progresso, evolução de autonomia e transformação de energia.</p>
-              </div>
-              <div class="principle-card">
-                <strong>ELEGANTE</strong>
-                <p>Ritmo calmo, transições desaceleradas (cubic-bezier) e sofisticação visual sem ruídos.</p>
-              </div>
-              <div class="principle-card">
-                <strong>FUNCIONAL</strong>
-                <p>A serviço da experiência do usuário, guiando a atenção para tomadas de decisão claras.</p>
-              </div>
-              <div class="principle-card">
-                <strong>COERENTE</strong>
-                <p>Sempre alinhado à essência da marca: solidez, transparência e liberdade soberana.</p>
-              </div>
-            </div>
-            <div class="principles-quote-footer">
-              <p>“Mais que energia. Mais liberdade.”</p>
+            <div class="stage-controls-action-row">
+              <button id="stagePrevBtn" class="motion-nav-btn" title="Etapa Anterior" type="button">‹ Anterior</button>
+              <button id="stagePlayBtn" class="motion-play-btn" type="button">▶ Auto-Avanço</button>
+              <button id="stageNextBtn" class="motion-nav-btn" title="Próxima Etapa" type="button">Próxima ›</button>
+              <input type="range" id="stageScrubber" min="1" max="6" value="1" class="motion-scrubber-slider" aria-label="Passo da Sequência">
+              <span id="stageStepIndicator" class="motion-time">1 / 6</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- VIEW 3: Metamorfose AC (Canvas 2D) -->
-      <div id="viewWaveSim" class="motion-view-panel">
-        <div class="motion-lab-card">
-          <!-- Interactive Stage -->
-          <div class="motion-stage-wrap">
-            <canvas id="motionCanvas" width="800" height="420" class="motion-canvas"></canvas>
-            <div class="motion-stage-overlay">
-              <span class="motion-current-phase" id="motionPhaseLabel">FASE 01: MATÉRIA (CORRENTE ALTERNADA)</span>
-              <span class="motion-phase-desc" id="motionPhaseDesc">A onda senoidal de energia pura oscilando na frequência de origem.</span>
+        <!-- Princípios Oficiais de Motion (Painel 11) -->
+        <div class="motion-principles-block">
+          <h4 class="principles-title">Princípios Oficiais de Motion (Painel 11)</h4>
+          <div class="principles-grid">
+            <div class="principle-card">
+              <strong>NATURAL</strong>
+              <p>Movimentos fluidos e orgânicos inspirados no comportamento de ondas elétricas e na gravidade terrena.</p>
+            </div>
+            <div class="principle-card">
+              <strong>SIGNIFICATIVO</strong>
+              <p>Transições que comunicam progresso, evolução de autonomia e transformação de energia.</p>
+            </div>
+            <div class="principle-card">
+              <strong>ELEGANTE</strong>
+              <p>Ritmo calmo, transições desaceleradas (cubic-bezier) e sofisticação visual sem ruídos.</p>
+            </div>
+            <div class="principle-card">
+              <strong>FUNCIONAL</strong>
+              <p>A serviço da experiência do usuário, guiando a atenção para tomadas de decisão claras.</p>
+            </div>
+            <div class="principle-card">
+              <strong>COERENTE</strong>
+              <p>Sempre alinhado à essência da marca: solidez, transparência e liberdade soberana.</p>
             </div>
           </div>
-
-          <!-- Motion Timeline Bar (Painel 11) -->
-          <div class="motion-timeline-control">
-            <div class="motion-phases-nav">
-              <button class="phase-btn active" data-phase="0">MATÉRIA</button>
-              <span class="phase-line"></span>
-              <button class="phase-btn" data-phase="1">ENERGIA</button>
-              <span class="phase-line"></span>
-              <button class="phase-btn" data-phase="2">CONEXÃO</button>
-              <span class="phase-line"></span>
-              <button class="phase-btn" data-phase="3">LIBERDADE</button>
-            </div>
-
-            <div class="motion-scrubber-row">
-              <button id="motionPlayBtn" class="motion-play-btn" title="Reproduzir / Pausar">▶ Play</button>
-              <input type="range" id="motionScrubber" min="0" max="100" value="0" class="motion-scrubber-slider" aria-label="Progresso da Animação">
-              <span id="motionTimeDisplay" class="motion-time">0.0s</span>
-            </div>
+          <div class="principles-quote-footer">
+            <p>“Mais que energia. Mais liberdade.”</p>
           </div>
         </div>
       </div>

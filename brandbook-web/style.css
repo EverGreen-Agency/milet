@@ -863,9 +863,6 @@ body {
     max-width: 100%;
   }
 }
-    max-width: 100%;
-  }
-}
 
 /* Sections */
 .milet-section {
@@ -3090,7 +3087,58 @@ body.theme-dark .motion-tab-btn.active {
 .stage-controls-action-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.motion-nav-btn {
+  font-family: var(--milet-font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--milet-radius-pill);
+  border: 1px solid var(--milet-border-strong);
+  background: transparent;
+  color: var(--milet-text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--milet-duration-fast);
+}
+
+.motion-nav-btn:hover {
+  border-color: var(--milet-color-ambar);
+  color: var(--milet-color-ambar);
+  background: rgba(211, 155, 61, 0.08);
+}
+
+.motion-play-btn.playing {
+  background: var(--milet-color-ambar) !important;
+  color: var(--milet-color-carvao) !important;
+  border-color: var(--milet-color-ambar) !important;
+  box-shadow: 0 0 14px rgba(211, 155, 61, 0.45);
+}
+
+.stage-click-hint {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--milet-radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  transition: all var(--milet-duration-fast);
+}
+
+.stage-frame-media:hover .stage-click-hint {
+  background: var(--milet-color-ambar);
+  color: var(--milet-color-carvao);
+  border-color: var(--milet-color-ambar);
 }
 
 .motion-principles-block {
