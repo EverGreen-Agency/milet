@@ -605,10 +605,10 @@ body {
    ========================================================================== */
 .milet-hero {
   position: relative;
-  min-height: clamp(620px, 86vh, 840px);
+  min-height: clamp(480px, calc(100vh - 72px), 720px);
   display: flex;
   align-items: center;
-  padding: 56px 28px;
+  padding: clamp(24px, 4vh, 48px) 28px;
 }
 
 .milet-hero-panoramic {
@@ -656,11 +656,11 @@ body {
   margin: 0 auto;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
   z-index: 2;
-  padding: 20px 0;
+  padding: 0;
 }
 
 .hero-panoramic-content {
@@ -672,14 +672,14 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: clamp(10px, 1.8vh, 18px);
 }
 
 .eyebrow-pill {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.18em;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border: 1px solid var(--milet-color-ambar);
   color: var(--milet-color-ambar);
   border-radius: var(--milet-radius-pill);
@@ -690,7 +690,7 @@ body {
 }
 
 .eyebrow-text {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: var(--milet-text-muted);
@@ -699,41 +699,41 @@ body {
 .hero-brand-overline {
   display: block;
   font-family: var(--milet-font-sans);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: var(--milet-color-ambar);
-  margin-bottom: 16px;
+  margin-bottom: clamp(8px, 1.3vh, 12px);
   text-transform: uppercase;
 }
 
 .hero-title-panoramic {
   font-family: var(--milet-font-display);
-  font-size: clamp(2.6rem, 4.4vw, 4.5rem);
+  font-size: clamp(2.1rem, 3.8vw, 3.6rem);
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: -0.02em;
   color: var(--milet-text-primary);
-  margin-bottom: 22px;
+  margin-bottom: clamp(10px, 1.6vh, 16px);
 }
 
 .hero-subtitle-panoramic {
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: clamp(0.92rem, 1.15vw, 1.02rem);
+  line-height: 1.55;
   color: var(--milet-text-secondary);
-  max-width: 48ch;
-  margin-bottom: 28px;
+  max-width: 46ch;
+  margin-bottom: clamp(12px, 2vh, 20px);
 }
 
 .hero-values-strip {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   color: var(--milet-color-ambar-dark);
-  margin-bottom: 36px;
+  margin-bottom: clamp(14px, 2.4vh, 26px);
   flex-wrap: wrap;
 }
 .theme-dark .hero-values-strip {
@@ -748,7 +748,7 @@ body {
 .hero-ctas {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -761,11 +761,11 @@ body {
   background: linear-gradient(135deg, #D39B3D 0%, #B87A24 100%);
   color: #FFFFFF !important;
   text-decoration: none;
-  padding: 14px 30px;
+  padding: 12px 26px;
   border-radius: var(--milet-radius-pill);
   font-family: var(--milet-font-sans);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.01em;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -784,7 +784,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: var(--milet-radius-pill);
   border: 1px solid rgba(26, 26, 26, 0.25);
   background-color: rgba(247, 243, 234, 0.7);
@@ -794,7 +794,7 @@ body {
   text-decoration: none;
   font-family: var(--milet-font-sans);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   line-height: 1;
   transition: all var(--milet-duration-fast) var(--milet-ease-natural);
@@ -815,14 +815,14 @@ body {
 .btn-hero-panoramic-tertiary {
   display: inline-flex;
   align-items: center;
-  padding: 11px 20px;
+  padding: 10px 18px;
   border-radius: var(--milet-radius-pill);
   background: transparent;
   color: var(--milet-color-ambar-dark);
   text-decoration: none;
   font-family: var(--milet-font-sans);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.05em;
   transition: all var(--milet-duration-fast);
 }
@@ -834,76 +834,6 @@ body {
 .btn-hero-panoramic-tertiary:hover {
   color: var(--milet-color-ambar);
   text-decoration: underline;
-}
-
-/* Lado Direito da Hero Panoramica */
-.hero-panoramic-aside {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 180px;
-  align-self: stretch;
-  justify-content: space-between;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.hero-ambient-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  background: rgba(247, 243, 234, 0.5);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-}
-
-.theme-dark .hero-ambient-badge {
-  background: rgba(20, 20, 20, 0.6);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.ambient-badge-line {
-  font-family: var(--milet-font-sans);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  color: var(--milet-text-primary);
-  line-height: 1.35;
-}
-
-.ambient-badge-rule {
-  display: block;
-  width: 32px;
-  height: 2px;
-  background-color: var(--milet-color-ambar);
-  margin-top: 8px;
-  border-radius: 2px;
-}
-
-.hero-full-inspect-btn {
-  background: rgba(14, 14, 14, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
-  font-family: var(--milet-font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--milet-radius-pill);
-  cursor: pointer;
-  transition: all var(--milet-duration-fast);
-}
-
-.hero-full-inspect-btn:hover {
-  background: var(--milet-color-ambar);
-  color: var(--milet-color-carvao);
-  border-color: var(--milet-color-ambar);
 }
 
 /* Responsividade da Hero Panorâmica */
@@ -929,10 +859,10 @@ body {
       rgba(26, 26, 26, 0.2) 100%
     );
   }
-  .hero-panoramic-aside {
-    display: none;
-  }
   .hero-panoramic-content {
+    max-width: 100%;
+  }
+}
     max-width: 100%;
   }
 }
