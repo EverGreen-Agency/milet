@@ -1,0 +1,217 @@
+{
+  "project": "Milet — Projetos de Engenharia da Computação I e II",
+  "presentation": {
+    "duration_minutes": 10,
+    "format": "HTML 16:9 1920x1080",
+    "slides": 12
+  },
+  "brand": {
+    "carbon": "#1A1A1A",
+    "ivory": "#F7F3EA",
+    "sand": "#C9B89F",
+    "amber": "#D39B3D",
+    "copper": "#B87333",
+    "display": "Cormorant Garamond",
+    "ui": "Inter"
+  },
+  "profiles": [
+    {
+      "code": "UP-01",
+      "name": "Consumidor PME / Decisor Energético",
+      "role": "Prioridade inicial",
+      "job": "Entender gasto, alternativas e contratar com segurança."
+    },
+    {
+      "code": "UP-02",
+      "name": "Consumidor Residencial",
+      "role": "Expansão futura",
+      "job": "Economizar com simplicidade e baixa burocracia."
+    },
+    {
+      "code": "UP-03",
+      "name": "Gerador / Proprietário de Usina",
+      "role": "Oferta",
+      "job": "Ocupar capacidade, reduzir CAC e dar previsibilidade à receita."
+    },
+    {
+      "code": "UP-04",
+      "name": "Comercializadora / Fornecedor",
+      "role": "Oferta",
+      "job": "Receber demanda qualificada e competir por contratos."
+    },
+    {
+      "code": "UP-05",
+      "name": "EPC / Integrador",
+      "role": "Ecossistema",
+      "job": "Converter projetos qualificados e integrar comercial/engenharia."
+    },
+    {
+      "code": "UP-06",
+      "name": "Operador Milet",
+      "role": "Operação interna",
+      "job": "Gerir exceções, SLAs, contratos e auditoria."
+    },
+    {
+      "code": "UP-07",
+      "name": "Parceiro B2B2C / Canal",
+      "role": "Distribuição futura",
+      "job": "Oferecer energia à base sem construir expertise própria."
+    },
+    {
+      "code": "UP-08A",
+      "name": "Investidor da Milet / Equity",
+      "role": "Stakeholder",
+      "job": "Avaliar tese, mercado, tração e risco."
+    },
+    {
+      "code": "UP-08B",
+      "name": "Investidor de Ativos / Usinas",
+      "role": "Expansão futura",
+      "job": "Comparar ativos e acompanhar performance."
+    },
+    {
+      "code": "UP-08C",
+      "name": "Financiador / Capital Provider",
+      "role": "Expansão futura",
+      "job": "Originar e analisar operações padronizadas."
+    }
+  ],
+  "featured_user_stories": [
+    {
+      "id": "US-002",
+      "title": "Upload e leitura de fatura",
+      "story": "Como consumidor, quero enviar minha fatura para estruturar meus dados energéticos.",
+      "why": "Define a entrada do produto."
+    },
+    {
+      "id": "US-006",
+      "title": "Rotas energéticas aplicáveis",
+      "story": "Como consumidor, quero saber quais alternativas se aplicam ao meu perfil.",
+      "why": "Define a decisão multimodal."
+    },
+    {
+      "id": "US-010",
+      "title": "RFQ / competição entre ofertas",
+      "story": "Como consumidor, quero gerar uma solicitação estruturada para fornecedores elegíveis.",
+      "why": "Define o marketplace."
+    },
+    {
+      "id": "US-013",
+      "title": "Comparação normalizada",
+      "story": "Como consumidor, quero comparar propostas em critérios equivalentes.",
+      "why": "Define transparência e neutralidade."
+    },
+    {
+      "id": "US-019",
+      "title": "Execução da contratação/migração",
+      "story": "Como consumidor, quero acompanhar a execução da alternativa escolhida.",
+      "why": "Mostra que Milet não termina na comparação."
+    },
+    {
+      "id": "US-021",
+      "title": "Economia prevista x realizada",
+      "story": "Como consumidor, quero comprovar se a economia prometida aconteceu.",
+      "why": "Fecha o loop de valor."
+    },
+    {
+      "id": "US-027",
+      "title": "Rastreabilidade e histórico",
+      "story": "Como operador/consumidor, quero histórico auditável de decisões, contratos e resultados.",
+      "why": "Sustenta confiança e operação contínua."
+    }
+  ],
+  "schedule": [
+    {
+      "period": "2026.2 · Ago–Set",
+      "phase": "Projetos I — Discovery",
+      "milestones": [
+        "Problema e proposta de valor",
+        "Estado da Arte",
+        "Perfis + Mapas de Empatia",
+        "BMC v0.1",
+        "Brand System"
+      ]
+    },
+    {
+      "period": "2026.2 · Out",
+      "phase": "Projetos I — Definição",
+      "milestones": [
+        "Epics, Features e User Stories",
+        "Backlog priorizado",
+        "Recorte do MVP",
+        "Pesquisa/roteiro de validação",
+        "Supernova: BMC + pitch"
+      ]
+    },
+    {
+      "period": "2026.2 · Nov–Dez",
+      "phase": "Projetos I — Planejamento técnico",
+      "milestones": [
+        "Arquitetura e diagramas",
+        "Protótipo navegável",
+        "Testes iniciais com usuários",
+        "Plano de execução de Projetos II",
+        "Baseline de métricas"
+      ]
+    },
+    {
+      "period": "2027.1 · Fev–Mar",
+      "phase": "Projetos II — Construção MVP",
+      "milestones": [
+        "Ingestão de fatura",
+        "Passaporte/diagnóstico",
+        "Motor inicial de rotas",
+        "Fluxo RFQ e ofertas",
+        "Backoffice mínimo"
+      ]
+    },
+    {
+      "period": "2027.1 · Abr",
+      "phase": "Projetos II — Integração",
+      "milestones": [
+        "Comparação normalizada",
+        "Workflow de contratação",
+        "Trilha de auditoria",
+        "Segurança/LGPD",
+        "Observabilidade"
+      ]
+    },
+    {
+      "period": "2027.1 · Mai",
+      "phase": "Projetos II — Validação",
+      "milestones": [
+        "Piloto com usuários/parceiros",
+        "Medição de qualidade e usabilidade",
+        "Economia prevista x realizada quando aplicável",
+        "Correções e refinamento"
+      ]
+    },
+    {
+      "period": "2027.1 · Jun",
+      "phase": "Projetos II — Fechamento",
+      "milestones": [
+        "MVP v1",
+        "Relatório final",
+        "Resultados e limitações",
+        "Demo e apresentação final",
+        "Roadmap pós-disciplina"
+      ]
+    }
+  ],
+  "assets": [
+    "epics.png",
+    "ecosystem.png",
+    "timeline.png",
+    "journey.png",
+    "bmc.png",
+    "gantt.png"
+  ],
+  "manual_inputs_required": [
+    "Integrantes e RAs finais.",
+    "Print real do Fibery: Discovery · User Profiles · Whiteboard.",
+    "Print real do Fibery: Business · BMC · Whiteboard.",
+    "Opcional: print do tracker Milet · Deliverables · Board.",
+    "Opcional: prints de protótipo Milet se já houver telas que representem o fluxo."
+  ],
+  "warning": "Não usar os Releases/Features atuais do Fibery como roadmap da Milet: há registros template de marketing (v2.4/v2.5/v2.6) que não representam o projeto."
+}
