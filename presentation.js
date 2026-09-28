@@ -115,38 +115,15 @@
   const notesRubric = document.getElementById('notes-rubric');
   const btnCloseNotes = document.getElementById('btn-close-notes');
 
-  // Ajuste edge-to-edge total: ocupa 100% da largura da tela e altura até o HUD
+  // Ajuste edge-to-edge total: ocupa 100% da tela sem nenhuma contenção
   function resizeDeck() {
     if (!deckContainer) return;
-
-    // Altura fixa do HUD inferior
-    const hudHeight = 60;
-
-    // Se o drawer de notas estiver aberto na página de notas em tela larga, desconta sua largura
     const drawerOpen = notesDrawer && notesDrawer.classList.contains('open');
     const drawerWidth = (drawerOpen && window.innerWidth >= 1280) ? 500 : 0;
 
-    // Área útil total disponível (edge-to-edge)
-    const availableWidth = window.innerWidth - drawerWidth;
-    const availableHeight = window.innerHeight - hudHeight;
-
-    // Altura base canônica de 1080px
-    const baseHeight = 1080;
-    const minBaseWidth = 1440;
-
-    // Largura calculada para ocupar exatamente 100% da largura da tela
-    let dynamicBaseWidth = Math.round(baseHeight * (availableWidth / Math.max(availableHeight, 1)));
-    let scale = availableHeight / baseHeight;
-
-    // Proteção para proporções muito estreitas / mobile
-    if (dynamicBaseWidth < minBaseWidth) {
-      dynamicBaseWidth = minBaseWidth;
-      scale = Math.min(availableWidth / dynamicBaseWidth, availableHeight / baseHeight);
-    }
-
-    deckContainer.style.width = `${dynamicBaseWidth}px`;
-    deckContainer.style.height = `${baseHeight}px`;
-    deckContainer.style.transform = `scale(${scale})`;
+    deckContainer.style.width = drawerWidth > 0 ? `calc(100% - ${drawerWidth}px)` : '100%';
+    deckContainer.style.height = '100%';
+    deckContainer.style.transform = 'none';
   }
 
   // Atualização de Slide
