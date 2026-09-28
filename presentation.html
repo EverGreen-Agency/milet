@@ -669,19 +669,11 @@
 
         <div class="slide-body">
           <div style="display: grid; grid-template-columns: 1.6fr 1.4fr; gap: 24px; align-items: center; margin-top: 10px;">
-            <!-- PRINT REAL GANTT PROJETOS I + II (PARTE SUPERIOR E INFERIOR) -->
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="background: #141414; border-radius: 8px; padding: 6px; border: 1.5px solid var(--color-amber); text-align: center;">
-                <img src="assets/fibery-cronograma-p1.png" alt="Parte Superior do Cronograma - Projetos I" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; border-radius: 4px;">
-                <div style="margin-top: 4px; font-size: 10px; color: var(--color-amber); font-family: var(--font-mono);">
-                  Fibery Gantt · Parte 1: Cronograma Detalhado Projetos I (2026.2)
-                </div>
-              </div>
-              <div style="background: #141414; border-radius: 8px; padding: 6px; border: 1.5px solid var(--color-carbon-border); text-align: center;">
-                <img src="assets/fibery-cronograma-p2.png" alt="Parte Inferior do Cronograma - Projetos II" style="width: 100%; height: auto; max-height: 200px; object-fit: contain; border-radius: 4px;">
-                <div style="margin-top: 4px; font-size: 10px; color: var(--color-sand); font-family: var(--font-mono);">
-                  Fibery Gantt · Parte 2: Planejamento de Continuidade Projetos II (2027.1)
-                </div>
+            <!-- PRINT REAL GANTT PROJETOS I + II (PREVIEW) -->
+            <div style="background: #141414; border-radius: 8px; padding: 10px; border: 1.5px solid var(--color-amber); text-align: center;">
+              <img src="assets/fibery-gantt-projetos-i-ii.png" alt="Fibery Gantt Projetos I e II (Resumo)" style="width: 100%; height: auto; max-height: 380px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 8px; font-size: 11px; color: var(--color-amber); font-family: var(--font-mono); font-weight: 600;">
+                Print do Fibery: Cronograma Geral (Veja a visão ampliada HD no próximo slide)
               </div>
             </div>
 
@@ -706,14 +698,48 @@
         </div>
       </section>
 
+      
       <!-- ====================================================================
-           SLIDE 13 — RESULTADOS ESPERADOS (45s)
+           SLIDE 13 — CRONOGRAMA: VISÃO AMPLIADA GANTT (PARTES 1 E 2)
            ==================================================================== -->
       <section class="slide" id="slide-13" data-slide="13">
         <div class="slide-header">
           <div>
             <div class="slide-eyebrow-row">
-              <span class="slide-eyebrow"><span class="dot"></span> 13 · Resultados Esperados</span>
+              <span class="slide-eyebrow"><span class="dot"></span> 13 · Cronograma (Gantt Ampliado)</span>
+            </div>
+            <h2 class="slide-title">Detalhamento do Cronograma: <em>Visão Expandida em Alta Resolução</em>.</h2>
+            <p class="slide-subtitle">Capturas completas do Fibery Gantt divididas em Parte Superior (Projetos I) e Parte Inferior (Projetos II).</p>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div style="display: flex; flex-direction: column; gap: 14px; height: 100%; justify-content: center;">
+            <div style="background: #141414; border-radius: 10px; padding: 12px; border: 1.5px solid var(--color-amber); text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="assets/fibery-cronograma-p1.png" alt="Parte Superior do Cronograma - Projetos I (Visão Ampliada)" style="width: 100%; max-height: 240px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 6px; font-size: 11px; color: var(--color-amber); font-family: var(--font-mono); font-weight: 600;">
+                Parte 1 (Superior): Cronograma Detalhado Projetos I (2026.2) · Marcos, Entregáveis & Checkpoint MVP
+              </div>
+            </div>
+
+            <div style="background: #141414; border-radius: 10px; padding: 12px; border: 1.5px solid var(--color-carbon-border); text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="assets/fibery-cronograma-p2.png" alt="Parte Inferior do Cronograma - Projetos II (Visão Ampliada)" style="width: 100%; max-height: 240px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 6px; font-size: 11px; color: var(--color-sand); font-family: var(--font-mono); font-weight: 600;">
+                Parte 2 (Inferior): Planejamento de Continuidade Projetos II (2027.1) · Evolução, Automação & Piloto
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 14 — RESULTADOS ESPERADOS (45s)
+           ==================================================================== -->
+      <section class="slide" id="slide-14" data-slide="14">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 14 · Resultados Esperados</span>
             </div>
             <h2 class="slide-title">Resultados Esperados: <em>do Checkpoint de MVP à Continuidade</em>.</h2>
             <p class="slide-subtitle">Divisão clara das entregas mensuráveis nos três marcos de desenvolvimento do projeto.</p>
@@ -778,9 +804,9 @@
       </section>
 
       <!-- ====================================================================
-           SLIDE 14 — ENCERRAMENTO
+           SLIDE 15 — ENCERRAMENTO
            ==================================================================== -->
-      <section class="slide slide-final" id="slide-14" data-slide="14">
+      <section class="slide slide-final" id="slide-15" data-slide="15">
         <div class="final-panel">
           <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Logo" class="final-logo">
           <h2 class="final-title">Milet · <span>Mesma energia. Mais possibilidades.</span></h2>
@@ -811,7 +837,7 @@
 
     <div class="hud-center">
       <button id="btn-prev" class="hud-btn" title="Slide Anterior (← ou PageUp)">❮</button>
-      <span id="slide-counter" class="hud-counter">01 / 14</span>
+      <span id="slide-counter" class="hud-counter">01 / 15</span>
       <button id="btn-next" class="hud-btn" title="Próximo Slide (→, Espaço ou PageDown)">❯</button>
     </div>
 

@@ -1,5 +1,5 @@
 /**
- * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9 (14 SLIDES)
+ * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9 (15 SLIDES)
  * Alinhada estritamente aos Critérios de Avaliação do Mackenzie (10 Pontos)
  */
 
@@ -7,7 +7,7 @@
   'use strict';
 
   // Configurações
-  const TOTAL_SLIDES = 14;
+  const TOTAL_SLIDES = 15;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
   let timerSeconds = 0;
@@ -86,19 +86,25 @@
     12: {
       rubric: "Cronograma (2/2)",
       title: "Slide 12 — Gantt Geral & Continuidade em Projetos II",
-      target: "40 segundos (08:00 - 08:40)",
-      text: "Visualizamos no Gantt do Fibery (dividido nas visões superior e inferior) a transição para Projetos II (2027.1), cujos rótulos são de continuidade: evolução técnica, mais integrações reais de APIs, automação, piloto ampliado e consolidação da solução. Registramos a nota de que as datas de Projetos II são macroplanejamento preliminar a ser sincronizado com o plano de ensino do próximo semestre."
+      target: "35 segundos (08:00 - 08:35)",
+      text: "Visualizamos no Gantt do Fibery a transição para Projetos II (2027.1), cujos rótulos são de continuidade: evolução técnica, mais integrações reais de APIs, automação, piloto ampliado e consolidação da solução. Registramos a nota de que as datas de Projetos II são macroplanejamento preliminar a ser sincronizado com o plano de ensino do próximo semestre."
     },
     13: {
-      rubric: "Resultados Esperados",
-      title: "Slide 13 — Resultados Esperados & Três Marcos",
-      target: "45 segundos (08:40 - 09:25)",
-      text: "Organizamos os Resultados Esperados em três marcos bem definidos: até o Checkpoint de MVP em 19/10 entregamos a primeira versão funcional do fluxo prioritário; até o fim de Projetos I entregamos o MVP refinado, arquitetura documentada, SSDLC e hipóteses valadas; e em Projetos II damos continuidade com integrações reais, automação e piloto ampliado. A mensagem final sintetiza: Projetos I precisa provar que o ciclo funciona; Projetos II deve provar que ele pode amadurecer."
+      rubric: "Cronograma (Gantt Ampliado)",
+      title: "Slide 13 — Detalhamento do Cronograma: Visão Expandida Fibery Gantt",
+      target: "35 segundos (08:35 - 09:10)",
+      text: "Exibimos em alta resolução o Gantt completo do Fibery em duas partes ampliada: a Parte 1 (superior) detalha cada sprint e entregável de Projetos I até a entrega do MVP em 19/10 e encerramento em dezembro; a Parte 2 (inferior) apresenta o cronograma preliminar de continuidade para Projetos II em 2027.1."
     },
     14: {
+      rubric: "Resultados Esperados",
+      title: "Slide 14 — Resultados Esperados & Três Marcos",
+      target: "40 segundos (09:10 - 09:50)",
+      text: "Organizamos os Resultados Esperados em três marcos bem definidos: até o Checkpoint de MVP em 19/10 entregamos a primeira versão funcional do fluxo prioritário; até o fim de Projetos I entregamos o MVP refinado, arquitetura documentada, SSDLC e hipóteses validadas; e em Projetos II damos continuidade com integrações reais, automação e piloto ampliado. A mensagem final sintetiza: Projetos I precisa provar que o ciclo funciona; Projetos II deve provar que ele pode amadurecer."
+    },
+    15: {
       rubric: "Encerramento",
-      title: "Slide 14 — Encerramento & Q&A",
-      target: "15 segundos (09:25 - 09:40)",
+      title: "Slide 15 — Encerramento & Q&A",
+      target: "10 segundos (09:50 - 10:00)",
       text: "Milet: Mesma energia. Mais possibilidades. Agradeço ao professor orientador Rodrigo Juliani e à banca pela atenção, e fico à disposição para a arguição."
     }
   };

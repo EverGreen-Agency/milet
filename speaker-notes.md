@@ -5,7 +5,7 @@
 **Autor:** Eduardo Ferreira de Mattos  
 **Docente Orientador:** Prof. Dr. Rodrigo Juliani  
 
-**Tempo Total de Fala:** ~9 minutos e 40 segundos (Tempo limite oficial da banca: 10 minutos)
+**Tempo Total de Fala:** ~10 minutos (Tempo limite oficial da banca: 10 minutos)
 
 ---
 
@@ -85,7 +85,7 @@
 - **Tempo estimado:** 40 segundos (06:35 – 07:15)
 - **Título:** Business Model Canvas: hipóteses em validação.
 - **Roteiro de Fala:**
-  > "Exibimos o Business Model Canvas v0.1 importado do Fibery sob a matriz Strategyzer, identificado com a badge 'hipóteses em validação'. Destacamos o segmento prioritário de PMEs, a proposta de valor contínua do fluxo entender-comparar-competir-executar-acompanhar-reotimizar, e registramos que as fontes de receita são hipóteses a serem valadas."
+  > "Exibimos o Business Model Canvas v0.1 importado do Fibery sob a matriz Strategyzer, identificado com a badge 'hipóteses em validação'. Destacamos o segmento prioritário de PMEs, a proposta de valor contínua do fluxo entender-comparar-competir-executar-acompanhar-reotimizar, e registramos que as fontes de receita são hipóteses a serem validadas."
 
 ---
 
@@ -97,31 +97,39 @@
 
 ---
 
-### Slide 12 — Cronograma (2/2): Gantt + Continuidade em Projetos II (0:40s)
-- **Tempo estimado:** 40 segundos (08:00 – 08:40)
+### Slide 12 — Cronograma (2/2): Gantt + Continuidade em Projetos II (0:35s)
+- **Tempo estimado:** 35 segundos (08:00 – 08:35)
 - **Título:** Gantt Geral & Continuidade em Projetos II.
 - **Roteiro de Fala:**
-  > "Visualizamos no Gantt do Fibery (exibindo as partes superior e inferior de alta legibilidade) a transição para Projetos II (2027.1), cujos rótulos são de continuidade: evolução técnica, mais integrações reais de APIs, automação, piloto ampliado e consolidação da solução. Registramos a nota de que as datas de Projetos II são macroplanejamento preliminar a ser sincronizado com o plano de ensino do próximo semestre."
+  > "Visualizamos no Gantt do Fibery a transição para Projetos II (2027.1), cujos rótulos são de continuidade: evolução técnica, mais integrações reais de APIs, automação, piloto ampliado e consolidação da solução. Registramos a nota de que as datas de Projetos II são macroplanejamento preliminar a ser sincronizado com o plano de ensino do próximo semestre."
 
 ---
 
-### Slide 13 — Resultados Esperados (0:45s)
-- **Tempo estimado:** 45 segundos (08:40 – 09:25)
+### Slide 13 — Cronograma (Gantt Ampliado - Partes 1 e 2) (0:35s)
+- **Tempo estimado:** 35 segundos (08:35 – 09:10)
+- **Título:** Detalhamento do Cronograma: Visão Expandida Fibery Gantt.
+- **Roteiro de Fala:**
+  > "Exibimos em alta resolução o Gantt completo do Fibery em duas partes ampliadas: a Parte 1 (superior) detalha cada sprint e entregável de Projetos I até a entrega do MVP em 19/10 e encerramento em dezembro; a Parte 2 (inferior) apresenta o cronograma preliminar de continuidade para Projetos II em 2027.1."
+
+---
+
+### Slide 14 — Resultados Esperados (0:40s)
+- **Tempo estimado:** 40 segundos (09:10 – 09:50)
 - **Título:** Resultados Esperados: do Checkpoint de MVP à Continuidade.
 - **Roteiro de Fala:**
   > "Organizamos os Resultados Esperados em três marcos bem definidos: até o Checkpoint de MVP em 19/10 entregamos a primeira versão funcional do fluxo prioritário; até o fim de Projetos I entregamos o MVP refinado, arquitetura documentada, SSDLC e hipóteses validadas; e em Projetos II damos continuidade com integrações reais, automação e piloto ampliado. A mensagem final sintetiza: Projetos I precisa provar que o ciclo funciona; Projetos II deve provar que ele pode amadurecer."
 
 ---
 
-### Slide 14 — Encerramento (0:15s)
-- **Tempo estimado:** 15 segundos (09:25 – 09:40)
+### Slide 15 — Encerramento (0:10s)
+- **Tempo estimado:** 10 segundos (09:50 – 10:00)
 - **Título:** Milet — Mesma energia. Mais possibilidades.
 - **Roteiro de Fala:**
   > "Milet: Mesma energia. Mais possibilidades. Agradeço ao professor orientador Rodrigo Juliani e à banca pela atenção, e fico à disposição para a arguição."
 
 ---
 
-### Tabela Resumo: Estrutura do Deck Oficial N1 (14 Slides)
+### Tabela Resumo: Estrutura do Deck Oficial N1 (15 Slides)
 | Slide | Tópico Oficial | Conteúdo Principal | Tempo Estimado |
 | :---: | :--- | :--- | :---: |
 | 1 | Tema | Tese Central de Investigação da Milet | 20s |
@@ -135,6 +143,7 @@
 | 9 | Plano de Projeto (Zoom Épicos) | Visão Ampliada do Whiteboard de Épicos | 35s |
 | 10 | Plano de Projeto (3/3) | Business Model Canvas (Fibery Whiteboard) | 40s |
 | 11 | Cronograma (1/2) | Projetos I · 2026.2 (Marco 19/10 MVP) | 45s |
-| 12 | Cronograma (2/2) | Gantt (Partes Superior e Inferior) & Continuidade P2 | 40s |
-| 13 | Resultados Esperados | Três marcos de entrega e consolidação | 45s |
-| 14 | Encerramento | Slogan oficial e Q&A | 15s |
+| 12 | Cronograma (2/2) | Gantt & Continuidade Projetos II | 35s |
+| 13 | Cronograma (Gantt Ampliado) | **[NOVO] Visão Expandida HD (Parte Superior + Inferior)** | 35s |
+| 14 | Resultados Esperados | Três marcos de entrega e consolidação | 40s |
+| 15 | Encerramento | Slogan oficial e Q&A | 10s |
