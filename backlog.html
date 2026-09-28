@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Engenharia de Requisitos, Backlog & Matriz SPIDER</title>
+  <meta name="description" content="Catálogo de Épicos, 28 User Stories, Decomposição SPIDER e Recorte do MVP para a Plataforma Milet Energia (Mackenzie 2026.2).">
+  
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="backlog.css">
+</head>
+<body>
+
+  <!-- NAVBAR UNIFICADA -->
+  <header class="backlog-navbar">
+    <a href="index.html" class="nav-brand-group">
+      <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Símbolo" class="nav-brand-logo">
+      <span class="nav-brand-title">Milet</span>
+      <span class="nav-brand-badge">Engenharia de Produto</span>
+    </a>
+
+    <nav class="nav-links-group">
+      <a href="index.html" class="nav-link">Brandbook & Design</a>
+      <a href="backlog.html" class="nav-link active">Backlog & SPIDER</a>
+      <a href="presentation.html" class="nav-btn-presentation">
+        <span>▶</span> Apresentação (16:9)
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO SECTION -->
+    <section class="backlog-hero">
+      <div class="hero-eyebrow"><span class="dot"></span> Projetos de Engenharia da Computação I · Mackenzie (2026.2)</div>
+      <h1 class="hero-title">Engenharia de Requisitos, <span>Backlog & Matriz SPIDER</span>.</h1>
+      <p class="hero-subtitle">
+        Documentação viva da arquitetura funcional da Milet Energia: 6 épicos duráveis, 28 histórias de usuário com critérios de aceite BDD verificáveis, decomposição analítica SPIDER para requisitos críticos e o recorte estrito do MVP acadêmico.
+      </p>
+
+      <div class="hero-stats-row">
+        <div class="stat-pill">
+          <span class="stat-num">06</span>
+          <span class="stat-label">Épicos de Negócio</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">28</span>
+          <span class="stat-label">User Stories Mapeadas</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Histórias no MVP (P0)</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">02</span>
+          <span class="stat-label">Decomposições SPIDER</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 1: OS 6 ÉPICOS NUCLEARES -->
+    <section style="margin-bottom: 70px;">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-title">1. Arquitetura de Épicos & Capacidades</h2>
+          <p class="section-subtitle">Cada épico representa um resultado de negócio durável; features agrupam capacidades testáveis.</p>
+        </div>
+      </div>
+
+      <div class="epics-grid">
+        <!-- EP-01 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-01</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">5 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Onboarding & Passaporte Energético</h3>
+            <p class="epic-card-goal">Criar um contexto energético auditável, versionado e reutilizável por unidade consumidora a partir de faturas elétricas.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F1.1 Cadastro e UCs | F1.2 Leitura automatizada de faturas | F1.3 Passaporte e gestão de consentimento (LGPD).
+          </div>
+        </div>
+
+        <!-- EP-02 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-02</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">4 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Diagnóstico & Decisão Multimodal</h3>
+            <p class="epic-card-goal">Transformar dados elétricos em rotas elegíveis (ACR, GD, ACL e Usina Própria), simulação de cenários e recomendação explicável.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F2.1 Filtro determinístico de elegibilidade | F2.2 Linha de base de custos | F2.3 Simulação comparativa e recomendação.
+          </div>
+        </div>
+
+        <!-- EP-03 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-03</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">6 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Marketplace & RFQ Reverso</h3>
+            <p class="epic-card-goal">Gerar competição transparente entre geradores e comercializadoras com submissão padronizada de propostas e neutralidade de ranking.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F3.1 Disparo de RFQ padronizado | F3.2 Lances e propostas estruturadas | F3.3 Comparação normalizada e transparência.
+          </div>
+        </div>
+
+        <!-- EP-04 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-04</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">5 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Contratação & Esteira de Execução</h3>
+            <p class="epic-card-goal">Conduzir a recomendação até a homologação na distribuidora ou CCEE com visibilidade de prazos, checklist documental e tarefas.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F4.1 Documentos, minutas e cofre digital | F4.2 Timeline com SLAs, responsáveis e alertas de impedimentos.
+          </div>
+        </div>
+
+        <!-- EP-05 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-05</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">4 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Economia & Energy Autopilot</h3>
+            <p class="epic-card-goal">Comprovar mês a mês a economia prometida versus a faturada e reiniciar automaticamente cotações antes do vencimento.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F5.1 Razão de Economia (Savings Ledger) | F5.2 Alertas de vencimento, rebid e reotimização contínua.
+          </div>
+        </div>
+
+        <!-- EP-06 -->
+        <div class="epic-card">
+          <div>
+            <div class="epic-card-header">
+              <span class="epic-code">EP-06</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">4 Stories</span>
+            </div>
+            <h3 class="epic-card-title">Operação, Auditoria & Confiança</h3>
+            <p class="epic-card-goal">Tornar o tratamento de exceções, governança regulatória, portal de fornecedores e auditoria técnica escaláveis.</p>
+          </div>
+          <div class="epic-features-box">
+            <strong>Features:</strong> F6.1 Backoffice e gestão de filas | F6.2 Portal de fornecedores | F6.3 Trilha imutável de auditoria e permissões.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: MATRIZ DE FATIAMENTO SPIDER -->
+    <section class="spider-container">
+      <div class="spider-header">
+        <span class="spider-tag">Técnica Ágil de Fatiamento</span>
+        <h2 class="spider-title">Matriz SPIDER: Desdobramento de Histórias Críticas</h2>
+        <p class="spider-desc">
+          Aplicação do método <strong>SPIDER</strong> (Spikes, Paths, Interfaces, Data, Enterprise Rules, Reduce) nas duas histórias de maior incerteza tecnológica e densidade regulatória do projeto Milet.
+        </p>
+      </div>
+
+      <!-- ABAS SPIDER -->
+      <div class="spider-tabs">
+        <button class="spider-tab-btn active" data-target="spider-panel-us002">
+          US-002 · Upload & Leitura de Fatura (Ingestão)
+        </button>
+        <button class="spider-tab-btn" data-target="spider-panel-us013">
+          US-013 · Comparação Normalizada (Motor de Decisão)
+        </button>
+      </div>
+
+      <!-- PAINEL SPIDER 1: US-002 -->
+      <div class="spider-content-panel active" id="spider-panel-us002">
+        <div class="spider-grid">
+          <!-- S -->
+          <div class="spider-box">
+            <span class="spider-box-letter">S · SPIKE (PESQUISA / POC)</span>
+            <h4 class="spider-box-title">Spike Técnico de OCR</h4>
+            <p class="spider-box-text">
+              Avaliar a acurácia de extração entre Tesseract OCR versus Cloud Document AI para os layouts heterogêneos das três principais distribuidoras de São Paulo (Enel SP, CPFL Paulista e Elektro).<br><br>
+              <strong>Resultado da PoC:</strong> Faturas em PDF digital possuem camadas vetoriais de texto direto (pdftotext), enquanto imagens fotografadas por celular requerem pré-processamento de contraste e rotação.
+            </p>
+          </div>
+
+          <!-- P -->
+          <div class="spider-box">
+            <span class="spider-box-letter">P · PATHS (FLUXOS)</span>
+            <h4 class="spider-box-title">Caminhos Alternativos</h4>
+            <p class="spider-box-text">
+              <strong>Caminho Feliz:</strong> PDF digital legível com 100% dos campos identificados e validados automaticamente.<br><br>
+              <strong>Caminho Degradado:</strong> Foto com reflexo ou amassada onde campos essenciais (ex: demanda medida) apresentam baixa confiança (&lt; 85%), acionando revisão assistida do usuário.<br><br>
+              <strong>Caminho de Exceção:</strong> Arquivo corrompido, protegido por senha ou não pertencente a concessionárias suportadas.
+            </p>
+          </div>
+
+          <!-- I -->
+          <div class="spider-box">
+            <span class="spider-box-letter">I · INTERFACES (CANAIS)</span>
+            <h4 class="spider-box-title">Canais de Entrada</h4>
+            <p class="spider-box-text">
+              <strong>Interface Web:</strong> Área de drag-and-drop com visualizador lateral da fatura e formulário espelho para conferência imediata.<br><br>
+              <strong>Interface Mobile:</strong> Captura orientada por câmera com enquadramento das bordas da folha física.<br><br>
+              <strong>API de Ingestão:</strong> Endpoint multipart/form-data com suporte a webhooks assíncronos de processamento.
+            </p>
+          </div>
+
+          <!-- D -->
+          <div class="spider-box">
+            <span class="spider-box-letter">D · DATA (CAMPOS ELÉTRICOS)</span>
+            <h4 class="spider-box-title">Entidades e Limites</h4>
+            <p class="spider-box-text">
+              Campos essenciais mapeados no Passaporte Energético: Código da Unidade Consumidora (UC), CNPJ/CPF do titular, Distribuidora física, Subgrupo de tensão (A4, B3, etc.), Consumo ativo (kWh ponta e fora-ponta), Demanda contratada/medida (kW), Tarifa TUSD, Tarifa TE, Bandeira tarifária vigente e Alíquotas de ICMS, PIS e COFINS.
+            </p>
+          </div>
+
+          <!-- E -->
+          <div class="spider-box">
+            <span class="spider-box-letter">E · ENTERPRISE RULES</span>
+            <h4 class="spider-box-title">Regras Regulatórias ANEEL</h4>
+            <p class="spider-box-text">
+              Conformidade com a <strong>Resolução Normativa ANEEL nº 1.000/2021</strong>: segregação obrigatória entre componentes de Uso do Sistema (TUSD) e de Energia (TE).<br><br>
+              Bloqueio de faturas com competência anterior a 12 meses para fins de elegibilidade no mercado livre (Submódulo 1.8 CCEE). Validação de titularidade e bloqueio de faturas duplicadas no mesmo ciclo de faturamento.
+            </p>
+          </div>
+
+          <!-- R -->
+          <div class="spider-box">
+            <span class="spider-box-letter">R · REDUCE (CORTE DO MVP)</span>
+            <h4 class="spider-box-title">Redução de Escopo P0</h4>
+            <p class="spider-box-text">
+              <strong>No MVP (P0):</strong> Suporte estrito a faturas em formato PDF digital de consumidores comerciais e industriais das distribuidoras Enel SP e CPFL.<br><br>
+              <strong>Postergado para P1/P2:</strong> Reconhecimento de fotos de celular de baixa qualidade com IA de visão, histórico consolidado multi-faturas automático e integração direta via credenciais de agência virtual da concessionária.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL SPIDER 2: US-013 -->
+      <div class="spider-content-panel" id="spider-panel-us013">
+        <div class="spider-grid">
+          <!-- S -->
+          <div class="spider-box">
+            <span class="spider-box-letter">S · SPIKE (PESQUISA / POC)</span>
+            <h4 class="spider-box-title">Modelagem de Normalização</h4>
+            <p class="spider-box-text">
+              Desenvolver e validar a formulação matemática para comparar propostas com indexadores econômicos distintos (ex: IPCA vs IGP-M vs CDI) e modelos de faturamento incompatíveis (desconto fixo em % sobre tarifa da distribuidora vs preço fixo em R$/MWh).<br><br>
+              <strong>Resultado da PoC:</strong> Criação do algoritmo de Valor Presente Líquido (VPL) padronizado projetado em 12, 24 e 36 meses sob cenários de sensibilidade inflacionária.
+            </p>
+          </div>
+
+          <!-- P -->
+          <div class="spider-box">
+            <span class="spider-box-letter">P · PATHS (FLUXOS)</span>
+            <h4 class="spider-box-title">Caminhos por Rota</h4>
+            <p class="spider-box-text">
+              <strong>Fluxo GD Assinatura:</strong> Comparação baseada em % de desconto sobre a tarifa compensável e cobrança residual do Fio B da rede.<br><br>
+              <strong>Fluxo Mercado Livre (ACL):</strong> Comparação baseada em preço de energia contratada (R$/MWh) + custos de transporte na distribuidora + encargos CCEE.<br><br>
+              <strong>Fluxo Usina Própria (EPC):</strong> Comparação baseada em CAPEX à vista ou financiado, TIR (Taxa Interna de Retorno) e Payback descontado.
+            </p>
+          </div>
+
+          <!-- I -->
+          <div class="spider-box">
+            <span class="spider-box-letter">I · INTERFACES (CANAIS)</span>
+            <h4 class="spider-box-title">Visualização Comparativa</h4>
+            <p class="spider-box-text">
+              <strong>Tabela de Lado a Lado:</strong> Apresentação simultânea de até 3 propostas com linha de base (status quo regulado) na primeira coluna.<br><br>
+              <strong>Gráfico de Economia Acumulada:</strong> Curva temporal comparando o desembolso total ao longo do horizonte contratual.<br><br>
+              <strong>Painel de Risco:</strong> Badges visuais indicando exigência de garantias financeiras, multas rescisórias e flexibilidade de volume.
+            </p>
+          </div>
+
+          <!-- D -->
+          <div class="spider-box">
+            <span class="spider-box-letter">D · DATA (CAMPOS ELÉTRICOS)</span>
+            <h4 class="spider-box-title">Variáveis Econômicas</h4>
+            <p class="spider-box-text">
+              Entradas de dados estruturados para cada oferta: Preço nominal da energia, Indexador de reajuste anual, Prazo de vigência contratual (meses), Volume mínimo e tolerância de flexibilidade (ex: ±10%), Exigência de seguro garantia/fiança bancária, Multa por rescisão imotivada e estimativa de economia líquida mensal em reais e percentual.
+            </p>
+          </div>
+
+          <!-- E -->
+          <div class="spider-box">
+            <span class="spider-box-letter">E · ENTERPRISE RULES</span>
+            <h4 class="spider-box-title">Regras Regulatórias & Governança</h4>
+            <p class="spider-box-text">
+              Aplicação estrita do <strong>Artigo 10 da Lei nº 14.300/2022</strong>: vedação de remuneração de telhado em R$/kWh. Transição das tarifas de distribuição (Fio B) de 2023 a 2029 conforme cronograma legal.<br><br>
+              <strong>Neutralidade Milet:</strong> Obrigação de transparência indicando claramente se alguma proposta provém de parte relacionada ou gera remuneração à plataforma, sem que taxas alterem a ordem matemática do ranking.
+            </p>
+          </div>
+
+          <!-- R -->
+          <div class="spider-box">
+            <span class="spider-box-letter">R · REDUCE (CORTE DO MVP)</span>
+            <h4 class="spider-box-title">Redução de Escopo P0</h4>
+            <p class="spider-box-text">
+              <strong>No MVP (P0):</strong> Comparação determinística de até 3 propostas simultâneas, fixando a projeção em inflação constante e sem modelos estocásticos.<br><br>
+              <strong>Postergado para P1/P2:</strong> Simulação Monte Carlo para volatilidade de preço horário no ACL (PLD), análise semântica automatizada de minutas jurídicas por LLM (Raio-X de Contratos) e agregação de pools multi-UCs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: CATÁLOGO DE 28 USER STORIES -->
+    <section style="margin-bottom: 70px;">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-title">2. Catálogo Interativo de Histórias de Usuário</h2>
+          <p class="section-subtitle">28 User Stories mapeadas na Seção 3.2 do Relatório Acadêmico com critérios de aceite BDD.</p>
+        </div>
+        <div id="stories-count-label" style="font-family: var(--font-mono); font-size: 13px; color: var(--color-amber);">
+          28 de 28 histórias exibidas
+        </div>
+      </div>
+
+      <!-- BARRA DE CONTROLE E FILTROS -->
+      <div class="backlog-control-bar">
+        <div class="filters-group">
+          <div>
+            <span class="filter-label">Prioridade / Fase:</span>
+            <select id="filter-priority" class="filter-select">
+              <option value="all">Todas as Prioridades</option>
+              <option value="mvp">★ Apenas Destaques do MVP (7 histórias)</option>
+              <option value="p0">Fase P0 (Obrigatório MVP)</option>
+              <option value="p1">Fase P1 (Piloto Assistido)</option>
+              <option value="p2">Fase P2 (Evolução Contínua)</option>
+              <option value="must">Apenas Must Have</option>
+            </select>
+          </div>
+
+          <div>
+            <span class="filter-label">Épico:</span>
+            <select id="filter-epic" class="filter-select">
+              <option value="all">Todos os Épicos</option>
+              <option value="EP-01">EP-01 · Onboarding & Passaporte</option>
+              <option value="EP-02">EP-02 · Diagnóstico & Decisão</option>
+              <option value="EP-03">EP-03 · Marketplace & RFQ</option>
+              <option value="EP-04">EP-04 · Contratação & Execução</option>
+              <option value="EP-05">EP-05 · Economia & Autopilot</option>
+              <option value="EP-06">EP-06 · Operação & Confiança</option>
+            </select>
+          </div>
+
+          <div>
+            <span class="filter-label">Ator:</span>
+            <select id="filter-actor" class="filter-select">
+              <option value="all">Todos os Atores</option>
+              <option value="Consumidor">Consumidor PME</option>
+              <option value="Fornecedor">Gerador / Comercializadora</option>
+              <option value="Operador">Operador Milet / Auditoria</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" id="search-stories" class="search-input" placeholder="Buscar por ID, palavra-chave ou critério...">
+        </div>
+      </div>
+
+      <!-- LISTA DINÂMICA DE STORIES RENDERIZADA VIA JS -->
+      <div class="stories-list" id="stories-list-container">
+        <!-- Renderizado dinamicamente por backlog.js -->
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: RECORTE DO MVP ACADÊMICO -->
+    <section class="mvp-scope-section">
+      <h2 class="section-title">3. Recorte do MVP Acadêmico & Transição de Semestres</h2>
+      <p class="section-subtitle">
+        Alinhamento entre as entregas de Projetos de Engenharia da Computação I (2026.2) e Projetos II (2027.1).
+      </p>
+
+      <table class="mvp-table">
+        <thead>
+          <tr>
+            <th>Fase de Entrega</th>
+            <th>User Stories Vinculadas</th>
+            <th>Resultado Demonstrável em Banca</th>
+            <th>Status / Cronograma</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong style="color: var(--color-amber);">P0 · MVP de Projetos I</strong><br>
+              <span style="font-size: 12px; color: var(--color-sand);">Entrega deste semestre</span>
+            </td>
+            <td>
+              <code>US-002, US-003, US-006, US-007, US-008, US-009, US-010, US-012, US-013, US-016, US-019, US-021, US-025, US-027</code>
+            </td>
+            <td>
+              Ciclo funcional conceitual completo: <strong>Fatura → Dados Aprovados → Diagnóstico de Rotas → Comparação Normalizada → Timeline de Migração → Razão de Economia e Trilha de Auditoria</strong>.
+            </td>
+            <td>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: #81C784; background: rgba(129, 199, 132, 0.15); padding: 4px 8px; border-radius: 4px;">Especificado & Aprovado</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong style="color: var(--color-sand);">P1 · Piloto Assistido</strong><br>
+              <span style="font-size: 12px; color: var(--color-sand);">Projetos II (2027.1)</span>
+            </td>
+            <td>
+              <code>US-001, US-004, US-005, US-011, US-014, US-015, US-017, US-018, US-020, US-022, US-026</code>
+            </td>
+            <td>
+              Implementação de contas reais, gestão de consentimentos LGPD, ofertas reais de comercializadoras parceiras, cofre de documentos e portal de fornecedores.
+            </td>
+            <td>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: #FFB74D; background: rgba(255, 183, 77, 0.15); padding: 4px 8px; border-radius: 4px;">Planejado para Fev–Mai/27</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong style="color: var(--color-sand);">P2 · Evolução Contínua</strong><br>
+              <span style="font-size: 12px; color: var(--color-sand);">Pós-Graduação</span>
+            </td>
+            <td>
+              <code>US-023, US-024, US-028 + Segmentos Secundários</code>
+            </td>
+            <td>
+              Reotimização contínua autônoma, portfólio multi-UC para grandes redes varejistas e expansão para o consumidor residencial no mass market.
+            </td>
+            <td>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--color-sand); background: rgba(201, 184, 159, 0.1); padding: 4px 8px; border-radius: 4px;">Roadmap Estratégico</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="backlog-footer">
+    <p>
+      <strong>Milet Energia</strong> · Plataforma Digital para Decisão, Comparação e Gestão Contínua de Energia<br>
+      Trabalho Acadêmico de Engenharia da Computação · Universidade Presbiteriana Mackenzie · Turma 6 (2026.2)<br>
+      Autor: <strong>Eduardo Ferreira de Mattos</strong> | Orientador: <strong>Prof. Dr. Rodrigo Juliani</strong><br>
+      Acesse também: <a href="index.html">Brandbook Interativo</a> | <a href="presentation.html">Apresentação Web (16:9)</a>
+    </p>
+  </footer>
+
+  <script src="backlog.js"></script>
+</body>
+</html>
