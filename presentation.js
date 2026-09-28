@@ -19,81 +19,81 @@
   const speakerNotesData = {
     1: {
       rubric: "Tema · [0,5 pt]",
-      title: "Slide 1 — Capa & Tema Formal",
-      target: "25 segundos (00:00 - 00:25)",
-      text: "Bom dia, professor Rodrigo Juliani e colegas de turma. Meu nome é Eduardo Ferreira de Mattos e apresento o plano de projeto da Milet: uma plataforma digital independente para decisão, comparação e gestão contínua de energia. O projeto integra a disciplina Projetos de Engenharia da Computação I e estabelece as bases formais para o desenvolvimento e validação do software que entregaremos até o próximo semestre."
+      title: "Slide 1 — Tema & Tese Central",
+      target: "20 segundos (00:00 - 00:20)",
+      text: "Bom dia, professor Rodrigo Juliani e banca avaliadora. Apresento o projeto da Milet: plataforma digital para decisão, comparação e gestão contínua de energia. A Milet investiga como transformar uma decisão energética hoje fragmentada em uma jornada digital contínua, rastreável e comparável, alinhada aos requisitos formais da disciplina Projetos de Engenharia da Computação I."
     },
     2: {
       rubric: "Motivação · [0,5 pt]",
       title: "Slide 2 — Motivação do Projeto",
-      target: "40 segundos (00:25 - 01:05)",
-      text: "A motivação deste projeto nasce da transformação histórica do setor elétrico brasileiro: a Lei 14.300 sobre Geração Distribuída e o Decreto 13.097 de 2026, que programa a abertura da baixa tensão para os próximos anos. Hoje, empresas de menor porte enfrentam uma assimetria brutal de dados e tarifas, pagando caro simplesmente por não dominarem o setor. O consumidor tem liberdade de escolha no papel, mas não dispõe de ferramentas computacionais neutras para exercê-la com segurança."
+      target: "40 a 45 segundos (00:20 - 01:05)",
+      text: "A motivação parte da premissa de que energia também pode ser uma decisão de contratação. O modelo tradicional percebido pelo consumidor é passivo: distribuidora, conta e pagamento compulsório. Porém, consumidores elegíveis podem escolher fornecedores no Mercado Livre (ACL), negociar condições e avaliar Geração Distribuída. A rede física continua sendo da distribuidora; o que muda é a relação comercial de contratação. Desde 2024, todos os consumidores do Grupo A têm esse direito regulatório garantido."
     },
     3: {
       rubric: "Problema Tratado · [1,0 pt]",
-      title: "Slide 3 — Problema Tratado & Causa-Raiz",
-      target: "50 segundos (01:05 - 01:55)",
-      text: "O problema tratado não é a falta de oferta energética, mas a impossibilidade de o decisor comparar alternativas sob premissas equivalentes. A jornada atual é caótica: faturas densas com tarifas TUSD e TE, regras regulatórias opacas, opções de GD e mercado livre desconexas, contratos longos com cláusulas de fidelidade complexas e pós-venda disperso em planilhas. Na análise de causa-raiz pelos 5 Porquês, concluímos: não faltam usinas; falta uma camada independente de software que traduza dados elétricos em decisões transparentes e auditáveis."
+      title: "Slide 3 — Problema Tratado & Preservação de Contexto",
+      target: "45 segundos (01:05 - 01:50)",
+      text: "Contudo, ter escolha não significa saber escolher. O decisor enfrenta uma jornada cheia de fricções: não sabe que pode escolher, descobre alternativas, precisa entender elegibilidade, compara propostas incomparáveis e precisa verificar se a economia prometida realmente aconteceu. Perguntas como 'Sou elegível?', 'Quanto economizo?' e 'O resultado aconteceu?' evidenciam que o problema da Milet não é apenas encontrar preço, mas sim preservar o contexto contínuo entre dados, decisão, contratação e resultado."
     },
     4: {
-      rubric: "Estado da Arte 1/3 · [3,0 pts]",
-      title: "Slide 4 — Evolução Regulatória Brasileira",
-      target: "55 segundos (01:55 - 02:50)",
-      text: "Entrando no Estado da Arte, que é o núcleo de maior peso da nossa avaliação, analisamos primeiro a evolução no Brasil. Passamos do modelo cativo monopolista para a Lei 14.300 em 2022, a abertura do Grupo A em 2024 e o Decreto 13.097/2026, que fixa a abertura para baixa tensão comercial em 2027 e residencial em 2028. É essencial destacar: a distribuidora física não é um intermediário a eliminar, mas sim a infraestrutura física de rede; e a CCEE opera a liquidação setorial e disponibilizará uma plataforma pública de preços, que servirá de insumo para nossa solução."
+      rubric: "Estado da Arte (1/3) · [3,0 pts]",
+      title: "Slide 4 — Mercado e Regulação no Brasil",
+      target: "50 a 55 segundos (01:50 - 02:45)",
+      text: "No Estado da Arte, analisamos mercado e regulação. O setor elétrico brasileiro evoluiu da dualidade ACR vs ACL para a abertura do Grupo A em 2024 e a consolidação da Geração Distribuída como rota distinta. Além disso, a CCEE avança na digitalização das migrações e planeja uma plataforma centralizada pública de comparação. Destacamos nossa tese acadêmica: a Milet não deve ser defendida pela tese de que 'não existe comparador', pois a comparação básica tende a se tornar infraestrutura pública."
     },
     5: {
-      rubric: "Estado da Arte 2/3 · [3,0 pts]",
-      title: "Slide 5 — Benchmarks Internacionais",
-      target: "55 segundos (02:50 - 03:45)",
-      text: "Mapeamos como os mercados mais maduros do mundo resolveram a inteligência energética. Nos Estados Unidos, a Arcadia desenvolveu APIs para ingestão de faturas de concessionárias conectando consumidores a usinas solares comunitárias. No Texas, a Energy Ogre provou o modelo de concierge independente: o usuário paga uma mensalidade fixa para um algoritmo otimizar e trocar contratos periodicamente. No Reino Unido, plataformas como Piclo e Electron operam leilões de flexibilidade para redes. E iniciativas como Powerledger e Energy Web aplicam registros auditáveis de garantias renováveis."
+      rubric: "Estado da Arte (2/3) · [3,0 pts]",
+      title: "Slide 5 — Soluções Existentes & Matriz N1",
+      target: "50 segundos (02:45 - 03:35)",
+      text: "Mapeamos as soluções existentes estritamente documentadas no relatório N1. A UC Livre atua como marketplace de RFQ e comparação no mercado livre; a Deskonta foca em geração distribuída compartilhada; a Energy Ogre provou o modelo de gestão recorrente por assinatura no Texas; a EnergySage é referência em transparência de propostas; e a CCEE opera como infraestrutura de liquidação e futura comparação estatal. Nenhuma atribuição além do documentado foi feita."
     },
     6: {
-      rubric: "Estado da Arte 3/3 · [3,0 pts]",
-      title: "Slide 6 — Matriz de Diferenciação & Hipótese",
-      target: "60 segundos (03:45 - 04:45)",
-      text: "Ao consolidar o Estado da Arte em nossa matriz comparativa de 6 dimensões, fica evidente o diferencial estrutural da Milet: não afirmamos que 'não existem soluções', mas sim que elas atuam de forma fragmentada. Enquanto a Arcadia foca apenas em dados e a Energy Ogre em varejo, a Milet fecha o ciclo integrando diagnóstico explicável, comparação multimodal entre rotas (GD, ACL e usina própria), workflow assistido e auditoria contínua de economia. A plataforma pública da CCEE será um trilho de transparência, mas o valor computacional está na decisão personalizada e na governança contínua."
+      rubric: "Estado da Arte (3/3) · [3,0 pts]",
+      title: "Slide 6 — A Lacuna Investigada & Hipótese",
+      target: "45 a 50 segundos (03:35 - 04:25)",
+      text: "A lacuna investigada pela Milet está na integração contínua dos mecanismos: Passaporte Energético, motor de rotas, comparação normalizada, RFQ reverso, workflow de execução, Savings Ledger e reotimização. Os componentes existem isoladamente. A nossa hipótese acadêmica é testar a integração desses mecanismos em uma jornada contínua adequada ao contexto brasileiro, sem qualquer pretensão comercial ingênua de ineditismo absoluto."
     },
     7: {
-      rubric: "Plano de Projeto 1/3 · [2,0 pts]",
-      title: "Slide 7 — Perfis de Usuários & Ecossistema",
-      target: "50 segundos (04:45 - 05:35)",
-      text: "No Plano de Projeto, iniciamos pelos Perfis de Usuários. Para assegurar foco de engenharia, definimos uma prioridade cirúrgica para o MVP: o UP-01, Consumidor PME e Decisor Energético — comércio, escritórios e pequenas indústrias que querem economia sem risco de engenharia. Ao redor, conectamos os atores de oferta necessários para fechar a esteira: o Gerador Independente (UP-03) que precisa ocupar capacidade, a Comercializadora Varejista (UP-04), o integrador EPC (UP-05) e o Operador Milet (UP-06). Consumidor residencial e investidores ficam para expansões pós-MVP."
+      rubric: "Plano de Projeto (1/3) · [2,0 pts]",
+      title: "Slide 7 — Perfis de Usuários & VPC",
+      target: "45 segundos (04:25 - 05:10)",
+      text: "No Plano de Projeto, extraímos do Fibery os User Profiles e o Value Proposition Canvas. Enfatizamos Jobs, Pains e Gains. Definimos como prioridade absoluta o Consumidor PME e Decisor Energético (UP-01), conectando-o aos fornecedores (UP-03 e UP-04), integradores EPC (UP-05) e ao Operador Milet (UP-06). Reforçamos que os perfis orientam requisitos e backlog; não são personas de marketing."
     },
     8: {
-      rubric: "Plano de Projeto 2/3 · [2,0 pts]",
-      title: "Slide 8 — Arquitetura da Solução & User Stories",
-      target: "65 segundos (05:35 - 06:40)",
-      text: "A arquitetura do produto fecha o ciclo em 5 etapas: Entender, Decidir, Competir, Executar e Aprender. O backlog possui 28 histórias de usuário, mas destacamos as 7 histórias nucleares que formam a espinha dorsal do MVP. Três delas são os pilares indispensáveis: a US-002 para ingestão de fatura; a US-013, núcleo de inteligência que normaliza propostas de comercializadoras sob a mesma régua matemática de VPL e risco; e a US-021, que fecha o loop auditando a economia realizada versus a prometida. As histórias 006, 010, 019 e 027 completam rotas, RFQ, migração e auditoria imutável."
+      rubric: "Plano de Projeto (2/3) · [2,0 pts]",
+      title: "Slide 8 — Epics, User Stories e MVP em Projetos I",
+      target: "55 segundos (05:10 - 06:05)",
+      text: "Apresentamos a estrutura dos Épicos e das 28 User Stories do relatório. Destacamos as histórias do fluxo principal: US-001 (elegibilidade), US-002 (ingestão de fatura), US-006 (rotas), US-010 (RFQ), US-013 (comparação normalizada), US-019 (esteira de migração), US-021 (razão de economia) e US-027 (rastreabilidade). Fixamos a definição oficial do MVP: primeira versão funcional do fluxo prioritário construída em Projetos I, com operação assistida ou simulada onde necessário."
     },
     9: {
-      rubric: "Plano de Projeto 3/3 · [2,0 pts]",
-      title: "Slide 9 — Canvas v0.1 & Recorte do MVP",
-      target: "50 segundos (06:40 - 07:30)",
-      text: "O Business Model Canvas do projeto é tratado formalmente como hipótese v0.1 a ser testada, e não como modelo validado comercialmente. Destacamos quatro blocos essenciais: o segmento PME, a proposta de 4 pilares, as receitas em validação e as parcerias estruturais. Em consonância com a disciplina, realizamos o recorte estrito de 14 histórias P0 para o MVP acadêmico, postergando módulos complexos como telemetria IoT em tempo real, modelos de IA estocástica ou automação sem supervisão para as fases P1 e P2."
+      rubric: "Plano de Projeto (3/3) · [2,0 pts]",
+      title: "Slide 9 — Business Model Canvas v0.1",
+      target: "40 segundos (06:05 - 06:45)",
+      text: "Exibimos o Business Model Canvas v0.1 importado do Fibery sob a matriz Strategyzer, identificado com a badge 'hipóteses em validação'. Destacamos o segmento prioritário de PMEs, a proposta de valor contínua do fluxo entender-comparar-competir-executar-acompanhar-reotimizar, e registramos que as fontes de receita são hipóteses a serem validadas."
     },
     10: {
-      rubric: "Cronograma 1/2 · [2,0 pts]",
-      title: "Slide 10 — Cronograma Físico Geral (Gantt)",
-      target: "50 segundos (07:30 - 08:20)",
-      text: "O cronograma físico foi estruturado ao longo de 11 meses, de Agosto de 2026 a Junho de 2027, com separador claro entre semestres. Em Projetos I (2026.2), cumprimos o Discovery e Estado da Arte em agosto e setembro, o detalhamento de histórias e recorte do MVP em outubro, e o planejamento arquitetural e prototipação em novembro e dezembro. Em Projetos II (2027.1), construímos o core engine entre fevereiro e março, integramos RFQ e segurança em abril, realizamos o piloto de validação em maio e entregamos o MVP v1 e monografia em junho."
+      rubric: "Cronograma (1/2) · [2,0 pts]",
+      title: "Slide 10 — Cronograma Projetos I & Marco 19/10 MVP",
+      target: "45 segundos (06:45 - 07:30)",
+      text: "O cronograma de Projetos I (2026.2) segue as datas oficiais do plano de ensino: de 10/08 a 20/09 para Discovery; de 21/09 a 28/09 para Plano de Projeto; de 29/09 a 18/10 para a construção da primeira versão funcional do MVP; com entrega e apresentação do MVP no marco oficial de 19/10/2026. A partir de 26/10 aplicamos SSDLC e segurança, seguidos por testes e validação em novembro. Reforçamos a mensagem: o MVP não fica para Projetos II."
     },
     11: {
-      rubric: "Cronograma 2/2 · [2,0 pts]",
-      title: "Slide 11 — Técnicas de Gestão & Riscos",
-      target: "40 segundos (08:20 - 09:00)",
-      text: "Na engenharia do processo, adotamos abordagem híbrida: Scrum para entregas periódicas e Kanban para fluxo contínuo. Nossos diferenciais metodológicos incluem critérios de aceite em BDD (Dado que, Quando, Então) para testabilidade direta de requisitos e a aplicação da técnica SPIDER para fatiar histórias complexas como OCR de fatura e normalização de propostas. Além disso, mapeamos os riscos de variação de layout de distribuidoras e mudanças regulatórias, adotando parser modular e regras versionadas como mitigação."
+      rubric: "Cronograma (2/2) · [2,0 pts]",
+      title: "Slide 11 — Gantt & Continuidade em Projetos II",
+      target: "40 segundos (07:30 - 08:10)",
+      text: "Visualizamos no Gantt do Fibery a transição para Projetos II (2027.1), cujos rótulos são de continuidade: evolução técnica, mais integrações reais de APIs, automação, piloto ampliado e consolidação da solução. Registramos a nota de que as datas de Projetos II são macroplanejamento preliminar a ser sincronizado com o plano de ensino do próximo semestre."
     },
     12: {
       rubric: "Resultados Esperados · [1,0 pt]",
-      title: "Slide 12 — Resultados Esperados & Critérios",
-      target: "45 segundos (09:00 - 09:45)",
-      text: "Para encerrar os requisitos da banca, definimos os critérios objetivos que determinarão o sucesso de Projetos II: conseguir ingerir faturas reais extraindo dados tarifários; motor de decisão determinístico com premissas transparentes; comparador normalizando pelo menos 3 ofertas concorrentes; esteira de contratação assistida navegável; e módulo de auditoria com conciliação mensal da economia realizada em ambiente de piloto real."
+      title: "Slide 12 — Resultados Esperados & Três Marcos",
+      target: "45 segundos (08:10 - 08:55)",
+      text: "Organizamos os Resultados Esperados em três marcos bem definidos: até o Checkpoint de MVP em 19/10 entregamos a primeira versão funcional do fluxo prioritário; até o fim de Projetos I entregamos o MVP refinado, arquitetura documentada, SSDLC e hipóteses validadas; e em Projetos II damos continuidade com integrações reais, automação e piloto ampliado. A mensagem final sintetiza: Projetos I precisa provar que o ciclo funciona; Projetos II deve provar que ele pode amadurecer."
     },
     13: {
       rubric: "Encerramento",
-      title: "Slide 13 — Encerramento & Arguição",
-      target: "15 segundos (09:45 - 10:00)",
-      text: "Milet: energia em mais liberdade. Agradeço a atenção do professor Rodrigo Juliani e estou totalmente à disposição dos avaliadores para a arguição e comentários da banca."
+      title: "Slide 13 — Encerramento & Q&A",
+      target: "15 segundos (08:55 - 09:10)",
+      text: "Milet: plataforma digital para decisão, comparação e gestão contínua de energia. Agradeço ao professor orientador Rodrigo Juliani e à banca pela atenção, e fico à disposição para a arguição."
     }
   };
 

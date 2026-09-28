@@ -22,54 +22,40 @@
     <div id="deck-container">
 
       <!-- ====================================================================
-           SLIDE 1 — CAPA
+           SLIDE 1 — TEMA [0,5 pt] (20s)
            ==================================================================== -->
       <section class="slide slide-cover active" id="slide-1" data-slide="1">
         <div class="cover-brand-row">
           <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Símbolo Milet" class="cover-logo-icon">
           <span class="cover-brand-name">Milet</span>
-          <span class="cover-badge">Plano de Projeto de Engenharia · 2026.2</span>
+          <span class="cover-badge">Projetos de Engenharia da Computação I · 2026.2</span>
         </div>
 
         <div class="cover-main-grid">
           <div class="cover-left-col">
-            <span class="cover-formal-theme">Projeto de Engenharia da Computação · Universidade Presbiteriana Mackenzie</span>
-            <h1 class="cover-tagline">Energia em <span>Mais Liberdade.</span></h1>
-            <p class="cover-subheadline">O Sistema Operacional Independente que capacita o consumidor a simular, comparar e gerenciar a sua transição energética com clareza e controle absoluto.</p>
-            <div class="cover-tags-row">
-              <span class="cover-pill">Plataforma Neutra de Decisão</span>
-              <span class="cover-pill">Geração Distribuída & Mercado Livre</span>
+            <span class="cover-formal-theme">Universidade Presbiteriana Mackenzie · Engenharia da Computação</span>
+            <h1 class="cover-tagline">Milet</h1>
+            <p class="cover-subheadline" style="font-size: 26px; color: var(--color-amber); font-family: var(--font-display); line-height: 1.3; margin-top: 10px;">
+              Plataforma digital para decisão, comparação e gestão contínua de energia
+            </p>
+            <div class="cover-tags-row" style="margin-top: 24px;">
+              <span class="cover-pill">Tema [0,5 pt]</span>
               <span class="cover-pill">Mackenzie · Turma 6</span>
+              <span class="cover-pill">Tempo Alvo: 20s</span>
             </div>
           </div>
 
           <div class="cover-right-col">
-            <div class="cover-overview-card">
+            <div class="cover-overview-card" style="background: rgba(34, 34, 34, 0.85); border: 1px solid var(--color-amber-glow); padding: 32px;">
               <div class="overview-header">
-                <span class="overview-badge">Visão da Solução</span>
-                <h4>A Plataforma Milet</h4>
+                <span class="overview-badge">Tese Central de Investigação</span>
+                <h4 style="font-family: var(--font-display); font-size: 24px; color: var(--color-ivory);">O Propósito da Milet</h4>
               </div>
-              <div class="overview-items">
-                <div class="overview-item">
-                  <span class="item-num">01</span>
-                  <div class="item-text">
-                    <strong>O Problema & A Oportunidade</strong>
-                    <p>Assimetria tarifária, opacidade e a abertura histórica do Mercado Livre (Decreto 13.097/26).</p>
-                  </div>
-                </div>
-                <div class="overview-item">
-                  <span class="item-num">02</span>
-                  <div class="item-text">
-                    <strong>O Benchmark & O Diferencial</strong>
-                    <p>Ingestão inteligente via OCR, leilão reverso de fornecedores e auditoria contínua pós-contratação.</p>
-                  </div>
-                </div>
-                <div class="overview-item">
-                  <span class="item-num">03</span>
-                  <div class="item-text">
-                    <strong>Engenharia & Entregas</strong>
-                    <p>28 User Stories, recorte de 14 no MVP, BDD, SPIDER e ciclo de execução em 11 meses.</p>
-                  </div>
+              <div class="overview-items" style="margin-top: 20px;">
+                <div style="background: rgba(211, 155, 61, 0.08); border-left: 3px solid var(--color-amber); padding: 18px; border-radius: 0 8px 8px 0;">
+                  <p style="font-size: 17px; color: var(--color-ivory); line-height: 1.5; font-style: italic;">
+                    "A Milet investiga como transformar uma decisão energética hoje fragmentada em uma jornada digital contínua, rastreável e comparável."
+                  </p>
                 </div>
               </div>
             </div>
@@ -79,7 +65,7 @@
         <div class="cover-footer">
           <div class="cover-academic-info">
             <h4>Universidade Presbiteriana Mackenzie · Turma 6</h4>
-            <p>Engenharia da Computação · Projetos de Engenharia da Computação I (2026.2)</p>
+            <p>Projetos de Engenharia da Computação I · 2026.2</p>
           </div>
           <div class="cover-author-block">
             <h3 class="cover-author-name">Eduardo Ferreira de Mattos</h3>
@@ -89,7 +75,7 @@
       </section>
 
       <!-- ====================================================================
-           SLIDE 2 — MOTIVAÇÃO [0,5 pt]
+           SLIDE 2 — MOTIVAÇÃO [0,5 pt] (40–45s)
            ==================================================================== -->
       <section class="slide" id="slide-2" data-slide="2">
         <div class="slide-header">
@@ -97,52 +83,70 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 02 · Motivação [0,5 pt]</span>
             </div>
-            <h2 class="slide-title">O consumidor brasileiro ganhou liberdade regulatória, mas <em>não tem clareza para decidir</em>.</h2>
-            <p class="slide-subtitle">Por que conceber a Milet como uma plataforma computacional neutra no momento de maior transformação do setor elétrico.</p>
+            <h2 class="slide-title">Energia também pode ser uma <em>decisão de contratação</em>.</h2>
+            <p class="slide-subtitle">A transformação da relação comercial do consumidor sem alterar a infraestrutura física de distribuição.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="motivation-grid">
-            <div class="motivation-card">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; margin-top: 10px;">
+            <!-- MODELO PERCEBIDO x MODELO ELEGÍVEL -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
               <div>
-                <div class="motivation-icon">⚡</div>
-                <h3 class="motivation-card-title">Transformação Regulatória</h3>
-                <p class="motivation-card-desc">
-                  O setor elétrico brasileiro vive sua maior virada histórica: a consolidação da GD (Lei 14.300/22) e a abertura do Mercado Livre para a baixa tensão (Decreto 13.097/26). O consumidor deixa de ser mero pagador de tarifa para ser tomador de decisão.
-                </p>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: #E57373; letter-spacing: 1px; font-weight: 700;">MODELO PERCEBIDO PELO CONSUMIDOR</span>
+                <h3 style="font-family: var(--font-display); font-size: 24px; color: var(--color-ivory); margin: 10px 0 16px 0;">Passividade Tarifária</h3>
+                <div style="display: flex; align-items: center; gap: 12px; background: rgba(18, 18, 18, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(229, 115, 115, 0.2);">
+                  <span style="font-size: 14px; color: var(--color-ivory-muted); font-family: var(--font-mono);">Distribuidora</span>
+                  <span style="color: #E57373;">➔</span>
+                  <span style="font-size: 14px; color: var(--color-ivory-muted); font-family: var(--font-mono);">Conta de Luz</span>
+                  <span style="color: #E57373;">➔</span>
+                  <span style="font-size: 14px; color: var(--color-ivory-muted); font-family: var(--font-mono);">Pagamento Compulsório</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px; font-size: 13px; color: var(--color-sand); line-height: 1.5; border-top: 1px dashed var(--color-carbon-border); padding-top: 14px;">
+                <strong>Grupo B (Baixa Tensão) & Cativos:</strong> Atendimento monopolista onde não há gestão comercial ativa pela empresa.
               </div>
             </div>
 
-            <div class="motivation-card highlight">
+            <!-- CONSUMIDORES ELEGÍVEIS -->
+            <div style="background: linear-gradient(145deg, #2A261F 0%, #1E1E1E 100%); border: 1.5px solid var(--color-amber); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
               <div>
-                <div class="motivation-icon">⚖</div>
-                <h3 class="motivation-card-title">Assimetria de Informação</h3>
-                <p class="motivation-card-desc">
-                  Pequenas e médias empresas (comércio, indústrias leves, clínicas) pagam as maiores tarifas de energia do país por falta de conhecimento técnico e ferramentas digitais para auditar, simular e negociar alternativas com segurança.
-                </p>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); letter-spacing: 1px; font-weight: 700;">OPÇÕES DE CONTRATAÇÃO ELEGÍVEIS</span>
+                <h3 style="font-family: var(--font-display); font-size: 24px; color: var(--color-ivory); margin: 10px 0 16px 0;">Decisão Ativa de Mercado</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-ivory);">
+                    <span style="color: var(--color-amber);">✓</span> Escolher fornecedor no Ambiente de Contratação Livre (ACL)
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-ivory);">
+                    <span style="color: var(--color-amber);">✓</span> Negociar condições comerciais, prazos e indexadores de tarifa
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-ivory);">
+                    <span style="color: var(--color-amber);">✓</span> Avaliar Geração Distribuída (GD), usina própria e consórcios
+                  </li>
+                </ul>
               </div>
-            </div>
 
-            <div class="motivation-card">
-              <div>
-                <div class="motivation-icon">💻</div>
-                <h3 class="motivation-card-title">O Papel da Computação</h3>
-                <p class="motivation-card-desc">
-                  Resolver essa dor exige algoritmos determinísticos de simulação, ingestão automatizada de dados elétricos heterogêneos, leilões reversos e conciliação contínua de contratos em um sistema de alta confiabilidade e governança LGPD.
-                </p>
+              <div style="margin-top: 18px; background: rgba(211, 155, 61, 0.12); padding: 12px 16px; border-radius: 6px; border-left: 3px solid var(--color-amber); font-size: 13px; color: var(--color-ivory);">
+                <strong>Destaque Regulatório:</strong> Desde 2024, todos os consumidores do Grupo A têm o direito legal de optar pelo Mercado Livre de Energia.
               </div>
             </div>
           </div>
 
-          <div class="motivation-banner">
-            <p><strong>Tese Milet:</strong> O consumidor ganha o direito legal de escolher sua energia, mas precisa de <em>uma plataforma computacional independente</em> para tomar decisões seguras e vantajosas.</p>
+          <!-- FRASE CENTRAL E CONTEXTO DE GRUPOS -->
+          <div style="margin-top: 24px; background: rgba(201, 184, 159, 0.06); border: 1px solid rgba(201, 184, 159, 0.2); border-radius: 8px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;">
+            <p style="font-size: 16px; color: var(--color-ivory); font-family: var(--font-display);">
+              <strong>Mensagem-Chave:</strong> A rede física continua sendo da distribuidora; o que muda é a relação comercial de contratação da energia.
+            </p>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand); background: var(--color-carbon-dark); padding: 6px 12px; border-radius: 20px; border: 1px solid var(--color-carbon-border);">
+              Contexto Visual: Grupo A & Grupo B
+            </span>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 3 — PROBLEMA TRATADO [1,0 pt]
+           SLIDE 3 — PROBLEMA TRATADO [1,0 pt] (45s)
            ==================================================================== -->
       <section class="slide" id="slide-3" data-slide="3">
         <div class="slide-header">
@@ -150,65 +154,72 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 03 · Problema Tratado [1,0 pt]</span>
             </div>
-            <h2 class="slide-title">O desafio não é a falta de energia. É decidir entre <em>opções totalmente incomparáveis</em>.</h2>
-            <p class="slide-subtitle">A jornada opaca do decisor PME e o diagnóstico de causa-raiz por trás da assimetria do setor elétrico.</p>
+            <h2 class="slide-title">Ter escolha <em>não significa saber escolher</em>.</h2>
+            <p class="slide-subtitle">A sequência de fricções enfrentada pelo decisor PME e o diagnóstico da perda de contexto.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="flow-fragmented">
-            <div class="flow-step-card">
-              <span class="flow-step-num">01 · FATURA</span>
-              <h3 class="flow-step-title">Fatura Complexa</h3>
-              <p class="flow-step-desc">PDFs densos com tarifas TUSD/TE e bandeiras tarifárias incompreensíveis.</p>
-              <div class="flow-step-pain">⚠ Dor: Falta de visibilidade real</div>
+          <!-- SEQUÊNCIA NARRATIVA DOS 7 PASSOS -->
+          <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 10px;">
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">01</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Não sabe que pode escolher</p>
             </div>
-
-            <div class="flow-step-card">
-              <span class="flow-step-num">02 · REGRAS</span>
-              <h3 class="flow-step-title">Regras Opacas</h3>
-              <p class="flow-step-desc">Resoluções da ANEEL e exigências de distribuidoras mudam sem aviso legível.</p>
-              <div class="flow-step-pain">⚠ Dor: Risco regulatório oculto</div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">02</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Descobre alternativas</p>
             </div>
-
-            <div class="flow-step-card">
-              <span class="flow-step-num">03 · ROTAS</span>
-              <h3 class="flow-step-title">Opções Dispersas</h3>
-              <p class="flow-step-desc">GD assinatura, usina própria ou mercado livre chegam por canais desconexos.</p>
-              <div class="flow-step-pain">⚠ Dor: Premissas distintas</div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">03</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Precisa entender elegibilidade</p>
             </div>
-
-            <div class="flow-step-card">
-              <span class="flow-step-num">04 · LANCES</span>
-              <h3 class="flow-step-title">Ofertas Incompatíveis</h3>
-              <p class="flow-step-desc">Comercializadoras usam prazos, flexibilidades e indexadores diferentes.</p>
-              <div class="flow-step-pain">⚠ Dor: Impossível auditar</div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">04</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Encontra propostas diferentes</p>
             </div>
-
-            <div class="flow-step-card">
-              <span class="flow-step-num">05 · CONTRATO</span>
-              <h3 class="flow-step-title">Contratos Longos</h3>
-              <p class="flow-step-desc">Cláusulas de fidelidade, take-or-pay e multas rescisórias abusivas.</p>
-              <div class="flow-step-pain">⚠ Dor: Aprisionamento jurídico</div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">05</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Compara riscos, prazos e economia</p>
             </div>
-
-            <div class="flow-step-card">
-              <span class="flow-step-num">06 · GESTÃO</span>
-              <h3 class="flow-step-title">Operação Manual</h3>
-              <p class="flow-step-desc">Acompanhamento disperso em e-mails e planilhas após a assinatura.</p>
-              <div class="flow-step-pain">⚠ Dor: Sem auditoria de economia</div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">06</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Precisa executar a transição</p>
+            </div>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px; text-align: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">07</span>
+              <p style="font-size: 12px; color: var(--color-ivory); margin-top: 6px; font-weight: 500;">Verifica se economia ocorreu</p>
             </div>
           </div>
 
-          <div class="root-cause-banner">
-            <p><strong>Causa-raiz (RCA · 5 Porquês):</strong> Não faltam fornecedores nem propostas no mercado; falta uma <em>camada neutra de software</em> capaz de ingerir faturas, padronizar a disputa e auditar o resultado continuamente.</p>
-            <span class="root-cause-tag">Engenharia de Processos</span>
+          <!-- PERGUNTAS DO USUÁRIO -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px;">
+            <div style="background: rgba(30, 30, 30, 0.8); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px;">
+              <span style="font-size: 12px; color: var(--color-amber); font-weight: 600;">Dúvida 1 & 2</span>
+              <p style="font-size: 14px; color: var(--color-ivory); font-style: italic; margin-top: 4px;">“Sou elegível?”<br>“Qual alternativa faz sentido?”</p>
+            </div>
+            <div style="background: rgba(30, 30, 30, 0.8); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px;">
+              <span style="font-size: 12px; color: var(--color-amber); font-weight: 600;">Dúvida 3 & 4</span>
+              <p style="font-size: 14px; color: var(--color-ivory); font-style: italic; margin-top: 4px;">“Quanto realmente economizo?”<br>“Essas propostas são comparáveis?”</p>
+            </div>
+            <div style="background: rgba(30, 30, 30, 0.8); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px;">
+              <span style="font-size: 12px; color: var(--color-amber); font-weight: 600;">Dúvida 5 & 6</span>
+              <p style="font-size: 14px; color: var(--color-ivory); font-style: italic; margin-top: 4px;">“Quem executa?”<br>“O resultado prometido aconteceu?”</p>
+            </div>
+          </div>
+
+          <!-- CONCLUSÃO DE ENGENHARIA -->
+          <div class="root-cause-banner" style="margin-top: 22px;">
+            <p style="font-size: 16px; color: var(--color-ivory);">
+              <strong>Conclusão Milet:</strong> O problema da Milet não é apenas encontrar preço. É <em>preservar o contexto contínuo</em> entre dados, decisão, contratação e resultado.
+            </p>
+            <span class="root-cause-tag">Preservação de Contexto</span>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 4 — ESTADO DA ARTE 1/3: EVOLUÇÃO BRASIL [3,0 pts]
+           SLIDE 4 — ESTADO DA ARTE 1/3: MERCADO E REGULAÇÃO [3,0 pts] (50–55s)
            ==================================================================== -->
       <section class="slide" id="slide-4" data-slide="4">
         <div class="slide-header">
@@ -216,8 +227,8 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 04 · Estado da Arte (1/3) [3,0 pts]</span>
             </div>
-            <h2 class="slide-title">Da concessão monopolista ao Mercado Livre: <em>o terreno pronto para a Milet</em>.</h2>
-            <p class="slide-subtitle">Como o novo arcabouço regulatório (Lei 14.300 e Decreto 13.097) viabiliza a nossa arquitetura de software.</p>
+            <h2 class="slide-title">Mercado e Regulação: <em>o terreno da comparação no Brasil</em>.</h2>
+            <p class="slide-subtitle">A evolução dos ambientes de contratação e o papel da CCEE como infraestrutura de mercado.</p>
           </div>
         </div>
 
@@ -225,59 +236,58 @@
           <div class="reg-history-grid">
             <div class="reg-history-card">
               <div>
-                <span class="reg-year-badge">MARCO 2022 · LEI 14.300</span>
-                <h3 class="reg-card-title">Marco Legal da GD</h3>
+                <span class="reg-year-badge">ACR vs ACL</span>
+                <h3 class="reg-card-title">Dualidade do Setor</h3>
                 <p class="reg-card-desc">
-                  Regulamentou o Sistema de Compensação de Energia Elétrica (SCEE), definindo as regras de transição do Fio B até 2029 e vedando distorções como cobrança de telhado em R$/kWh (Art. 10).
+                  Separação entre o Mercado Cativo (ACR, tarifas reguladas da distribuidora) e o Mercado Livre (ACL, contratos bilaterais com comercializadores).
                 </p>
               </div>
-              <div class="reg-card-impact">Impacto: Geração compartilhada e consórcios seguros</div>
-            </div>
-
-            <div class="reg-history-card">
-              <div>
-                <span class="reg-year-badge">MARCO 2024 · GRUPO A</span>
-                <h3 class="reg-card-title">Abertura da Média Tensão</h3>
-                <p class="reg-card-desc">
-                  Todos os consumidores atendidos em alta e média tensão (Grupo A) ganharam o direito de migrar para o Mercado Livre de Energia (ACL), operando via comercializadores varejistas habilitados na CCEE.
-                </p>
-              </div>
-              <div class="reg-card-impact">Impacto: Portão de entrada inicial prioritário</div>
+              <div class="reg-card-impact">Base para o motor de elegibilidade</div>
             </div>
 
             <div class="reg-history-card current">
               <div>
-                <span class="reg-year-badge">MARCO 2026 · DECRETO 13.097</span>
-                <h3 class="reg-card-title">Abertura da Baixa Tensão</h3>
+                <span class="reg-year-badge">MARCO 2024</span>
+                <h3 class="reg-card-title">Abertura do Grupo A</h3>
                 <p class="reg-card-desc">
-                  Fixou o cronograma da baixa tensão: 25/11/2027 para comerciais/industriais e 25/11/2028 para residenciais. Determinou plataforma centralizada pública de comparação de ofertas gerida pela CCEE.
+                  Todos os consumidores em Média/Alta Tensão ganharam o direito de migrar via varejistas habilitação CCEE, multiplicando os potenciais migrantes.
                 </p>
               </div>
-              <div class="reg-card-impact">Impacto: Transparência pública e dados padronizados</div>
+              <div class="reg-card-impact">Público-alvo prioritário PME</div>
             </div>
 
             <div class="reg-history-card">
               <div>
-                <span class="reg-year-badge">INFRAESTRUTURA</span>
-                <h3 class="reg-card-title">Papéis de Bastidor</h3>
+                <span class="reg-year-badge">ROTA DISTINTA</span>
+                <h3 class="reg-card-title">Geração Distribuída (GD)</h3>
                 <p class="reg-card-desc">
-                  <strong>CCEE:</strong> Contabilização e liquidação setorial (Submódulo 1.8 de dados).<br>
-                  <strong>Distribuidoras:</strong> Conexão física e remuneração pelo uso da rede local (Fio A/B), não intermediários elimináveis.
+                  Consórcios e créditos de energia (Lei 14.300/22) operam em regramento paralelo ao ACL, exigindo motores de simulação específicos.
                 </p>
               </div>
-              <div class="reg-card-impact">Impacto: Atores integrados como infraestrutura</div>
+              <div class="reg-card-impact">Comparação de premissas distintas</div>
+            </div>
+
+            <div class="reg-history-card">
+              <div>
+                <span class="reg-year-badge">DIGITALIZAÇÃO CCEE</span>
+                <h3 class="reg-card-title">Plataforma Centralizada</h3>
+                <p class="reg-card-desc">
+                  A CCEE avança na digitalização das migrações e planeja a futura plataforma pública centralizada de comparação de ofertas.
+                </p>
+              </div>
+              <div class="reg-card-impact">Infraestrutura pública aberta</div>
             </div>
           </div>
 
           <div class="reg-footer-banner">
-            <div><strong>Diretriz Estratégica:</strong> A Milet opera sobre os trilhos públicos da CCEE e das distribuidoras, entregando inteligência soberana e personalizada ao consumidor.</div>
-            <span style="font-family: var(--font-mono); font-size: 11px;">Fontes: BR-REG-01 a 07</span>
+            <div><strong>Tese Acadêmica:</strong> A Milet não deve ser defendida pela tese “não existe comparador”. A comparação básica tende a se tornar infraestrutura.</div>
+            <span style="font-family: var(--font-mono); font-size: 11px;">Relatório N1 · Seção 2.1</span>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 5 — ESTADO DA ARTE 2/3: BENCHMARKS INTERNACIONAIS [3,0 pts]
+           SLIDE 5 — ESTADO DA ARTE 2/3: SOLUÇÕES EXISTENTES [3,0 pts] (50s)
            ==================================================================== -->
       <section class="slide" id="slide-5" data-slide="5">
         <div class="slide-header">
@@ -285,99 +295,8 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 05 · Estado da Arte (2/3) [3,0 pts]</span>
             </div>
-            <h2 class="slide-title">O que os líderes globais nos ensinaram sobre <em>inteligência e automação energética</em>.</h2>
-            <p class="slide-subtitle">Análise dos modelos de referência internacionais em dados, concierge, marketplaces e rastreabilidade.</p>
-          </div>
-        </div>
-
-        <div class="slide-body">
-          <div class="benchmarks-grid">
-            <!-- ARCADIA -->
-            <div class="benchmark-card">
-              <div>
-                <div class="benchmark-header">
-                  <span class="benchmark-geo">EUA · Global</span>
-                  <span style="font-size: 11px; color: var(--color-sand);">Data Platform</span>
-                </div>
-                <h3 class="benchmark-name">Arcadia</h3>
-                <div class="benchmark-model">API Utility Data Engine</div>
-                <p class="benchmark-desc">
-                  Desenvolveu tecnologia de ponta para conectar e ingerir dados de faturas de centenas de distribuidoras americanas, automatizando adesão a projetos de energia solar comunitária (*community solar*).
-                </p>
-              </div>
-              <div class="benchmark-takeaway">
-                <strong>Aprendizado Milet:</strong> A ingestão padronizada de faturas elétricas é a chave de entrada do produto.
-              </div>
-            </div>
-
-            <!-- ENERGY OGRE -->
-            <div class="benchmark-card" style="border-color: var(--color-amber);">
-              <div>
-                <div class="benchmark-header">
-                  <span class="benchmark-geo">Texas · ERCOT</span>
-                  <span style="font-size: 11px; color: var(--color-amber);">Concierge Puro</span>
-                </div>
-                <h3 class="benchmark-name">Energy Ogre</h3>
-                <div class="benchmark-model">Automação Paga pelo Usuário</div>
-                <p class="benchmark-desc">
-                  Opera como concierge neutro no mercado livre do Texas. O cliente paga US$ 10/mês para o software monitorar contratos, simular curvas de carga e trocar de fornecedor periodicamente sem conflito de interesses.
-                </p>
-              </div>
-              <div class="benchmark-takeaway" style="border-left-color: var(--color-amber);">
-                <strong>Aprendizado Milet:</strong> A relação recorrente pós-contrato cria mais valor que a comparação pontual.
-              </div>
-            </div>
-
-            <!-- PICLO / ELECTRON -->
-            <div class="benchmark-card">
-              <div>
-                <div class="benchmark-header">
-                  <span class="benchmark-geo">Reino Unido</span>
-                  <span style="font-size: 11px; color: var(--color-sand);">Marketplace DER</span>
-                </div>
-                <h3 class="benchmark-name">Piclo & Electron</h3>
-                <div class="benchmark-model">Leilão de Flexibilidade</div>
-                <p class="benchmark-desc">
-                  Plataformas digitais onde operadores de distribuição de energia (DNOs) abrem leilões padronizados para contratar capacidade e flexibilidade de geradores distribuídos e baterias locais.
-                </p>
-              </div>
-              <div class="benchmark-takeaway">
-                <strong>Aprendizado Milet:</strong> O mecanismo de RFQ reverso padronizado gera liquidez e reduz custos de transação.
-              </div>
-            </div>
-
-            <!-- POWERLEDGER -->
-            <div class="benchmark-card">
-              <div>
-                <div class="benchmark-header">
-                  <span class="benchmark-geo">Austrália / Europa</span>
-                  <span style="font-size: 11px; color: var(--color-sand);">Auditabilidade</span>
-                </div>
-                <h3 class="benchmark-name">Powerledger</h3>
-                <div class="benchmark-model">Rastreabilidade & I-REC</div>
-                <p class="benchmark-desc">
-                  Plataforma de software para liquidação e rastreabilidade auditável de energia renovável, garantindo que créditos de geração e certificados ambientais tenham prova digital imutável.
-                </p>
-              </div>
-              <div class="benchmark-takeaway">
-                <strong>Aprendizado Milet:</strong> Auditoria transparente é fundamental para sustentar governança contínua.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           SLIDE 6 — ESTADO DA ARTE 3/3: MATRIZ DE DIFERENCIAÇÃO [3,0 pts]
-           ==================================================================== -->
-      <section class="slide" id="slide-6" data-slide="6">
-        <div class="slide-header">
-          <div>
-            <div class="slide-eyebrow-row">
-              <span class="slide-eyebrow"><span class="dot"></span> 06 · Estado da Arte (3/3) [3,0 pts]</span>
-            </div>
-            <h2 class="slide-title">Por que a Milet é única: a integração contínua do <em>Passaporte ao Savings Ledger</em>.</h2>
-            <p class="slide-subtitle">Matriz de comparação multidimensional frente a soluções existentes e à futura plataforma estatal da CCEE.</p>
+            <h2 class="slide-title">Mapeamento do mercado: <em>soluções existentes e referências</em>.</h2>
+            <p class="slide-subtitle">Matriz enxuta baseada estritamente nas referências documentadas no relatório N1.</p>
           </div>
         </div>
 
@@ -386,76 +305,100 @@
             <table class="state-matrix">
               <thead>
                 <tr>
-                  <th>Dimensão de Engenharia</th>
-                  <th>Arcadia (EUA)</th>
-                  <th>Energy Ogre (EUA)</th>
-                  <th>Piclo / Electron (UK)</th>
-                  <th>Plataforma CCEE (BR)</th>
-                  <th class="milet-col">Milet Energia</th>
+                  <th>Solução / Player</th>
+                  <th>Modelo de Atuação</th>
+                  <th>Escopo Documentado no Relatório N1</th>
+                  <th>Foco de Mercado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>1. Analytics & Parser de Fatura</strong></td>
-                  <td><span class="check-tag">✓ Forte (API)</span></td>
-                  <td><span class="partial-tag">◐ Básico</span></td>
-                  <td><span class="no-tag">✗ Ausente</span></td>
-                  <td><span class="partial-tag">◐ Em definição</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ Passaporte Energético</span></td>
+                  <td><strong>UC Livre</strong></td>
+                  <td>Marketplace + RFQ + Comparação</td>
+                  <td>Plataforma de cotação de energia no mercado livre com leilão reverso e comparação de propostas.</td>
+                  <td>Consumidores Grupo A / ACL</td>
                 </tr>
                 <tr>
-                  <td><strong>2. Comparação Multimodal (GD x ACL x EPC)</strong></td>
-                  <td><span class="partial-tag">◐ Foco em GD</span></td>
-                  <td><span class="partial-tag">◐ Apenas Varejo</span></td>
-                  <td><span class="no-tag">✗ Apenas Flex</span></td>
-                  <td><span class="no-tag">✗ Apenas Varejo Livre</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ Diagnóstico Neutro</span></td>
+                  <td><strong>Deskonta</strong></td>
+                  <td>Marketplace / Geração Distribuída</td>
+                  <td>Conexão direta entre consumidores e cooperativas/usinas de geração distribuída compartilhada.</td>
+                  <td>Geração Distribuída (GD)</td>
                 </tr>
                 <tr>
-                  <td><strong>3. Marketplace de Ofertas / RFQ Reverso</strong></td>
-                  <td><span class="no-tag">✗ Bilateral</span></td>
-                  <td><span class="no-tag">✗ Curadoria própria</span></td>
-                  <td><span class="check-tag">✓ Leilão de Flex</span></td>
-                  <td><span class="partial-tag">◐ Lista pública de preços</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ RFQ Padronizado</span></td>
+                  <td><strong>Energy Ogre</strong></td>
+                  <td>Gestão Recorrente de Contratação</td>
+                  <td>Concierge independente que busca, negocia e troca contratos de energia continuamente (EUA/Texas).</td>
+                  <td>Gestão Recorrente Assinada</td>
                 </tr>
                 <tr>
-                  <td><strong>4. Execução & Esteira de Migração</strong></td>
-                  <td><span class="partial-tag">◐ Assinatura GD</span></td>
-                  <td><span class="check-tag">✓ Troca por procuração</span></td>
-                  <td><span class="no-tag">✗ Sem migração</span></td>
-                  <td><span class="no-tag">✗ Redireciona ao agente</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ Workflow Ponta a Ponta</span></td>
+                  <td><strong>EnergySage</strong></td>
+                  <td>Marketplace + Propostas Comparáveis</td>
+                  <td>Marketplace transparente de energia solar e eficiência com cotações padronizadas e neutras.</td>
+                  <td>Comparação e Transparência</td>
                 </tr>
                 <tr>
-                  <td><strong>5. Gestão Recorrente & Razão de Economia</strong></td>
-                  <td><span class="partial-tag">◐ Dashboard simples</span></td>
-                  <td><span class="check-tag">✓ Troca periódica</span></td>
-                  <td><span class="no-tag">✗ Transacional</span></td>
-                  <td><span class="no-tag">✗ Não faz gestão</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ Auditoria Realizada x Prevista</span></td>
-                </tr>
-                <tr>
-                  <td><strong>6. Rastreabilidade & Neutralidade</strong></td>
-                  <td><span class="partial-tag">◐ Parceiro de usinas</span></td>
-                  <td><span class="check-tag">✓ Paga pelo cliente</span></td>
-                  <td><span class="check-tag">✓ Plataforma neutra</span></td>
-                  <td><span class="check-tag">✓ Plataforma estatal</span></td>
-                  <td class="milet-col"><span class="check-tag">✓ Independência e Moat</span></td>
+                  <td><strong>CCEE</strong></td>
+                  <td>Infraestrutura de Mercado</td>
+                  <td>Contabilização, liquidação setorial e futura plataforma pública centralizada de comparação.</td>
+                  <td>Infraestrutura Estatal Regulada</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="state-hypothesis-footer">
-            <p><strong>Diferencial Estrutural:</strong> A futura plataforma pública da CCEE será um catálogo de preços; o valor computacional e defensável da Milet está no <em>diagnóstico na fatura, no leilão via RFQ e na auditoria contínua de economia real</em>.</p>
-            <span style="font-family: var(--font-mono); font-size: 11px;">Estado da Arte v0.1</span>
+          <div class="state-hypothesis-footer" style="margin-top: 24px;">
+            <p><strong>Rigor Acadêmico:</strong> Matriz construída sem atribuir características que não estejam estritamente documentadas no relatório N1.</p>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber);">Relatório N1 · Seção 2.2</span>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 7 — PLANO DE PROJETO 1/3: PERFIS DE USUÁRIOS [2,0 pts]
+           SLIDE 6 — ESTADO DA ARTE 3/3: LACUNA INVESTIGADA [3,0 pts] (45–50s)
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-slide="6">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 06 · Estado da Arte (3/3) [3,0 pts]</span>
+            </div>
+            <h2 class="slide-title">A lacuna investigada: <em>a integração contínua dos mecanismos</em>.</h2>
+            <p class="slide-subtitle">Como os componentes isolados se unem em uma hipótese acadêmica de engenharia.</p>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 20px;">
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Passaporte Energético</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Motor de Rotas</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Comparação Normalizada</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">RFQ Reverso</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Workflow de Execução</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Savings Ledger</div>
+            <span style="color: var(--color-amber); font-weight: 700; font-size: 18px;">+</span>
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); padding: 14px 18px; border-radius: 8px; font-weight: 600; color: var(--color-ivory);">Reotimização</div>
+          </div>
+
+          <div style="margin-top: 36px; background: linear-gradient(145deg, #2A261F 0%, #1E1E1E 100%); border: 2px solid var(--color-amber); border-radius: 12px; padding: 32px; text-align: center;">
+            <h3 style="font-family: var(--font-display); font-size: 26px; color: var(--color-amber); margin-bottom: 14px;">Hipótese Acadêmica do Projeto</h3>
+            <p style="font-size: 20px; color: var(--color-ivory); line-height: 1.5; font-family: var(--font-display);">
+              “Os componentes existem isoladamente. A hipótese acadêmica é testar a integração desses mecanismos em uma jornada contínua adequada ao contexto brasileiro.”
+            </p>
+          </div>
+
+          <div style="margin-top: 20px; font-size: 12px; color: var(--color-sand); text-align: center; font-family: var(--font-mono);">
+            Abordagem sobriedade científica: sem reivindicações de ineditismo absoluto comercial ("somos únicos" / "sem concorrentes").
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 7 — PLANO DE PROJETO 1/3: PERFIS E PROPOSTA DE VALOR [2,0 pts] (45s)
            ==================================================================== -->
       <section class="slide" id="slide-7" data-slide="7">
         <div class="slide-header">
@@ -463,78 +406,42 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 07 · Plano de Projeto (1/3) [2,0 pts]</span>
             </div>
-            <h2 class="slide-title">Engenharia focada em quem decide: <em>o decisor PME no centro da plataforma</em>.</h2>
-            <p class="slide-subtitle">Mapeamento das partes interessadas e o Value Proposition Canvas para o perfil prioritário (UP-01).</p>
+            <h2 class="slide-title">Perfis e Proposta de Valor: <em>Jobs, Pains e Gains</em>.</h2>
+            <p class="slide-subtitle">Engenharia orientada a requisitos reais do Fibery, com destaque para o perfil prioritário Consumidor PME.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="profiles-layout">
-            <!-- PRIORITÁRIO COM ARTEFATO CANVAS -->
-            <div class="priority-profile-card">
-              <div>
-                <span class="profile-tag">Prioridade Absoluta · MVP</span>
-                <h3 class="priority-profile-title">UP-01 · Consumidor PME / Decisor Energético</h3>
-                <p class="priority-profile-subtitle">Comércio, escritórios, pequenas indústrias e clínicas (Grupo B e Grupo A).</p>
-
-                <!-- IMAGEM CUSTOMER PROFILE CANVAS -->
-                <div style="margin: 12px 0; background: #FFFFFF; border-radius: 8px; padding: 8px; border: 1px solid var(--color-amber);">
-                  <img src="assets/customer-profile-canvas.png" alt="Customer Profile Canvas UP-01" style="width: 100%; height: auto; border-radius: 4px; object-fit: contain;">
-                </div>
-
-                <div class="profile-block">
-                  <div class="profile-section-title">Job to be Done (Objetivo Central)</div>
-                  <p>Reduzir custos operacionais de energia e contratar a rota mais vantajosa com segurança jurídica, sem precisar entender a sopa de letrinhas regulatória.</p>
-                </div>
-              </div>
-
-              <div class="profile-block" style="margin-bottom: 0;">
-                <div class="profile-section-title">Momento Milet</div>
-                <p>Ingestão de fatura em segundos, diagnóstico comparativo claro e esteira de contratação assistida com comprovação mensal de economia.</p>
+          <div style="display: grid; grid-template-columns: 1.6fr 1.4fr; gap: 24px; align-items: center; margin-top: 10px;">
+            <!-- PRINT FIBERY USER PROFILES -->
+            <div style="background: #FFFFFF; border-radius: 8px; padding: 10px; border: 1.5px solid var(--color-amber); text-align: center;">
+              <img src="assets/fibery-user-profiles-jobs-pains-gains.png" alt="Fibery User Profiles Jobs Pains Gains" style="width: 100%; height: auto; border-radius: 4px; object-fit: contain; max-height: 420px;">
+              <div style="margin-top: 6px; font-size: 11px; color: #555555; font-family: var(--font-mono);">
+                Print do Fibery: Academic · User Profiles · Jobs Pains Gains
               </div>
             </div>
 
-            <!-- SECUNDÁRIOS -->
-            <div class="secondary-profiles-grid">
-              <div class="secondary-profile-card">
-                <div class="sec-profile-header">
-                  <span class="sec-profile-code">UP-03</span>
-                  <span class="sec-profile-role">Oferta / Ativos</span>
+            <!-- CROP VPC & MENSAGEM DO SLIDE -->
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="background: #FFFFFF; border-radius: 8px; padding: 8px; border: 1px solid var(--color-carbon-border);">
+                <img src="assets/fibery-value-proposition-canvas.png" alt="Fibery Value Proposition Canvas Crop" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; border-radius: 4px;">
+                <div style="margin-top: 4px; font-size: 10px; color: #555; font-family: var(--font-mono); text-align: center;">
+                  Academic · Value Proposition Canvas
                 </div>
-                <h4 class="sec-profile-name">Gerador / Dono de Usina</h4>
-                <p class="sec-profile-job">Ocupar capacidade ociosa de geração, reduzir CAC e dar previsibilidade à receita sem depender de intermediários predatórios.</p>
               </div>
 
-              <div class="secondary-profile-card">
-                <div class="sec-profile-header">
-                  <span class="sec-profile-code">UP-04</span>
-                  <span class="sec-profile-role">Oferta / Mercado</span>
-                </div>
-                <h4 class="sec-profile-name">Comercializadora Varejista</h4>
-                <p class="sec-profile-job">Receber demanda qualificada e disputar contratos em leilão padronizado com baixo custo de aquisição.</p>
+              <div style="background: var(--color-carbon-card); border-left: 3px solid var(--color-amber); padding: 16px; border-radius: 0 8px 8px 0;">
+                <h4 style="font-family: var(--font-display); font-size: 18px; color: var(--color-ivory); margin-bottom: 6px;">Perfis Prioritários</h4>
+                <ul style="font-size: 13px; color: var(--color-sand); line-height: 1.5; list-style: square; padding-left: 18px;">
+                  <li><strong>Consumidor PME / Decisor Energético</strong> (Destaque Absoluto)</li>
+                  <li>Operador Milet</li>
+                  <li>Comercializadora / Fornecedor</li>
+                  <li>EPC / Integrador Solar</li>
+                </ul>
               </div>
 
-              <div class="secondary-profile-card">
-                <div class="sec-profile-header">
-                  <span class="sec-profile-code">UP-05</span>
-                  <span class="sec-profile-role">Engenharia / Parceiro</span>
-                </div>
-                <h4 class="sec-profile-name">EPC / Integrador Solar</h4>
-                <p class="sec-profile-job">Receber leads qualificados para projetos de usina própria no local, integrando orçamento técnico e execução de obras.</p>
-              </div>
-
-              <div class="secondary-profile-card">
-                <div class="sec-profile-header">
-                  <span class="sec-profile-code">UP-06</span>
-                  <span class="sec-profile-role">Operação Interna</span>
-                </div>
-                <h4 class="sec-profile-name">Operador Milet</h4>
-                <p class="sec-profile-job">Gerenciar esteiras de atendimento, tratar exceções de faturas, monitorar SLAs de migração e auditar dados elétricos.</p>
-              </div>
-
-              <div class="future-profiles-banner">
-                <span><strong>Expansão Futura (Pós-MVP):</strong> UP-02 Residencial, UP-07 Canais B2B2C e UP-08 Investidores de Capital.</span>
-                <span style="font-family: var(--font-mono); font-size: 11px;">Mapeados no Domínio</span>
+              <div style="background: rgba(211, 155, 61, 0.1); border: 1px solid var(--color-amber); padding: 12px; border-radius: 6px; font-size: 13px; color: var(--color-ivory);">
+                <strong>Mensagem:</strong> Os perfis orientam requisitos e backlog; não são personas de marketing.
               </div>
             </div>
           </div>
@@ -542,7 +449,7 @@
       </section>
 
       <!-- ====================================================================
-           SLIDE 8 — PLANO DE PROJETO 2/3: ARQUITETURA & STORIES [2,0 pts]
+           SLIDE 8 — PLANO DE PROJETO 2/3: EPICS, USER STORIES E MVP [2,0 pts] (55s)
            ==================================================================== -->
       <section class="slide" id="slide-8" data-slide="8">
         <div class="slide-header">
@@ -550,104 +457,54 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 08 · Plano de Projeto (2/3) [2,0 pts]</span>
             </div>
-            <h2 class="slide-title">Da leitura da conta à economia comprovada: <em>épicos do produto e o recorte do MVP</em>.</h2>
-            <p class="slide-subtitle">A espinha dorsal de software: da descoberta e ingestão via OCR à auditoria recorrente de economia.</p>
+            <h2 class="slide-title">Épicos, User Stories e a <em>construção do MVP em Projetos I</em>.</h2>
+            <p class="slide-subtitle">A espinha dorsal das 28 User Stories e a entrega da primeira versão funcional no semestre atual.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <!-- ARTEFATO 1: ÉPICOS DO PRODUTO E RECORTE DO MVP (NOVA IMAGEM EM ALTA RESOLUÇÃO) -->
-          <div class="jornada-mvp-card" style="background: #141414; border-color: var(--color-amber);">
-            <div class="jornada-mvp-header">
-              <span class="jornada-mvp-title" style="color: var(--color-ivory);">Milet · Épicos do Produto e Recorte do MVP</span>
-              <span class="jornada-mvp-badge">Épicos EP-01 a EP-06 & Escopo P0</span>
-            </div>
-            <div class="jornada-mvp-img-wrapper" style="background: #0D0D0D; border-color: var(--color-carbon-border);">
-              <img src="assets/milet-epicos-mvp.png" alt="Milet Épicos do Produto e Recorte do MVP" class="jornada-mvp-img" style="filter: contrast(1.06) brightness(1.04);">
-            </div>
-          </div>
-
-          <!-- ARTEFATO 2: JORNADA DE VALOR DO MVP (IMAGEM 5 EM ALTA RESOLUÇÃO) -->
-          <div class="jornada-mvp-card" style="margin-top: 14px;">
-            <div class="jornada-mvp-header">
-              <span class="jornada-mvp-title">Jornada de Valor Prevista para o MVP e Suas Evoluções</span>
-              <span class="jornada-mvp-badge">Arquitetura da Experiência · 6 Passos Contínuos</span>
-            </div>
-            <div class="jornada-mvp-img-wrapper">
-              <img src="assets/jornada-de-valor-mvp.png" alt="Jornada de Valor Prevista para o MVP Milet" class="jornada-mvp-img">
-            </div>
-          </div>
-
-          <div class="stories-track" style="margin-top: 14px;">
-            <!-- US-002 -->
-            <div class="story-card pillar">
-              <span class="story-pillar-badge">Pilar Entrada</span>
-              <span class="story-id">US-002</span>
-              <h3 class="story-name">Upload & OCR Fatura</h3>
-              <p class="story-body-text">Como decisor, quero enviar minha fatura para estruturar meus dados elétricos automaticamente.</p>
-              <div class="story-outcome">Critério: Extração de consumo, TUSD, TE e elegibilidade</div>
+          <div style="display: grid; grid-template-columns: 1.5fr 1.5fr; gap: 24px; align-items: center; margin-top: 10px;">
+            <!-- PRINT FIBERY EPICS MVP -->
+            <div style="background: #141414; border-radius: 8px; padding: 10px; border: 1.5px solid var(--color-amber); text-align: center;">
+              <img src="assets/fibery-epics-mvp.png" alt="Fibery Epics & MVP Whiteboard" style="width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 6px; font-size: 11px; color: var(--color-sand); font-family: var(--font-mono);">
+                Print do Fibery: Academic · Epics & MVP · Whiteboard
+              </div>
             </div>
 
-            <!-- US-006 -->
-            <div class="story-card">
-              <span class="story-id">US-006</span>
-              <h3 class="story-name">Rotas Aplicáveis</h3>
-              <p class="story-body-text">Como decisor, quero saber quais rotas energéticas são aplicáveis e por que as demais foram excluídas.</p>
-              <div class="story-outcome">Critério: Filtro determinístico ACR vs GD vs ACL</div>
-            </div>
+            <!-- LISTA DE STORIES PRINCIPAIS & TEXTO OFICIAL MVP -->
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 16px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">FLUXO PRINCIPAL DO BACKLOG (28 STORIES NO RELATÓRIO)</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; font-size: 12px; color: var(--color-ivory);">
+                  <div><strong>US-001:</strong> Descoberta / Elegibilidade</div>
+                  <div><strong>US-002:</strong> Ingestão de Fatura</div>
+                  <div><strong>US-006:</strong> Filtro de Rotas</div>
+                  <div><strong>US-010:</strong> Disparo de RFQ</div>
+                  <div><strong>US-013:</strong> Comparação Normalizada</div>
+                  <div><strong>US-019:</strong> Esteira de Execução</div>
+                  <div><strong>US-021:</strong> Auditoria de Economia</div>
+                  <div><strong>US-027:</strong> Rastreabilidade / Audit</div>
+                </div>
+              </div>
 
-            <!-- US-010 -->
-            <div class="story-card">
-              <span class="story-id">US-010</span>
-              <h3 class="story-name">RFQ Padronizado</h3>
-              <p class="story-body-text">Como decisor, quero abrir um RFQ a partir do meu Passaporte para solicitar ofertas estruturadas.</p>
-              <div class="story-outcome">Critério: Disparo de cotação com premissas idênticas</div>
-            </div>
+              <div style="background: linear-gradient(145deg, #2A261F 0%, #1E1E1E 100%); border: 2px solid var(--color-amber); border-radius: 8px; padding: 18px;">
+                <h4 style="font-family: var(--font-display); font-size: 20px; color: var(--color-amber); margin-bottom: 6px;">Posicionamento do MVP em Projetos I</h4>
+                <p style="font-size: 15px; color: var(--color-ivory); line-height: 1.45; font-weight: 500;">
+                  “MVP Projetos I: primeira versão funcional do fluxo prioritário, com integrações simuladas ou operação assistida quando necessário.”
+                </p>
+              </div>
 
-            <!-- US-013 -->
-            <div class="story-card pillar">
-              <span class="story-pillar-badge">Pilar Decisão</span>
-              <span class="story-id">US-013</span>
-              <h3 class="story-name">Comparação Normalizada</h3>
-              <p class="story-body-text">Como decisor, quero comparar propostas lado a lado sob a mesma régua de custo líquido e risco.</p>
-              <div class="story-outcome">Critério: Normalização de indexadores, prazos e multas</div>
+              <div style="font-size: 11px; color: var(--color-sand); font-family: var(--font-mono);">
+                Nota: O relatório N1 detalha todas as 28 User Stories com critérios de aceite BDD.
+              </div>
             </div>
-
-            <!-- US-019 -->
-            <div class="story-card">
-              <span class="story-id">US-019</span>
-              <h3 class="story-name">Esteira de Migração</h3>
-              <p class="story-body-text">Como decisor, quero acompanhar uma linha do tempo com status e responsáveis para não perder o controle.</p>
-              <div class="story-outcome">Critério: Trilha de status, prazos e checklist</div>
-            </div>
-
-            <!-- US-021 -->
-            <div class="story-card pillar">
-              <span class="story-pillar-badge">Pilar Valor</span>
-              <span class="story-id">US-021</span>
-              <h3 class="story-name">Razão de Economia</h3>
-              <p class="story-body-text">Como decisor, quero comparar economia prevista e realizada para verificar se o resultado foi entregue.</p>
-              <div class="story-outcome">Critério: Confronto baseline vs faturas posteriores</div>
-            </div>
-
-            <!-- US-027 -->
-            <div class="story-card">
-              <span class="story-id">US-027</span>
-              <h3 class="story-name">Rastreabilidade</h3>
-              <p class="story-body-text">Como operador/auditor, quero rastrear origem dos dados, regras e aprovações para reconstruir decisões.</p>
-              <div class="story-outcome">Critério: Logs imutáveis e conformidade LGPD</div>
-            </div>
-          </div>
-
-          <div class="stories-legend">
-            <div>Destaque em <strong>US-002, US-013 e US-021</strong>: os 3 pontos de inflexão onde o valor de software é provado.</div>
-            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--color-amber);">Total mapeado no relatório: 28 User Stories</div>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 9 — PLANO DE PROJETO 3/3: BMC & CORTE MVP [2,0 pts]
+           SLIDE 9 — PLANO DE PROJETO 3/3: BUSINESS MODEL CANVAS [2,0 pts] (40s)
            ==================================================================== -->
       <section class="slide" id="slide-9" data-slide="9">
         <div class="slide-header">
@@ -655,51 +512,43 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 09 · Plano de Projeto (3/3) [2,0 pts]</span>
             </div>
-            <h2 class="slide-title">Modelo de valor sustentável e o <em>recorte cirúrgico das 14 histórias do MVP</em>.</h2>
-            <p class="slide-subtitle">O Business Model Canvas v0.1 oficial da Strategyzer e a segregação das 14 histórias P0.</p>
+            <h2 class="slide-title">Business Model Canvas: <em>hipóteses em validação</em>.</h2>
+            <p class="slide-subtitle">O mapeamento estruturado do modelo de valor no Fibery sob a regra da Strategyzer.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="bmc-deck-layout">
-            <div class="bmc-img-wrapper" style="background: #FFFFFF; padding: 12px; border-radius: 8px;">
-              <img src="assets/bmc.png" alt="Business Model Canvas Milet v0.1 Oficial Strategyzer" style="width: 100%; height: auto; object-fit: contain; filter: contrast(1.05);">
-              <div style="margin-top: 8px; font-size: 11px; color: #555555; font-family: var(--font-mono); text-align: center;">
-                Artefato Oficial Strategyzer · Business Model Canvas Milet v0.1 (Matriz de Hipóteses)
+          <div style="display: grid; grid-template-columns: 1.6fr 1.4fr; gap: 24px; align-items: center; margin-top: 10px;">
+            <!-- PRINT REAL DO FIBERY BMC V02 -->
+            <div style="background: #FFFFFF; border-radius: 8px; padding: 10px; border: 1.5px solid var(--color-amber); text-align: center;">
+              <img src="assets/fibery-bmc-v02.png" alt="Fibery Business Model Canvas v0.2" style="width: 100%; height: auto; max-height: 420px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 6px; font-size: 11px; color: #555555; font-family: var(--font-mono);">
+                Print do Fibery: Academic · BMC · Whiteboard v0.2
               </div>
             </div>
 
-            <div class="bmc-pillars-list">
-              <div class="bmc-pillar-card">
-                <div class="bmc-pillar-header">
-                  <h4 class="bmc-pillar-name">Segmento Inicial</h4>
-                  <span class="bmc-pillar-badge">Foco MVP</span>
-                </div>
-                <p class="bmc-pillar-desc">PMEs comerciais e industriais que buscam economia em contas de energia sem assumir CAPEX nem risco técnico interno.</p>
+            <!-- DESTAQUES FORA DO PRINT NO HTML -->
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-family: var(--font-display); font-size: 22px; color: var(--color-ivory);">Pilares Estruturais</span>
+                <span class="cover-badge" style="background: var(--color-amber); color: var(--color-carbon); font-weight: 700;">BMC v0.1 · hipóteses em validação</span>
               </div>
 
-              <div class="bmc-pillar-card">
-                <div class="bmc-pillar-header">
-                  <h4 class="bmc-pillar-name">Proposta de Valor</h4>
-                  <span class="bmc-pillar-badge">4 Pilares</span>
-                </div>
-                <p class="bmc-pillar-desc">Decisão neutra + Competição via RFQ + Execução assistida de migração + Gestão contínua com auditoria mensal de economia real.</p>
+              <div style="background: var(--color-carbon-card); border-left: 3px solid var(--color-amber); padding: 14px; border-radius: 0 6px 6px 0;">
+                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">SEGMENTO PRIORITÁRIO</span>
+                <p style="font-size: 14px; color: var(--color-ivory); margin-top: 4px;">PMEs / Consumidores Empresariais (Grupo A e Grupo B comercial)</p>
               </div>
 
-              <div class="bmc-pillar-card">
-                <div class="bmc-pillar-header">
-                  <h4 class="bmc-pillar-name">Hipóteses de Receita</h4>
-                  <span class="bmc-pillar-badge">Em Validação</span>
-                </div>
-                <p class="bmc-pillar-desc">Taxa transparente de originação paga por geradores/comercializadoras elegíveis ou modelo de concierge/assinatura pelo decisor.</p>
+              <div style="background: var(--color-carbon-card); border-left: 3px solid var(--color-amber); padding: 14px; border-radius: 0 6px 6px 0;">
+                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber);">PROPOSTA DE VALOR CONTÍNUA</span>
+                <p style="font-size: 13px; color: var(--color-ivory); margin-top: 4px; font-family: var(--font-mono);">
+                  entender ➔ comparar ➔ competir ➔ executar ➔ acompanhar ➔ reotimizar
+                </p>
               </div>
 
-              <div class="bmc-pillar-card">
-                <div class="bmc-pillar-header">
-                  <h4 class="bmc-pillar-name">Corte Estrito do MVP (P0)</h4>
-                  <span class="bmc-pillar-badge">14 Stories</span>
-                </div>
-                <p class="bmc-pillar-desc">US-002, 003, 006–010, 012–013, 016, 019, 021, 025, 027: do upload da fatura à comprovação de economia auditada.</p>
+              <div style="background: var(--color-carbon-card); border-left: 3px solid var(--color-sand); padding: 14px; border-radius: 0 6px 6px 0;">
+                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">FONTE DE RECEITAS</span>
+                <p style="font-size: 13px; color: var(--color-sand); margin-top: 4px;">Hipóteses de taxas de originação/concierge, ainda não validadas comercialmente.</p>
               </div>
             </div>
           </div>
@@ -707,7 +556,7 @@
       </section>
 
       <!-- ====================================================================
-           SLIDE 10 — CRONOGRAMA 1/2: GANTT GERAL [2,0 pts]
+           SLIDE 10 — CRONOGRAMA 1/2: PROJETOS I (2026.2) [2,0 pts] (45s)
            ==================================================================== -->
       <section class="slide" id="slide-10" data-slide="10">
         <div class="slide-header">
@@ -715,38 +564,73 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 10 · Cronograma (1/2) [2,0 pts]</span>
             </div>
-            <h2 class="slide-title">Planejamento físico de execução: <em>de Agosto/2026 a Junho/2027</em>.</h2>
-            <p class="slide-subtitle">Linha do tempo oficial extraída do Fibery cobrindo o ciclo de 11 meses (Projetos I + II).</p>
+            <h2 class="slide-title">Cronograma Oficial: <em>Projetos I (2026.2)</em>.</h2>
+            <p class="slide-subtitle">Datas oficiais e a entrega da primeira versão funcional do MVP no marco obrigatório de 19/10/2026.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <!-- ARTEFATO FIBERY: CRONOGRAMA REAL DO FIBERY EM ALTA RESOLUÇÃO -->
-          <div class="fibery-cronograma-container">
-            <div class="fibery-card">
-              <div class="fibery-card-header">
-                <div class="fibery-card-title">
-                  <span style="color: var(--color-amber);">⚡ Academic · Cronograma Projetos I + II</span>
-                </div>
-                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">Visão Oficial do Fibery (Setembro/2026 a Junho/2027)</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div>
-                  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber); margin-bottom: 6px; font-weight: 700;">PROJETOS I (2026.2) — ETAPA DE DESCOBERTA E PLANO</div>
-                  <img src="assets/fibery-cronograma-p1.png" alt="Cronograma Fibery Projetos I 2026.2" class="fibery-card-img">
-                </div>
-                <div>
-                  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber); margin-bottom: 6px; font-weight: 700;">PROJETOS II (2027.1) — DESENVOLVIMENTO E PILOTO</div>
-                  <img src="assets/fibery-cronograma-p2.png" alt="Cronograma Fibery Projetos II 2027.1" class="fibery-card-img">
-                </div>
-              </div>
+          <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 15px;">
+            <!-- ETAPA 1 -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">10/08 – 20/09</span>
+              <h4 style="font-size: 13px; color: var(--color-ivory); margin-top: 6px;">Discovery</h4>
+              <p style="font-size: 11px; color: var(--color-sand); margin-top: 4px;">Tema, problema, perfis e Estado da Arte</p>
             </div>
+
+            <!-- ETAPA 2 -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">21/09 – 28/09</span>
+              <h4 style="font-size: 13px; color: var(--color-ivory); margin-top: 6px;">Plano N1</h4>
+              <p style="font-size: 11px; color: var(--color-sand); margin-top: 4px;">Plano de Projeto, Canvas, backlog e cronograma</p>
+            </div>
+
+            <!-- ETAPA 3: CONSTRUÇÃO MVP -->
+            <div style="background: rgba(211, 155, 61, 0.15); border: 1.5px solid var(--color-amber); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-amber); font-weight: 700;">29/09 – 18/10</span>
+              <h4 style="font-size: 13px; color: var(--color-amber); margin-top: 6px;">Construção MVP</h4>
+              <p style="font-size: 11px; color: var(--color-ivory); margin-top: 4px;">Construção da 1ª versão funcional do MVP</p>
+            </div>
+
+            <!-- ETAPA 4: CHECKPOINT MARCO 19/10 -->
+            <div style="background: var(--color-amber); border: 2px solid var(--color-amber-light); border-radius: 8px; padding: 14px 10px; color: var(--color-carbon);">
+              <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; text-transform: uppercase;">19/10/2026</span>
+              <h4 style="font-size: 14px; font-weight: 800; margin-top: 4px;">ENTREGA MVP</h4>
+              <p style="font-size: 11px; font-weight: 700; margin-top: 4px;">Apresentação e validação do MVP funcional</p>
+            </div>
+
+            <!-- ETAPA 5: SSDLC -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">26/10 em diante</span>
+              <h4 style="font-size: 13px; color: var(--color-ivory); margin-top: 6px;">SSDLC & Seg.</h4>
+              <p style="font-size: 11px; color: var(--color-sand); margin-top: 4px;">SSDLC, segurança e conformidade LGPD</p>
+            </div>
+
+            <!-- ETAPA 6: TESTES -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">09/11 em diante</span>
+              <h4 style="font-size: 13px; color: var(--color-ivory); margin-top: 6px;">Testes & Valid.</h4>
+              <p style="font-size: 11px; color: var(--color-sand); margin-top: 4px;">Hipóteses, testes e validação empírica</p>
+            </div>
+
+            <!-- ETAPA 7: FINAL -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 8px; padding: 14px 10px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">23/11 & 07/12</span>
+              <h4 style="font-size: 13px; color: var(--color-ivory); margin-top: 6px;">Fechamento N2</h4>
+              <p style="font-size: 11px; color: var(--color-sand); margin-top: 4px;">Apresentação final de Projetos I</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px; background: linear-gradient(145deg, #2A261F 0%, #1E1E1E 100%); border: 2px solid var(--color-amber); border-radius: 10px; padding: 22px; text-align: center;">
+            <p style="font-size: 22px; color: var(--color-ivory); font-family: var(--font-display);">
+              <strong>Mensagem do Marco:</strong> “O MVP não fica para Projetos II.”
+            </p>
           </div>
         </div>
       </section>
 
       <!-- ====================================================================
-           SLIDE 11 — CRONOGRAMA 2/2: TÉCNICAS DE GESTÃO & RISCOS [2,0 pts]
+           SLIDE 11 — CRONOGRAMA 2/2: GANTT + CONTINUIDADE EM PROJETOS II [2,0 pts] (40s)
            ==================================================================== -->
       <section class="slide" id="slide-11" data-slide="11">
         <div class="slide-header">
@@ -754,65 +638,36 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 11 · Cronograma (2/2) [2,0 pts]</span>
             </div>
-            <h2 class="slide-title">Garantia de pontualidade e qualidade: <em>BDD, SPIDER e mitigação de riscos</em>.</h2>
-            <p class="slide-subtitle">Técnicas modernas de engenharia para evitar estouro de prazos e gargalos regulatórios.</p>
+            <h2 class="slide-title">Gantt Geral & <em>Continuidade em Projetos II</em>.</h2>
+            <p class="slide-subtitle">A transição entre a versão funcional construída em Projetos I e o amadurecimento em Projetos II.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="mgmt-risks-layout">
-            <div class="mgmt-methods-col">
-              <div class="mgmt-mini-card">
-                <h4 class="mgmt-mini-title">Scrum + Kanban Híbrido</h4>
-                <p class="mgmt-mini-desc">Sprints com marcos acadêmicos sincronizados com o professor orientador e quadro visual contínuo com limites de WIP para evitar gargalos.</p>
-              </div>
-
-              <div class="mgmt-mini-card">
-                <h4 class="mgmt-mini-title">Critérios de Aceite BDD</h4>
-                <p class="mgmt-mini-desc">Especificação executável no formato <em>Dado que / Quando / Então</em> para todas as 28 histórias, servindo como base para suítes de testes automatizados.</p>
-              </div>
-
-              <div class="mgmt-mini-card">
-                <h4 class="mgmt-mini-title">Fatiamento SPIDER</h4>
-                <p class="mgmt-mini-desc">Desdobramento analítico das histórias críticas (US-002 e US-013) em Spikes, Paths, Interfaces, Data e Enterprise Rules da ANEEL.</p>
+          <div style="display: grid; grid-template-columns: 1.6fr 1.4fr; gap: 24px; align-items: center; margin-top: 10px;">
+            <!-- PRINT REAL GANTT PROJETOS I + II -->
+            <div style="background: #FFFFFF; border-radius: 8px; padding: 10px; border: 1.5px solid var(--color-amber); text-align: center;">
+              <img src="assets/fibery-gantt-projetos-i-ii.png" alt="Fibery Gantt Projetos I e II" style="width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 4px;">
+              <div style="margin-top: 6px; font-size: 11px; color: #555555; font-family: var(--font-mono);">
+                Print do Fibery: Academic · Cronograma Projetos I + II · Gantt
               </div>
             </div>
 
-            <div class="risks-panel">
-              <h3 class="risks-panel-title">Matriz de Riscos de Engenharia & Mitigações</h3>
-              <table class="risk-table">
-                <thead>
-                  <tr>
-                    <th>Risco Mapeado</th>
-                    <th>Impacto</th>
-                    <th>Estratégia de Mitigação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Layouts heterogêneos de faturas</strong></td>
-                    <td><span class="risk-badge risk-high">Alto</span></td>
-                    <td>Arquitetura de parsers modulares e suporte a fallback de conferência assistida pelo usuário (US-003).</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Alterações em normas ANEEL / CCEE</strong></td>
-                    <td><span class="risk-badge risk-med">Médio</span></td>
-                    <td>Motor de decisão baseado em regras versionadas e separadas do código da aplicação.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Inflação de escopo em Projetos II</strong></td>
-                    <td><span class="risk-badge risk-high">Alto</span></td>
-                    <td>Recorte estrito de P0 fixado em 14 histórias, postergando automações complexas para P1/P2.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Privacidade e dados sensíveis</strong></td>
-                    <td><span class="risk-badge risk-med">Médio</span></td>
-                    <td>Gestão explícita de consentimentos (US-005) e anonimização de faturas em ambiente de teste.</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div style="font-size: 11px; color: var(--color-sand); margin-top: 10px; font-family: var(--font-mono);">
-                Gestão contínua de riscos conforme Seção 3.3.1 do Relatório Acadêmico.
+            <!-- ESTRUTURAÇÃO PROJETOS II (SEM ROTULO CONSTRUÇÃO CORE MVP) -->
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: var(--color-carbon-card); border-left: 3px solid var(--color-amber); padding: 14px; border-radius: 0 6px 6px 0;">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">PROJETOS II (2027.1) · ESCOPO DE CONTINUIDADE</span>
+                <ul style="font-size: 13px; color: var(--color-ivory); margin-top: 8px; line-height: 1.5; list-style: square; padding-left: 18px;">
+                  <li>Evolução técnica e refatoração</li>
+                  <li>Mais integrações reais (APIs CCEE e Distribuidoras)</li>
+                  <li>Automação avançada e segurança estendida</li>
+                  <li>Piloto ampliado com consumidores reais</li>
+                  <li>Consolidação da solução e Monografia Final</li>
+                </ul>
+              </div>
+
+              <div style="background: rgba(201, 184, 159, 0.08); border: 1px dashed rgba(201, 184, 159, 0.25); padding: 12px 16px; border-radius: 6px; font-size: 12px; color: var(--color-sand);">
+                “As datas de Projetos II são macroplanejamento preliminar e deverão ser sincronizadas com o plano de ensino de 2027.1.”
               </div>
             </div>
           </div>
@@ -820,7 +675,7 @@
       </section>
 
       <!-- ====================================================================
-           SLIDE 12 — RESULTADOS ESPERADOS [1,0 pt]
+           SLIDE 12 — RESULTADOS ESPERADOS [1,0 pt] (45s)
            ==================================================================== -->
       <section class="slide" id="slide-12" data-slide="12">
         <div class="slide-header">
@@ -828,48 +683,64 @@
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 12 · Resultados Esperados [1,0 pt]</span>
             </div>
-            <h2 class="slide-title">O compromisso da Milet: <em>tecnologia demonstrável e economia real em produção</em>.</h2>
-            <p class="slide-subtitle">Critérios objetivos e verificáveis de sucesso para validação do MVP v1 perante a banca.</p>
+            <h2 class="slide-title">Resultados Esperados: <em>do Checkpoint de MVP à Continuidade</em>.</h2>
+            <p class="slide-subtitle">Divisão clara das entregas mensuráveis nos três marcos de desenvolvimento do projeto.</p>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="closing-layout">
-            <div class="success-criteria-card">
-              <h3 class="criteria-title">Critérios Mensuráveis de Conclusão (Projetos II)</h3>
-              <ul class="criteria-list">
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div><strong>Ingestão de Faturas Reais:</strong> Parser funcional capaz de estruturar automaticamente dados elétricos e tarifários essenciais para o Passaporte.</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div><strong>Motor de Decisão Explicável:</strong> Recomendação algorítmica de rotas (ACR, GD, ACL) com premissas matemáticas abertas e auditáveis.</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div><strong>Comparador Multidimensional:</strong> Normalização de pelo menos 3 propostas comerciais sob métricas equivalentes de VPL, economia líquida e risco.</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div><strong>Workflow de Contratação Assistida:</strong> Trilha navegável de checklist documental e acompanhamento de etapas regulatórias.</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div><strong>Auditoria de Economia Real:</strong> Módulo de conciliação mensal (Savings Ledger) comprovando a economia realizada versus a linha de base em piloto real.</div>
-                </li>
-              </ul>
-            </div>
-
-            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 12px; padding: 28px; text-align: center;">
-              <h4 style="font-family: var(--font-display); font-size: 24px; color: var(--color-ivory); margin-bottom: 12px;">Entregáveis Finais</h4>
-              <p style="font-size: 14px; color: var(--color-sand); line-height: 1.6; margin-bottom: 20px;">
-                Ao término do ciclo de graduação, serão entregues o <strong>software MVP v1 demonstrável em produção</strong>, o código-fonte auditado com testes automatizados e a <strong>Monografia Final de Engenharia</strong>.
-              </p>
-              <div style="background: rgba(211, 155, 61, 0.1); border: 1px solid var(--color-amber); border-radius: 6px; padding: 12px; font-family: var(--font-mono); font-size: 12px; color: var(--color-amber);">
-                Meta de Engenharia: Validação Empírica em Piloto Real
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px;">
+            <!-- BLOCO 1: CHECKPOINT MVP 19/10 -->
+            <div style="background: rgba(211, 155, 61, 0.1); border: 1.5px solid var(--color-amber); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CHECKPOINT MVP · 19/10</span>
+                <h4 style="font-family: var(--font-display); font-size: 20px; color: var(--color-ivory); margin: 8px 0 12px 0;">Primeira Versão Funcional</h4>
+                <ul style="font-size: 12px; color: var(--color-ivory-muted); line-height: 1.45; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+                  <li>✓ Primeira versão funcional entregue</li>
+                  <li>✓ Fluxo prioritário demonstrável</li>
+                  <li>✓ Ingestão e elegibilidade de dados</li>
+                  <li>✓ Diagnóstico e comparação inicial</li>
+                  <li>✓ Acompanhamento básico</li>
+                  <li>✓ Operação humana/simulada onde necessário</li>
+                </ul>
               </div>
             </div>
+
+            <!-- BLOCO 2: FIM DE PROJETOS I -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand); font-weight: 700;">ATÉ O FIM DE PROJETOS I</span>
+                <h4 style="font-family: var(--font-display); font-size: 20px; color: var(--color-ivory); margin: 8px 0 12px 0;">MVP Refinado & SSDLC</h4>
+                <ul style="font-size: 12px; color: var(--color-ivory-muted); line-height: 1.45; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+                  <li>✓ MVP refinado com testes iniciais</li>
+                  <li>✓ Arquitetura técnica documentada</li>
+                  <li>✓ SSDLC e conformidade LGPD aplicados</li>
+                  <li>✓ Hipóteses de produto validadas</li>
+                  <li>✓ Backlog atualizado por evidências</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- BLOCO 3: CONTINUIDADE PROJETOS II -->
+            <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand); font-weight: 700;">CONTINUIDADE EM PROJETOS II</span>
+                <h4 style="font-family: var(--font-display); font-size: 20px; color: var(--color-ivory); margin: 8px 0 12px 0;">Maturidade & Piloto</h4>
+                <ul style="font-size: 12px; color: var(--color-ivory-muted); line-height: 1.45; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+                  <li>✓ Mais integrações reais de APIs</li>
+                  <li>✓ Maior automação do fluxo</li>
+                  <li>✓ Robustez técnica e observabilidade</li>
+                  <li>✓ Validação ampliada em piloto real</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- HEADLINE FINAL -->
+          <div style="margin-top: 24px; background: linear-gradient(145deg, #2A261F 0%, #1E1E1E 100%); border: 2px solid var(--color-amber); border-radius: 10px; padding: 20px; text-align: center;">
+            <p style="font-size: 20px; color: var(--color-ivory); font-family: var(--font-display);">
+              “Projetos I precisa provar que o ciclo funciona. Projetos II deve provar que ele pode amadurecer.”
+            </p>
           </div>
         </div>
       </section>
@@ -881,7 +752,7 @@
         <div class="final-panel">
           <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Logo" class="final-logo">
           <h2 class="final-title">Milet · <span>Energia em Mais Liberdade.</span></h2>
-          <p class="final-subtitle">O Sistema Operacional Independente da Energia do Consumidor</p>
+          <p class="final-subtitle">Plataforma digital para decisão, comparação e gestão contínua de energia</p>
 
           <div class="final-credits">
             <strong>Eduardo Ferreira de Mattos</strong><br>
