@@ -52,11 +52,13 @@ html, body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at 50% 20%, #242320 0%, #121212 80%);
+  overflow: hidden;
+  padding: 10px 16px;
 }
 
 #deck-container {
@@ -67,6 +69,7 @@ html, body {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201, 184, 159, 0.15);
   background-color: var(--color-carbon);
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .slide {
@@ -75,7 +78,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 70px 90px 85px 90px;
+  padding: 55px 75px 45px 75px;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -198,7 +201,7 @@ html, body {
 
 .slide-cover {
   justify-content: space-between;
-  padding: 90px 110px 75px 110px;
+  padding: 55px 75px 40px 75px;
   background: radial-gradient(circle at 80% 30%, rgba(211, 155, 61, 0.08) 0%, transparent 60%),
               radial-gradient(circle at 10% 80%, rgba(184, 115, 51, 0.05) 0%, transparent 50%),
               var(--color-carbon);
@@ -207,17 +210,17 @@ html, body {
 .cover-brand-row {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .cover-logo-icon {
-  width: 48px;
+  width: 44px;
   height: auto;
 }
 
 .cover-brand-name {
   font-family: var(--font-display);
-  font-size: 36px;
+  font-size: 34px;
   color: var(--color-ivory);
 }
 
@@ -233,18 +236,23 @@ html, body {
   font-weight: 700;
 }
 
-.cover-center {
-  margin-top: 30px;
+.cover-main-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin: auto 0;
+  width: 100%;
 }
 
 .cover-tagline {
   font-family: var(--font-display);
-  font-size: 92px;
+  font-size: 80px;
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.06;
   color: var(--color-ivory);
   letter-spacing: -1.5px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .cover-tagline span {
@@ -253,27 +261,122 @@ html, body {
 
 .cover-formal-theme {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-amber);
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-bottom: 12px;
   display: block;
 }
 
 .cover-subheadline {
-  font-size: 26px;
-  line-height: 1.4;
+  font-size: 22px;
+  line-height: 1.45;
   color: var(--color-sand);
-  max-width: 1150px;
   font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.cover-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cover-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-sand);
+  background: rgba(201, 184, 159, 0.1);
+  border: 1px solid rgba(201, 184, 159, 0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Card de Síntese Editorial na Coluna Direita da Capa */
+.cover-overview-card {
+  background: linear-gradient(145deg, rgba(38, 34, 27, 0.85) 0%, rgba(24, 24, 24, 0.95) 100%);
+  border: 1px solid rgba(211, 155, 61, 0.35);
+  border-radius: 12px;
+  padding: 26px 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201, 184, 159, 0.15);
+}
+
+.overview-header h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-ivory);
+}
+
+.overview-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  background: rgba(211, 155, 61, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.overview-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.overview-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.item-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-amber);
+  font-weight: 700;
+  background: rgba(211, 155, 61, 0.15);
+  border: 1px solid rgba(211, 155, 61, 0.3);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.item-text strong {
+  font-size: 15px;
+  color: var(--color-ivory);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.item-text p {
+  font-size: 13px;
+  color: var(--color-sand);
+  line-height: 1.4;
 }
 
 .cover-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 35px;
+  padding-top: 22px;
+  margin-top: 15px;
   border-top: 1px solid rgba(201, 184, 159, 0.2);
 }
 

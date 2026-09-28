@@ -115,16 +115,39 @@
   const notesRubric = document.getElementById('notes-rubric');
   const btnCloseNotes = document.getElementById('btn-close-notes');
 
-  // Ajuste de escala 16:9 automático
+  // Ajuste de escala e proporção widescreen inteligente
   function resizeDeck() {
     if (!deckContainer) return;
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const baseWidth = 1920;
-    const baseHeight = 1080;
 
-    const scaleX = windowWidth / baseWidth;
-    const scaleY = windowHeight / baseHeight;
+    // Altura fixa do HUD inferior
+    const hudHeight = 60;
+    // Margens de respiro seguras (para nunca colar nas bordas ou no HUD)
+    const marginX = 24;
+    const marginY = 20;
+
+    // Se o drawer de notas estiver aberto na página de notas em tela larga, desconta sua largura
+    const drawerOpen = notesDrawer && notesDrawer.classList.contains('open');
+    const drawerWidth = (drawerOpen && window.innerWidth >= 1280) ? 500 : 0;
+
+    const availableWidth = window.innerWidth - drawerWidth - marginX;
+    const availableHeight = window.innerHeight - hudHeight - marginY;
+
+    // Dimensões base canônicas (altura base de 1080px)
+    const baseHeight = 1080;
+    const currentAspect = availableWidth / Math.max(availableHeight, 1);
+
+    // Se a janela for mais larga que 16:9 (1.777), adaptamos dinamicamente a largura base
+    // permitindo que os grids e colunas aproveitem os espaços laterais sem gerar barras pretas gigantes
+    let dynamicBaseWidth = 1920;
+    if (currentAspect > 1.777) {
+      dynamicBaseWidth = Math.min(2320, Math.round(baseHeight * currentAspect));
+    }
+
+    deckContainer.style.width = `${dynamicBaseWidth}px`;
+    deckContainer.style.height = `${baseHeight}px`;
+
+    const scaleX = availableWidth / dynamicBaseWidth;
+    const scaleY = availableHeight / baseHeight;
     const scale = Math.min(scaleX, scaleY);
 
     deckContainer.style.transform = `scale(${scale})`;
@@ -195,6 +218,7 @@
     if (btnNotes) {
       btnNotes.classList.toggle('active', isNotesOpen);
     }
+    resizeDeck();
   }
 
   function toggleFullscreen() {
