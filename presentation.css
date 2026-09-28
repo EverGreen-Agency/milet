@@ -1801,3 +1801,50 @@ html, body {
   filter: contrast(1.05) brightness(1.03);
 }
 
+/* ==========================================================================
+   ESTILOS DE IMPRESSÃO / EXPORTAÇÃO PDF 16:9 (15 SLIDES)
+   ========================================================================== */
+@media print {
+  @page {
+    size: 1920px 1080px;
+    margin: 0;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: var(--color-carbon) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #presentation-viewport, #deck-container {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .slide {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 1920px !important;
+    height: 1080px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    background-color: var(--color-carbon) !important;
+    box-sizing: border-box !important;
+  }
+
+  #presentation-hud {
+    display: none !important;
+  }
+}
+
+
