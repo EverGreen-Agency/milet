@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Apresentação de Plano de Projeto (Projetos I · 2026.2)</title>
+  <meta name="description" content="Apresentação Acadêmica da Milet: Plataforma Digital para Decisão, Comparação e Gestão Contínua de Energia. Mackenzie 2026.2.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  
+  <!-- Google Fonts: Cormorant Garamond (Display) & Inter (UI/Body) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+  <!-- VIEWPORT E CONTAINER ESCALADO 16:9 -->
+  <div id="presentation-viewport">
+    <div id="deck-container">
+
+      <!-- ====================================================================
+           SLIDE 1 — CAPA
+           ==================================================================== -->
+      <section class="slide slide-cover active" id="slide-1" data-slide="1">
+        <div class="cover-brand-row">
+          <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Símbolo Milet" class="cover-logo-icon">
+          <span class="cover-brand-name">Milet</span>
+          <span class="cover-badge">Plano de Projeto · 2026.2</span>
+        </div>
+
+        <div class="cover-center">
+          <h1 class="cover-tagline">Energia em <span>mais liberdade.</span></h1>
+          <p class="cover-subheadline">Uma camada digital independente para entender, comparar, contratar e otimizar energia.</p>
+        </div>
+
+        <div class="cover-footer">
+          <div class="cover-academic-info">
+            <h4>Universidade Presbiteriana Mackenzie · Turma 6</h4>
+            <p>Engenharia da Computação · Projetos de Engenharia da Computação I</p>
+          </div>
+          <div class="cover-author-block">
+            <h3 class="cover-author-name">Eduardo Ferreira de Mattos</h3>
+            <p class="cover-advisor">Docente: Prof. Dr. Rodrigo Juliani</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2 — O PROBLEMA TRATADO
+           ==================================================================== -->
+      <section class="slide" id="slide-2" data-slide="2">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 01 · Contexto & Diagnóstico</div>
+            <h2 class="slide-title">O problema não é falta de oferta. É decidir entre <em>alternativas incomparáveis</em>.</h2>
+            <p class="slide-subtitle">A tomada de decisão energética em empresas é fragmentada, técnica e desprovida de uma régua comum.</p>
+          </div>
+          <div class="slide-time-budget">00:50 · 50s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="flow-fragmented">
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 01</span>
+              <h3 class="flow-step-title">Fatura Complexa</h3>
+              <p class="flow-step-desc">Dados dispersos em PDFs densos, tarifas TUSD/TE e bandeiras que o cliente não domina.</p>
+              <div class="flow-step-pain">⚠ Dor: Falta de clareza sobre o consumo real</div>
+            </div>
+
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 02</span>
+              <h3 class="flow-step-title">Tarifas e Regras</h3>
+              <p class="flow-step-desc">Regulações ANEEL e regras de distribuidoras mudam sem aviso legível para o consumidor.</p>
+              <div class="flow-step-pain">⚠ Dor: Risco regulatório invisível</div>
+            </div>
+
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 03</span>
+              <h3 class="flow-step-title">Alternativas Dispersas</h3>
+              <p class="flow-step-desc">GD assinatura, usina própria, ACL livre ou cativo chegam por canais desconexos.</p>
+              <div class="flow-step-pain">⚠ Dor: Propostas com métricas distintas</div>
+            </div>
+
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 04</span>
+              <h3 class="flow-step-title">Fornecedores Concorrentes</h3>
+              <p class="flow-step-desc">Comercializadoras e geradores usam premissas e prazos incompatíveis para cotação.</p>
+              <div class="flow-step-pain">⚠ Dor: Dificuldade de auditoria</div>
+            </div>
+
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 05</span>
+              <h3 class="flow-step-title">Contratos Longos</h3>
+              <p class="flow-step-desc">Cláusulas de fidelidade, take-or-pay, flexibilidade de volume e multas abusivas.</p>
+              <div class="flow-step-pain">⚠ Dor: Risco de aprisionamento contratual</div>
+            </div>
+
+            <div class="flow-step-card">
+              <span class="flow-step-num">ETAPA 06</span>
+              <h3 class="flow-step-title">Operação Manual</h3>
+              <p class="flow-step-desc">Gestão de conciliação por planilhas e e-mails após a assinatura do contrato.</p>
+              <div class="flow-step-pain">⚠ Dor: Nenhuma comprovação da economia</div>
+            </div>
+          </div>
+
+          <div class="root-cause-banner">
+            <p><strong>Causa-raiz (Análise dos 5 Porquês):</strong> Não falta energia no mercado; falta uma <em>camada independente de software</em> capaz de normalizar dados, estruturar a competição e auditar o resultado continuamente.</p>
+            <span class="root-cause-tag">RCA · 5 Porquês</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3 — TESE & CICLO COMPLETO
+           ==================================================================== -->
+      <section class="slide" id="slide-3" data-slide="3">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 02 · Arquitetura da Solução</div>
+            <h2 class="slide-title">A Milet fecha o <em>ciclo inteiro</em> da decisão energética.</h2>
+            <p class="slide-subtitle">Da ingestão do dado à comprovação mensal: uma esteira contínua de inteligência e governança.</p>
+          </div>
+          <div class="slide-time-budget">00:55 · 55s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="cycle-grid">
+            <div class="cycle-card highlight">
+              <div class="cycle-step-header">
+                <span class="cycle-num">01 · ENTENDER</span>
+                <span class="cycle-badge">Entrada</span>
+              </div>
+              <h3 class="cycle-title">Passaporte Energético</h3>
+              <p class="cycle-desc">Ingestão estruturada da fatura, extração de histórico de consumo, perfil tarifário e elegibilidade da UC.</p>
+              <div class="cycle-output">Output: Perfil auditável de dados elétricos</div>
+            </div>
+
+            <div class="cycle-card">
+              <div class="cycle-step-header">
+                <span class="cycle-num">02 · DECIDIR</span>
+                <span class="cycle-badge">Simulação</span>
+              </div>
+              <h3 class="cycle-title">Rotas Aplicáveis</h3>
+              <p class="cycle-desc">Diagnóstico neutro entre Cativo (ACR), GD Assinatura, Usina Própria (EPC) e Mercado Livre (ACL).</p>
+              <div class="cycle-output">Output: Simulação explicável de viabilidade</div>
+            </div>
+
+            <div class="cycle-card highlight">
+              <div class="cycle-step-header">
+                <span class="cycle-num">03 · COMPETIR</span>
+                <span class="cycle-badge">Mercado</span>
+              </div>
+              <h3 class="cycle-title">RFQ & Leilão</h3>
+              <p class="cycle-desc">Disputa padronizada onde geradores e comercializadoras enviam propostas normalizadas sob as mesmas regras.</p>
+              <div class="cycle-output">Output: Ofertas em régua comum e neutra</div>
+            </div>
+
+            <div class="cycle-card">
+              <div class="cycle-step-header">
+                <span class="cycle-num">04 · EXECUTAR</span>
+                <span class="cycle-badge">Workflow</span>
+              </div>
+              <h3 class="cycle-title">Migração Assistida</h3>
+              <p class="cycle-desc">Trilha digital de contratação, checklist regulatório, prazos e esteira de adesão sem atrito burocrático.</p>
+              <div class="cycle-output">Output: Contratação homologada</div>
+            </div>
+
+            <div class="cycle-card highlight">
+              <div class="cycle-step-header">
+                <span class="cycle-num">05 · APRENDER</span>
+                <span class="cycle-badge">Autopilot</span>
+              </div>
+              <h3 class="cycle-title">Gestão Contínua</h3>
+              <p class="cycle-desc">Conciliação mensal de economia prometida vs faturada e renegociação automática antes do vencimento.</p>
+              <div class="cycle-output">Output: Razão de Economia & Rebid contínuo</div>
+            </div>
+          </div>
+
+          <div class="cycle-rule-banner">
+            <p><strong>Princípio de Posicionamento:</strong> GD, ACL, usina própria e outras rotas são <em>alternativas dentro do sistema</em> — não a definição da Milet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4 — PERFIS DE USUÁRIOS & ECOSSISTEMA
+           ==================================================================== -->
+      <section class="slide" id="slide-4" data-slide="4">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 03 · Perfis de Usuários</div>
+            <h2 class="slide-title">Um produto, vários atores — mas um <em>usuário inicial claro</em>.</h2>
+            <p class="slide-subtitle">Mapeamento do ecossistema com foco de engenharia e produto no decisor empresarial.</p>
+          </div>
+          <div class="slide-time-budget">00:50 · 50s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="profiles-layout">
+            <!-- PERFIL PRIORITÁRIO -->
+            <div class="priority-profile-card">
+              <div>
+                <span class="profile-tag">Prioridade Absoluta · MVP</span>
+                <h3 class="priority-profile-title">UP-01 · Consumidor PME / Decisor Energético</h3>
+                <p class="priority-profile-subtitle">Comércio, escritórios, pequenas indústrias e clínicas (Grupo B e Grupo A).</p>
+
+                <div class="profile-block">
+                  <div class="profile-section-title">Job to be Done (Objetivo)</div>
+                  <p>Reduzir custos com energia, entender o que está pagando e contratar com segurança jurídica sem precisar se tornar um especialista no setor elétrico.</p>
+                </div>
+
+                <div class="profile-block">
+                  <div class="profile-section-title">Principal Dor</div>
+                  <p>Insegurança com regras regulatórias, propostas comerciais incompreensíveis e medo de assumir contratos com cláusulas de penalidade ocultas.</p>
+                </div>
+              </div>
+
+              <div class="profile-block" style="margin-bottom: 0;">
+                <div class="profile-section-title">Momento Milet</div>
+                <p>Ingestão de fatura, diagnóstico comparativo claro e contratação assistida com auditoria mensal de economia.</p>
+              </div>
+            </div>
+
+            <!-- ATORES SECUNDÁRIOS -->
+            <div class="secondary-profiles-grid">
+              <div class="secondary-profile-card">
+                <div class="sec-profile-header">
+                  <span class="sec-profile-code">UP-03</span>
+                  <span class="sec-profile-role">Oferta / Ativos</span>
+                </div>
+                <h4 class="sec-profile-name">Gerador / Dono de Usina</h4>
+                <p class="sec-profile-job">Ocupar capacidade ociosa de geração, reduzir CAC e dar previsibilidade de receita sem intermediários predatórios.</p>
+              </div>
+
+              <div class="secondary-profile-card">
+                <div class="sec-profile-header">
+                  <span class="sec-profile-code">UP-04</span>
+                  <span class="sec-profile-role">Oferta / Mercado</span>
+                </div>
+                <h4 class="sec-profile-name">Comercializadora de Energia</h4>
+                <p class="sec-profile-job">Receber demanda empresarial qualificada e disputar contratos em leilão padronizado com menor custo de aquisição.</p>
+              </div>
+
+              <div class="secondary-profile-card">
+                <div class="sec-profile-header">
+                  <span class="sec-profile-code">UP-05</span>
+                  <span class="sec-profile-role">Engenharia / Parceiro</span>
+                </div>
+                <h4 class="sec-profile-name">EPC / Integrador Solar</h4>
+                <p class="sec-profile-job">Receber leads qualificados para projetos de usina própria, integrando proposta técnica e acompanhamento de obras.</p>
+              </div>
+
+              <div class="secondary-profile-card">
+                <div class="sec-profile-header">
+                  <span class="sec-profile-code">UP-06</span>
+                  <span class="sec-profile-role">Operação Interna</span>
+                </div>
+                <h4 class="sec-profile-name">Operador Milet</h4>
+                <p class="sec-profile-job">Gerenciar esteiras de atendimento, tratar exceções de faturas, monitorar SLAs e auditar a conformidade de dados.</p>
+              </div>
+
+              <div class="future-profiles-banner">
+                <span><strong>Expansão Futura (Pós-MVP):</strong> UP-02 Residencial, UP-07 Canais B2B2C e UP-08 Investidores de Ativos.</span>
+                <span style="font-family: var(--font-mono); font-size: 11px;">Mapeados no Domínio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 5 — 7 USER STORIES CHAVE
+           ==================================================================== -->
+      <section class="slide" id="slide-5" data-slide="5">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 04 · Requisitos de Engenharia</div>
+            <h2 class="slide-title">Sete histórias explicam o produto <em>melhor que uma lista de features</em>.</h2>
+            <p class="slide-subtitle">A linha mestra do MVP: da ingestão à governança contínua com critérios de aceite testáveis.</p>
+          </div>
+          <div class="slide-time-budget">01:10 · 70s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="stories-track">
+            <!-- US-002 -->
+            <div class="story-card pillar">
+              <span class="story-pillar-badge">Pilar Entrada</span>
+              <span class="story-id">US-002</span>
+              <h3 class="story-name">Upload & OCR de Fatura</h3>
+              <p class="story-body-text">Como consumidor, quero enviar minha conta de luz para estruturar meus dados elétricos automaticamente.</p>
+              <div class="story-outcome">Critério: Extração de consumo, TUSD, TE e elegibilidade</div>
+            </div>
+
+            <!-- US-006 -->
+            <div class="story-card">
+              <span class="story-id">US-006</span>
+              <h3 class="story-name">Rotas Aplicáveis</h3>
+              <p class="story-body-text">Como consumidor, quero saber quais rotas energéticas são legal e economicamente viáveis para minha UC.</p>
+              <div class="story-outcome">Critério: Filtro determinístico ACR vs GD vs ACL</div>
+            </div>
+
+            <!-- US-010 -->
+            <div class="story-card">
+              <span class="story-id">US-010</span>
+              <h3 class="story-name">RFQ Padronizado</h3>
+              <p class="story-body-text">Como consumidor, quero disparar um pedido de cotação padronizado para fornecedores elegíveis.</p>
+              <div class="story-outcome">Critério: Criação de lance com premissas idênticas</div>
+            </div>
+
+            <!-- US-013 -->
+            <div class="story-card pillar">
+              <span class="story-pillar-badge">Pilar Decisão</span>
+              <span class="story-id">US-013</span>
+              <h3 class="story-name">Comparação Normalizada</h3>
+              <p class="story-body-text">Como consumidor, quero comparar propostas de diferentes origens sob a mesma régua de custo e risco.</p>
+              <div class="story-outcome">Critério: Normalização de indexadores, multas e economia líquida</div>
+            </div>
+
+            <!-- US-019 -->
+            <div class="story-card">
+              <span class="story-id">US-019</span>
+              <h3 class="story-name">Esteira de Migração</h3>
+              <p class="story-body-text">Como consumidor, quero acompanhar o checklist de migração e contratação com marcos claros.</p>
+              <div class="story-outcome">Critério: Trilha de status, prazos e documentos</div>
+            </div>
+
+            <!-- US-021 -->
+            <div class="story-card pillar">
+              <span class="story-pillar-badge">Pilar Valor</span>
+              <span class="story-id">US-021</span>
+              <h3 class="story-name">Razão de Economia</h3>
+              <p class="story-body-text">Como consumidor, quero comprovar mensalmente se a economia prometida foi efetivamente alcançada.</p>
+              <div class="story-outcome">Critério: Confronto linha de base vs fatura consolidada</div>
+            </div>
+
+            <!-- US-027 -->
+            <div class="story-card">
+              <span class="story-id">US-027</span>
+              <h3 class="story-name">Rastreabilidade</h3>
+              <p class="story-body-text">Como operador/auditor, quero uma trilha imutável de consentimentos, decisões e versões de contratos.</p>
+              <div class="story-outcome">Critério: Logs de auditoria e conformidade LGPD</div>
+            </div>
+          </div>
+
+          <div class="stories-legend">
+            <div>Destaque em <strong>US-002, US-013 e US-021</strong>: os 3 pontos de inflexão onde o valor do produto é provado.</div>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--color-amber);">Total mapeado: 28 User Stories</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 6 — DO BACKLOG AO MVP
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-slide="6">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 05 · Escopo do Produto</div>
+            <h2 class="slide-title">Do backlog ao MVP: o que <em>realmente precisa funcionar</em>.</h2>
+            <p class="slide-subtitle">Organização por 6 capacidades de engenharia e segregação estrita entre P0 e fases posteriores.</p>
+          </div>
+          <div class="slide-time-budget">00:50 · 50s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="mvp-scope-grid">
+            <!-- EPIC 1 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 01</span>
+                <span class="epic-title">Dados & Passaporte</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Upload de faturas PDF/imagem</li>
+                <li>Parser de dados elétricos essenciais</li>
+                <li>Geração do Passaporte Energético v0</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Integração direta via API de distribuidoras</li>
+                <li>Telemetria IoT em tempo real</li>
+              </ul>
+            </div>
+
+            <!-- EPIC 2 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 02</span>
+                <span class="epic-title">Diagnóstico & Decisão</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Motor determinístico de elegibilidade</li>
+                <li>Simulação de economia por rota (ACR/GD/ACL)</li>
+                <li>Apresentação explicável de premissas</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Otimização estocástica e IA preditiva</li>
+                <li>Simulação de armazenamento/baterias</li>
+              </ul>
+            </div>
+
+            <!-- EPIC 3 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 03</span>
+                <span class="epic-title">Marketplace / RFQ</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Geração estruturada de RFQ reverso</li>
+                <li>Recebimento de lances de parceiros convidados</li>
+                <li>Padronização de campos de propostas</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Pools de agregação de múltiplos consumidores</li>
+                <li>Leilão automatizado em tempo real</li>
+              </ul>
+            </div>
+
+            <!-- EPIC 4 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 04</span>
+                <span class="epic-title">Comparação & Escolha</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Normalização matemática de propostas</li>
+                <li>Comparador multidimensional (custo x risco)</li>
+                <li>Seleção de oferta e emissão de intenção</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Raio-X de contratos com análise semântica de IA</li>
+                <li>Scoring de risco de contrapartes</li>
+              </ul>
+            </div>
+
+            <!-- EPIC 5 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 05</span>
+                <span class="epic-title">Execução Assistida</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Esteira de checklist de migração</li>
+                <li>Cofre seguro de documentos e procurações</li>
+                <li>Notificação de prazos e impedimentos</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Assinatura digital integrada via webhook</li>
+                <li>Protocolização automática em distribuidoras</li>
+              </ul>
+            </div>
+
+            <!-- EPIC 6 -->
+            <div class="epic-scope-card">
+              <div class="epic-card-header">
+                <span class="epic-num">ÉPICO 06</span>
+                <span class="epic-title">Operação & Autopilot</span>
+              </div>
+              <div class="scope-section-label scope-p0-label">● MVP (P0) — Obrigatório</div>
+              <ul class="epic-p0-list">
+                <li>Conciliação de faturas (economia prometida x real)</li>
+                <li>Painel operacional para o operador interno</li>
+                <li>Trilha imutável de auditoria de eventos</li>
+              </ul>
+              <div class="scope-section-label scope-after-label">○ Depois (P1/P2)</div>
+              <ul class="epic-after-list">
+                <li>Disparo autônomo de troca com mandato prévio</li>
+                <li>Agregação de créditos entre filiais multi-UC</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 7 — ESTADO DA ARTE & DIFERENCIAÇÃO
+           ==================================================================== -->
+      <section class="slide" id="slide-7" data-slide="7">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 06 · Análise Competitiva & Estado da Arte</div>
+            <h2 class="slide-title">As peças existem; a hipótese está na <em>integração contínua</em>.</h2>
+            <p class="slide-subtitle">Mapeamento de soluções internacionais e nacionais frente aos pilares de engenharia da Milet.</p>
+          </div>
+          <div class="slide-time-budget">01:00 · 60s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="state-matrix-wrapper">
+            <table class="state-matrix">
+              <thead>
+                <tr>
+                  <th>Dimensão de Engenharia</th>
+                  <th>Arcadia (EUA)</th>
+                  <th>Energy Ogre (EUA)</th>
+                  <th>Piclo / Electron (UK)</th>
+                  <th>Plataforma CCEE (BR)</th>
+                  <th class="milet-col">Milet Energia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Analytics & Parser de Fatura</strong></td>
+                  <td><span class="check-tag">✓ Forte (API)</span></td>
+                  <td><span class="partial-tag">◐ Básico</span></td>
+                  <td><span class="no-tag">✗ Ausente</span></td>
+                  <td><span class="partial-tag">◐ Em definição</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ Passaporte Energético</span></td>
+                </tr>
+                <tr>
+                  <td><strong>2. Comparação Multimodal (GD x ACL x EPC)</strong></td>
+                  <td><span class="partial-tag">◐ Foco em GD</span></td>
+                  <td><span class="partial-tag">◐ Apenas Varejo</span></td>
+                  <td><span class="no-tag">✗ Apenas Flexibilidade</span></td>
+                  <td><span class="no-tag">✗ Apenas Varejo Livre</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ Diagnóstico Neutro</span></td>
+                </tr>
+                <tr>
+                  <td><strong>3. Marketplace de Ofertas / RFQ Reverso</strong></td>
+                  <td><span class="no-tag">✗ Bilateral</span></td>
+                  <td><span class="no-tag">✗ Curadoria própria</span></td>
+                  <td><span class="check-tag">✓ Leilão de Flex</span></td>
+                  <td><span class="partial-tag">◐ Lista de preços pública</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ RFQ Padronizado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>4. Execução & Esteira de Migração</strong></td>
+                  <td><span class="partial-tag">◐ Assinatura GD</span></td>
+                  <td><span class="check-tag">✓ Troca por procuração</span></td>
+                  <td><span class="no-tag">✗ Liquidação física</span></td>
+                  <td><span class="no-tag">✗ Redireciona ao agente</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ Workflow Ponta a Ponta</span></td>
+                </tr>
+                <tr>
+                  <td><strong>5. Gestão Recorrente & Razão de Economia</strong></td>
+                  <td><span class="partial-tag">◐ Dashboard simples</span></td>
+                  <td><span class="check-tag">✓ Troca periódica</span></td>
+                  <td><span class="no-tag">✗ Transacional</span></td>
+                  <td><span class="no-tag">✗ Não faz gestão</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ Auditoria Realizada x Prevista</span></td>
+                </tr>
+                <tr>
+                  <td><strong>6. Rastreabilidade & Neutralidade</strong></td>
+                  <td><span class="partial-tag">◐ Atua com parceiros</span></td>
+                  <td><span class="check-tag">✓ Paga pelo usuário</span></td>
+                  <td><span class="check-tag">✓ Plataforma neutra</span></td>
+                  <td><span class="check-tag">✓ Infra pública CCEE</span></td>
+                  <td class="milet-col"><span class="check-tag">✓ Independência e Moat</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="state-hypothesis-footer">
+            <p><strong>Diferencial Estrutural:</strong> Não competimos com a futura plataforma pública da CCEE (Decreto 13.097/2026); usamos a transparência pública como insumo e geramos valor na <em>decisão personalizada, na execução assistida e na governança contínua</em>.</p>
+            <span>Fonte: Estado da Arte v0.1</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 8 — PROJETOS I vs PROJETOS II (50/50 SPLIT)
+           ==================================================================== -->
+      <section class="slide" id="slide-8" data-slide="8">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 07 · Planejamento Acadêmico</div>
+            <h2 class="slide-title">Projetos I <em>define</em>. Projetos II <em>constrói e valida</em>.</h2>
+            <p class="slide-subtitle">Divisão do projeto entre concepção formal de engenharia e implementação demonstrável.</p>
+          </div>
+          <div class="slide-time-budget">00:45 · 45s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="split-semesters-layout">
+            <!-- 2026.2 PROJETOS I -->
+            <div class="semester-panel current">
+              <div>
+                <span class="semester-badge current">2026.2 · Semestre Atual</span>
+                <h3 class="semester-title">Projetos de Computação I</h3>
+                <p class="semester-purpose">Fase de Concepção, Modelagem, Requisitos e Arquitetura</p>
+
+                <ul class="semester-items-list">
+                  <li><span class="bullet"></span> Formulação do Problema e 5 Porquês</li>
+                  <li><span class="bullet"></span> Pesquisa e Mapeamento do Estado da Arte</li>
+                  <li><span class="bullet"></span> Perfis de Usuários e Mapas de Empatia</li>
+                  <li><span class="bullet"></span> Business Model Canvas v0.1 (Hipóteses)</li>
+                  <li><span class="bullet"></span> Engenharia de Requisitos (Épicos, Features, Stories)</li>
+                  <li><span class="bullet"></span> Fatiamento SPIDER e Critérios de Aceite BDD</li>
+                  <li><span class="bullet"></span> Recorte do MVP Acadêmico e Arquitetura de Dados</li>
+                </ul>
+              </div>
+
+              <div class="semester-status-box">
+                <strong>Marco de Entrega Deste Semestre:</strong> Plano de Projeto, Relatório Acadêmico Completo e Apresentação de Banca.
+              </div>
+            </div>
+
+            <!-- 2027.1 PROJETOS II -->
+            <div class="semester-panel">
+              <div>
+                <span class="semester-badge future">2027.1 · Próximo Semestre</span>
+                <h3 class="semester-title">Projetos de Computação II</h3>
+                <p class="semester-purpose">Fase de Construção, Integração, Piloto e Validação Real</p>
+
+                <ul class="semester-items-list">
+                  <li><span class="bullet"></span> Implementação do Core Engine (Ingestão & Decisão)</li>
+                  <li><span class="bullet"></span> Desenvolvimento do Workflow de RFQ e Comparador</li>
+                  <li><span class="bullet"></span> Módulo de Gestão de Contratos e Razão de Economia</li>
+                  <li><span class="bullet"></span> Camada de Segurança, Autenticação e LGPD</li>
+                  <li><span class="bullet"></span> Bateria de Testes Automatizados (Unitários e E2E)</li>
+                  <li><span class="bullet"></span> Execução de Piloto com Faturas e Usuários Reais</li>
+                  <li><span class="bullet"></span> Entrega do MVP v1 Funcional e Monografia Final</li>
+                </ul>
+              </div>
+
+              <div class="semester-status-box">
+                <strong>Mensagem Estratégica:</strong> O marco da disciplina não se encerra neste semestre; Projetos I prepara o alicerce sólido para o sucesso de Projetos II.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 9 — CRONOGRAMA GANTT NATIVO (AGO/26 A JUN/27)
+           ==================================================================== -->
+      <section class="slide" id="slide-9" data-slide="9">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 08 · Cronograma de Execução</div>
+            <h2 class="slide-title">Cronograma detalhado até a <em>conclusão do projeto</em>.</h2>
+            <p class="slide-subtitle">Visão temporal cobrindo de Agosto de 2026 a Junho de 2027 com separação de semestres letivos.</p>
+          </div>
+          <div class="slide-time-budget">01:00 · 60s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="gantt-wrapper">
+            <!-- BRACKETS DE SEMESTRES -->
+            <div class="gantt-semester-bracket-row">
+              <div></div>
+              <div class="bracket-p1">PROJETOS I · 2026.2 (ENTREGA DESTE SEMESTRE)</div>
+              <div class="bracket-p2">PROJETOS II · 2027.1 (IMPLEMENTAÇÃO E VALIDAÇÃO)</div>
+            </div>
+
+            <!-- HEADER DE MESES -->
+            <div class="gantt-header-row">
+              <div class="gantt-month-col" style="text-align: left; font-weight: 700;">Macro-Etapas / Meses</div>
+              <div class="gantt-month-col p1">Ago/26</div>
+              <div class="gantt-month-col p1">Set/26</div>
+              <div class="gantt-month-col p1">Out/26</div>
+              <div class="gantt-month-col p1">Nov/26</div>
+              <div class="gantt-month-col p1">Dez/26</div>
+              <div class="gantt-month-col">Jan/27</div>
+              <div class="gantt-month-col">Fev/27</div>
+              <div class="gantt-month-col">Mar/27</div>
+              <div class="gantt-month-col">Abr/27</div>
+              <div class="gantt-month-col">Mai/27</div>
+              <div class="gantt-month-col">Jun/27</div>
+            </div>
+
+            <!-- TAREFA 1: DISCOVERY & ESTADO DA ARTE -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Discovery & Estado da Arte</div>
+              <div class="gantt-bar-cell p1-bar" style="grid-column: 2 / span 2;">Concluído</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+
+            <!-- TAREFA 2: PERFIS, BMC & BRAND -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Perfis, BMC & Brandbook</div>
+              <div></div>
+              <div class="gantt-bar-cell p1-bar" style="grid-column: 3 / span 1;">Concluído</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+
+            <!-- TAREFA 3: REQUISITOS, BACKLOG & MVP -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Stories, Backlog & SPIDER</div>
+              <div></div><div></div>
+              <div class="gantt-bar-cell p1-bar" style="grid-column: 4 / span 1;">Concluído</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+
+            <!-- TAREFA 4: ARQUITETURA & PLANO PROJETOS II -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Arquitetura & Especificação</div>
+              <div></div><div></div><div></div>
+              <div class="gantt-bar-cell milestone-bar" style="grid-column: 5 / span 2;">Entrega P1</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+
+            <!-- TAREFA 5: CONSTRUÇÃO CORE MVP -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Construção Core Engine</div>
+              <div></div><div></div><div></div><div></div><div></div>
+              <div style="text-align: center; color: var(--color-sand); font-size: 10px; opacity: 0.5;">Férias</div>
+              <div class="gantt-bar-cell p2-bar" style="grid-column: 8 / span 2;">Ingestão + Rotas</div>
+              <div></div><div></div><div></div>
+            </div>
+
+            <!-- TAREFA 6: WORKFLOW & INTEGRAÇÃO -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Comparador, RFQ & Segurança</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+              <div class="gantt-bar-cell p2-bar" style="grid-column: 10 / span 1;">Integração</div>
+              <div></div><div></div>
+            </div>
+
+            <!-- TAREFA 7: PILOTO & VALIDAÇÃO -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">Piloto com Faturas Reais</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+              <div class="gantt-bar-cell p2-bar" style="grid-column: 11 / span 1;">Validação</div>
+              <div></div>
+            </div>
+
+            <!-- TAREFA 8: FECHAMENTO & MVP V1 -->
+            <div class="gantt-task-row">
+              <div class="gantt-task-label">MVP v1 + Monografia Final</div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+              <div class="gantt-bar-cell milestone-bar" style="grid-column: 12 / span 1;">Banca P2</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 10 — TÉCNICAS DE GESTÃO DO PROJETO
+           ==================================================================== -->
+      <section class="slide" id="slide-10" data-slide="10">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 09 · Governança & Métodos</div>
+            <h2 class="slide-title">Como vamos <em>gerir o projeto</em>.</h2>
+            <p class="slide-subtitle">Engenharia de processo unindo Scrum, Kanban, critérios BDD e gestão visual de entregáveis.</p>
+          </div>
+          <div class="slide-time-budget">00:40 · 40s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="management-layout">
+            <!-- SISTEMA DE TRABALHO -->
+            <div class="mgmt-source-panel">
+              <div>
+                <h3 class="mgmt-source-title">Estrutura em 4 Camadas</h3>
+                <p class="mgmt-source-desc">Organização lógica do trabalho para manter rastreabilidade total entre o problema e o código executável:</p>
+
+                <div class="mgmt-layers-list">
+                  <div class="mgmt-layer-item">
+                    <div class="mgmt-layer-name">1. Discovery & Artefatos</div>
+                    <div class="mgmt-layer-desc">Matriz de problemas, Estado da Arte, personas e mapas de empatia.</div>
+                  </div>
+
+                  <div class="mgmt-layer-item">
+                    <div class="mgmt-layer-name">2. Product Backlog</div>
+                    <div class="mgmt-layer-desc">Épicos, features e 28 stories com priorização rigorosa P0/P1/P2.</div>
+                  </div>
+
+                  <div class="mgmt-layer-item">
+                    <div class="mgmt-layer-name">3. Roadmap & Releases</div>
+                    <div class="mgmt-layer-desc">Marcos acadêmicos e técnicos sincronizados com o calendário letivo.</div>
+                  </div>
+
+                  <div class="mgmt-layer-item">
+                    <div class="mgmt-layer-name">4. Execução & Testes</div>
+                    <div class="mgmt-layer-desc">Sprints de engenharia com critérios de aceite Given/When/Then e CI/CD.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MÉTODOS ÁGEIS -->
+            <div class="mgmt-methods-grid">
+              <div class="mgmt-method-card">
+                <h4 class="mgmt-method-title">Scrum por Marcos</h4>
+                <p class="mgmt-method-desc">Sprints quinzenais orientadas a entregáveis demonstráveis para alinhamento contínuo com as diretrizes do orientador e prazos acadêmicos.</p>
+              </div>
+
+              <div class="mgmt-method-card">
+                <h4 class="mgmt-method-title">Kanban de Engenharia</h4>
+                <p class="mgmt-method-desc">Fluxo visual contínuo com limites de WIP (Work In Progress), evitando sobrecarga e garantindo vazão constante de User Stories.</p>
+              </div>
+
+              <div class="mgmt-method-card">
+                <h4 class="mgmt-method-title">Fatiamento SPIDER</h4>
+                <p class="mgmt-method-desc">Desdobramento de histórias complexas através de Spikes técnicos, Paths, Interfaces, Data e Enterprise Rules da ANEEL.</p>
+              </div>
+
+              <div class="mgmt-method-card">
+                <h4 class="mgmt-method-title">Critérios de Aceite BDD</h4>
+                <p class="mgmt-method-desc">Cada história possui critérios executáveis no formato <em>Dado que / Quando / Então</em>, servindo como especificação viva e base para testes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 11 — BUSINESS MODEL CANVAS (HIPÓTESES v0.1)
+           ==================================================================== -->
+      <section class="slide" id="slide-11" data-slide="11">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 10 · Modelo de Negócio & Viabilidade</div>
+            <h2 class="slide-title">Business Model Canvas v0.1: <em>hipóteses a validar</em>.</h2>
+            <p class="slide-subtitle">Tratamento do Canvas como instrumento científico de validação de hipóteses, e não modelo faturado.</p>
+          </div>
+          <div class="slide-time-budget">00:50 · 50s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="bmc-deck-layout">
+            <div class="bmc-img-wrapper">
+              <img src="assets/bmc.png" alt="Business Model Canvas Milet v0.1">
+              <div class="bmc-evidence-tag">Artefato de Projeto · Business Model Canvas v0.1</div>
+            </div>
+
+            <div class="bmc-pillars-list">
+              <div class="bmc-pillar-card">
+                <div class="bmc-pillar-header">
+                  <h4 class="bmc-pillar-name">Segmento Inicial</h4>
+                  <span class="bmc-pillar-badge">Foco MVP</span>
+                </div>
+                <p class="bmc-pillar-desc">PMEs comerciais e industriais que buscam economia em contas de energia sem assumir CAPEX nem risco de engenharia interna.</p>
+              </div>
+
+              <div class="bmc-pillar-card">
+                <div class="bmc-pillar-header">
+                  <h4 class="bmc-pillar-name">Proposta de Valor</h4>
+                  <span class="bmc-pillar-badge">4 Pilares</span>
+                </div>
+                <p class="bmc-pillar-desc">Decisão neutra + Competição via RFQ + Execução assistida de migração + Gestão contínua com auditoria mensal de economia real.</p>
+              </div>
+
+              <div class="bmc-pillar-card">
+                <div class="bmc-pillar-header">
+                  <h4 class="bmc-pillar-name">Hipóteses de Receita</h4>
+                  <span class="bmc-pillar-badge">Em Validação</span>
+                </div>
+                <p class="bmc-pillar-desc">Taxa transparente de originação paga por geradores/comercializadoras elegíveis ou modelo de concierge/assinatura pelo decisor.</p>
+              </div>
+
+              <div class="bmc-pillar-card">
+                <div class="bmc-pillar-header">
+                  <h4 class="bmc-pillar-name">Parceiros Estruturais</h4>
+                  <span class="bmc-pillar-badge">Ecossistema</span>
+                </div>
+                <p class="bmc-pillar-desc">Geradores independentes, comercializadoras varejistas habilitadas perante a CCEE e integradores de engenharia (EPCs).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 12 — CRITÉRIOS DE SUCESSO & ENCERRAMENTO
+           ==================================================================== -->
+      <section class="slide" id="slide-12" data-slide="12">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow"><span class="dot"></span> 11 · Conclusão & Próximos Passos</div>
+            <h2 class="slide-title">Da fatura à decisão — e da decisão <em>ao resultado</em>.</h2>
+            <p class="slide-subtitle">O que precisará estar objetivamente provado ao final de Projetos de Computação II.</p>
+          </div>
+          <div class="slide-time-budget">00:35 · 35s</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="closing-layout">
+            <div class="success-criteria-card">
+              <h3 class="criteria-title">Critérios Objetivos de Sucesso (Projetos II)</h3>
+              <ul class="criteria-list">
+                <li>
+                  <div class="check-icon">✓</div>
+                  <div><strong>Ingestão de Dados Reais:</strong> Parser de faturas com taxa de extração estruturada de campos tarifários essencial para o Passaporte.</div>
+                </li>
+                <li>
+                  <div class="check-icon">✓</div>
+                  <div><strong>Motor de Decisão Explicável:</strong> Recomendação algorítmica de rotas (ACR, GD, ACL) com premissas abertas e auditáveis.</div>
+                </li>
+                <li>
+                  <div class="check-icon">✓</div>
+                  <div><strong>Comparador Multidimensional:</strong> Normalização de pelo menos 3 ofertas concorrentes sob métricas equivalentes de VPL e risco.</div>
+                </li>
+                <li>
+                  <div class="check-icon">✓</div>
+                  <div><strong>Workflow de Contratação:</strong> Trilha navegável de checklist documental e acompanhamento de etapas regulatórias.</div>
+                </li>
+                <li>
+                  <div class="check-icon">✓</div>
+                  <div><strong>Auditoria de Economia:</strong> Módulo de conciliação mensal comprovando a economia realizada versus a linha de base original.</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="closing-brand-panel">
+              <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Logo" class="closing-logo">
+              <h3 class="closing-motto">Milet</h3>
+              <p class="closing-submotto">Energia em mais liberdade.</p>
+              <div style="font-size: 14px; color: var(--color-sand); line-height: 1.6; border-top: 1px solid rgba(201, 184, 159, 0.2); padding-top: 20px;">
+                <strong>Eduardo Ferreira de Mattos</strong><br>
+                Projetos de Engenharia da Computação I · 2026.2<br>
+                Universidade Presbiteriana Mackenzie
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /#deck-container -->
+  </div><!-- /#presentation-viewport -->
+
+  <!-- HUD INFERIOR: CONTROLES, PROGRESSO E TIMER -->
+  <footer id="presentation-hud">
+    <div class="hud-progress-bar-track">
+      <div id="progress-bar-fill" class="hud-progress-bar-fill"></div>
+    </div>
+
+    <div class="hud-left">
+      <span class="hud-brand-crumb"><strong>Milet</strong> · Apresentação de Projeto</span>
+      <span class="hud-academic-label">Mackenzie · Turma 6</span>
+    </div>
+
+    <div class="hud-center">
+      <button id="btn-prev" class="hud-btn" title="Slide Anterior (← ou PageUp)">❮</button>
+      <span id="slide-counter" class="hud-counter">01 / 12</span>
+      <button id="btn-next" class="hud-btn" title="Próximo Slide (→, Espaço ou PageDown)">❯</button>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-timer-badge" title="Tempo decorrido (Meta: 10m00s | Tecla T pausa)">
+        <span class="timer-dot"></span>
+        <span id="timer-display">00:00</span> / 10:00
+      </div>
+
+      <button id="btn-notes" class="hud-action-btn" title="Notas do Orador (Tecla N)">
+        <span>📝</span> Notas
+      </button>
+
+      <button id="btn-fullscreen" class="hud-action-btn" title="Tela Cheia (Tecla F)">
+        <span>⛶</span> Tela Cheia
+      </button>
+
+      <button id="btn-print" class="hud-action-btn" title="Imprimir / Exportar PDF">
+        <span>🖨</span> PDF
+      </button>
+    </div>
+  </footer>
+
+  <!-- DRAWER DE NOTAS DE ORADOR (SPEAKER NOTES) -->
+  <aside id="speaker-notes-drawer" aria-label="Notas do Orador">
+    <div class="notes-header">
+      <h3 id="notes-title">Notas de Orador</h3>
+      <button id="btn-close-notes" class="notes-close-btn" title="Fechar (N)">✕</button>
+    </div>
+    <div class="notes-body">
+      <div id="notes-target" class="notes-time-target">Tempo alvo: --</div>
+      <p id="notes-text">Carregando roteiro do slide...</p>
+
+      <div class="notes-key-points">
+        <h4>Dica de Apresentação</h4>
+        <p>Mantenha postura acadêmica de engenharia: foque em como os dados fluem, nos requisitos do sistema e na divisão metodológica entre semestres.</p>
+      </div>
+    </div>
+  </aside>
+
+  <script src="presentation.js"></script>
+</body>
+</html>
