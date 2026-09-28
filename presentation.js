@@ -115,41 +115,37 @@
   const notesRubric = document.getElementById('notes-rubric');
   const btnCloseNotes = document.getElementById('btn-close-notes');
 
-  // Ajuste de escala e proporção widescreen inteligente
+  // Ajuste edge-to-edge total: ocupa 100% da largura da tela e altura até o HUD
   function resizeDeck() {
     if (!deckContainer) return;
 
     // Altura fixa do HUD inferior
     const hudHeight = 60;
-    // Margens de respiro seguras (para nunca colar nas bordas ou no HUD)
-    const marginX = 24;
-    const marginY = 20;
 
     // Se o drawer de notas estiver aberto na página de notas em tela larga, desconta sua largura
     const drawerOpen = notesDrawer && notesDrawer.classList.contains('open');
     const drawerWidth = (drawerOpen && window.innerWidth >= 1280) ? 500 : 0;
 
-    const availableWidth = window.innerWidth - drawerWidth - marginX;
-    const availableHeight = window.innerHeight - hudHeight - marginY;
+    // Área útil total disponível (edge-to-edge)
+    const availableWidth = window.innerWidth - drawerWidth;
+    const availableHeight = window.innerHeight - hudHeight;
 
-    // Dimensões base canônicas (altura base de 1080px)
+    // Altura base canônica de 1080px
     const baseHeight = 1080;
-    const currentAspect = availableWidth / Math.max(availableHeight, 1);
+    const minBaseWidth = 1440;
 
-    // Se a janela for mais larga que 16:9 (1.777), adaptamos dinamicamente a largura base
-    // permitindo que os grids e colunas aproveitem os espaços laterais sem gerar barras pretas gigantes
-    let dynamicBaseWidth = 1920;
-    if (currentAspect > 1.777) {
-      dynamicBaseWidth = Math.min(2320, Math.round(baseHeight * currentAspect));
+    // Largura calculada para ocupar exatamente 100% da largura da tela
+    let dynamicBaseWidth = Math.round(baseHeight * (availableWidth / Math.max(availableHeight, 1)));
+    let scale = availableHeight / baseHeight;
+
+    // Proteção para proporções muito estreitas / mobile
+    if (dynamicBaseWidth < minBaseWidth) {
+      dynamicBaseWidth = minBaseWidth;
+      scale = Math.min(availableWidth / dynamicBaseWidth, availableHeight / baseHeight);
     }
 
     deckContainer.style.width = `${dynamicBaseWidth}px`;
     deckContainer.style.height = `${baseHeight}px`;
-
-    const scaleX = availableWidth / dynamicBaseWidth;
-    const scaleY = availableHeight / baseHeight;
-    const scale = Math.min(scaleX, scaleY);
-
     deckContainer.style.transform = `scale(${scale})`;
   }
 
