@@ -1,13 +1,13 @@
 /**
- * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9
- * Projetos de Engenharia da Computação I (Mackenzie - 2026.2)
+ * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9 (13 SLIDES)
+ * Alinhada estritamente aos Critérios de Avaliação do Mackenzie (10 Pontos)
  */
 
 (function () {
   'use strict';
 
   // Configurações
-  const TOTAL_SLIDES = 12;
+  const TOTAL_SLIDES = 13;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
   let timerSeconds = 0;
@@ -15,67 +15,85 @@
   let isTimerRunning = true;
   let isNotesOpen = false;
 
-  // Speaker Notes por slide (sincronizado com speaker-notes.md)
+  // Speaker Notes por slide — Mapeado para os 10 Pontos da Rubrica
   const speakerNotesData = {
     1: {
-      title: "Slide 1 — Capa & Abertura",
+      rubric: "Tema · [0,5 pt]",
+      title: "Slide 1 — Capa & Tema Formal",
       target: "25 segundos (00:00 - 00:25)",
-      text: "Bom dia, professor e colegas. Meu nome é Eduardo Ferreira de Mattos e apresento o plano de projeto da Milet: uma camada digital independente para entender, comparar, contratar e otimizar energia. Este projeto integra a disciplina Projetos de Engenharia da Computação I da Turma 6 do Mackenzie e estabelece os fundamentos de engenharia e produto que serão desenvolvidos até o próximo semestre."
+      text: "Bom dia, professor Rodrigo Juliani e colegas de turma. Meu nome é Eduardo Ferreira de Mattos e apresento o plano de projeto da Milet: uma plataforma digital independente para decisão, comparação e gestão contínua de energia. O projeto integra a disciplina Projetos de Engenharia da Computação I e estabelece as bases formais para o desenvolvimento e validação do software que entregaremos até o próximo semestre."
     },
     2: {
-      title: "Slide 2 — O Problema Tratado",
-      target: "50 segundos (00:25 - 01:15)",
-      text: "O problema central que motivou a Milet não é a falta de oferta energética, e sim a impossibilidade prática de o consumidor médio decidir entre alternativas incomparáveis. Hoje, a jornada de uma empresa é totalmente fragmentada: da fatura incompreensível às regras tarifárias complexas, passando por ofertas de comercializadoras e geradores que usam premissas e indexadores diferentes, até contratos extensos e operações manuais. Na análise dos 5 Porquês, chegamos à causa-raiz: falta uma camada neutra de software que traduza dados elétricos em decisões transparentes e auditáveis."
+      rubric: "Motivação · [0,5 pt]",
+      title: "Slide 2 — Motivação do Projeto",
+      target: "40 segundos (00:25 - 01:05)",
+      text: "A motivação deste projeto nasce da transformação histórica do setor elétrico brasileiro: a Lei 14.300 sobre Geração Distribuída e o Decreto 13.097 de 2026, que programa a abertura da baixa tensão para os próximos anos. Hoje, empresas de menor porte enfrentam uma assimetria brutal de dados e tarifas, pagando caro simplesmente por não dominarem o setor. O consumidor tem liberdade de escolha no papel, mas não dispõe de ferramentas computacionais neutras para exercê-la com segurança."
     },
     3: {
-      title: "Slide 3 — A Tese e o Ciclo Milet",
-      target: "55 segundos (01:15 - 02:10)",
-      text: "A tese da Milet resolve essa dor fechando o ciclo inteiro da relação energética em 5 etapas contínuas: primeiro, Entender os dados via ingestão da fatura e geração do Passaporte Energético; segundo, Decidir entre rotas viáveis — seja cativo, geração distribuída por assinatura, usina própria ou mercado livre; terceiro, Competir através de um mecanismo padronizado de RFQ onde fornecedores disputam a demanda; quarto, Executar a migração e contratação de ponta a ponta; e quinto, Aprender e Gestão Contínua, auditando a economia realizada e preparando novas cotações antes do vencimento. Usina solar, GD ou ACL não são o produto: são alternativas que o software orquestra."
+      rubric: "Problema Tratado · [1,0 pt]",
+      title: "Slide 3 — Problema Tratado & Causa-Raiz",
+      target: "50 segundos (01:05 - 01:55)",
+      text: "O problema tratado não é a falta de oferta energética, mas a impossibilidade de o decisor comparar alternativas sob premissas equivalentes. A jornada atual é caótica: faturas densas com tarifas TUSD e TE, regras regulatórias opacas, opções de GD e mercado livre desconexas, contratos longos com cláusulas de fidelidade complexas e pós-venda disperso em planilhas. Na análise de causa-raiz pelos 5 Porquês, concluímos: não faltam usinas; falta uma camada independente de software que traduza dados elétricos em decisões transparentes e auditáveis."
     },
     4: {
-      title: "Slide 4 — Perfis de Usuário & Ecossistema",
-      target: "50 segundos (02:10 - 03:00)",
-      text: "Para não dispersar o escopo da disciplina, mapeamos todos os atores do ecossistema, mas definimos uma prioridade cirúrgica para o MVP: o UP-01, o Consumidor PME e Decisor Energético. Esse decisor quer previsibilidade e economia sem carregar o risco regulatório. Em segundo nível, conectamos os agentes de oferta necessários: o Gerador independente que busca ocupar capacidade, a Comercializadora no mercado livre e o EPC ou integrador de engenharia. Atores como consumidor residencial e investidores estão mapeados no domínio, mas ficam para fases de expansão futura."
+      rubric: "Estado da Arte 1/3 · [3,0 pts]",
+      title: "Slide 4 — Evolução Regulatória Brasileira",
+      target: "55 segundos (01:55 - 02:50)",
+      text: "Entrando no Estado da Arte, que é o núcleo de maior peso da nossa avaliação, analisamos primeiro a evolução no Brasil. Passamos do modelo cativo monopolista para a Lei 14.300 em 2022, a abertura do Grupo A em 2024 e o Decreto 13.097/2026, que fixa a abertura para baixa tensão comercial em 2027 e residencial em 2028. É essencial destacar: a distribuidora física não é um intermediário a eliminar, mas sim a infraestrutura física de rede; e a CCEE opera a liquidação setorial e disponibilizará uma plataforma pública de preços, que servirá de insumo para nossa solução."
     },
     5: {
-      title: "Slide 5 — 7 User Stories Chave",
-      target: "70 segundos (03:00 - 04:10)",
-      text: "Em vez de listar dezenas de funcionalidades soltas, estruturamos o produto através de 7 User Stories nucleares que cobrem a jornada ponta a ponta. Três delas são pilares indispensáveis: a US-002, que resolve a entrada de dados via leitura estruturada da fatura; a US-013, que é o coração da decisão ao normalizar propostas comerciais sob as mesmas premissas econômicas; e a US-021, que comprova a entrega de valor ao confrontar a economia prometida com o resultado real faturado. As histórias US-006, 010, 019 e 027 garantem o fluxo de rotas, a disputa do RFQ, a esteira de migração e a rastreabilidade auditável de todo o processo."
+      rubric: "Estado da Arte 2/3 · [3,0 pts]",
+      title: "Slide 5 — Benchmarks Internacionais",
+      target: "55 segundos (02:50 - 03:45)",
+      text: "Mapeamos como os mercados mais maduros do mundo resolveram a inteligência energética. Nos Estados Unidos, a Arcadia desenvolveu APIs para ingestão de faturas de concessionárias conectando consumidores a usinas solares comunitárias. No Texas, a Energy Ogre provou o modelo de concierge independente: o usuário paga uma mensalidade fixa para um algoritmo otimizar e trocar contratos periodicamente. No Reino Unido, plataformas como Piclo e Electron operam leilões de flexibilidade para redes. E iniciativas como Powerledger e Energy Web aplicam registros auditáveis de garantias renováveis."
     },
     6: {
-      title: "Slide 6 — Do Backlog ao Recorte do MVP",
-      target: "50 segundos (04:10 - 05:00)",
-      text: "Organizamos os requisitos em 6 capacidades ou épicos centrais: Dados e Passaporte, Diagnóstico e Decisão, Marketplace/RFQ, Comparação e Escolha, Execução Assistida e Operação/Reotimização. O relatório acadêmico detalha o backlog completo com 28 User Stories. Aqui na tela, evidenciamos o recorte estrito de P0 para o MVP: apenas as funcionalidades essenciais para provar a tese com o decisor PME de ponta a ponta. Recursos como múltiplos perfis de permissão, leilões avançados de blocos e automação contratual sem toque humano foram conscientemente alocados como P1 e P2."
+      rubric: "Estado da Arte 3/3 · [3,0 pts]",
+      title: "Slide 6 — Matriz de Diferenciação & Hipótese",
+      target: "60 segundos (03:45 - 04:45)",
+      text: "Ao consolidar o Estado da Arte em nossa matriz comparativa de 6 dimensões, fica evidente o diferencial estrutural da Milet: não afirmamos que 'não existem soluções', mas sim que elas atuam de forma fragmentada. Enquanto a Arcadia foca apenas em dados e a Energy Ogre em varejo, a Milet fecha o ciclo integrando diagnóstico explicável, comparação multimodal entre rotas (GD, ACL e usina própria), workflow assistido e auditoria contínua de economia. A plataforma pública da CCEE será um trilho de transparência, mas o valor computacional está na decisão personalizada e na governança contínua."
     },
     7: {
-      title: "Slide 7 — Estado da Arte & Diferenciação",
-      target: "60 segundos (05:00 - 06:00)",
-      text: "Na pesquisa de Estado da Arte, não caímos na armadilha de dizer que não há concorrentes. O mercado possui soluções pontuais: plataformas de dados como a Arcadia nos EUA, serviços de troca contínua como a Energy Ogre, marketplaces de flexibilidade como a Piclo no Reino Unido, e no Brasil a futura plataforma pública de comparação determinada pelo Decreto 13.097 na CCEE. A hipótese diferencial da Milet está na integração contínua: nenhuma solução hoje no país integra diagnóstico explicável de fatura, comparação neutra entre rotas diferentes, execução assistida e auditoria contínua de economia em uma única experiência independente."
+      rubric: "Plano de Projeto 1/3 · [2,0 pts]",
+      title: "Slide 7 — Perfis de Usuários & Ecossistema",
+      target: "50 segundos (04:45 - 05:35)",
+      text: "No Plano de Projeto, iniciamos pelos Perfis de Usuários. Para assegurar foco de engenharia, definimos uma prioridade cirúrgica para o MVP: o UP-01, Consumidor PME e Decisor Energético — comércio, escritórios e pequenas indústrias que querem economia sem risco de engenharia. Ao redor, conectamos os atores de oferta necessários para fechar a esteira: o Gerador Independente (UP-03) que precisa ocupar capacidade, a Comercializadora Varejista (UP-04), o integrador EPC (UP-05) e o Operador Milet (UP-06). Consumidor residencial e investidores ficam para expansões pós-MVP."
     },
     8: {
-      title: "Slide 8 — Projetos I define. Projetos II constrói e valida.",
-      target: "45 segundos (06:00 - 06:45)",
-      text: "Um ponto fundamental de engenharia: este marco não se encerra em 2026.2. Projetos I foi dedicado ao discovery aprofundado, modelagem de requisitos, backlog priorizado, arquitetura de sistemas e validação conceitual inicial. Já Projetos II, no primeiro semestre de 2027, será a fase de engenharia ativa: implementação do MVP em código, testes automatizados, conformidade com a LGPD e a realização de um piloto demonstrável para validar as métricas de sucesso."
+      rubric: "Plano de Projeto 2/3 · [2,0 pts]",
+      title: "Slide 8 — Arquitetura da Solução & User Stories",
+      target: "65 segundos (05:35 - 06:40)",
+      text: "A arquitetura do produto fecha o ciclo em 5 etapas: Entender, Decidir, Competir, Executar e Aprender. O backlog possui 28 histórias de usuário, mas destacamos as 7 histórias nucleares que formam a espinha dorsal do MVP. Três delas são os pilares indispensáveis: a US-002 para ingestão de fatura; a US-013, núcleo de inteligência que normaliza propostas de comercializadoras sob a mesma régua matemática de VPL e risco; e a US-021, que fecha o loop auditando a economia realizada versus a prometida. As histórias 006, 010, 019 e 027 completam rotas, RFQ, migração e auditoria imutável."
     },
     9: {
-      title: "Slide 9 — Cronograma Geral (Ago/2026 a Jun/2027)",
-      target: "60 segundos (06:45 - 07:45)",
-      text: "Nosso cronograma atravessa os dois semestres letivos com marcos claros. Neste semestre de Projetos I, cumprimos o Estado da Arte, mapeamento de perfis e BMC em agosto e setembro; em outubro fechamos o detalhamento de requisitos e recorte do MVP; e em novembro e dezembro concluímos o planejamento arquitetural e prototipação conceitual. Em Projetos II, entre fevereiro e março construímos os módulos de ingestão e motor de rotas; em abril implementamos a comparação normalizada e segurança; em maio executamos o piloto de validação com dados reais; e em junho entregamos o MVP v1 funcional e o relatório final da graduação."
+      rubric: "Plano de Projeto 3/3 · [2,0 pts]",
+      title: "Slide 9 — Canvas v0.1 & Recorte do MVP",
+      target: "50 segundos (06:40 - 07:30)",
+      text: "O Business Model Canvas do projeto é tratado formalmente como hipótese v0.1 a ser testada, e não como modelo validado comercialmente. Destacamos quatro blocos essenciais: o segmento PME, a proposta de 4 pilares, as receitas em validação e as parcerias estruturais. Em consonância com a disciplina, realizamos o recorte estrito de 14 histórias P0 para o MVP acadêmico, postergando módulos complexos como telemetria IoT em tempo real, modelos de IA estocástica ou automação sem supervisão para as fases P1 e P2."
     },
     10: {
-      title: "Slide 10 — Gestão do Projeto & Sistema de Trabalho",
-      target: "40 segundos (07:45 - 08:25)",
-      text: "Para garantir rastreabilidade acadêmica e rigor de execução, adotamos métodos híbridos: Scrum para ciclos de entrega e Kanban para fluxo contínuo de itens de trabalho. A estrutura é dividida em 4 camadas bem definidas: Discovery com artefatos de pesquisa, Product Backlog com priorização P0/P1/P2, Roadmap de marcos e a camada de Execução com critérios de aceite em formato BDD e testes."
+      rubric: "Cronograma 1/2 · [2,0 pts]",
+      title: "Slide 10 — Cronograma Físico Geral (Gantt)",
+      target: "50 segundos (07:30 - 08:20)",
+      text: "O cronograma físico foi estruturado ao longo de 11 meses, de Agosto de 2026 a Junho de 2027, com separador claro entre semestres. Em Projetos I (2026.2), cumprimos o Discovery e Estado da Arte em agosto e setembro, o detalhamento de histórias e recorte do MVP em outubro, e o planejamento arquitetural e prototipação em novembro e dezembro. Em Projetos II (2027.1), construímos o core engine entre fevereiro e março, integramos RFQ e segurança em abril, realizamos o piloto de validação em maio e entregamos o MVP v1 e monografia em junho."
     },
     11: {
-      title: "Slide 11 — Business Model Canvas (Hipóteses v0.1)",
-      target: "50 segundos (08:25 - 09:15)",
-      text: "O Business Model Canvas do projeto é tratado estritamente como hipótese v0.1 a ser testada, e não como modelo validado comercialmente. Destacamos quatro blocos essenciais: o segmento inicial de PMEs; a proposta de valor focada em decisão, competição e gestão contínua; as fontes de receita baseadas em taxa transparente de originação ou modelo de concierge; e as parcerias estratégicas com geradores, comercializadoras e EPCs que sustentam a infraestrutura regulada de bastidor."
+      rubric: "Cronograma 2/2 · [2,0 pts]",
+      title: "Slide 11 — Técnicas de Gestão & Riscos",
+      target: "40 segundos (08:20 - 09:00)",
+      text: "Na engenharia do processo, adotamos abordagem híbrida: Scrum para entregas periódicas e Kanban para fluxo contínuo. Nossos diferenciais metodológicos incluem critérios de aceite em BDD (Dado que, Quando, Então) para testabilidade direta de requisitos e a aplicação da técnica SPIDER para fatiar histórias complexas como OCR de fatura e normalização de propostas. Além disso, mapeamos os riscos de variação de layout de distribuidoras e mudanças regulatórias, adotando parser modular e regras versionadas como mitigação."
     },
     12: {
-      title: "Slide 12 — Critérios de Sucesso e Fechamento",
-      target: "35 segundos (09:15 - 09:50)",
-      text: "Para encerrar, definimos critérios objetivos para considerar o projeto de engenharia concluído com êxito ao final de Projetos II: conseguir ingerir e estruturar dados de faturas reais; gerar recomendações de rotas com premissas transparentes; normalizar propostas comerciais concorrentes; operar a esteira de contratação assistida; e comprovar a economia realizada em ambiente de piloto. Milet: energia em mais liberdade. Muito obrigado, estou aberto às perguntas da banca."
+      rubric: "Resultados Esperados · [1,0 pt]",
+      title: "Slide 12 — Resultados Esperados & Critérios",
+      target: "45 segundos (09:00 - 09:45)",
+      text: "Para encerrar os requisitos da banca, definimos os critérios objetivos que determinarão o sucesso de Projetos II: conseguir ingerir faturas reais extraindo dados tarifários; motor de decisão determinístico com premissas transparentes; comparador normalizando pelo menos 3 ofertas concorrentes; esteira de contratação assistida navegável; e módulo de auditoria com conciliação mensal da economia realizada em ambiente de piloto real."
+    },
+    13: {
+      rubric: "Encerramento",
+      title: "Slide 13 — Encerramento & Arguição",
+      target: "15 segundos (09:45 - 10:00)",
+      text: "Milet: energia em mais liberdade. Agradeço a atenção do professor Rodrigo Juliani e estou totalmente à disposição dos avaliadores para a arguição e comentários da banca."
     }
   };
 
@@ -94,6 +112,7 @@
   const notesTitle = document.getElementById('notes-title');
   const notesTarget = document.getElementById('notes-target');
   const notesText = document.getElementById('notes-text');
+  const notesRubric = document.getElementById('notes-rubric');
   const btnCloseNotes = document.getElementById('btn-close-notes');
 
   // Ajuste de escala 16:9 automático
@@ -159,10 +178,11 @@
   // Atualiza conteúdo das Speaker Notes
   function updateSpeakerNotes(slideNum) {
     const data = speakerNotesData[slideNum];
-    if (data && notesTitle && notesTarget && notesText) {
-      notesTitle.textContent = data.title;
-      notesTarget.textContent = `Tempo alvo: ${data.target}`;
-      notesText.textContent = data.text;
+    if (data) {
+      if (notesTitle) notesTitle.textContent = data.title;
+      if (notesTarget) notesTarget.textContent = `Tempo alvo: ${data.target}`;
+      if (notesText) notesText.textContent = data.text;
+      if (notesRubric) notesRubric.textContent = `Rubrica: ${data.rubric}`;
     }
   }
 
@@ -246,7 +266,6 @@
         break;
       case 't':
       case 'T':
-        // Pausa/retoma timer
         isTimerRunning = !isTimerRunning;
         break;
     }
