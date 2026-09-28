@@ -1657,3 +1657,146 @@ html, body {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   ESTILOS ESPECIAIS: JORNADA DE VALOR MVP & CRONOGRAMA FIBERY
+   ========================================================================== */
+
+/* Container da Imagem 5 (Jornada de Valor) */
+.jornada-mvp-card {
+  background: #F9F6EE;
+  border: 1px solid var(--color-amber);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.jornada-mvp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.jornada-mvp-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: #1A1A1A;
+  font-weight: 700;
+}
+
+.jornada-mvp-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(211, 155, 61, 0.2);
+  color: #8C5B0D;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.jornada-mvp-img-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFDF9;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #EAE3D2;
+}
+
+.jornada-mvp-img {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.05) brightness(1.02);
+  transition: transform 0.3s ease;
+}
+
+.jornada-mvp-img:hover {
+  transform: scale(1.015);
+}
+
+/* Alternador de Visão no Slide 10 (Fibery vs Gantt) */
+.cronograma-switcher-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cronograma-tab-btn {
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  color: var(--color-sand);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cronograma-tab-btn:hover {
+  border-color: var(--color-amber);
+  color: var(--color-ivory);
+}
+
+.cronograma-tab-btn.active {
+  background: rgba(211, 155, 61, 0.15);
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+  font-weight: 700;
+}
+
+.fibery-cronograma-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fibery-card {
+  background: #141414;
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.fibery-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.fibery-card-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-amber);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fibery-card-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.05) brightness(1.03);
+}
+
