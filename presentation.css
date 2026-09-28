@@ -1322,6 +1322,24 @@ html, body {
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.hud-timer-badge:hover {
+  background: rgba(211, 155, 61, 0.15);
+  border-color: var(--color-amber);
+}
+
+.hud-timer-badge.paused .timer-dot {
+  background: #FFB74D;
+  animation: timer-pulse 1.4s infinite;
+}
+
+@keyframes timer-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 .timer-dot {
@@ -1348,6 +1366,12 @@ html, body {
 .hud-action-btn:hover {
   background: rgba(201, 184, 159, 0.15);
   border-color: var(--color-sand);
+}
+
+.hud-action-btn.active {
+  background: rgba(211, 155, 61, 0.2);
+  border-color: var(--color-amber);
+  color: var(--color-amber);
 }
 
 /* ==========================================================================

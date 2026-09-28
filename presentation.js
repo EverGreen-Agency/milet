@@ -186,10 +186,14 @@
     }
   }
 
+  // Speaker Notes Toggle
   function toggleNotes() {
     isNotesOpen = !isNotesOpen;
     if (notesDrawer) {
       notesDrawer.classList.toggle('open', isNotesOpen);
+    }
+    if (btnNotes) {
+      btnNotes.classList.toggle('active', isNotesOpen);
     }
   }
 
@@ -213,6 +217,29 @@
       timerSeconds++;
       updateTimerUI();
     }, 1000);
+    updateTimerBadgeState();
+  }
+
+  function toggleTimer() {
+    isTimerRunning = !isTimerRunning;
+    updateTimerBadgeState();
+  }
+
+  function resetTimer() {
+    timerSeconds = 0;
+    updateTimerUI();
+  }
+
+  function updateTimerBadgeState() {
+    const timerBadge = document.querySelector('.hud-timer-badge');
+    if (!timerBadge) return;
+    if (isTimerRunning) {
+      timerBadge.classList.remove('paused');
+      timerBadge.setAttribute('title', 'Timer em andamento (Clique ou [T] para pausar | [R] para reiniciar)');
+    } else {
+      timerBadge.classList.add('paused');
+      timerBadge.setAttribute('title', 'Timer pausado (Clique ou [T] para retomar | [R] para reiniciar)');
+    }
   }
 
   function updateTimerUI() {
@@ -266,7 +293,11 @@
         break;
       case 't':
       case 'T':
-        isTimerRunning = !isTimerRunning;
+        toggleTimer();
+        break;
+      case 'r':
+      case 'R':
+        resetTimer();
         break;
     }
   }
@@ -286,8 +317,21 @@
     });
   }
 
+  const timerBadgeEl = document.querySelector('.hud-timer-badge');
+  if (timerBadgeEl) {
+    timerBadgeEl.addEventListener('click', toggleTimer);
+    timerBadgeEl.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      resetTimer();
+    });
+  }
+
   // Inicialização
   resizeDeck();
+  if (notesDrawer && notesDrawer.classList.contains('open')) {
+    isNotesOpen = true;
+    if (btnNotes) btnNotes.classList.add('active');
+  }
   showSlide(1);
   startTimer();
 })();

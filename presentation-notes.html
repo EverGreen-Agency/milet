@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milet — Apresentação de Plano de Projeto</title>
-  <meta name="description" content="Apresentação Acadêmica da Milet alinhada aos Critérios de Avaliação de Projetos de Engenharia da Computação I (Mackenzie 2026.2).">
+  <title>Milet — Apresentação com Notas de Orador (Teleprompter & Rubrica)</title>
+  <meta name="description" content="Modo Orador da apresentação acadêmica da Milet com roteiro cronometrado e notas integradas para ensaio e apresentação (Mackenzie 2026.2).">
   
   <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
   
@@ -897,8 +897,8 @@
     </div>
 
     <div class="hud-left">
-      <span class="hud-brand-crumb"><strong>Milet</strong> · Apresentação Acadêmica</span>
-      <span class="hud-academic-label">Mackenzie · Turma 6</span>
+      <span class="hud-brand-crumb"><strong>Milet</strong> · Modo Orador</span>
+      <span class="hud-academic-label">Notas & Roteiro Sincronizados</span>
     </div>
 
     <div class="hud-center">
@@ -913,6 +913,9 @@
         <span id="timer-display">00:00</span> / 10:00
       </div>
 
+      <button id="btn-notes" class="hud-action-btn active" title="Notas do Orador (Tecla N)">
+        <span>📝</span> Notas
+      </button>
       <button id="btn-fullscreen" class="hud-action-btn" title="Tela Cheia (Tecla F)">
         <span>⛶</span> Tela Cheia
       </button>
@@ -922,6 +925,24 @@
       </button>
     </div>
   </footer>
+
+  <!-- DRAWER DE NOTAS DE ORADOR -->
+  <aside id="speaker-notes-drawer" class="open" aria-label="Notas do Orador">
+    <div class="notes-header">
+      <h3 id="notes-title">Slide 1 — Capa & Tema Formal</h3>
+      <button id="btn-close-notes" class="notes-close-btn" title="Fechar (Tecla N)">✕</button>
+    </div>
+    <div class="notes-body">
+      <div id="notes-rubric" class="notes-rubric-badge">Rubrica: Tema · [0,5 pt]</div>
+      <div id="notes-target" class="notes-time-target">Tempo alvo: 25 segundos (00:00 - 00:25)</div>
+      <p id="notes-text">Carregando roteiro do slide...</p>
+
+      <div class="notes-key-points">
+        <h4>Postura de Engenharia & Banca</h4>
+        <p>Apresente com segurança e clareza metodológica, demonstrando a maturidade de engenharia e a viabilidade técnica da Milet alinhada aos 10 pontos da folha de avaliação do Mackenzie.</p>
+      </div>
+    </div>
+  </aside>
 
   <script src="presentation.js"></script>
 </body>
