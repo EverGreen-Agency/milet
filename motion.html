@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet Motion Lab — Da Centelha ao Símbolo Vivo</title>
+  <meta name="description" content="Protótipo interativo do motion canônico da Milet em seis etapas, da centelha elétrica ao símbolo vivo de âmbar.">
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-dark-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="motion.css">
+</head>
+<body>
+  <header class="motion-header">
+    <a class="motion-brand" href="index.html#motion" aria-label="Voltar ao Brandbook Milet">
+      <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="" width="32" height="32">
+      <span class="motion-wordmark">Milet</span>
+      <span class="motion-product">Motion Lab</span>
+    </a>
+    <div class="motion-header-meta">
+      <span>Protótipo 01</span>
+      <a href="index.html#motion">Voltar ao Brandbook</a>
+    </div>
+  </header>
+
+  <main class="motion-main">
+    <section class="motion-intro" aria-labelledby="motionTitle">
+      <div>
+        <span class="motion-kicker">FORMA QUE ACENDE · MARCA QUE VIVE</span>
+        <h1 id="motionTitle">Da centelha ao símbolo vivo.</h1>
+      </div>
+      <p>Uma leitura interativa da metamorfose canônica em seis momentos. Reproduza, pause ou percorra cada estágio no seu ritmo.</p>
+    </section>
+
+    <section class="motion-player" aria-label="Player do motion canônico Milet">
+      <div class="motion-viewport" id="motionViewport">
+        <div class="motion-ambient" aria-hidden="true"></div>
+        <div class="motion-orbit" aria-hidden="true"></div>
+        <img id="motionFrameA" class="motion-frame is-active" src="assets/web/motion-lab-stage-01.webp" alt="Traço elétrico inicial">
+        <img id="motionFrameB" class="motion-frame" src="assets/web/motion-lab-stage-02.webp" alt="Oscilação senoidal AC">
+        <div class="motion-sweep" aria-hidden="true"></div>
+        <div class="motion-timecode" aria-hidden="true">
+          <span id="timecodeCurrent">00:00.0</span>
+          <span>06 ESTÁGIOS</span>
+        </div>
+      </div>
+
+      <div class="motion-copy" aria-live="polite">
+        <div class="motion-stage-meta">
+          <span id="stageBadge">ETAPA 01 / 06</span>
+          <span id="stageDuration">1.8s</span>
+        </div>
+        <h2 id="stageTitle">Traço elétrico inicial</h2>
+        <p id="stageDescription">A centelha original atravessa o espaço e inaugura o percurso da marca.</p>
+
+        <div class="motion-principle">
+          <span>PRINCÍPIO</span>
+          <strong id="stagePrinciple">Energia em estado puro</strong>
+        </div>
+
+        <ol class="motion-timeline" id="motionTimeline" aria-label="Etapas do motion">
+          <li><button type="button" class="timeline-step is-active" data-stage="0" aria-current="step"><span>01</span><em>Centelha</em></button></li>
+          <li><button type="button" class="timeline-step" data-stage="1"><span>02</span><em>Senoide</em></button></li>
+          <li><button type="button" class="timeline-step" data-stage="2"><span>03</span><em>Wireframe</em></button></li>
+          <li><button type="button" class="timeline-step" data-stage="3"><span>04</span><em>Circuito</em></button></li>
+          <li><button type="button" class="timeline-step" data-stage="4"><span>05</span><em>Torção</em></button></li>
+          <li><button type="button" class="timeline-step" data-stage="5"><span>06</span><em>Símbolo</em></button></li>
+        </ol>
+      </div>
+
+      <div class="motion-controls">
+        <div class="transport-controls">
+          <button id="motionPrev" type="button" class="control-btn control-btn-icon" aria-label="Etapa anterior">‹</button>
+          <button id="motionPlay" type="button" class="control-btn control-btn-primary" aria-pressed="false">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            <span class="play-label">Reproduzir</span>
+          </button>
+          <button id="motionNext" type="button" class="control-btn control-btn-icon" aria-label="Próxima etapa">›</button>
+        </div>
+
+        <label class="scrubber-wrap" for="motionScrubber">
+          <span class="sr-only">Percorrer etapas do motion</span>
+          <input id="motionScrubber" type="range" min="0" max="5" step="1" value="0">
+        </label>
+
+        <div class="playback-options">
+          <label for="motionSpeed">Velocidade</label>
+          <select id="motionSpeed">
+            <option value="0.75">0,75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.35">1,35×</option>
+          </select>
+          <button id="motionLoop" type="button" class="loop-btn is-active" aria-pressed="true">Loop ativo</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="storyboard" aria-labelledby="storyboardTitle">
+      <div class="storyboard-heading">
+        <div>
+          <span class="motion-kicker">STORYBOARD CANÔNICO</span>
+          <h2 id="storyboardTitle">A transformação completa</h2>
+        </div>
+        <p>Os frames originais permanecem disponíveis como referência. O player acima é uma interpretação para navegador, não um arquivo final de After Effects ou Lottie.</p>
+      </div>
+      <button class="storyboard-image" type="button" id="storyboardOpen" aria-label="Ampliar storyboard completo">
+        <img src="assets/web/milet-motion-sequencia-completa-6-etapas.webp" alt="Sequência completa em seis etapas" loading="lazy" decoding="async">
+      </button>
+    </section>
+  </main>
+
+  <dialog class="storyboard-dialog" id="storyboardDialog">
+    <button id="storyboardClose" class="dialog-close" type="button" aria-label="Fechar storyboard">Fechar</button>
+    <img src="assets/web/milet-motion-sequencia-completa-6-etapas.webp" alt="Sequência completa em seis etapas">
+  </dialog>
+
+  <script src="motion.js"></script>
+</body>
+</html>
