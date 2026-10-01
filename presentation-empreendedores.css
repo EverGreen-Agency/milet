@@ -1532,6 +1532,521 @@ html, body {
 }
 
 /* ==========================================================================
+   COMPONENTES N1 OFICIAIS — PROFA. JULIA GEBARA
+   ========================================================================== */
+
+/* 1. Capa: Grade de Integrantes em Ordem Alfabética */
+.cover-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.cover-team-member {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-team-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.cover-team-meta {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-amber);
+  margin-top: 2px;
+}
+
+/* 2. Slide 2: Equipe Multidisciplinar (6 integrantes) */
+.team-members-6grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.team-member-item-small {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.team-member-item-small strong {
+  font-size: 12.5px;
+  color: var(--color-ivory);
+}
+
+.team-member-item-small span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-amber);
+}
+
+.team-member-item-small p {
+  font-size: 11px;
+  color: var(--color-sand);
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+/* 3. Slide 3: Matriz do Problema em 6 Caixas (3x2) */
+.problem-matrix-6boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: clamp(10px, 1.2vw, 14px);
+  flex: 1;
+}
+
+.problem-box {
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 8px;
+  padding: clamp(10px, 1.4vh, 14px) clamp(12px, 1.2vw, 16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.problem-box:hover {
+  border-color: var(--color-amber);
+  transform: translateY(-2px);
+}
+
+.problem-box.highlight {
+  border-left: 3px solid var(--color-coral);
+  background: linear-gradient(135deg, rgba(229, 115, 115, 0.06) 0%, var(--color-carbon-card) 100%);
+}
+
+.problem-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.problem-box-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-amber);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.problem-box-title {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.8vh, 18px);
+  color: var(--color-ivory);
+  font-weight: 600;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 4px;
+}
+
+.problem-box-content {
+  font-size: clamp(11.5px, 1.3vh, 13px);
+  color: var(--color-ivory-muted);
+  line-height: 1.45;
+}
+
+.problem-box-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.problem-box-content li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.problem-box-content li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-amber);
+  font-size: 10px;
+}
+
+/* 4. Slides 4 e 6: Mapa da Empatia (Estrutura Clássica da Profa. Julia) */
+.empathy-map-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vh, 14px);
+  flex: 1;
+}
+
+.empathy-quadrants-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.2vw, 14px);
+  flex: 1;
+}
+
+.empathy-quadrant {
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 8px;
+  padding: clamp(12px, 1.6vh, 16px);
+  display: flex;
+  flex-direction: column;
+}
+
+.empathy-quadrant.think-feel {
+  border-top: 3px solid var(--color-amber);
+  background: linear-gradient(180deg, rgba(211, 155, 61, 0.07) 0%, var(--color-carbon-card) 100%);
+}
+
+.empathy-quadrant.see {
+  border-top: 3px solid var(--color-sand);
+}
+
+.empathy-quadrant.hear {
+  border-top: 3px solid var(--color-copper);
+}
+
+.empathy-quadrant.say-do {
+  border-top: 3px solid #64B5F6;
+}
+
+.empathy-quadrant-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.empathy-icon {
+  font-size: 16px;
+}
+
+.empathy-quadrant-title {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.9vh, 18.5px);
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.empathy-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: clamp(11.5px, 1.35vh, 13px);
+  color: var(--color-ivory-muted);
+  line-height: 1.4;
+}
+
+.empathy-list li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.empathy-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-amber);
+  font-weight: bold;
+}
+
+/* Base do Mapa de Empatia: Dores e Necessidades */
+.empathy-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 1.2vw, 14px);
+  flex-shrink: 0;
+}
+
+.empathy-pain-card {
+  background: linear-gradient(135deg, rgba(229, 115, 115, 0.06) 0%, var(--color-carbon-card) 100%);
+  border: 1px solid rgba(229, 115, 115, 0.3);
+  border-left: 4px solid var(--color-coral);
+  border-radius: 8px;
+  padding: clamp(10px, 1.4vh, 14px) clamp(14px, 1.4vw, 18px);
+}
+
+.empathy-gain-card {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.06) 0%, var(--color-carbon-card) 100%);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-left: 4px solid var(--color-emerald);
+  border-radius: 8px;
+  padding: clamp(10px, 1.4vh, 14px) clamp(14px, 1.4vw, 18px);
+}
+
+.empathy-bar-title {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.8vh, 17px);
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.empathy-pain-card .empathy-bar-title { color: var(--color-coral); }
+.empathy-gain-card .empathy-bar-title { color: var(--color-emerald); }
+
+.empathy-bar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.empathy-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: clamp(11px, 1.25vh, 12.5px);
+  color: var(--color-ivory);
+  line-height: 1.3;
+}
+
+.empathy-pain-card .empathy-tag { border-left: 2px solid var(--color-coral); }
+.empathy-gain-card .empathy-tag { border-left: 2px solid var(--color-emerald); }
+
+/* 5. Slides 5 e 7: Canvas da Proposta de Valor (Bilateral Strategyzer) */
+.vpc-bilateral-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 22px);
+  flex: 1;
+}
+
+.vpc-side-card {
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 10px;
+  padding: clamp(14px, 1.8vh, 18px) clamp(16px, 1.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vpc-side-card.value-map {
+  border-top: 3px solid var(--color-amber);
+}
+
+.vpc-side-card.customer-profile {
+  border-top: 3px solid var(--color-sand);
+}
+
+.vpc-side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+}
+
+.vpc-side-title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vh, 21px);
+  font-weight: 700;
+  color: var(--color-ivory);
+}
+
+.vpc-sections-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.vpc-section-box {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.vpc-section-box.products { border-left: 3px solid var(--color-amber); }
+.vpc-section-box.relievers { border-left: 3px solid var(--color-coral); }
+.vpc-section-box.creators { border-left: 3px solid var(--color-emerald); }
+.vpc-section-box.jobs { border-left: 3px solid var(--color-sand); }
+.vpc-section-box.pains { border-left: 3px solid var(--color-coral); }
+.vpc-section-box.gains { border-left: 3px solid var(--color-emerald); }
+
+.vpc-section-name {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vpc-section-box.products .vpc-section-name { color: var(--color-amber); }
+.vpc-section-box.relievers .vpc-section-name { color: var(--color-coral); }
+.vpc-section-box.creators .vpc-section-name { color: var(--color-emerald); }
+.vpc-section-box.jobs .vpc-section-name { color: var(--color-sand); }
+.vpc-section-box.pains .vpc-section-name { color: var(--color-coral); }
+.vpc-section-box.gains .vpc-section-name { color: var(--color-emerald); }
+
+.vpc-section-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: clamp(11.5px, 1.3vh, 12.8px);
+  color: var(--color-ivory-muted);
+  line-height: 1.35;
+}
+
+.vpc-section-box li {
+  position: relative;
+  padding-left: 12px;
+}
+
+.vpc-section-box li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  font-size: 9px;
+  color: var(--color-sand);
+}
+
+/* 6. Slides 8 e 9: Validação do Problema (Perguntas & Respondentes) */
+.validation-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(14px, 1.6vw, 22px);
+  flex: 1;
+}
+
+.validation-questions-card {
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 10px;
+  padding: clamp(14px, 1.8vh, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.question-item-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.question-number-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--color-amber-surface);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.question-text-content {
+  font-size: clamp(12px, 1.4vh, 13.5px);
+  color: var(--color-ivory);
+  line-height: 1.4;
+}
+
+.validation-respondents-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.respondent-card {
+  background: var(--color-carbon-card);
+  border: 1px dashed var(--color-carbon-border-light);
+  border-radius: 10px;
+  padding: clamp(14px, 1.8vh, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.respondent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.respondent-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--color-ivory);
+  font-weight: 600;
+}
+
+.respondent-status-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  background: rgba(211, 155, 61, 0.12);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.respondent-box-placeholder {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px dashed rgba(201, 184, 159, 0.2);
+  border-radius: 6px;
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-sand);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Badge de Apêndice */
+.appendix-badge {
+  background: rgba(184, 115, 51, 0.2);
+  border: 1px solid var(--color-copper);
+  color: var(--color-copper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
    ESTILOS DE IMPRESSÃO / EXPORTAÇÃO PDF 16:9 (12 SLIDES)
    ========================================================================== */
 

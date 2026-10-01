@@ -1,14 +1,16 @@
 /**
- * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9 (12 SLIDES)
- * Disciplina: PROJETOS EMPREENDEDORES — N1
- * Narrativa: PROBLEMA → USUÁRIOS → DORES → PROPOSTA DE VALOR → HIPÓTESES → VALIDAÇÃO
+ * MILET — ENGINE DA APRESENTAÇÃO WEB 16:9 (13 SLIDES)
+ * Disciplina: PROJETOS EMPREENDEDORES — AVALIAÇÃO N1 (Mackenzie 2026.2)
+ * Docente: Profa. Julia Gebara
+ * Sequência Oficial: Capa -> SWOT -> Problema -> Empatia P1 -> VPC P1 -> Empatia P2 -> VPC P2 -> Validação P1 -> Validação P2 -> Síntese N1 -> Apêndice (Jornada, BMC, H1-H6)
  */
 
 (function () {
   'use strict';
 
   // Configurações Globais
-  const TOTAL_SLIDES = 12;
+  const TOTAL_SLIDES = 13;
+  const CORE_SLIDES = 10;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
   let timerSeconds = 0;
@@ -16,97 +18,104 @@
   let isTimerRunning = true;
   let isNotesOpen = false;
 
-  // Speaker Notes completas para os 12 Slides de Projetos Empreendedores
+  // Speaker Notes completas para os 13 Slides da Profa. Julia Gebara
   const speakerNotesData = {
     1: {
-      rubric: "Abertura & Posicionamento",
-      title: "Slide 1 — Capa & Proposta de Valor Central",
-      target: "30 segundos (00:00 - 00:30)",
-      bullets: "• Apresentação formal da Milet como plataforma independente de energia\n• Conexão entre o consumidor empresarial e as novas modalidades regulatórias\n• Propósito: transformar inércia e assimetria em liberdade de escolha sustentável",
-      text: "Bom dia, professores avaliadores e colegas. Apresentamos a Milet, uma plataforma digital e independente projetada para permitir que consumidores empresariais possam entender, comparar, contratar e gerir sua energia de forma contínua.\n\nEnergia elétrica representa um dos maiores custos operacionais de uma empresa, mas quase sempre é tratada com passividade. A Milet nasce para transformar essa relação comercial, trazendo a tese: 'Energia em mais liberdade'."
+      rubric: "Abertura & Apresentação Formal",
+      title: "Slide 1 — Capa & Proposta Central",
+      target: "35 segundos (00:00 - 00:35)",
+      bullets: "• Apresentação formal da Milet perante a Profa. Julia Gebara e colegas\n• Apresentação dos 6 integrantes em ordem alfabética e suas formações\n• Tese central: transformar uma decisão hoje fragmentada e opaca em jornada contínua",
+      text: "Bom dia, Profa. Julia Gebara e colegas. Apresentamos a Milet, uma plataforma digital e independente projetada para permitir que pequenas e médias empresas possam entender, comparar, contratar e gerir sua energia continuamente.\n\nNosso grupo é multidisciplinar e reúne: Eduardo e Leonardo em Engenharia de Computação, Enzo em Engenharia Elétrica, Heloísa em Administração, Maria Luíza em Arquitetura e Mell em Direito. Essa diversidade de repertório é exatamente o que nos permite investigar um setor complexo como o elétrico a partir da tese: 'Energia em mais liberdade'."
     },
     2: {
-      rubric: "Capacidade & Diagnóstico",
-      title: "Slide 2 — Equipe Empreendedora & Matriz SWOT",
-      target: "50 segundos (00:30 - 01:20)",
-      bullets: "• Distinção explícita entre fatores internos da equipe e fatores de mercado\n• Forças: software interno, repertório de produto, proximidade técnica (ElectROM)\n• Fraquezas & Ameaças tratadas com sobriedade científica",
-      text: "No Slide 2, apresentamos a nossa equipe e a Matriz SWOT, separando rigorosamente as capacidades internas do grupo do contexto externo de mercado.\n\nComo forças internas, temos capacidade de desenvolvimento rápido de software, domínio de produto, growth e IA, além da proximidade prática com a engenharia de campo e instalação solar. Como fraqueza, reconhecemos a necessidade de consolidar histórico de transações e a dependência de parceiros regulados.\n\nNas oportunidades externas, temos a abertura do Mercado Livre para todo o Grupo A e a futura baixa tensão. Como ameaças, monitoramos a concorrência de comercializadoras verticais e a futura plataforma pública de comparação da CCEE, o que nos obriga a criar valor muito além da cotação pontual."
+      rubric: "Habilidades da Equipe & Diagnóstico",
+      title: "Slide 2 — Equipe Multidisciplinar & Matriz SWOT",
+      target: "55 segundos (00:35 - 01:30)",
+      bullets: "• Forças e Fraquezas como características internas da própria equipe\n• Sinergia entre tecnologia, regulação elétrica, modelagem de negócios e direito\n• Oportunidades da abertura do Grupo A e ameaças de comercializadoras tradicionais",
+      text: "No Slide 2, apresentamos o mapeamento de habilidades da nossa equipe e a Matriz SWOT, separando rigorosamente as capacidades internas do grupo do contexto externo de mercado.\n\nComo forças internas, unimos capacidade de desenvolvimento de software e IA, proximidade prática com a engenharia elétrica, estruturação de conformidade jurídica e modelagem de processos. Como limitações atuais da equipe, reconhecemos estarmos em estágio inicial sem base histórica prévia de migrações e a necessidade de validar hipóteses empiricamente no campo.\n\nNo ambiente externo, a abertura do Mercado Livre para todo o Grupo A desde 2024 cria uma demanda reprimida em PMEs. Em contrapartida, monitoramos como ameaças as redes consolidadas de corretores das comercializadoras e futuras ferramentas públicas da CCEE."
     },
     3: {
-      rubric: "Definição do Problema",
-      title: "Slide 3 — Declaração & Matriz do Problema",
-      target: "55 segundos (01:20 - 02:15)",
-      bullets: "• Declaração clara do problema enfrentado por PMEs\n• Análise em 5 blocos: Quando acontece, Quem é afetado, Causas, Consequências, Alternativas\n• Não afirmamos que 'não existe solução', mas sim que são fragmentadas e assimétricas",
-      text: "A nossa declaração do problema sintetiza a dor central: 'Muitos consumidores empresariais sequer sabem que possuem alternativas para contratar sua energia. Quando descobrem, enfrentam enorme dificuldade para identificar elegibilidade, comparar propostas díspares, executar a contratação e verificar se a economia prometida realmente ocorreu.'\n\nIsso acontece quando a conta sobe abruptamente ou quando a empresa é abordada por um corretor. O decisor da PME não tem equipe especializada de energia, recebe propostas incomparáveis em PDF e tem medo de incorrer em multas. As alternativas atuais são fragmentadas: planilhas manuais, consultorias caras voltadas apenas a grandes indústrias, ou a inércia de continuar pagando a tarifa cativa da distribuidora."
+      rubric: "Declaração e Matriz do Problema (6 Blocos)",
+      title: "Slide 3 — Declaração em 1 Frase & Matriz do Problema",
+      target: "60 segundos (01:30 - 02:30)",
+      bullets: "• Declaração do problema lapidada em UMA única frase oficial\n• Análise em 6 blocos do modelo da Profa. Julia Gebara\n• Destaque para 'Como a pessoa afetada se sente': insegura, sobrecarregada e desconfiada",
+      text: "A nossa declaração do problema sintetiza em uma única frase a dor central: 'Decisores de PMEs têm dificuldade para perceber quando possuem alternativas ao modelo atual de energia e, quando as descobrem, para avaliar sua elegibilidade, comparar propostas em bases equivalentes e acompanhar o resultado da contratação, devido à complexidade técnica e à fragmentação das informações e agentes do setor.'\n\nNa matriz de 6 blocos da disciplina, o problema ocorre em faturas elevadas ou abordagens comerciais ativas. Afeta donos e gestores de PMEs do Grupo A. A causa raiz reside na assimetria de informações e jargões do setor. Como o decisor se sente? Inseguro, sobrecarregado e desconfiado ao tomar uma decisão de alto impacto sem dominar as regras. As alternativas atuais, como cotações avulsas por e-mail ou planilhas manuais, trazem a desvantagem da incomparabilidade e falta de auditoria contínua."
     },
     4: {
-      rubric: "Segmento de Demanda",
-      title: "Slide 4 — Perfil 1: Consumidor PME / Decisor Energético",
-      target: "50 segundos (02:15 - 03:05)",
-      bullets: "• Apresentação do artefato real do Fibery: Academic · User Profiles\n• Estrutura de Jobs, Pains e Gains extraída da investigação de campo\n• O usuário busca decisão segura, não aprender o jargão do setor elétrico",
-      text: "No Slide 4, trazemos o artefato real do nosso workspace no Fibery: o mapeamento detalhado de Jobs, Pains e Gains do Perfil 1, o Consumidor PME.\n\nO Job do decisor não é virar especialista em regulação da ANEEL: é entender quanto gasta, descobrir se é elegível a uma alternativa mais barata e contratar com segurança. Suas maiores dores são propostas com premissas diferentes que impedem a comparação direta, falta de tempo e medo de assumir contratos de longo prazo com riscos ocultos. Seu ganho almejado é economia real, auditável e sem atrito operacional."
+      rubric: "Empatia com a Demanda",
+      title: "Slide 4 — Mapa da Empatia: Consumidor PME",
+      target: "50 segundos (02:30 - 03:20)",
+      bullets: "• Estrutura clássica do Mapa da Empatia: Pensa/Sente, Vê, Ouve, Fala/Faz, Dores e Necessidades\n• Badge de hipóteses iniciais a validar em campo\n• O decisor busca segurança e economia sem assumir nova complexidade operacional",
+      text: "No Slide 4, estruturamos o Mapa da Empatia do Perfil 1: o Consumidor PME e Decisor Energético, tratado com a salvaguarda de 'hipóteses iniciais a validar com clientes'.\n\nO que ele pensa e sente? Sente que a conta está alta, mas teme tomar uma decisão errada e desconfia de promessas agressivas. O que ele vê? Faturas complexas, corretores oferecendo alternativas divergentes e notícias dispersas sobre mercado livre. O que ouve? Promessas de economia de até 30%, mas também relatos contraditórios sobre multas e riscos. O que fala e faz? Encaminha contas em PDF para análise, consulta parceiros e tende a adiar a decisão quando fica inseguro.\n\nSuas dores centrais são a falta de conhecimento técnico e o medo de contratos inadequados; suas necessidades fundamentais são um diagnóstico claro, comparação equivalente e acompanhamento contínuo."
     },
     5: {
       rubric: "Proposta de Valor — Demanda",
-      title: "Slide 5 — Value Proposition Canvas (Consumidor PME)",
-      target: "50 segundos (03:05 - 03:55)",
-      bullets: "• Apresentação do artefato real do Fibery: Value Proposition Canvas\n• Destaque para as 3 conexões fundamentais: Dor/Alívio, Tarefa/Produto, Ganho/Criador\n• Como a solução Milet responde exatamente às maiores fricções do cliente",
-      text: "Conectamos essas dores ao nosso Value Proposition Canvas, também estruturado no Fibery. Destacamos três relações fundamentais:\n\nPrimeiro: à dor de não conseguir comparar propostas, respondemos com a Normalização Automática de Propostas, equalizando todas as ofertas em uma régua comum com impostos e encargos explícitos.\n\nSegundo: à tarefa de descobrir alternativas, oferecemos o Diagnóstico Inteligente e o Passaporte Energético, que lê a fatura e aponta a rota ideal — seja Mercado Livre, Geração Distribuída ou ajuste tarifário.\n\nTerceiro: ao ganho de economizar sem virar refém da operação, criamos a Execução Assistida e o Savings Ledger, que audita mês a mês se a economia prometida de fato aconteceu na conta."
+      title: "Slide 5 — Canvas da Proposta de Valor: Consumidor PME",
+      target: "55 segundos (03:20 - 04:15)",
+      bullets: "• Alinhamento Strategyzer entre Customer Profile (Jobs, Pains, Gains) e Value Map\n• Produtos: Diagnóstico, Passaporte Energético, RFQ Reverso e Savings Ledger\n• Analgésicos eliminam o atrito de comparação; Criadores de ganho maximizam a economia líquida",
+      text: "Conectamos essa empatia ao Canvas da Proposta de Valor do Perfil 1. No Customer Profile, o decisor tem tarefas como entender custos, avaliar elegibilidade e auditar faturas; sofre com propostas incomparáveis e falta de tempo; e busca economia real sem burocracia.\n\nNo Mapa de Valor da Milet, respondemos com quatro soluções integradas: o Diagnóstico Inteligente e Passaporte Energético, que normalizam a fatura; o RFQ Reverso, que coloca fornecedores competindo na mesma régua; a Execução Assistida de migração; e o Savings Ledger, que audita mês a mês se a economia prometida realmente ocorreu na conta da empresa."
     },
     6: {
-      rubric: "Segmento de Oferta",
-      title: "Slide 6 — Perfil 2: Comercializadora / Fornecedor de Energia",
-      target: "45 segundos (03:55 - 04:40)",
-      bullets: "• A Milet é uma plataforma bilateral que precisa gerar valor para a oferta\n• Dores das comercializadoras: CAC altíssimo, leads desqualificados, propostas manuais\n• Ganhos: RFQs padronizados, dados limpos, ciclo comercial reduzido",
-      text: "Uma plataforma de mercado só funciona se gerar incentivos reais para os dois lados. No Perfil 2, analisamos os fornecedores: comercializadoras varejistas e geradores de energia.\n\nHoje, o CAC desse setor na prospecção de PMEs é altíssimo. A força comercial gasta semanas tentando obter faturas legíveis de clientes que muitas vezes nem são elegíveis ao Mercado Livre. Para eles, a Milet entrega RFQs pré-qualificados com dados técnicos normalizados, permitindo precificação em minutos, menor custo de aquisição e conversão substancialmente maior."
+      rubric: "Empatia com a Oferta",
+      title: "Slide 6 — Mapa da Empatia: Fornecedor de Energia",
+      target: "50 segundos (04:15 - 05:05)",
+      bullets: "• A Milet é uma plataforma bilateral que precisa gerar incentivos reais para a oferta\n• Dores das comercializadoras: alto custo de aquisição, faturas ilegíveis e retrabalho\n• Necessidades: demanda qualificada, dados higienizados e visibilidade de pipeline",
+      text: "Como negócio bilateral, investigamos com o mesmo rigor o Perfil 2: as Comercializadoras e Fornecedores de Energia.\n\nO que a comercializadora pensa e sente? Quer volume de demanda qualificada, mas frustra-se com leads frios e faturas incompletas. O que vê? Competição acirrada após a abertura do mercado e custos crescentes de prospecção. O que ouve? Clientes leigos perguntando apenas 'quanto vou economizar' e dúvidas sobre segurança. O que fala e faz? Gasta dias coletando faturas, calculando curvas de carga manualmente e fazendo follow-ups exaustivos.\n\nSuas maiores dores são o retrabalho operacional e o tempo de precificação; sua necessidade é receber dados estruturados e prontos para submeter ofertas assertivas."
     },
     7: {
       rubric: "Proposta de Valor — Oferta",
-      title: "Slide 7 — Proposta de Valor para o Fornecedor",
-      target: "45 segundos (04:40 - 05:25)",
-      bullets: "• Value Map desenhado para otimizar o funil dos agentes de comercialização\n• Matching inteligente, portal de submissão padronizada e visibilidade de pipeline\n• Tratado com rigor metodológico como hipóteses de valor a serem medidas no piloto",
-      text: "No Slide 7, sintetizamos a Proposta de Valor para o Fornecedor como uma arquitetura de eficiência. Oferecemos Matching Inteligente de demanda, envio do Passaporte Energético com histórico verificado e um Portal de Propostas padronizado que elimina a troca de e-mails e planilhas soltas.\n\nReforçamos perante a banca: tratamos o aumento de conversão e a redução de CAC como hipóteses centrais de valor a serem mensuradas empiricamente durante o piloto com comercializadoras parceiras."
+      title: "Slide 7 — Canvas da Proposta de Valor: Fornecedor",
+      target: "50 segundos (05:05 - 05:55)",
+      bullets: "• Value Map bilateral: Portal de Submissão, Matching Inteligente e Passaporte Estruturado\n• Analgésicos: eliminação da digitação manual de faturas e redução de retrabalho\n• Criadores de ganho: redução do tempo de resposta para minutos e maior taxa de conversão",
+      text: "No Slide 7, estruturamos o Canvas da Proposta de Valor para o Fornecedor de Energia. O Job da comercializadora é prospectar PMEs elegíveis, precificar com velocidade e fechar contratos com margem saudável.\n\nO Mapa de Valor da Milet oferece o Portal Padronizado de Submissão de Propostas, o Matching Inteligente de Demanda e o envio do Passaporte Energético com dados já higienizados. Isso atua como um analgésico direto contra a digitação de faturas ilegíveis e cria ganho ao reduzir o tempo de resposta de dias para minutos, permitindo escalar o volume de vendas com eficiência operacional."
     },
     8: {
-      rubric: "Mecanismo de Solução",
-      title: "Slide 8 — Da Descoberta ao Resultado Contínuo",
-      target: "60 segundos (05:25 - 06:25)",
-      bullets: "• Jornada completa em 7 estágios: Descobrir, Entender, Decidir, Competir, Executar, Comprovar, Reotimizar\n• Diferencial estratégico: a Milet não termina na cotação pontual\n• Preservação contínua de contexto entre a fatura inicial e o resultado faturado",
-      text: "Como tudo isso se traduz na experiência de produto? O Slide 8 apresenta a jornada em 7 etapas que constrói o diferencial da Milet:\n\n1. Descobrir a elegibilidade em segundos; 2. Entender a fatura por meio da criação do Passaporte Energético; 3. Decidir a rota técnica entre Mercado Livre ou GD; 4. Competir via RFQ reverso com ofertas normalizadas na mesma régua; 5. Executar a migração de forma assistida com interface transparente; 6. Comprovar mês a mês no Savings Ledger a economia real realizada; e 7. Reotimizar o contrato proativamente antes do vencimento.\n\nO lema é claro: a Milet não termina na cotação. O valor está em acompanhar o cliente continuamente."
+      rubric: "Validação Empírica — Demanda",
+      title: "Slide 8 — Validação do Problema: Consumidor PME",
+      target: "55 segundos (05:55 - 06:50)",
+      bullets: "• Instrumento de pesquisa estruturado em 5 perguntas oficiais de campo\n• Postura científica ética: nenhuma resposta inventada antes da conclusão de campo\n• Espaços transparentes reservados para Respondente A e Respondente B",
+      text: "No Slide 8, entramos na etapa de Validação do Problema exigida pela disciplina. Em total consonância com as orientações da Profa. Julia Gebara e a integridade acadêmica do Mackenzie, não inventamos respostas nem percentuais fictícios de pesquisa.\n\nApresentamos aqui o nosso formulário estruturado em 5 perguntas direcionadas a decisores de PMEs: investigando a última vez que tentaram reduzir a conta, como compararam propostas recebidas, qual foi o maior atrito do processo, como verificam a veracidade da economia e como auditam o pós-contratação. Os espaços dos Respondentes A e B estão reservados para transcrição direta à medida que as entrevistas forem concluídas no campo."
     },
     9: {
-      rubric: "Modelo de Negócio",
-      title: "Slide 9 — Business Model Canvas (Hipóteses em Validação)",
-      target: "50 segundos (06:25 - 07:15)",
-      bullets: "• Artefato real do Fibery: Academic · BMC Whiteboard v0.2\n• Destaque dos 4 pilares: Segmento Inicial, Proposta de Valor, Lado da Oferta e Monetização\n• Hipóteses de receita: Success fee do fornecedor, assinatura/concierge e SaaS",
-      text: "No Slide 9, apresentamos nosso Business Model Canvas, extraído do Fibery Whiteboard v0.2, sinalizado com a badge 'hipóteses em validação'.\n\nFocamos inicialmente em PMEs do Grupo A com contas a partir de R$ 5.000 mensais. Nossas hipóteses de monetização contemplam três vertentes complementares: taxa de sucesso paga pelo fornecedor contratado com transparência explícita; assinatura mensal por unidade para gestão e auditoria contínua; e ferramentas de qualificação para os agentes de oferta. Mantemos como premissa inegociável a neutralidade do algoritmo de recomendação."
+      rubric: "Validação Empírica — Oferta",
+      title: "Slide 9 — Validação do Problema: Fornecedor",
+      target: "55 segundos (06:50 - 07:45)",
+      bullets: "• Instrumento estruturado para agentes comerciais de comercializadoras\n• 5 perguntas focadas em qualificação, dados faltantes, retrabalho e motivos de perda\n• Espaços reservados para entrevistas qualitativas com especialistas de mercado",
+      text: "No Slide 9, aplicamos o mesmo rigor de validação para o Lado da Oferta. Elaboramos o roteiro com 5 perguntas para comercializadoras e geradores: como qualificam PMEs hoje, quais informações normalmente faltam nas faturas enviadas pelos clientes, onde há mais retrabalho e lentidão na equipe, quais motivos fazem uma cotação não avançar e o que torna uma oportunidade pronta para proposta.\n\nEstamos conduzindo o agendamento de entrevistas com heads comerciais e executivos de contas de comercializadoras varejistas, cujas transcrições serão incorporadas para consolidar a entrega."
     },
     10: {
-      rubric: "Validação & Pesquisa",
-      title: "Slide 10 — Validação do Problema & Métricas de Campo",
-      target: "55 segundos (07:15 - 08:10)",
-      bullets: "• Rigor ético e científico: nenhuma porcentagem ou número fictício inventado\n• Exibição transparente das métricas prioritárias sob coleta no campo\n• Metodologia: entrevistas em profundidade com decisores PME, comercializadoras e survey",
-      text: "No Slide 10, adotamos postura de total integridade acadêmica: não inventamos porcentagens nem resultados de pesquisa para preencher slides. Apresentamos aqui a nossa matriz de pesquisa de campo em andamento e os indicadores que estamos avaliando.\n\nEstamos medindo o grau de desconhecimento do Mercado Livre entre PMEs, o índice de dificuldade para comparar propostas e a disposição a pagar por uma gestão independente. Nossa metodologia combina entrevistas em profundidade com decisores financeiros de empresas, conversas com diretores comerciais de comercializadoras e aplicação de questionários estruturados com teste do protótipo de Passaporte."
+      rubric: "Síntese N1 & Roteiro N2",
+      title: "Slide 10 — Síntese da Entrega N1 & Próximos Passos",
+      target: "55 segundos (07:45 - 08:40)",
+      bullets: "• Fechamento dos 10 slides principais da avaliação N1\n• Consolidação da modelagem de diagnóstico e plano de ação para a etapa N2\n• Agradecimento formal à Profa. Julia Gebara e abertura para arguição",
+      text: "Para concluir a sequência principal da Avaliação N1, o Slide 10 consolida o cumprimento de todos os itens requeridos no plano de ensino: mapeamento de competências da equipe, declaração lapidada do problema, matriz de 6 blocos, mapas de empatia bilaterais, propostas de valor alinhadas e formulação dos instrumentos de pesquisa.\n\nNossos próximos passos imediatos contemplam a consolidação das transcrições de campo, o confronto das respostas com os Mapas de Empatia e a construção do protótipo digital do Passaporte Energético como base para a Avaliação N2. Agradecemos à Profa. Julia Gebara pela condução da disciplina e estamos à disposição para comentários da banca."
     },
     11: {
-      rubric: "Matriz Experimental",
-      title: "Slide 11 — O Que Precisamos Provar? Hipóteses Prioritárias",
-      target: "55 segundos (08:10 - 09:05)",
-      bullets: "• As 6 hipóteses prioritárias: H1 a H6 estruturadas de forma falseável\n• Framework: Hipótese → Experimento → Métrica Chave → Critério de Decisão\n• 'O objetivo da N1 não é provar que a Milet está certa, mas transformar a ideia em hipóteses testáveis'",
-      text: "Para a disciplina de Projetos Empreendedores, o papel da N1 é transformar a ideia de negócio em hipóteses rigorosamente testáveis. Mapeamos seis hipóteses prioritárias:\n\nDesde H1, que testa se o decisor valoriza um diagnóstico neutro mais do que um catálogo de logos; passando por H3, que afere se fornecedores respondem a RFQs padronizados; até H5 e H6, que validam a retenção pós-contratação e a viabilidade dos economics unitários na operação assistida.\n\nPara cada hipótese, definimos o experimento correspondente, a métrica alvo e o critério de decisão para pivotar ou perseverar."
+      rubric: "Apêndice A · Arquitetura de Produto",
+      title: "Slide 11 (Apêndice) — Jornada de Solução em 7 Etapas",
+      target: "Consulta / Q&A",
+      bullets: "• Conteúdo de aprofundamento mantido no Apêndice para consulta técnica\n• Jornada: Descobrir ➔ Entender ➔ Decidir ➔ Competir ➔ Executar ➔ Comprovar ➔ Reotimizar\n• Preservação contínua de histórico entre diagnóstico e faturamento",
+      text: "Slide de Apêndice: detalha como a plataforma Milet traduz a proposta de valor em 7 etapas sequenciais, desde o upload inicial da conta até a auditoria mensal no Savings Ledger e o alerta de reotimização contratual."
     },
     12: {
-      rubric: "Encerramento & Q&A",
-      title: "Slide 12 — Encerramento & Considerações Finais",
-      target: "25 segundos (09:05 - 09:30)",
-      bullets: "• Síntese da proposta: Entender, Comparar, Contratar e Acompanhar\n• Identificação institucional Mackenzie\n• Abertura segura para arguição da banca avaliadora",
-      text: "Concluímos destacando a visão da Milet: permitir que qualquer empresa decida e gerencie sua energia com a mesma facilidade e transparência com que hoje gerencia seus serviços de tecnologia e nuvem.\n\nEntender. Comparar. Contratar. Acompanhar. Agradecemos a atenção da banca e estamos prontos para a arguição e feedbacks dos professores."
+      rubric: "Apêndice B · Modelo de Negócio",
+      title: "Slide 12 (Apêndice) — Business Model Canvas (Fibery)",
+      target: "Consulta / Q&A",
+      bullets: "• Artefato do Fibery Whiteboard v0.2 sinalizado como hipóteses em validação\n• Síntese dos 4 pilares: Segmento Inicial, Proposta de Valor, Parceiros e Receitas\n• Fontes de receita: take-rate de sucesso, assinatura por auditoria e SaaS",
+      text: "Slide de Apêndice: exibe o Business Model Canvas completo construído no workspace do Fibery, destacando as hipóteses de monetização bilateral com total transparência algorítmica."
+    },
+    13: {
+      rubric: "Apêndice C · Experimentação",
+      title: "Slide 13 (Apêndice) — Matriz Experimental (H1 a H6)",
+      target: "Consulta / Q&A",
+      bullets: "• Mapeamento rigoroso de H1 a H6 no ciclo Hipótese ➔ Teste ➔ Métrica ➔ Decisão\n• Alinhamento com a metodologia Lean Startup da bibliografia de Projetos Empreendedores",
+      text: "Slide de Apêndice: mapeia as 6 hipóteses prioritárias que serão testadas e validadas empiricamente ao longo das próximas etapas da disciplina."
     }
   };
 
   // Elementos do DOM
-  const deckContainer = document.getElementById('deck-container');
   const slides = document.querySelectorAll('.slide');
+  const deckContainer = document.getElementById('deck-container');
   const slideCounter = document.getElementById('slide-counter');
   const progressBar = document.getElementById('progress-bar-fill');
   const btnPrev = document.getElementById('btn-prev');
@@ -123,7 +132,7 @@
   const notesText = document.getElementById('notes-text');
   const btnCloseNotes = document.getElementById('btn-close-notes');
 
-  // Ajuste edge-to-edge total: ocupa 100% da tela sem nenhuma contenção
+  // Ajuste edge-to-edge total
   function resizeDeck() {
     if (!deckContainer) return;
     const drawerOpen = notesDrawer && notesDrawer.classList.contains('open');
@@ -151,11 +160,15 @@
       }
     });
 
-    // Atualiza HUD
+    // Atualiza HUD com distinção de sequência principal vs apêndice
     if (slideCounter) {
       const paddedCurrent = String(currentSlide).padStart(2, '0');
-      const paddedTotal = String(TOTAL_SLIDES).padStart(2, '0');
-      slideCounter.textContent = `${paddedCurrent} / ${paddedTotal}`;
+      if (currentSlide <= CORE_SLIDES) {
+        slideCounter.textContent = `${paddedCurrent} / 10`;
+      } else {
+        const appIdx = currentSlide - CORE_SLIDES;
+        slideCounter.textContent = `Apêndice ${appIdx} (Slide ${paddedCurrent})`;
+      }
     }
 
     if (progressBar) {
@@ -163,8 +176,13 @@
       progressBar.style.width = `${progressPercent}%`;
     }
 
-    // Atualiza notas de orador
+    // Atualiza Speaker Notes
     updateSpeakerNotes(currentSlide);
+
+    // Salva estado
+    try {
+      sessionStorage.setItem('milet_empreendedores_slide', currentSlide);
+    } catch (e) {}
   }
 
   function nextSlide() {
@@ -179,34 +197,84 @@
     }
   }
 
-  // Atualiza conteúdo das Speaker Notes
-  function updateSpeakerNotes(slideNum) {
-    const data = speakerNotesData[slideNum];
-    if (data) {
-      if (notesTitle) notesTitle.textContent = data.title;
-      if (notesTarget) notesTarget.textContent = `Tempo alvo: ${data.target}`;
-      if (notesRubric) notesRubric.textContent = `Rubrica N1: ${data.rubric}`;
-      if (notesBullets) notesBullets.innerText = data.bullets || '';
-      if (notesText) notesText.textContent = data.text;
-    }
-  }
-
-  // Speaker Notes Toggle
+  // Drawer de Notas
   function toggleNotes() {
+    if (!notesDrawer) return;
     isNotesOpen = !isNotesOpen;
-    if (notesDrawer) {
-      notesDrawer.classList.toggle('open', isNotesOpen);
-    }
-    if (btnNotes) {
-      btnNotes.classList.toggle('active', isNotesOpen);
+    if (isNotesOpen) {
+      notesDrawer.classList.add('open');
+      if (btnNotes) btnNotes.classList.add('active');
+    } else {
+      notesDrawer.classList.remove('open');
+      if (btnNotes) btnNotes.classList.remove('active');
     }
     resizeDeck();
   }
 
+  function updateSpeakerNotes(slideNum) {
+    const data = speakerNotesData[slideNum];
+    if (!data) return;
+
+    if (notesTitle) notesTitle.textContent = data.title;
+    if (notesTarget) notesTarget.textContent = `Tempo alvo: ${data.target}`;
+    if (notesRubric) notesRubric.textContent = `Rubrica: ${data.rubric}`;
+    if (notesBullets) notesBullets.textContent = data.bullets;
+    if (notesText) notesText.textContent = data.text;
+  }
+
+  // Timer de Pitch de 10 min
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  function updateTimerDisplay() {
+    if (!timerDisplay) return;
+    timerDisplay.textContent = formatTime(timerSeconds);
+
+    const timerBadge = document.querySelector('.hud-timer-badge');
+    if (timerBadge) {
+      if (timerSeconds >= TARGET_TIME_SECONDS) {
+        timerBadge.classList.add('time-over');
+        timerBadge.classList.remove('time-warning');
+      } else if (timerSeconds >= TARGET_TIME_SECONDS - 60) {
+        timerBadge.classList.add('time-warning');
+        timerBadge.classList.remove('time-over');
+      } else {
+        timerBadge.classList.remove('time-warning', 'time-over');
+      }
+    }
+  }
+
+  function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      if (isTimerRunning) {
+        timerSeconds++;
+        updateTimerDisplay();
+      }
+    }, 1000);
+  }
+
+  function toggleTimer() {
+    isTimerRunning = !isTimerRunning;
+    const timerDot = document.querySelector('.timer-dot');
+    if (timerDot) {
+      timerDot.style.opacity = isTimerRunning ? '1' : '0.4';
+    }
+  }
+
+  function resetTimer() {
+    timerSeconds = 0;
+    updateTimerDisplay();
+  }
+
+  // Fullscreen
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => {
-        console.warn(`Erro ao ativar tela cheia: ${err.message}`);
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.warn('Erro ao entrar em fullscreen:', err);
       });
     } else {
       if (document.exitFullscreen) {
@@ -215,62 +283,14 @@
     }
   }
 
-  // Timer de Apresentação (10 min)
-  function startTimer() {
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      if (!isTimerRunning) return;
-      timerSeconds++;
-      updateTimerUI();
-    }, 1000);
-    updateTimerBadgeState();
-  }
-
-  function toggleTimer() {
-    isTimerRunning = !isTimerRunning;
-    updateTimerBadgeState();
-  }
-
-  function resetTimer() {
-    timerSeconds = 0;
-    updateTimerUI();
-  }
-
-  function updateTimerBadgeState() {
-    const timerBadge = document.querySelector('.hud-timer-badge');
-    if (!timerBadge) return;
-    if (isTimerRunning) {
-      timerBadge.classList.remove('paused');
-      timerBadge.setAttribute('title', 'Timer em andamento (Clique ou [T] para pausar | [R] para reiniciar)');
-    } else {
-      timerBadge.classList.add('paused');
-      timerBadge.setAttribute('title', 'Timer pausado (Clique ou [T] para retomar | [R] para reiniciar)');
-    }
-  }
-
-  function updateTimerUI() {
-    if (!timerDisplay) return;
-    const mins = Math.floor(timerSeconds / 60);
-    const secs = timerSeconds % 60;
-    const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    timerDisplay.textContent = formatted;
-
-    // Alerta visual após 9min30s
-    if (timerSeconds >= 570) {
-      timerDisplay.style.color = 'var(--color-coral)';
-    } else if (timerSeconds >= 480) {
-      timerDisplay.style.color = 'var(--color-amber-light)';
-    } else {
-      timerDisplay.style.color = 'var(--color-sand)';
-    }
-  }
-
-  // Navegação por Teclado
+  // Teclado
   function handleKeydown(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
     switch (e.key) {
       case 'ArrowRight':
       case 'PageDown':
-      case ' ': // Barra de espaço
+      case ' ':
         e.preventDefault();
         nextSlide();
         break;

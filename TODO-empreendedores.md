@@ -1,38 +1,46 @@
-# Pendências e Checklist Institucional (TODO) — Projetos Empreendedores N1
+# Pendências e Checklist — Projetos Empreendedores N1
 ## Plataforma Milet · Universidade Presbiteriana Mackenzie (2026.2)
+**Docente:** Profa. Julia Gebara
 
-Este checklist reúne **exclusivamente** as pendências reais que dependem de definições do grupo de alunos, confirmação do docente ou consolidação das pesquisas de campo para a versão final da apresentação.
+Este checklist reúne exclusivamente as etapas pendentes para a entrega definitiva e apresentação da N1.
 
 ---
 
 ### 1. Dados dos Integrantes & Informações Acadêmicas
-- [x] **Eduardo Ferreira de Mattos** (Engenharia da Computação · RA confirmado no relatório geral)
-- [ ] Confirmar se há outros integrantes compondo o grupo na disciplina Projetos Empreendedores:
-  - *Integrante 2:* Nome completo e RA institucional
-  - *Integrante 3:* Nome completo e RA institucional
-  - *Integrante 4 (se houver):* Nome completo e RA institucional
-- [ ] Inserir o nome completo e titulação do(a) **Professor(a) / Docente da disciplina Projetos Empreendedores**:
-  - Exemplo: `Prof. Me. / Dr. [Nome do Docente]`
-- [ ] Confirmar o código exato da **Turma** e sala de aula no portal Mackenzie para o semestre 2026.2.
+- [x] **Eduardo Ferreira de Mattos** — Eng. Computação (TIA: 10402800)
+- [x] **Enzo Engrich Larese** — Eng. Elétrica (TIA: 10427357)
+- [x] **Heloísa Carvalho Confessor** — Administração (TIA: 10420092)
+- [x] **Leonardo Dourado** — Eng. Computação (TIA: 10736460)
+- [x] **Maria Luíza Sampaio Nogueira** — Arquitetura e Urbanismo (TIA: 10753285)
+- [x] **Mell Castro Pereira Junqueira Ferreira** — Direito (TIA: 10435518)
+- [x] **Docente Responsável:** Profa. Julia Gebara
+- [x] Ordem alfabética obrigatória aplicada na Capa e no Slide 2.
 
 ---
 
-### 2. Dados Reais da Pesquisa de Campo & Validação Empírica (Slide 10)
-*Obs.: Substituir os blocos em andamento no Slide 10 apenas quando as entrevistas e questionários forem concluídos em campo.*
-- [ ] Tamanho final da amostra de respondentes (Meta: 20 a 30 entrevistas qualitativas e 50+ questionários quantitativos).
-- [ ] Percentual (%) de decisores PME que conhecem a existência do Mercado Livre de Energia.
-- [ ] Percentual (%) que sabe identificar corretamente se sua unidade é faturada no Grupo A ou Grupo B.
-- [ ] Percentual (%) que relata ter sido abordado por corretores/comercializadoras nos últimos 12 meses.
-- [ ] Percentual (%) que declara extrema dificuldade em auditar ou comparar propostas comerciais recebidas.
-- [ ] Percentual (%) que contrataria por meio de uma plataforma independente com acompanhamento mensal de economia.
-- [ ] Consolidação dos principais canais atuais de informação declarados pelos respondentes.
-- [ ] Principais objeções ou receios citados espontaneamente nas entrevistas (ex: multas, carência contratual, inexperiência).
+### 2. Validação Empírica no Campo (Slides 8 e 9)
+*Obs.: Substituir os placeholders dos Respondentes A e B assim que as entrevistas/formulários forem preenchidos pelos entrevistados.*
+
+#### Perfil 1 (Consumidor PME — Slide 8):
+- [ ] Aplicar o formulário de 5 perguntas a pelo menos 2 decisores de PMEs (Grupo A).
+- [ ] Inserir transcrição/síntese das respostas do **Respondente A** (Sócio/Diretor de PME comercial).
+- [ ] Inserir transcrição/síntese das respostas do **Respondente B** (Gestor administrativo/financeiro de PME).
+
+#### Perfil 2 (Comercializadora / Fornecedor — Slide 9):
+- [ ] Aplicar o roteiro de 5 perguntas a pelo menos 2 especialistas de comercializadoras/geradores.
+- [ ] Inserir transcrição/síntese das respostas do **Respondente A** (Head Comercial / Gerente de Varejo).
+- [ ] Inserir transcrição/síntese das respostas do **Respondente B** (Especialista em Migração ACL / Executivo de Contas).
 
 ---
 
-### 3. Artefatos Visuais e Screenshots Adicionais do Fibery
-- [x] Artefato Fibery do Perfil 1 (Jobs, Pains, Gains): `assets/fibery-user-profiles-jobs-pains-gains.png`
-- [x] Artefato Fibery do Value Proposition Canvas (Perfil 1): `assets/fibery-value-proposition-canvas.png`
-- [x] Artefato Fibery do Business Model Canvas v0.2: `assets/fibery-bmc-v02.png`
-- [ ] *(Opcional)* Caso seja criado no Fibery um Whiteboard específico para o **Perfil 2 (Comercializadora / Fornecedor)**, salvar o screenshot em `assets/fibery-fornecedor-canvas.png` para inclusão opcional no Slide 6.
-- [ ] Verificar a nitidez dos prints em monitor de projeção com resolução 1920x1080 antes do pitch presencial.
+### 3. Artefatos Gráficos e Exportação Final
+- [x] Matriz SWOT da equipe multidisciplinar configurada.
+- [x] Declaração do problema lapidada em 1 frase única.
+- [x] Matriz do Problema estruturada nos 6 blocos oficiais da Profa. Julia Gebara.
+- [x] Mapa da Empatia clássico para o Perfil 1 (Consumidor PME).
+- [x] Canvas da Proposta de Valor Strategyzer para o Perfil 1.
+- [x] Mapa da Empatia clássico para o Perfil 2 (Comercializadora).
+- [x] Canvas da Proposta de Valor Strategyzer para o Perfil 2.
+- [x] Slides 11, 12 e 13 movidos para o bloco de Apêndice.
+- [ ] *(Opcional)* Substituir os cards do Mapa de Empatia por imagem exportada do Fibery caso o grupo crie um whiteboard específico.
+- [ ] Exportar PDF 16:9 através do botão de impressão do HUD para conferência final.
