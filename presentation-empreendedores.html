@@ -459,27 +459,31 @@
         </div>
       </section>
 
-      <!-- ====================================================================
+            <!-- ====================================================================
            SLIDE 5 — CANVAS DA PROPOSTA DE VALOR: PERFIL 1 (COM IMAGEM REAL DO CANVAS)
            ==================================================================== -->
       <section class="slide" id="slide-5" data-slide="5">
-        <div class="slide-header">
+        <div class="slide-header" style="margin-bottom: 6px; padding-bottom: 4px;">
           <div>
             <div class="slide-eyebrow-row">
               <span class="slide-eyebrow"><span class="dot"></span> 05 · Proposta de Valor — Demanda</span>
-              <span class="slide-badge-empreendedores">Canvas Strategyzer Oficial</span>
+              <span class="slide-badge-empreendedores">UP-01 · Consumidor PME</span>
             </div>
-            <h2 class="slide-title">Canvas da Proposta de Valor — <em>Consumidor PME</em>.</h2>
-            <p class="slide-subtitle">Alinhamento entre o Perfil do Cliente (Tarefas, Dores e Ganhos) e o Mapa de Valor Milet (Produtos, Aliviadores e Criadores).</p>
+            <h2 class="slide-title" style="font-size: clamp(20px, 2.7vh, 26px); margin: 0;">Canvas da Proposta de Valor — <em>Consumidor PME</em>.</h2>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">STRATEGYZER · FIBERY WHITEBOARD</span>
+            <span style="font-size: 11px; color: var(--color-sand);">Clique na imagem para expandir em tela cheia (Zoom)</span>
           </div>
         </div>
 
         <div class="slide-body">
-          <div class="canvas-image-stage">
-            <img src="assets/value-proposition-canvas.png" alt="Value Proposition Canvas Milet - Perfil 1">
+          <div class="canvas-image-stage" title="Clique para expandir em tela cheia (Zoom de Alta Resolução)">
+            <img src="assets/value-proposition-canvas.png" alt="Value Proposition Canvas Milet - Perfil 1: Consumidor PME">
+            <div class="canvas-zoom-badge"><span>🔍</span> Clique para Zoom</div>
           </div>
           <div class="canvas-image-footer">
-            <span><strong>Artefato Oficial:</strong> Value Proposition Canvas (Customer Profile & Value Map) construído para PMEs no padrão Osterwalder / Strategyzer.</span>
+            <span><strong>Artefato Oficial:</strong> Value Proposition Canvas (Customer Profile & Value Map) estruturado no Fibery Whiteboard (Strategyzer).</span>
             <span style="font-family: var(--font-mono); color: var(--color-amber);">assets/value-proposition-canvas.png</span>
           </div>
         </div>
@@ -1048,5 +1052,11 @@
   </footer>
 
   <script src="presentation-empreendedores.js?v=20261001_4"></script>
+  <!-- LIGHTBOX MODAL PARA EXPANSÃO DE IMAGEM (CANVAS / BMC) -->
+  <div id="image-lightbox-modal" role="dialog" aria-label="Visualização em Alta Resolução">
+    <button id="image-lightbox-close" title="Fechar (Esc)">✕</button>
+    <img id="lightbox-image" src="" alt="Canvas em Alta Definição">
+  </div>
+
 </body>
 </html>

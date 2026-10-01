@@ -159,6 +159,13 @@
         e.preventDefault();
         showSlide(1);
         break;
+      case 'Escape':
+        if (lightboxModal && lightboxModal.classList.contains('active')) {
+          lightboxModal.classList.remove('active');
+          e.preventDefault();
+          return;
+        }
+        break;
       case 'End':
         e.preventDefault();
         showSlide(TOTAL_SLIDES);
@@ -179,6 +186,38 @@
         resetTimer();
         break;
     }
+  }
+
+  
+  // ==========================================================================
+  // LIGHTBOX MODAL PARA CANVAS / IMAGENS
+  // ==========================================================================
+  const lightboxModal = document.getElementById('image-lightbox-modal');
+  const lightboxImg = document.getElementById('lightbox-image');
+  const lightboxClose = document.getElementById('image-lightbox-close');
+
+  document.querySelectorAll('.canvas-image-stage img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (lightboxModal && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightboxModal.classList.add('active');
+      }
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', () => {
+      if (lightboxModal) lightboxModal.classList.remove('active');
+    });
+  }
+
+  if (lightboxModal) {
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        lightboxModal.classList.remove('active');
+      }
+    });
   }
 
   window.addEventListener('resize', resizeDeck);
