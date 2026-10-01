@@ -1,0 +1,76 @@
+{
+  "name": "Milet Living Amber Symbol",
+  "version": "0.1.0",
+  "intent": "Real-time browser hero object with a six-stage procedural transformation",
+  "references": [
+    "assets/logo/svg/milet-symbol-amber.svg",
+    "assets/imagery/milet-motion-sequencia-completa-6-etapas.png",
+    "assets/imagery/milet-motion-stage-06-simbolo-vivo-ambar.png"
+  ],
+  "objectClass": {
+    "primaryDomain": "object",
+    "topologyClass": "continuous organic ribbon",
+    "reconstructionConfidence": "medium",
+    "knownUncertainty": "The references define the front silhouette but do not prove the hidden rear profile or an exact physical Mobius topology."
+  },
+  "qualityContract": {
+    "critical": [
+      "One continuous ribbon remains visible through the complete transformation",
+      "The final state has a rounded triangular silhouette and a transparent central aperture",
+      "The continuous sculptural twist reads as structural depth rather than a flat logo extrusion",
+      "The object remains legible from front and meaningful orbit views"
+    ],
+    "important": [
+      "Amber material has a pale highlight, gold body and deep umber shadow",
+      "Manual scrubbing never competes with autoplay",
+      "Mobile rendering stays responsive with a reduced tessellation tier"
+    ]
+  },
+  "components": [
+    {
+      "id": "living-ribbon",
+      "type": "custom BufferGeometry",
+      "role": "primary silhouette and deforming object",
+      "topology": "fixed indexed strip with top, bottom, side walls and end caps"
+    },
+    {
+      "id": "structure-overlay",
+      "type": "wireframe material sharing the primary geometry",
+      "role": "reveals construction during stage 03 and on user request"
+    },
+    {
+      "id": "energy-field",
+      "type": "Points",
+      "role": "subtle spatial scale and electrical atmosphere"
+    }
+  ],
+  "material": {
+    "type": "MeshPhysicalMaterial",
+    "baseColor": "#D39B3D",
+    "highlightColor": "#FFE4A4",
+    "shadowColor": "#5C2803",
+    "properties": ["transmission", "ior", "thickness", "clearcoat", "roughness", "emissive"]
+  },
+  "motionStages": [
+    "open electric arc",
+    "open AC sine wave",
+    "thin rounded triangular structure",
+    "closed untwisted circuit",
+    "continuously twisted ribbon inspired by Mobius continuity",
+    "asymmetric living amber symbol"
+  ],
+  "performanceBudget": {
+    "desktopMaxTriangles": 8000,
+    "mobileMaxTriangles": 4500,
+    "desktopPixelRatioCap": 1.6,
+    "mobilePixelRatioCap": 1.25,
+    "fallback": "Link to motion.html when WebGL or module loading is unavailable"
+  },
+  "reviewTargets": [
+    "front silhouette compared with the official SVG",
+    "right, rear and left orbit continuity",
+    "central aperture stability across stages 03-06",
+    "material readability on dark background",
+    "scrub, pause, reverse navigation and resize behavior"
+  ]
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet Motion 3D — Objeto Procedural</title>
+  <meta name="description" content="Protótipo 3D procedural do símbolo Milet, da centelha elétrica à forma viva de âmbar.">
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-dark-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="motion-3d.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="lab-header">
+    <a class="lab-brand" href="index.html#motion" aria-label="Voltar ao Brandbook Milet">
+      <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="" width="34" height="34">
+      <span class="lab-wordmark">Milet</span>
+      <span class="lab-product">Motion 3D</span>
+    </a>
+    <nav class="lab-nav" aria-label="Navegação do laboratório">
+      <a href="motion.html">Storyboard</a>
+      <a href="index.html#motion">Brandbook</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="lab-intro" aria-labelledby="labTitle">
+      <div class="lab-intro-copy">
+        <span class="lab-kicker">PROTÓTIPO 02 · MALHA PROCEDURAL</span>
+        <h1 id="labTitle">A forma deixa de ser frame.<br>Agora ela existe.</h1>
+      </div>
+      <div class="lab-intro-note">
+        <p>Uma única malha muda de topologia visual em tempo real. Arraste para orbitar, use a roda para aproximar e percorra a transformação no seu ritmo.</p>
+        <div class="lab-badges" aria-label="Características do protótipo">
+          <span>Three.js</span>
+          <span>GSAP</span>
+          <span>0 imagens no player</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="object-lab" aria-label="Objeto 3D procedural Milet">
+      <div class="object-viewport" id="objectViewport">
+        <canvas id="miletCanvas" aria-label="Objeto tridimensional interativo do símbolo Milet"></canvas>
+
+        <div class="viewport-vignette" aria-hidden="true"></div>
+        <div class="viewport-status">
+          <span id="stageBadge">ETAPA 01 / 06</span>
+          <strong id="stageTitle">Centelha</strong>
+        </div>
+        <div class="viewport-tech" aria-hidden="true">
+          <span>PROCEDURAL MESH</span>
+          <span id="meshMetric">— VÉRTICES</span>
+        </div>
+        <div class="interaction-hint" id="interactionHint">
+          <span aria-hidden="true">↻</span>
+          Arraste para inspecionar
+        </div>
+        <div class="loading-state" id="loadingState" role="status">
+          <span class="loading-orbit" aria-hidden="true"></span>
+          <strong>Construindo a malha</strong>
+          <span>geometria · material · luz</span>
+        </div>
+        <div class="webgl-fallback" id="webglFallback" hidden>
+          <strong>O objeto 3D não pôde ser iniciado.</strong>
+          <p>Este protótipo precisa de WebGL e acesso às bibliotecas do player.</p>
+          <a href="motion.html">Abrir o storyboard estático</a>
+        </div>
+      </div>
+
+      <div class="object-panel">
+        <div class="stage-copy" aria-live="polite">
+          <span class="panel-label">ESTADO DA MATÉRIA</span>
+          <h2 id="stageHeading">Energia em estado puro</h2>
+          <p id="stageDescription">Um traço fino atravessa o espaço antes de descobrir sua frequência.</p>
+        </div>
+
+        <ol class="stage-rail" id="stageRail" aria-label="Etapas da transformação 3D">
+          <li><button type="button" class="stage-step is-active" data-stage="0" aria-current="step"><span>01</span><em>Centelha</em></button></li>
+          <li><button type="button" class="stage-step" data-stage="1"><span>02</span><em>Frequência</em></button></li>
+          <li><button type="button" class="stage-step" data-stage="2"><span>03</span><em>Estrutura</em></button></li>
+          <li><button type="button" class="stage-step" data-stage="3"><span>04</span><em>Circuito</em></button></li>
+          <li><button type="button" class="stage-step" data-stage="4"><span>05</span><em>Torção</em></button></li>
+          <li><button type="button" class="stage-step" data-stage="5"><span>06</span><em>Símbolo</em></button></li>
+        </ol>
+
+        <div class="object-controls">
+          <div class="transport">
+            <button id="stagePrev" type="button" class="icon-button" aria-label="Etapa anterior">‹</button>
+            <button id="stagePlay" type="button" class="play-button" aria-pressed="false">
+              <span id="playIcon" aria-hidden="true">▶</span>
+              <span id="playLabel">Reproduzir</span>
+            </button>
+            <button id="stageNext" type="button" class="icon-button" aria-label="Próxima etapa">›</button>
+          </div>
+
+          <label class="scrubber" for="stageScrubber">
+            <span>TRANSFORMAÇÃO</span>
+            <input id="stageScrubber" type="range" min="0" max="5" step="0.001" value="0">
+            <output id="scrubberOutput" for="stageScrubber">0%</output>
+          </label>
+
+          <div class="control-options">
+            <label for="stageSpeed">Velocidade
+              <select id="stageSpeed">
+                <option value="0.65">0,65×</option>
+                <option value="1" selected>1×</option>
+                <option value="1.35">1,35×</option>
+              </select>
+            </label>
+            <button id="loopToggle" type="button" class="option-button is-active" aria-pressed="true">Loop ativo</button>
+            <button id="wireToggle" type="button" class="option-button" aria-pressed="false">Ver malha</button>
+            <button id="cameraReset" type="button" class="option-button">Recentrar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="build-notes" aria-labelledby="buildTitle">
+      <div>
+        <span class="lab-kicker">COMO FOI CONSTRUÍDO</span>
+        <h2 id="buildTitle">Uma malha, seis estados.</h2>
+      </div>
+      <div class="build-grid">
+        <article>
+          <span>01</span>
+          <h3>Geometria contínua</h3>
+          <p>Todos os estágios compartilham os mesmos vértices. O movimento interpola posições, largura, espessura e torção — não arquivos de imagem.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Material âmbar</h3>
+          <p>Transmissão, refração, rugosidade e reflexos físicos dão volume à fita sem textura fotográfica.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Coreografia controlável</h3>
+          <p>O GSAP conduz o playhead; o Three.js recalcula a forma e renderiza cada instante com câmera e luz reais.</p>
+        </article>
+      </div>
+      <p class="fidelity-note"><strong>Limite atual:</strong> a geometria é uma reconstrução procedural aproximada a partir da silhueta oficial. O próximo passe é calibrar proporções, abertura interna e torção contra os assets mestres.</p>
+    </section>
+  </main>
+
+  <noscript>
+    <div class="noscript-message">Ative o JavaScript para visualizar o objeto 3D.</div>
+  </noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script type="module" src="motion-3d.js"></script>
+</body>
+</html>
