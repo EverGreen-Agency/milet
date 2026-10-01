@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 11;
+  const TOTAL_SLIDES = 12;
   const CORE_SLIDES = 10;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
@@ -93,6 +93,13 @@
       target: "Consulta / Q&A",
       bullets: "• Artefato do Fibery Whiteboard v0.2 exibido com destaque visual nítido\n• Mapeamento dos 9 blocos do modelo de negócio bilateral da Milet\n• Hipóteses de receita: take-rate de sucesso do fornecedor e assinatura mensal de auditoria",
       text: "Slide de Apêndice: exibe o Business Model Canvas completo construído no workspace do Fibery, destacando as hipóteses de monetização bilateral com total transparência algorítmica e neutralidade regulatória."
+    },
+    12: {
+      rubric: "Encerramento & Agradecimentos",
+      title: "Slide 12 — Encerramento e Agradecimentos",
+      target: "25 segundos (08:40 - 09:05)",
+      bullets: "• Agradecimento formal à Profa. Julia Gebara e à banca\n• Créditos da equipe multidisciplinar (Computação, Elétrica, Adm, Direito, Arquitetura)\n• Abertura formal para a sessão de arguição e perguntas",
+      text: "Muito obrigado a todos pela atenção e, em especial, à Profa. Julia Gebara pela condução e direcionamentos ao longo da disciplina Projetos Empreendedores. A equipe Milet encerra aqui a apresentação do diagnóstico N1 e permanece à disposição para perguntas, considerações e apontamentos da banca."
     }
   };
 
@@ -144,8 +151,10 @@
       const paddedCurrent = String(currentSlide).padStart(2, '0');
       if (currentSlide <= CORE_SLIDES) {
         slideCounter.textContent = `${paddedCurrent} / 10`;
-      } else {
+      } else if (currentSlide === 11) {
         slideCounter.textContent = `Apêndice · BMC (11)`;
+      } else {
+        slideCounter.textContent = `12 / 12 · Encerramento`;
       }
     }
 
