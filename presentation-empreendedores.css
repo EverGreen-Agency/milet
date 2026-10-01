@@ -379,20 +379,22 @@ html, body {
 
 .team-swot-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) 2.2fr;
-  gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(10px, 1.4vw, 18px);
   align-items: stretch;
   height: 100%;
+  min-height: 0;
 }
 
 .team-column-card {
   background: var(--color-carbon-card);
   border: 1px solid var(--color-carbon-border);
-  border-radius: 10px;
-  padding: clamp(14px, 2vh, 20px);
+  border-radius: 8px;
+  padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.2vw, 14px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 0;
 }
 
 .team-member-item {
@@ -429,20 +431,22 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: clamp(10px, 1.4vh, 16px);
+  gap: clamp(6px, 1vh, 10px);
   height: 100%;
+  min-height: 0;
 }
 
 .swot-card {
   background: var(--color-carbon-card);
   border-radius: 8px;
-  padding: clamp(12px, 1.8vh, 18px);
+  padding: clamp(6px, 1vh, 10px) clamp(8px, 1vw, 12px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--color-carbon-border);
+  min-height: 0;
 }
 
 .swot-card.forcas {
@@ -530,12 +534,13 @@ html, body {
 .problem-statement-card {
   background: linear-gradient(135deg, rgba(211, 155, 61, 0.1) 0%, rgba(26, 26, 26, 0.95) 100%);
   border: 1.5px solid var(--color-amber);
-  border-radius: 10px;
-  padding: clamp(10px, 1.6vh, 16px) clamp(16px, 2vw, 24px);
-  margin-bottom: 12px;
+  border-radius: 8px;
+  padding: clamp(6px, 1vh, 10px) clamp(12px, 1.5vw, 18px);
+  margin-bottom: clamp(6px, 1vh, 10px);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .problem-statement-tag {
@@ -1605,19 +1610,22 @@ html, body {
 .problem-matrix-6boxes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: clamp(10px, 1.2vw, 14px);
+  grid-template-rows: 1fr 1fr;
+  gap: clamp(6px, 0.9vw, 10px);
   flex: 1;
+  min-height: 0;
 }
 
 .problem-box {
   background: var(--color-carbon-card);
   border: 1px solid var(--color-carbon-border);
   border-radius: 8px;
-  padding: clamp(10px, 1.4vh, 14px) clamp(12px, 1.2vw, 16px);
+  padding: clamp(6px, 1vh, 10px) clamp(8px, 1vw, 12px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  min-height: 0;
+  overflow: hidden;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -2090,5 +2098,146 @@ html, body {
 
   #presentation-hud, #speaker-notes-drawer {
     display: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   CONTAINERS DE IMAGEM FULL-RESPONSIVE (CANVAS & BMC)
+   ========================================================================== */
+
+.canvas-image-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-carbon-card);
+  border: 1px solid var(--color-carbon-border);
+  border-radius: 8px;
+  padding: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.canvas-image-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.canvas-image-footer {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 11.5px;
+  color: var(--color-sand);
+  padding: 0 4px;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES PARA MONITORES MENORES (HEIGHT <= 820px E <= 720px)
+   ========================================================================== */
+
+@media (max-height: 820px) {
+  .slide {
+    padding: 10px 24px !important;
+  }
+  .slide-header {
+    margin-bottom: 6px !important;
+    padding-bottom: 4px !important;
+  }
+  .slide-title {
+    font-size: 22px !important;
+  }
+  .slide-subtitle {
+    font-size: 12px !important;
+  }
+  .problem-statement-text {
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+  }
+  .problem-box-title {
+    font-size: 13.5px !important;
+    margin-bottom: 3px !important;
+  }
+  .problem-box-content {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+  .empathy-quadrant {
+    padding: 8px 10px !important;
+  }
+  .empathy-quadrant-title {
+    font-size: 14.5px !important;
+  }
+  .empathy-list {
+    font-size: 11px !important;
+    gap: 4px !important;
+  }
+  .empathy-tag {
+    font-size: 10.5px !important;
+    padding: 2px 6px !important;
+  }
+  .team-member-item-small {
+    padding: 4px 6px !important;
+  }
+  .team-member-item-small strong {
+    font-size: 11.5px !important;
+  }
+  .team-member-item-small span {
+    font-size: 9.5px !important;
+  }
+  .team-member-item-small p {
+    font-size: 10px !important;
+  }
+  .swot-title {
+    font-size: 14.5px !important;
+  }
+  .swot-list {
+    font-size: 10.5px !important;
+    gap: 2px !important;
+  }
+}
+
+@media (max-height: 680px) {
+  .slide {
+    padding: 8px 16px !important;
+  }
+  .slide-header {
+    margin-bottom: 4px !important;
+    padding-bottom: 2px !important;
+  }
+  .slide-title {
+    font-size: 19px !important;
+  }
+  .slide-subtitle {
+    font-size: 11px !important;
+  }
+  .problem-statement-card {
+    padding: 4px 10px !important;
+    margin-bottom: 4px !important;
+  }
+  .problem-statement-text {
+    font-size: 12px !important;
+  }
+  .cover-team-grid {
+    gap: 6px !important;
+    margin-top: 6px !important;
+  }
+  .cover-team-member {
+    padding: 4px 8px !important;
+  }
+  .cover-team-name {
+    font-size: 11.5px !important;
+  }
+  .cover-team-meta {
+    font-size: 9.5px !important;
   }
 }
