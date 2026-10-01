@@ -546,6 +546,7 @@ function initEnergySimulator() {
 // -------------------------------------------------------------
 function initBrandSlider() {
   const track = document.getElementById('sliderTrack');
+  const container = document.querySelector('.brand-slider-container');
   const slides = document.querySelectorAll('.slide-item');
   const dots = document.querySelectorAll('.slider-dot');
   const prevBtn = document.getElementById('sliderPrevBtn');
@@ -556,7 +557,6 @@ function initBrandSlider() {
 
   let currentSlide = 0;
   const totalSlides = slides.length;
-  let autoplayTimer = null;
 
   function updateSlider(index) {
     if (index < 0) index = totalSlides - 1;
@@ -571,6 +571,11 @@ function initBrandSlider() {
 
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentSlide);
+      if (i === currentSlide) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
     });
 
     if (counter) {
@@ -583,14 +588,12 @@ function initBrandSlider() {
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       updateSlider(currentSlide - 1);
-      resetAutoplay();
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       updateSlider(currentSlide + 1);
-      resetAutoplay();
     });
   }
 
@@ -599,22 +602,17 @@ function initBrandSlider() {
       const idx = parseInt(e.target.dataset.index, 10);
       if (!isNaN(idx)) {
         updateSlider(idx);
-        resetAutoplay();
       }
     });
   });
 
-  document.addEventListener('keydown', (e) => {
-    const rect = track.getBoundingClientRect();
-    const visible = rect.top < window.innerHeight && rect.bottom > 0;
-    if (!visible) return;
-
+  if (container) container.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
+      e.preventDefault();
       updateSlider(currentSlide - 1);
-      resetAutoplay();
     } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
       updateSlider(currentSlide + 1);
-      resetAutoplay();
     }
   });
 
@@ -628,28 +626,8 @@ function initBrandSlider() {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) {
       updateSlider(diff > 0 ? currentSlide + 1 : currentSlide - 1);
-      resetAutoplay();
     }
   }, { passive: true });
-
-  function startAutoplay() {
-    autoplayTimer = setInterval(() => {
-      updateSlider(currentSlide + 1);
-    }, 6500);
-  }
-
-  function resetAutoplay() {
-    clearInterval(autoplayTimer);
-    startAutoplay();
-  }
-
-  const container = document.querySelector('.brand-slider-container');
-  if (container) {
-    container.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
-    container.addEventListener('mouseleave', () => startAutoplay());
-  }
-
-  startAutoplay();
 }
 
 // -------------------------------------------------------------
@@ -676,42 +654,42 @@ function initFrameByFrameMotion() {
       badge: 'ETAPA 01 / 06',
       title: '01. Traço Elétrico Inicial',
       desc: 'A centelha original. O arco de energia primitiva gerado pelo atrito do âmbar que acendeu o saber humano.',
-      src: 'assets/imagery/milet-motion-stage-01-arco-eletrico.png'
+      src: 'assets/web/milet-motion-stage-01-arco-eletrico.webp'
     },
     {
       num: 2,
       badge: 'ETAPA 02 / 06',
       title: '02. Oscilação Senoidal AC',
       desc: 'A corrente alternada em frequência contínua. Ondulação periódica que traduz o fluxo ininterrupto de potência.',
-      src: 'assets/imagery/milet-motion-stage-02-senoide-ac.png'
+      src: 'assets/web/milet-motion-stage-02-senoide-ac.webp'
     },
     {
       num: 3,
       badge: 'ETAPA 03 / 06',
       title: '03. Wireframe Estrutural',
       desc: 'O alinhamento dos nós geométricos. Os 3 vértices equiláteros se fecham em malha de precisão matemática.',
-      src: 'assets/imagery/milet-motion-stage-03-wireframe-triangular.png'
+      src: 'assets/web/milet-motion-stage-03-wireframe-triangular.webp'
     },
     {
       num: 4,
       badge: 'ETAPA 04 / 06',
       title: '04. Circuito de Continuidade',
       desc: 'O triângulo arredondado estabilizado como condução fechada, eliminando perdas e criando a infraestrutura base.',
-      src: 'assets/imagery/milet-motion-stage-04-circuito-fechado.png'
+      src: 'assets/web/milet-motion-stage-04-circuito-fechado.webp'
     },
     {
       num: 5,
       badge: 'ETAPA 05 / 06',
       title: '05. Torção Espacial Möbius',
       desc: 'A fita de Möbius ganha vida tridimensional, rompendo a bidimensionalidade tradicional e integrando exterior e interior.',
-      src: 'assets/imagery/milet-motion-stage-05-volume-torsao-mobius.png'
+      src: 'assets/web/milet-motion-stage-05-volume-torsao-mobius.webp'
     },
     {
       num: 6,
       badge: 'ETAPA 06 / 06',
       title: '06. O Símbolo Vivo de Âmbar',
       desc: 'A identidade plena: matéria fóssil translúcida pulsando com caustics dourados. A síntese da liberdade energética.',
-      src: 'assets/imagery/milet-motion-stage-06-simbolo-vivo-ambar.png'
+      src: 'assets/web/milet-motion-stage-06-simbolo-vivo-ambar.webp'
     }
   ];
 
@@ -850,7 +828,6 @@ function initGsapScrollAnimations() {
       '.standard-card',
       '.color-swatch-card',
       '.type-card',
-      '.icon-card',
       '.res-item',
       '.principle-card',
       '.asset-folder-card'

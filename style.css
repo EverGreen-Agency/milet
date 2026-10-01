@@ -164,12 +164,12 @@ body {
 }
 
 .header-container {
-  max-width: 1360px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 14px 28px;
+  padding: 12px clamp(16px, 2.2vw, 32px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: clamp(12px, 2vw, 28px);
 }
 
 .brand-signature {
@@ -178,6 +178,8 @@ body {
   gap: 12px;
   text-decoration: none;
   color: inherit;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .header-logo-icon {
@@ -206,7 +208,8 @@ body {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  margin-left: auto;
 }
 
 /* Pilares Semanticos com Dropdown */
@@ -331,7 +334,7 @@ body {
   border: 1px solid var(--milet-border-hairline);
   color: var(--milet-text-primary);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   font-weight: 600;
   padding: 6px 14px;
   border-radius: var(--milet-radius-pill);
@@ -377,7 +380,7 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .theme-toggle-btn {
@@ -473,15 +476,23 @@ body {
   border-left: 1px solid var(--milet-border-hairline);
   z-index: 9999;
   box-shadow: -16px 0 48px rgba(0, 0, 0, 0.22);
-  transform: translateX(100%);
-  transition: transform 320ms var(--milet-ease-natural);
+  transform: scale(0.985);
+  transform-origin: right center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 260ms var(--milet-ease-natural), opacity 220ms ease, visibility 0s linear 260ms;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
 .chapters-drawer.open {
-  transform: translateX(0);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 
 .drawer-top-bar {
@@ -614,6 +625,10 @@ body {
 .milet-hero-panoramic {
   background-color: var(--milet-bg-canvas);
   background-image: url('assets/imagery/milet-hero-rocha-ambar-polida.png');
+  background-image: image-set(
+    url('assets/web/milet-hero-rocha-ambar-polida.webp') type('image/webp'),
+    url('assets/imagery/milet-hero-rocha-ambar-polida.png') type('image/png')
+  );
   background-position: right 25% center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -881,6 +896,32 @@ body {
 
 .section-header {
   margin-bottom: 48px;
+}
+
+.section-motion-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 10px 17px;
+  border: 1px solid var(--milet-color-ambar);
+  border-radius: var(--milet-radius-pill);
+  color: var(--milet-color-ambar-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color var(--milet-duration-fast), color var(--milet-duration-fast), transform var(--milet-duration-fast);
+}
+
+.section-motion-link:hover {
+  transform: translateY(-2px);
+  background: var(--milet-color-ambar);
+  color: var(--milet-color-carvao);
+}
+
+.theme-dark .section-motion-link {
+  color: var(--milet-color-ambar-light);
 }
 
 .section-number {
@@ -1301,7 +1342,7 @@ body {
 /* 05. Icons Grid */
 .icons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -1313,6 +1354,7 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all var(--milet-duration-fast);
+  min-width: 0;
 }
 .icon-card:hover {
   transform: translateY(-3px);
@@ -1861,6 +1903,13 @@ input:checked + .toggle-slider:before {
   text-decoration: none;
 }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
 /* ==========================================================================
    07. Motion & Interações (Painel 11)
    ========================================================================== */
@@ -2050,11 +2099,11 @@ input:checked + .toggle-slider:before {
 .slide-card {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
-  gap: 32px;
+  gap: clamp(22px, 2.5vw, 36px);
   background: var(--milet-bg-surface);
   border: 1px solid var(--milet-border-hairline);
   border-radius: var(--milet-radius-2xl);
-  padding: 32px;
+  padding: clamp(20px, 2.5vw, 34px);
   box-shadow: var(--milet-shadow-card);
   align-items: center;
 }
@@ -2128,6 +2177,53 @@ input:checked + .toggle-slider:before {
   margin-bottom: 8px;
 }
 
+.btn-primary-milet {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--milet-color-ambar);
+  border-radius: var(--milet-radius-pill);
+  background: var(--milet-color-ambar);
+  color: var(--milet-color-carvao);
+  font-family: var(--milet-font-sans);
+  font-size: 0.825rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(184, 122, 36, 0.2);
+  transition: transform var(--milet-duration-fast), box-shadow var(--milet-duration-fast), background-color var(--milet-duration-fast);
+}
+
+.btn-primary-milet:hover {
+  transform: translateY(-2px);
+  background: var(--milet-color-ambar-light);
+  box-shadow: 0 12px 26px rgba(184, 122, 36, 0.3);
+}
+
+.btn-primary-milet:focus-visible,
+.slider-nav-btn:focus-visible,
+.slider-dot:focus-visible,
+.nav-chapters-btn:focus-visible,
+.theme-toggle-btn:focus-visible,
+.btn-header-cta:focus-visible {
+  outline: 3px solid rgba(211, 155, 61, 0.42);
+  outline-offset: 3px;
+}
+
+.btn-primary-milet.btn-sm {
+  padding: 9px 16px;
+}
+
+.btn-clean-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .slider-controls-bar {
   display: flex;
   align-items: center;
@@ -2176,6 +2272,8 @@ input:checked + .toggle-slider:before {
 .slider-dot {
   width: 10px;
   height: 10px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
   background: var(--milet-border-strong);
   cursor: pointer;
@@ -3207,6 +3305,9 @@ body.theme-dark .motion-tab-btn.active {
   .header-brand-name {
     font-size: 1.3rem;
   }
+  .header-tagline-badge {
+    display: none;
+  }
   .nav-dropdown-trigger {
     padding: 5px 8px;
     font-size: 0.82rem;
@@ -3231,12 +3332,6 @@ body.theme-dark .motion-tab-btn.active {
 }
 
 @media (max-width: 1150px) {
-  .nav-dropdown-item {
-    display: none;
-  }
-  .nav-chapters-btn {
-    display: inline-flex;
-  }
   .hero-split-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -3251,12 +3346,6 @@ body.theme-dark .motion-tab-btn.active {
 }
 
 @media (max-width: 1024px) {
-  .header-nav {
-    display: none;
-  }
-  .mobile-menu-btn {
-    display: flex;
-  }
   .editorial-grid {
     grid-template-columns: 1fr;
   }
@@ -3277,9 +3366,32 @@ body.theme-dark .motion-tab-btn.active {
     padding: 24px;
     gap: 20px;
   }
+  .icons-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
+  .header-container {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .brand-signature {
+    gap: 8px;
+  }
+  .header-logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .header-brand-name {
+    font-size: 1.2rem;
+  }
+  .nav-chapters-btn {
+    padding: 7px 12px;
+  }
+  .icons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .milet-hero-panoramic {
     background-position: right 20% center;
   }
@@ -3367,8 +3479,17 @@ body.theme-dark .motion-tab-btn.active {
   .header-tagline-badge {
     display: none;
   }
-  .btn-header-cta span:first-child {
+  .btn-header-cta .btn-header-label {
     display: none;
+  }
+  .btn-header-cta {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+  .slide-caption-box .btn-primary-milet {
+    width: 100%;
   }
   .viewer-controls {
     flex-direction: column;
@@ -3392,6 +3513,41 @@ body.theme-dark .motion-tab-btn.active {
   .slider-controls-bar {
     flex-wrap: wrap;
     gap: 12px;
+    justify-content: center;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-container {
+    gap: 7px;
+  }
+  .header-nav {
+    margin-left: auto;
+  }
+  .nav-chapters-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+  .nav-chapters-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .icons-grid {
+    grid-template-columns: 1fr;
+  }
+  .slider-dots {
+    order: 3;
+    width: 100%;
     justify-content: center;
   }
 }

@@ -36,7 +36,7 @@
         <button class="lightbox-close-btn" onclick="closeLightbox()" title="Fechar (Esc)">✕</button>
       </div>
       <div class="lightbox-img-wrapper">
-        <img id="lightboxImg" src="assets/imagery/milet-master-brand-board.jpg" alt="Visualização em Alta Resolução" class="lightbox-full-img">
+        <img id="lightboxImg" src="assets/web/milet-master-brand-board.webp" alt="Visualização em Alta Resolução" class="lightbox-full-img" decoding="async">
       </div>
     </div>
   </div>
@@ -51,133 +51,27 @@
         <span class="header-tagline-badge">BRANDBOOK</span>
       </a>
 
-      <!-- Desktop Nav com Pilares Semanticos e Dropdowns Elegantes -->
-      <nav class="header-nav" id="mainNav">
-        <!-- Pilar 1: Fundamentos -->
-        <div class="nav-dropdown-item">
-          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
-            <span>Fundamentos</span>
-            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
-          </button>
-          <div class="nav-dropdown-menu">
-            <a href="#origem" class="dropdown-link">
-              <span class="drop-num">01</span>
-              <div class="drop-info">
-                <strong>A Origem & A Rocha</strong>
-                <small>Tales de Mileto e a resina fóssil</small>
-              </div>
-            </a>
-            <a href="#logo" class="dropdown-link">
-              <span class="drop-num">02</span>
-              <div class="drop-info">
-                <strong>Logotipo & Normas</strong>
-                <small>Versões canônicas e grid de proteção</small>
-              </div>
-            </a>
-            <a href="#cores" class="dropdown-link">
-              <span class="drop-num">03</span>
-              <div class="drop-info">
-                <strong>Paleta Cromática</strong>
-                <small>Âmbar, Carvão e Areia Mineral</small>
-              </div>
-            </a>
-            <a href="#tipografia" class="dropdown-link">
-              <span class="drop-num">04</span>
-              <div class="drop-info">
-                <strong>Tipografia Oficial</strong>
-                <small>Playfair Display & Plus Jakarta Sans</small>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Pilar 2: Sistema UI -->
-        <div class="nav-dropdown-item">
-          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
-            <span>Sistema UI</span>
-            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
-          </button>
-          <div class="nav-dropdown-menu">
-            <a href="#iconografia" class="dropdown-link">
-              <span class="drop-num">05</span>
-              <div class="drop-info">
-                <strong>Iconografia Canônica</strong>
-                <small>Grid 24px com espessura 1.5px</small>
-              </div>
-            </a>
-            <a href="#favicons" class="dropdown-link">
-              <span class="drop-num">06</span>
-              <div class="drop-info">
-                <strong>Favicons & App Icons</strong>
-                <small>Arquitetura Squircle em 7 tamanhos</small>
-              </div>
-            </a>
-            <a href="#ui-lab" class="dropdown-link">
-              <span class="drop-num">07</span>
-              <div class="drop-info">
-                <strong>Componentes & Tokens</strong>
-                <small>Botões, inputs e glassmorphism</small>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Pilar 3: Mídia & Motion -->
-        <div class="nav-dropdown-item">
-          <button class="nav-dropdown-trigger" type="button" aria-expanded="false">
-            <span>Mídia & Motion</span>
-            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
-          </button>
-          <div class="nav-dropdown-menu">
-            <a href="#motion" class="dropdown-link">
-              <span class="drop-num">08</span>
-              <div class="drop-info">
-                <strong>Motion Frame a Frame</strong>
-                <small>Metamorfose Canônica em 6 Etapas</small>
-              </div>
-            </a>
-            <a href="#universo" class="dropdown-link">
-              <span class="drop-num">09</span>
-              <div class="drop-info">
-                <strong>Universo Visual</strong>
-                <small>Slider editorial em 8 pranchas</small>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Botão Pill: Capítulos Completos -->
-        <button class="nav-chapters-btn" id="openChaptersBtn" type="button" title="Abrir Índice Completo com os 10 Capítulos">
-          <span class="nav-chapters-icon">☰</span>
-          <span>Capítulos</span>
+      <nav class="header-nav" id="mainNav" aria-label="Navegação do Brandbook">
+        <button class="nav-chapters-btn" id="openChaptersBtn" type="button" title="Abrir índice completo com os 10 capítulos" aria-haspopup="dialog" aria-controls="chaptersDrawer">
+          <span class="nav-chapters-icon" aria-hidden="true">☰</span>
+          <span class="nav-chapters-label">Capítulos</span>
         </button>
-
-        <a href="#drive" class="nav-link nav-link-highlight">Drive de Assets</a>
-        <a href="backlog.html" class="nav-link">Backlog & SPIDER</a>
       </nav>
 
       <div class="header-actions">
-        <a href="presentation.html" class="btn-header-cta" style="background: #D39B3D; color: #121212; font-weight: 600;" title="Apresentação Acadêmica 16:9 (10 min)">
-          <span>Apresentação 16:9</span>
-          <span class="btn-arrow-icon">▶</span>
-        </a>
         <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Alternar Tema Claro/Escuro" title="Alternar Modo Escuro / Claro">
           <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="#drive" class="btn-header-cta">
-          <span>Baixar Assets</span>
-          <span class="btn-arrow-icon">↓</span>
+        <a href="#drive" class="btn-header-cta" aria-label="Ir para download de assets">
+          <span class="btn-header-label">Baixar assets</span>
+          <span class="btn-arrow-icon" aria-hidden="true">↓</span>
         </a>
-        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir Menu Completo">
-          <span class="menu-bar"></span>
-          <span class="menu-bar"></span>
-        </button>
       </div>
     </div>
 
     <!-- Drawer Lateral Elegante de Capítulos (Todos os 10 Capítulos) -->
     <div id="chaptersDrawerBackdrop" class="chapters-drawer-backdrop" onclick="closeChaptersDrawer()"></div>
-    <aside id="chaptersDrawer" class="chapters-drawer" aria-label="Índice de Capítulos do Brandbook">
+    <aside id="chaptersDrawer" class="chapters-drawer" role="dialog" aria-modal="true" aria-label="Índice de Capítulos do Brandbook">
       <div class="drawer-top-bar">
         <div class="drawer-header-title">
           <span class="drawer-tagline">BRANDBOOK INTERATIVO</span>
@@ -367,7 +261,7 @@
       <!-- Spotlight Hero: A Rocha Mineral de Âmbar (Foto Canônica) -->
       <div class="origin-stone-spotlight">
         <div class="stone-spotlight-media" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-mineral-sol.png', 'A Rocha de Âmbar Mineral ao Pôr do Sol', 'MATÉRIA PRIMORDIAL • MILETO 600 A.C.')" title="Clique para expandir em tela cheia">
-          <img src="assets/imagery/milet-hero-rocha-ambar-mineral-sol.png" alt="A Rocha Mineral de Âmbar ao Pôr do Sol em Mileto" class="stone-spotlight-img">
+          <img src="assets/web/milet-hero-rocha-ambar-mineral-sol.webp" alt="A Rocha Mineral de Âmbar ao Pôr do Sol em Mileto" class="stone-spotlight-img" loading="lazy" decoding="async">
           <div class="stone-spotlight-overlay">
             <div class="stone-spotlight-top-tags">
               <span class="spotlight-pill">SÓLIDA • ELEGANTE • ATEMPORAL • VISIONÁRIA</span>
@@ -461,7 +355,7 @@
           <!-- Norma 01: Área de Proteção -->
           <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-01-area-de-protecao.png', 'Norma 01: Área de Não-Interferência e Margem de Segurança', 'SISTEMA DE LOGOTIPO • NORMA 01')">
             <div class="standard-img-wrap">
-              <img src="assets/imagery/milet-norma-01-area-de-protecao.png" alt="Norma 01: Área de Proteção" class="standard-img">
+            <img src="assets/web/milet-norma-01-area-de-protecao.webp" alt="Norma 01: Área de Proteção" class="standard-img" loading="lazy" decoding="async">
               <div class="standard-zoom-badge">🔍 Inspecionar</div>
             </div>
             <div class="standard-meta">
@@ -474,7 +368,7 @@
           <!-- Norma 02: Redução Mínima -->
           <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-02-reducao-minima.png', 'Norma 02: Limites de Redução Mínima Recomendada', 'SISTEMA DE LOGOTIPO • NORMA 02')">
             <div class="standard-img-wrap">
-              <img src="assets/imagery/milet-norma-02-reducao-minima.png" alt="Norma 02: Redução Mínima" class="standard-img">
+            <img src="assets/web/milet-norma-02-reducao-minima.webp" alt="Norma 02: Redução Mínima" class="standard-img" loading="lazy" decoding="async">
               <div class="standard-zoom-badge">🔍 Inspecionar</div>
             </div>
             <div class="standard-meta">
@@ -487,7 +381,7 @@
           <!-- Norma 03: Fundos Permitidos -->
           <div class="standard-card" onclick="openLightbox('assets/imagery/milet-norma-03-fundos-permitidos.png', 'Norma 03: Contrastes e Fundos Permitidos', 'SISTEMA DE LOGOTIPO • NORMA 03')">
             <div class="standard-img-wrap">
-              <img src="assets/imagery/milet-norma-03-fundos-permitidos.png" alt="Norma 03: Fundos Permitidos" class="standard-img">
+            <img src="assets/web/milet-norma-03-fundos-permitidos.webp" alt="Norma 03: Fundos Permitidos" class="standard-img" loading="lazy" decoding="async">
               <div class="standard-zoom-badge">🔍 Inspecionar</div>
             </div>
             <div class="standard-meta">
@@ -500,7 +394,7 @@
           <!-- Norma 04: Usos Incorretos -->
           <div class="standard-card danger-standard" onclick="openLightbox('assets/imagery/milet-norma-04-usos-incorretos.png', 'Norma 04: Usos Estritamente Proibidos e Distorções', 'SISTEMA DE LOGOTIPO • NORMA 04')">
             <div class="standard-img-wrap">
-              <img src="assets/imagery/milet-norma-04-usos-incorretos.png" alt="Norma 04: Usos Incorretos" class="standard-img">
+            <img src="assets/web/milet-norma-04-usos-incorretos.webp" alt="Norma 04: Usos Incorretos" class="standard-img" loading="lazy" decoding="async">
               <div class="standard-zoom-badge">🔍 Inspecionar</div>
             </div>
             <div class="standard-meta">
@@ -974,19 +868,20 @@
         <span class="section-number">08</span>
         <h2 class="section-title">Motion Frame a Frame</h2>
         <p class="section-lead">“Forma que acende. Marca que vive.” — A metamorfose sequencial do traço elétrico ao símbolo vivo de âmbar em 6 etapas canônicas (Painel 11).</p>
+        <a href="motion.html" class="section-motion-link">Explorar Motion Lab <span aria-hidden="true">↗</span></a>
       </div>
 
       <div class="frame-by-frame-card">
         <!-- Panoramic Full Strip Preview -->
         <div class="panoramic-sequence-banner" onclick="openLightbox('assets/imagery/milet-motion-sequencia-completa-6-etapas.png', 'Sequência Completa de Motion — 6 Etapas da Metamorfose', 'PAINEL 11 • MOTION CANÔNICO')" title="Clique para expandir o panorama completo">
-          <img src="assets/imagery/milet-motion-sequencia-completa-6-etapas.png" alt="Sequência Completa do Motion Milet em 6 Etapas" class="panoramic-img">
+          <img src="assets/web/milet-motion-sequencia-completa-6-etapas.webp" alt="Sequência Completa do Motion Milet em 6 Etapas" class="panoramic-img" loading="lazy" decoding="async">
           <div class="panoramic-tag">🔍 Inspecionar Linha Temporal Completa em Alta Resolução (2172×724px)</div>
         </div>
 
         <!-- Active Single Stage Display with Stepper -->
         <div class="active-stage-viewer">
           <div class="stage-frame-media" id="stageFrameMedia" style="cursor: pointer;" title="Clique para avançar para a próxima etapa">
-            <img id="activeStageImg" src="assets/imagery/milet-motion-stage-01-arco-eletrico.png" alt="Etapa Ativa do Motion" class="stage-active-frame-img">
+            <img id="activeStageImg" src="assets/web/milet-motion-stage-01-arco-eletrico.webp" alt="Etapa Ativa do Motion" class="stage-active-frame-img" loading="lazy" decoding="async">
             <div class="stage-frame-overlay">
               <span class="stage-phase-badge" id="stagePhaseBadge">ETAPA 01 / 06</span>
               <h3 class="stage-phase-title" id="stagePhaseTitle">01. Traço Elétrico Inicial</h3>
@@ -1059,13 +954,13 @@
       </div>
 
       <!-- Interactive Carousel Slider -->
-      <div class="brand-slider-container">
+      <div class="brand-slider-container" tabindex="0" aria-label="Galeria do universo visual. Use as setas para navegar.">
         <div class="slider-track" id="sliderTrack">
           <!-- Slide 1: A Rocha de Âmbar Mineral ao Pôr do Sol -->
           <div class="slide-item active">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-mineral-sol.png', 'A Rocha de Âmbar Mineral ao Pôr do Sol em Mileto', 'ORIGEM MINERAL • MILETO')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-hero-rocha-ambar-mineral-sol.png" alt="A Rocha de Âmbar Mineral ao Pôr do Sol" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-hero-rocha-ambar-mineral-sol.webp" alt="A Rocha de Âmbar Mineral ao Pôr do Sol" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1084,7 +979,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-hero-rocha-ambar-polida.png', 'A Rocha de Âmbar Polida sobre Basalto Vulcânico', 'ESCULTURA & LUZ')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-hero-rocha-ambar-polida.png" alt="A Rocha de Âmbar Polida sobre Basalto" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-hero-rocha-ambar-polida.webp" alt="A Rocha de Âmbar Polida sobre Basalto" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1103,7 +998,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-master-brand-board.jpg', 'Milet — Visão Holística da Identidade', 'PRANCHA MESTRA EM ALTA RESOLUÇÃO')" title="Clique para abrir em tela cheia com zoom 100%">
-                <img src="assets/imagery/milet-master-brand-board.jpg" alt="Prancha Mestra Milet" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-master-brand-board.webp" alt="Prancha Mestra Milet" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução (100%)</div>
               </div>
               <div class="slide-caption-box">
@@ -1122,7 +1017,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-livro-marca-hardcover.png', 'Brandbook Institucional Hardcover de Luxo', 'DOCUMENTAÇÃO FÍSICA')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-mockup-livro-marca-hardcover.png" alt="Livro da Marca Hardcover de Luxo" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-mockup-livro-marca-hardcover.webp" alt="Livro da Marca Hardcover de Luxo" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1141,7 +1036,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-cartoes-visita-duo.png', 'Cartões de Visita Duo & Papelaria em Papel Algodão', 'PAPELARIA CORPORATIVA')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-mockup-cartoes-visita-duo.png" alt="Cartões de Visita Duo Milet" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-mockup-cartoes-visita-duo.webp" alt="Cartões de Visita Duo Milet" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1160,7 +1055,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-papel-timbrado.png', 'Papel Timbrado Executivo & Envelope Corporativo', 'EXPEDIENTE OFICIAL')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-mockup-papel-timbrado.png" alt="Papel Timbrado Executivo Milet" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-mockup-papel-timbrado.webp" alt="Papel Timbrado Executivo Milet" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1179,7 +1074,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-mockup-crachas-lanyard.png', 'Crachás Institucionais com Fita Lanyard', 'IDENTIFICAÇÃO CORPORATIVA')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-mockup-crachas-lanyard.png" alt="Crachás Institucionais Milet" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-mockup-crachas-lanyard.webp" alt="Crachás Institucionais Milet" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1198,7 +1093,7 @@
           <div class="slide-item">
             <div class="slide-card">
               <div class="slide-media-wrap" onclick="openLightbox('assets/imagery/milet-universo-loop-montanha-sol.png', 'O Símbolo Möbius nos Montes de Mileto', 'VISÃO DE LIBERDADE')" title="Clique para expandir em 100%">
-                <img src="assets/imagery/milet-universo-loop-montanha-sol.png" alt="O Símbolo Möbius nos Montes de Mileto" class="slide-img clickable-zoom">
+                <img src="assets/web/milet-universo-loop-montanha-sol.webp" alt="O Símbolo Möbius nos Montes de Mileto" class="slide-img clickable-zoom" loading="lazy" decoding="async">
                 <div class="slide-zoom-hint">🔍 Expandir em Alta Resolução</div>
               </div>
               <div class="slide-caption-box">
@@ -1217,19 +1112,19 @@
         <!-- Slider Navigation Controls -->
         <div class="slider-controls-bar">
           <div class="slider-arrows">
-            <button id="sliderPrevBtn" class="slider-nav-btn" aria-label="Slide Anterior">←</button>
-            <button id="sliderNextBtn" class="slider-nav-btn" aria-label="Próximo Slide">→</button>
+            <button id="sliderPrevBtn" type="button" class="slider-nav-btn" aria-label="Slide anterior">←</button>
+            <button id="sliderNextBtn" type="button" class="slider-nav-btn" aria-label="Próximo slide">→</button>
           </div>
 
           <div class="slider-dots" id="sliderDots">
-            <span class="slider-dot active" data-index="0"></span>
-            <span class="slider-dot" data-index="1"></span>
-            <span class="slider-dot" data-index="2"></span>
-            <span class="slider-dot" data-index="3"></span>
-            <span class="slider-dot" data-index="4"></span>
-            <span class="slider-dot" data-index="5"></span>
-            <span class="slider-dot" data-index="6"></span>
-            <span class="slider-dot" data-index="7"></span>
+            <button type="button" class="slider-dot active" data-index="0" aria-label="Ir para slide 1" aria-current="true"></button>
+            <button type="button" class="slider-dot" data-index="1" aria-label="Ir para slide 2"></button>
+            <button type="button" class="slider-dot" data-index="2" aria-label="Ir para slide 3"></button>
+            <button type="button" class="slider-dot" data-index="3" aria-label="Ir para slide 4"></button>
+            <button type="button" class="slider-dot" data-index="4" aria-label="Ir para slide 5"></button>
+            <button type="button" class="slider-dot" data-index="5" aria-label="Ir para slide 6"></button>
+            <button type="button" class="slider-dot" data-index="6" aria-label="Ir para slide 7"></button>
+            <button type="button" class="slider-dot" data-index="7" aria-label="Ir para slide 8"></button>
           </div>
 
           <div class="slider-counter" id="sliderCounter">01 / 08</div>
@@ -1380,6 +1275,8 @@
       <div class="footer-bottom-row">
         <p>© 2026 Milet Tecnologia em Energia S.A. Todos os direitos reservados. Ativos de Propriedade Intelectual.</p>
         <div class="footer-links">
+          <a href="presentation.html">Apresentação 16:9</a>
+          <a href="backlog.html">Backlog & SPIDER</a>
           <a href="#hero">Voltar ao Topo ↑</a>
         </div>
       </div>
