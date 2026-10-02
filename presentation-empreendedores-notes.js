@@ -326,10 +326,11 @@
   const lightboxImg = document.getElementById('lightbox-image');
   const lightboxClose = document.getElementById('image-lightbox-close');
 
-  document.querySelectorAll('.canvas-image-stage img').forEach(img => {
-    img.addEventListener('click', (e) => {
+  document.querySelectorAll('.canvas-image-stage').forEach(stage => {
+    stage.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (lightboxModal && lightboxImg) {
+      const img = stage.querySelector('img');
+      if (lightboxModal && lightboxImg && img) {
         lightboxImg.src = img.src;
         lightboxModal.classList.add('active');
       }
