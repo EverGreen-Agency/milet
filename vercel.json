@@ -1,5 +1,10 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/roadmap", "destination": "/roadmap.html" },
+    { "source": "/build-in-public", "destination": "/build-in-public.html" },
+    { "source": "/demo", "destination": "/demo.html" }
+  ],
   "redirects": [
     {
       "source": "/brandbook-web",

@@ -2,6 +2,22 @@
 
 Este pacote é a fonte de trabalho para montar a apresentação de 10 minutos na IDE.
 
+## Rotas públicas
+
+O projeto é estático e usa `cleanUrls` na Vercel. As rotas abaixo preservam a separação entre documentação, protótipo e produto:
+
+| Rota | Superfície | Estado |
+| --- | --- | --- |
+| `/` | Brandbook interativo e assets | Implementado |
+| `/backlog` | Backlog acadêmico e SPIDER | Implementado; especificação não comprova produto |
+| `/presentation` | Apresentação do plano de projeto | Implementado |
+| `/presentation-empreendedores` | Apresentação de Projetos Empreendedores | Implementado |
+| `/roadmap` | Roadmap público Agora/Próximo/Explorando | Implementado; itens do produto seguem planejados |
+| `/build-in-public` | Changelog público, limites e pergunta de validação | Implementado |
+| `/demo` | Antecâmara da futura demo PME | Placeholder explícito; não é fluxo funcional |
+
+Para validar localmente, sirva a raiz por HTTP (por exemplo, `python -m http.server 4173`) em vez de abrir os arquivos com `file://`.
+
 ## O que já está pronto
 - assets/bmc.png — Canvas visual.
 - assets/ecosystem.png — ecossistema.

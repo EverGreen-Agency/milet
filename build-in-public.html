@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build in public — Milet</title>
+  <meta name="description" content="Atualizações públicas da construção da Milet, com entregas, evidências e limitações explícitas.">
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="public-product.css">
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="public-header">
+    <nav class="public-nav" aria-label="Navegação principal">
+      <a class="public-brand" href="index.html"><img src="assets/logo/png/transparent/milet-symbol-amber.png" alt=""><strong>Milet</strong><span>Produto aberto</span></a>
+      <div class="public-links"><a href="roadmap.html">Roadmap</a><a href="build-in-public.html" aria-current="page">Atualizações</a><a href="demo.html">Demo</a><a href="backlog.html">Backlog</a></div>
+      <button class="theme-button" type="button" data-theme-toggle aria-label="Usar tema escuro">☾</button>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="public-main">
+    <section class="public-hero">
+      <span class="eyebrow">Build in public · fatos, limites e perguntas</span>
+      <h1>Construir à vista, sem pular a <em>prova.</em></h1>
+      <p class="hero-copy">Aqui registramos o que mudou, o que funciona e onde a experiência ainda é somente plano ou protótipo. A transparência inclui dizer “ainda não”.</p>
+      <div class="hero-actions"><a class="button button-primary" href="demo.html">Entrar no caminho da demo <span aria-hidden="true">→</span></a><a class="button" href="roadmap.html">Ver prioridades públicas</a></div>
+    </section>
+
+    <section class="public-section" aria-labelledby="atualizacao-inicial">
+      <div class="section-heading"><span class="section-kicker">Changelog inicial</span><h2 id="atualizacao-inicial">Uma entrada pública com o estado real.</h2><p>Registro baseado nos arquivos e verificações disponíveis neste repositório. Publicação em produção depende do próximo deploy.</p></div>
+      <article class="changelog-entry">
+        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado</span><time datetime="2026-10-03">03 out 2026</time><span class="meta-label">Superfície pública 001</span></div>
+        <div class="changelog-body">
+          <h3>O produto ganhou um lugar honesto para começar.</h3>
+          <p><strong>Problema tratado:</strong> roadmap e atualizações públicas não tinham rotas próprias, enquanto o backlog podia ser confundido com capacidade entregue.</p>
+          <ul>
+            <li>Roadmap público organizado em Agora, Próximo e Explorando, ligado a EP-01–EP-06, F1.1–F6.3 e US-001–US-028.</li>
+            <li>Vocabulário explícito para separar planejado, protótipo, implementado e validado.</li>
+            <li>Rota <code>/demo</code> reservada com uma antecâmara que não se apresenta como produto funcional.</li>
+            <li>Navegação e documentação atualizadas sem remover o brandbook, backlog ou apresentações.</li>
+          </ul>
+          <p><strong>Estado:</strong> arquivos implementados e verificados localmente; disponibilidade pública ainda depende do deploy.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="public-section" aria-labelledby="trabalho-verificado">
+      <div class="section-heading"><span class="section-kicker">Antes desta atualização</span><h2 id="trabalho-verificado">Artefatos existentes que podemos demonstrar.</h2></div>
+      <div class="card-grid">
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Brandbook e sistema visual</h3><p>Identidade, tokens, componentes demonstrativos, assets e documentação estão disponíveis na página principal.</p><div class="card-actions"><a class="button" href="index.html">Abrir brandbook</a></div></article>
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Backlog acadêmico</h3><p>A superfície documenta seis épicos e 28 histórias. Ela é evidência de especificação, não de execução do produto.</p><div class="card-actions"><a class="button" href="backlog.html">Abrir backlog</a></div></article>
+        <article class="card"><span class="status-chip status-prototype">Protótipo validado localmente</span><h3>Motion 3D procedural</h3><p>Seis estados morfológicos, timeline, scrubber e interação responsiva foram registrados no commit <code>36d1bbc</code>. O verso da forma segue uma interpretação visual.</p><div class="card-actions"><a class="button" href="motion-3d.html">Experimentar motion</a></div></article>
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Apresentações acadêmicas</h3><p>Decks web preservados para o plano de projeto e para Projetos Empreendedores. Não representam um painel operacional.</p><div class="card-actions"><a class="button" href="presentation.html">Plano de projeto</a><a class="button" href="presentation-empreendedores.html">Empreendedores</a></div></article>
+      </div>
+    </section>
+
+    <section class="public-section" aria-labelledby="limites-versao">
+      <div class="section-heading"><span class="section-kicker">Limites da versão</span><h2 id="limites-versao">O que esta entrega não comprova.</h2></div>
+      <div class="card-grid">
+        <article class="card"><h3>Produto e dados</h3><ul class="limitation-list"><li>Não há fluxo PME funcional nesta branch.</li><li>Não há leitura OCR real nem faturas reais.</li><li>Não há cálculo validado de economia ou recomendação.</li></ul></article>
+        <article class="card"><h3>Mercado e operação</h3><ul class="limitation-list"><li>Não há clientes, pilotos ou tração declarados.</li><li>Não há fornecedores, parceiros ou integrações confirmados.</li><li>Não há contratação, assinatura, pagamento ou troca de fornecedor.</li></ul></article>
+        <article class="card"><h3>Confiança</h3><ul class="limitation-list"><li>Troca de perfil em demo não seria controle de acesso.</li><li>Histórico visual não seria auditoria imutável.</li><li>Dados sintéticos e timelines simuladas serão identificados como tais.</li></ul></article>
+        <article class="card"><h3>Modelo econômico</h3><ul class="limitation-list"><li>Sem spread oculto nas transações.</li><li>Taxas e preços continuam hipóteses até decisão explícita.</li><li>Posição em ranking não deve ser comprada.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="public-section" aria-labelledby="pergunta-pme">
+      <div class="question-card">
+        <span class="section-kicker">Pergunta para validação com PMEs</span>
+        <h2 id="pergunta-pme">Antes de comparar propostas, qual evidência faria você confiar que a sua fatura foi entendida corretamente?</h2>
+        <p>Queremos testar se a revisão dos dados de consumo e custo reduz insegurança antes do diagnóstico — e quais campos precisam de explicação, correção ou confirmação humana.</p>
+        <div class="card-actions"><a class="button button-primary" href="demo.html">Ver como a demo será delimitada</a><a class="button" href="roadmap.html">Acompanhar o roadmap</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer"><div class="public-footer-inner"><p>© 2026 Milet · Atualizações baseadas em evidência disponível.</p><div class="public-footer-links"><a href="index.html">Brandbook</a><a href="roadmap.html">Roadmap</a><a href="backlog.html">Backlog</a></div></div></footer>
+  <script src="public-product.js"></script>
+</body>
+</html>

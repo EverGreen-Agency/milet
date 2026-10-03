@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap público — Milet</title>
+  <meta name="description" content="Roadmap público da Milet: prioridades atuais, próximos resultados e hipóteses em exploração, com estado e evidência explícitos.">
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Playfair+Display:ital,wght@0,500;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="public-product.css">
+</head>
+<body class="theme-light">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="public-header">
+    <nav class="public-nav" aria-label="Navegação principal">
+      <a class="public-brand" href="index.html">
+        <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="">
+        <strong>Milet</strong><span>Produto aberto</span>
+      </a>
+      <div class="public-links">
+        <a href="roadmap.html" aria-current="page">Roadmap</a>
+        <a href="build-in-public.html">Atualizações</a>
+        <a href="demo.html">Demo</a>
+        <a href="backlog.html">Backlog</a>
+      </div>
+      <button class="theme-button" type="button" data-theme-toggle aria-label="Usar tema escuro">☾</button>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="public-main">
+    <section class="public-hero">
+      <span class="eyebrow">Roadmap público · atualizado em 03 out 2026</span>
+      <h1>O caminho entre a hipótese e a <em>evidência.</em></h1>
+      <p class="hero-copy">A Milet quer ajudar pequenas e médias empresas a entender, comparar e acompanhar decisões de energia. Este mapa mostra prioridades por resultado — sem tratar especificação como produto pronto nem transformar metas em promessas.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="demo.html">Ver o estado da demo <span aria-hidden="true">→</span></a>
+        <a class="button" href="backlog.html">Abrir backlog detalhado</a>
+      </div>
+    </section>
+
+    <section class="truth-strip" aria-label="Legenda de estados">
+      <article class="truth-item">
+        <span class="status-chip status-planned">Planejado</span>
+        <strong>Prioridade documentada</strong>
+        <p>Há escopo e IDs rastreáveis; ainda não há fluxo executável comprovado.</p>
+      </article>
+      <article class="truth-item">
+        <span class="status-chip status-prototype">Protótipo</span>
+        <strong>Experiência navegável</strong>
+        <p>Pode usar dados sintéticos e serviços simulados. Não equivale a operação real.</p>
+      </article>
+      <article class="truth-item">
+        <span class="status-chip status-implemented">Implementado</span>
+        <strong>Código disponível</strong>
+        <p>A capacidade existe no repositório, mas pode aguardar integração ou validação externa.</p>
+      </article>
+      <article class="truth-item">
+        <span class="status-chip status-validated">Validado</span>
+        <strong>Evidência no contexto-alvo</strong>
+        <p>Exige teste registrado; validação local não prova operação em produção.</p>
+      </article>
+    </section>
+
+    <section class="public-section" aria-labelledby="mapa-roadmap">
+      <div class="section-heading">
+        <span class="section-kicker">Agora / Próximo / Explorando</span>
+        <h2 id="mapa-roadmap">Resultados em sequência, não funcionalidades soltas.</h2>
+        <p>“Agora” representa a frente priorizada no backlog consolidado. Todas as histórias abaixo permanecem planejadas até que uma entrega tenha código e evidência próprias.</p>
+      </div>
+
+      <div class="roadmap-lane">
+        <div class="lane-label"><h3>Agora</h3><p>P0 · 15 histórias candidatas</p></div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Entender o caso e revisar a fatura</h4>
+            <p>Descoberta inicial, entrada de uma fatura de demonstração e conferência humana antes do diagnóstico.</p>
+            <div class="chip-row"><span class="id-chip">EP-01</span><span class="id-chip">F1.1</span><span class="id-chip">F1.2</span><span class="id-chip">US-001</span><span class="id-chip">US-002</span><span class="id-chip">US-003</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> especificação recuperada; implementação do fluxo não verificada.</div>
+          </article>
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Diagnosticar e comparar alternativas</h4>
+            <p>Elegibilidade, linha de base, cenários explicáveis, solicitação e comparação padronizada de propostas.</p>
+            <div class="chip-row"><span class="id-chip">EP-02</span><span class="id-chip">F2.1</span><span class="id-chip">F2.2</span><span class="id-chip">F2.3</span><span class="id-chip">EP-03</span><span class="id-chip">F3.1</span><span class="id-chip">F3.2</span><span class="id-chip">F3.3</span><span class="id-chip">US-006</span><span class="id-chip">US-007</span><span class="id-chip">US-008</span><span class="id-chip">US-009</span><span class="id-chip">US-010</span><span class="id-chip">US-012</span><span class="id-chip">US-013</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> critérios e relações documentados; sem cálculo, ranking ou integração real comprovados.</div>
+          </article>
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Acompanhar a decisão com operação visível</h4>
+            <p>Checklist, linha do tempo, economia prevista versus realizada e visão operacional com rastreabilidade.</p>
+            <div class="chip-row"><span class="id-chip">EP-04–EP-06</span><span class="id-chip">F4.1</span><span class="id-chip">F4.2</span><span class="id-chip">F5.1</span><span class="id-chip">F6.1</span><span class="id-chip">F6.3</span><span class="id-chip">US-016</span><span class="id-chip">US-019</span><span class="id-chip">US-021</span><span class="id-chip">US-025</span><span class="id-chip">US-027</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> backlog P0; operação, savings e trilha imutável não implementados.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="roadmap-lane">
+        <div class="lane-label"><h3>Próximo</h3><p>P1 · 10 histórias planejadas</p></div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Memória, consentimento e escolha</h4>
+            <p>Contexto histórico, compartilhamento controlado, retorno do fornecedor, esclarecimentos e transparência da remuneração — sempre sem spread oculto.</p>
+            <div class="chip-row"><span class="id-chip">EP-01</span><span class="id-chip">F1.3</span><span class="id-chip">EP-03</span><span class="id-chip">F3.1</span><span class="id-chip">F3.3</span><span class="id-chip">US-004</span><span class="id-chip">US-005</span><span class="id-chip">US-011</span><span class="id-chip">US-014</span><span class="id-chip">US-015</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> histórias no backlog; controles reais de acesso e consentimento ainda necessários.</div>
+          </article>
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Formalizar, alertar e conectar a oferta</h4>
+            <p>Resumo e versão contratual, alertas de pendência e vencimento, além de um portal dedicado ao fornecedor.</p>
+            <div class="chip-row"><span class="id-chip">EP-04</span><span class="id-chip">F4.1</span><span class="id-chip">F4.2</span><span class="id-chip">EP-05</span><span class="id-chip">F5.2</span><span class="id-chip">EP-06</span><span class="id-chip">F6.2</span><span class="id-chip">US-017</span><span class="id-chip">US-018</span><span class="id-chip">US-020</span><span class="id-chip">US-022</span><span class="id-chip">US-026</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> escopo documentado; assinatura, mensageria e integrações não comprovadas.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="roadmap-lane">
+        <div class="lane-label"><h3>Explorando</h3><p>P2 · 3 hipóteses</p></div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Reavaliar quando o contexto mudar</h4>
+            <p>Monitorar sinais relevantes e permitir uma nova rodada de comparação somente com autorização do cliente.</p>
+            <div class="chip-row"><span class="id-chip">EP-05</span><span class="id-chip">F5.2</span><span class="id-chip">US-023</span><span class="id-chip">US-024</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> hipótese de produto; gatilhos e regras atuais ainda precisam ser validados.</div>
+          </article>
+          <article class="roadmap-card">
+            <span class="status-chip status-planned">Planejado</span>
+            <h4>Coordenar um portfólio de unidades</h4>
+            <p>Consolidar oportunidades e riscos de múltiplas unidades consumidoras para apoiar priorização.</p>
+            <div class="chip-row"><span class="id-chip">EP-06</span><span class="id-chip">F6.1</span><span class="id-chip">US-028</span></div>
+            <div class="evidence-note"><strong>Evidência:</strong> especificação recuperada; implementação não verificada.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="public-section" aria-labelledby="evidencia-atual">
+      <div class="section-heading">
+        <span class="section-kicker">Evidência atual</span>
+        <h2 id="evidencia-atual">O que já existe não é o produto completo.</h2>
+      </div>
+      <div class="card-grid">
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Presença pública e documentação</h3><p>Brandbook, apresentações, backlog acadêmico, assets e estas superfícies públicas existem como páginas estáticas no repositório.</p></article>
+        <article class="card"><span class="status-chip status-prototype">Protótipo</span><h3>Laboratório de motion 3D</h3><p>Experiência procedural com seis estados, timeline e interação. É uma exploração de linguagem visual, não uma capacidade energética.</p><div class="card-actions"><a class="button" href="motion-3d.html">Abrir laboratório</a></div></article>
+        <article class="card"><span class="status-chip status-planned">Planejado</span><h3>Demo do fluxo PME</h3><p>A rota está reservada e explica o contrato da futura demonstração, mas ainda não contém o fluxo de produto.</p><div class="card-actions"><a class="button" href="demo.html">Ver antecâmara da demo</a></div></article>
+        <article class="card"><span class="status-chip status-planned">Não validado</span><h3>Operação e resultado real</h3><p>Não há evidência aqui de clientes, pilotos, OCR real, economia realizada, parceiros integrados ou contratação em produção.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer">
+    <div class="public-footer-inner"><p>© 2026 Milet · Roadmap sujeito a aprendizado e evidência.</p><div class="public-footer-links"><a href="index.html">Brandbook</a><a href="build-in-public.html">Atualizações</a><a href="presentation.html">Apresentação</a></div></div>
+  </footer>
+  <script src="public-product.js"></script>
+</body>
+</html>
