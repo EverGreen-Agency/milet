@@ -1,0 +1,13 @@
+{
+  "name": "@milet/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@milet/contracts": "*",
+    "@milet/domain": "*"
+  },
+  "scripts": { "build": "tsc -p tsconfig.json" }
+}

@@ -23,6 +23,8 @@ autenticação, OCR, filas, assinatura eletrônica, cobrança ou aplicativo nati
   integração, Definition of Done, matriz P0 e questões abertas.
 - [STAGE0_EVIDENCE.md](./STAGE0_EVIDENCE.md): implementação local da fundação,
   testes reproduzíveis, conflitos encontrados e gates ainda abertos.
+- [STAGE1_EVIDENCE.md](./STAGE1_EVIDENCE.md): contratos versionados, persistência
+  PostgreSQL, worker de outbox e evidências reproduzíveis desta etapa.
 
 ## Regras de leitura
 
@@ -44,7 +46,8 @@ loja que a PWA não entregue adequadamente.
 
 ## Estado executável em 2026-10-03
 
-A Stage 0 implementa a fronteira de API/contratos/PostgreSQL com dados sintéticos.
+A Stage 1 implementa contratos públicos versionados, leitura/auditoria PostgreSQL
+tenant-scoped e worker de outbox com retry/DLQ sobre dados sintéticos.
 Não implementa PWA nova, OCR, upload, autenticação real, assinatura, cobrança,
 financiamento ou qualquer provider externo. O portal público e `/app/` continuam
 independentes do runtime da API.

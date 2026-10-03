@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const ignoredDirectories = new Set([".git", "node_modules", "graphify-out"]);
+const ignoredDirectories = new Set([".git", "node_modules", "graphify-out", "public", "dist"]);
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {

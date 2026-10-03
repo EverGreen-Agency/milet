@@ -6,7 +6,12 @@ import { PGlite } from "@electric-sql/pglite";
 
 test("migrations execute, create the required schema and enforce immutable audit", async () => {
   const db = new PGlite();
-  const migrations = ["001_transactional_foundation.sql", "002_deterministic_demo_fixture.sql"];
+  const migrations = [
+    "001_transactional_foundation.sql",
+    "002_deterministic_demo_fixture.sql",
+    "003_outbox_worker.sql",
+    "004_stage1_demo_outbox_fixture.sql",
+  ];
   for (const migration of migrations) {
     await db.exec(await readFile(join(process.cwd(), "infra", "postgres", "migrations", migration), "utf8"));
   }
@@ -15,16 +20,18 @@ test("migrations execute, create the required schema and enforce immutable audit
     "SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename",
   );
   const names = tables.rows.map((row) => row.tablename);
-  for (const expected of ["organizations", "users", "memberships", "consumer_units", "invoices", "invoice_revisions", "baselines", "scenarios", "audit_events", "outbox_events"]) {
+  for (const expected of ["organizations", "users", "memberships", "consumer_units", "invoices", "invoice_revisions", "baselines", "scenarios", "audit_events", "outbox_events", "outbox_dead_letters"]) {
     assert.ok(names.includes(expected), `missing table ${expected}`);
   }
 
   const policies = await db.query<{ count: number }>("SELECT count(*)::int AS count FROM pg_policies");
-  assert.equal(policies.rows[0]?.count, 8);
+  assert.equal(policies.rows[0]?.count, 9);
   const fixture = await db.query<{ public_id: string }>("SELECT public_id FROM consumer_units");
   assert.equal(fixture.rows[0]?.public_id, "UC-MG-00482");
   await assert.rejects(db.exec("UPDATE audit_events SET action = 'tampered'"), /append-only/);
   await assert.rejects(db.exec("DELETE FROM audit_events"), /append-only/);
+  const outbox = await db.query<{ event_type: string; attempts: number }>("SELECT event_type, attempts FROM outbox_events");
+  assert.deepEqual(outbox.rows[0], { event_type: "case.fixture.ready.v1", attempts: 0 });
 
   await db.exec(`
     INSERT INTO organizations (id, public_id, legal_name, status, created_at, updated_at)

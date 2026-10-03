@@ -3,20 +3,20 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "apps/api",
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
     "test": "npm run test:static && npm run test:foundation",
     "test:static": "node --test app/tests/*.test.js",
-    "test:foundation": "tsx --tsconfig tsconfig.base.json --test apps/api/test/*.test.ts packages/domain/test/*.test.ts infra/test/*.test.ts",
+    "test:foundation": "tsx --tsconfig tsconfig.base.json --test apps/*/test/*.test.ts packages/*/test/*.test.ts infra/test/*.test.ts",
     "check:syntax": "node --check app/src/app.js && node --check app/src/domain.js && node --check app/src/fixtures.js && node --check app/src/demo-adapter.js && node --check public-product.js",
     "check:static": "node app/scripts/check-static.js",
     "check:site": "node app/scripts/check-site.js",
     "check": "npm run check:syntax && npm run check:static && npm run check:site",
     "typecheck": "tsc -b --pretty false",
     "build": "npm run build:foundation && npm run build:site",
-    "build:foundation": "npm run build -w @milet/domain && npm run build -w @milet/contracts && npm run build -w @milet/test-fixtures && npm run build -w @milet/api",
+    "build:foundation": "npm run build -w @milet/domain && npm run build -w @milet/contracts && npm run build -w @milet/test-fixtures && npm run build -w @milet/api && npm run build -w @milet/worker",
     "build:site": "node scripts/build-static-site.mjs",
     "ci": "npm run check && npm run typecheck && npm test && npm run build",
     "api:dev": "npm run dev -w @milet/api",
