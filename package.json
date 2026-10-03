@@ -15,7 +15,9 @@
     "check:site": "node app/scripts/check-site.js",
     "check": "npm run check:syntax && npm run check:static && npm run check:site",
     "typecheck": "tsc -b --pretty false",
-    "build": "npm run build -w @milet/domain && npm run build -w @milet/contracts && npm run build -w @milet/test-fixtures && npm run build -w @milet/api",
+    "build": "npm run build:foundation && npm run build:site",
+    "build:foundation": "npm run build -w @milet/domain && npm run build -w @milet/contracts && npm run build -w @milet/test-fixtures && npm run build -w @milet/api",
+    "build:site": "node scripts/build-static-site.mjs",
     "ci": "npm run check && npm run typecheck && npm test && npm run build",
     "api:dev": "npm run dev -w @milet/api",
     "api:start": "npm run start -w @milet/api"
