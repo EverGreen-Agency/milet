@@ -97,3 +97,18 @@ como orçamento aprovado.
 
 **Consequências:** cada integração possui planilha de volume e teste de saída antes
 do contrato. Gatilho de troca: custo total, lock-in, falha de compliance ou SLO.
+
+## ADR-011 — Bootstrap incremental sem mover o portal estático
+
+**Decisão:** adicionar workspaces para `apps/api` e `packages/*`, mantendo os
+arquivos públicos na raiz e suas rotas atuais. A Stage 0 usa UUIDs internos
+determinísticos nas fixtures e preserva `ORG-0007`, `UC-MG-00482` e
+`INV-2026-08-00482` como IDs públicos compatíveis.
+
+**Consequências:** a fronteira transacional pode evoluir sem uma migração de hosting
+do brandbook. Os UUIDs fixos são permitidos somente em fixtures sintéticas; geração
+UUIDv7 de produção permanece um gate. O header tenant da Stage 0 é uma fronteira de
+teste, não autenticação.
+
+**Revisar quando:** o BFF/web transacional for criado ou quando identidade real
+substituir o autorizador fake.

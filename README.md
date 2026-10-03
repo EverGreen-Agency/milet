@@ -59,3 +59,12 @@ A apresentação NÃO é o relatório comprimido. Em 10 minutos:
 A proposta implementation-ready para a plataforma transacional está em
 [`docs/product/v1/`](./docs/product/v1/README.md). Ela é arquitetura alvo: não
 representa backend, integrações ou operação de produção já implementados.
+
+## Fundação transacional (Stage 0)
+
+O repositório também contém uma API NestJS isolada do portal estático, contratos
+TypeScript compartilhados, migrações PostgreSQL e fixtures exclusivamente
+sintéticas. Consulte [`apps/api/README.md`](./apps/api/README.md) para execução e
+[`docs/product/v1/STAGE0_EVIDENCE.md`](./docs/product/v1/STAGE0_EVIDENCE.md) para
+evidências e limites. Essa fundação não aceita faturas reais e não comprova
+integração, segurança ou prontidão de produção.
