@@ -1,0 +1,12 @@
+{
+  "name": "milet-brand-and-product-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test app/tests/*.test.js",
+    "check:syntax": "node --check app/src/app.js && node --check app/src/domain.js && node --check app/src/fixtures.js && node --check app/src/demo-adapter.js && node --check public-product.js",
+    "check:static": "node app/scripts/check-static.js",
+    "check:site": "node app/scripts/check-site.js",
+    "check": "npm run check:syntax && npm run check:static && npm run check:site"
+  }
+}

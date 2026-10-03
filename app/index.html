@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="description" content="Demonstração Milet: da fatura a cenários de energia comparáveis.">
+  <title>Milet · Decisão energética</title>
+  <link rel="icon" href="../assets/logo/png/solid/favicon-32x32.png">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <header class="app-header">
+    <a class="brand" href="../demo.html" aria-label="Milet, voltar aos limites da demonstração">
+      <img src="../assets/logo/svg/milet-logo-horizontal-light.svg" alt="Milet">
+    </a>
+    <div class="header-meta">
+      <span class="demo-badge">Demonstração</span>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Alternar tema" aria-pressed="false">◐</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="journey" aria-label="Progresso da análise">
+      <p class="eyebrow">Caso sintético</p>
+      <strong>Padaria Horizonte</strong>
+      <span class="case-id">UC-MG-00482</span>
+      <ol id="stepper"></ol>
+      <div class="privacy-note">
+        <strong>Seus dados ficam sob seu controle</strong>
+        <span>Nesta demo, nada é enviado para terceiros.</span>
+      </div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <div id="live-region" class="sr-only" aria-live="polite"></div>
+      <div id="screen"></div>
+    </main>
+  </div>
+
+  <noscript>Esta demonstração precisa de JavaScript para navegar entre as etapas.</noscript>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

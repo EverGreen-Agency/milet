@@ -2,6 +2,25 @@
 
 Este pacote é a fonte de trabalho para montar a apresentação de 10 minutos na IDE.
 
+## Rotas públicas
+
+O projeto é estático e usa `cleanUrls` na Vercel. As rotas abaixo preservam a separação entre documentação, protótipo e produto:
+
+| Rota | Superfície | Estado |
+| --- | --- | --- |
+| `/` | Brandbook interativo e assets | Implementado |
+| `/backlog` | Backlog acadêmico e SPIDER | Implementado; especificação não comprova produto |
+| `/presentation` | Apresentação do plano de projeto | Implementado |
+| `/presentation-empreendedores` | Apresentação de Projetos Empreendedores | Implementado |
+| `/roadmap` | Roadmap público Agora/Próximo/Explorando | Implementado; fatia front-end prototipada e capacidades reais ainda planejadas |
+| `/build-in-public` | Changelog público, limites e pergunta de validação | Implementado |
+| `/demo` | Entrada e contrato da demonstração | Implementado; encaminha ao protótipo com limites explícitos |
+| `/app/` | Jornada front-end da triagem à comparação | Protótipo funcional com dados sintéticos; sem backend/OCR/auth/produção |
+
+Para validar localmente, sirva a raiz por HTTP (por exemplo, `python -m http.server 4173`) em vez de abrir os arquivos com `file://`.
+
+O caminho público intencional é `/roadmap` ou `/build-in-public` → `/demo` → `/app/`. A página `/demo` explica o contrato da experiência antes de abrir a jornada sintética.
+
 ## O que já está pronto
 - assets/bmc.png — Canvas visual.
 - assets/ecosystem.png — ecossistema.
@@ -34,3 +53,9 @@ A apresentação NÃO é o relatório comprimido. Em 10 minutos:
 - integrações concluídas;
 - validações que ainda não ocorreram;
 - datas acadêmicas oficiais que não foram confirmadas.
+
+## Arquitetura de produto
+
+A proposta implementation-ready para a plataforma transacional está em
+[`docs/product/v1/`](./docs/product/v1/README.md). Ela é arquitetura alvo: não
+representa backend, integrações ou operação de produção já implementados.
