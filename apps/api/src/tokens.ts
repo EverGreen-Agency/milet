@@ -4,4 +4,5 @@ export const TOKENS = {
   caseQuery: Symbol("caseQuery"),
   auditStore: Symbol("auditStore"),
   databaseReadiness: Symbol("databaseReadiness"),
+  tenantTransaction: Symbol("tenantTransaction"),
 } as const;

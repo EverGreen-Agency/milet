@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://milet.app/schemas/v1/readiness.schema.json",
+  "title": "ReadinessV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "database"],
+  "properties": {
+    "status": { "enum": ["ready", "not_ready"] },
+    "database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ready", "mode"],
+      "properties": {
+        "ready": { "type": "boolean" },
+        "mode": { "enum": ["fake", "postgres"] },
+        "detail": { "type": "string" }
+      }
+    }
+  }
+}
