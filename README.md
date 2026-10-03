@@ -50,3 +50,9 @@ A apresentação NÃO é o relatório comprimido. Em 10 minutos:
 - integrações concluídas;
 - validações que ainda não ocorreram;
 - datas acadêmicas oficiais que não foram confirmadas.
+
+## Arquitetura de produto
+
+A proposta implementation-ready para a plataforma transacional está em
+[`docs/product/v1/`](./docs/product/v1/README.md). Ela é arquitetura alvo: não
+representa backend, integrações ou operação de produção já implementados.
