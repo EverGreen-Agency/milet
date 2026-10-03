@@ -16,6 +16,12 @@
 | 7. Piloto real | um tenant, parceiros nomeados, dados autorizados e operação assistida | todos os gates de segurança | runbooks, restore, incidente e owner de plantão |
 | 8. Escala | automação seletiva, SSO, warehouse e eventual nativo | métricas reais | gatilhos documentados, novo ADR |
 
+**Estado da Etapa 0 (2026-10-03): implementada e verificada localmente.** A evidência
+inclui contratos TypeScript, API NestJS, autorização tenant-first fake, migrações
+executadas em PostgreSQL embarcado nos testes, RLS, audit append-only, outbox,
+fixtures determinísticas e CI. Isso não promove a entrega para integração ou
+produção; os gates dessas classificações continuam abertos.
+
 Cada etapa usa adaptador `fake`, depois `sandbox`, depois `production`. A troca exige
 contract tests idênticos; flag de ambiente não pode transformar fixture em dado real.
 
@@ -108,3 +114,15 @@ provedor real verificados. Um build ou teste local não satisfaz esse nível soz
 6. adicionar US-006/008/009 e somente depois abrir RFQ;
 7. instrumentar SLO e custo operacional desde o primeiro job assíncrono;
 8. manter tabela de evidências por story e nunca promover sandbox a produção por flag.
+
+### Evidência do checklist Stage 0
+
+| Item | Evidência | Estado honesto |
+|---|---|---|
+| Fronteira de monorepo | workspaces `apps/api` e `packages/*`; ADR-011 | Implementado localmente |
+| Schemas antes de telas | `@milet/domain` e `@milet/contracts` | Implementado; sem API OpenAPI gerada |
+| Tenant-first | guard global, repositório tenant-scoped e testes HTTP | Implementado com autorizador fake |
+| Providers fake | contratos de intake/OCR/assinatura/billing sem chamada real | Interface somente |
+| Postgres/auditoria/outbox | migrações `001`/`002` executadas por PGlite em teste | Implementado localmente; container não é produção |
+| US-002/003/007 vertical | entidades e fixtures compatíveis | Fundação somente; stories não concluídas |
+| CI | `.github/workflows/ci.yml` | Configurado; execução remota depende de push/PR |

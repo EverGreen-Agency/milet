@@ -21,6 +21,8 @@ autenticação, OCR, filas, assinatura eletrônica, cobrança ou aplicativo nati
   invariável sem spread e separação dos fluxos de capital.
 - [DELIVERY_AND_TRACEABILITY.md](./DELIVERY_AND_TRACEABILITY.md): sequência de
   integração, Definition of Done, matriz P0 e questões abertas.
+- [STAGE0_EVIDENCE.md](./STAGE0_EVIDENCE.md): implementação local da fundação,
+  testes reproduzíveis, conflitos encontrados e gates ainda abertos.
 
 ## Regras de leitura
 
@@ -39,3 +41,10 @@ mantendo o site institucional atual isolado. O produto terá contratos de domín
 independentes dos provedores e uma API própria. Aplicativos nativos entram somente
 quando evidência de uso justificar capacidades do dispositivo ou experiência de
 loja que a PWA não entregue adequadamente.
+
+## Estado executável em 2026-10-03
+
+A Stage 0 implementa a fronteira de API/contratos/PostgreSQL com dados sintéticos.
+Não implementa PWA nova, OCR, upload, autenticação real, assinatura, cobrança,
+financiamento ou qualquer provider externo. O portal público e `/app/` continuam
+independentes do runtime da API.

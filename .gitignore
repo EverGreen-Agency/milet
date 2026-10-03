@@ -21,6 +21,11 @@ Thumbs.db
 scratch/
 *_preview.png
 
+# Node workspaces
+node_modules/
+dist/
+*.tsbuildinfo
+
 # Raw Generation Inputs
 novas-imgs/
 novas-imgs2/
