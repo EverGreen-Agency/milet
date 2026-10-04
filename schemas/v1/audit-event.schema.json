@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://milet.vercel.app/schemas/v1/audit-event.schema.json",
+  "title": "AuditEventV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "organizationId", "actorUserId", "action", "targetType", "targetId", "correlationId", "occurredAt", "before", "after"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "organizationId": { "type": "string", "pattern": "^ORG-[A-Z0-9][A-Z0-9-]{2,31}$" },
+    "actorUserId": { "type": "string", "pattern": "^USR-[A-Z0-9][A-Z0-9-]{2,31}$" },
+    "action": { "type": "string", "minLength": 1 },
+    "targetType": { "type": "string", "minLength": 1 },
+    "targetId": { "type": "string", "minLength": 1 },
+    "correlationId": { "type": "string", "minLength": 1 },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "before": { "type": ["object", "null"] },
+    "after": { "type": ["object", "null"] }
+  }
+}

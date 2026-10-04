@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Milet Synthetic API",
+    "version": "1.0.0",
+    "description": "Contrato Stage 1 exclusivo para dados sintéticos. Não aceita faturas reais."
+  },
+  "servers": [{ "url": "http://127.0.0.1:4310", "description": "desenvolvimento local" }],
+  "paths": {
+    "/health/live": {
+      "get": {
+        "operationId": "getLiveness",
+        "responses": { "200": { "description": "processo vivo", "content": { "application/json": { "schema": { "$ref": "../../schemas/v1/health-live.schema.json" } } } } }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "operationId": "getReadiness",
+        "responses": {
+          "200": { "description": "dependências prontas", "content": { "application/json": { "schema": { "$ref": "../../schemas/v1/readiness.schema.json" } } } },
+          "503": { "description": "dependência indisponível", "content": { "application/json": { "schema": { "$ref": "../../schemas/v1/readiness.schema.json" } } } }
+        }
+      }
+    },
+    "/v1/cases/{caseId}": {
+      "get": {
+        "operationId": "getSyntheticCase",
+        "parameters": [
+          { "name": "caseId", "in": "path", "required": true, "schema": { "type": "string", "pattern": "^CASE-" } },
+          { "$ref": "#/components/parameters/OrganizationId" },
+          { "$ref": "#/components/parameters/UserId" },
+          { "$ref": "#/components/parameters/CorrelationId" }
+        ],
+        "responses": {
+          "200": { "description": "caso sintético do tenant", "content": { "application/json": { "schema": { "$ref": "../../schemas/v1/synthetic-case.schema.json" } } } },
+          "400": { "$ref": "#/components/responses/Problem" },
+          "403": { "$ref": "#/components/responses/Problem" },
+          "404": { "$ref": "#/components/responses/Problem" }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OrganizationId": { "name": "x-organization-id", "in": "header", "required": true, "schema": { "type": "string", "pattern": "^ORG-[A-Z0-9][A-Z0-9-]{2,31}$" } },
+      "UserId": { "name": "x-user-id", "in": "header", "required": true, "schema": { "type": "string", "pattern": "^USR-[A-Z0-9][A-Z0-9-]{2,31}$" } },
+      "CorrelationId": { "name": "x-correlation-id", "in": "header", "required": false, "description": "Quando ausente ou inválido, o servidor gera um UUID e o devolve no header de resposta.", "schema": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" } }
+    },
+    "responses": {
+      "Problem": { "description": "erro HTTP sem dados sensíveis", "content": { "application/json": { "schema": { "type": "object", "required": ["statusCode", "message"], "properties": { "statusCode": { "type": "integer" }, "message": { "type": "string" } } } } } }
+    }
+  }
+}

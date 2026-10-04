@@ -61,6 +61,7 @@ export const syntheticCase: Readonly<SyntheticCaseContract> = deepFreeze({
     ...metadata,
     id: DEMO_IDS.baselineUuid,
     organizationId: DEMO_IDS.organizationPublicId,
+    consumerUnitId: DEMO_IDS.consumerUnitUuid,
     publicId: DEMO_IDS.baselinePublicId,
     periodStart: "2025-09-01",
     periodEnd: "2026-08-31",

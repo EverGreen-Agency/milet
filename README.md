@@ -68,3 +68,12 @@ sintéticas. Consulte [`apps/api/README.md`](./apps/api/README.md) para execuç�
 [`docs/product/v1/STAGE0_EVIDENCE.md`](./docs/product/v1/STAGE0_EVIDENCE.md) para
 evidências e limites. Essa fundação não aceita faturas reais e não comprova
 integração, segurança ou prontidão de produção.
+
+## Contratos e persistência (Stage 1)
+
+A Stage 1 adiciona OpenAPI/JSON Schema versionados, adapters PostgreSQL para leitura
+tenant-scoped do caso sintético e auditoria append-only, além de worker de outbox com
+claim idempotente, retry/backoff e DLQ. Consulte
+[`docs/product/v1/STAGE1_EVIDENCE.md`](./docs/product/v1/STAGE1_EVIDENCE.md). Isso
+continua sendo fundação local/CI com dados sintéticos, não backend público nem
+prontidão para documentos reais.

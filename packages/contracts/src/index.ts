@@ -39,6 +39,32 @@ export interface DatabaseReadinessPort {
   check(): Promise<{ ready: boolean; mode: "fake" | "postgres"; detail?: string }>;
 }
 
+export interface SqlQueryResult<Row> {
+  rows: Row[];
+  rowCount: number | null;
+}
+
+export interface TenantTransaction {
+  query<Row>(text: string, values?: readonly unknown[]): Promise<SqlQueryResult<Row>>;
+}
+
+export interface TenantTransactionPort {
+  withTenant<T>(context: TenantContext, operation: (transaction: TenantTransaction) => Promise<T>): Promise<T>;
+}
+
+export interface OutboxEventContract {
+  id: string;
+  organizationId: string;
+  aggregateType: string;
+  aggregateId: string;
+  eventType: string;
+  payload: Readonly<Record<string, unknown>>;
+  correlationId: string;
+  occurredAt: string;
+  availableAt: string;
+  attempts: number;
+}
+
 export interface InvoiceIntakePort {
   receiveSyntheticReference(input: {
     organizationId: string;

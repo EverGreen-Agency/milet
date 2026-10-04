@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const output = path.join(root, "public");
-const siteDirectories = ["app", "assets", "brandbook-web", "tokens"];
+const siteDirectories = ["app", "assets", "brandbook-web", "tokens", "openapi", "schemas"];
 const deployableExtensions = new Set([
   ".css",
   ".gif",
@@ -53,10 +53,26 @@ for (const directory of siteDirectories) {
   copied += copyDirectory(source, path.join(output, directory));
 }
 
-for (const required of ["index.html", "demo.html", "app/index.html", "roadmap.html", "build-in-public.html"]) {
+for (const required of [
+  "index.html",
+  "demo.html",
+  "app/index.html",
+  "roadmap.html",
+  "build-in-public.html",
+  "openapi/v1/openapi.json",
+  "schemas/v1/synthetic-case.schema.json",
+]) {
   if (!fs.existsSync(path.join(output, required))) {
     throw new Error(`Saida publica obrigatoria ausente: ${required}`);
   }
+}
+
+const openapiPath = path.join(output, "openapi", "v1", "openapi.json");
+const openapi = fs.readFileSync(openapiPath, "utf8");
+const schemaReferences = openapi.match(/\.\.\/\.\.\/schemas\/v1\/[^\"]+/g) ?? [];
+for (const reference of schemaReferences) {
+  const resolved = path.resolve(path.dirname(openapiPath), reference);
+  if (!fs.existsSync(resolved)) throw new Error(`Schema referenciado ausente na saida publica: ${reference}`);
 }
 
 console.log(`Static site built in public/ (${copied} files).`);
