@@ -17,6 +17,9 @@ test("health, correlation and tenant-first case access", async (t) => {
   const live = await fetch(`${base}/health/live`, { headers: { "x-correlation-id": "test-correlation" } });
   assert.equal(live.status, 200);
   assert.equal(live.headers.get("x-correlation-id"), "test-correlation");
+  assert.equal(live.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(live.headers.get("x-frame-options"), "DENY");
+  assert.match(live.headers.get("content-security-policy") ?? "", /default-src 'none'/);
   const normalizedCorrelation = await fetch(`${base}/health/live`, { headers: { "x-correlation-id": "invalid correlation with spaces" } });
   assert.match(normalizedCorrelation.headers.get("x-correlation-id") ?? "", /^[0-9a-f-]{36}$/);
 
@@ -45,4 +48,22 @@ test("health, correlation and tenant-first case access", async (t) => {
   const body = await allowed.json() as { classification: string; consumerUnit: { publicId: string } };
   assert.equal(body.classification, "synthetic_demo_only");
   assert.equal(body.consumerUnit.publicId, "UC-MG-00482");
+
+  const allowedPreflight = await fetch(`${base}/v1/cases/${DEMO_IDS.caseId}`, {
+    method: "OPTIONS",
+    headers: { origin: "http://127.0.0.1:4173", "access-control-request-method": "GET" },
+  });
+  assert.equal(allowedPreflight.headers.get("access-control-allow-origin"), "http://127.0.0.1:4173");
+  assert.equal(allowedPreflight.headers.get("access-control-allow-credentials"), null);
+
+  const denied = await fetch(`${base}/health/live`, { headers: { origin: "https://untrusted.example" } });
+  assert.notEqual(denied.headers.get("access-control-allow-origin"), "https://untrusted.example");
+
+  const metrics = await fetch(`${base}/metrics`);
+  assert.equal(metrics.status, 200);
+  const snapshot = await metrics.json() as { scope: string; externalBackend: boolean; requests: number; errors: number };
+  assert.equal(snapshot.scope, "process");
+  assert.equal(snapshot.externalBackend, false);
+  assert.ok(snapshot.requests >= 8);
+  assert.ok(snapshot.errors >= 0);
 });

@@ -11,16 +11,23 @@ import { DatabaseReadinessService } from "./database/database-readiness.service"
 import { PostgresTenantDatabase } from "./database/postgres-tenant-database";
 import { HealthController } from "./health/health.controller";
 import { CorrelationIdMiddleware } from "./http/correlation-id.middleware";
+import { RequestObservabilityMiddleware } from "./http/request-observability.middleware";
+import { SecurityHeadersMiddleware } from "./http/security-headers.middleware";
+import { MetricsController } from "./observability/metrics.controller";
+import { ApiOperationalMetrics } from "./observability/operational-metrics";
 import { FakeTenantAccessService } from "./tenancy/fake-tenant-access.service";
 import { PostgresTenantAccessService } from "./tenancy/postgres-tenant-access.service";
 import { TenantGuard } from "./tenancy/tenant.guard";
 import { TOKENS } from "./tokens";
 
 @Module({
-  controllers: [HealthController, CasesController],
+  controllers: [HealthController, CasesController, MetricsController],
   providers: [
     AuditService,
     CorrelationIdMiddleware,
+    SecurityHeadersMiddleware,
+    RequestObservabilityMiddleware,
+    ApiOperationalMetrics,
     FakeTenantAccessService,
     PostgresTenantAccessService,
     InMemoryAuditStore,
@@ -56,6 +63,6 @@ import { TOKENS } from "./tokens";
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(CorrelationIdMiddleware).forRoutes("*");
+    consumer.apply(CorrelationIdMiddleware, SecurityHeadersMiddleware, RequestObservabilityMiddleware).forRoutes("*");
   }
 }

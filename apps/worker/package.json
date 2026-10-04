@@ -7,7 +7,11 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "@milet/contracts": "*",
-    "@milet/domain": "*"
+    "@milet/domain": "*",
+    "pg": "^8.16.3"
   },
-  "scripts": { "build": "tsc -p tsconfig.json" }
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/daemon.js"
+  }
 }

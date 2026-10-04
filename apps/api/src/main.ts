@@ -5,7 +5,7 @@ import { loadConfig } from "./config/app-config";
 async function main(): Promise<void> {
   const config = loadConfig();
   const app = await createApplication();
-  await app.listen(config.port, "127.0.0.1");
+  await app.listen(config.port, config.bindAddress);
 }
 
 void main();
