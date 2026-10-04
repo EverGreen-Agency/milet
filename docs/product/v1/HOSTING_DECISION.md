@@ -1,6 +1,6 @@
 # Decisão de hosting por fase
 
-**Atualizado em:** 2026-10-04  
+**Atualizado em:** 2026-10-04
 **Estado:** recomendação reversível; nenhum recurso, conta ou cobrança foi criado.
 
 ## Decisão
@@ -109,4 +109,3 @@ Railway deixa de ser suficiente quando entrar qualquer dado real, quando residê
 regional for requisito, quando o SLO exigir HA/restore comprovados ou quando logs,
 RBAC e auditoria do plano escolhido não satisfizerem o risco. Nesse ponto, comparar
 Fly.io e GCP com uma carga de teste idêntica e custo observado, não apenas calculadora.
-

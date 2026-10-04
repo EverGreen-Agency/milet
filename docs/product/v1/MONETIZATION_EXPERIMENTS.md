@@ -1,6 +1,6 @@
 # Hipóteses de monetização e cobrança
 
-**Atualizado em:** 2026-10-04  
+**Atualizado em:** 2026-10-04
 **Estado:** plano de experimento; não é tabela de preço publicada, oferta comercial,
 parecer jurídico ou autorização regulatória.
 
@@ -142,4 +142,3 @@ CAC e suporte direto não fecharem.
 5. Papel jurídico da Milet versus parceiro varejista habilitado.
 6. Stripe versus Mercado Pago após teste do caso de uso, não só da tarifa.
 7. Tributação, nota fiscal, controlador/operador LGPD e retenção de evidências.
-

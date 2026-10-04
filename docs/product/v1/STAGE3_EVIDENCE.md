@@ -1,6 +1,6 @@
 # Stage 3 — plano de ativação e modelo comercial
 
-**Data:** 2026-10-04  
+**Data:** 2026-10-04
 **Classificação:** documentação implementada e superfícies públicas atualizadas;
 nenhum backend, PSP, recurso cloud, cliente ou preço foi ativado.
 
