@@ -19,6 +19,7 @@ test("health, correlation and tenant-first case access", async (t) => {
   assert.equal(live.headers.get("x-correlation-id"), "test-correlation");
   assert.equal(live.headers.get("x-content-type-options"), "nosniff");
   assert.equal(live.headers.get("x-frame-options"), "DENY");
+  assert.equal(live.headers.get("cross-origin-resource-policy"), "cross-origin");
   assert.match(live.headers.get("content-security-policy") ?? "", /default-src 'none'/);
   const normalizedCorrelation = await fetch(`${base}/health/live`, { headers: { "x-correlation-id": "invalid correlation with spaces" } });
   assert.match(normalizedCorrelation.headers.get("x-correlation-id") ?? "", /^[0-9a-f-]{36}$/);

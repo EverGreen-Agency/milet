@@ -19,8 +19,11 @@
 - allowlist CORS exata, headers de segurança, correlação e request logging da API;
 - adapter HTTP do portal com timeout/abort, validação do contrato sintético e
   fallback local explicitamente visível; nenhum arquivo é enviado;
-- testes de config, CORS, headers, métricas, fallback/timeout, limite de ciclo e
-  shutdown, preservando todos os testes e checks do site.
+- testes de config, CORS, headers, métricas, fallback/timeout, limite de ciclo,
+  liberação de listeners entre polls e shutdown, preservando todos os testes e
+  checks do site;
+- CORP permite frontend e API em sites distintos apenas quando a origem também
+  passa pela allowlist CORS exata.
 
 ## Evidências reproduzíveis
 
@@ -42,7 +45,7 @@ registrados no resumo do commit/PR; esta lista não é prova por si só.
 ## Resultado observado em 2026-10-04
 
 - `npm ci`: concluído pelo lockfile;
-- `npm run ci`: 9/9 testes estáticos e 21/21 testes de fundação, typecheck,
+- `npm run ci`: 9/9 testes estáticos e 22/22 testes de fundação, typecheck,
   integridade de 13 HTML/24 JSON e builds concluídos;
 - `docker compose --profile runtime --profile worker config`: válido, sem subir
   serviço;

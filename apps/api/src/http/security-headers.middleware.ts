@@ -8,7 +8,9 @@ export class SecurityHeadersMiddleware implements NestMiddleware {
     response.setHeader("x-frame-options", "DENY");
     response.setHeader("referrer-policy", "no-referrer");
     response.setHeader("permissions-policy", "camera=(), microphone=(), geolocation=(), payment=()");
-    response.setHeader("cross-origin-resource-policy", "same-site");
+    // The browser client and API may be hosted on different sites. CORS still
+    // enforces the exact allowlist, while CORP must permit that deployment.
+    response.setHeader("cross-origin-resource-policy", "cross-origin");
     response.setHeader("content-security-policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
     next();
   }

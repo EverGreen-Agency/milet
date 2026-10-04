@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { getEventListeners } from "node:events";
 import test from "node:test";
 import { loadWorkerConfig } from "../src/config";
 import { runWorkerLoop } from "../src/daemon";
@@ -52,4 +53,27 @@ test("worker metrics include DLQ and lost lease without external telemetry", () 
     processed: 0, retries: 0, deadLetters: 1, lostLeases: 1,
     alreadyCompleted: 1, idlePolls: 1, errors: 0,
   });
+});
+
+test("default polling delay releases abort listeners between cycles", async () => {
+  const controller = new AbortController();
+  const metrics = new WorkerOperationalMetrics();
+  let calls = 0;
+  await runWorkerLoop({
+    worker: {
+      async runOnce() {
+        calls += 1;
+        assert.equal(getEventListeners(controller.signal, "abort").length, 0);
+        if (calls === 12) controller.abort();
+        return { status: "idle" };
+      },
+    },
+    context,
+    metrics,
+    pollIntervalMs: 1,
+    maxEventsPerCycle: 1,
+    signal: controller.signal,
+    log() {},
+  });
+  assert.equal(calls, 12);
 });
