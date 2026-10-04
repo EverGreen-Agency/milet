@@ -1,13 +1,19 @@
 import { JOURNEY_STEPS, calculateBaseline, money, rankProposals, validateInvoice } from "./domain.js";
 import { DemoEnergyAdapter } from "./demo-adapter.js";
 
-const adapter = new DemoEnergyAdapter();
+const runtimeConfig = globalThis.MILET_RUNTIME_CONFIG ?? {};
+const adapter = new DemoEnergyAdapter({ apiBaseUrl: runtimeConfig.apiBaseUrl ?? "", timeoutMs: runtimeConfig.apiTimeoutMs ?? 2_500 });
 const state = { step: 0, data: null, invoice: null, loading: true, error: "", corrected: false, selected: "" };
 const screen = document.querySelector("#screen");
 const stepper = document.querySelector("#stepper");
 const live = document.querySelector("#live-region");
+const runtimeStatus = document.querySelector("#runtime-status");
 
 function announce(message) { live.textContent = message; }
+function showRuntimeStatus(runtime) {
+  runtimeStatus.textContent = runtime.message;
+  runtimeStatus.dataset.mode = runtime.mode;
+}
 function setStep(index) {
   state.step = Math.max(0, Math.min(index, JOURNEY_STEPS.length - 1));
   location.hash = JOURNEY_STEPS[state.step].id;
@@ -163,4 +169,4 @@ document.querySelector("#theme-toggle").addEventListener("click", (event) => {
 });
 
 const hashIndex = JOURNEY_STEPS.findIndex((step) => `#${step.id}` === location.hash);
-state.data = await adapter.getCase(); state.invoice = structuredClone(state.data.invoice); state.loading = false; state.step = hashIndex >= 0 ? hashIndex : 0; render();
+state.data = await adapter.getCase(); showRuntimeStatus(state.data.runtime); state.invoice = structuredClone(state.data.invoice); state.loading = false; state.step = hashIndex >= 0 ? hashIndex : 0; render();

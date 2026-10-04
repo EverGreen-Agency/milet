@@ -1,13 +1,13 @@
 import fs from "node:fs";
 
-const required = ["app/index.html", "app/styles.css", "app/src/app.js", "app/src/domain.js", "app/src/fixtures.js", "app/src/demo-adapter.js"];
+const required = ["app/index.html", "app/styles.css", "app/runtime-config.js", "app/src/app.js", "app/src/domain.js", "app/src/fixtures.js", "app/src/demo-adapter.js"];
 for (const file of required) {
   if (!fs.existsSync(file)) throw new Error(`Arquivo obrigatório ausente: ${file}`);
 }
 const html = fs.readFileSync("app/index.html", "utf8");
 const css = fs.readFileSync("app/styles.css", "utf8");
 const app = fs.readFileSync("app/src/app.js", "utf8");
-for (const marker of ["main", "live-region", "stepper", "theme-toggle"]) {
+for (const marker of ["main", "live-region", "stepper", "theme-toggle", "runtime-status"]) {
   if (!html.includes(`id="${marker}"`)) throw new Error(`Marco acessível ausente: ${marker}`);
 }
 if (!css.includes("prefers-reduced-motion")) throw new Error("Tratamento de movimento reduzido ausente");

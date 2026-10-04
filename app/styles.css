@@ -13,9 +13,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .app-header { height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 4vw, 64px); background: #1a1a1a; border-bottom: 1px solid rgba(247,243,234,.12); position: sticky; top: 0; z-index: 20; }
 .brand img { display: block; width: 122px; height: auto; }
 .header-meta { display: flex; align-items: center; gap: 12px; }
+.runtime-status { min-height: 32px; padding: 8px 18px; background: #2b2926; color: #c9b89f; text-align: center; font-size: 11px; line-height: 1.45; }
+.runtime-status[data-mode="api"] { background: #243023; color: #cce7b4; }
+.runtime-status[data-mode="fixture_fallback"] { background: #3a3021; color: #f3c878; }
 .demo-badge, .story-tag { display: inline-flex; padding: 7px 12px; border: 1px solid rgba(211,155,61,.42); border-radius: 999px; color: #f3c878; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .icon-button { width: 44px; height: 44px; border: 1px solid rgba(247,243,234,.18); border-radius: 50%; background: transparent; color: #f7f3ea; cursor: pointer; }
-.app-shell { display: grid; grid-template-columns: 280px minmax(0,1fr); min-height: calc(100dvh - 76px); }
+.app-shell { display: grid; grid-template-columns: 280px minmax(0,1fr); min-height: calc(100dvh - 108px); }
 .journey { padding: 44px 28px; border-right: 1px solid var(--milet-border-hairline); background: var(--milet-bg-surface); position: sticky; top: 76px; height: calc(100dvh - 76px); }
 .eyebrow { margin: 0 0 10px; text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 700; color: var(--milet-color-ambar-dark); }
 .case-id { display: block; margin-top: 5px; color: var(--milet-text-muted); font: 12px var(--milet-font-mono); }
@@ -142,6 +145,7 @@ td { font: 13px var(--milet-font-mono); }
   .app-header { height: 66px; padding: 0 16px; }
   .brand img { width: 105px; }
   .demo-badge { font-size: 10px; padding: 6px 9px; }
+  .runtime-status { min-height: 38px; padding: 6px 12px; }
   .journey { top: 66px; }
   main { padding: 38px 18px 64px; }
   h1 { font-size: clamp(34px, 11vw, 48px); }
