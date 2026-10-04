@@ -17,7 +17,7 @@ protótipo e produto:
 | `/roadmap` | Roadmap público Agora/Próximo/Explorando | Implementado; fatia front-end prototipada e capacidades reais ainda planejadas |
 | `/build-in-public` | Changelog público, limites e pergunta de validação | Implementado |
 | `/demo` | Entrada e contrato da demonstração | Implementado; encaminha ao protótipo com limites explícitos |
-| `/app/` | Jornada front-end da triagem à comparação | Protótipo funcional ligado à função sintética `/api`; fallback local explícito |
+| `/app/` | Jornada front-end da triagem à comparação | PWA responsiva instalável; função sintética `/api` e fallback offline explícito |
 | `/api/v1/cases/CASE-UC-MG-00482` | Caso público exclusivamente sintético | Função stateless; sem banco, dados reais ou autenticação |
 
 Para validar localmente, sirva a raiz por HTTP (por exemplo, `python -m http.server 4173`) em vez de abrir os arquivos com `file://`.
@@ -97,3 +97,11 @@ para consultar `/api` antes do fallback local. Consulte
 [`docs/product/v1/STAGE4_EVIDENCE.md`](./docs/product/v1/STAGE4_EVIDENCE.md). Esse
 endpoint não é a API Nest persistente: não há banco, worker, autenticação, upload ou
 dados reais.
+
+## Mobile web instalável (Stage 5)
+
+A Stage 5 torna `/app/` uma PWA instalável com manifest, ícones de marca e app shell
+offline. O service worker nunca armazena respostas de `/api`; sem rede, o adapter
+identifica a falha e mantém somente o caso sintético local. Consulte
+[`docs/product/v1/STAGE5_EVIDENCE.md`](./docs/product/v1/STAGE5_EVIDENCE.md). Isso é
+mobile web, não aplicativo nativo distribuído em loja.

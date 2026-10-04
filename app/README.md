@@ -27,9 +27,11 @@ git diff --check
 - `src/demo-adapter.js`: adapter que tenta a função sintética `/api` e faz fallback
   local explícito quando ela não existe ou falha.
 - `src/app.js`: fluxo e renderização do protótipo.
+- `manifest.webmanifest`, `src/pwa.js` e `sw.js`: instalação da PWA e app shell
+  offline; chamadas a `/api` sempre passam pela rede e nunca entram no cache.
 - `styles.css`: layout desktop/mobile, foco visível e movimento reduzido.
 
-É uma demonstração navegável, não um app nativo. Arquivos escolhidos não saem do navegador; a função `/api` serve apenas o caso sintético canônico e não persiste nada. A leitura, elegibilidade, propostas e regras são sintéticas. Não há autenticação, isolamento multiusuário real, OCR, backend persistente, auditoria imutável, integração regulatória, assinatura ou contratação. A preferência por oferta só vive na sessão atual.
+É uma demonstração PWA navegável, não um app nativo ou publicado em loja. Arquivos escolhidos não saem do navegador; a função `/api` serve apenas o caso sintético canônico e não persiste nada. Offline, o app usa a mesma fixture local e mostra o fallback. A leitura, elegibilidade, propostas e regras são sintéticas. Não há autenticação, isolamento multiusuário real, OCR, backend persistente, auditoria imutável, integração regulatória, assinatura ou contratação. A preferência por oferta só vive na sessão atual.
 
 ## Cobertura de histórias
 

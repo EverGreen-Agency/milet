@@ -16,6 +16,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .runtime-status { min-height: 32px; padding: 8px 18px; background: #2b2926; color: #c9b89f; text-align: center; font-size: 11px; line-height: 1.45; }
 .runtime-status[data-mode="api"] { background: #243023; color: #cce7b4; }
 .runtime-status[data-mode="fixture_fallback"] { background: #3a3021; color: #f3c878; }
+.install-button { min-height: 36px; padding: 8px 12px; border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.install-button:hover { background: rgba(255, 255, 255, .08); }
+.install-button:focus-visible { outline: 3px solid #d6a84b; outline-offset: 2px; }
 .demo-badge, .story-tag { display: inline-flex; padding: 7px 12px; border: 1px solid rgba(211,155,61,.42); border-radius: 999px; color: #f3c878; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .icon-button { width: 44px; height: 44px; border: 1px solid rgba(247,243,234,.18); border-radius: 50%; background: transparent; color: #f7f3ea; cursor: pointer; }
 .app-shell { display: grid; grid-template-columns: 280px minmax(0,1fr); min-height: calc(100dvh - 108px); }
@@ -175,5 +178,9 @@ td { font: 13px var(--milet-font-mono); }
   .missing-note { padding: 11px; background: #f5e7cb; color: #714711; border-radius: 10px; font-size: 12px; }
   .remuneration { color: var(--milet-text-secondary); font-size: 12px; line-height: 1.5; }
   .proposal-card .btn { width: 100%; }
+}
+@media (max-width: 420px) {
+  .header-meta:has(.install-button:not([hidden])) .demo-badge { display: none; }
+  .install-button { min-height: 34px; padding: 7px 10px; font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
