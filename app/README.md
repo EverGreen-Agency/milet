@@ -24,11 +24,12 @@ git diff --check
 
 - `src/domain.js`: modelos, validação e cálculo all-in, independentes de UI.
 - `src/fixtures.js`: um caso sintético consistente de ponta a ponta.
-- `src/demo-adapter.js`: contrato assíncrono substituível por API/OCR real.
+- `src/demo-adapter.js`: adapter que tenta a função sintética `/api` e faz fallback
+  local explícito quando ela não existe ou falha.
 - `src/app.js`: fluxo e renderização do protótipo.
 - `styles.css`: layout desktop/mobile, foco visível e movimento reduzido.
 
-É uma demonstração navegável, não um app nativo. Arquivos escolhidos não saem do navegador; a leitura, elegibilidade, propostas e regras são sintéticas. Não há autenticação, isolamento multiusuário, OCR, backend, auditoria imutável, integração regulatória, assinatura ou contratação. A preferência por oferta só vive na sessão atual.
+É uma demonstração navegável, não um app nativo. Arquivos escolhidos não saem do navegador; a função `/api` serve apenas o caso sintético canônico e não persiste nada. A leitura, elegibilidade, propostas e regras são sintéticas. Não há autenticação, isolamento multiusuário real, OCR, backend persistente, auditoria imutável, integração regulatória, assinatura ou contratação. A preferência por oferta só vive na sessão atual.
 
 ## Cobertura de histórias
 

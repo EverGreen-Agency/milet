@@ -4,7 +4,9 @@ Este pacote é a fonte de trabalho para montar a apresentação de 10 minutos na
 
 ## Rotas públicas
 
-O projeto é estático e usa `cleanUrls` na Vercel. As rotas abaixo preservam a separação entre documentação, protótipo e produto:
+O portal é estático, usa `cleanUrls` na Vercel e possui uma única função stateless
+para o caso sintético. As rotas abaixo preservam a separação entre documentação,
+protótipo e produto:
 
 | Rota | Superfície | Estado |
 | --- | --- | --- |
@@ -15,7 +17,8 @@ O projeto é estático e usa `cleanUrls` na Vercel. As rotas abaixo preservam a 
 | `/roadmap` | Roadmap público Agora/Próximo/Explorando | Implementado; fatia front-end prototipada e capacidades reais ainda planejadas |
 | `/build-in-public` | Changelog público, limites e pergunta de validação | Implementado |
 | `/demo` | Entrada e contrato da demonstração | Implementado; encaminha ao protótipo com limites explícitos |
-| `/app/` | Jornada front-end da triagem à comparação | Protótipo funcional com dados sintéticos; sem backend/OCR/auth/produção |
+| `/app/` | Jornada front-end da triagem à comparação | Protótipo funcional ligado à função sintética `/api`; fallback local explícito |
+| `/api/v1/cases/CASE-UC-MG-00482` | Caso público exclusivamente sintético | Função stateless; sem banco, dados reais ou autenticação |
 
 Para validar localmente, sirva a raiz por HTTP (por exemplo, `python -m http.server 4173`) em vez de abrir os arquivos com `file://`.
 
@@ -85,4 +88,12 @@ locais, daemon de outbox tenant-scoped e adapter HTTP opcional no protótipo. Co
 [`docs/product/v1/STAGE2_EVIDENCE.md`](./docs/product/v1/STAGE2_EVIDENCE.md) e o
 [`runbook provider-neutral`](./docs/product/v1/DEPLOYMENT_RUNBOOK.md). O portal
 continua offline-first com fixture sintética e mostra quando ocorreu fallback. Não há
-deploy, provider externo, autenticação real ou ingestão de documentos.
+deploy dos containers da API/worker, autenticação real ou ingestão de documentos.
+
+## API sintética pública (Stage 4)
+
+A Stage 4 expõe a fixture canônica como função Vercel stateless e configura o app
+para consultar `/api` antes do fallback local. Consulte
+[`docs/product/v1/STAGE4_EVIDENCE.md`](./docs/product/v1/STAGE4_EVIDENCE.md). Esse
+endpoint não é a API Nest persistente: não há banco, worker, autenticação, upload ou
+dados reais.

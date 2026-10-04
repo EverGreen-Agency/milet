@@ -33,6 +33,21 @@
     <section class="public-section" aria-labelledby="atualizacao-inicial">
       <div class="section-heading"><span class="section-kicker">Changelog verificável</span><h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2><p>Registro baseado em código, testes e deploys observáveis. O portal está publicado; cada entrada separa essa presença pública da operação de backend ainda não ativada.</p></div>
       <article class="changelog-entry">
+        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">API sintética 003</span></div>
+        <div class="changelog-body">
+          <h3>O app ganhou um endpoint público mínimo sem fingir persistência.</h3>
+          <p><strong>Problema tratado:</strong> o frontend publicado só conseguia usar a fixture embutida, mesmo já existindo um contrato versionado para o caso sintético.</p>
+          <ul>
+            <li>Função Vercel same-origin em <code>/api/v1/cases/CASE-UC-MG-00482</code>, restrita à fixture canônica <code>synthetic_demo_only</code>.</li>
+            <li>O app tenta a API por padrão; se ela não responder, mantém a jornada com fallback local identificado no topo da tela.</li>
+            <li>Contrato, correlação e limites são testados sem banco, secrets, upload ou qualquer dado real.</li>
+          </ul>
+          <p><strong>Evidência:</strong> a função reutiliza o mesmo pacote de fixtures validado pelo JSON Schema. A disponibilidade pública é confirmada somente quando o deploy do commit responder HTTP 200 — código e CI, sozinhos, não comprovam isso.</p>
+          <div class="card-actions"><a class="button" href="https://milet.vercel.app/api/v1/cases/CASE-UC-MG-00482">Abrir endpoint</a><a class="button" href="app/">Abrir app conectado</a><a class="button" href="openapi/v1/openapi.json">Ver contrato</a></div>
+          <p><strong>Limite:</strong> este endpoint é stateless e público apenas para demonstração. Não é a API Nest persistente: não há PostgreSQL, worker, autenticação, OCR, cobrança ou operação energética.</p>
+        </div>
+      </article>
+      <article class="changelog-entry">
         <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Runtime sintético 002</span></div>
         <div class="changelog-body">
           <h3>Do protótipo estático a um runtime implantável — ainda sem chamar isso de produção.</h3>
@@ -90,7 +105,7 @@
     <section class="public-section" aria-labelledby="limites-versao">
       <div class="section-heading"><span class="section-kicker">Limites da versão</span><h2 id="limites-versao">O que esta entrega não comprova.</h2></div>
       <div class="card-grid">
-        <article class="card"><h3>Produto e dados</h3><ul class="limitation-list"><li>O fluxo PME usa fixture local por padrão; a API sintética é opcional e ainda não está hospedada.</li><li>Não há leitura OCR real, upload nem faturas reais.</li><li>Os cálculos são demonstrativos e não validam economia ou recomendação no mercado.</li></ul></article>
+        <article class="card"><h3>Produto e dados</h3><ul class="limitation-list"><li>O fluxo PME tenta a função sintética pública e mantém uma fixture local como fallback visível.</li><li>A função é stateless: não há leitura OCR real, persistência, upload nem faturas reais.</li><li>Os cálculos são demonstrativos e não validam economia ou recomendação no mercado.</li></ul></article>
         <article class="card"><h3>Mercado e operação</h3><ul class="limitation-list"><li>Não há clientes, pilotos ou tração declarados.</li><li>Não há fornecedores, parceiros ou integrações confirmados.</li><li>Não há contratação, assinatura, pagamento ou troca de fornecedor.</li></ul></article>
         <article class="card"><h3>Confiança</h3><ul class="limitation-list"><li>Headers de tenant não são autenticação; OIDC e autorização real ainda faltam.</li><li>RLS e auditoria append-only foram testadas localmente, não operadas em produção.</li><li>Dados sintéticos e estados simulados são identificados como tais.</li></ul></article>
         <article class="card"><h3>Modelo econômico</h3><ul class="limitation-list"><li>Sem spread oculto nas transações.</li><li>Taxas e preços continuam hipóteses até decisão explícita.</li><li>Posição em ranking não deve ser comprada.</li></ul></article>
