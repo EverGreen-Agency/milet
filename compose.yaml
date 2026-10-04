@@ -1,10 +1,11 @@
 services:
   postgres:
     image: postgres:17-alpine
+    profiles: ["local-db", "runtime", "worker"]
     environment:
       POSTGRES_DB: milet
       POSTGRES_USER: milet_owner
-      POSTGRES_PASSWORD: milet_owner_local_only
+      POSTGRES_PASSWORD: ${MILET_POSTGRES_OWNER_PASSWORD:-milet_owner_local_only}
     ports:
       - "127.0.0.1:55433:5432"
     healthcheck:
@@ -15,6 +16,52 @@ services:
     volumes:
       - milet-postgres:/var/lib/postgresql/data
       - ./infra/postgres/migrations:/docker-entrypoint-initdb.d:ro
+
+  api:
+    profiles: ["runtime"]
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: 4310
+      BIND_ADDRESS: 0.0.0.0
+      DATABASE_MODE: postgres
+      DATABASE_URL: postgresql://milet_app:${MILET_APP_PASSWORD:-milet_app_local_only}@postgres:5432/milet
+      DEMO_DATA_ONLY: "true"
+      CORS_ORIGINS: ${MILET_CORS_ORIGINS:-http://127.0.0.1:4173,http://localhost:4173}
+    ports:
+      - "127.0.0.1:${MILET_API_PORT:-4310}:4310"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+  worker:
+    profiles: ["worker"]
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://milet_app:${MILET_APP_PASSWORD:-milet_app_local_only}@postgres:5432/milet
+      WORKER_TENANT_ID: ${MILET_WORKER_TENANT_ID:-ORG-0007}
+      WORKER_USER_ID: ${MILET_WORKER_USER_ID:-USR-DEMO-0001}
+      WORKER_ID: ${MILET_WORKER_ID:-milet-worker-01}
+      WORKER_POLL_INTERVAL_MS: ${MILET_WORKER_POLL_INTERVAL_MS:-1000}
+      WORKER_MAX_EVENTS_PER_CYCLE: ${MILET_WORKER_MAX_EVENTS_PER_CYCLE:-10}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   milet-postgres:

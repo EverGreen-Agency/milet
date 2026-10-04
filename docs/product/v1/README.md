@@ -25,6 +25,10 @@ autenticação, OCR, filas, assinatura eletrônica, cobrança ou aplicativo nati
   testes reproduzíveis, conflitos encontrados e gates ainda abertos.
 - [STAGE1_EVIDENCE.md](./STAGE1_EVIDENCE.md): contratos versionados, persistência
   PostgreSQL, worker de outbox e evidências reproduzíveis desta etapa.
+- [STAGE2_EVIDENCE.md](./STAGE2_EVIDENCE.md): containers, hardening HTTP, daemon,
+  adapter HTTP/fallback e evidências locais desta etapa.
+- [DEPLOYMENT_RUNBOOK.md](./DEPLOYMENT_RUNBOOK.md): sequência provider-neutral e
+  critérios verificáveis para selecionar hosting futuramente.
 
 ## Regras de leitura
 
@@ -44,10 +48,15 @@ independentes dos provedores e uma API própria. Aplicativos nativos entram some
 quando evidência de uso justificar capacidades do dispositivo ou experiência de
 loja que a PWA não entregue adequadamente.
 
-## Estado executável em 2026-10-03
+## Estado executável em 2026-10-04
 
 A Stage 1 implementa contratos públicos versionados, leitura/auditoria PostgreSQL
 tenant-scoped e worker de outbox com retry/DLQ sobre dados sintéticos.
 Não implementa PWA nova, OCR, upload, autenticação real, assinatura, cobrança,
 financiamento ou qualquer provider externo. O portal público e `/app/` continuam
 independentes do runtime da API.
+
+A Stage 2 empacota API e worker como containers, adiciona daemon/observabilidade
+mínima e permite que `/app/` leia opcionalmente o caso sintético da API, com fallback
+local visível. Isso é implantável como artefato, mas não foi implantado nem validado
+como produção.

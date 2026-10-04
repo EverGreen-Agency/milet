@@ -77,3 +77,12 @@ claim idempotente, retry/backoff e DLQ. Consulte
 [`docs/product/v1/STAGE1_EVIDENCE.md`](./docs/product/v1/STAGE1_EVIDENCE.md). Isso
 continua sendo fundação local/CI com dados sintéticos, não backend público nem
 prontidão para documentos reais.
+
+## Runtime implantável (Stage 2)
+
+A Stage 2 adiciona imagens OCI para API/worker, hardening HTTP, logs JSON, métricas
+locais, daemon de outbox tenant-scoped e adapter HTTP opcional no protótipo. Consulte
+[`docs/product/v1/STAGE2_EVIDENCE.md`](./docs/product/v1/STAGE2_EVIDENCE.md) e o
+[`runbook provider-neutral`](./docs/product/v1/DEPLOYMENT_RUNBOOK.md). O portal
+continua offline-first com fixture sintética e mostra quando ocorreu fallback. Não há
+deploy, provider externo, autenticação real ou ingestão de documentos.

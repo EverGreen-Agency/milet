@@ -21,6 +21,7 @@
       <button class="icon-button" id="theme-toggle" type="button" aria-label="Alternar tema" aria-pressed="false">◐</button>
     </div>
   </header>
+  <div class="runtime-status" id="runtime-status" data-mode="loading" role="status">Inicializando fonte sintética…</div>
 
   <div class="app-shell">
     <aside class="journey" aria-label="Progresso da análise">
@@ -30,7 +31,7 @@
       <ol id="stepper"></ol>
       <div class="privacy-note">
         <strong>Seus dados ficam sob seu controle</strong>
-        <span>Nesta demo, nada é enviado para terceiros.</span>
+        <span>Nesta demo, nenhum arquivo é enviado. A API opcional lê somente o caso sintético.</span>
       </div>
     </aside>
 
@@ -41,6 +42,7 @@
   </div>
 
   <noscript>Esta demonstração precisa de JavaScript para navegar entre as etapas.</noscript>
+  <script src="runtime-config.js"></script>
   <script type="module" src="src/app.js"></script>
 </body>
 </html>

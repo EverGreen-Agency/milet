@@ -1,4 +1,4 @@
-# API Milet — Stage 1
+# API Milet — Stage 2
 
 API NestJS mínima para validar a fronteira transacional sem receber documentos
 reais. O modo padrão usa adapters determinísticos; `DATABASE_MODE=postgres` habilita
@@ -15,6 +15,7 @@ Endpoints públicos:
 
 - `GET /health/live`
 - `GET /health/ready`
+- `GET /metrics` (contadores somente do processo, sem backend externo)
 
 Endpoint sintético protegido pela fronteira tenant-first:
 
@@ -51,13 +52,24 @@ git diff --check
 O teste HTTP abre uma porta efêmera exclusiva (`listen(0)`) e encerra apenas o
 servidor criado pelo próprio teste.
 
+Para validar o runtime local sem iniciar serviços existentes:
+
+```powershell
+docker compose --profile runtime config
+docker build -f apps/api/Dockerfile -t milet-api:stage2 .
+```
+
+`CORS_ORIGINS` é uma lista de origens exatas separadas por vírgula. Em produção o
+default é vazio. A API adiciona headers de segurança, correlation ID e um log JSON
+por request sem body/query/headers de usuário.
+
 ## Limites deliberados
 
 - somente fixtures sintéticas; `DEMO_DATA_ONLY=false` impede o bootstrap;
 - nenhum endpoint de upload;
 - sem OCR, auth, assinatura, billing, financiamento ou cloud credentials;
 - portas externas são contratos desabilitados/fakes;
-- worker não chama integração externa e não possui loop de produção nesta etapa;
+- worker não chama integração externa; seu daemon só reconhece eventos sintéticos;
 - readiness local não comprova controles LGPD, segurança ou produção.
 - PGlite não comprova concorrência real de `SKIP LOCKED`; isso exige PostgreSQL
   externo com duas sessões e a mesma role da aplicação.
