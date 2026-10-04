@@ -44,7 +44,7 @@
     "parameters": {
       "OrganizationId": { "name": "x-organization-id", "in": "header", "required": true, "schema": { "type": "string", "pattern": "^ORG-[A-Z0-9][A-Z0-9-]{2,31}$" } },
       "UserId": { "name": "x-user-id", "in": "header", "required": true, "schema": { "type": "string", "pattern": "^USR-[A-Z0-9][A-Z0-9-]{2,31}$" } },
-      "CorrelationId": { "name": "x-correlation-id", "in": "header", "required": false, "schema": { "type": "string", "maxLength": 128 } }
+      "CorrelationId": { "name": "x-correlation-id", "in": "header", "required": false, "description": "Quando ausente ou inválido, o servidor gera um UUID e o devolve no header de resposta.", "schema": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" } }
     },
     "responses": {
       "Problem": { "description": "erro HTTP sem dados sensíveis", "content": { "application/json": { "schema": { "type": "object", "required": ["statusCode", "message"], "properties": { "statusCode": { "type": "integer" }, "message": { "type": "string" } } } } } }

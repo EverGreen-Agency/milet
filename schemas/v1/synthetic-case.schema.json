@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://milet.app/schemas/v1/synthetic-case.schema.json",
+  "$id": "https://milet.vercel.app/schemas/v1/synthetic-case.schema.json",
   "title": "SyntheticCaseV1",
   "type": "object",
   "additionalProperties": false,
@@ -12,7 +12,7 @@
     "user": { "$ref": "#/$defs/user" },
     "consumerUnit": { "$ref": "#/$defs/consumerUnit" },
     "invoice": { "$ref": "#/$defs/invoice" },
-    "invoiceRevisions": { "type": "array", "items": { "type": "object" } },
+    "invoiceRevisions": { "type": "array", "items": { "$ref": "#/$defs/invoiceRevision" } },
     "baseline": { "$ref": "#/$defs/baseline" },
     "scenarios": { "type": "array", "items": { "$ref": "#/$defs/scenario" } }
   },
@@ -40,8 +40,11 @@
     "invoice": {
       "allOf": [{ "$ref": "#/$defs/entity" }, { "type": "object", "required": ["organizationId", "publicId", "consumerUnitId", "period", "sha256", "source", "status"], "properties": { "organizationId": { "type": "string", "pattern": "^ORG-" }, "publicId": { "type": "string", "pattern": "^INV-" }, "consumerUnitId": { "type": "string", "format": "uuid" }, "period": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" }, "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }, "source": { "const": "synthetic_fixture" }, "status": { "enum": ["synthetic_received", "review_required", "reviewed"] } } }]
     },
+    "invoiceRevision": {
+      "allOf": [{ "$ref": "#/$defs/entity" }, { "type": "object", "required": ["organizationId", "invoiceId", "authorUserId", "reason", "values"], "properties": { "organizationId": { "type": "string", "pattern": "^ORG-" }, "invoiceId": { "type": "string", "format": "uuid" }, "authorUserId": { "type": "string", "pattern": "^USR-" }, "reason": { "type": "string", "minLength": 1 }, "values": { "type": "object", "additionalProperties": { "type": ["string", "number", "null"] } } } }]
+    },
     "baseline": {
-      "allOf": [{ "$ref": "#/$defs/entity" }, { "type": "object", "required": ["organizationId", "publicId", "periodStart", "periodEnd", "currency", "totalCents", "assumptions", "calculationVersion"], "properties": { "organizationId": { "type": "string", "pattern": "^ORG-" }, "publicId": { "type": "string" }, "periodStart": { "type": "string", "format": "date" }, "periodEnd": { "type": "string", "format": "date" }, "currency": { "const": "BRL" }, "totalCents": { "type": "integer", "minimum": 0 }, "assumptions": { "type": "array", "items": { "type": "string" } }, "calculationVersion": { "type": "string" } } }]
+      "allOf": [{ "$ref": "#/$defs/entity" }, { "type": "object", "required": ["organizationId", "consumerUnitId", "publicId", "periodStart", "periodEnd", "currency", "totalCents", "assumptions", "calculationVersion"], "properties": { "organizationId": { "type": "string", "pattern": "^ORG-" }, "consumerUnitId": { "type": "string", "format": "uuid" }, "publicId": { "type": "string" }, "periodStart": { "type": "string", "format": "date" }, "periodEnd": { "type": "string", "format": "date" }, "currency": { "const": "BRL" }, "totalCents": { "type": "integer", "minimum": 0 }, "assumptions": { "type": "array", "items": { "type": "string" } }, "calculationVersion": { "type": "string" } } }]
     },
     "scenario": {
       "allOf": [{ "$ref": "#/$defs/entity" }, { "type": "object", "required": ["organizationId", "publicId", "baselineId", "route", "horizonMonths", "totalCents", "confidence", "status"], "properties": { "organizationId": { "type": "string", "pattern": "^ORG-" }, "publicId": { "type": "string" }, "baselineId": { "type": "string", "format": "uuid" }, "route": { "type": "string" }, "horizonMonths": { "type": "integer", "minimum": 1 }, "totalCents": { "type": "integer", "minimum": 0 }, "confidence": { "type": "number", "minimum": 0, "maximum": 1 }, "status": { "enum": ["draft", "review_required", "approved"] } } }]

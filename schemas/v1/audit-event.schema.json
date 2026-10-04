@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://milet.app/schemas/v1/audit-event.schema.json",
+  "$id": "https://milet.vercel.app/schemas/v1/audit-event.schema.json",
   "title": "AuditEventV1",
   "type": "object",
   "additionalProperties": false,

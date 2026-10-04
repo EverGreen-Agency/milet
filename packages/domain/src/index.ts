@@ -56,6 +56,7 @@ export interface InvoiceRevision extends EntityMetadata, TenantOwned {
 }
 
 export interface Baseline extends EntityMetadata, TenantOwned {
+  consumerUnitId: string;
   publicId: string;
   periodStart: string;
   periodEnd: string;

@@ -1,0 +1,10 @@
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'milet_app') THEN
+    CREATE ROLE milet_app LOGIN PASSWORD 'milet_app_local_only';
+  END IF;
+END;
+$$;
+
+ALTER ROLE milet_app NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+GRANT CONNECT ON DATABASE milet TO milet_app;

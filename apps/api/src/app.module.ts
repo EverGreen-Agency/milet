@@ -12,6 +12,7 @@ import { PostgresTenantDatabase } from "./database/postgres-tenant-database";
 import { HealthController } from "./health/health.controller";
 import { CorrelationIdMiddleware } from "./http/correlation-id.middleware";
 import { FakeTenantAccessService } from "./tenancy/fake-tenant-access.service";
+import { PostgresTenantAccessService } from "./tenancy/postgres-tenant-access.service";
 import { TenantGuard } from "./tenancy/tenant.guard";
 import { TOKENS } from "./tokens";
 
@@ -21,6 +22,7 @@ import { TOKENS } from "./tokens";
     AuditService,
     CorrelationIdMiddleware,
     FakeTenantAccessService,
+    PostgresTenantAccessService,
     InMemoryAuditStore,
     PostgresAuditStore,
     InMemoryCaseQueryService,
@@ -28,7 +30,12 @@ import { TOKENS } from "./tokens";
     PostgresTenantDatabase,
     DatabaseReadinessService,
     { provide: TOKENS.appConfig, useFactory: () => loadConfig() },
-    { provide: TOKENS.tenantAccess, useExisting: FakeTenantAccessService },
+    {
+      provide: TOKENS.tenantAccess,
+      inject: [TOKENS.appConfig, FakeTenantAccessService, PostgresTenantAccessService],
+      useFactory: (config: ReturnType<typeof loadConfig>, fake: FakeTenantAccessService, postgres: PostgresTenantAccessService) =>
+        config.databaseMode === "postgres" ? postgres : fake,
+    },
     {
       provide: TOKENS.auditStore,
       inject: [TOKENS.appConfig, InMemoryAuditStore, PostgresAuditStore],

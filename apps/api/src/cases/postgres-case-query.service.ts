@@ -5,17 +5,20 @@ import { PostgresTenantDatabase, TenantNotFoundError } from "../database/postgre
 
 type CaseRow = {
   case_id: string; organization_id: string; organization_public_id: string; legal_name: string;
-  organization_status: "active" | "suspended"; user_id: string; user_public_id: string; display_name: string;
+  organization_status: "active" | "suspended"; organization_version: number; organization_created_at: string; organization_updated_at: string;
+  user_id: string; user_public_id: string; display_name: string; user_version: number; user_created_at: string; user_updated_at: string;
   consumer_unit_id: string; consumer_unit_public_id: string; distributor: string; masked_identifier: string;
-  voltage_group: string; invoice_id: string; invoice_public_id: string; period: string; sha256: string;
+  voltage_group: string; consumer_unit_version: number; consumer_unit_created_at: string; consumer_unit_updated_at: string;
+  invoice_id: string; invoice_public_id: string; period: string; sha256: string;
   invoice_status: "synthetic_received" | "review_required" | "reviewed"; baseline_id: string;
-  baseline_public_id: string; period_start: string; period_end: string; total_cents: string;
-  assumptions: string[]; calculation_version: string; created_at: string; updated_at: string;
+  invoice_version: number; invoice_created_at: string; invoice_updated_at: string;
+  baseline_public_id: string; baseline_consumer_unit_id: string; period_start: string; period_end: string; total_cents: string;
+  assumptions: string[]; calculation_version: string; baseline_version: number; baseline_created_at: string; baseline_updated_at: string;
 };
 
 type ScenarioRow = {
   id: string; public_id: string; route: string; horizon_months: number; total_cents: string; confidence: string;
-  status: "draft" | "review_required" | "approved"; created_at: string; updated_at: string;
+  status: "draft" | "review_required" | "approved"; version: number; created_at: string; updated_at: string;
 };
 
 @Injectable()
@@ -29,23 +32,32 @@ export class PostgresCaseQueryService implements CaseQueryPort {
           `SELECT
              'CASE-' || cu.public_id AS case_id,
              org.id::text AS organization_id, org.public_id AS organization_public_id,
-             org.legal_name, org.status AS organization_status,
-             usr.id::text AS user_id, usr.public_id AS user_public_id, usr.display_name,
+             org.legal_name, org.status AS organization_status, org.version AS organization_version,
+             to_char(org.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS organization_created_at,
+             to_char(org.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS organization_updated_at,
+             usr.id::text AS user_id, usr.public_id AS user_public_id, usr.display_name, usr.version AS user_version,
+             to_char(usr.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS user_created_at,
+             to_char(usr.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS user_updated_at,
              cu.id::text AS consumer_unit_id, cu.public_id AS consumer_unit_public_id,
-             cu.distributor, cu.masked_identifier, cu.voltage_group,
+             cu.distributor, cu.masked_identifier, cu.voltage_group, cu.version AS consumer_unit_version,
+             to_char(cu.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS consumer_unit_created_at,
+             to_char(cu.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS consumer_unit_updated_at,
              inv.id::text AS invoice_id, inv.public_id AS invoice_public_id,
-             inv.period, inv.sha256, inv.status AS invoice_status,
+             inv.period, inv.sha256, inv.status AS invoice_status, inv.version AS invoice_version,
+             to_char(inv.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS invoice_created_at,
+             to_char(inv.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS invoice_updated_at,
              base.id::text AS baseline_id, base.public_id AS baseline_public_id,
+             base.consumer_unit_id::text AS baseline_consumer_unit_id,
              base.period_start::text, base.period_end::text, base.total_cents::text,
-             base.assumptions, base.calculation_version,
-             to_char(cu.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS created_at,
-             to_char(cu.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS updated_at
+             base.assumptions, base.calculation_version, base.version AS baseline_version,
+             to_char(base.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS baseline_created_at,
+             to_char(base.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS baseline_updated_at
            FROM consumer_units cu
            JOIN organizations org ON org.id = cu.organization_id
            JOIN memberships membership ON membership.organization_id = org.id
            JOIN users usr ON usr.id = membership.user_id AND usr.public_id = $2
            JOIN invoices inv ON inv.organization_id = org.id AND inv.consumer_unit_id = cu.id
-           JOIN baselines base ON base.organization_id = org.id
+           JOIN baselines base ON base.organization_id = org.id AND base.consumer_unit_id = cu.id
            WHERE org.id = current_setting('app.organization_id')::uuid
              AND ('CASE-' || cu.public_id) = $1
            ORDER BY inv.period DESC, base.period_end DESC
@@ -55,7 +67,7 @@ export class PostgresCaseQueryService implements CaseQueryPort {
         const row = result.rows[0];
         if (!row) return undefined;
         const scenarios = await transaction.query<ScenarioRow>(
-          `SELECT id::text, public_id, route, horizon_months, total_cents::text, confidence::text, status,
+          `SELECT id::text, public_id, route, horizon_months, total_cents::text, confidence::text, status, version,
                   to_char(created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS created_at,
                   to_char(updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS updated_at
              FROM scenarios
@@ -64,10 +76,10 @@ export class PostgresCaseQueryService implements CaseQueryPort {
           [row.baseline_id],
         );
         const revisions = await transaction.query<{
-          id: string; author_user_id: string; reason: string; values_json: Record<string, string | number | null>;
+          id: string; author_user_id: string; reason: string; values_json: Record<string, string | number | null>; version: number;
           created_at: string; updated_at: string;
         }>(
-          `SELECT rev.id::text, usr.public_id AS author_user_id, rev.reason, rev.values_json,
+          `SELECT rev.id::text, usr.public_id AS author_user_id, rev.reason, rev.values_json, rev.version,
                   to_char(rev.created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS created_at,
                   to_char(rev.updated_at AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS updated_at
              FROM invoice_revisions rev JOIN users usr ON usr.id = rev.author_user_id
@@ -75,17 +87,16 @@ export class PostgresCaseQueryService implements CaseQueryPort {
             ORDER BY rev.created_at`,
           [row.invoice_id],
         );
-        const metadata = { createdAt: row.created_at, updatedAt: row.updated_at, version: 1 };
         return {
           caseId: row.case_id,
           classification: "synthetic_demo_only",
-          organization: { ...metadata, id: row.organization_id, publicId: row.organization_public_id, legalName: row.legal_name, status: row.organization_status, dataClassification: "confidential" },
-          user: { ...metadata, id: row.user_id, publicId: row.user_public_id, displayName: row.display_name, dataClassification: "confidential" },
-          consumerUnit: { ...metadata, id: row.consumer_unit_id, organizationId: row.organization_public_id, publicId: row.consumer_unit_public_id, distributor: row.distributor, maskedIdentifier: row.masked_identifier, voltageGroup: row.voltage_group, dataClassification: "confidential" },
-          invoice: { ...metadata, id: row.invoice_id, organizationId: row.organization_public_id, publicId: row.invoice_public_id, consumerUnitId: row.consumer_unit_id, period: row.period, sha256: row.sha256, source: "synthetic_fixture", status: row.invoice_status, dataClassification: "restricted" },
-          invoiceRevisions: revisions.rows.map((revision) => ({ ...metadata, id: revision.id, organizationId: row.organization_public_id, invoiceId: row.invoice_id, authorUserId: revision.author_user_id, reason: revision.reason, values: revision.values_json, createdAt: revision.created_at, updatedAt: revision.updated_at, dataClassification: "restricted" })),
-          baseline: { ...metadata, id: row.baseline_id, organizationId: row.organization_public_id, publicId: row.baseline_public_id, periodStart: row.period_start, periodEnd: row.period_end, currency: "BRL", totalCents: Number(row.total_cents), assumptions: row.assumptions, calculationVersion: row.calculation_version, dataClassification: "confidential" },
-          scenarios: scenarios.rows.map((scenario) => ({ ...metadata, id: scenario.id, organizationId: row.organization_public_id, publicId: scenario.public_id, baselineId: row.baseline_id, route: scenario.route, horizonMonths: scenario.horizon_months, totalCents: Number(scenario.total_cents), confidence: Number(scenario.confidence), status: scenario.status, createdAt: scenario.created_at, updatedAt: scenario.updated_at, dataClassification: "confidential" })),
+          organization: { id: row.organization_id, publicId: row.organization_public_id, legalName: row.legal_name, status: row.organization_status, version: row.organization_version, createdAt: row.organization_created_at, updatedAt: row.organization_updated_at, dataClassification: "confidential" },
+          user: { id: row.user_id, publicId: row.user_public_id, displayName: row.display_name, version: row.user_version, createdAt: row.user_created_at, updatedAt: row.user_updated_at, dataClassification: "confidential" },
+          consumerUnit: { id: row.consumer_unit_id, organizationId: row.organization_public_id, publicId: row.consumer_unit_public_id, distributor: row.distributor, maskedIdentifier: row.masked_identifier, voltageGroup: row.voltage_group, version: row.consumer_unit_version, createdAt: row.consumer_unit_created_at, updatedAt: row.consumer_unit_updated_at, dataClassification: "confidential" },
+          invoice: { id: row.invoice_id, organizationId: row.organization_public_id, publicId: row.invoice_public_id, consumerUnitId: row.consumer_unit_id, period: row.period, sha256: row.sha256, source: "synthetic_fixture", status: row.invoice_status, version: row.invoice_version, createdAt: row.invoice_created_at, updatedAt: row.invoice_updated_at, dataClassification: "restricted" },
+          invoiceRevisions: revisions.rows.map((revision) => ({ id: revision.id, organizationId: row.organization_public_id, invoiceId: row.invoice_id, authorUserId: revision.author_user_id, reason: revision.reason, values: revision.values_json, version: revision.version, createdAt: revision.created_at, updatedAt: revision.updated_at, dataClassification: "restricted" })),
+          baseline: { id: row.baseline_id, organizationId: row.organization_public_id, consumerUnitId: row.baseline_consumer_unit_id, publicId: row.baseline_public_id, periodStart: row.period_start, periodEnd: row.period_end, currency: "BRL", totalCents: Number(row.total_cents), assumptions: row.assumptions, calculationVersion: row.calculation_version, version: row.baseline_version, createdAt: row.baseline_created_at, updatedAt: row.baseline_updated_at, dataClassification: "confidential" },
+          scenarios: scenarios.rows.map((scenario) => ({ id: scenario.id, organizationId: row.organization_public_id, publicId: scenario.public_id, baselineId: row.baseline_id, route: scenario.route, horizonMonths: scenario.horizon_months, totalCents: Number(scenario.total_cents), confidence: Number(scenario.confidence), status: scenario.status, version: scenario.version, createdAt: scenario.created_at, updatedAt: scenario.updated_at, dataClassification: "confidential" })),
         } satisfies SyntheticCaseContract;
       });
     } catch (error) {

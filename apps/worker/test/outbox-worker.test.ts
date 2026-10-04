@@ -32,14 +32,29 @@ test("claim is tenant-scoped and completion is idempotent", async () => {
   const store = new InMemoryOutboxStore();
   store.enqueue(event());
   let handled = 0;
-  const handler: OutboxEventHandler = { async handle() { handled += 1; } };
+  let idempotencyKey = "";
+  const handler: OutboxEventHandler = { async handle(_, delivery) { handled += 1; idempotencyKey = delivery.idempotencyKey; } };
   const worker = new OutboxWorker(store, handler, options(() => new Date("2026-10-03T12:00:00.000Z")));
 
   assert.deepEqual(await worker.runOnce(otherTenant), { status: "idle" });
   assert.deepEqual(await worker.runOnce(tenant), { status: "processed", eventId: event().id });
   assert.deepEqual(await worker.runOnce(tenant), { status: "idle" });
   assert.equal(handled, 1);
-  assert.equal(await store.complete(tenant, event().id, "worker-01", "2026-10-03T12:01:00.000Z"), false);
+  assert.equal(idempotencyKey, event().id);
+  assert.equal(await store.complete(tenant, event().id, "worker-01", "00000000-0000-4000-8000-000000000001", "2026-10-03T12:01:00.000Z"), "already_completed");
+});
+
+test("fencing token rejects a stale completion after lease reclaim", async () => {
+  const store = new InMemoryOutboxStore();
+  store.enqueue(event());
+  const oldToken = "00000000-0000-4000-8000-000000000011";
+  const newToken = "00000000-0000-4000-8000-000000000022";
+  const first = await store.claim(tenant, "worker-shared", oldToken, "2026-10-03T12:00:00.000Z");
+  assert.equal(first?.claimToken, oldToken);
+  const reclaimed = await store.claim(tenant, "worker-shared", newToken, "2026-10-03T12:06:00.000Z");
+  assert.equal(reclaimed?.claimToken, newToken);
+  assert.equal(await store.complete(tenant, event().id, "worker-shared", oldToken, "2026-10-03T12:06:01.000Z"), "lost_lease");
+  assert.equal(await store.complete(tenant, event().id, "worker-shared", newToken, "2026-10-03T12:06:02.000Z"), "completed");
 });
 
 test("retry uses exponential backoff and succeeds after the event becomes available", async () => {

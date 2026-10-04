@@ -17,6 +17,8 @@ test("health, correlation and tenant-first case access", async (t) => {
   const live = await fetch(`${base}/health/live`, { headers: { "x-correlation-id": "test-correlation" } });
   assert.equal(live.status, 200);
   assert.equal(live.headers.get("x-correlation-id"), "test-correlation");
+  const normalizedCorrelation = await fetch(`${base}/health/live`, { headers: { "x-correlation-id": "invalid correlation with spaces" } });
+  assert.match(normalizedCorrelation.headers.get("x-correlation-id") ?? "", /^[0-9a-f-]{36}$/);
 
   const missing = await fetch(`${base}/v1/cases/${DEMO_IDS.caseId}`);
   assert.equal(missing.status, 400);

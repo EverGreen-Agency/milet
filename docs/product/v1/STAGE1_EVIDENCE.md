@@ -16,8 +16,9 @@
   `set_config(..., true)` antes de qualquer consulta protegida;
 - repositório PostgreSQL de leitura do caso e store append-only de auditoria, com
   seleção por `DATABASE_MODE` e adapters in-memory preservados;
-- claim de outbox com lock/lease, `SKIP LOCKED`, conclusão idempotente, retry
-  exponencial limitado e DLQ explícita;
+- claim de outbox com lock/lease e fencing token, `SKIP LOCKED`, retry exponencial
+  limitado e DLQ explícita; entrega declaradamente at-least-once com `event.id`
+  fornecido ao handler como chave de idempotência;
 - migrations incrementais `003`/`004`, fixture determinística e preservação de
   `ORG-0007`, `UC-MG-00482` e `INV-2026-08-00482`;
 - testes de contrato, isolamento entre tenants, persistência, imutabilidade,
@@ -38,7 +39,7 @@ usar uma porta livre e encerrar somente o PID iniciado pelo próprio comando.
 
 ## Gates satisfeitos nesta etapa
 
-1. contratos públicos têm versão e referências locais verificáveis;
+1. contratos públicos têm versão, validação Draft 2020-12 e são incluídos no build;
 2. a leitura do caso e a auditoria não dependem mais exclusivamente de memória;
 3. contexto do tenant é local à transação e não vaza para o pool;
 4. a outbox possui semântica explícita para concorrência, retry e falha permanente;
@@ -51,6 +52,8 @@ usar uma porta livre e encerrar somente o PID iniciado pelo próprio comando.
 - nenhum upload ou documento real; OCR, storage externo e malware scan não existem;
 - nenhuma integração externa, notificação, assinatura, cobrança ou financiamento;
 - DLQ ainda não tem painel, alerta, replay operacional ou runbook de incidente;
+- o worker não promete exactly-once; falta provar deduplicação com provider real e
+  concorrência `SKIP LOCKED` em PostgreSQL externo com duas sessões;
 - faltam métricas/telemetria, secrets manager, backup/restore e teste contra um
   PostgreSQL gerenciado com roles equivalentes à produção;
 - a fixture contém somente dados sintéticos e não autoriza aceitar faturas reais.
