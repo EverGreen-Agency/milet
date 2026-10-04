@@ -1,4 +1,4 @@
 globalThis.MILET_RUNTIME_CONFIG ??= Object.freeze({
-  apiBaseUrl: "",
+  apiBaseUrl: "/api",
   apiTimeoutMs: 2500,
 });

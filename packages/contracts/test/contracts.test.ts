@@ -21,6 +21,14 @@ test("versioned OpenAPI exposes health, readiness and tenant-scoped synthetic ca
   assert.ok(document.paths["/health/ready"].get);
   const operation = document.paths["/v1/cases/{caseId}"].get;
   assert.equal(operation.operationId, "getSyntheticCase");
+  assert.equal(document.servers.length, 1);
+  assert.equal(document.servers[0].url, "http://127.0.0.1:4310");
+  assert.deepEqual(
+    operation.servers.map((server: { url: string }) => server.url),
+    ["https://milet.vercel.app/api", "http://127.0.0.1:4310"],
+  );
+  assert.equal(document.paths["/health/live"].get.servers, undefined);
+  assert.equal(document.paths["/health/ready"].get.servers, undefined);
   const references = JSON.stringify(document).match(/\.\.\/\.\.\/schemas\/v1\/[^"]+/g) ?? [];
   assert.ok(references.length >= 3);
   for (const reference of references) await access(resolve(root, "openapi/v1", reference));

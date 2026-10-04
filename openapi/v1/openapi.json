@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Contrato Stage 1 exclusivo para dados sintéticos. Não aceita faturas reais."
   },
-  "servers": [{ "url": "http://127.0.0.1:4310", "description": "desenvolvimento local" }],
+  "servers": [{ "url": "http://127.0.0.1:4310", "description": "API Nest em desenvolvimento local" }],
   "paths": {
     "/health/live": {
       "get": {
@@ -25,6 +25,10 @@
     "/v1/cases/{caseId}": {
       "get": {
         "operationId": "getSyntheticCase",
+        "servers": [
+          { "url": "https://milet.vercel.app/api", "description": "função pública Vercel; somente fixture sintética" },
+          { "url": "http://127.0.0.1:4310", "description": "API Nest em desenvolvimento local" }
+        ],
         "parameters": [
           { "name": "caseId", "in": "path", "required": true, "schema": { "type": "string", "pattern": "^CASE-" } },
           { "$ref": "#/components/parameters/OrganizationId" },
