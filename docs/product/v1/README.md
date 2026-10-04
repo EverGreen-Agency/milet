@@ -29,6 +29,12 @@ autenticação, OCR, filas, assinatura eletrônica, cobrança ou aplicativo nati
   adapter HTTP/fallback e evidências locais desta etapa.
 - [DEPLOYMENT_RUNBOOK.md](./DEPLOYMENT_RUNBOOK.md): sequência provider-neutral e
   critérios verificáveis para selecionar hosting futuramente.
+- [HOSTING_DECISION.md](./HOSTING_DECISION.md): seleção de hosting por fase,
+  trade-offs oficiais e gates antes de criar recursos.
+- [STAGE3_EVIDENCE.md](./STAGE3_EVIDENCE.md): escopo entregue, validação e limites
+  do plano de ativação e monetização.
+- [MONETIZATION_EXPERIMENTS.md](./MONETIZATION_EXPERIMENTS.md): hipóteses de
+  oferta, preço para aprender, cobrança, neutralidade e gates regulatórios.
 
 ## Regras de leitura
 

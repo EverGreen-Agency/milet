@@ -31,7 +31,23 @@
     </section>
 
     <section class="public-section" aria-labelledby="atualizacao-inicial">
-      <div class="section-heading"><span class="section-kicker">Changelog inicial</span><h2 id="atualizacao-inicial">Uma entrada pública com o estado real.</h2><p>Registro baseado nos arquivos e verificações disponíveis neste repositório. Publicação em produção depende do próximo deploy.</p></div>
+      <div class="section-heading"><span class="section-kicker">Changelog verificável</span><h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2><p>Registro baseado em código, testes e deploys observáveis. O portal está publicado; cada entrada separa essa presença pública da operação de backend ainda não ativada.</p></div>
+      <article class="changelog-entry">
+        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Runtime sintético 002</span></div>
+        <div class="changelog-body">
+          <h3>Do protótipo estático a um runtime implantável — ainda sem chamar isso de produção.</h3>
+          <p><strong>Problema tratado:</strong> a jornada navegável não tinha contratos versionados, persistência tenant-scoped nem um caminho reproduzível para executar API e worker fora do navegador.</p>
+          <ul>
+            <li>API NestJS, OpenAPI 3.1 e JSON Schemas versionados para o caso exclusivamente sintético.</li>
+            <li>Adapters PostgreSQL com contexto de tenant, RLS, auditoria append-only e outbox com retry, DLQ e fencing token.</li>
+            <li>Imagens OCI non-root para API e worker, configuração fail-fast, CORS por allowlist, logs JSON, métricas em processo e shutdown gracioso.</li>
+            <li>O portal pode consultar a API quando uma URL é configurada; sem ela, exibe que está usando a fixture local e mantém o fluxo disponível.</li>
+          </ul>
+          <p><strong>Evidência:</strong> CI do PR #4 aprovado, 9 testes estáticos e 22 testes de fundação, build público com 269 arquivos e artefatos de contrato disponíveis abaixo.</p>
+          <div class="card-actions"><a class="button" href="openapi/v1/openapi.json">Abrir OpenAPI</a><a class="button" href="schemas/v1/synthetic-case.schema.json">Abrir schema do caso</a><a class="button" href="app/">Testar o app</a></div>
+          <p><strong>Limite:</strong> somente o frontend está publicado. API, worker e PostgreSQL estão prontos para implantação, mas ainda não estão hospedados; não há OIDC, OCR real, upload, assinatura, cobrança ou integração de mercado.</p>
+        </div>
+      </article>
       <article class="changelog-entry">
         <div class="changelog-meta"><span class="status-chip status-implemented">Implementado</span><time datetime="2026-10-03">03 out 2026</time><span class="meta-label">Superfície pública 001</span></div>
         <div class="changelog-body">
@@ -43,7 +59,7 @@
             <li>Rota <code>/demo</code> transformada em ponte para a jornada front-end, com dados sintéticos e limites antes do primeiro clique.</li>
             <li>Navegação e documentação atualizadas sem remover o brandbook, backlog ou apresentações.</li>
           </ul>
-          <p><strong>Estado:</strong> arquivos implementados e verificados localmente; disponibilidade pública ainda depende do deploy.</p>
+          <p><strong>Estado:</strong> arquivos implementados, verificados e disponíveis no portal público; isso não comprova um backend operacional.</p>
         </div>
       </article>
       <article class="changelog-entry">
@@ -56,7 +72,7 @@
             <li>Ranking por custo total, sem pagamento por posição ou spread oculto.</li>
             <li>Sem upload real, OCR, backend, autenticação, integração regulatória ou contratação.</li>
           </ul>
-          <p><strong>Estado:</strong> protótipo front-end executável; não é prova de disponibilidade pública ou operação em produção.</p>
+          <p><strong>Estado:</strong> protótipo front-end publicamente acessível; não é prova de operação energética em produção.</p>
         </div>
       </article>
     </section>
@@ -74,9 +90,9 @@
     <section class="public-section" aria-labelledby="limites-versao">
       <div class="section-heading"><span class="section-kicker">Limites da versão</span><h2 id="limites-versao">O que esta entrega não comprova.</h2></div>
       <div class="card-grid">
-        <article class="card"><h3>Produto e dados</h3><ul class="limitation-list"><li>O fluxo PME é um protótipo front-end com fixtures, não um serviço conectado.</li><li>Não há leitura OCR real nem faturas reais.</li><li>Os cálculos são demonstrativos e não validam economia ou recomendação no mercado.</li></ul></article>
+        <article class="card"><h3>Produto e dados</h3><ul class="limitation-list"><li>O fluxo PME usa fixture local por padrão; a API sintética é opcional e ainda não está hospedada.</li><li>Não há leitura OCR real, upload nem faturas reais.</li><li>Os cálculos são demonstrativos e não validam economia ou recomendação no mercado.</li></ul></article>
         <article class="card"><h3>Mercado e operação</h3><ul class="limitation-list"><li>Não há clientes, pilotos ou tração declarados.</li><li>Não há fornecedores, parceiros ou integrações confirmados.</li><li>Não há contratação, assinatura, pagamento ou troca de fornecedor.</li></ul></article>
-        <article class="card"><h3>Confiança</h3><ul class="limitation-list"><li>Não há autenticação ou controle de acesso.</li><li>Histórico visual não seria auditoria imutável.</li><li>Dados sintéticos e estados simulados são identificados como tais.</li></ul></article>
+        <article class="card"><h3>Confiança</h3><ul class="limitation-list"><li>Headers de tenant não são autenticação; OIDC e autorização real ainda faltam.</li><li>RLS e auditoria append-only foram testadas localmente, não operadas em produção.</li><li>Dados sintéticos e estados simulados são identificados como tais.</li></ul></article>
         <article class="card"><h3>Modelo econômico</h3><ul class="limitation-list"><li>Sem spread oculto nas transações.</li><li>Taxas e preços continuam hipóteses até decisão explícita.</li><li>Posição em ranking não deve ser comprada.</li></ul></article>
       </div>
     </section>
