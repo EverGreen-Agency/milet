@@ -35,6 +35,8 @@ autenticação, OCR, filas, assinatura eletrônica, cobrança ou aplicativo nati
   do plano de ativação e monetização.
 - [STAGE4_EVIDENCE.md](./STAGE4_EVIDENCE.md): função Vercel do caso sintético,
   integração same-origin da demo, validação e limites do endpoint stateless.
+- [STAGE5_EVIDENCE.md](./STAGE5_EVIDENCE.md): PWA mobile web, instalação,
+  app shell offline e exclusão explícita de `/api` do cache.
 - [MONETIZATION_EXPERIMENTS.md](./MONETIZATION_EXPERIMENTS.md): hipóteses de
   oferta, preço para aprender, cobrança, neutralidade e gates regulatórios.
 
@@ -73,3 +75,7 @@ A Stage 4 adiciona uma função Vercel stateless que publica somente a fixture
 sintética canônica e conecta `/app/` a `/api` por padrão. Ela não implanta a API
 Nest, banco, worker nem integrações e só pode ser chamada de pública após observar o
 deploy do commit correspondente.
+
+A Stage 5 cumpre a decisão inicial de começar por web responsiva instalável: adiciona
+manifest, ícones e service worker ao app sintético. O app shell pode abrir offline,
+mas API, dados reais, push e capacidades nativas continuam fora do escopo.

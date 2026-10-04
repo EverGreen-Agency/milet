@@ -68,7 +68,7 @@
       <div class="section-heading">
         <span class="section-kicker">Agora / Próximo / Explorando</span>
         <h2 id="mapa-roadmap">Resultados em sequência, não funcionalidades soltas.</h2>
-        <p>“Agora” representa a frente priorizada no backlog consolidado. A fatia de US-001–003, US-006–009 e US-013 já tem frontend público e uma fundação sintética de API, contratos, PostgreSQL e worker validada em CI; serviços reais e backend hospedado continuam pendentes.</p>
+        <p>“Agora” representa a frente priorizada no backlog consolidado. A fatia de US-001–003, US-006–009 e US-013 já tem PWA pública, função sintética e uma fundação de contratos, PostgreSQL e worker validada em CI; serviços reais e os containers persistentes continuam pendentes.</p>
       </div>
 
       <div class="roadmap-lane">
@@ -79,7 +79,7 @@
             <h4>Entender o caso e revisar a fatura</h4>
             <p>Descoberta inicial, entrada de uma fatura de demonstração e conferência humana antes do diagnóstico.</p>
             <div class="chip-row"><span class="id-chip">EP-01</span><span class="id-chip">F1.1</span><span class="id-chip">F1.2</span><span class="id-chip">US-001</span><span class="id-chip">US-002</span><span class="id-chip">US-003</span></div>
-            <div class="evidence-note"><strong>Evidência:</strong> triagem, entrada sintética e revisão públicas em <code>/app/</code>; adapter de API opcional com fallback explícito, sem arquivo real ou OCR.</div>
+            <div class="evidence-note"><strong>Evidência:</strong> triagem, entrada sintética e revisão públicas em <code>/app/</code>; PWA instalável com função same-origin e fallback offline explícito, sem arquivo real ou OCR.</div>
           </article>
           <article class="roadmap-card">
             <span class="status-chip status-prototype">Protótipo parcial</span>
@@ -145,10 +145,10 @@
         <h2 id="evidencia-atual">O que já existe não é o produto completo.</h2>
       </div>
       <div class="card-grid">
-        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Presença pública e documentação</h3><p>Brandbook, apresentações, backlog acadêmico, app sintético, contratos e estas superfícies estão publicados como conteúdo estático verificável.</p></article>
-        <article class="card"><span class="status-chip status-implemented">Código + CI</span><h3>Fundação de runtime</h3><p>API, persistência PostgreSQL, auditoria, outbox e worker têm containers e testes reproduzíveis. Ainda não há backend hospedado ou operação com dados reais.</p><div class="card-actions"><a class="button" href="openapi/v1/openapi.json">Ver contrato da API</a><a class="button" href="build-in-public.html">Ler a evidência</a></div></article>
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Presença pública e documentação</h3><p>Brandbook, apresentações, backlog acadêmico, PWA sintética, contratos e estas superfícies estão publicados com limites verificáveis.</p></article>
+        <article class="card"><span class="status-chip status-implemented">Código + CI</span><h3>Fundação de runtime</h3><p>A função sintética está pública. API persistente, PostgreSQL, auditoria, outbox e worker têm containers e testes reproduzíveis, mas ainda não estão hospedados nem operam dados reais.</p><div class="card-actions"><a class="button" href="openapi/v1/openapi.json">Ver contrato da API</a><a class="button" href="build-in-public.html">Ler a evidência</a></div></article>
         <article class="card"><span class="status-chip status-prototype">Protótipo</span><h3>Laboratório de motion 3D</h3><p>Experiência procedural com seis estados, timeline e interação. É uma exploração de linguagem visual, não uma capacidade energética.</p><div class="card-actions"><a class="button" href="motion-3d.html">Abrir laboratório</a></div></article>
-        <article class="card"><span class="status-chip status-prototype">Protótipo público</span><h3>Demo do fluxo PME</h3><p>A entrada explica os limites e abre uma jornada front-end com caso, fatura, regras e propostas sintéticas. O fallback local fica visível; não há serviços reais por trás da interface.</p><div class="card-actions"><a class="button" href="demo.html">Entrar na demonstração</a></div></article>
+        <article class="card"><span class="status-chip status-prototype">Protótipo instalável</span><h3>Demo mobile web do fluxo PME</h3><p>A jornada responsiva pode ser instalada e seu app shell abre offline. API indisponível vira fallback sintético visível; não há serviços ou dados reais por trás da experiência.</p><div class="card-actions"><a class="button" href="demo.html">Entrar na demonstração</a></div></article>
         <article class="card"><span class="status-chip status-planned">Não validado</span><h3>Operação e resultado real</h3><p>Não há evidência aqui de clientes, pilotos, OCR real, economia realizada, parceiros integrados ou contratação em produção.</p></article>
       </div>
     </section>

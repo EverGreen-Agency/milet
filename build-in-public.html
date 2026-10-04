@@ -33,7 +33,22 @@
     <section class="public-section" aria-labelledby="atualizacao-inicial">
       <div class="section-heading"><span class="section-kicker">Changelog verificável</span><h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2><p>Registro baseado em código, testes e deploys observáveis. O portal está publicado; cada entrada separa essa presença pública da operação de backend ainda não ativada.</p></div>
       <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">API sintética 003</span></div>
+        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Mobile web 004</span></div>
+        <div class="changelog-body">
+          <h3>A jornada passou a ser instalável e resiliente à perda de rede.</h3>
+          <p><strong>Problema tratado:</strong> o layout já era responsivo, mas ainda não existiam manifest, instalação ou um app shell offline verificável.</p>
+          <ul>
+            <li>PWA em <code>/app/</code> com nome, ícones oficiais, modo standalone e botão de instalação quando o navegador oferece o evento.</li>
+            <li>Service worker armazena somente o shell e as fixtures sintéticas necessárias para abrir a jornada sem rede.</li>
+            <li><code>/api</code> é excluída explicitamente do cache; indisponibilidade aciona o fallback local já identificado na interface.</li>
+          </ul>
+          <p><strong>Evidência:</strong> manifest, ícones e política do service worker são testados; a instalação pública só é comprovada depois do deploy responder com esses artefatos.</p>
+          <div class="card-actions"><a class="button" href="app/">Abrir app mobile web</a><a class="button" href="app/manifest.webmanifest">Ver manifest</a></div>
+          <p><strong>Limite:</strong> PWA não significa aplicativo nativo, distribuição em loja, push, sincronização de dados reais ou operação offline autenticada.</p>
+        </div>
+      </article>
+      <article class="changelog-entry">
+        <div class="changelog-meta"><span class="status-chip status-implemented">Publicado</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">API sintética 003</span></div>
         <div class="changelog-body">
           <h3>O app ganhou um endpoint público mínimo sem fingir persistência.</h3>
           <p><strong>Problema tratado:</strong> o frontend publicado só conseguia usar a fixture embutida, mesmo já existindo um contrato versionado para o caso sintético.</p>
@@ -42,7 +57,7 @@
             <li>O app tenta a API por padrão; se ela não responder, mantém a jornada com fallback local identificado no topo da tela.</li>
             <li>Contrato, correlação e limites são testados sem banco, secrets, upload ou qualquer dado real.</li>
           </ul>
-          <p><strong>Evidência:</strong> a função reutiliza o mesmo pacote de fixtures validado pelo JSON Schema. A disponibilidade pública é confirmada somente quando o deploy do commit responder HTTP 200 — código e CI, sozinhos, não comprovam isso.</p>
+          <p><strong>Evidência:</strong> produção observada em 04 out 2026 com HTTP 200, <code>synthetic_demo_only</code>, correlação preservada e <code>private, no-store</code>. A função reutiliza o mesmo pacote de fixtures validado pelo JSON Schema.</p>
           <div class="card-actions"><a class="button" href="https://milet.vercel.app/api/v1/cases/CASE-UC-MG-00482">Abrir endpoint</a><a class="button" href="app/">Abrir app conectado</a><a class="button" href="openapi/v1/openapi.json">Ver contrato</a></div>
           <p><strong>Limite:</strong> este endpoint é stateless e público apenas para demonstração. Não é a API Nest persistente: não há PostgreSQL, worker, autenticação, OCR, cobrança ou operação energética.</p>
         </div>

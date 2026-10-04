@@ -1,8 +1,8 @@
 # Stage 4 — API sintética pública
 
 **Data:** 2026-10-04  
-**Classificação:** função Vercel implementada e testada; disponibilidade pública
-depende do deploy do commit que contém esta etapa.
+**Classificação:** função Vercel implementada, testada e observada no domínio
+público em 2026-10-04; permanece exclusivamente sintética e stateless.
 
 ## Entregue
 
@@ -28,8 +28,9 @@ git diff --check
 Os testes da função verificam resposta idêntica à fixture canônica, correlação,
 classificação, método, tenant sintético e casos `400`, `403`, `404` e `405`.
 
-Após o merge, a prova de deploy exige observar `200` no endpoint público com os
-headers abaixo e confirmar que `/app/` exibe o modo `api`:
+Prova de deploy observada: `200` no endpoint público com os headers abaixo; o mesmo
+adapter do app retornou modo `api`, organização `Padaria Horizonte` e UC
+`UC-MG-00482`:
 
 ```powershell
 curl.exe -i `
@@ -45,8 +46,8 @@ curl.exe -i `
   assinatura, recomendação regulatória ou contratação;
 - os headers de organização/usuário preservam o formato do contrato, mas são
   identificadores públicos fixos da demo, não credenciais;
-- CI comprova código e contrato; somente a verificação HTTP após deploy comprova
-  disponibilidade pública;
+- CI comprova código e contrato; a chamada HTTP observada comprova somente a
+  disponibilidade da função sintética naquele momento, não um SLA;
 - não foi criada nova conta ou recurso pago; a função consome a quota do projeto
   Vercel existente e continua sujeita aos limites e custos do plano atual;
 - esta etapa não promove a API Nest implantável da Stage 2 a produção.

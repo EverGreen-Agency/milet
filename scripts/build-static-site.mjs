@@ -15,6 +15,7 @@ const deployableExtensions = new Set([
   ".json",
   ".png",
   ".svg",
+  ".webmanifest",
   ".webp",
 ]);
 
@@ -57,6 +58,8 @@ for (const required of [
   "index.html",
   "demo.html",
   "app/index.html",
+  "app/manifest.webmanifest",
+  "app/sw.js",
   "roadmap.html",
   "build-in-public.html",
   "openapi/v1/openapi.json",
