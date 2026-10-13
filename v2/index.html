@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#201e1a" />
+    <meta name="description" content="Milet V2 — triagem energética explicável para empresas e residências." />
+    <title>Milet V2 — energia sem economês</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-profile="company">
+    <main class="shell">
+      <header class="topbar"><a href="#inicio" class="brand"><span>◒</span>Milet <em>V2</em></a><p>diagnóstico assistido · beta</p></header>
+      <section class="hero" id="inicio">
+        <p class="eyebrow">energia sem economês</p>
+        <h1>Comece pelo seu contexto, não por uma promessa.</h1>
+        <p>Uma triagem consentida para entender o que vale verificar na sua conta de energia. A IA organiza e explica; regras, cálculos e contratação continuam exigindo dados verificáveis e revisão humana.</p>
+      </section>
+
+      <section class="journeys" aria-labelledby="journeys-title">
+        <p class="eyebrow" id="journeys-title">escolha uma jornada</p>
+        <div class="journey-grid">
+          <button class="journey active" type="button" data-profile="company" aria-pressed="true"><small>01</small><strong>Para uma empresa</strong><span>Organize consumo, unidade e objetivo antes da próxima conversa.</span><b>Diagnóstico PME →</b></button>
+          <button class="journey" type="button" data-profile="home" aria-pressed="false"><small>02</small><strong>Para a minha casa</strong><span>Entenda quais dados observar para decidir com mais clareza.</span><b>Orientação residencial →</b></button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="explain"><p class="eyebrow">o que acontece</p><ol><li><i>1</i> Você fornece o mínimo necessário.</li><li><i>2</i> O Gemini estrutura uma orientação inicial.</li><li><i>3</i> A equipe Milet recebe o pedido por e-mail.</li></ol><div class="warning"><strong>Limites claros.</strong> Não acessamos sua distribuidora, não calculamos economia e não confirmamos elegibilidade nesta etapa.</div></aside>
+        <form id="intake" novalidate>
+          <input type="hidden" name="profile" value="company" />
+          <div class="heading"><p class="eyebrow" id="form-kicker">diagnóstico para empresa</p><h2 id="form-title">Vamos organizar a sua unidade.</h2></div>
+          <div class="fields">
+            <label>Seu nome<input name="name" autocomplete="name" maxlength="120" required /></label>
+            <label>E-mail<input name="email" type="email" autocomplete="email" maxlength="160" required /></label>
+            <label class="company-only">Empresa<input name="companyName" autocomplete="organization" maxlength="160" required /></label>
+            <label>Distribuidora<input name="distributor" maxlength="120" placeholder="Ex.: Enel, CPFL, Cemig" required /></label>
+            <label>Cidade<input name="city" autocomplete="address-level2" maxlength="100" required /></label>
+            <label>UF<select name="state" required><option value="">Selecione</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></label>
+            <label>Consumo médio (kWh/mês)<input name="consumptionKwh" inputmode="numeric" maxlength="32" placeholder="Se souber" /></label>
+            <label>ou conta aproximada (R$)<input name="billValue" inputmode="decimal" maxlength="32" placeholder="Se souber" /></label>
+            <label class="company-only">Porte<select name="companySize"><option value="">Não sei informar</option><option>MEI ou microempresa</option><option>Pequena empresa</option><option>Média empresa</option><option>Múltiplas unidades</option></select></label>
+            <label class="company-only">Grupo<select name="voltageGroup"><option value="">Não sei</option><option>Grupo A</option><option>Grupo B</option></select></label>
+            <label class="home-only">Imóvel<select name="propertyType"><option value="">Prefiro não dizer</option><option>Casa</option><option>Apartamento</option><option>Alugado</option><option>Condomínio</option></select></label>
+            <label class="wide">O que você quer entender?<textarea name="objective" rows="3" maxlength="800" required placeholder="Ex.: quero entender uma variação na conta ou quais informações preciso reunir antes de avaliar alternativas."></textarea></label>
+          </div>
+          <div class="consents">
+            <label><input name="consentDataProcessing" type="checkbox" required /> <span>Autorizo a Milet a tratar estes dados para gerar esta orientação. Eles serão enviados ao Gemini para a análise e ao Resend para encaminhar meu pedido à equipe Milet.</span></label>
+            <label><input name="optInContact" type="checkbox" required /> <span>Quero que a Milet entre em contato sobre esta solicitação e um possível piloto.</span></label>
+          </div>
+          <button class="submit" type="submit"><span>Gerar orientação inicial</span><b>→</b></button>
+          <p class="footnote">Não envie senhas, login da distribuidora, CPF/CNPJ completo, dados bancários ou documentos nesta etapa.</p>
+          <p class="error" id="error" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="result hidden" id="result" aria-live="polite"><p class="eyebrow">orientação inicial</p><h2>O que vale verificar agora</h2><div id="guidance"></div><button type="button" class="secondary" id="restart">Refazer com outros dados</button></section>
+      <footer><span>Milet V2 · intake real consentido</span><span>Sem promessa de economia, elegibilidade ou contratação.</span></footer>
+    </main>
+    <script src="runtime-config.js"></script><script src="app.js"></script>
+  </body>
+</html>

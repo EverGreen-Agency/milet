@@ -5,4 +5,5 @@ export const TOKENS = {
   auditStore: Symbol("auditStore"),
   databaseReadiness: Symbol("databaseReadiness"),
   tenantTransaction: Symbol("tenantTransaction"),
+  externalFetch: Symbol("externalFetch"),
 } as const;

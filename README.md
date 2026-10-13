@@ -18,6 +18,7 @@ protótipo e produto:
 | `/build-in-public` | Changelog público, limites e pergunta de validação | Implementado |
 | `/demo` | Entrada e contrato da demonstração | Implementado; encaminha ao protótipo com limites explícitos |
 | `/app/` | Jornada front-end da triagem à comparação | PWA responsiva instalável; função sintética `/api` e fallback offline explícito |
+| `/v2/` | Intake real empresa/residência | Formulário responsivo; exige API Nest configurada com Gemini e Resend; sem fallback sintético |
 | `/api/v1/cases/CASE-UC-MG-00482` | Caso público exclusivamente sintético | Função stateless; sem banco, dados reais ou autenticação |
 
 Para validar localmente, sirva a raiz por HTTP (por exemplo, `python -m http.server 4173`) em vez de abrir os arquivos com `file://`.
@@ -105,3 +106,12 @@ offline. O service worker nunca armazena respostas de `/api`; sem rede, o adapte
 identifica a falha e mantém somente o caso sintético local. Consulte
 [`docs/product/v1/STAGE5_EVIDENCE.md`](./docs/product/v1/STAGE5_EVIDENCE.md). Isso é
 mobile web, não aplicativo nativo distribuído em loja.
+
+## V2 — intake consentido (Stage 6)
+
+`/v2/` é uma entrada separada da apresentação e da PWA demonstrativa. Quando
+`DEMO_DATA_ONLY=false` e as variáveis de Gemini/Resend estão configuradas, ela valida
+os dados enviados, obtém uma orientação JSON estruturada do Gemini e encaminha o
+pedido para a caixa operacional configurada no Resend. Sem essa configuração, o
+endpoint recusa a solicitação de modo explícito: não há resposta simulada. Consulte
+[`v2/README.md`](./v2/README.md) para os limites, opt-in e execução local.

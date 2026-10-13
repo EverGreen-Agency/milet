@@ -6,8 +6,15 @@ test("configuration rejects postgres mode without DATABASE_URL", () => {
   assert.throws(() => loadConfig({ DATABASE_MODE: "postgres", DEMO_DATA_ONLY: "true" }), /DATABASE_URL/);
 });
 
-test("configuration keeps real invoice intake disabled", () => {
-  assert.throws(() => loadConfig({ DATABASE_MODE: "fake", DEMO_DATA_ONLY: "false" }), /faturas reais/);
+test("configuration keeps real intake disabled until its external credentials and flags are explicit", () => {
+  assert.throws(() => loadConfig({ DATABASE_MODE: "fake", DEMO_DATA_ONLY: "false" }), /INTAKE_ENABLED/);
+  assert.throws(() => loadConfig({ DATABASE_MODE: "fake", DEMO_DATA_ONLY: "true", INTAKE_ENABLED: "true" }), /DEMO_DATA_ONLY/);
+  assert.throws(() => loadConfig({ DATABASE_MODE: "fake", DEMO_DATA_ONLY: "false", INTAKE_ENABLED: "true" }), /GEMINI_API_KEY/);
+  const enabled = loadConfig({
+    DATABASE_MODE: "fake", DEMO_DATA_ONLY: "false", INTAKE_ENABLED: "true", GEMINI_API_KEY: "gemini-test", RESEND_API_KEY: "resend-test",
+    RESEND_FROM: "Milet <no-reply@example.com>", INTAKE_NOTIFICATION_TO: "owner@example.com",
+  });
+  assert.equal(enabled.intakeEnabled, true);
 });
 
 test("configuration applies safe local CORS defaults and exact allowlist parsing", () => {

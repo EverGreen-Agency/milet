@@ -4,6 +4,9 @@ import { AuditService } from "./audit/audit.service";
 import { InMemoryAuditStore } from "./audit/in-memory-audit.store";
 import { PostgresAuditStore } from "./audit/postgres-audit.store";
 import { CasesController } from "./cases/cases.controller";
+import { IntakeController } from "./intake/intake.controller";
+import { IntakeRateLimiter } from "./intake/intake-rate-limiter";
+import { IntakeService } from "./intake/intake.service";
 import { InMemoryCaseQueryService } from "./cases/in-memory-case-query.service";
 import { PostgresCaseQueryService } from "./cases/postgres-case-query.service";
 import { loadConfig } from "./config/app-config";
@@ -21,7 +24,7 @@ import { TenantGuard } from "./tenancy/tenant.guard";
 import { TOKENS } from "./tokens";
 
 @Module({
-  controllers: [HealthController, CasesController, MetricsController],
+  controllers: [HealthController, CasesController, MetricsController, IntakeController],
   providers: [
     AuditService,
     CorrelationIdMiddleware,
@@ -36,7 +39,10 @@ import { TOKENS } from "./tokens";
     PostgresCaseQueryService,
     PostgresTenantDatabase,
     DatabaseReadinessService,
+    IntakeRateLimiter,
+    IntakeService,
     { provide: TOKENS.appConfig, useFactory: () => loadConfig() },
+    { provide: TOKENS.externalFetch, useValue: fetch },
     {
       provide: TOKENS.tenantAccess,
       inject: [TOKENS.appConfig, FakeTenantAccessService, PostgresTenantAccessService],

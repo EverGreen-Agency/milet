@@ -4,8 +4,14 @@ export interface AppConfig {
   bindAddress: string;
   databaseMode: "fake" | "postgres";
   databaseUrl?: string;
-  demoDataOnly: true;
+  demoDataOnly: boolean;
   corsOrigins: readonly string[];
+  intakeEnabled: boolean;
+  geminiApiKey?: string;
+  geminiModel?: string;
+  resendApiKey?: string;
+  resendFrom?: string;
+  intakeNotificationTo?: string;
 }
 
 export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppConfig {
@@ -24,8 +30,26 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
   if (databaseMode !== "fake" && databaseMode !== "postgres") throw new Error("DATABASE_MODE deve ser fake ou postgres");
   if (databaseMode === "postgres" && !environment.DATABASE_URL) throw new Error("DATABASE_URL é obrigatória em modo postgres");
 
-  if ((environment.DEMO_DATA_ONLY ?? "true") !== "true") {
-    throw new Error("Stage 0 exige DEMO_DATA_ONLY=true; faturas reais permanecem bloqueadas");
+  const demoDataOnly = (environment.DEMO_DATA_ONLY ?? "true") === "true";
+  const intakeEnabled = environment.INTAKE_ENABLED === "true";
+  const geminiApiKey = environment.GEMINI_API_KEY?.trim();
+  const geminiModel = environment.GEMINI_MODEL?.trim() || "gemini-2.5-flash-lite";
+  const resendApiKey = environment.RESEND_API_KEY?.trim();
+  const resendFrom = environment.RESEND_FROM?.trim();
+  const intakeNotificationTo = environment.INTAKE_NOTIFICATION_TO?.trim();
+
+  if (intakeEnabled && demoDataOnly) {
+    throw new Error("INTAKE_ENABLED exige DEMO_DATA_ONLY=false");
+  }
+  if (!demoDataOnly && !intakeEnabled) {
+    throw new Error("DEMO_DATA_ONLY=false exige INTAKE_ENABLED=true");
+  }
+  if (intakeEnabled) {
+    for (const [name, value] of Object.entries({ GEMINI_API_KEY: geminiApiKey, RESEND_API_KEY: resendApiKey, RESEND_FROM: resendFrom, INTAKE_NOTIFICATION_TO: intakeNotificationTo })) {
+      if (!value) throw new Error(`${name} é obrigatória quando INTAKE_ENABLED=true`);
+    }
+    if (!isEmail(intakeNotificationTo!)) throw new Error("INTAKE_NOTIFICATION_TO deve ser um e-mail válido");
+    if (!isEmailAddressWithOptionalName(resendFrom!)) throw new Error("RESEND_FROM deve ser um e-mail ou nome <e-mail> válido");
   }
 
   const corsOrigins = parseCorsOrigins(environment.CORS_ORIGINS, nodeEnv as AppConfig["nodeEnv"]);
@@ -36,9 +60,24 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
     bindAddress,
     databaseMode,
     databaseUrl: environment.DATABASE_URL,
-    demoDataOnly: true,
+    demoDataOnly,
     corsOrigins,
+    intakeEnabled,
+    geminiApiKey,
+    geminiModel,
+    resendApiKey,
+    resendFrom,
+    intakeNotificationTo,
   };
+}
+
+function isEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isEmailAddressWithOptionalName(value: string): boolean {
+  const address = value.match(/<([^>]+)>$/)?.[1] ?? value;
+  return isEmail(address);
 }
 
 function parseCorsOrigins(value: string | undefined, nodeEnv: AppConfig["nodeEnv"]): readonly string[] {

@@ -12,7 +12,7 @@ export async function createApplication(): Promise<INestApplication> {
       if (!origin || config.corsOrigins.includes(origin)) return callback(null, true);
       return callback(null, false);
     },
-    methods: ["GET", "HEAD", "OPTIONS"],
+    methods: ["GET", "HEAD", "OPTIONS", "POST"],
     allowedHeaders: ["content-type", "x-correlation-id", "x-organization-id", "x-user-id"],
     credentials: false,
     maxAge: 600,
