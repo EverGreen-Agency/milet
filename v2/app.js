@@ -60,6 +60,7 @@ form.addEventListener("submit", async (event) => {
     addSection("O que ainda precisa de validação", data.guidance.whatToVerify);
     addSection("Próxima ação", data.guidance.nextAction);
     addSection("Limites desta orientação", data.guidance.limits);
+    if (data.acknowledgementSent === false) error.textContent = "Recebemos sua solicitação. Se o e-mail de confirmação não aparecer, confira o spam.";
     result.classList.remove("hidden");
     result.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (cause) { error.textContent = cause instanceof Error ? cause.message : "Não foi possível concluir sua solicitação agora."; }

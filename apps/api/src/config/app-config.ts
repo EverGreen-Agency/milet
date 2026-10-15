@@ -11,6 +11,7 @@ export interface AppConfig {
   geminiModel?: string;
   resendApiKey?: string;
   resendFrom?: string;
+  resendReplyTo?: string;
   intakeNotificationTo?: string;
 }
 
@@ -36,6 +37,7 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
   const geminiModel = environment.GEMINI_MODEL?.trim() || "gemini-2.5-flash-lite";
   const resendApiKey = environment.RESEND_API_KEY?.trim();
   const resendFrom = environment.RESEND_FROM?.trim();
+  const resendReplyTo = environment.RESEND_REPLY_TO?.trim();
   const intakeNotificationTo = environment.INTAKE_NOTIFICATION_TO?.trim();
 
   if (intakeEnabled && demoDataOnly) {
@@ -50,6 +52,7 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
     }
     if (!isEmail(intakeNotificationTo!)) throw new Error("INTAKE_NOTIFICATION_TO deve ser um e-mail válido");
     if (!isEmailAddressWithOptionalName(resendFrom!)) throw new Error("RESEND_FROM deve ser um e-mail ou nome <e-mail> válido");
+    if (resendReplyTo && !isEmail(resendReplyTo)) throw new Error("RESEND_REPLY_TO deve ser um e-mail válido");
   }
 
   const corsOrigins = parseCorsOrigins(environment.CORS_ORIGINS, nodeEnv as AppConfig["nodeEnv"]);
@@ -67,6 +70,7 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
     geminiModel,
     resendApiKey,
     resendFrom,
+    resendReplyTo,
     intakeNotificationTo,
   };
 }

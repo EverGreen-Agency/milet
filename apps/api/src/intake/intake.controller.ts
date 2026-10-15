@@ -21,6 +21,6 @@ export class IntakeController {
     if (!this.config.intakeEnabled) throw new ServiceUnavailableException("O intake real ainda não está configurado neste ambiente.");
     this.rateLimiter.check(request.ip || request.socket.remoteAddress || "unknown");
     const result = await this.intake.submit(body as IntakeRequest);
-    return { submissionId: result.submissionId, guidance: result.guidance };
+    return { submissionId: result.submissionId, guidance: result.guidance, acknowledgementSent: result.acknowledgementSent };
   }
 }

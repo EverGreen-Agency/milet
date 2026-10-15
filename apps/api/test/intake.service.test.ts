@@ -7,7 +7,7 @@ import type { ExternalFetch, IntakeRequest } from "../src/intake/intake.types";
 const config: AppConfig = {
   nodeEnv: "test", port: 4310, bindAddress: "127.0.0.1", databaseMode: "fake", demoDataOnly: false,
   corsOrigins: ["http://127.0.0.1:4173"], intakeEnabled: true, geminiApiKey: "gemini-test-key", geminiModel: "gemini-test-model",
-  resendApiKey: "resend-test-key", resendFrom: "Milet <no-reply@example.com>", intakeNotificationTo: "owner@example.com",
+  resendApiKey: "resend-test-key", resendFrom: "Milet <no-reply@example.com>", resendReplyTo: "owner@example.com", intakeNotificationTo: "owner@example.com",
 };
 
 const input: IntakeRequest = {
@@ -16,7 +16,7 @@ const input: IntakeRequest = {
   optInContact: true, consentDataProcessing: true,
 };
 
-test("intake sends structured Gemini request then an idempotent Resend notification", async () => {
+test("intake sends structured Gemini request, notifies the team and confirms receipt to the lead", async () => {
   const calls: Array<{ url: string; init?: RequestInit }> = [];
   const http: ExternalFetch = { fetch: async (url, init) => {
     calls.push({ url, init });
@@ -28,12 +28,15 @@ test("intake sends structured Gemini request then an idempotent Resend notificat
   const result = await service.submit(input);
 
   assert.equal(result.guidance.nextAction, "Separar uma fatura recente.");
-  assert.equal(calls.length, 2);
+  assert.equal(result.acknowledgementSent, true);
+  assert.equal(calls.length, 3);
   assert.match(calls[0]!.url, /gemini-test-model:generateContent$/);
   assert.equal(new Headers(calls[0]!.init!.headers).get("x-goog-api-key"), "gemini-test-key");
   assert.equal(calls[1]!.url, "https://api.resend.com/emails");
   assert.equal(new Headers(calls[1]!.init!.headers).get("idempotency-key"), `milet-intake/${input.submissionId}`);
   assert.match(String(calls[1]!.init!.body), /ana@example\.com/);
+  assert.equal(new Headers(calls[2]!.init!.headers).get("idempotency-key"), `milet-intake-ack/${input.submissionId}`);
+  assert.match(String(calls[2]!.init!.body), /Recebemos sua solicita/);
 });
 
 test("intake rejects missing explicit consent before any external request", async () => {

@@ -21,14 +21,15 @@ export class IntakeService {
     @Inject(TOKENS.externalFetch) private readonly http: ExternalFetch,
   ) {}
 
-  async submit(raw: IntakeRequest): Promise<{ submissionId: string; guidance: IntakeGuidance }> {
+  async submit(raw: IntakeRequest): Promise<{ submissionId: string; guidance: IntakeGuidance; acknowledgementSent: boolean }> {
     if (!this.config.intakeEnabled || !this.config.geminiApiKey || !this.config.resendApiKey || !this.config.resendFrom || !this.config.intakeNotificationTo) {
       throw new ServiceUnavailableException("O intake real não está configurado neste ambiente.");
     }
     const input = validate(raw);
     const guidance = await this.generateGuidance(input);
     await this.notifyTeam(input, guidance);
-    return { submissionId: input.submissionId, guidance };
+    const acknowledgementSent = await this.acknowledgeLead(input);
+    return { submissionId: input.submissionId, guidance, acknowledgementSent };
   }
 
   private async generateGuidance(input: IntakeRequest): Promise<IntakeGuidance> {
@@ -53,11 +54,27 @@ export class IntakeService {
       body: JSON.stringify({
         from: this.config.resendFrom,
         to: [this.config.intakeNotificationTo],
+        reply_to: input.email,
         subject: `[Milet V2] novo intake ${input.profile === "company" ? "empresa" : "residencial"}`,
         html: emailHtml(input, guidance),
       }),
     });
     if (!response.ok) throw new BadGatewayException("Recebemos seus dados, mas não conseguimos encaminhar a solicitação agora. Tente novamente mais tarde.");
+  }
+
+  private async acknowledgeLead(input: IntakeRequest): Promise<boolean> {
+    const response = await this.http.fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { authorization: `Bearer ${this.config.resendApiKey}`, "content-type": "application/json", "idempotency-key": `milet-intake-ack/${input.submissionId}` },
+      body: JSON.stringify({
+        from: this.config.resendFrom,
+        to: [input.email],
+        reply_to: this.config.resendReplyTo ?? this.config.intakeNotificationTo,
+        subject: "Recebemos sua solicitação na Milet",
+        html: acknowledgementHtml(input),
+      }),
+    });
+    return response.ok;
   }
 }
 
@@ -122,6 +139,11 @@ function emailHtml(input: IntakeRequest, guidance: IntakeGuidance): string {
   const field = (label: string, value: string | undefined) => value ? `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>` : "";
   const list = (items: string[]) => `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
   return `<h1>Novo intake Milet V2</h1><p>ID: ${escapeHtml(input.submissionId)}</p><table>${field("Perfil", input.profile)}${field("Nome", input.name)}${field("E-mail", input.email)}${field("Empresa", input.companyName)}${field("Cidade/UF", `${input.city}/${input.state}`)}${field("Distribuidora", input.distributor)}${field("Consumo", input.consumptionKwh)}${field("Conta", input.billValue)}${field("Objetivo", input.objective)}</table><h2>IA — o que sabemos</h2>${list(guidance.whatWeKnow)}<h2>Validar</h2>${list(guidance.whatToVerify)}<h2>Próxima ação</h2><p>${escapeHtml(guidance.nextAction)}</p><h2>Limites</h2><p>${escapeHtml(guidance.limits)}</p>`;
+}
+
+function acknowledgementHtml(input: IntakeRequest): string {
+  const profile = input.profile === "company" ? "sua empresa" : "sua residência";
+  return `<h1>Recebemos sua solicitação.</h1><p>Olá, ${escapeHtml(input.name)}.</p><p>A Milet recebeu seu contexto sobre ${profile}. Enviaremos uma orientação inicial e, se fizer sentido, entraremos em contato para entender os próximos passos.</p><p>Esta mensagem confirma o recebimento; ela não representa cotação, elegibilidade, economia, prazo ou contratação.</p><p>Se precisar complementar alguma informação, responda a este e-mail.</p>`;
 }
 
 function escapeHtml(value: string): string {
