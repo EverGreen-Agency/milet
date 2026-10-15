@@ -56,6 +56,8 @@ for (const directory of siteDirectories) {
 
 for (const required of [
   "index.html",
+  "brandbook.html",
+  "home.css",
   "demo.html",
   "app/index.html",
   "app/manifest.webmanifest",

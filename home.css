@@ -1,0 +1,93 @@
+:root {
+  --ink: #1b1916;
+  --paper: #f5f0e7;
+  --cream: #e9e0d1;
+  --amber: #c68b2c;
+  --amber-light: #e0b66a;
+  --muted: #6f685e;
+  --line: rgba(27, 25, 22, 0.14);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: "Plus Jakarta Sans", sans-serif; }
+a { color: inherit; }
+.site-header { position: sticky; z-index: 10; top: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 74px; padding: 0 5vw; border-bottom: 1px solid var(--line); background: rgba(245, 240, 231, 0.92); backdrop-filter: blur(18px); }
+.brand { display: inline-flex; align-items: center; gap: 10px; width: fit-content; text-decoration: none; font-family: "Playfair Display", serif; font-size: 1.55rem; font-weight: 600; }
+.brand img { width: 33px; height: 33px; object-fit: contain; }
+nav { display: flex; gap: 30px; font-size: .78rem; font-weight: 700; }
+nav a, .footer-links a { text-decoration: none; }
+nav a:hover, .footer-links a:hover { color: var(--amber); }
+.header-cta { justify-self: end; padding: 12px 18px; background: var(--ink); color: white; text-decoration: none; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+
+.hero { min-height: 74vh; display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; align-items: center; padding: 9vw 7vw 8vw; overflow: hidden; position: relative; }
+.hero::before { content: ""; position: absolute; width: 36vw; height: 36vw; right: -10vw; top: -12vw; border-radius: 50%; background: rgba(198,139,44,.16); filter: blur(12px); }
+.eyebrow { margin: 0 0 18px; color: var(--amber); font-size: .71rem; font-weight: 800; letter-spacing: .18em; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-family: "Playfair Display", serif; font-weight: 500; line-height: .98; letter-spacing: -.035em; }
+h1 { max-width: 760px; margin-bottom: 28px; font-size: clamp(3.5rem, 7vw, 7.3rem); }
+h2 { max-width: 900px; font-size: clamp(2.5rem, 5vw, 5.4rem); }
+.lead { max-width: 670px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.28rem); line-height: 1.7; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 30px; min-height: 53px; padding: 0 24px; border-radius: 2px; font-size: .83rem; font-weight: 800; text-decoration: none; }
+.button.primary { background: var(--amber); color: var(--ink); }
+.button.primary:hover { background: var(--amber-light); }
+.button.secondary { border: 1px solid var(--line); }
+.microcopy { margin: 18px 0 0; color: var(--muted); font-size: .72rem; }
+.hero-panel { position: relative; padding: 34px; border: 1px solid rgba(255,255,255,.12); background: var(--ink); color: white; box-shadow: 0 35px 90px rgba(48,37,19,.18); }
+.panel-kicker { margin-bottom: 30px; color: var(--amber-light); font-size: .67rem; font-weight: 800; letter-spacing: .15em; }
+.signal { display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.12); }
+.signal > span { color: var(--amber-light); font: 500 1rem "Playfair Display", serif; }
+.signal strong, .signal small { display: block; }
+.signal strong { margin-bottom: 7px; }
+.signal small { color: rgba(255,255,255,.58); line-height: 1.5; }
+
+.journeys { padding: 8vw 7vw; border-top: 1px solid var(--line); }
+.section-heading { margin-bottom: 50px; }
+.journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.journey-card { min-height: 390px; display: flex; flex-direction: column; padding: 42px; border: 1px solid var(--line); background: rgba(255,255,255,.32); }
+.journey-card.home { background: var(--cream); }
+.card-number { color: var(--amber); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+.journey-card h3 { max-width: 520px; margin: auto 0 20px; font: 500 clamp(2.1rem, 4vw, 4.3rem)/1 "Playfair Display", serif; letter-spacing: -.03em; }
+.journey-card p { max-width: 590px; color: var(--muted); line-height: 1.7; }
+.journey-card a { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid var(--line); font-weight: 800; text-decoration: none; }
+
+.method { padding: 8vw 7vw; background: var(--ink); color: white; }
+.section-heading.light h2 { max-width: 1040px; }
+.method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.14); }
+.method-grid article { min-height: 260px; padding: 34px; background: var(--ink); }
+.method-grid span { color: var(--amber-light); font: 500 1.6rem "Playfair Display", serif; }
+.method-grid h3 { margin: 70px 0 14px; font-size: 1.25rem; }
+.method-grid p { color: rgba(255,255,255,.6); line-height: 1.7; }
+
+.principles { display: grid; grid-template-columns: .85fr 1.15fr; gap: 8vw; padding: 8vw 7vw; }
+.principles ul { margin: 0; padding: 0; list-style: none; }
+.principles li { padding: 22px 0; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.7; }
+.principles li:last-child { border-bottom: 1px solid var(--line); }
+.principles strong { color: var(--ink); }
+.closing { padding: 9vw 7vw; text-align: center; background: var(--cream); }
+.closing h2 { margin: 0 auto 38px; }
+footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center; padding: 36px 5vw; background: var(--ink); color: rgba(255,255,255,.72); font-size: .75rem; }
+.footer-brand { display: flex; gap: 14px; align-items: baseline; }
+.footer-brand strong { color: white; font: 600 1.3rem "Playfair Display", serif; }
+.footer-links { display: flex; gap: 24px; }
+footer > p { justify-self: end; margin: 0; }
+
+@media (max-width: 860px) {
+  .site-header { grid-template-columns: 1fr auto; padding: 0 20px; }
+  nav { display: none; }
+  .header-cta { font-size: 0; padding: 11px 14px; }
+  .header-cta::after { content: "Começar"; font-size: .7rem; }
+  .hero { grid-template-columns: 1fr; gap: 50px; min-height: auto; padding: 80px 20px 70px; }
+  .hero-copy, .hero-panel { min-width: 0; }
+  h1 { font-size: clamp(3.2rem, 15vw, 5.2rem); }
+  .hero-panel { padding: 26px; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .button { width: 100%; }
+  .journeys, .method, .principles, .closing { padding: 70px 20px; }
+  .journey-grid, .method-grid, .principles { grid-template-columns: 1fr; }
+  .journey-card { min-height: 350px; padding: 28px; }
+  footer { grid-template-columns: 1fr; padding: 36px 20px; }
+  .footer-links { flex-wrap: wrap; gap: 14px 22px; }
+  footer > p { justify-self: start; }
+}

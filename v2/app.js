@@ -26,6 +26,8 @@ function setProfile(profile) {
 }
 
 document.querySelectorAll("[data-profile]").forEach((button) => button.addEventListener("click", () => setProfile(button.dataset.profile)));
+const requestedProfile = new URLSearchParams(window.location.search).get("profile");
+if (requestedProfile === "company" || requestedProfile === "home") setProfile(requestedProfile);
 
 function addSection(title, values) {
   const section = document.createElement("section");
