@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const output = path.join(root, "public");
-const siteDirectories = ["app", "assets", "brandbook-web", "tokens", "openapi", "schemas"];
+const siteDirectories = ["app", "assets", "brandbook-web", "tokens", "openapi", "schemas", "v2"];
 const deployableExtensions = new Set([
   ".css",
   ".gif",
@@ -60,6 +60,7 @@ for (const required of [
   "app/index.html",
   "app/manifest.webmanifest",
   "app/sw.js",
+  "v2/index.html",
   "roadmap.html",
   "build-in-public.html",
   "openapi/v1/openapi.json",
