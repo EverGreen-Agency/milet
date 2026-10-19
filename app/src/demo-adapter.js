@@ -41,18 +41,75 @@ export class DemoEnergyAdapter {
   }
 
   async extractInvoice(file, { fail = false } = {}) {
-    await delay(650);
     if (fail) throw new Error("Não foi possível ler este arquivo sintético.");
-    if (file && !/\.(pdf|png|jpe?g)$/i.test(file.name)) {
+    if (file && !/\.(pdf|png|jpe?g|webp)$/i.test(file.name)) {
       throw new Error("Formato não aceito. Use PDF, PNG ou JPG.");
     }
-    return structuredClone(demoCase.invoice);
+
+    if (file && typeof FileReader !== "undefined") {
+      try {
+        const base64 = await readFileAsBase64(file);
+        const mimeType = file.type || (file.name.endsWith(".pdf") ? "application/pdf" : "image/jpeg");
+        const baseUrl = this.apiBaseUrl ? this.apiBaseUrl.replace(/\/$/, "") : "";
+        const response = await this.fetchImpl(`${baseUrl}/v1/extract-invoice`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            fileBase64: base64,
+            mimeType,
+            fileName: file.name
+          })
+        });
+
+        if (response.ok) {
+          const res = await response.json();
+          if (res?.data) {
+            const d = res.data;
+            const merged = structuredClone(demoCase.invoice);
+            merged.fileName = file.name;
+            if (d.distributor) merged.distributor = d.distributor;
+            if (d.consumptionKwh) merged.consumptionKwh = Number(d.consumptionKwh);
+            if (d.totalAmount) merged.total = Number(d.totalAmount);
+            if (d.contractedDemandKw) merged.contractedDemandKw = Number(d.contractedDemandKw);
+            if (d.voltageGroup) merged.voltageGroup = d.voltageGroup;
+            if (d.tariffModality) merged.tariffModality = d.tariffModality;
+            if (d.city) merged.city = d.city;
+            if (d.state) merged.state = d.state;
+            if (d.postalCode) merged.postalCode = d.postalCode;
+            if (d.customerName) merged.customerName = d.customerName;
+            if (d.installationNumber) merged.installationNumber = d.installationNumber;
+            if (d.confidence) merged.confidence = d.confidence;
+            return merged;
+          }
+        }
+      } catch (err) {
+        console.warn("Falha na chamada de OCR remoto; usando fallback assistido:", err);
+      }
+    }
+
+    await delay(650);
+    const invoice = structuredClone(demoCase.invoice);
+    if (file) invoice.fileName = file.name;
+    return invoice;
   }
 
   async saveReviewedInvoice(invoice) {
     await delay(180);
     return { ...structuredClone(invoice), reviewedAt: new Date().toISOString(), status: "reviewed" };
   }
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      const base64 = result.includes(",") ? result.split(",")[1] : result;
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 function mapApiContract(contract) {
