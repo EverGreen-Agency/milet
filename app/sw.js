@@ -12,6 +12,8 @@ const APP_SHELL = [
   "./src/pwa.js",
   "../tokens/tokens.css",
   "../assets/logo/svg/milet-logo-horizontal-light.svg",
+  "../assets/logo/png/transparent/milet-symbol-amber.png",
+  "../assets/logo/png/solid/favicon-light-32x32.png",
   "../assets/logo/png/solid/app-icon-192x192.png",
   "../assets/logo/png/solid/app-icon-512x512.png"
 ];

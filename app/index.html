@@ -10,8 +10,8 @@
   <meta name="apple-mobile-web-app-title" content="Milet">
   <meta name="description" content="Demonstração Milet: da fatura a cenários de energia comparáveis.">
   <title>Milet · Decisão energética</title>
-  <link rel="icon" href="../assets/logo/png/solid/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="../assets/logo/png/solid/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="apple-touch-icon" href="../assets/logo/png/solid/milet-app-icon-180x180.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="../tokens/tokens.css">
   <link rel="stylesheet" href="styles.css">
@@ -19,26 +19,26 @@
 <body>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <header class="app-header">
-    <a class="brand" href="../demo.html" aria-label="Milet, voltar aos limites da demonstração">
-      <img src="../assets/logo/svg/milet-logo-horizontal-light.svg" alt="Milet">
+    <a class="brand" href="/" aria-label="Milet, página inicial">
+      <img src="../assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet">
+      <span>Milet</span>
     </a>
     <div class="header-meta">
-      <span class="demo-badge">Demonstração</span>
       <button class="install-button" id="install-app" type="button" hidden>Instalar</button>
       <button class="icon-button" id="theme-toggle" type="button" aria-label="Alternar tema" aria-pressed="false">◐</button>
     </div>
   </header>
-  <div class="runtime-status" id="runtime-status" data-mode="loading" role="status">Inicializando fonte sintética…</div>
+  <div class="runtime-status" id="runtime-status" data-mode="loading" role="status">Inicializando diagnóstico…</div>
 
   <div class="app-shell">
     <aside class="journey" aria-label="Progresso da análise">
-      <p class="eyebrow">Caso sintético</p>
-      <strong>Padaria Horizonte</strong>
-      <span class="case-id">UC-MG-00482</span>
+      <p class="eyebrow">Diagnóstico Energético</p>
+      <strong id="unit-name">Padaria Horizonte</strong>
+      <span class="case-id" id="unit-id">UC-MG-00482</span>
       <ol id="stepper"></ol>
       <div class="privacy-note">
-        <strong>Seus dados ficam sob seu controle</strong>
-        <span>Nesta demo, nenhum arquivo é enviado. A API opcional lê somente o caso sintético.</span>
+        <strong>Privacidade &amp; Sigilo</strong>
+        <span>Dados protegidos conforme a LGPD e utilizados exclusivamente para comparação neutra.</span>
       </div>
     </aside>
 
