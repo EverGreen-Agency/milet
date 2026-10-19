@@ -7,8 +7,8 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 12;
-  const CORE_SLIDES = 10;
+  const TOTAL_SLIDES = 10;
+  const CORE_SLIDES = 8;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
   let timerSeconds = 0;
@@ -51,11 +51,11 @@
     if (slideCounter) {
       const paddedCurrent = String(currentSlide).padStart(2, '0');
       if (currentSlide <= CORE_SLIDES) {
-        slideCounter.textContent = `${paddedCurrent} / 10`;
-      } else if (currentSlide === 11) {
-        slideCounter.textContent = `Apêndice · BMC (11)`;
+        slideCounter.textContent = `${paddedCurrent} / 08`;
+      } else if (currentSlide === 9) {
+        slideCounter.textContent = `Apêndice · BMC (09)`;
       } else {
-        slideCounter.textContent = `12 / 12 · Encerramento`;
+        slideCounter.textContent = `10 / 10 · Encerramento`;
       }
     }
 

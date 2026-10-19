@@ -7,8 +7,8 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 12;
-  const CORE_SLIDES = 10;
+  const TOTAL_SLIDES = 10;
+  const CORE_SLIDES = 8;
   const TARGET_TIME_SECONDS = 600; // 10 minutos
   let currentSlide = 1;
   let timerSeconds = 0;
@@ -67,37 +67,23 @@
       text: "No Slide 7, estruturamos o Canvas da Proposta de Valor para o Fornecedor de Energia. O Job da comercializadora é prospectar PMEs elegíveis, precificar com velocidade e fechar contratos com margem saudável.\n\nO Mapa de Valor da Milet oferece o Portal Padronizado de Submissão de Propostas, o Matching Inteligente de Demanda e o envio do Passaporte Energético com dados já higienizados. Isso atua como um analgésico direto contra a digitação de faturas ilegíveis e cria ganho ao reduzir o tempo de resposta de dias para minutos, permitindo escalar o volume de vendas com eficiência operacional."
     },
     8: {
-      rubric: "Validação Empírica — Demanda",
-      title: "Slide 8 — Validação do Problema: Consumidor PME",
-      target: "55 segundos (05:55 - 06:50)",
-      bullets: "• Instrumento de pesquisa estruturado em 5 perguntas oficiais de campo\n• Postura científica ética: nenhuma resposta inventada antes da conclusão de campo\n• Espaços transparentes reservados para Respondente A e Respondente B",
-      text: "No Slide 8, entramos na etapa de Validação do Problema exigida pela disciplina. Em total consonância com as orientações da Profa. Julia Gebara e a integridade acadêmica do Mackenzie, não inventamos respostas nem percentuais fictícios de pesquisa.\n\nApresentamos aqui o nosso formulário estruturado em 5 perguntas direcionadas a decisores de PMEs: investigando a última vez que tentaram reduzir a conta, como compararam propostas recebidas, qual foi o maior atrito do processo, como verificam a veracidade da economia e como auditam o pós-contratação. Os espaços dos Respondentes A e B estão reservados para transcrição direta à medida que as entrevistas forem concluídas no campo."
+      rubric: "Síntese N1 & Roteiro N2",
+      title: "Slide 8 — Síntese da Entrega N1 & Próximos Passos",
+      target: "55 segundos (06:00 - 06:55)",
+      bullets: "• Fechamento dos 8 slides principais da avaliação N1\n• Consolidação da modelagem de diagnóstico e planejamento para a etapa N2\n• Agradecimento formal à Profa. Julia Gebara e transição para o modelo de negócios",
+      text: "Para concluir a sequência principal da Avaliação N1, o Slide 8 consolida o cumprimento rigoroso de todos os itens requeridos no plano de ensino: mapeamento de competências da equipe, declaração lapidada do problema, matriz de 6 blocos, mapas de empatia bilaterais e propostas de valor alinhadas.\n\nNossos próximos passos imediatos para a Etapa N2 contemplam a validação de campo com decisores de PMEs e comercializadoras, o teste do protótipo digital do Passaporte Energético e a estruturação do plano de negócios simplificado da Milet."
     },
     9: {
-      rubric: "Validação Empírica — Oferta",
-      title: "Slide 9 — Validação do Problema: Fornecedor",
-      target: "55 segundos (06:50 - 07:45)",
-      bullets: "• Instrumento estruturado para agentes comerciais de comercializadoras\n• 5 perguntas focadas em qualificação, dados faltantes, retrabalho e motivos de perda\n• Espaços reservados para entrevistas qualitativas com especialistas de mercado",
-      text: "No Slide 9, aplicamos o mesmo rigor de validação para o Lado da Oferta. Elaboramos o roteiro com 5 perguntas para comercializadoras e geradores: como qualificam PMEs hoje, quais informações normalmente faltam nas faturas enviadas pelos clientes, onde há mais retrabalho e lentidão na equipe, quais motivos fazem uma cotação não avançar e o que torna uma oportunidade pronta para proposta.\n\nEstamos conduzindo o agendamento de entrevistas com heads comerciais e executivos de contas de comercializadoras varejistas, cujas transcrições serão incorporadas para consolidar a entrega."
-    },
-    10: {
-      rubric: "Síntese N1 & Roteiro N2",
-      title: "Slide 10 — Síntese da Entrega N1 & Próximos Passos",
-      target: "55 segundos (07:45 - 08:40)",
-      bullets: "• Fechamento dos 10 slides principais da avaliação N1\n• Consolidação da modelagem de diagnóstico e plano de ação para a etapa N2\n• Agradecimento formal à Profa. Julia Gebara e abertura para arguição",
-      text: "Para concluir a sequência principal da Avaliação N1, o Slide 10 consolida o cumprimento de todos os itens requeridos no plano de ensino: mapeamento de competências da equipe, declaração lapidada do problema, matriz de 6 blocos, mapas de empatia bilaterais, propostas de valor alinhadas e formulação dos instrumentos de pesquisa.\n\nNossos próximos passos imediatos contemplam a consolidação das transcrições de campo, o confronto das respostas com os Mapas de Empatia e a construção do protótipo digital do Passaporte Energético como base para a Avaliação N2. Agradecemos à Profa. Julia Gebara pela condução da disciplina e estamos à disposição para comentários da banca."
-    },
-    11: {
       rubric: "Apêndice · Modelo de Negócio",
-      title: "Slide 11 (Apêndice) — Business Model Canvas (Fibery)",
+      title: "Slide 9 (Apêndice) — Business Model Canvas (Fibery)",
       target: "Consulta / Q&A",
       bullets: "• Artefato do Fibery Whiteboard v0.2 exibido com destaque visual nítido\n• Mapeamento dos 9 blocos do modelo de negócio bilateral da Milet\n• Hipóteses de receita: take-rate de sucesso do fornecedor e assinatura mensal de auditoria",
       text: "Slide de Apêndice: exibe o Business Model Canvas completo construído no workspace do Fibery, destacando as hipóteses de monetização bilateral com total transparência algorítmica e neutralidade regulatória."
     },
-    12: {
+    10: {
       rubric: "Encerramento & Agradecimentos",
-      title: "Slide 12 — Encerramento e Agradecimentos",
-      target: "25 segundos (08:40 - 09:05)",
+      title: "Slide 10 — Encerramento e Agradecimentos",
+      target: "25 segundos (06:55 - 07:20)",
       bullets: "• Agradecimento formal à Profa. Julia Gebara e à banca\n• Créditos da equipe multidisciplinar (Computação, Elétrica, Adm, Direito, Arquitetura)\n• Abertura formal para a sessão de arguição e perguntas",
       text: "Muito obrigado a todos pela atenção e, em especial, à Profa. Julia Gebara pela condução e direcionamentos ao longo da disciplina Projetos Empreendedores. A equipe Milet encerra aqui a apresentação do diagnóstico N1 e permanece à disposição para perguntas, considerações e apontamentos da banca."
     }
@@ -150,11 +136,11 @@
     if (slideCounter) {
       const paddedCurrent = String(currentSlide).padStart(2, '0');
       if (currentSlide <= CORE_SLIDES) {
-        slideCounter.textContent = `${paddedCurrent} / 10`;
-      } else if (currentSlide === 11) {
-        slideCounter.textContent = `Apêndice · BMC (11)`;
+        slideCounter.textContent = `${paddedCurrent} / 08`;
+      } else if (currentSlide === 9) {
+        slideCounter.textContent = `Apêndice · BMC (09)`;
       } else {
-        slideCounter.textContent = `12 / 12 · Encerramento`;
+        slideCounter.textContent = `10 / 10 · Encerramento`;
       }
     }
 

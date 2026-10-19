@@ -201,8 +201,7 @@ html, body {
 
 .slide-cover {
   justify-content: space-between;
-  background: radial-gradient(circle at 80% 20%, rgba(211, 155, 61, 0.12) 0%, transparent 60%),
-              radial-gradient(circle at 10% 90%, rgba(184, 115, 51, 0.08) 0%, transparent 50%),
+  background: radial-gradient(circle at 80% 20%, rgba(211, 155, 61, 0.08) 0%, transparent 60%),
               var(--color-carbon);
 }
 
@@ -1635,8 +1634,8 @@ html, body {
 }
 
 .problem-box.highlight {
-  border-left: 3px solid var(--color-coral);
-  background: linear-gradient(135deg, rgba(229, 115, 115, 0.06) 0%, var(--color-carbon-card) 100%);
+  border-left: 3px solid var(--color-amber);
+  background: var(--color-carbon-card);
 }
 
 .problem-box-header {

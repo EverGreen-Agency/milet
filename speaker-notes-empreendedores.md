@@ -130,58 +130,41 @@ Esta apresentação foi desenhada estritamente de acordo com o modelo oficial da
 
 ---
 
-### Slide 8 — Validação do Problema: Perfil 1 (Consumidor PME)
-- **Tempo Alvo:** 05:55 - 06:50 (55 segundos)
-- **Rubrica N1:** Instrumento de validação de campo e amostragem de clientes.
-- **Tópicos-chave:**
-  - Instrumento de pesquisa estruturado em 5 perguntas oficiais de campo.
-  - Postura científica ética: nenhuma resposta inventada antes da conclusão de campo.
-  - Espaços transparentes reservados para Respondente A e Respondente B.
-- **Discurso Sugerido:**
-  > "No Slide 8, entramos na etapa de Validação do Problema exigida pela disciplina. Em total consonância com as orientações da Profa. Julia Gebara e a integridade acadêmica do Mackenzie, não inventamos respostas nem percentuais fictícios de pesquisa.
-  >
-  > Apresentamos aqui o nosso formulário estruturado em 5 perguntas direcionadas a decisores de PMEs: investigando a última vez que tentaram reduzir a conta, como compararam propostas recebidas, qual foi o maior atrito do processo, como verificam a veracidade da economia e como auditam o pós-contratação. Os espaços dos Respondentes A e B estão reservados para transcrição direta à medida que as entrevistas forem concluídas no campo."
-
----
-
-### Slide 9 — Validação do Problema: Perfil 2 (Fornecedor)
-- **Tempo Alvo:** 06:50 - 07:45 (55 segundos)
-- **Rubrica N1:** Validação empírica junto aos agentes de oferta.
-- **Tópicos-chave:**
-  - Instrumento estruturado para agentes comerciais de comercializadoras.
-  - 5 perguntas focadas em qualificação, dados faltantes, retrabalho e motivos de perda.
-  - Espaços reservados para entrevistas qualitativas com especialistas de mercado.
-- **Discurso Sugerido:**
-  > "No Slide 9, aplicamos o mesmo rigor de validação para o Lado da Oferta. Elaboramos o roteiro com 5 perguntas para comercializadoras e geradores: como qualificam PMEs hoje, quais informações normalmente faltam nas faturas enviadas pelos clientes, onde há mais retrabalho e lentidão na equipe, quais motivos fazem uma cotação não avançar e o que torna uma oportunidade pronta para proposta.
-  >
-  > Estamos conduzindo o agendamento de entrevistas com heads comerciais e executivos de contas de comercializadoras varejistas, cujas transcrições serão incorporadas para consolidar a entrega."
-
----
-
-### Slide 10 — Síntese da Entrega N1 & Próximos Passos (Transição N2)
-- **Tempo Alvo:** 07:45 - 08:40 (55 segundos)
+### Slide 8 — Síntese da Entrega N1 & Próximos Passos (Transição N2)
+- **Tempo Alvo:** 06:00 - 06:55 (55 segundos)
 - **Rubrica N1:** Fechamento, maturidade metodológica e planejamento para a N2.
 - **Tópicos-chave:**
-  - Conclusão dos 10 slides principais da entrega oficial N1.
-  - Roteiro de transição para N2: consolidação das respostas de campo, refinamento do canvas e MVP do Passaporte.
-  - Agradecimento formal à Profa. Julia Gebara e abertura para arguição.
+  - Conclusão dos 8 slides principais da entrega oficial N1.
+  - Roteiro de transição para N2: planejamento da validação de campo, refinamento do canvas e MVP do Passaporte.
+  - Agradecimento formal à Profa. Julia Gebara e transição para o modelo de negócios.
 - **Discurso Sugerido:**
-  > "Para concluir a sequência principal da Avaliação N1, o Slide 10 consolida o cumprimento de todos os itens requeridos no plano de ensino: mapeamento de competências da equipe, declaração lapidada do problema, matriz de 6 blocos, mapas de empatia bilaterais, propostas de valor alinhadas e formulação dos instrumentos de pesquisa.
+  > "Para concluir a sequência principal da Avaliação N1, o Slide 8 consolida o cumprimento rigoroso de todos os itens requeridos no plano de ensino: mapeamento de competências da equipe, declaração lapidada do problema, matriz de 6 blocos, mapas de empatia bilaterais e propostas de valor alinhadas.
   >
-  > Nossos próximos passos imediatos contemplam a consolidação das transcrições de campo, o confronto das respostas com os Mapas de Empatia e a construção do protótipo digital do Passaporte Energético como base para a Avaliação N2. Agradecemos à Profa. Julia Gebara pela condução da disciplina e estamos à disposição para comentários da banca."
+  > Nossos próximos passos imediatos para a Etapa N2 contemplam a validação de campo com decisores de PMEs e comercializadoras, o teste do protótipo digital do Passaporte Energético e a estruturação do plano de negócios simplificado da Milet."
 
 ---
 
-## Slides de Apêndice (Para Consulta em Q&A)
+## Slides de Apêndice & Encerramento
 
-### Slide 11 (Apêndice A) — Jornada de Solução em 7 Etapas
-- Detalhamento do mecanismo de produto da Milet: *Descobrir ➔ Entender ➔ Decidir ➔ Competir ➔ Executar ➔ Comprovar ➔ Reotimizar*.
-- Foco em Q&A: explicar como a Milet preserva contexto e evita que a PME fique abandonada após a assinatura do contrato.
+### Slide 9 (Apêndice) — Business Model Canvas (Fibery Whiteboard)
+- **Tempo Alvo:** Consulta em Q&A / Arguição da Banca
+- **Rubrica N1:** Mapeamento integral dos 9 blocos do ecossistema de negócio.
+- **Tópicos-chave:**
+  - Artefato oficial v0.2 estruturado no Fibery Whiteboard.
+  - Mapeamento das hipóteses de monetização bilateral: take-rate de sucesso do fornecedor e assinatura mensal de auditoria da PME.
+  - Neutralidade algorítmica e transparência regulatória.
+- **Discurso Sugerido (se solicitado pela banca):**
+  > "No Slide 9 de apêndice, exibimos o Business Model Canvas completo construído no workspace do Fibery, destacando as hipóteses de monetização bilateral com total transparência algorítmica e neutralidade regulatória."
 
-### Slide 12 (Apêndice B) — Business Model Canvas (Fibery Whiteboard)
-- Exibição do BMC completo de 9 blocos extraído do Fibery.
-- Foco em Q&A: explicar as hipóteses de receita (take-rate de sucesso pago pelo fornecedor e assinatura mensal de auditoria paga pela PME) mantendo a neutralidade do algoritmo.
+---
 
-### Slide 13 (Apêndice C) — Matriz Experimental de Hipóteses (H1 a H6)
-- Rastreabilidade Lean Startup: *Hipótese ➔ Experimento ➔ Métrica ➔ Decisão*.
-- Foco em Q&A: demonstrar maturidade científica na definição do que precisa ser provado para transformar o projeto em empresa viável.
+### Slide 10 — Encerramento, Agradecimentos & Arguição
+- **Tempo Alvo:** 06:55 - 07:20 (25 segundos)
+- **Rubrica N1:** Postura acadêmica, créditos da equipe e abertura para avaliação docente.
+- **Tópicos-chave:**
+  - Agradecimento formal à Profa. Julia Gebara e à banca examinadora.
+  - Créditos aos 6 integrantes da equipe multidisciplinar (Computação, Elétrica, Adm, Direito, Arquitetura).
+  - Abertura formal para a sessão de arguição e perguntas.
+- **Discurso Sugerido:**
+  > "Muito obrigado a todos pela atenção e, em especial, à Profa. Julia Gebara pela condução e direcionamentos ao longo da disciplina Projetos Empreendedores. A equipe Milet encerra aqui a apresentação do diagnóstico N1 e permanece à disposição para perguntas, considerações e apontamentos da banca."
+

@@ -18,18 +18,12 @@ Este checklist reúne exclusivamente as etapas pendentes para a entrega definiti
 
 ---
 
-### 2. Validação Empírica no Campo (Slides 8 e 9)
-*Obs.: Substituir os placeholders dos Respondentes A e B assim que as entrevistas/formulários forem preenchidos pelos entrevistados.*
+### 2. Validação Empírica no Campo (Planejada para Etapa N2)
+*Alinhamento com a Profa. Julia Gebara: a etapa N1 consolida o diagnóstico de dor e modelagem das hipóteses. As entrevistas de campo e testes de protótipo serão executados na Etapa N2.*
 
-#### Perfil 1 (Consumidor PME — Slide 8):
-- [ ] Aplicar o formulário de 5 perguntas a pelo menos 2 decisores de PMEs (Grupo A).
-- [ ] Inserir transcrição/síntese das respostas do **Respondente A** (Sócio/Diretor de PME comercial).
-- [ ] Inserir transcrição/síntese das respostas do **Respondente B** (Gestor administrativo/financeiro de PME).
-
-#### Perfil 2 (Comercializadora / Fornecedor — Slide 9):
-- [ ] Aplicar o roteiro de 5 perguntas a pelo menos 2 especialistas de comercializadoras/geradores.
-- [ ] Inserir transcrição/síntese das respostas do **Respondente A** (Head Comercial / Gerente de Varejo).
-- [ ] Inserir transcrição/síntese das respostas do **Respondente B** (Especialista em Migração ACL / Executivo de Contas).
+- [x] Remoção dos cards de placeholders/espaços em branco do deck N1 para evitar poluição visual.
+- [x] Consolidação da apresentação N1 em 10 slides (8 core pitch + 1 apêndice BMC + 1 encerramento).
+- [ ] Condução das entrevistas e validação com protótipo digital do Passaporte na Etapa N2.
 
 ---
 
