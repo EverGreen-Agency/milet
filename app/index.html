@@ -10,18 +10,18 @@
   <meta name="apple-mobile-web-app-title" content="Milet">
   <meta name="description" content="Demonstração Milet: da fatura a cenários de energia comparáveis.">
   <title>Milet · Decisão energética</title>
-  <link rel="icon" type="image/png" href="../assets/logo/png/solid/favicon-light-32x32.png">
-  <link rel="apple-touch-icon" href="../assets/logo/png/solid/milet-app-icon-180x180.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="../tokens/tokens.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="/assets/logo/png/solid/favicon-light-32x32.png">
+  <link rel="apple-touch-icon" href="/assets/logo/png/solid/milet-app-icon-180x180.png">
+  <link rel="manifest" href="/app/manifest.webmanifest">
+  <link rel="stylesheet" href="/tokens/tokens.css">
+  <link rel="stylesheet" href="/app/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <header class="app-header">
-    <a class="brand" href="/" aria-label="Milet, página inicial">
-      <img src="../assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet">
-      <span>Milet</span>
+    <a class="brand" href="/" aria-label="Milet, página inicial" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#f7f3ea;">
+      <img src="/assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet" width="32" height="32" style="width:32px;height:32px;max-width:32px;max-height:32px;object-fit:contain;display:block;">
+      <span style="color:#f7f3ea;text-decoration:none;font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:600;">Milet</span>
     </a>
     <div class="header-meta">
       <button class="install-button" id="install-app" type="button" hidden>Instalar</button>
@@ -49,8 +49,8 @@
   </div>
 
   <noscript>Esta demonstração precisa de JavaScript para navegar entre as etapas.</noscript>
-  <script src="runtime-config.js"></script>
-  <script type="module" src="src/pwa.js"></script>
-  <script type="module" src="src/app.js"></script>
+  <script src="/app/runtime-config.js"></script>
+  <script type="module" src="/app/src/pwa.js"></script>
+  <script type="module" src="/app/src/app.js"></script>
 </body>
 </html>

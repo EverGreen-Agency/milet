@@ -12,10 +12,14 @@
     { "source": "/roadmap", "destination": "/roadmap.html" },
     { "source": "/build-in-public", "destination": "/build-in-public.html" },
     { "source": "/demo", "destination": "/demo.html" },
-    { "source": "/brandbook", "destination": "/brandbook.html" },
-    { "source": "/app", "destination": "/app/index.html" }
+    { "source": "/brandbook", "destination": "/brandbook.html" }
   ],
   "redirects": [
+    {
+      "source": "/app",
+      "destination": "/app/",
+      "permanent": true
+    },
     {
       "source": "/brandbook-web",
       "destination": "/brandbook",

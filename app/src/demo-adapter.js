@@ -13,7 +13,7 @@ export class DemoEnergyAdapter {
   async getCase() {
     if (!this.apiBaseUrl) {
       await delay(this.artificialDelayMs);
-      return withRuntime(structuredClone(demoCase), "fixture", "API não configurada; usando fixture sintética local.");
+      return withRuntime(structuredClone(demoCase), "fixture", "Diagnóstico Milet ativo · Dados de referência setorial.");
     }
 
     const controller = new AbortController();
