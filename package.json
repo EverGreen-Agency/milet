@@ -11,7 +11,7 @@
     "test:static": "node --test app/tests/*.test.js",
     "test:foundation": "tsx --tsconfig tsconfig.base.json --test apps/*/test/*.test.ts packages/*/test/*.test.ts infra/test/*.test.ts",
     "test:vercel": "node --test api/v1/*.test.js",
-    "check:syntax": "node --check app/runtime-config.js && node --check app/sw.js && node --check app/src/app.js && node --check app/src/domain.js && node --check app/src/fixtures.js && node --check app/src/demo-adapter.js && node --check app/src/pwa.js && node --check public-product.js && node --check api/v1/intakes.js",
+    "check:syntax": "node --check app/runtime-config.js && node --check app/sw.js && node --check app/src/app.js && node --check app/src/domain.js && node --check app/src/fixtures.js && node --check app/src/demo-adapter.js && node --check app/src/pwa.js && node --check public-product.js && node --check api/v1/intakes.js && node --check api/v1/extract-invoice.js",
     "check:static": "node app/scripts/check-static.js",
     "check:site": "node app/scripts/check-site.js",
     "check": "npm run check:syntax && npm run check:static && npm run check:site",

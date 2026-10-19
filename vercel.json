@@ -9,6 +9,7 @@
   ],
   "rewrites": [
     { "source": "/v1/intakes", "destination": "/api/v1/intakes" },
+    { "source": "/v1/extract-invoice", "destination": "/api/v1/extract-invoice" },
     { "source": "/roadmap", "destination": "/roadmap.html" },
     { "source": "/build-in-public", "destination": "/build-in-public.html" },
     { "source": "/demo", "destination": "/demo.html" },
