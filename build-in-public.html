@@ -17,7 +17,7 @@
   <header class="public-header">
     <nav class="public-nav" aria-label="Navegação principal">
       <a class="public-brand" href="index.html"><img src="assets/logo/png/transparent/milet-symbol-amber.png" alt=""><strong>Milet</strong><span>Produto aberto</span></a>
-      <div class="public-links"><a href="roadmap.html">Roadmap</a><a href="build-in-public.html" aria-current="page">Atualizações</a><a href="demo.html">Demo</a><a href="backlog.html">Backlog</a></div>
+      <div class="public-links"><a href="roadmap.html">Roadmap</a><a href="build-in-public.html" aria-current="page">Atualizações</a><a href="demo.html">Demo</a><a href="/v2">Intake V2</a></div>
       <button class="theme-button" type="button" data-theme-toggle aria-label="Usar tema escuro">☾</button>
     </nav>
   </header>
@@ -32,6 +32,22 @@
 
     <section class="public-section" aria-labelledby="atualizacao-inicial">
       <div class="section-heading"><span class="section-kicker">Changelog verificável</span><h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2><p>Registro baseado em código, testes e deploys observáveis. O portal está publicado; cada entrada separa essa presença pública da operação de backend ainda não ativada.</p></div>
+      <article class="changelog-entry">
+        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado na infra</span><time datetime="2026-10-19">19 out 2026</time><span class="meta-label">Storage & Intake 005</span></div>
+        <div class="changelog-body">
+          <h3>Bucket S3 privado na Railway e segredos de produção ativos para intake consentido.</h3>
+          <p><strong>Problema tratado:</strong> para viabilizar upload seguro de faturas reais sem expor documentos publicamente, é necessária infraestrutura de quarentena com chaves de acesso criptografadas no servidor.</p>
+          <ul>
+            <li>Provisionamento de bucket privado S3-compatível <code>milet-invoices</code> na infraestrutura Railway (região <code>iad</code>).</li>
+            <li>Cadastro de segredos de ambiente criptografados na Vercel (Produção e Preview) para integração segura com Gemini, Resend e S3.</li>
+            <li>Isolamento rigoroso entre artefatos acadêmicos de especificação e o código de produto voltado ao usuário final.</li>
+            <li>Fluxo de intake PME e Residencial ativo com validação, consentimento explícito e triagem por IA com limites claros.</li>
+          </ul>
+          <p><strong>Evidência:</strong> credenciais S3 geradas e validadas na Vercel via CLI; endpoint <code>POST /v1/intakes</code> operacional com fallback seguro em caso de indisponibilidade.</p>
+          <div class="card-actions"><a class="button" href="/v2">Testar intake v2</a><a class="button" href="/app/">Abrir comparador</a></div>
+          <p><strong>Limite:</strong> o upload de documentos reais com OCR direto permanecerá em fase de testes assistidos com revisão humana antes da abertura irrestrita ao público.</p>
+        </div>
+      </article>
       <article class="changelog-entry">
         <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Mobile web 004</span></div>
         <div class="changelog-body">
@@ -111,9 +127,9 @@
       <div class="section-heading"><span class="section-kicker">Antes desta atualização</span><h2 id="trabalho-verificado">Artefatos existentes que podemos demonstrar.</h2></div>
       <div class="card-grid">
         <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Brandbook e sistema visual</h3><p>Identidade, tokens, componentes demonstrativos, assets e documentação estão disponíveis na página principal.</p><div class="card-actions"><a class="button" href="index.html">Abrir brandbook</a></div></article>
-        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Backlog acadêmico</h3><p>A superfície documenta seis épicos e 28 histórias. Ela é evidência de especificação, não de execução do produto.</p><div class="card-actions"><a class="button" href="backlog.html">Abrir backlog</a></div></article>
-        <article class="card"><span class="status-chip status-prototype">Protótipo validado localmente</span><h3>Motion 3D procedural</h3><p>Seis estados morfológicos, timeline, scrubber e interação responsiva foram registrados no commit <code>36d1bbc</code>. O verso da forma segue uma interpretação visual.</p><div class="card-actions"><a class="button" href="motion-3d.html">Experimentar motion</a></div></article>
-        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Apresentações acadêmicas</h3><p>Decks web preservados para o plano de projeto e para Projetos Empreendedores. Não representam um painel operacional.</p><div class="card-actions"><a class="button" href="presentation.html">Plano de projeto</a><a class="button" href="presentation-empreendedores.html">Empreendedores</a></div></article>
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Backlog acadêmico</h3><p>A superfície documenta seis épicos e 28 histórias. Ela é evidência de especificação, não de execução do produto.</p><div class="card-actions"><a class="button" href="academico/backlog.html">Abrir backlog</a></div></article>
+        <article class="card"><span class="status-chip status-prototype">Protótipo validado localmente</span><h3>Motion 3D procedural</h3><p>Seis estados morfológicos, timeline, scrubber e interação responsiva foram registrados no commit <code>36d1bbc</code>. O verso da forma segue uma interpretação visual.</p><div class="card-actions"><a class="button" href="academico/motion-3d.html">Experimentar motion</a></div></article>
+        <article class="card"><span class="status-chip status-implemented">Implementado</span><h3>Apresentações acadêmicas</h3><p>Decks web preservados para o plano de projeto e para Projetos Empreendedores. Não representam um painel operacional.</p><div class="card-actions"><a class="button" href="academico/presentation.html">Plano de projeto</a><a class="button" href="academico/presentation-empreendedores.html">Empreendedores</a></div></article>
       </div>
     </section>
 
@@ -137,7 +153,7 @@
     </section>
   </main>
 
-  <footer class="public-footer"><div class="public-footer-inner"><p>© 2026 Milet · Atualizações baseadas em evidência disponível.</p><div class="public-footer-links"><a href="index.html">Brandbook</a><a href="roadmap.html">Roadmap</a><a href="backlog.html">Backlog</a></div></div></footer>
+  <footer class="public-footer"><div class="public-footer-inner"><p>© 2026 Milet · Atualizações baseadas em evidência disponível.</p><div class="public-footer-links"><a href="index.html">Brandbook</a><a href="roadmap.html">Roadmap</a><a href="/v2">Intake V2</a></div></div></footer>
   <script src="public-product.js"></script>
 </body>
 </html>
