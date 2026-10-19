@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Apresentação de MVP (Projetos de Computação I · Mackenzie)</title>
+  <meta name="description" content="Apresentação de Avaliação de MVP da Milet para a disciplina de Projetos de Computação I (Mackenzie).">
+  
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  
+  <!-- Estilos e Fontes -->
+  <link rel="stylesheet" href="presentation-mvp.css">
+</head>
+<body>
+
+  <!-- VIEWPORT E CONTAINER ESCALADO 16:9 -->
+  <div id="presentation-viewport">
+    <div id="deck-container">
+
+      <!-- ====================================================================
+           SLIDE 1 — CAPA OFICIAL
+           ==================================================================== -->
+      <section class="slide slide-cover active" id="slide-1" data-slide="1">
+        <div class="cover-container">
+          <div class="cover-header">
+            <div class="cover-logo-wrapper">
+              <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Símbolo Oficial Milet" class="cover-logo-img">
+              <span class="cover-logo-text">MILET</span>
+            </div>
+            <div class="cover-institution">
+              UNIVERSIDADE PRESBITERIANA MACKENZIE<br>
+              <strong>PROJETOS DE COMPUTAÇÃO I · APRESENTAÇÃO DE MVP</strong>
+            </div>
+          </div>
+
+          <div class="cover-hero">
+            <div class="cover-title-area">
+              <span class="cover-tag">APRESENTAÇÃO DE MVP · PROJETOS DE COMP. I</span>
+              <h1 class="cover-title">
+                O Sistema Operacional da <span>Energia em Liberdade</span>
+              </h1>
+              <p class="cover-description">
+                Plataforma digital e independente que digitaliza a jornada energética de PMEs: diagnóstico instantâneo, comparação neutra de propostas e auditoria contínua de economia.
+              </p>
+              <div style="display: flex; gap: 8px; margin-top: 16px;">
+                <span class="slide-number-badge" style="background: rgba(255,255,255,0.05); color: var(--color-text-muted); border-color: rgba(255,255,255,0.15);">Produto Funcional em Produção</span>
+                <span class="slide-number-badge" style="background: rgba(255,255,255,0.05); color: var(--color-text-muted); border-color: rgba(255,255,255,0.15);">PWA Offline-First</span>
+                <span class="slide-number-badge" style="background: rgba(255,255,255,0.05); color: var(--color-text-muted); border-color: rgba(255,255,255,0.15);">Engine Analítica de Faturas</span>
+              </div>
+            </div>
+
+            <div class="cover-right-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">PRODUTO EM PRODUÇÃO</span>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-dim);">v2.0 Beta</span>
+              </div>
+              <h3 style="font-family: var(--font-display); font-size: 19px; color: #FFF; margin-bottom: 8px;">
+                Entregável do MVP
+              </h3>
+              <p style="font-size: 12.5px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px;">
+                Aplicação web responsiva e PWA instalável offline com motor analítico de faturas, cálculo tarifário equivalente e ingestão com persistência transacional.
+              </p>
+              <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; border: 1px dashed rgba(204,136,0,0.3);">
+                <div style="font-family: var(--font-display); font-size: 26px; color: var(--color-primary); font-weight: 700;">&lt; 60s</div>
+                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-text-dim); text-transform: uppercase;">Tempo para gerar diagnóstico de economia auditável</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cover-footer">
+            <div class="cover-credits">
+              <strong>Eduardo Ferreira de Mattos</strong><br>
+              <span class="role">Projetos de Computação I · TIA 10402800</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2 — DEFINIÇÃO DO PROBLEMA DO USUÁRIO
+           ==================================================================== -->
+      <section class="slide" id="slide-2" data-slide="2">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 02</span>
+              <span class="slide-discipline-tag">Diagnóstico de Mercado</span>
+            </div>
+            <h2 class="slide-header-title">O Problema do Usuário: Assimetria e Opacidade Energética</h2>
+            <p class="slide-subtitle">A dor crítica enfrentada por tomadores de decisão em Pequenas e Médias Empresas (PMEs).</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-primary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Contexto do Problema</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="grid-3col">
+            <div class="card-box accent-border">
+              <div class="card-title">1. Faturas Ilegíveis</div>
+              <p class="card-text">
+                Contas de energia do Grupo A e GD são documentos herméticos com dezenas de rubricas regulatórias (TUSD, TE, demanda de ponta e bandeiras).
+              </p>
+              <ul class="card-list">
+                <li>Decisor leigo não sabe quanto paga pela <strong>energia real consumida</strong> versus tarifas de infraestrutura de rede.</li>
+                <li>Incapacidade técnica interna para conferir cobranças indevidas ou erros de faturamento da distribuidora.</li>
+              </ul>
+            </div>
+
+            <div class="card-box secondary-border">
+              <div class="card-title">2. Propostas Incomparáveis</div>
+              <p class="card-text">
+                Comercializadoras enviam cotações heterogêneas, com indexadores diversos (IPCA, IGP-M, tarifa de referência) e prazos desencontrados.
+              </p>
+              <ul class="card-list">
+                <li>Impossível confrontar propostas de fornecedores na mesma régua técnica usando planilhas comuns.</li>
+                <li>Cláusulas contratuais opacas de <strong>take-or-pay</strong> e sazonalização embutem riscos financeiros ocultos.</li>
+              </ul>
+            </div>
+
+            <div class="card-box">
+              <div class="card-title">3. Falta de Auditoria Contínua</div>
+              <p class="card-text">
+                Após assinar contratos de mercado livre ou GD, o cliente não possui ferramentas independentes para checar se a economia ocorreu.
+              </p>
+              <ul class="card-list">
+                <li>Descontos prometidos de 25% acabam diluídos em encargos setoriais e custos de liquidação na CCEE.</li>
+                <li>O empresário sente-se <strong>inseguro, sobrecarregado e desconfiado</strong> do setor elétrico.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">PERFIL DO USUÁRIO AFETADO (PERSONA PME):</span>
+              <span style="font-size: 13px; color: var(--color-text-light); margin-left: 8px;">
+                Dono, CFO ou Diretor Operacional de PME (mercados, restaurantes, clínicas, padarias) com fatura mensal acima de R$ 5.000,00.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3 — DEFINIÇÃO DE HIPÓTESE DE VALOR
+           ==================================================================== -->
+      <section class="slide theme-cream" id="slide-3" data-slide="3">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 03</span>
+              <span class="slide-discipline-tag">Tese & Modelagem de Valor</span>
+            </div>
+            <h2 class="slide-header-title">Hipótese de Valor: O Motor de Decisão Milet</h2>
+            <p class="slide-subtitle">A proposição de valor que resolve a dor do cliente com metodologia mensurável.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-secondary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Hipótese Testável</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="grid-2col">
+            <div class="card-box" style="background: #FFFFFF; justify-content: space-between;">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); font-weight: 700;">
+                  HIPÓTESE CENTRAL TESTÁVEL
+                </span>
+                <blockquote style="font-family: var(--font-display); font-size: clamp(20px, 2.1vw, 26px); color: var(--color-text-dark); margin: 16px 0; line-height: 1.35; font-style: italic;">
+                  “Se oferecermos a uma PME um diagnóstico energético instantâneo e neutro a partir dos dados de sua fatura, equalizando as opções de suprimento numa mesma régua técnica, o decisor migrará com confiança e com economia auditável.”
+                </blockquote>
+              </div>
+              <div style="background: rgba(197, 82, 33, 0.08); padding: 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 11.5px; color: var(--color-secondary);">
+                <strong>Métrica de Validação:</strong> Conversão de lead com tempo de diagnóstico &lt; 60s e redução de incerteza contratual para 0%.
+              </div>
+            </div>
+
+            <div class="card-box" style="background: #FFFFFF; justify-content: space-between;">
+              <div>
+                <div class="card-title" style="color: var(--color-secondary);">As 3 Alavancas de Valor Milet</div>
+                <ul class="card-list" style="margin-top: 10px; gap: 14px;">
+                  <li>
+                    <strong>1. Passaporte Energético:</strong> Higieniza dados de consumo, demanda e tensão em formato padronizado e auditável.
+                  </li>
+                  <li>
+                    <strong>2. Comparador Neutro Multi-Modal:</strong> Algoritmo proprietário que simula lado a lado Mercado Cativo, Mercado Livre (ACL) e GD por Assinatura.
+                  </li>
+                  <li>
+                    <strong>3. Savings Ledger (Livro-Razão):</strong> Acompanhamento contínuo que audita mês a mês se o valor economizado bateu com a proposta.
+                  </li>
+                </ul>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+                <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary); background: rgba(197,82,33,0.08);">Elegibilidade Instantânea</span>
+                <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary); background: rgba(197,82,33,0.08);">Mercado Livre (ACL)</span>
+                <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary); background: rgba(197,82,33,0.08);">Geração Distribuída (GD)</span>
+                <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary); background: rgba(197,82,33,0.08);">Auditoria Pós-Contrato</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); font-weight: 700;">EQUAÇÃO DE VALOR ENTREGUE:</span>
+              <span style="font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-dark); margin-left: 8px;">
+                Economia Líquida = (Tarifa Cativo × kWh) - [ (Preço Energia Livre × kWh) + TUSD Fio B + Encargos CCEE ]
+              </span>
+            </div>
+            <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary); background: rgba(197,82,33,0.1);">100% AUDITÁVEL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4 — ADERÊNCIA AOS CONCEITOS DE MVP
+           ==================================================================== -->
+      <section class="slide" id="slide-4" data-slide="4">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 04</span>
+              <span class="slide-discipline-tag">Engenharia de Produto & Lean</span>
+            </div>
+            <h2 class="slide-header-title">Aderência aos Conceitos de MVP: Fatiamento Vertical</h2>
+            <p class="slide-subtitle">Construção da menor fatia funcional de software que entrega valor real e testa o maior risco.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-primary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Conceito de MVP</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="grid-2col">
+            <div class="card-box accent-border">
+              <div class="card-title">O que NÃO é o nosso MVP</div>
+              <p class="card-text">
+                Fugimos do anti-padrão de construir um sistema monolítico ou um protótipo estático sem funcionalidade:
+              </p>
+              <ul class="card-list">
+                <li><strong>Não é um mockup navegável de Figma:</strong> O código compila, roda no navegador e processa regras de negócio no servidor.</li>
+                <li><strong>Não tenta construir a CCEE inteira:</strong> Não incluímos liquidação financeira nem regras complexas de desbalanceamento de rede.</li>
+                <li><strong>Não exige telemetria IoT na fase 1:</strong> Aproveita os dados já medidos e registrados na fatura mensal da distribuidora.</li>
+              </ul>
+            </div>
+
+            <div class="card-box" style="border-left: 4px solid var(--color-secondary);">
+              <div class="card-title">O que É o MVP Milet (Fatia Crítica)</div>
+              <p class="card-text">
+                A jornada essencial de decisão executada de ponta a ponta com software de produção:
+              </p>
+              <ul class="card-list">
+                <li><strong>Intake com Validação em Tempo Real:</strong> Entrada de dados operacionais (concessionária, demanda contratada, consumo em kWh).</li>
+                <li><strong>Motor de Cálculo Tarifário:</strong> Aplicação das alíquotas de TUSD/TE e precificação média de mercado livre e GD.</li>
+                <li><strong>Geração do Diagnóstico com IA:</strong> Integração serverless com Google Gemini para gerar parecer consultivo instantâneo.</li>
+                <li><strong>Entrega Multicanal:</strong> Exibição em tela + disparo automático de e-mail transacional via Resend.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">METODOLOGIA LEAN STARTUP (ERIC RIES):</span>
+              <span style="font-size: 13px; color: var(--color-text-light); margin-left: 8px;">
+                Ciclo Construir-Medir-Aprender reduzido: validamos o risco de conversão do lead antes de despender CAPEX em infraestrutura pesada.
+              </span>
+            </div>
+            <span class="slide-number-badge">LEAN VERTICAL SLICE</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 5 — O MVP EM AÇÃO: DEMONSTRAÇÃO E FUNCIONAMENTO
+           ==================================================================== -->
+      <section class="slide" id="slide-5" data-slide="5">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 05</span>
+              <span class="slide-discipline-tag">Demonstração ao Vivo</span>
+            </div>
+            <h2 class="slide-header-title">O MVP em Ação: Demonstração e Funcionamento</h2>
+            <p class="slide-subtitle">Execução do fluxo completo na aplicação em ambiente de produção.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-primary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Aplicação em Produção</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="demo-showcase-container">
+            <div class="demo-interactive-frame">
+              <div class="demo-top-bar">
+                <div class="demo-dots">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-dot yellow"></span>
+                  <span class="demo-dot green"></span>
+                </div>
+                <span>https://milet.vercel.app/app · PWA Online</span>
+                <span style="color: var(--color-success);">Servidor Ativo</span>
+              </div>
+              <div class="demo-content-view">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
+                  <div>
+                    <h4 style="font-family: var(--font-display); font-size: 18px; color: var(--color-primary);">Fluxo Core Executado de Ponta a Ponta</h4>
+                    <span style="font-size: 11px; color: var(--color-text-muted);">Caso Real: Restaurante Industrial · Enel SP (Grupo A4)</span>
+                  </div>
+                  <span class="slide-number-badge">DEMO FEED</span>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 8px 12px; font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted); display: flex; justify-content: space-between;">
+                  <span><strong>Entrada:</strong> Enel SP · A4</span>
+                  <span><strong>Demanda:</strong> 75 kW</span>
+                  <span><strong>Consumo:</strong> 18.500 kWh/mês</span>
+                  <span style="color: var(--color-primary);">Validado</span>
+                </div>
+
+                <div class="grid-3col" style="height: auto; gap: 10px;">
+                  <div class="stat-box" style="background: rgba(255,255,255,0.03); border: 1px solid var(--color-border-dark); border-radius: 6px; padding: 10px; text-align: center;">
+                    <span style="display: block; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #FFF;">R$ 9.420</span>
+                    <span style="font-size: 10px; color: var(--color-text-muted); text-transform: uppercase;">Custo Cativo Atual</span>
+                  </div>
+                  <div class="stat-box" style="background: rgba(22, 163, 74, 0.1); border: 1px solid var(--color-success); border-radius: 6px; padding: 10px; text-align: center;">
+                    <span style="display: block; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--color-success);">-24,5%</span>
+                    <span style="font-size: 10px; color: var(--color-success); text-transform: uppercase;">Economia Projetada</span>
+                  </div>
+                  <div class="stat-box" style="background: rgba(204, 136, 0, 0.1); border: 1px solid var(--color-primary); border-radius: 6px; padding: 10px; text-align: center;">
+                    <span style="display: block; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--color-primary);">R$ 2.307</span>
+                    <span style="font-size: 10px; color: var(--color-primary); text-transform: uppercase;">Sobra Mensal Estimada</span>
+                  </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 8px 12px;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; margin-bottom: 4px; color: var(--color-text-muted); text-transform: uppercase;">
+                    <span>Modalidade</span>
+                    <span>Custo Mensal</span>
+                    <span>Economia</span>
+                    <span>Status</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); color: #9CA3AF;">
+                    <span>Regulado (Cativo)</span>
+                    <span style="font-family: var(--font-mono);">R$ 9.420</span>
+                    <span style="font-family: var(--font-mono);">R$ 0</span>
+                    <span style="color: var(--color-warning);">Tarifa Atual</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); color: #FFF; font-weight: 600;">
+                    <span style="color: var(--color-primary);">Mercado Livre (ACL)</span>
+                    <span style="font-family: var(--font-mono); color: #FFF;">R$ 7.113</span>
+                    <span style="font-family: var(--font-mono); color: var(--color-success);">+ R$ 2.307 (-24,5%)</span>
+                    <span style="color: var(--color-success);">Recomendado</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); color: #D1D5DB;">
+                    <span>GD por Assinatura</span>
+                    <span style="font-family: var(--font-mono);">R$ 7.820</span>
+                    <span style="font-family: var(--font-mono); color: var(--color-success);">+ R$ 1.600 (-17,0%)</span>
+                    <span style="color: var(--color-text-muted);">Alternativa</span>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 10px 12px; border-radius: 6px;">
+                  <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-primary); margin-bottom: 4px; display: flex; justify-content: space-between;">
+                    <span>PARECER ANALÍTICO GERADO PELO MOTOR:</span>
+                    <span style="color: var(--color-success);">Gemini AI & Engine</span>
+                  </div>
+                  <p style="font-size: 12px; color: #D1D5DB; line-height: 1.45;">
+                    “Consumidor elegível para migração no Mercado Livre de Energia (ACL) via Comercializador Varejista. Recomendada equalização com proposta de Geração Distribuída compartilhada para mitigação de bandeiras tarifárias.”
+                  </p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 10.5px; color: var(--color-text-muted); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 6px;">
+                  <span>Disparo de Notificação: <strong style="color: var(--color-text-light);">Resend API</strong></span>
+                  <span>Persistência Transacional: <strong style="color: var(--color-text-light);">Postgres Outbox</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px; justify-content: center;">
+              <div class="demo-cta-box">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">TESTAR PROTÓTIPO EM TEMPO REAL</span>
+                <p style="font-size: 12.5px; color: var(--color-text-muted);">
+                  Acesso direto à jornada interativa do MVP:
+                </p>
+                <a href="/app" target="_blank" class="demo-btn-action">
+                  <span>Abrir Demonstração ao Vivo</span>
+                </a>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  Rota Oficial da Aplicação: <code style="color: var(--color-primary);">/app</code>
+                </span>
+              </div>
+
+              <div class="card-box" style="padding: 14px; gap: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); font-weight: 700;">ESCOPO DO MVP VALIDADO</span>
+                  <span class="slide-number-badge" style="background: rgba(197,82,33,0.15); color: var(--color-secondary); border-color: var(--color-secondary);">PRODUÇÃO</span>
+                </div>
+                <div style="font-size: 12px; color: var(--color-text-muted); line-height: 1.55;">
+                  • <strong>Funcionamento:</strong> Aplicação ativa, processamento em tempo real e persistência.<br>
+                  • <strong>Clareza na Demonstração:</strong> Fluxo do problema ao resultado compreendido em menos de 2 minutos.<br>
+                  • <strong>Resiliência Offline:</strong> Service Worker (`app/sw.js`) ativo para cache e navegação contínua.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 6 — VALOR AGREGADO IMEDIATO
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-slide="6">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 06</span>
+              <span class="slide-discipline-tag">Impacto no Cliente</span>
+            </div>
+            <h2 class="slide-header-title">Valor Agregado Imediato para o Tomador de Decisão</h2>
+            <p class="slide-subtitle">O benefício tangível entregue nos primeiros 60 segundos de interação.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-primary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Benefício Mensurável</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="grid-3col">
+            <div class="card-box accent-border">
+              <div class="card-title">1. Resposta de Elegibilidade</div>
+              <p class="card-text">
+                Elimina semanas de espera por reuniões de corretores. Em menos de 60 segundos, a PME sabe exatamente se pode migrar e em qual modalidade.
+              </p>
+              <ul class="card-list">
+                <li>Verificação imediata das condições técnicas de tensão (Grupo A) e demanda.</li>
+                <li>Eliminação da assimetria regulatória sem exigir consultores caros.</li>
+              </ul>
+            </div>
+
+            <div class="card-box secondary-border">
+              <div class="card-title">2. Projeção Financeira Real</div>
+              <p class="card-text">
+                Cálculo instantâneo da economia líquida projetada em Reais (R$/mês e R$/ano) com base na tarifa da distribuidora local.
+              </p>
+              <ul class="card-list">
+                <li>Demonstração clara da sobra financeira mensal no fluxo de caixa da empresa.</li>
+                <li>Equalização entre tarifa fixa, desconto percentual e mitigação de bandeiras.</li>
+              </ul>
+            </div>
+
+            <div class="card-box">
+              <div class="card-title">3. Zero Fricção de Entrada</div>
+              <p class="card-text">
+                Arquitetura sem barreira burocrática inicial: o cliente obtém valor antes de qualquer compromisso contratual.
+              </p>
+              <ul class="card-list">
+                <li>Não exige login da concessionária, senhas ou procurações antecipadas.</li>
+                <li>Auditoria contínua futura garantida pelo conceito de Savings Ledger.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">IMPACTO ECONÔMICO MÉDIO ESTIMADO:</span>
+              <span style="font-size: 13px; color: var(--color-text-light); margin-left: 8px;">
+                Economia anual de <strong>R$ 20.000 a R$ 60.000</strong> por unidade consumidora de PME migrada para o Mercado Livre.
+              </span>
+            </div>
+            <span class="slide-number-badge">RETORNO IMEDIATO</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 7 — ARQUITETURA DE SOFTWARE & ENGENHARIA
+           ==================================================================== -->
+      <section class="slide theme-cream" id="slide-7" data-slide="7">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 07</span>
+              <span class="slide-discipline-tag">Engenharia de Software</span>
+            </div>
+            <h2 class="slide-header-title">Arquitetura do Sistema & Decisões de Engenharia</h2>
+            <p class="slide-subtitle">Padrões de software resilientes, tipagem estrita e processamento assíncrono.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-secondary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Rigor Arquitetural</span>
+        </header>
+
+        <div class="slide-body">
+          <div style="background: rgba(197, 82, 33, 0.08); border: 1px solid var(--color-border-cream); border-radius: 6px; padding: 10px 16px; font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); display: flex; justify-content: space-between; align-items: center;">
+            <span>[1] PWA Client (Vanilla JS/CSS + SW)</span>
+            <span>→</span>
+            <span>[2] Edge Serverless API (Vercel Functions)</span>
+            <span>→</span>
+            <span>[3] Domain Core (NestJS DDD Contracts)</span>
+            <span>→</span>
+            <span>[4] Outbox Worker & Postgres (Multi-Tenant)</span>
+          </div>
+
+          <div class="grid-4col">
+            <div class="card-box" style="background: #FFFFFF;">
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-secondary); font-weight: 700; text-transform: uppercase;">CAMADA CLIENTE</span>
+              <div class="card-title" style="color: var(--color-text-dark); margin-top: 6px;">Frontend & PWA</div>
+              <p class="card-text" style="font-size: 12.5px;">
+                Aplicação Web Progressiva desenvolvida em Vanilla JS/CSS com Service Worker para cache offline e instalação nativa em mobile e desktop.
+              </p>
+              <ul class="card-list" style="margin-top: 10px;">
+                <li>Estratégia de cache stale-while-revalidate.</li>
+                <li>Navegação 100% responsiva sem frameworks pesados.</li>
+              </ul>
+              <div style="margin-top: auto; padding-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">Service Worker</span>
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">Offline PWA</span>
+              </div>
+            </div>
+
+            <div class="card-box" style="background: #FFFFFF;">
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-secondary); font-weight: 700; text-transform: uppercase;">BORDA / SERVERLESS</span>
+              <div class="card-title" style="color: var(--color-text-dark); margin-top: 6px;">Vercel Edge Functions</div>
+              <p class="card-text" style="font-size: 12.5px;">
+                API Serverless em Node.js com rate limiting preventivo em memória, sanitização de payload e orquestração de IA com Google Gemini.
+              </p>
+              <ul class="card-list" style="margin-top: 10px;">
+                <li>Rate limit de 3 req/15min por IP contra abusos.</li>
+                <li>Despacho de e-mail transacional via Resend.</li>
+              </ul>
+              <div style="margin-top: auto; padding-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">Node Serverless</span>
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">Gemini AI</span>
+              </div>
+            </div>
+
+            <div class="card-box" style="background: #FFFFFF;">
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-secondary); font-weight: 700; text-transform: uppercase;">BACKEND CORE</span>
+              <div class="card-title" style="color: var(--color-text-dark); margin-top: 6px;">NestJS Modular</div>
+              <p class="card-text" style="font-size: 12.5px;">
+                Arquitetura orientada a domínio (DDD) com injeção de dependência, contratos tipados em TypeScript e testes automatizados.
+              </p>
+              <ul class="card-list" style="margin-top: 10px;">
+                <li>Validação de contratos com schemas JSON.</li>
+                <li>Isolamento estrito de regras de negócio de energia.</li>
+              </ul>
+              <div style="margin-top: auto; padding-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">TypeScript</span>
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">NestJS DDD</span>
+              </div>
+            </div>
+
+            <div class="card-box" style="background: #FFFFFF;">
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-secondary); font-weight: 700; text-transform: uppercase;">PERSISTÊNCIA & EVENTOS</span>
+              <div class="card-title" style="color: var(--color-text-dark); margin-top: 6px;">Postgres Outbox</div>
+              <p class="card-text" style="font-size: 12.5px;">
+                Padrão Transactional Outbox Worker com PostgreSQL e migrações versionadas (000–006), garantindo consistência em falhas.
+              </p>
+              <ul class="card-list" style="margin-top: 10px;">
+                <li>Entrega de eventos de auditoria garantida (at-least-once).</li>
+                <li>Suporte multi-tenant isolado por tenantId.</li>
+              </ul>
+              <div style="margin-top: auto; padding-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">PostgreSQL</span>
+                <span class="slide-number-badge" style="font-size: 9.5px; color: var(--color-secondary); border-color: var(--color-secondary);">Transactional Outbox</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); font-weight: 700;">DECISÕES CRÍTICAS DE ENGENHARIA:</span>
+              <span style="font-size: 13px; color: var(--color-text-dark); margin-left: 8px;">
+                Desacoplamento estrito entre borda e domínio central, persistência transacional com isolamento multi-tenant e resiliência com fallback offline.
+              </span>
+            </div>
+            <span class="slide-number-badge" style="color: var(--color-secondary); border-color: var(--color-secondary);">DESIGN PATTERNS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 8 — VISÃO DE FUTURO & ROADMAP TÉCNICO
+           ==================================================================== -->
+      <section class="slide" id="slide-8" data-slide="8">
+        <header class="slide-header">
+          <div class="slide-header-left">
+            <div class="slide-tag-row">
+              <span class="slide-number-badge">SLIDE 08</span>
+              <span class="slide-discipline-tag">Roadmap de Produto</span>
+            </div>
+            <h2 class="slide-header-title">Visão de Futuro: Da Triagem ao Energy Autopilot</h2>
+            <p class="slide-subtitle">Como a plataforma evolui após a validação do MVP para transformar o mercado de energia.</p>
+          </div>
+          <span class="slide-discipline-tag" style="color: var(--color-primary); font-weight: 600; font-family: var(--font-mono); font-size: 12px;">Evolução Contínua</span>
+        </header>
+
+        <div class="slide-body">
+          <div class="grid-3col">
+            <div class="card-box accent-border">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">FASE 2 (CURTO PRAZO)</div>
+              <div class="card-title" style="margin-top: 6px;">OCR & Visão Computacional</div>
+              <p class="card-text">
+                Upload direto do PDF da fatura com extração automática via modelos multimodais de visão, dispensando preenchimento manual.
+              </p>
+              <ul class="card-list">
+                <li>Leitura do código de barras e grandezas elétricas.</li>
+                <li>Validação cruzada com histórico de consumo de 12 meses.</li>
+              </ul>
+            </div>
+
+            <div class="card-box secondary-border">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); font-weight: 700;">FASE 3 (MÉDIO PRAZO)</div>
+              <div class="card-title" style="margin-top: 6px;">Integração CCEE & Open Energy</div>
+              <p class="card-text">
+                Conexão automatizada aos dados de medição da CCEE e APIs públicas de distribuidoras para auditoria contínua de contratos.
+              </p>
+              <ul class="card-list">
+                <li>Auditoria contínua do Savings Ledger.</li>
+                <li>Acompanhamento de liquidações financeiras e encargos.</li>
+              </ul>
+            </div>
+
+            <div class="card-box">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">FASE 4 (LONGO PRAZO)</div>
+              <div class="card-title" style="margin-top: 6px;">Energy Autopilot</div>
+              <p class="card-text">
+                Agentes autônomos de otimização contínua que monitoram o mercado spot (PLD) e bandeiras tarifárias, ajustando contratos sem atrito.
+              </p>
+              <ul class="card-list">
+                <li>Arbitragem autônoma entre GD, ACL e armazenamento em baterias.</li>
+                <li>A verdadeira <em>“Energia em mais liberdade”</em>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bottom-summary-banner">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); font-weight: 700;">HORIZONTE REGULATÓRIO:</span>
+              <span style="font-size: 13px; color: var(--color-text-light); margin-left: 8px;">
+                Preparação para a abertura do mercado de baixa tensão (Grupo B residencial/comercial) conforme diretrizes da Portaria MME 50/2022.
+              </span>
+            </div>
+            <span class="slide-number-badge">ESCALABILIDADE</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 9 — ENCERRAMENTO & AGRADECIMENTOS (ESTILO CLÁSSICO MILET)
+           ==================================================================== -->
+      <section class="slide slide-final" id="slide-9" data-slide="9">
+        <div class="final-panel">
+          <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet Logo" class="final-logo">
+          <h2 class="final-title">Milet — <span>Energia em mais liberdade.</span></h2>
+          <p class="final-subtitle">Plataforma digital para decisão, comparação neutra e gestão contínua de energia.</p>
+
+          <div class="final-pillars-pills">
+            <span class="final-pill">Passaporte Energético</span>
+            <span class="final-pill">Comparador Neutro</span>
+            <span class="final-pill">Savings Ledger</span>
+            <span class="final-pill">PWA Offline-First</span>
+          </div>
+
+          <div class="final-credits">
+            <strong>Eduardo Ferreira de Mattos</strong><br>
+            Projetos de Computação I · TIA 10402800<br><br>
+            Universidade Presbiteriana Mackenzie<br>
+            <span class="final-disclaimer">Muito obrigado. Fico à disposição da banca para arguição.</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- HUD INFERIOR COM CONTROLES (SEM EMOJIS) -->
+  <footer id="presentation-hud">
+    <div id="progress-bar-container">
+      <div id="progress-bar-fill"></div>
+    </div>
+
+    <div class="hud-left">
+      <button id="btn-prev" class="hud-btn" title="Slide Anterior (ou PageUp)">❮</button>
+      <span id="slide-counter" class="hud-counter">01 / 09</span>
+      <button id="btn-next" class="hud-btn" title="Próximo Slide (ou PageDown)">❯</button>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-timer-badge" title="Timer em andamento (Clique ou [T] para pausar | [R] para reiniciar)">
+        <span class="timer-dot"></span>
+        <span id="timer-display">00:00</span> / 10:00
+      </div>
+      
+      <button id="btn-fullscreen" class="hud-action-btn" title="Tela Cheia (Tecla F)">
+        Tela Cheia
+      </button>
+      <button id="btn-print" class="hud-action-btn" title="Imprimir / Exportar PDF 16:9">
+        PDF (16:9)
+      </button>
+    </div>
+  </footer>
+
+  <script src="presentation-mvp.js"></script>
+</body>
+</html>
