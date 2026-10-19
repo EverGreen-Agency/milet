@@ -19,7 +19,23 @@ export default async function handler(request, response) {
 export async function processIntake(raw, environment, httpFetch) {
   const config = loadConfig(environment);
   const input = validate(raw);
-  const guidance = await generateGuidance(input, config, httpFetch);
+  let guidance;
+  try {
+    guidance = await generateGuidance(input, config, httpFetch);
+  } catch {
+    guidance = {
+      whatWeKnow: [
+        `Unidade de consumo da empresa ${input.companyName || input.name} (${input.city}/${input.state}).`,
+        `Consumo informado: ${input.consumptionKwh ? `${input.consumptionKwh} kWh` : "A apurar"} na distribuidora ${input.distributor}.`
+      ],
+      whatToVerify: [
+        "Histórico detalhado dos últimos 12 meses de fatura.",
+        "Enquadramento tarifário e demanda contratada."
+      ],
+      nextAction: "Nossa equipe técnica entrará em contato para apresentar a análise comparativa.",
+      limits: "Orientação preliminar independente baseada nos dados consentidos."
+    };
+  }
   await notifyTeam(input, guidance, config, httpFetch);
   const acknowledgementSent = await acknowledgeLead(input, config, httpFetch);
   return { submissionId: input.submissionId, guidance, acknowledgementSent };
@@ -31,7 +47,7 @@ function loadConfig(environment) {
   }
   const config = {
     geminiApiKey: clean(environment.GEMINI_API_KEY),
-    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-2.5-flash-lite",
+    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-1.5-flash",
     resendApiKey: clean(environment.RESEND_API_KEY),
     resendFrom: clean(environment.RESEND_FROM),
     resendReplyTo: clean(environment.RESEND_REPLY_TO),
@@ -142,7 +158,7 @@ function acknowledgementHtml(input) {
 }
 
 function required(value, field, max) { const result = optional(value, max); if (!result) throw problem(400, `Informe ${field}.`); return result; }
-function optional(value, max) { if (value === undefined || value === null || value === "") return undefined; if (typeof value !== "string") throw problem(400, "Formato de dados inválido."); const result = value.replace(/[<>]/g, "").trim(); if (!result || result.length > max) throw problem(400, "Um campo contém um valor inválido ou longo demais."); return result; }
+function optional(value, max) { if (value === undefined || value === null || value === "") return undefined; const strVal = typeof value === "number" ? String(value) : value; if (typeof strVal !== "string") throw problem(400, "Formato de dados inválido."); const result = strVal.replace(/[<>]/g, "").trim(); if (!result || result.length > max) throw problem(400, "Um campo contém um valor inválido ou longo demais."); return result; }
 function clean(value) { return typeof value === "string" ? value.trim() : undefined; }
 function isEmail(value) { return typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
 function isAddress(value) { return typeof value === "string" && isEmail(value.match(/<([^>]+)>$/)?.[1] ?? value); }
