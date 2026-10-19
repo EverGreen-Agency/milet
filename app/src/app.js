@@ -386,12 +386,12 @@ function review() {
       <div class="field-section">
         <div class="field-section-title">📍 2. Localização & Prontidão Solar (Google Solar)</div>
         
-        <div class="field-grid-3">
+        <div class="field-grid-address">
           <label class="field">
             <span>CEP da unidade <small class="confidence high">99% conf.</small></span>
             <input name="postalCode" type="text" value="${i.postalCode || org.postalCode || "30411-000"}" required placeholder="00000-000">
           </label>
-          <label class="field" style="grid-column: span 2;">
+          <label class="field">
             <span>Endereço / Logradouro</span>
             <input name="address" type="text" value="${i.address || org.address || "Av. Amazonas, 1420"}" placeholder="Logradouro e número">
           </label>
@@ -659,11 +659,15 @@ function compare() {
     </div>
 
     ${state.sentIntake ? `
-      <div class="success-banner" role="alert">
-        <span style="font-size: 24px;">✉</span>
+      <div class="success-banner" role="alert" style="${state.sentIntake.isRealDispatch ? "" : "background: #252320; color: #f5dfa8; border-color: #5c4e2f;"}">
+        <span style="font-size: 24px;">${state.sentIntake.isRealDispatch ? "✉" : "⚡"}</span>
         <div>
-          <strong>Dossiê enviado com sucesso para ${state.sentIntake.email}!</strong>
-          <span>A confirmação oficial foi disparada pela Milet via Resend. Se não encontrar na caixa de entrada em 2 minutos, verifique o spam.</span>
+          <strong>${state.sentIntake.isRealDispatch
+            ? `Dossiê enviado com sucesso para ${state.sentIntake.email}!`
+            : `Dossiê estruturado com sucesso (Modo Demonstração)`}</strong>
+          <span>${state.sentIntake.isRealDispatch
+            ? "A confirmação oficial foi disparada pela Milet via Resend. Se não encontrar na caixa de entrada em 2 minutos, verifique o spam."
+            : "O diagnóstico técnico foi gerado abaixo. Para receber no seu e-mail corporativo real, configure a chave RESEND_API_KEY no painel da Vercel."}</span>
           ${state.sentIntake.notice ? `<small style="display:block; margin-top: 4px; color:#c9b89f;">${state.sentIntake.notice}</small>` : ""}
         </div>
       </div>
@@ -914,6 +918,7 @@ document.addEventListener("submit", async (event) => {
       if (response.ok) {
         state.sentIntake = {
           email,
+          isRealDispatch: true,
           guidance: resData.guidance,
           acknowledgementSent: resData.acknowledgementSent
         };
@@ -921,6 +926,7 @@ document.addEventListener("submit", async (event) => {
         const errorMsg = resData.message || "Serviço de envio em inicialização.";
         state.sentIntake = {
           email,
+          isRealDispatch: false,
           guidance: {
             whatWeKnow: [
               `Unidade de consumo da empresa ${companyName || org.name} (${city}/${uf}) com fatura de ${money(Number(total))}.`,
@@ -936,7 +942,7 @@ document.addEventListener("submit", async (event) => {
             limits: "Orientação preliminar independente baseada nos dados consentidos. A migração efetiva depende da formalização com a comercializadora."
           },
           notice: errorMsg.includes("não está configurado")
-            ? "Diagnóstico estruturado com sucesso no ambiente de demonstração! (No deploy com credenciais Resend e Gemini ativas, os e-mails são disparados automaticamente)."
+            ? "Ambiente de demonstração ativo: para envio real para sua caixa de entrada, configure RESEND_API_KEY e INTAKE_ENABLED no painel da Vercel."
             : errorMsg
         };
       }
@@ -946,6 +952,7 @@ document.addEventListener("submit", async (event) => {
       state.dispatchLoading = false;
       state.sentIntake = {
         email,
+        isRealDispatch: false,
         guidance: {
           whatWeKnow: [
             `Unidade ${companyName || "PME"} (${city}/${uf}) com fatura mensal de ${money(Number(total))}.`,
