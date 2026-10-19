@@ -337,8 +337,6 @@ function review() {
 
         <div class="bill-barcode-strip">
           <div class="barcode-visual">||| | | |||| | ||| || |||| | | ||| | || |||| | | |||| ||| |</div>
-        <div class="bill-barcode-strip">
-          <div class="barcode-visual">||| | | |||| | ||| || |||| | | ||| | || |||| | | |||| ||| |</div>
           <span class="barcode-number">83680000109-2 20000048291-0 03800000000-4 12480202608-9</span>
           <span class="badge-solar-ready">☀️ Coordenadas Solar: -19.9238, -43.9572 (Belo Horizonte/MG)</span>
         </div>

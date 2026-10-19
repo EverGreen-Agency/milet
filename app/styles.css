@@ -81,8 +81,8 @@ html[data-theme="dark"] .btn.primary { background: var(--milet-color-ambar); col
 .alert.error { background: #f8e5df; color: #7d281b; }
 .alert.success { background: #e8f1df; color: #335126; }
 .alert button { border: 0; background: transparent; color: inherit; text-decoration: underline; cursor: pointer; }
-.review-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
-.invoice-preview { position: relative; background: #fff; color: #1e1e1e; border-radius: 12px; box-shadow: 0 12px 36px rgba(0,0,0,.08); border: 1px solid #e2ddd5; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.review-layout { display: grid; grid-template-columns: minmax(400px, 1.15fr) minmax(340px, 0.85fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.invoice-preview { position: sticky; top: 96px; background: #fff; color: #1e1e1e; border-radius: 14px; box-shadow: 0 12px 36px rgba(0,0,0,.08); border: 1px solid #e2ddd5; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 .bill-paper { padding: 24px; position: relative; font-size: 11px; line-height: 1.4; color: #222; }
 .bill-header-row { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 14px; border-bottom: 2px solid #2b2926; gap: 16px; }
 .bill-distributor-badge { font: 700 20px/1 'Playfair Display', serif; color: #1a1a1a; letter-spacing: -.02em; display: flex; align-items: center; gap: 8px; }
@@ -127,10 +127,10 @@ html[data-theme="dark"] .btn.primary { background: var(--milet-color-ambar); col
 .barcode-number { font-family: var(--milet-font-mono); font-size: 9px; color: #666; letter-spacing: 1px; }
 .scan-line { position: absolute; left: 0; right: 0; height: 2px; background: #d39b3d; box-shadow: 0 0 16px #d39b3d; pointer-events: none; animation: scanAnimation 4s ease-in-out infinite alternate; }
 @keyframes scanAnimation { 0% { top: 4%; opacity: .4; } 50% { opacity: 1; } 100% { top: 96%; opacity: .4; } }
-.review-fields { padding-top: 8px; }
-.field-section { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--milet-border-hairline); }
-.field-section:last-of-type { border-bottom: 0; margin-bottom: 10px; }
-.field-section-title { font: 600 13px/1.3 var(--milet-font-display); text-transform: uppercase; letter-spacing: .06em; color: var(--milet-color-ambar-dark); margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+.review-fields { padding-top: 0; }
+.field-section { background: var(--milet-bg-surface); border: 1px solid var(--milet-border-hairline); border-radius: 18px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.field-section:last-of-type { margin-bottom: 14px; }
+.field-section-title { font: 700 12px/1.3 var(--milet-font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--milet-color-ambar-dark); margin: 0 0 16px; display: flex; align-items: center; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--milet-border-hairline); }
 .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 .badge-solar-ready { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #fef7e6; color: #8a5300; border: 1px solid #f5cf7d; border-radius: 999px; font-size: 10px; font-weight: 700; margin-top: 6px; }
@@ -228,6 +228,11 @@ td { font: 13px var(--milet-font-mono); }
 .success-banner { display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: #243023; color: #cce7b4; border-radius: 14px; margin-bottom: 20px; border: 1px solid #4a6345; }
 .success-banner strong { display: block; font-size: 15px; }
 .success-banner span { display: block; font-size: 12px; color: #a9caa0; margin-top: 2px; }
+
+@media (max-width: 1060px) {
+  .review-layout { grid-template-columns: 1fr; }
+  .invoice-preview { position: static; max-width: 700px; margin: 0 auto 28px; }
+}
 
 @media (max-width: 900px) {
   .app-shell { grid-template-columns: 1fr; }
