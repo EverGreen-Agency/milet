@@ -42,6 +42,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+    event.respondWith(fetch(request));
+    return;
+  }
+
   if (request.mode === "navigate" && url.pathname.startsWith("/app/")) {
     event.respondWith(fetch(request).catch(() => caches.match("./index.html")));
     return;

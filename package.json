@@ -20,6 +20,8 @@
     "build:foundation": "npm run build -w @milet/domain && npm run build -w @milet/contracts && npm run build -w @milet/test-fixtures && npm run build -w @milet/api && npm run build -w @milet/worker",
     "build:site": "node scripts/build-static-site.mjs",
     "ci": "npm run check && npm run typecheck && npm test && npm run build",
+    "dev": "npm run build:site && node scripts/serve.mjs",
+    "start": "npm run build:site && node scripts/serve.mjs",
     "api:dev": "npm run dev -w @milet/api",
     "api:start": "npm run start -w @milet/api"
   },
