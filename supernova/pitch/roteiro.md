@@ -101,7 +101,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 - "A maioria ainda não atravessou": rosto em L1, *punch-in*.
 
 **Assets:** GFX-03 · IMG-03 · **Som:** `tick` por número.
-**Antes de gravar:** conferir os três números na base oficial da CCEE; há divergência entre fontes secundárias.
+**Números conferidos em 20/10/2026** (CCEE: 21.707 migrações em 2025; 4.827 no 1T2026 contra 7.603 no 1T2025). A Abraceel cita 18.928 para 2025: use sempre o número da CCEE e diga "CCEE" na tela.
 
 ---
 
@@ -291,7 +291,7 @@ Ordem de trabalho: cortar a fala primeiro (o tempo final vem dela), depois encai
 ## 6. Pronto para enviar quando
 
 - [ ] Duração total abaixo de **3:00**, com a fala compreensível em 1,0×.
-- [ ] Todo número na tela tem fonte visível; os três da CCEE conferidos na base oficial.
+- [ ] Todo número na tela tem fonte visível (os três da CCEE já foram conferidos).
 - [ ] Toda tela do produto marcada como demonstração; a demo passa em [demo-spec.md](demo-spec.md).
 - [ ] As duas receitas aparecem como hipótese e batem com o BMC entregue; nenhuma frase sugere tração que não existe.
 - [ ] Nenhuma marcação "A PREENCHER" visível (deck com **T** ligado ao gravar).
