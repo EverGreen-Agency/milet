@@ -192,11 +192,11 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 09 · Equipe (2:31–2:42) · L2 · slide 14 · Eduardo
 
-> "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. O Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
+> "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
 **Tela**
 - Rosto em L2; à direita, a grade do slide 14 acende pessoa por pessoa, em sincronia com cada nome.
-- *Lower third* na sua primeira aparição do bloco: `EDUARDO FERREIRA DE MATTOS · PRODUTO` (mono, âmbar).
+- *Lower third* na sua primeira aparição do bloco: `EDUARDO FERREIRA DE MATTOS · COFUNDADOR` (mono, âmbar).
 - O card da orientadora diz "Professora de Análise de Dados no Mackenzie". Na menção a ela, o card ganha o selo `SHARK TANK BRASIL · TOP 10 FEMALE TECH FOUNDERS` por 2 s: credencial na tela, sem gastar fala.
 
 **Assets:** GFX-10 (slide 14 com as três fotos).
