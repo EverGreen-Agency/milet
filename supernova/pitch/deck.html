@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milet · Pitch Supernova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  Pitch deck Milet — Supernova (v1).
+  Teclas: ← → / espaço navegam · N notas · T esconde marcações "A PREENCHER" · F tela cheia · P imprimir/PDF
+  Fonte única da fala: roteiro.md. As notas aqui são só a deixa de cada slide.
+  Cada slide também serve de base gráfica do vídeo (1920×1080).
+-->
+<style>
+:root {
+  --carvao: #1A1A1A;
+  --carvao-2: #222222;
+  --carvao-3: #2B2B2B;
+  --marfim: #F7F3EA;
+  --marfim-2: #EFECE3;
+  --areia: #C9B89F;
+  --ambar: #D39B3D;
+  --ambar-claro: #F3C878;
+  --ambar-escuro: #8C4E18;
+  --cobre: #B87333;
+  --texto-2: #635E55;
+  --linha-escura: rgba(247, 243, 234, 0.12);
+  --linha-clara: rgba(26, 26, 26, 0.10);
+  --ok: #7FA36B;
+
+  --f-display: 'Playfair Display', Georgia, serif;
+  --f-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', Consolas, monospace;
+
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --w: 1920px;
+  --h: 1080px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #0B0B0B; overflow: hidden; }
+body { font-family: var(--f-sans); color: var(--marfim); -webkit-font-smoothing: antialiased; }
+
+#stage {
+  position: absolute; top: 50%; left: 50%;
+  width: var(--w); height: var(--h);
+  transform-origin: center center;
+}
+
+.slide {
+  position: absolute; inset: 0;
+  padding: 120px 140px;
+  display: flex; flex-direction: column;
+  background: var(--carvao);
+  overflow: hidden;
+  opacity: 0; visibility: hidden;
+  transition: opacity 500ms var(--ease), visibility 0s linear 500ms;
+}
+.slide.active { opacity: 1; visibility: visible; transition: opacity 500ms var(--ease); }
+
+/* Ambiente: brilho âmbar + grão, para o look cinematográfico */
+.slide::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(1100px 700px at 85% 15%, rgba(211, 155, 61, 0.14), transparent 60%);
+}
+.slide::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.slide > * { position: relative; z-index: 1; }
+
+.slide.claro { background: var(--marfim); color: var(--carvao); }
+.slide.claro::before { background: radial-gradient(1000px 640px at 90% 10%, rgba(211, 155, 61, 0.16), transparent 60%); }
+
+/* Entrada escalonada */
+[data-in] { opacity: 0; transform: translateY(28px); }
+.slide.active [data-in] {
+  opacity: 1; transform: none;
+  transition: opacity 800ms var(--ease), transform 900ms var(--ease);
+  transition-delay: calc(var(--i, 0) * 110ms + 120ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-in], .slide.active [data-in] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Tipografia */
+.eyebrow {
+  font-family: var(--f-mono); font-size: 22px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ambar); margin-bottom: 36px; display: flex; align-items: center; gap: 18px;
+}
+.eyebrow .n { color: var(--areia); }
+.claro .eyebrow { color: var(--ambar-escuro); }
+.claro .eyebrow .n { color: var(--texto-2); }
+
+h1, h2 { font-family: var(--f-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.02; text-wrap: balance; }
+h1 { font-size: 132px; }
+h2 { font-size: 92px; max-width: 1500px; }
+h1 em, h2 em { font-style: italic; color: var(--ambar); font-weight: 500; }
+.claro h1 em, .claro h2 em { color: var(--ambar-escuro); }
+
+.lead { font-size: 36px; line-height: 1.45; color: var(--areia); max-width: 1240px; margin-top: 36px; text-wrap: pretty; }
+.claro .lead { color: var(--texto-2); }
+.small { font-size: 22px; line-height: 1.5; color: var(--areia); }
+.claro .small { color: var(--texto-2); }
+.fonte { font-family: var(--f-mono); font-size: 18px; color: #8E887E; letter-spacing: 0.02em; }
+
+.push { margin-top: auto; }
+.row { display: flex; gap: 40px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; }
+
+.card {
+  background: var(--carvao-2); border: 1px solid var(--linha-escura);
+  border-radius: 28px; padding: 44px;
+}
+.claro .card { background: #FFFFFF; border-color: var(--linha-clara); box-shadow: 0 12px 36px rgba(26, 26, 26, 0.06); }
+.card h3 { font-family: var(--f-display); font-size: 44px; font-weight: 600; line-height: 1.1; margin-bottom: 16px; }
+.card p { font-size: 26px; line-height: 1.5; color: var(--areia); }
+.claro .card p { color: var(--texto-2); }
+.card .k { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ambar); margin-bottom: 22px; }
+.claro .card .k { color: var(--ambar-escuro); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 10px 18px; border-radius: 999px; border: 1px solid var(--linha-escura); color: var(--areia);
+}
+.pill.ok::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
+.pill.hip::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ambar); }
+.claro .pill { border-color: var(--linha-clara); color: var(--texto-2); }
+
+/* Marcação de conteúdo a completar — tecla T esconde para exportar */
+.todo {
+  display: inline-block; font-family: var(--f-mono); font-size: 0.62em; letter-spacing: 0.04em;
+  background: rgba(211, 155, 61, 0.16); color: var(--ambar-claro);
+  border: 1px dashed var(--ambar); border-radius: 10px; padding: 4px 12px; vertical-align: middle;
+}
+.claro .todo { color: var(--ambar-escuro); background: rgba(211, 155, 61, 0.14); }
+body.hide-todo .todo { display: none; }
+
+/* ---------- Slides específicos ---------- */
+
+/* 01 Capa */
+.capa { justify-content: space-between; }
+.capa .logo { height: 96px; width: auto; align-self: flex-start; }
+.capa h1 { font-size: 112px; max-width: 1480px; }
+.capa .meta { display: flex; justify-content: space-between; align-items: flex-end; }
+
+/* 02 Hook */
+.hook { justify-content: center; }
+.hook .ano {
+  font-family: var(--f-display); font-size: 420px; line-height: 0.8; font-weight: 600;
+  color: transparent; -webkit-text-stroke: 2px rgba(211, 155, 61, 0.55);
+  position: absolute; right: 120px; bottom: 80px; z-index: 0; letter-spacing: -0.04em;
+}
+.hook h2 { font-size: 104px; max-width: 1300px; }
+.hook .fonte { max-width: 900px; }
+
+/* 03 Problema: três propostas incomparáveis */
+.propostas { display: flex; gap: 36px; margin-top: 64px; align-items: flex-start; }
+.proposta {
+  flex: 1; background: var(--marfim); color: var(--carvao); border-radius: 22px; padding: 36px 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35); font-size: 24px; line-height: 1.5;
+}
+.proposta:nth-child(1) { --r: -2.5deg; }
+.proposta:nth-child(2) { --r: 1.5deg; margin-top: 36px; }
+.proposta:nth-child(3) { --r: -1deg; margin-top: 12px; }
+.slide.active .proposta[data-in] { transform: rotate(var(--r)); }
+.proposta .de { font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-2); margin-bottom: 14px; }
+.proposta .preco { font-family: var(--f-display); font-size: 54px; font-weight: 600; line-height: 1.05; margin-bottom: 12px; }
+.proposta .letra { font-size: 19px; color: var(--texto-2); border-top: 1px solid var(--linha-clara); padding-top: 14px; margin-top: 14px; }
+.pergunta { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; }
+.pergunta h2 { font-size: 80px; }
+
+/* 04 Dimensão */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 72px; border-top: 1px solid var(--linha-escura); }
+.stat { padding: 48px 48px 0 0; border-right: 1px solid var(--linha-escura); }
+.stat + .stat { padding-left: 48px; }
+.stat:last-child { border-right: 0; }
+.stat .num { font-family: var(--f-display); font-size: 150px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; color: var(--marfim); }
+.stat .num small { font-size: 0.4em; color: var(--ambar); margin-left: 8px; }
+.stat .num.queda { color: var(--ambar-claro); }
+.stat p { font-size: 28px; line-height: 1.45; color: var(--areia); margin-top: 22px; max-width: 460px; }
+.stat .fonte { margin-top: 18px; }
+
+/* 05 Descobertas */
+.descoberta .idx { font-family: var(--f-display); font-size: 72px; color: var(--ambar-escuro); line-height: 1; margin-bottom: 28px; font-style: italic; }
+
+/* 06 Solução */
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: auto; }
+.passo { border-top: 2px solid var(--ambar); padding-top: 32px; }
+.passo .k { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.16em; color: var(--ambar); margin-bottom: 18px; text-transform: uppercase; }
+.passo h3 { font-family: var(--f-display); font-size: 52px; font-weight: 600; line-height: 1.08; margin-bottom: 18px; }
+.passo p { font-size: 26px; line-height: 1.5; color: var(--areia); }
+
+/* 07 MVP */
+.mvp { padding-right: 0; }
+.mvp-wrap { display: grid; grid-template-columns: 560px 1fr; gap: 64px; flex: 1; min-height: 0; }
+.mvp-wrap > div:first-child { display: flex; flex-direction: column; }
+.browser {
+  border-radius: 22px 0 0 22px; overflow: hidden; background: var(--carvao-2);
+  border: 1px solid var(--linha-escura); border-right: 0; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+  display: flex; flex-direction: column; height: 100%;
+}
+.browser .bar { height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 20px; background: #2A2826; flex-shrink: 0; }
+.browser .bar i { width: 13px; height: 13px; border-radius: 50%; background: #55504A; }
+.browser .bar span { margin-left: 18px; font-family: var(--f-mono); font-size: 15px; color: #8E887E; }
+.browser img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.mvp-lista { list-style: none; display: flex; flex-direction: column; gap: 26px; margin-top: 44px; }
+.mvp-lista li { font-size: 28px; line-height: 1.4; display: flex; gap: 18px; align-items: baseline; }
+.mvp-lista li b { font-family: var(--f-mono); font-size: 18px; color: var(--ambar); font-weight: 500; min-width: 40px; }
+
+/* 08 Concorrência */
+table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size: 26px; }
+.comp th, .comp td { padding: 22px 20px; text-align: center; border-bottom: 1px solid var(--linha-clara); }
+.comp thead th { font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-2); font-weight: 500; vertical-align: bottom; line-height: 1.4; }
+.comp tbody th { text-align: left; font-weight: 600; width: 520px; }
+.comp .milet { background: var(--carvao); color: var(--marfim); }
+.comp thead .milet { color: var(--ambar); border-radius: 18px 18px 0 0; }
+.comp tbody tr:last-child .milet { border-radius: 0 0 18px 18px; }
+.comp .sim { color: #4E7A3A; font-weight: 700; }
+.comp .milet .sim { color: var(--ambar-claro); }
+.comp .parcial { color: var(--cobre); font-weight: 700; }
+.comp .nao { color: #B5AFA5; }
+
+/* 09 Modelo bilateral */
+.bilateral { display: grid; grid-template-columns: 1fr 360px 1fr; align-items: center; gap: 40px; margin-top: 64px; }
+.no {
+  width: 300px; height: 300px; border-radius: 50%; margin: 0 auto;
+  display: grid; place-items: center; text-align: center;
+  background: radial-gradient(circle at 35% 30%, #3A332A, var(--carvao-2)); border: 1px solid rgba(211, 155, 61, 0.45);
+  box-shadow: 0 0 60px rgba(211, 155, 61, 0.25);
+}
+.no img { width: 160px; }
+.lado .k { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ambar); margin-bottom: 18px; }
+.lado h3 { font-family: var(--f-display); font-size: 48px; font-weight: 600; margin-bottom: 18px; line-height: 1.1; }
+.lado p { font-size: 25px; line-height: 1.5; color: var(--areia); }
+.lado .receita { margin-top: 26px; padding: 22px 26px; border-radius: 18px; border: 1px dashed rgba(211, 155, 61, 0.5); font-size: 23px; line-height: 1.45; }
+.lado .receita b { color: var(--ambar-claro); display: block; font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
+.lado.dir { text-align: right; }
+.mercado { display: flex; gap: 28px; margin-top: auto; }
+.mercado div { flex: 1; border-top: 1px solid var(--linha-escura); padding-top: 22px; font-size: 22px; color: var(--areia); line-height: 1.45; }
+.mercado b { display: block; font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.14em; color: var(--marfim); margin-bottom: 6px; font-weight: 500; }
+
+.validacao .card { padding: 36px 40px; }
+.hipoteses { padding-top: 28px; }
+.hipoteses .pill { font-size: 16px; }
+
+/* 11 Linha do tempo */
+.tempo { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: auto; margin-bottom: 40px; position: relative; }
+.tempo::before { content: ""; position: absolute; top: 15px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--ambar), rgba(211, 155, 61, 0.15)); }
+.marco { padding-right: 36px; }
+.marco .ponto { width: 32px; height: 32px; border-radius: 50%; background: var(--carvao); border: 2px solid var(--ambar); margin-bottom: 36px; position: relative; }
+.marco.agora .ponto { background: var(--ambar); box-shadow: 0 0 0 10px rgba(211, 155, 61, 0.18); }
+.marco .quando { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.12em; color: var(--ambar); text-transform: uppercase; margin-bottom: 14px; }
+.marco h3 { font-family: var(--f-display); font-size: 42px; font-weight: 600; line-height: 1.1; margin-bottom: 14px; }
+.marco p { font-size: 24px; line-height: 1.5; color: var(--areia); }
+
+/* 12 Equipe */
+.equipe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; margin-top: 64px; }
+.pessoa { display: flex; gap: 26px; align-items: center; }
+.pessoa .foto {
+  width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center;
+  background: var(--marfim-2); border: 1px solid var(--linha-clara);
+  font-family: var(--f-display); font-size: 44px; color: var(--ambar-escuro);
+}
+.pessoa h3 { font-size: 30px; font-weight: 700; line-height: 1.2; }
+.pessoa p { font-size: 22px; color: var(--texto-2); margin-top: 6px; line-height: 1.4; }
+
+/* 13 Encerramento */
+.fim { justify-content: center; align-items: center; text-align: center; }
+.fim .hero {
+  position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center;
+  opacity: 0.38; filter: saturate(0.9);
+}
+.fim .veu { position: absolute; inset: 0; z-index: 0; background: radial-gradient(900px 600px at 50% 50%, rgba(26, 26, 26, 0.35), var(--carvao) 85%); }
+.fim .simbolo { width: 150px; margin-bottom: 48px; }
+.fim h1 { font-size: 150px; }
+.fim .contato { margin-top: 64px; font-family: var(--f-mono); font-size: 24px; letter-spacing: 0.06em; color: var(--areia); display: flex; gap: 48px; justify-content: center; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255, 255, 255, 0.06); z-index: 20;
+}
+#hud i { display: block; height: 100%; width: 0; background: var(--ambar); transition: width 400ms var(--ease); }
+#contador {
+  position: fixed; right: 20px; bottom: 14px; z-index: 20; font-family: var(--f-mono); font-size: 13px;
+  color: rgba(247, 243, 234, 0.45); letter-spacing: 0.08em;
+}
+#notas {
+  position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); z-index: 30;
+  width: min(880px, 92vw); padding: 20px 26px; border-radius: 16px;
+  background: rgba(20, 20, 20, 0.92); border: 1px solid rgba(211, 155, 61, 0.35);
+  backdrop-filter: blur(12px); color: var(--marfim); font-size: 16px; line-height: 1.55;
+  opacity: 0; pointer-events: none; transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+#notas.on { opacity: 1; transform: translate(-50%, 0); }
+#notas b { color: var(--ambar); font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 6px; font-weight: 500; }
+.notes { display: none; }
+
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { overflow: visible; background: none; height: auto; }
+  #stage { position: static; transform: none !important; width: auto; height: auto; }
+  .slide { position: relative; width: var(--w); height: var(--h); opacity: 1; visibility: visible; page-break-after: always; break-after: page; }
+  [data-in] { opacity: 1 !important; transform: none !important; }
+  .proposta { transform: rotate(var(--r)) !important; }
+  #hud, #contador, #notas { display: none; }
+  .todo { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 · CAPA -->
+<section class="slide capa">
+  <img class="logo" data-in style="--i:0" src="../../assets/logo/svg/milet-logo-horizontal-light.svg" alt="Milet">
+  <div>
+    <p class="eyebrow" data-in style="--i:1">Pitch · Supernova 2026</p>
+    <h1 data-in style="--i:2">Sua empresa escolhe a energia. <em>Sem adivinhar.</em></h1>
+  </div>
+  <div class="meta" data-in style="--i:3">
+    <p class="lead" style="margin:0;max-width:1100px">A Milet coloca fornecedores de energia para competir pela sua empresa e acompanha a economia depois que você assina.</p>
+    <span class="pill">Energia em mais liberdade</span>
+  </div>
+  <aside class="notes">Deixa: nome + promessa em uma frase. Roteiro bloco 00 (abertura do vídeo usa o hook antes desta capa).</aside>
+</section>
+
+<!-- 02 · HOOK -->
+<section class="slide hook">
+  <span class="ano" aria-hidden="true">2024</span>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">01</span> O gancho</p>
+  <h2 data-in style="--i:1">Desde 2024, toda empresa do Grupo A pode escolher <em>de quem compra energia.</em></h2>
+  <p class="lead" data-in style="--i:2">Mas escolher exige comparar. E comparar energia, hoje, é quase impossível.</p>
+  <p class="fonte push" data-in style="--i:3">Portaria MME nº 50/2022 — abertura do mercado livre para todo o Grupo A a partir de 01/01/2024.</p>
+  <aside class="notes">Deixa: fato verificável + virada. Roteiro bloco 01 (0:00–0:12).</aside>
+</section>
+
+<!-- 03 · PROBLEMA -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">02</span> O problema</p>
+  <h2 data-in style="--i:1;font-size:76px">Três propostas. Três formatos. <em>Nenhuma comparável.</em></h2>
+  <div class="propostas">
+    <div class="proposta" data-in style="--i:2">
+      <p class="de">Proposta A</p>
+      <p class="preco">R$ 289/MWh</p>
+      <p>Preço flat · contrato de 5 anos</p>
+      <p class="letra">Encargos e conta residual da distribuidora não incluídos.</p>
+    </div>
+    <div class="proposta" data-in style="--i:3">
+      <p class="de">Proposta B</p>
+      <p class="preco">18% de desconto</p>
+      <p>Sobre a tarifa atual*</p>
+      <p class="letra">*Base de cálculo não informada. Reajuste anual.</p>
+    </div>
+    <div class="proposta" data-in style="--i:4">
+      <p class="de">Proposta C</p>
+      <p class="preco">Preço fixo + flex</p>
+      <p>Flexibilidade de ±15% no volume</p>
+      <p class="letra">Multa rescisória e garantias no anexo III.</p>
+    </div>
+  </div>
+  <div class="pergunta">
+    <h2 data-in style="--i:5">Qual é a mais barata?</h2>
+    <p class="small" data-in style="--i:6;max-width:620px;text-align:right">O decisor — dono ou financeiro — assina por anos sem conseguir responder. Exemplos ilustrativos.</p>
+  </div>
+  <aside class="notes">Deixa: deixar a pergunta no ar 1 segundo antes de responder. Roteiro bloco 02.</aside>
+</section>
+
+<!-- 04 · DIMENSÃO -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">03</span> A dimensão</p>
+  <h2 data-in style="--i:1">A porta abriu. <em>A maioria ainda não atravessou.</em></h2>
+  <div class="stats">
+    <div class="stat" data-in style="--i:2">
+      <p class="num">72<small>mil</small></p>
+      <p>empresas de pequeno e médio porte com potencial de migrar após a abertura do Grupo A.</p>
+      <p class="fonte">CCEE, estimativa de 2023</p>
+    </div>
+    <div class="stat" data-in style="--i:3">
+      <p class="num">21,7<small>mil</small></p>
+      <p>migrações para o mercado livre em 2025 — serviços e comércio somam quase metade.</p>
+      <p class="fonte">CCEE, balanço 2025</p>
+    </div>
+    <div class="stat" data-in style="--i:4">
+      <p class="num queda">−36,5%</p>
+      <p>no ritmo de migrações do 1º trimestre de 2026 em relação ao mesmo período de 2025.</p>
+      <p class="fonte">CCEE, 1T2026</p>
+    </div>
+  </div>
+  <p class="small push" data-in style="--i:5"><span class="todo">CONFERIR os três números na base oficial da CCEE antes de entregar</span></p>
+  <aside class="notes">Deixa: os números mostram demanda que existe e conversão que está travando. Não afirmar a causa da queda. Roteiro bloco 03.</aside>
+</section>
+
+<!-- 05 · DESCOBERTAS -->
+<section class="slide claro">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">04</span> O que descobrimos</p>
+  <h2 data-in style="--i:1">Comparar preço não basta. <em>O problema continua depois da assinatura.</em></h2>
+  <div class="grid-3" style="margin-top:64px">
+    <div class="card descoberta" data-in style="--i:2">
+      <p class="idx">i.</p>
+      <h3>Comparar virou commodity</h3>
+      <p>Gestoras digitais já cotam com dezenas de fornecedores, e a regulação prevê um comparador público da CCEE.</p>
+    </div>
+    <div class="card descoberta" data-in style="--i:3">
+      <p class="idx">ii.</p>
+      <h3>Quem aconselha, vende</h3>
+      <p>Corretores e comercializadoras são remunerados pelo fornecedor. A empresa raramente tem alguém só do seu lado.</p>
+    </div>
+    <div class="card descoberta" data-in style="--i:4">
+      <p class="idx">iii.</p>
+      <h3>A dor aparece depois</h3>
+      <p>Reclamações públicas se concentram no pós-contratação: cobranças, cancelamento e economia que não aparece na conta.</p>
+    </div>
+  </div>
+  <p class="small push" data-in style="--i:5">Pesquisa de mesa: regulação ANEEL/CCEE, 12 concorrentes e avaliações públicas. <span class="todo">+ RESULTADO DAS ENTREVISTAS: nº de decisores PME e comercializadoras ouvidos e a frase mais marcante</span></p>
+  <aside class="notes">Deixa: três descobertas, uma frase cada. Se houver entrevistas, a citação real entra no lugar da marcação. Roteiro bloco 04.</aside>
+</section>
+
+<!-- 06 · SOLUÇÃO -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">05</span> A solução</p>
+  <h2 data-in style="--i:1">Uma forma independente de contratar energia — <em>e de continuar acompanhando.</em></h2>
+  <div class="passos">
+    <div class="passo" data-in style="--i:2">
+      <p class="k">01 · Entender</p>
+      <h3>Envie a fatura que você já recebe</h3>
+      <p>A Milet lê os dados e monta o Passaporte Energético da empresa: consumo, demanda, contrato e distribuidora.</p>
+    </div>
+    <div class="passo" data-in style="--i:3">
+      <p class="k">02 · Comparar</p>
+      <h3>Fornecedores competem na mesma régua</h3>
+      <p>Custo total, prazo, risco e pendências lado a lado. Nenhuma oferta compra posição.</p>
+    </div>
+    <div class="passo" data-in style="--i:4">
+      <p class="k">03 · Acompanhar</p>
+      <h3>A relação não termina na assinatura</h3>
+      <p>Economia prevista versus realizada, alertas de vencimento e nova cotação antes de o contrato acabar.</p>
+    </div>
+  </div>
+  <aside class="notes">Deixa: três passos, verbos simples. Passo 03 é visão (ainda não construído) — dizer "vamos acompanhar". Roteiro bloco 05.</aside>
+</section>
+
+<!-- 07 · MVP -->
+<section class="slide mvp">
+  <div class="mvp-wrap">
+    <div>
+      <p class="eyebrow" data-in style="--i:0"><span class="n">06</span> O MVP</p>
+      <h2 data-in style="--i:1;font-size:76px">Já funciona. <em>Da fatura à comparação.</em></h2>
+      <ul class="mvp-lista" data-in style="--i:2">
+        <li><b>01</b>Triagem do perfil e da distribuidora</li>
+        <li><b>02</b>Envio da fatura com leitura automática</li>
+        <li><b>03</b>Conferência dos dados pelo cliente</li>
+        <li><b>04</b>Diagnóstico com as rotas possíveis</li>
+        <li><b>05</b>Propostas normalizadas lado a lado</li>
+      </ul>
+      <div class="row push" data-in style="--i:3;gap:14px;flex-wrap:wrap">
+        <span class="pill ok">No ar · web</span>
+        <span class="pill hip">Fornecedores ilustrativos</span>
+      </div>
+    </div>
+    <div class="browser" data-in style="--i:2">
+      <div class="bar"><i></i><i></i><i></i><span>milet · comparar propostas</span></div>
+      <img src="shots/05-comparar-full.png" alt="Tela de comparação de propostas do MVP da Milet">
+    </div>
+  </div>
+  <aside class="notes">Deixa: no vídeo este slide vira a demo gravada (SCR-01 a SCR-04). Roteiro bloco 06.</aside>
+</section>
+
+<!-- 08 · CONCORRÊNCIA -->
+<section class="slide claro">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">07</span> Concorrência e diferencial</p>
+  <h2 data-in style="--i:1;font-size:76px">Outros fazem partes disso. <em>Ninguém fica só do lado da empresa.</em></h2>
+  <table class="comp" data-in style="--i:2">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Corretor<br>tradicional</th>
+        <th>Comercializadora</th>
+        <th>Gestora digital</th>
+        <th>Comparador<br>CCEE (previsto)</th>
+        <th class="milet">Milet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th>Compara vários fornecedores</th><td class="parcial">◐</td><td class="nao">—</td><td class="sim">✓</td><td class="sim">✓</td><td class="milet sim">✓</td></tr>
+      <tr><th>Sem vínculo com fornecedor ou grupo de energia</th><td class="parcial">◐</td><td class="nao">—</td><td class="parcial">◐</td><td class="sim">✓</td><td class="milet sim">✓</td></tr>
+      <tr><th>Acompanha depois da assinatura</th><td class="parcial">◐</td><td class="parcial">◐</td><td class="sim">✓</td><td class="nao">—</td><td class="milet sim">✓</td></tr>
+      <tr><th>Dados da empresa portáveis (Passaporte)</th><td class="nao">—</td><td class="nao">—</td><td class="nao">—</td><td class="parcial">◐</td><td class="milet sim">✓</td></tr>
+    </tbody>
+  </table>
+  <p class="small push" data-in style="--i:3">✓ sim · ◐ parcial · — não. Leitura a partir da comunicação pública das empresas (out/2026). Na Milet, acompanhamento e Passaporte completo estão em construção.</p>
+  <aside class="notes">Deixa: reconhecer concorrentes antes de diferenciar ("se acha que não tem concorrente…"). Roteiro bloco 07.</aside>
+</section>
+
+<!-- 09 · MERCADO E MONETIZAÇÃO -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">08</span> Modelo de negócio</p>
+  <h2 data-in style="--i:1;font-size:76px">Dois lados ganham. <em>Os dois podem pagar.</em></h2>
+  <div class="bilateral">
+    <div class="lado" data-in style="--i:2">
+      <p class="k">Demanda</p>
+      <h3>PMEs do Grupo A</h3>
+      <p>Decisão clara, propostas comparáveis e acompanhamento depois de assinar.</p>
+      <div class="receita"><b>Hipótese 2</b>Mensalidade pelo acompanhamento contínuo. Diagnóstico inicial gratuito.</div>
+    </div>
+    <div class="no" data-in style="--i:3"><img src="../../assets/logo/svg/milet-symbol-amber-darkbg.svg" alt="Milet"></div>
+    <div class="lado dir" data-in style="--i:4">
+      <p class="k">Oferta</p>
+      <h3>Comercializadoras e geradores</h3>
+      <p>Demanda qualificada e dados organizados, prontos para cotar.</p>
+      <div class="receita"><b>Hipótese 1</b>Taxa por contrato fechado, igual para todos e informada ao cliente.</div>
+    </div>
+  </div>
+  <div class="mercado" data-in style="--i:5">
+    <div><b>TAM</b><span class="todo">R$ — gasto anual com energia das PMEs do Grupo A</span></div>
+    <div><b>SAM</b>~72 mil PMEs com potencial de migrar (CCEE, 2023) <span class="todo">× ticket</span></div>
+    <div><b>SOM · FASE 0</b>20 a 50 empresas atendidas em modo concierge <span class="todo">× receita por conta</span></div>
+  </div>
+  <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 08.</aside>
+</section>
+
+<!-- 10 · VALIDAÇÃO E TRAÇÃO -->
+<section class="slide claro">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">09</span> Validação</p>
+  <h2 data-in style="--i:1;font-size:76px">O que já provamos — <em>e o que vamos provar agora.</em></h2>
+  <div class="grid-2 validacao" style="margin-top:44px">
+    <div class="card" data-in style="--i:2">
+      <p class="k">Feito</p>
+      <h3>Produto e tese estruturados</h3>
+      <p>MVP navegável no ar, leitura de fatura, captação com consentimento LGPD, mapas de empatia e canvas de valor dos dois lados.</p>
+      <p style="margin-top:20px"><span class="todo">+ nº de diagnósticos / visitas / cadastros reais, se houver</span></p>
+    </div>
+    <div class="card" data-in style="--i:3">
+      <p class="k">Próximas 4 semanas</p>
+      <h3>Validar quem paga e quanto</h3>
+      <p>10 decisores de PMEs e 5 comercializadoras entrevistados. Primeiros diagnósticos reais em modo concierge.</p>
+      <p style="margin-top:20px"><span class="todo">critério de sucesso: ex. 3 de 5 comercializadoras dispostas a pagar por lead qualificado</span></p>
+    </div>
+  </div>
+  <div class="push hipoteses" data-in style="--i:4">
+    <p class="eyebrow" style="margin-bottom:16px">Hipóteses críticas</p>
+    <div class="row" style="gap:16px;flex-wrap:wrap">
+      <span class="pill hip">PMEs confiam numa plataforma para decidir energia</span>
+      <span class="pill hip">Fornecedores pagam por demanda qualificada</span>
+      <span class="pill hip">Empresas pagam pelo acompanhamento</span>
+    </div>
+  </div>
+  <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 09.</aside>
+</section>
+
+<!-- 11 · PRÓXIMOS PASSOS -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">10</span> Próximos passos</p>
+  <h2 data-in style="--i:1;font-size:76px">Validar rápido, <em>sem carregar risco cedo.</em></h2>
+  <div class="tempo">
+    <div class="marco agora" data-in style="--i:2">
+      <div class="ponto"></div>
+      <p class="quando">Agora</p>
+      <h3>Entrevistas</h3>
+      <p>Decisores de PMEs e comercializadoras.</p>
+    </div>
+    <div class="marco" data-in style="--i:3">
+      <div class="ponto"></div>
+      <p class="quando"><span class="todo">mês/ano</span></p>
+      <h3>Concierge</h3>
+      <p>20 a 50 empresas com diagnóstico e propostas reais.</p>
+    </div>
+    <div class="marco" data-in style="--i:4">
+      <div class="ponto"></div>
+      <p class="quando"><span class="todo">mês/ano</span></p>
+      <h3>Primeiros contratos</h3>
+      <p>Execução com comercializadoras parceiras habilitadas.</p>
+    </div>
+    <div class="marco" data-in style="--i:5">
+      <div class="ponto"></div>
+      <p class="quando"><span class="todo">mês/ano</span></p>
+      <h3>Acompanhamento</h3>
+      <p>Economia realizada e nova cotação antes do vencimento.</p>
+    </div>
+  </div>
+  <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 10.</aside>
+</section>
+
+<!-- 12 · EQUIPE -->
+<section class="slide claro">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Equipe <span class="todo">confirmar quem está na Supernova</span></p>
+  <h2 data-in style="--i:1;font-size:76px">Um setor técnico e regulado <em>pede um time misto.</em></h2>
+  <div class="equipe" data-in style="--i:2">
+    <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Eng. de Computação · produto e tecnologia</p></div></div>
+    <div class="pessoa"><div class="foto">E</div><div><h3>Enzo Engrich Larese</h3><p>Eng. Elétrica · técnica e tarifas</p></div></div>
+    <div class="pessoa"><div class="foto">H</div><div><h3>Heloísa Carvalho Confessor</h3><p>Administração · modelo e finanças</p></div></div>
+    <div class="pessoa"><div class="foto">L</div><div><h3>Leonardo Dourado</h3><p>Eng. de Computação · dados e engenharia</p></div></div>
+    <div class="pessoa"><div class="foto">M</div><div><h3>Maria Luíza Sampaio Nogueira</h3><p>Arquitetura e Urbanismo · experiência</p></div></div>
+    <div class="pessoa"><div class="foto">M</div><div><h3>Mell Castro P. J. Ferreira</h3><p>Direito · regulação e contratos</p></div></div>
+  </div>
+  <p class="small push" data-in style="--i:3"><span class="todo">trocar as iniciais por fotos (círculo 240×240) e conferir os papéis</span></p>
+  <aside class="notes">Deixa: uma frase sobre o porquê do time, sem ler os nomes. Roteiro bloco 11.</aside>
+</section>
+
+<!-- 13 · ENCERRAMENTO -->
+<section class="slide fim">
+  <div class="hero" style="background-image:url('../../assets/web/milet-hero-rocha-ambar-polida.webp')"></div>
+  <div class="veu"></div>
+  <img class="simbolo" data-in style="--i:0" src="../../assets/logo/svg/milet-symbol-amber-darkbg.svg" alt="">
+  <h1 data-in style="--i:1">Energia em <em>mais liberdade.</em></h1>
+  <div class="contato" data-in style="--i:2">
+    <span>milet@evergreenmkt.com.br</span>
+    <span class="todo">site / LinkedIn</span>
+  </div>
+  <aside class="notes">Deixa: assinatura da marca, olhar na câmera, 2 segundos de silêncio antes de cortar. Roteiro bloco 12.</aside>
+</section>
+
+</div>
+
+<div id="hud"><i></i></div>
+<div id="contador"></div>
+<div id="notas"><b>Notas</b><span></span></div>
+
+<script>
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const stage = document.getElementById('stage');
+  const bar = document.querySelector('#hud i');
+  const counter = document.getElementById('contador');
+  const notes = document.getElementById('notas');
+  let current = 0;
+
+  function fit() {
+    const scale = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  function show(index) {
+    current = Math.max(0, Math.min(index, slides.length - 1));
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    bar.style.width = `${((current + 1) / slides.length) * 100}%`;
+    counter.textContent = `${String(current + 1).padStart(2, '0')} / ${slides.length}`;
+    notes.querySelector('span').textContent = slides[current].querySelector('.notes')?.textContent ?? '';
+    history.replaceState(null, '', `#${current + 1}`);
+  }
+
+  addEventListener('keydown', (event) => {
+    const key = event.key;
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(key)) { event.preventDefault(); show(current + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(key)) { event.preventDefault(); show(current - 1); }
+    else if (key === 'Home') show(0);
+    else if (key === 'End') show(slides.length - 1);
+    else if (key === 'n' || key === 'N') notes.classList.toggle('on');
+    else if (key === 't' || key === 'T') document.body.classList.toggle('hide-todo');
+    else if (key === 'f' || key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    else if (key === 'p' || key === 'P') print();
+  });
+
+  addEventListener('click', (event) => {
+    if (event.target.closest('a, button')) return;
+    show(current + (event.clientX < innerWidth / 3 ? -1 : 1));
+  });
+
+  addEventListener('resize', fit);
+  fit();
+  show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+})();
+</script>
+</body>
+</html>

@@ -37,4 +37,8 @@ novas-imgs2/
 .next/
 coverage/
 
+# Heavy course slides & PDFs
+supernova/*.pptx
+supernova/*.pdf
+
 .vercel
