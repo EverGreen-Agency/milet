@@ -12,15 +12,47 @@ import { StepInvoiceReview } from "@/components/diagnostic/step-invoice-review";
 import { StepTechnicalBaseline } from "@/components/diagnostic/step-technical-baseline";
 import { StepProposalsAllIn } from "@/components/diagnostic/step-proposals-allin";
 import type { ProposalInput } from "@/domain/energy-engine";
-import { VideoCamera, Eye, EyeSlash, Sparkle } from "@phosphor-icons/react";
+import { VideoCamera, EyeSlash } from "@phosphor-icons/react";
 
+// Deixas do bloco 05 do roteiro (supernova/pitch/roteiro.md). Só aparecem em /diagnostico?demo=1.
 const PITCH_CUES: readonly { shot: string; time: string; cue: string }[] = [
-  { shot: "SETUP", time: "0:00–1:15", cue: "Identificação inicial da unidade e perfil" },
-  { shot: "SCR-01", time: "1:15–1:21", cue: "Comece pela conta que você já recebe (Carregar fatura de demonstração)" },
-  { shot: "SCR-02", time: "1:21–1:28", cue: "Conferir dados da unidade · Passaporte Energético (12.480 kWh • 75 kW • Cemig)" },
-  { shot: "SCR-03", time: "1:28–1:34", cue: "Diagnóstico, cartões R$ 10.920 e Rotas de suprimento avaliadas" },
-  { shot: "SCR-04", time: "1:34–1:50", cue: "Veja o custo inteiro · Todas as propostas na mesma régua · Marcar proposta" }
+  { shot: "SETUP", time: "antes de gravar", cue: "Avançar com os dados de demonstração já preenchidos" },
+  { shot: "M1", time: "1:06–1:13", cue: "Usar fatura de demonstração · manter a leitura inteira na tela" },
+  { shot: "M2", time: "1:13–1:21", cue: "Passaporte Energético · consumo, demanda, distribuidora" },
+  { shot: "M3", time: "1:21–1:29", cue: "Rotas avaliadas · mercado livre, solar própria, compartilhada" },
+  { shot: "M4", time: "1:29–1:40", cue: "Custo total lado a lado · Nenhuma oferta compra posição" }
 ];
+
+const EMPTY_LEAD: LeadData = {
+  name: "",
+  email: "",
+  phone: "",
+  companyName: "",
+  documentNumber: "",
+  distributor: "",
+  city: "",
+  state: "",
+  profile: "company",
+  objective: "",
+  consentDataProcessing: false,
+  optInContact: false
+};
+
+// Contato fictício: o modo demonstração não pode carregar dados de pessoas reais.
+const DEMO_LEAD: LeadData = {
+  name: "Carlos Mendonça",
+  email: "contato@padariahorizonte.com.br",
+  phone: "(31) 98765-4321",
+  companyName: "Padaria Horizonte Ltda",
+  documentNumber: "12.345.678/0001-90",
+  distributor: "Cemig",
+  city: "Belo Horizonte",
+  state: "MG",
+  profile: "company",
+  objective: "Avaliar viabilidade de migração para o Mercado Livre de Energia e redução de custos.",
+  consentDataProcessing: true,
+  optInContact: true
+};
 
 const INITIAL_PROPOSALS: ProposalInput[] = [
   {
@@ -39,7 +71,7 @@ const INITIAL_PROPOSALS: ProposalInput[] = [
       taxes: 1600,
       financing: 0
     },
-    remuneration: "R$ 190/mês de taxa de serviço Milet all-in. Sem comissões ocultas de comercializadoras."
+    remuneration: "Serviço Milet: R$ 190/mês, igual em todas as propostas e já incluído no total."
   },
   {
     id: "PROP-SERRA-02",
@@ -57,46 +89,24 @@ const INITIAL_PROPOSALS: ProposalInput[] = [
       taxes: 1570,
       financing: 420
     },
-    remuneration: "R$ 190/mês de taxa de serviço Milet all-in + R$ 420 garantia bancária."
-  },
-  {
-    id: "PROP-HORIZONTE-03",
-    supplier: "Horizonte Solar Distribuída",
-    route: "Geração compartilhada (GD)",
-    termMonths: 12,
-    renewable: "100% Solar Distribuída",
-    adjustment: "Reajuste Concessionária",
-    risk: "Baixo",
-    missing: [],
-    costs: {
-      residualBill: 3100,
-      supplier: 5200,
-      miletService: 150,
-      taxes: 1200,
-      financing: 0
-    },
-    remuneration: "R$ 150/mês de serviço Milet all-in. Sem obras no telhado."
+    remuneration: "Serviço Milet: R$ 190/mês, igual em todas as propostas. Garantia bancária: R$ 420/mês."
   }
 ];
 
 export default function DiagnosticoPage() {
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const [showPitchBar, setShowPitchBar] = useState<boolean>(true);
+  const [demoMode, setDemoMode] = useState<boolean>(false);
+  const [showPitchBar, setShowPitchBar] = useState<boolean>(false);
+  const [lead, setLead] = useState<LeadData>(EMPTY_LEAD);
 
-  const [lead, setLead] = useState<LeadData>({
-    name: "Eduardo Ferreira de Mattos",
-    email: "contato@padariahorizonte.com.br",
-    phone: "(31) 98765-4321",
-    companyName: "Padaria Horizonte Ltda",
-    documentNumber: "12.345.678/0001-90",
-    distributor: "Cemig",
-    city: "Belo Horizonte",
-    state: "MG",
-    profile: "company",
-    objective: "Avaliar viabilidade de migração para o Mercado Livre de Energia e redução de custos.",
-    consentDataProcessing: true,
-    optInContact: true
-  });
+  // /diagnostico?demo=1 liga o modo de gravação; a visita pública começa limpa.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("demo")) {
+      setDemoMode(true);
+      setShowPitchBar(true);
+      setLead(DEMO_LEAD);
+    }
+  }, []);
 
   const [invoice, setInvoice] = useState<InvoiceExtractedData>({
     distributor: "Cemig",
@@ -105,7 +115,7 @@ export default function DiagnosticoPage() {
     total: 10920,
     contractedDemandKw: 75,
     voltageGroup: "A4",
-    tariffFlag: "Verde",
+    tariffFlag: "Amarela",
     fileName: "fatura-sintetica-padaria-agosto-2026.pdf",
     confidenceScore: 0.98
   });
@@ -120,6 +130,8 @@ export default function DiagnosticoPage() {
         return;
       }
 
+      if (!demoMode) return;
+
       if (e.key === "1") setCurrentStep(0);
       else if (e.key === "2") setCurrentStep(1);
       else if (e.key === "3") setCurrentStep(2);
@@ -132,7 +144,7 @@ export default function DiagnosticoPage() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [demoMode]);
 
   const handleLeadComplete = (validatedLead: LeadData) => {
     setLead(validatedLead);
@@ -171,7 +183,7 @@ export default function DiagnosticoPage() {
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
         {/* Barra Auxiliar do Modo de Gravação e Pitch Deck (Pressione 'H' para ocultar na gravação) */}
-        {showPitchBar ? (
+        {demoMode && showPitchBar && (
           <div className="mb-6 p-3 rounded-2xl bg-[var(--card)] border border-[var(--color-milet-amber)]/30 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-milet-amber)] animate-pulse" />
@@ -202,17 +214,6 @@ export default function DiagnosticoPage() {
               </button>
             </div>
           </div>
-        ) : (
-          <div className="flex justify-end mb-4">
-            <button
-              type="button"
-              onClick={() => setShowPitchBar(true)}
-              className="text-[11px] font-mono text-[var(--foreground)]/40 hover:text-[var(--color-milet-amber)] flex items-center gap-1 transition-colors cursor-pointer"
-            >
-              <Eye weight="bold" className="w-3 h-3" />
-              <span>Exibir Guia do Pitch [H]</span>
-            </button>
-          </div>
         )}
 
         {/* Breadcrumb */}
@@ -239,6 +240,7 @@ export default function DiagnosticoPage() {
           >
             {currentStep === 0 && (
               <StepLeadTriage
+                key={demoMode ? "demo" : "live"}
                 initialLead={lead}
                 onComplete={handleLeadComplete}
               />

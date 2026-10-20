@@ -49,7 +49,7 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
           Conferir dados da unidade
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          A Milet estruturou os dados da sua fatura em um documento neutro e verificável. Confira os valores antes de avançar para a análise regulatória.
+          O Milet estruturou os dados da sua fatura em um documento neutro e verificável. Confira os valores antes de avançar para a análise regulatória.
         </p>
       </div>
 

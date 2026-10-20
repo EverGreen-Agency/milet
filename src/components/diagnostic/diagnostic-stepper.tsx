@@ -36,7 +36,7 @@ export const DIAGNOSTIC_STEPS: readonly StepItem[] = [
   },
   {
     id: "propostas",
-    label: "Propostas All-In",
+    label: "Comparar propostas",
     shortLabel: "5. Propostas",
     description: "Comparação transparente e seleção"
   }

@@ -249,7 +249,7 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
 
         {/* Momento de Leitura Visível R2: 3 Linhas Sequenciais */}
         {isProcessing && readingStage > 0 ? (
-          <div className="mt-4 p-4 rounded-xl bg-[var(--background)] border border-[var(--color-milet-amber)]/30 space-y-3 text-left max-w-md mx-auto shadow-xs">
+          <div className="relative z-10 mt-4 p-4 rounded-xl bg-[var(--background)] border border-[var(--color-milet-amber)]/30 space-y-3 text-left max-w-md mx-auto shadow-xs">
             <div className="h-1.5 w-full bg-[var(--border)] rounded-full overflow-hidden">
               <div
                 className="h-full milet-amber-gradient transition-all duration-500 ease-out"

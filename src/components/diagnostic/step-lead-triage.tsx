@@ -331,7 +331,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
             />
             <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              <strong>Consentimento de Tratamento de Dados (LGPD):</strong> Autorizo a Milet a processar as informações técnicas desta unidade sob protocolo de quarentena segura no S3 privado da Railway para fins exclusivos de auditoria energética e simulação comparativa neutra.
+              <strong>Consentimento de Tratamento de Dados (LGPD):</strong> Autorizo o Milet a processar as informações técnicas desta unidade, guardadas em armazenamento privado e criptografado, para fins exclusivos de diagnóstico energético e comparação neutra.
             </span>
           </label>
           {errors.consentDataProcessing ? (
@@ -346,7 +346,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
             />
             <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              Aceito receber o relatório formal por e-mail e ser contatado por um consultor técnico independente da Milet.
+              Aceito receber o relatório formal por e-mail e ser contatado por um consultor técnico independente do Milet.
             </span>
           </label>
         </div>

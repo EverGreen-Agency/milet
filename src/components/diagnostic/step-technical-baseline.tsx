@@ -15,8 +15,10 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
   const kwh = invoice.consumptionKwh || 12480;
   const eligibility: EligibilityResult[] = evaluateEligibility(invoice);
 
-  // Decomposição calculada proporcional de custos regulatórios do setor elétrico brasileiro
-  const energyCost = Math.round(total * 0.49);
+  // Decomposição calculada proporcional de custos regulatórios do setor elétrico brasileiro.
+  // Bandeira verde não tem acréscimo: a parcela de bandeiras volta para a energia.
+  const flagsShare = invoice.tariffFlag && invoice.tariffFlag !== "Verde" ? 0.04 : 0;
+  const energyCost = Math.round(total * (0.53 - flagsShare));
   const distributionCost = Math.round(total * 0.28);
   const taxesCost = Math.round(total * 0.19);
   const flagsCost = total - (energyCost + distributionCost + taxesCost);
@@ -111,7 +113,7 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
               className="bg-amber-600 flex items-center justify-center text-[10px] font-bold text-white truncate px-1 transition-all duration-500"
               title={`Bandeiras e Encargos: ${formatCurrencyBRL(flagsCost)} (${flagsPercent}%)`}
             >
-              Bandeiras ({flagsPercent}%)
+              {flagsPercent >= 8 ? `Bandeiras (${flagsPercent}%)` : null}
             </div>
           </div>
 
@@ -235,7 +237,7 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
           onClick={onComplete}
           className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
         >
-          <span>Ver Propostas Comparadas All-In</span>
+          <span>Comparar propostas</span>
           <ArrowRight weight="bold" className="w-4 h-4" />
         </button>
       </div>

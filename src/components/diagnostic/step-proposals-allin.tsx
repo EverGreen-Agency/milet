@@ -211,7 +211,7 @@ export function StepProposalsAllIn({
 
                 <div className="text-left md:text-right">
                   <span className="text-xs text-[var(--foreground)]/60 font-semibold block uppercase tracking-wider">
-                    Custo Total Mensal All-In
+                    Custo total mensal
                   </span>
                   <div className="font-serif font-bold text-3xl sm:text-4xl text-[var(--foreground)] tracking-tight">
                     {formatCurrencyBRL(prop.total)}

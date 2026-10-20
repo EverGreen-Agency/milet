@@ -109,5 +109,12 @@ body {
   background: linear-gradient(90deg, transparent, #CC8800, #F3C878, #CC8800, transparent);
   box-shadow: 0 0 16px #CC8800, 0 0 8px #F3C878;
   animation: laserScan 2.4s ease-in-out infinite;
-  pointer-events-none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .milet-laser-beam {
+    animation: none;
+    top: 50%;
+  }
 }
