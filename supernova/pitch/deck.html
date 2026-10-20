@@ -248,6 +248,17 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 .hipoteses { padding-top: 28px; }
 .hipoteses .pill { font-size: 16px; }
 
+/* Referência de mercado: prints das fontes */
+.evid-grid { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 28px; margin-top: 48px; flex: 1; min-height: 0; }
+.evid { display: flex; flex-direction: column; min-height: 0; margin: 0; }
+.evid.grande { grid-row: span 2; }
+.evid img { flex: 1; min-height: 0; width: 100%; object-fit: contain; object-position: center; padding: 14px; border-radius: 18px; border: 1px solid var(--linha-escura); background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.evid.grande img { padding: 0; background: #F7F7F7; }
+.evid figcaption { padding-top: 16px; }
+.evid figcaption strong { display: block; font-family: var(--f-display); font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--marfim); }
+.evid.grande figcaption strong { font-size: 38px; color: var(--ambar-claro); }
+.evid figcaption span { display: block; margin-top: 6px; font-family: var(--f-mono); font-size: 15px; letter-spacing: 0.04em; color: #8E887E; }
+
 /* Funil de aquisição */
 .funil { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: auto; }
 .etapa i { display: block; height: 12px; width: var(--w); border-radius: 999px; background: linear-gradient(90deg, var(--ambar), var(--cobre)); margin-bottom: 28px; }
@@ -540,9 +551,30 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 07.</aside>
 </section>
 
-<!-- 10 · COMO CHEGAMOS À PME -->
+<!-- 10 · REFERÊNCIA DE MERCADO -->
+<section class="slide">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">09</span> Referência de mercado</p>
+  <h2 data-in style="--i:1;font-size:76px">O mercado já paga por isso. <em>Dos dois lados.</em></h2>
+  <div class="evid-grid">
+    <figure class="evid grande" data-in style="--i:2">
+      <img src="shots/evid-clarke-comissao.png" alt="Tabela de comissionamento do programa de parceria comercial da Clarke Energia, abril de 2025">
+      <figcaption><strong>Trazer uma PME vale R$ 5 a 10 mil por cliente fechado.</strong><span>Clarke Energia · Programa de Parceria Comercial · abr/2025</span></figcaption>
+    </figure>
+    <figure class="evid" data-in style="--i:3">
+      <img src="shots/evid-electy-usinas.png" alt="FAQ da Electy: a Electy recebe uma porcentagem do contrato pago pelas usinas">
+      <figcaption><strong>O fornecedor paga; o cliente não.</strong><span>Electy · FAQ · consultado em 20/10/2026</span></figcaption>
+    </figure>
+    <figure class="evid" data-in style="--i:4">
+      <img src="shots/evid-clarke-precos.png" alt="Página da Clarke: consultoria do mercado livre de energia por R$ 100 por mês">
+      <figcaption><strong>A empresa também paga pela gestão: R$ 100/mês.</strong><span>Clarke Energia · "Como a Clarke ganha dinheiro" · atualizado em jun/2025</span></figcaption>
+    </figure>
+  </div>
+  <aside class="notes">Deixa: prova pública de que as duas hipóteses de receita já existem no mercado. Roteiro bloco 07.</aside>
+</section>
+
+<!-- 11 · COMO CHEGAMOS À PME -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">09</span> Como chegamos à PME</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">10</span> Como chegamos à PME</p>
   <h2 data-in style="--i:1;font-size:76px">Venda B2B consultiva: <em>o diagnóstico abre a conversa.</em></h2>
   <p class="lead" data-in style="--i:2">Quem decide precisa justificar a escolha para sócio ou financeiro. O dossiê do diagnóstico é o documento que ele leva para essa conversa.</p>
   <div class="funil">
@@ -554,9 +586,9 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: canais iguais aos do BMC entregue; uma frase só no vídeo. Roteiro bloco 07.</aside>
 </section>
 
-<!-- 11 · VALIDAÇÃO E TRAÇÃO -->
+<!-- 12 · VALIDAÇÃO E TRAÇÃO -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">10</span> Validação</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Validação</p>
   <h2 data-in style="--i:1;font-size:76px">O que já provamos — <em>e o que vamos provar agora.</em></h2>
   <div class="grid-2 validacao" style="margin-top:44px">
     <div class="card" data-in style="--i:2">
@@ -582,9 +614,9 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 08.</aside>
 </section>
 
-<!-- 12 · PRÓXIMOS PASSOS -->
+<!-- 13 · PRÓXIMOS PASSOS -->
 <section class="slide">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Próximos passos</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">12</span> Próximos passos</p>
   <h2 data-in style="--i:1;font-size:76px">Validar rápido, <em>sem carregar risco cedo.</em></h2>
   <div class="tempo">
     <div class="marco agora" data-in style="--i:2">
@@ -615,9 +647,9 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 08.</aside>
 </section>
 
-<!-- 13 · EQUIPE -->
+<!-- 14 · EQUIPE -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">12</span> Equipe</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">13</span> Equipe</p>
   <h2 data-in style="--i:1;font-size:76px">Quem constrói o Milet <em>e quem orienta.</em></h2>
   <div class="equipe" data-in style="--i:2">
     <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Fundador · Produto<br>Engenharia de Computação, Mackenzie</p></div></div>
@@ -628,7 +660,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: você apresenta os três; as credenciais da orientadora ficam na tela, não na fala. Roteiro bloco 09.</aside>
 </section>
 
-<!-- 14 · ENCERRAMENTO -->
+<!-- 15 · ENCERRAMENTO -->
 <section class="slide fim">
   <div class="hero" style="background-image:url('../../assets/web/milet-hero-rocha-ambar-polida.webp')"></div>
   <div class="veu"></div>

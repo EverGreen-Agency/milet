@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova). Alvo: **2:45**, para sobrar margem |
-| Fala | ~380 palavras (~145 palavras/min com pausas) |
+| Fala | ~385 palavras (~145 palavras/min com pausas) |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -162,53 +162,54 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 07 · Modelo de negócio e canais (1:56–2:16) · L3 · slides 09 e 10 · Eduardo
+### 07 · Modelo de negócio e canais (1:56–2:18) · L3 · slides 09, 10 e 11 · Eduardo
 
-> "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
+> "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
 **Tela**
 - Diagrama do slide 09: o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
 - Selo âmbar `HIPÓTESE` nas duas receitas quando a palavra é dita.
 - Consistência com o BMC entregue: mesmos dois segmentos, mesmas duas receitas.
-- "E chegamos à PME…": corte para o funil do slide 10; as quatro etapas acendem da esquerda para a direita, com destaque em **02 · Engajar · Diagnóstico gratuito**.
+- "O mercado já paga por isso": corte para o slide 10 com os prints das fontes (Clarke paga R$ 5 a 10 mil por PME fechada; Electy é paga pelas usinas; Clarke cobra R$ 100/mês da empresa). Zoom lento no print grande; 2 s no total.
+- "E chegamos à PME…": corte para o funil do slide 11; as quatro etapas acendem da esquerda para a direita, com destaque em **02 · Engajar · Diagnóstico gratuito**.
 
-**Assets:** GFX-08 · GFX-12 (funil) · **Som:** `tick` em cada seta.
+**Assets:** GFX-08 · GFX-13 (referência de mercado) · GFX-12 (funil) · **Som:** `tick` em cada seta.
 
 ---
 
-### 08 · Validação e próximos passos (2:16–2:29) · L2 · slides 11 e 12 · Eduardo
+### 08 · Validação e próximos passos (2:18–2:31) · L2 · slides 12 e 13 · Eduardo
 
 > "Nas próximas semanas, vamos ouvir dez decisores de PMEs e cinco comercializadoras, e fazer os primeiros diagnósticos com empresas reais, em modo concierge."
 
 **Tela**
-- As três hipóteses do slide 11 aparecem com o critério de sucesso ao lado (formato do Módulo 3: mudança, público, resultado, evidência).
-- Linha do tempo do slide 12 se desenha da esquerda para a direita; o ponto "Agora" pulsa.
+- As três hipóteses do slide 12 aparecem com o critério de sucesso ao lado (formato do Módulo 3: mudança, público, resultado, evidência).
+- Linha do tempo do slide 13 se desenha da esquerda para a direita; o ponto "Agora" pulsa.
 - **Se já houver resultado** de conversas: trocar a fala por "Já conversamos com *N* decisores, e *X* disseram que…", com o número em Playfair 150 px.
 
 **Assets:** GFX-09 · **Som:** música começa a subir.
 
 ---
 
-### 09 · Equipe (2:29–2:40) · L2 · slide 13 · Eduardo
+### 09 · Equipe (2:31–2:42) · L2 · slide 14 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. O Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
 **Tela**
-- Rosto em L2; à direita, a grade do slide 13 acende pessoa por pessoa, em sincronia com cada nome.
+- Rosto em L2; à direita, a grade do slide 14 acende pessoa por pessoa, em sincronia com cada nome.
 - *Lower third* na sua primeira aparição do bloco: `EDUARDO FERREIRA DE MATTOS · PRODUTO` (mono, âmbar).
 - O card da orientadora diz "Professora de Análise de Dados no Mackenzie". Na menção a ela, o card ganha o selo `SHARK TANK BRASIL · TOP 10 FEMALE TECH FOUNDERS` por 2 s: credencial na tela, sem gastar fala.
 
-**Assets:** GFX-10 (slide 13 com as três fotos).
+**Assets:** GFX-10 (slide 14 com as três fotos).
 
 ---
 
-### 10 · Fechamento (2:40–2:49) · L1 → L4 · slide 14 · Eduardo
+### 10 · Fechamento (2:42–2:51) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
 **Tela**
 - Primeira frase em L1, olhar fixo na câmera, sem gráfico.
-- "Energia em mais liberdade": corte para o slide 14 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
+- "Energia em mais liberdade": corte para o slide 15 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
 - Segurar 2 s na tela final; cortar para preto antes de 2:50.
 
 **Assets:** GFX-11 · **Som:** `hit` grave no logo; música resolve e corta.
@@ -238,10 +239,11 @@ Caminho rápido: abrir o deck em tela cheia (**F**), esconder as marcações com
 | GFX-06 | Slide 06 | usado como apoio se o bloco 04 precisar |
 | GFX-07 | Slide 08 | ✱ coluna Milet acendendo |
 | GFX-08 | Slide 09 | ✱ setas de dados e receita |
-| GFX-09 | Slide 12 | ✱ linha do tempo se desenhando |
-| GFX-10 | Slide 13 | fotos reais |
-| GFX-11 | Slide 14 | — |
-| GFX-12 | Slide 10 (funil) | entrada já existe |
+| GFX-09 | Slide 13 | ✱ linha do tempo se desenhando |
+| GFX-10 | Slide 14 | fotos reais |
+| GFX-11 | Slide 15 | — |
+| GFX-12 | Slide 11 (funil) | entrada já existe |
+| GFX-13 | Slide 10 (referência de mercado) | prints das fontes em [../pesquisa/evidencias/](../pesquisa/evidencias/) |
 
 ### Gravações de tela (SCR)
 - Abrir `/diagnostico?demo=1`: o modo demonstração preenche um contato fictício e liga o guia de gravação (tecla **H** esconde o guia; teclas **1–5** pulam etapas). A visita sem `?demo=1` é a do público e começa vazia.
