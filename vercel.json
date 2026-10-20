@@ -1,25 +1,38 @@
 {
   "outputDirectory": "public",
   "cleanUrls": true,
-  "headers": [
-    {
-      "source": "/app/sw.js",
-      "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
-    }
-  ],
   "rewrites": [
     { "source": "/v1/intakes", "destination": "/api/v1/intakes" },
     { "source": "/v1/extract-invoice", "destination": "/api/v1/extract-invoice" },
     { "source": "/roadmap", "destination": "/roadmap.html" },
     { "source": "/build-in-public", "destination": "/build-in-public.html" },
-    { "source": "/demo", "destination": "/demo.html" },
     { "source": "/brandbook", "destination": "/brandbook.html" }
   ],
   "redirects": [
     {
+      "source": "/v2",
+      "destination": "/diagnostico",
+      "permanent": false
+    },
+    {
+      "source": "/v2/:path*",
+      "destination": "/diagnostico",
+      "permanent": false
+    },
+    {
       "source": "/app",
-      "destination": "/app/",
-      "permanent": true
+      "destination": "/diagnostico",
+      "permanent": false
+    },
+    {
+      "source": "/app/:path*",
+      "destination": "/diagnostico",
+      "permanent": false
+    },
+    {
+      "source": "/demo",
+      "destination": "/diagnostico",
+      "permanent": false
     },
     {
       "source": "/brandbook-web",

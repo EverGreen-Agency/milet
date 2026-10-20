@@ -33,4 +33,8 @@ novas-imgs/
 novas-imgs2/
 
 
+# Next.js & Coverage
+.next/
+coverage/
+
 .vercel

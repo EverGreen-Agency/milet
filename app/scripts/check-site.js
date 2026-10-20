@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const ignoredDirectories = new Set([".git", "node_modules", "graphify-out", "public", "dist", "scratch", "tmp", "academico"]);
+const ignoredDirectories = new Set([".git", "node_modules", ".next", "graphify-out", "public", "dist", "scratch", "tmp", "academico"]);
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -34,9 +34,16 @@ function resolveLocalTarget(htmlFile, rawTarget) {
   const normalized = path.normalize(relativeTarget);
   const candidates = [normalized];
   if (!path.extname(normalized)) {
-    candidates.push(`${normalized}.html`, path.join(normalized, "index.html"));
+    candidates.push(
+      `${normalized}.html`,
+      path.join(normalized, "index.html"),
+      path.join("src", "app", normalized, "page.tsx"),
+      path.join("src", "app", normalized, "page.jsx")
+    );
   }
-  if (normalized.endsWith(path.sep) || normalized === ".") candidates.push(path.join(normalized, "index.html"));
+  if (normalized.endsWith(path.sep) || normalized === ".") {
+    candidates.push(path.join(normalized, "index.html"), path.join("src", "app", "page.tsx"));
+  }
   return candidates.map((candidate) => path.resolve(root, candidate));
 }
 

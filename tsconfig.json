@@ -1,16 +1,45 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "composite": false,
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
     "noEmit": true,
-    "rootDir": "."
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
-  "files": [],
-  "references": [
-    { "path": "packages/domain" },
-    { "path": "packages/contracts" },
-    { "path": "packages/test-fixtures" },
-    { "path": "apps/api" },
-    { "path": "apps/worker" }
+  "include": [
+    "next-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "apps",
+    "packages",
+    "academico"
   ]
 }
