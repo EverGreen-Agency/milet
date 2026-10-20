@@ -36,7 +36,6 @@ novas-imgs2/
 # Next.js & Coverage
 .next/
 coverage/
-.app-legacy-backup/
 AGENTS.md
 
 # Heavy course slides & PDFs

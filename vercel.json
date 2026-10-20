@@ -1,5 +1,4 @@
 {
-  "outputDirectory": "public",
   "cleanUrls": true,
   "rewrites": [
     { "source": "/v1/intakes", "destination": "/api/v1/intakes" },

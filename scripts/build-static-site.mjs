@@ -3,7 +3,15 @@ import path from "node:path";
 
 const root = process.cwd();
 const output = path.join(root, "public");
-const siteDirectories = ["app", "assets", "brandbook-web", "tokens", "openapi", "schemas", "v2"];
+const siteDirectories = [
+  { source: "legacy-pwa", destination: "app" },
+  { source: "assets", destination: "assets" },
+  { source: "brandbook-web", destination: "brandbook-web" },
+  { source: "tokens", destination: "tokens" },
+  { source: "openapi", destination: "openapi" },
+  { source: "schemas", destination: "schemas" },
+  { source: "v2", destination: "v2" },
+];
 const deployableExtensions = new Set([
   ".css",
   ".gif",
@@ -48,10 +56,10 @@ for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
   copied += copyDeployableFile(path.join(root, entry.name), path.join(output, entry.name));
 }
 
-for (const directory of siteDirectories) {
-  const source = path.join(root, directory);
-  if (!fs.existsSync(source)) throw new Error(`Diretorio publico ausente: ${directory}`);
-  copied += copyDirectory(source, path.join(output, directory));
+for (const entry of siteDirectories) {
+  const source = path.join(root, entry.source);
+  if (!fs.existsSync(source)) throw new Error(`Diretorio publico ausente: ${entry.source}`);
+  copied += copyDirectory(source, path.join(output, entry.destination));
 }
 
 for (const required of [

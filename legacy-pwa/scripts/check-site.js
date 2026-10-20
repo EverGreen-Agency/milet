@@ -33,12 +33,18 @@ function resolveLocalTarget(htmlFile, rawTarget) {
   const relativeTarget = decoded.startsWith("/") ? decoded.slice(1) : path.join(path.relative(root, path.dirname(htmlFile)), decoded);
   const normalized = path.normalize(relativeTarget);
   const candidates = [normalized];
+  if (normalized.startsWith("app\\") || normalized.startsWith("app/") || normalized === "app") {
+    const subPath = normalized === "app" ? "" : normalized.slice(4);
+    candidates.push(path.join("legacy-pwa", subPath));
+  }
+  candidates.push(path.join("public", normalized));
   if (!path.extname(normalized)) {
     candidates.push(
       `${normalized}.html`,
       path.join(normalized, "index.html"),
       path.join("src", "app", normalized, "page.tsx"),
-      path.join("src", "app", normalized, "page.jsx")
+      path.join("src", "app", normalized, "page.jsx"),
+      path.join("legacy-pwa", "index.html")
     );
   }
   if (normalized.endsWith(path.sep) || normalized === ".") {
