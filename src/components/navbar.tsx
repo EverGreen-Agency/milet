@@ -10,7 +10,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element -- SVG estático da marca, sem otimização */}
           <img
-            src="/assets/logo/svg/milet-symbol-amber.svg"
+            src="/assets/logo/png/transparent/milet-symbol-amber.png"
             alt=""
             width={32}
             height={32}
