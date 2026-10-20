@@ -212,7 +212,7 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
                         : "bg-[var(--foreground)]/10 text-[var(--foreground)]/60"
                     }`}
                   >
-                    {isEligible ? "Elegível Agora" : isReview ? "Requer Vistoria" : "Inelegível"}
+                    {isEligible ? "Elegível Agora" : isReview ? "Requer análise" : "Inelegível"}
                   </span>
                 </div>
               </div>

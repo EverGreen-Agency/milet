@@ -120,8 +120,8 @@ export function evaluateEligibility(invoice: InvoiceInput): EligibilityResult[] 
       },
       {
         route: "Geração compartilhada (GD)",
-        status: "ineligible",
-        reason: "Para unidades do Grupo A com demanda contratada, o Mercado Livre oferece maior economia líquida."
+        status: "review",
+        reason: "Permitida para o Grupo A (Lei 14.300), mas os créditos abatem só a energia, não a demanda contratada; neste perfil tende a render menos que o Mercado Livre."
       }
     ];
   }
