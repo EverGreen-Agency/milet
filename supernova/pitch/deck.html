@@ -259,15 +259,15 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 .marco p { font-size: 24px; line-height: 1.5; color: var(--areia); }
 
 /* 12 Equipe */
-.equipe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; margin-top: 64px; }
-.pessoa { display: flex; gap: 26px; align-items: center; }
+.equipe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 88px; }
+.pessoa { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
 .pessoa .foto {
-  width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center;
+  width: 220px; height: 220px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center;
   background: var(--marfim-2); border: 1px solid var(--linha-clara);
-  font-family: var(--f-display); font-size: 44px; color: var(--ambar-escuro);
+  font-family: var(--f-display); font-size: 84px; color: var(--ambar-escuro);
 }
-.pessoa h3 { font-size: 30px; font-weight: 700; line-height: 1.2; }
-.pessoa p { font-size: 22px; color: var(--texto-2); margin-top: 6px; line-height: 1.4; }
+.pessoa h3 { font-family: var(--f-display); font-size: 44px; font-weight: 600; line-height: 1.15; }
+.pessoa p { font-size: 26px; color: var(--texto-2); margin-top: 6px; line-height: 1.4; }
 
 /* 13 Encerramento */
 .fim { justify-content: center; align-items: center; text-align: center; }
@@ -319,14 +319,14 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 <section class="slide capa">
   <img class="logo" data-in style="--i:0" src="../../assets/logo/svg/milet-logo-horizontal-light.svg" alt="Milet">
   <div>
-    <p class="eyebrow" data-in style="--i:1">Pitch · Supernova 2026</p>
+    <p class="eyebrow" data-in style="--i:1">Pitch · Sebrae Supernova 2026</p>
     <h1 data-in style="--i:2">Sua empresa escolhe a energia. <em>Sem adivinhar.</em></h1>
   </div>
   <div class="meta" data-in style="--i:3">
     <p class="lead" style="margin:0;max-width:1100px">A Milet coloca fornecedores de energia para competir pela sua empresa e acompanha a economia depois que você assina.</p>
     <span class="pill">Energia em mais liberdade</span>
   </div>
-  <aside class="notes">Deixa: nome + promessa em uma frase. Roteiro bloco 00 (abertura do vídeo usa o hook antes desta capa).</aside>
+  <aside class="notes">Deixa: nome + promessa em uma frase. No vídeo, o gancho vem antes desta capa.</aside>
 </section>
 
 <!-- 02 · HOOK -->
@@ -336,7 +336,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <h2 data-in style="--i:1">Desde 2024, toda empresa do Grupo A pode escolher <em>de quem compra energia.</em></h2>
   <p class="lead" data-in style="--i:2">Mas escolher exige comparar. E comparar energia, hoje, é quase impossível.</p>
   <p class="fonte push" data-in style="--i:3">Portaria MME nº 50/2022 — abertura do mercado livre para todo o Grupo A a partir de 01/01/2024.</p>
-  <aside class="notes">Deixa: fato verificável + virada. Roteiro bloco 01 (0:00–0:12).</aside>
+  <aside class="notes">Deixa: fato verificável + virada. Roteiro bloco 00.</aside>
 </section>
 
 <!-- 03 · PROBLEMA -->
@@ -367,7 +367,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <h2 data-in style="--i:5">Qual é a mais barata?</h2>
     <p class="small" data-in style="--i:6;max-width:620px;text-align:right">O decisor — dono ou financeiro — assina por anos sem conseguir responder. Exemplos ilustrativos.</p>
   </div>
-  <aside class="notes">Deixa: deixar a pergunta no ar 1 segundo antes de responder. Roteiro bloco 02.</aside>
+  <aside class="notes">Deixa: deixar a pergunta no ar 1 segundo antes de responder. Roteiro bloco 01.</aside>
 </section>
 
 <!-- 04 · DIMENSÃO -->
@@ -392,7 +392,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     </div>
   </div>
   <p class="small push" data-in style="--i:5"><span class="todo">CONFERIR os três números na base oficial da CCEE antes de entregar</span></p>
-  <aside class="notes">Deixa: os números mostram demanda que existe e conversão que está travando. Não afirmar a causa da queda. Roteiro bloco 03.</aside>
+  <aside class="notes">Deixa: os números mostram demanda que existe e conversão que está travando. Não afirmar a causa da queda. Roteiro bloco 02.</aside>
 </section>
 
 <!-- 05 · DESCOBERTAS -->
@@ -403,7 +403,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <div class="card descoberta" data-in style="--i:2">
       <p class="idx">i.</p>
       <h3>Comparar virou commodity</h3>
-      <p>Gestoras digitais já cotam com dezenas de fornecedores, e a regulação prevê um comparador público da CCEE.</p>
+      <p>Gestoras digitais já cotam com dezenas de fornecedores, e o Decreto nº 13.097/2026 prevê um comparador público da CCEE.</p>
     </div>
     <div class="card descoberta" data-in style="--i:3">
       <p class="idx">ii.</p>
@@ -417,7 +417,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     </div>
   </div>
   <p class="small push" data-in style="--i:5">Pesquisa de mesa: regulação ANEEL/CCEE, 12 concorrentes e avaliações públicas. <span class="todo">+ RESULTADO DAS ENTREVISTAS: nº de decisores PME e comercializadoras ouvidos e a frase mais marcante</span></p>
-  <aside class="notes">Deixa: três descobertas, uma frase cada. Se houver entrevistas, a citação real entra no lugar da marcação. Roteiro bloco 04.</aside>
+  <aside class="notes">Deixa: três descobertas, uma frase cada. Se houver entrevistas, a citação real entra no lugar da marcação. Roteiro bloco 03.</aside>
 </section>
 
 <!-- 06 · SOLUÇÃO -->
@@ -432,8 +432,8 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     </div>
     <div class="passo" data-in style="--i:3">
       <p class="k">02 · Comparar</p>
-      <h3>Fornecedores competem na mesma régua</h3>
-      <p>Custo total, prazo, risco e pendências lado a lado. Nenhuma oferta compra posição.</p>
+      <h3>Rotas e fornecedores na mesma régua</h3>
+      <p>Mercado livre, solar própria ou compartilhada. Depois, custo total, prazo e risco lado a lado. Nenhuma oferta compra posição.</p>
     </div>
     <div class="passo" data-in style="--i:4">
       <p class="k">03 · Acompanhar</p>
@@ -441,7 +441,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <p>Economia prevista versus realizada, alertas de vencimento e nova cotação antes de o contrato acabar.</p>
     </div>
   </div>
-  <aside class="notes">Deixa: três passos, verbos simples. Passo 03 é visão (ainda não construído) — dizer "vamos acompanhar". Roteiro bloco 05.</aside>
+  <aside class="notes">Deixa: três passos, verbos simples. Passo 03 é visão (ainda não construído) — dizer "vamos acompanhar". Roteiro bloco 04.</aside>
 </section>
 
 <!-- 07 · MVP -->
@@ -460,6 +460,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <div class="row push" data-in style="--i:3;gap:14px;flex-wrap:wrap">
         <span class="pill ok">No ar · web</span>
         <span class="pill hip">Fornecedores ilustrativos</span>
+        <span class="todo">recapturar a tela no /diagnostico</span>
       </div>
     </div>
     <div class="browser" data-in style="--i:2">
@@ -467,7 +468,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <img src="shots/05-comparar-full.png" alt="Tela de comparação de propostas do MVP da Milet">
     </div>
   </div>
-  <aside class="notes">Deixa: no vídeo este slide vira a demo gravada (SCR-01 a SCR-04). Roteiro bloco 06.</aside>
+  <aside class="notes">Deixa: no vídeo este slide vira a demo gravada (SCR-01 a SCR-04). Roteiro bloco 05.</aside>
 </section>
 
 <!-- 08 · CONCORRÊNCIA -->
@@ -486,6 +487,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       </tr>
     </thead>
     <tbody>
+      <tr><th>Compara rotas (mercado livre, solar, GD)</th><td class="parcial">◐</td><td class="nao">—</td><td class="parcial">◐</td><td class="nao">—</td><td class="milet sim">✓</td></tr>
       <tr><th>Compara vários fornecedores</th><td class="parcial">◐</td><td class="nao">—</td><td class="sim">✓</td><td class="sim">✓</td><td class="milet sim">✓</td></tr>
       <tr><th>Sem vínculo com fornecedor ou grupo de energia</th><td class="parcial">◐</td><td class="nao">—</td><td class="parcial">◐</td><td class="sim">✓</td><td class="milet sim">✓</td></tr>
       <tr><th>Acompanha depois da assinatura</th><td class="parcial">◐</td><td class="parcial">◐</td><td class="sim">✓</td><td class="nao">—</td><td class="milet sim">✓</td></tr>
@@ -493,7 +495,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     </tbody>
   </table>
   <p class="small push" data-in style="--i:3">✓ sim · ◐ parcial · — não. Leitura a partir da comunicação pública das empresas (out/2026). Na Milet, acompanhamento e Passaporte completo estão em construção.</p>
-  <aside class="notes">Deixa: reconhecer concorrentes antes de diferenciar ("se acha que não tem concorrente…"). Roteiro bloco 07.</aside>
+  <aside class="notes">Deixa: reconhecer concorrentes antes de diferenciar ("se acha que não tem concorrente…"). Roteiro bloco 06.</aside>
 </section>
 
 <!-- 09 · MERCADO E MONETIZAÇÃO -->
@@ -520,7 +522,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <div><b>SAM</b>~72 mil PMEs com potencial de migrar (CCEE, 2023) <span class="todo">× ticket</span></div>
     <div><b>SOM · FASE 0</b>20 a 50 empresas atendidas em modo concierge <span class="todo">× receita por conta</span></div>
   </div>
-  <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 08.</aside>
+  <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 07.</aside>
 </section>
 
 <!-- 10 · VALIDAÇÃO E TRAÇÃO -->
@@ -531,7 +533,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <div class="card" data-in style="--i:2">
       <p class="k">Feito</p>
       <h3>Produto e tese estruturados</h3>
-      <p>MVP navegável no ar, leitura de fatura, captação com consentimento LGPD, mapas de empatia e canvas de valor dos dois lados.</p>
+      <p>MVP navegável no ar, leitura de fatura, captação com consentimento LGPD e BMC bilateral entregue na Supernova.</p>
       <p style="margin-top:20px"><span class="todo">+ nº de diagnósticos / visitas / cadastros reais, se houver</span></p>
     </div>
     <div class="card" data-in style="--i:3">
@@ -549,7 +551,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <span class="pill hip">Empresas pagam pelo acompanhamento</span>
     </div>
   </div>
-  <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 09.</aside>
+  <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 08.</aside>
 </section>
 
 <!-- 11 · PRÓXIMOS PASSOS -->
@@ -582,23 +584,20 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <p>Economia realizada e nova cotação antes do vencimento.</p>
     </div>
   </div>
-  <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 10.</aside>
+  <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 08.</aside>
 </section>
 
 <!-- 12 · EQUIPE -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Equipe <span class="todo">confirmar quem está na Supernova</span></p>
-  <h2 data-in style="--i:1;font-size:76px">Um setor técnico e regulado <em>pede um time misto.</em></h2>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Equipe</p>
+  <h2 data-in style="--i:1;font-size:76px">Quem constrói a Milet <em>e quem orienta.</em></h2>
   <div class="equipe" data-in style="--i:2">
-    <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Eng. de Computação · produto e tecnologia</p></div></div>
-    <div class="pessoa"><div class="foto">E</div><div><h3>Enzo Engrich Larese</h3><p>Eng. Elétrica · técnica e tarifas</p></div></div>
-    <div class="pessoa"><div class="foto">H</div><div><h3>Heloísa Carvalho Confessor</h3><p>Administração · modelo e finanças</p></div></div>
-    <div class="pessoa"><div class="foto">L</div><div><h3>Leonardo Dourado</h3><p>Eng. de Computação · dados e engenharia</p></div></div>
-    <div class="pessoa"><div class="foto">M</div><div><h3>Maria Luíza Sampaio Nogueira</h3><p>Arquitetura e Urbanismo · experiência</p></div></div>
-    <div class="pessoa"><div class="foto">M</div><div><h3>Mell Castro P. J. Ferreira</h3><p>Direito · regulação e contratos</p></div></div>
+    <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Fundador · Eng. de Computação<br>Produto e tecnologia</p></div></div>
+    <div class="pessoa"><div class="foto">G</div><div><h3>Gustavo <span class="todo">sobrenome</span></h3><p>Fundador · <span class="todo">curso</span><br><span class="todo">área no projeto</span></p></div></div>
+    <div class="pessoa"><div class="foto">P</div><div><h3>Profa. <span class="todo">nome</span></h3><p>Orientadora · <span class="todo">instituição / área</span></p></div></div>
   </div>
-  <p class="small push" data-in style="--i:3"><span class="todo">trocar as iniciais por fotos (círculo 240×240) e conferir os papéis</span></p>
-  <aside class="notes">Deixa: uma frase sobre o porquê do time, sem ler os nomes. Roteiro bloco 11.</aside>
+  <p class="small push" data-in style="--i:3"><span class="todo">trocar as iniciais por fotos (círculo 240×240)</span></p>
+  <aside class="notes">Deixa: cada fundador diz nome, curso e o que cuida; menção à orientadora. Roteiro bloco 09.</aside>
 </section>
 
 <!-- 13 · ENCERRAMENTO -->
@@ -611,7 +610,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <span>milet@evergreenmkt.com.br</span>
     <span class="todo">site / LinkedIn</span>
   </div>
-  <aside class="notes">Deixa: assinatura da marca, olhar na câmera, 2 segundos de silêncio antes de cortar. Roteiro bloco 12.</aside>
+  <aside class="notes">Deixa: assinatura da marca, olhar na câmera, 2 segundos de silêncio antes de cortar. Roteiro bloco 10.</aside>
 </section>
 
 </div>

@@ -1,0 +1,39 @@
+MILET — KIT DO VÍDEO-PITCH · SEBRAE SUPERNOVA 2026 (V1)
+
+1) ABRA O PITCH
+   Dê dois cliques no arquivo pitch_milet_supernova_v1.html.
+   Funciona sem internet, instalaçao ou imagens externas.
+
+2) NAVEGUE
+   Setas esquerda/direita: mudar slide
+   N: notas de direção e roteiro de cada slide
+   F: tela cheia
+   V: ocultar controles durante captura de tela (pressione V novamente para voltar)
+
+3) EDITE
+   Abra o arquivo HTML em um editor de texto ou VS Code.
+   Todo texto dos slides está no próprio HTML (seções <section class="slide">).
+   As falas de cada slide estão no bloco 'speakerNotes' no fim do HTML.
+   As cores estão na regra :root no início da folha de estilo.
+
+4) ROTEIRO
+   Veja 'roteiro_direcao_video_v1.md' para as falas completas, segundos, direção
+   de vídeo, animação, cortes de câmera, efeitos e checklist.
+
+5) GRÁFICOS ADICIONAIS
+   Em assets/ há 3 vetores SVG editáveis com conceitos visuais centrais:
+   - 01_fatura_passaporte.svg
+   - 02_comparacao_criterios.svg
+   - 03_autopilot_ciclo.svg
+   Eles podem ser importados em Figma, Illustrator, Canva ou no editor de vídeo.
+   São concept art/vetores, não prints de um sistema funcional.
+
+6) CONCORRENTES / RECEITAS
+   Veja 'mercado_concorrencia_monetizacao_v1.md' para fontes e limites das
+   afirmações (alguns valores publicados são HISTÓRICOS).
+
+IMPORTANTE: logo/brandkit do Milet precisam substituir a assinatura tipográfica
+provisória. Não foi redesenhado o logotipo por fidelidade à marca original.
+Antes de enviar, substituir placeholders de equipe, adicionar validações reais
+caso existam e cronometrar locução gravada (< 3 minutos). Não afirmar tração
+não verificada. O HTML é um deck editável com motion leve; não é o vídeo final.

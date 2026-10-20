@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Milet — Pitch Supernova 2026 · V1</title>
+<style>
+:root{--bg:#06101d;--card:#0e1e30;--card2:#102940;--mint:#4ce0cc;--blue:#69a9ff;--gold:#f8c978;--ink:#f0f6fa;--sub:#a8bccd;--stroke:rgba(183,224,236,.15);--shadow:0 24px 65px rgba(0,0,0,.3)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#030c16;color:var(--ink);font-family:Inter,'Segoe UI',Arial,sans-serif}body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;overflow-x:hidden}
+button{font:inherit;cursor:pointer}#stage{position:relative;width:min(96vw,calc(92vh * 16 / 9),1720px);aspect-ratio:16/9;border:1px solid #2d3e50;overflow:hidden;border-radius:15px;background:radial-gradient(circle at 88% 8%,#12354b 0,transparent 35%),radial-gradient(circle at 8% 88%,#092b31 0,transparent 40%),#06101d;box-shadow:var(--shadow)}
+#stage:fullscreen{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0}
+#stage:before{content:'';position:absolute;inset:0;opacity:.38;pointer-events:none;background-image:linear-gradient(rgba(108,197,210,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(108,197,210,.055) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(90deg,transparent,#000 35%,#000 85%,transparent)}
+#stage:after{content:'';position:absolute;width:45%;height:100%;right:-28%;top:-23%;pointer-events:none;border:1px solid rgba(76,224,204,.14);border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 0 75px rgba(76,224,204,.025),0 0 0 150px rgba(76,224,204,.018)}
+.slide{position:absolute;inset:0;padding:4.7% 6%;display:none;flex-direction:column;justify-content:center;isolation:isolate}.slide.active{display:flex;animation:reveal .52s ease both}@keyframes reveal{from{opacity:0;transform:translateY(18px) scale(.989)}to{opacity:1;transform:translateY(0) scale(1)}}
+.kicker{font-size:clamp(9px,.85vw,16px);font-weight:750;letter-spacing:.19em;text-transform:uppercase;color:var(--mint);margin-bottom:1.4%}.h1{font-size:clamp(35px,4.35vw,87px);line-height:1.09;letter-spacing:-.055em;margin:0 0 2.1%;font-weight:800;max-width:92%}.h2{font-size:clamp(28px,3.15vw,66px);line-height:1.14;letter-spacing:-.04em;font-weight:800;margin:0 0 2.2%}.lead{font-size:clamp(13px,1.35vw,26px);line-height:1.46;color:var(--sub);max-width:82%;margin:0 0 1.5%}.muted{color:var(--sub)}.mint{color:var(--mint)}.blue{color:var(--blue)}.gold{color:var(--gold)}.row{display:flex;align-items:center;gap:2%}.spread{justify-content:space-between}.grow{flex:1}.stack{display:flex;flex-direction:column;gap:14px}
+.brand{position:absolute;top:4%;right:6%;font-weight:900;font-size:clamp(16px,1.6vw,29px);letter-spacing:-.05em;color:#eafffa}.brand span{color:var(--mint)}.page{position:absolute;bottom:3.8%;right:6%;font-size:clamp(9px,.85vw,17px);color:#7591a6;letter-spacing:.14em}.footnote{position:absolute;bottom:3.8%;left:6%;font-size:clamp(8px,.70vw,14px);color:#7893a7}
+.glow-dot{height:8px;width:8px;background:var(--mint);border-radius:50%;box-shadow:0 0 22px var(--mint);display:inline-block;margin-right:8px}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(76,224,204,.3);background:rgba(76,224,204,.06);color:#b5fff3;padding:9px 13px;border-radius:100px;font-size:clamp(10px,.9vw,17px);font-weight:750;letter-spacing:.02em}
+.panel{background:linear-gradient(145deg,rgba(19,45,65,.92),rgba(9,25,40,.9));border:1px solid var(--stroke);border-radius:18px;box-shadow:0 12px 28px rgba(0,0,0,.18)}.smallcaps{letter-spacing:.14em;text-transform:uppercase;font-size:clamp(8px,.75vw,14px);font-weight:750;color:#84a8ba}.big-num{font-size:clamp(27px,3.1vw,65px);font-weight:830;letter-spacing:-.045em}.tiny{font-size:clamp(9px,.9vw,16px);line-height:1.35}.tag{color:var(--mint);font-weight:850;border:1px solid #245c59;background:#123d3b;border-radius:8px;padding:5px 9px;font-size:clamp(8px,.75vw,15px)}
+/* 1 */
+.slide-intro .h1{font-size:clamp(35px,4.5vw,92px);max-width:77%}.quote-cloud{position:absolute;right:5%;bottom:8%;width:35%;height:34%}.offer{position:absolute;width:80%;padding:5%;transform:rotate(var(--ang));animation:drift 5s ease-in-out infinite alternate}.offer:nth-child(1){right:12%;top:0;--ang:6deg;opacity:.72}.offer:nth-child(2){right:4%;top:28%;--ang:-7deg;z-index:2}.offer:nth-child(3){right:13%;top:53%;--ang:3deg;opacity:.68}.offer b{font-size:clamp(12px,1.16vw,24px)}.offer .price{font-size:clamp(13px,1.6vw,29px);font-weight:850;color:var(--mint);padding-top:3%}@keyframes drift{to{transform:translateY(-9px) rotate(var(--ang))}}
+/* 2 */
+.friction{display:grid;grid-template-columns:repeat(3,1fr);gap:2%;margin-top:2.3%}.friction .panel{padding:6% 7%;height:clamp(145px,15vw,285px);display:flex;flex-direction:column;justify-content:space-between}.friction .glyph{font-size:clamp(29px,3.4vw,68px);color:var(--mint);line-height:1}.friction strong{font-size:clamp(15px,1.46vw,29px);line-height:1.2}.friction p{color:#9ab3c4;font-size:clamp(10px,1vw,19px);line-height:1.4;margin:0}.strip{display:flex;align-items:center;gap:1%;padding:1.6% 2.1%;border:1px solid rgba(248,201,120,.18);border-radius:12px;background:rgba(248,201,120,.05);margin-top:2%;font-size:clamp(11px,1.1vw,21px);color:#f4d99a}
+/* 3 */
+.market-row{display:flex;align-items:stretch;gap:2%;margin:3% 0 0}.market-row>.panel{padding:2.8%;flex:1;min-height:190px}.market-row h3{margin:.6em 0 .35em;font-size:clamp(18px,1.55vw,32px)}.market-row p{margin:0;font-size:clamp(11px,1.05vw,21px);color:var(--sub);line-height:1.4}.market-row .accent{font-size:clamp(11px,1vw,19px);color:var(--mint);font-weight:800}.impact{font-size:clamp(16px,1.53vw,29px);padding-top:2%;color:#d9eaf0}
+/* 4 */
+.flowline{display:grid;grid-template-columns:1fr .13fr 1fr .13fr 1fr .13fr 1fr;align-items:center;gap:0;margin:1.5% 0 2%}.step{background:rgba(17,40,56,.88);border:1px solid rgba(91,217,201,.22);padding:9% 5%;border-radius:15px;text-align:center;min-height:165px}.step .icon{font-size:clamp(20px,2.2vw,46px);display:block;margin-bottom:1em}.step h3{font-size:clamp(14px,1.25vw,25px);margin:0 0 8px;line-height:1.15}.step p{font-size:clamp(10px,.90vw,18px);margin:0;color:var(--sub)}.arrow{font-size:clamp(20px,2vw,42px);color:var(--mint);text-align:center;animation:pulse 1.8s ease infinite}@keyframes pulse{50%{opacity:.35}}.mockbar{padding:1.6% 2%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(10px,1vw,20px)}.mockbar strong{color:var(--mint)}
+/* 5 */
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6%;margin-top:1.6%}.diff-card{padding:3.4% 4%;border-radius:14px;min-height:110px;background:rgba(9,30,45,.82);border:1px solid rgba(104,163,192,.19)}.diff-card b{display:block;color:#ecf8fd;font-size:clamp(14px,1.35vw,26px);margin-bottom:10px}.diff-card p{font-size:clamp(10px,.98vw,19px);color:#a4bbca;margin:0;line-height:1.4}.line-accent{border-left:4px solid var(--mint)}
+/* 6 */
+.eco{display:grid;grid-template-columns:1fr .85fr 1fr;align-items:center;gap:3%;margin-top:1.5%}.eco-box{padding:7%;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:center;gap:14px}.eco-box .role{font-weight:800;font-size:clamp(18px,1.6vw,32px)}.eco-box p{font-size:clamp(10px,1vw,18px);color:var(--sub);margin:0}.eco-center{border:1px solid var(--mint);background:linear-gradient(160deg,#154e50,#0b253b);border-radius:20px;padding:14% 5%;box-shadow:0 0 40px rgba(76,224,204,.10);text-align:center}.eco-center strong{font-size:clamp(25px,2.8vw,59px);display:block;letter-spacing:-.05em}.eco-center small{font-size:clamp(9px,.9vw,18px);color:#a7ded6}.revenue{margin-top:2%;display:flex;justify-content:center;gap:3%;font-size:clamp(11px,1vw,21px)}.revenue span{background:rgba(76,224,204,.1);border:1px solid rgba(76,224,204,.2);border-radius:10px;padding:1.4% 2.3%}
+/* 7 */
+.valid{display:grid;grid-template-columns:repeat(3,1fr);gap:2%;margin:3% 0 0}.valid .panel{padding:7% 8%;min-height:195px}.valid span{color:var(--mint);font-size:clamp(13px,1.4vw,25px);font-weight:800}.valid h3{font-size:clamp(17px,1.65vw,34px);line-height:1.2;margin:15px 0}.valid p{color:var(--sub);font-size:clamp(10px,.96vw,20px);margin:0;line-height:1.4}
+/* 8 */
+.endglow{position:absolute;right:-8%;top:0;width:52%;aspect-ratio:1;border:1px solid rgba(76,224,204,.23);border-radius:50%;box-shadow:inset 0 0 75px rgba(76,224,204,.08),0 0 80px rgba(76,224,204,.09);animation:spin 40s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.endglow:after{content:'';position:absolute;inset:13%;border:1px dashed rgba(76,224,204,.4);border-radius:50%}.endcard{z-index:1;max-width:72%}.endcard .h1{font-size:clamp(39px,4.3vw,90px)}
+/* chrome */
+#controls{display:flex;width:min(96vw,calc(92vh * 16 / 9),1720px);align-items:center;justify-content:space-between;gap:9px;font-size:13px;color:#c2d4e0;padding-bottom:12px;flex-wrap:wrap}#controls button{color:#dfefef;background:#112335;border:1px solid #294357;padding:9px 13px;border-radius:9px}#controls button:hover{border-color:var(--mint);color:white}.bar{height:6px;background:#152a3b;overflow:hidden;border-radius:99px;min-width:130px;flex:1;max-width:370px}.bar span{display:block;height:100%;width:12.5%;background:linear-gradient(90deg,#2dbdac,var(--mint));transition:width .25s}#notes{width:min(96vw,calc(92vh * 16 / 9),1720px);padding:14px 18px;border-radius:12px;background:#0e1f2d;border:1px solid #30465a;color:#d2e4e6;display:none;font-size:14px;line-height:1.55;margin-bottom:20px}#notes b{color:var(--mint)}#notes.show{display:block}.controlhint{color:#819cae;font-size:11px}.speaker{display:inline-block;background:rgba(105,169,255,.12);color:#c2ddff;border:1px solid rgba(105,169,255,.22);padding:4px 8px;border-radius:6px;margin-right:8px;font-size:12px}
+@media (max-width:700px){#stage{width:100vw;border-radius:0}.slide{padding:4% 5%}.h1{font-size:7vw}.h2{font-size:5.4vw}.lead{font-size:2.25vw}.friction .panel{height:24vw}.friction strong{font-size:2.4vw}.friction p{font-size:1.5vw}.step{min-height:20vw;padding:7% 4%}.step p,.market-row p,.diff-card p,.eco-box p,.valid p{font-size:1.5vw}.step h3{font-size:2vw}.diff-card{min-height:14vw;padding:3%}.valid .panel{min-height:17vw}.market-row>.panel{min-height:15vw}} 
+@media print{body{display:block;background:#fff}#stage{width:100%;height:auto;aspect-ratio:auto;display:block;overflow:visible;border:none;box-shadow:none}.slide,.slide.active{display:flex !important;position:relative;width:100%;height:56.25vw;max-height:100vh;break-after:page;page-break-after:always;animation:none}#controls,#notes{display:none !important}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main id="stage" aria-label="Apresentação Milet Supernova 2026">
+<section class="slide slide-intro active" data-title="Hook · O problema" data-time="00:00–00:17">
+  <div class="brand">milet<span>·</span></div>
+  <div class="kicker">SUPER​NOVA 2026 • PITCH DO PROJETO</div>
+  <h1 class="h1">Sua empresa paga pela energia.<br><span class="mint">Mas sabe se está fazendo a melhor escolha?</span></h1>
+  <p class="lead" style="max-width:55%">Três propostas, regras diferentes e nenhuma comparação realmente simples.</p>
+  <span class="pill" style="align-self:flex-start">Um novo jeito de decidir energia</span>
+  <div class="quote-cloud" aria-hidden="true">
+    <div class="panel offer"><div class="smallcaps">PROPOSTA 01</div><b>Contrato de longo prazo</b><div class="price">Economia?</div></div>
+    <div class="panel offer"><div class="smallcaps">PROPOSTA 02</div><b>Desconto sobre tarifa</b><div class="price">Quais riscos?</div></div>
+    <div class="panel offer"><div class="smallcaps">PROPOSTA 03</div><b>Energia por assinatura</b><div class="price">Qual a melhor?</div></div>
+  </div>
+  <div class="footnote">MILET • PLATAFORMA EM DESENVOLVIMENTO</div><div class="page">01 / 08</div>
+</section>
+<section class="slide" data-title="Problema" data-time="00:17–00:38">
+  <div class="brand">milet<span>·</span></div><div class="kicker">01 / A DOR</div>
+  <h2 class="h2">O problema não é só pagar caro.<br><span class="mint">É decidir no escuro.</span></h2>
+  <div class="friction">
+    <div class="panel"><div class="glyph">≋</div><strong>Dados fragmentados</strong><p>Faturas e contratos em documentos e formatos diferentes.</p></div>
+    <div class="panel"><div class="glyph">⇄</div><strong>Propostas incomparáveis</strong><p>Preço, prazos, riscos e modalidades nem sempre equivalentes.</p></div>
+    <div class="panel"><div class="glyph">◷</div><strong>Gestão esquecida</strong><p>Depois da contratação, surgem vencimentos e novas decisões.</p></div>
+  </div>
+  <div class="strip">Resultado: tempo perdido, insegurança e oportunidades que podem passar despercebidas.</div>
+  <div class="page">02 / 08</div>
+</section>
+<section class="slide" data-title="Oportunidade" data-time="00:38–00:57">
+  <div class="brand">milet<span>·</span></div><div class="kicker">02 / POR QUE AGORA</div>
+  <h2 class="h2">O mercado está abrindo.<br><span class="mint">A decisão precisa evoluir.</span></h2>
+  <div class="market-row">
+    <div class="panel"><div class="accent">DESDE 2024</div><h3>Grupo A no mercado livre</h3><p>Mais empresas podem escolher fornecedores e negociar contratos.</p></div>
+    <div class="panel"><div class="accent">NOVA INFRAESTRUTURA</div><h3>Comparar será o básico</h3><p>A regulação prevê comparação centralizada de ofertas pela CCEE.</p></div>
+    <div class="panel"><div class="accent">NOSSA TESE</div><h3>Valor além do preço</h3><p>Entender, executar, medir resultados e voltar a otimizar.</p></div>
+  </div>
+  <p class="impact">Oportunidade: transformar <b>uma escolha pontual</b> em <b class="mint">uma relação inteligente e contínua.</b></p>
+  <div class="footnote">Referências: regras de abertura do Grupo A e Decreto 13.097/2026, art. 10.</div><div class="page">03 / 08</div>
+</section>
+<section class="slide" data-title="Como o Milet funciona" data-time="00:57–01:33">
+  <div class="brand">milet<span>·</span></div><div class="kicker">03 / A SOLUÇÃO</div>
+  <h2 class="h2">Conheça <span class="mint">O Milet.</span><br>Da fatura à melhor próxima decisão.</h2>
+  <div class="flowline">
+   <div class="step"><span class="icon">▤</span><h3>1. Passaporte</h3><p>Organiza consumo e contratos</p></div><div class="arrow">→</div>
+   <div class="step"><span class="icon">◇</span><h3>2. Comparação</h3><p>Alternativas, propostas e riscos</p></div><div class="arrow">→</div>
+   <div class="step"><span class="icon">✓</span><h3>3. Contratação</h3><p>Execução assistida e rastreável</p></div><div class="arrow">→</div>
+   <div class="step"><span class="icon">↻</span><h3>4. Autopilot</h3><p>Economia e novas oportunidades</p></div>
+  </div>
+  <div class="panel mockbar"><div><span class="tag">PROTÓTIPO CONCEITUAL</span> <span class="muted" style="padding-left:12px">Jornada demonstrativa • sem dados reais</span></div><strong>Decidir → Executar → Reavaliar ↻</strong></div>
+  <div class="page">04 / 08</div>
+</section>
+<section class="slide" data-title="Diferenciação" data-time="01:33–01:57">
+  <div class="brand">milet<span>·</span></div><div class="kicker">04 / DIFERENCIAL PROPOSTO</div>
+  <h2 class="h2">Comparadores já existem.<br><span class="mint">Queremos conectar o ciclo inteiro.</span></h2>
+  <div class="diff-grid">
+   <div class="diff-card line-accent"><b>Uma visão das alternativas</b><p>Comparar configurações energéticas elegíveis — não apenas preços isolados de ofertas.</p></div>
+   <div class="diff-card line-accent"><b>Decisão transparente</b><p>Critérios de custo líquido, prazo e risco separados dos incentivos comerciais.</p></div>
+   <div class="diff-card line-accent"><b>Execução acompanhada</b><p>Documentos, etapas e parceiros em uma jornada rastreável.</p></div>
+   <div class="diff-card line-accent"><b>Otimização que se repete</b><p>Economia projetada versus realizada, alertas e oportunidades futuras.</p></div>
+  </div>
+  <div class="footnote">Posicionamento desejado, a validar; funcionalidades similares existem no mercado.</div><div class="page">05 / 08</div>
+</section>
+<section class="slide" data-title="Modelo de negócio" data-time="01:57–02:18">
+  <div class="brand">milet<span>·</span></div><div class="kicker">05 / MODELO DE NEGÓCIO</div>
+  <h2 class="h2">Um mercado de dois lados.<br><span class="mint">Valor compartilhado.</span></h2>
+  <div class="eco">
+   <div class="panel eco-box"><div class="smallcaps">DEMANDA</div><div class="role">PMEs</div><p>Clareza, economia e acompanhamento.</p></div>
+   <div class="eco-center"><strong>MILET</strong><small>diagnóstico • matching • gestão</small></div>
+   <div class="panel eco-box"><div class="smallcaps">OFERTA</div><div class="role">Fornecedores</div><p>Demanda qualificada e menor fricção comercial.</p></div>
+  </div>
+  <div class="revenue"><span><b class="mint">01</b> Taxa de sucesso por contratação</span><span><b class="mint">02</b> Assinatura de gestão contínua</span></div>
+  <div class="footnote">Ambas as receitas são hipóteses de monetização a validar.</div><div class="page">06 / 08</div>
+</section>
+<section class="slide" data-title="MVP e validação" data-time="02:18–02:39">
+  <div class="brand">milet<span>·</span></div><div class="kicker">06 / EXECUÇÃO E VALIDAÇÃO</div>
+  <h2 class="h2">Começar pequeno.<br><span class="mint">Provar o ciclo inteiro.</span></h2>
+  <div class="valid">
+    <div class="panel"><span>01</span><h3>Protótipo</h3><p>Fatura → Passaporte → comparação assistida.</p></div>
+    <div class="panel"><span>02</span><h3>Pilotos</h3><p>Conversar com PMEs e fornecedores e testar propostas reais.</p></div>
+    <div class="panel"><span>03</span><h3>Métricas</h3><p>Tempo de diagnóstico, aceitação, custo de operação e economia verificável.</p></div>
+  </div>
+  <div class="strip" style="color:#b9f3e6;border-color:#2b655f;background:#0c302f">Meta: validar valor antes de automatizar ou expandir todas as modalidades.</div>
+  <div class="footnote">Planejamento e metas — não apresentados como tração já alcançada.</div><div class="page">07 / 08</div>
+</section>
+<section class="slide" data-title="Fechamento" data-time="02:39–02:52">
+  <div class="brand">milet<span>·</span></div><div class="endglow"></div>
+  <div class="endcard"><div class="kicker">07 / O FUTURO QUE QUEREMOS CONSTRUIR</div>
+   <h1 class="h1">Energia é essencial.<br><span class="mint">Decidir bem não deveria ser difícil.</span></h1>
+   <p class="lead" style="max-width:95%;font-size:clamp(15px,1.6vw,31px)">O Milet. Inteligência independente para decisões energéticas contínuas.</p>
+   <div class="pill"><span class="glow-dot"></span> MILET • SEBRAE SUPERNOVA 2026</div>
+  </div>
+  <div class="footnote">[INSERIR INTEGRANTES DA EQUIPE E ORIENTADOR(A) SE APLICÁVEL]</div><div class="page">08 / 08</div>
+</section>
+</main>
+<div id="controls">
+  <div><button id="prev" aria-label="Slide anterior">← Anterior</button> <button id="next" aria-label="Próximo slide">Próximo →</button> <button id="fullscreen" title="Tela cheia">⛶ Tela cheia</button></div>
+  <span id="slideTitle" style="font-weight:650;white-space:nowrap">Hook · O problema</span>
+  <span id="clock" class="tiny muted">00:00–00:17</span>
+  <div class="bar"><span id="progress"></span></div>
+  <button id="toggleNotes" title="Mostrar roteiro e direção">☷ Notas do vídeo</button>
+  <span class="controlhint">← → navegar · F fullscreen · N notas · V ocultar controles</span>
+</div>
+<aside id="notes" aria-live="polite"><div id="noteText"></div></aside>
+<script>
+const slides=[...document.querySelectorAll('.slide')]; let idx=0,videoMode=false;
+const speakerNotes=[
+'<span class="speaker">00:00–00:17</span><b>FALA:</b> “Imagine receber três propostas de energia para sua empresa. Uma promete desconto, outra tem prazo longo, outra fala em créditos. Como saber qual realmente vale mais a pena?”<br><b>IMAGEM:</b> iniciar com rosto à esquerda; propostas sobrepostas entram da direita com pequenos pop-ups “qual risco?”, “qual custo?”. Cortar no punchline.',
+'<span class="speaker">00:17–00:38</span><b>FALA:</b> “Para uma PME, essa escolha é difícil. Faturas e contratos têm termos técnicos, propostas seguem regras diferentes e, depois da assinatura, quase ninguém acompanha se a economia prevista aconteceu. É um custo que consome tempo e confiança.”<br><b>IMAGEM:</b> zoom em fatura fictícia, destacar prazo, multa, tarifa; cortes rápidos com 3 cartões; sem valores de economia inventados.',
+'<span class="speaker">00:38–00:57</span><b>FALA:</b> “O mercado livre já está aberto aos consumidores do Grupo A. E a regulação prevê comparação centralizada de ofertas. Isso indica que comparar preço, sozinho, não será suficiente. A oportunidade é transformar a decisão em acompanhamento contínuo.”<br><b>IMAGEM:</b> tipografia cinética “2024”, “CCEE”, “não basta comparar”; adicionar fonte pequena em tela.',
+'<span class="speaker">00:57–01:33</span><b>FALA:</b> “Foi por isso que idealizamos o Milet. A empresa envia sua fatura e cria um Passaporte Energético. O sistema organiza os dados, identifica alternativas compatíveis e coloca propostas na mesma base de comparação, considerando custo líquido, prazo e risco. Depois, apoia a contratação com parceiros habilitados. E a relação não termina aí: o Autopilot acompanha resultados e sugere novas oportunidades de otimização.”<br><b>IMAGEM:</b> mini-demo com fatura ilustrativa sendo extraída, quatro cartões se iluminando em sequência, microanimação do ciclo. Rotular SIMULAÇÃO/PROTÓTIPO se não houver MVP real.',
+'<span class="speaker">01:33–01:57</span><b>FALA:</b> “Já existem corretoras e marketplaces de energia. O nosso posicionamento vai além de uma lista de ofertas: queremos comparar configurações energéticas, manter dados e decisões organizados e acompanhar a economia para reavaliar a melhor escolha ao longo do tempo. Essa integração é a tese que estamos validando.”<br><b>IMAGEM:</b> câmera em picture-in-picture, grade 2×2 com entradas escalonadas. Evitar frases ‘somos os únicos’.',
+'<span class="speaker">01:57–02:18</span><b>FALA:</b> “O modelo conecta dois lados. A PME ganha clareza e acompanhamento. Comercializadoras e geradores recebem oportunidades qualificadas. Planejamos testar uma taxa transparente por contratação concluída e uma assinatura opcional de gestão contínua.”<br><b>IMAGEM:</b> fluxos de pontos indo de PMEs para o núcleo Milet e depois a fornecedores; receita entra como pequenas etiquetas. Indicar que são hipóteses.',
+'<span class="speaker">02:18–02:39</span><b>FALA:</b> “Estamos desenvolvendo a primeira jornada demonstrável: da fatura ao diagnóstico e à comparação. A próxima etapa é validar isso com PMEs e fornecedores, medindo tempo economizado, avanço para contratação e viabilidade operacional, antes de escalar.”<br><b>IMAGEM:</b> mostrar tela real/protótipo da plataforma, se disponível; usar este slide como substituto seguro caso o MVP ainda não esteja gravável. Não afirmar piloto concluído.',
+'<span class="speaker">02:39–02:52</span><b>FALA:</b> “Porque energia é essencial. Mas decidir bem sobre ela não deveria ser difícil. O Milet quer tornar a melhor decisão energética mais clara, acessível e contínua.”<br><b>IMAGEM:</b> voltar ao rosto em tela cheia, depois tipografia/assinatura da marca. Inserir nomes reais da equipe no rodapé.'
+];
+function show(i){idx=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,j)=>s.classList.toggle('active',j===idx));document.getElementById('slideTitle').textContent=slides[idx].dataset.title;document.getElementById('clock').textContent=slides[idx].dataset.time;document.getElementById('progress').style.width=((idx+1)/slides.length*100)+'%';document.getElementById('noteText').innerHTML=speakerNotes[idx];history.replaceState(null,'','#slide-'+(idx+1));}
+document.getElementById('prev').onclick=()=>show(idx-1);document.getElementById('next').onclick=()=>show(idx+1);document.getElementById('toggleNotes').onclick=()=>document.getElementById('notes').classList.toggle('show');document.getElementById('fullscreen').onclick=()=>document.getElementById('stage').requestFullscreen?.();
+function view(){videoMode=!videoMode;document.getElementById('controls').style.display=videoMode?'none':'flex';document.getElementById('notes').classList.remove('show');document.body.style.gap=videoMode?'0':'12px'}
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1)}if(e.key.toLowerCase()==='n')document.getElementById('notes').classList.toggle('show');if(e.key.toLowerCase()==='v')view();if(e.key.toLowerCase()==='f')document.getElementById('stage').requestFullscreen?.();});
+show(Number((location.hash.match(/\d+/)||[])[0]||1)-1);
+</script>
+</body>
+</html>
