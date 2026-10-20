@@ -76,15 +76,14 @@ export function DiagnosticStepper({ currentStep, onStepClick }: DiagnosticSteppe
             <li key={step.id}>
               <button
                 type="button"
-                disabled={isPending}
-                onClick={() => isDone && onStepClick?.(index)}
+                onClick={() => onStepClick?.(index)}
                 aria-current={isActive ? "step" : undefined}
-                className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex flex-col gap-1.5 ${
+                className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex flex-col gap-1.5 cursor-pointer ${
                   isActive
                     ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-xs ring-1 ring-[var(--color-milet-amber)]/20"
                     : isDone
-                    ? "bg-[var(--card)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40 cursor-pointer"
-                    : "bg-[var(--background)] border-[var(--border)] opacity-60 cursor-not-allowed"
+                    ? "bg-[var(--card)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
+                    : "bg-[var(--background)] border-[var(--border)] opacity-75 hover:opacity-100 hover:border-[var(--color-milet-amber)]/40"
                 }`}
               >
                 <div className="flex items-center justify-between">

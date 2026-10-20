@@ -358,7 +358,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
           type="submit"
           className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
         >
-          <span>Avançar para Adicionar Fatura</span>
+          <span>Continuar para envio da fatura</span>
           <ArrowRight weight="bold" className="w-4 h-4" />
         </button>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, Lightning, CheckCircle, Warning, Sparkle, ShieldCheck, Printer, Check } from "@phosphor-icons/react";
+import { ArrowLeft, Lightning, CheckCircle, Warning, Sparkle, ShieldCheck, Printer, Check, Star } from "@phosphor-icons/react";
 import {
   rankProposals,
   formatCurrencyBRL,
@@ -138,16 +138,34 @@ export function StepProposalsAllIn({
 
   return (
     <div className="space-y-8">
+      {/* Top Banner de Princípio do Pitch (SCR-04) */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-[var(--color-milet-amber)]/10 via-[var(--color-milet-copper)]/10 to-transparent border border-[var(--color-milet-amber)]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <Sparkle weight="fill" className="w-5 h-5 text-[var(--color-milet-amber)] shrink-0" />
+          <div>
+            <span className="font-serif font-bold text-sm text-[var(--foreground)] block">
+              Todas as propostas na mesma régua.
+            </span>
+            <span className="text-xs text-[var(--foreground)]/70">
+              Custo total, prazo, risco e pendências. <strong className="text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] underline decoration-[var(--color-milet-amber)] decoration-2 underline-offset-4">Nenhuma oferta compra posição.</strong>
+            </span>
+          </div>
+        </div>
+        <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)]/60 shrink-0">
+          Dados de demonstração · fornecedores fictícios
+        </span>
+      </div>
+
       {/* Header da seção */}
       <div className="space-y-2">
         <span className="text-xs uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
           Etapa 5 de 5
         </span>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
-          Comparação Transparente de Propostas All-In
+          Veja o custo inteiro: Propostas com custo total
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          Abaixo estão as propostas de mercado livre e geração distribuída ranqueadas pelo menor custo global para a sua empresa. Sem taxas ocultas de fornecedores ou comissões embutidas por kWh.
+          Comparativo transparente calculando o custo total mensal (fatura residual da concessionária + energia contratada + encargos + serviço Milet).
         </p>
       </div>
 
@@ -156,24 +174,29 @@ export function StepProposalsAllIn({
         {rankedProposals.map((prop) => {
           const isSelected = prop.id === selectedProposalId;
           const annualSaving = prop.monthlySaving * 12;
+          const savingPercentFormatted = new Intl.NumberFormat("pt-BR", {
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1
+          }).format(prop.savingPercent);
 
           return (
             <div
               key={prop.id}
               onClick={() => setSelectedProposalId(prop.id)}
-              className={`p-6 rounded-2xl border transition-all cursor-pointer relative space-y-4 ${
+              className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer relative space-y-4 ${
                 isSelected
-                  ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-sm ring-1 ring-[var(--color-milet-amber)]/30"
-                  : "bg-[var(--card)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
+                  ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-md ring-2 ring-[var(--color-milet-amber)]/40 milet-glow-amber scale-[1.005]"
+                  : "bg-[var(--card)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40 hover:scale-[1.002]"
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs px-2.5 py-0.5 rounded-full milet-amber-gradient text-white font-bold">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full milet-amber-gradient text-white font-bold flex items-center gap-1">
+                      {prop.rank === 1 && <Star weight="fill" className="w-3 h-3" />}
                       Rank #{prop.rank}
                     </span>
-                    <h3 className="font-serif font-bold text-lg text-[var(--foreground)]">
+                    <h3 className="font-serif font-bold text-xl text-[var(--foreground)]">
                       {prop.supplier}
                     </h3>
                     <span className="text-xs px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] font-mono text-[var(--foreground)]/70">
@@ -182,58 +205,69 @@ export function StepProposalsAllIn({
                   </div>
 
                   <p className="text-xs text-[var(--foreground)]/60">
-                    Prazo contratual: {prop.termMonths} meses • Fonte: {prop.renewable} • Reajuste: {prop.adjustment}
+                    Prazo: {prop.termMonths} meses • Fonte: {prop.renewable} • Reajuste: {prop.adjustment}
                   </p>
                 </div>
 
                 <div className="text-left md:text-right">
-                  <span className="text-xs text-[var(--foreground)]/60">Custo Mensal All-In Estimado</span>
-                  <div className="font-serif font-bold text-2xl sm:text-3xl text-[var(--foreground)]">
+                  <span className="text-xs text-[var(--foreground)]/60 font-semibold block uppercase tracking-wider">
+                    Custo Total Mensal All-In
+                  </span>
+                  <div className="font-serif font-bold text-3xl sm:text-4xl text-[var(--foreground)] tracking-tight">
                     {formatCurrencyBRL(prop.total)}
-                    <span className="text-xs font-sans font-normal text-[var(--foreground)]/60">/mês</span>
+                    <span className="text-xs font-sans font-normal text-[var(--foreground)]/60 ml-1">/mês</span>
                   </div>
-                  <div className="text-xs text-emerald-600 font-semibold mt-0.5">
-                    Economia: {formatCurrencyBRL(prop.monthlySaving)}/mês (-{prop.savingPercent.toFixed(1)}%)
+                  <div className="text-xs text-emerald-600 font-bold mt-0.5">
+                    Economia Líquida: {formatCurrencyBRL(prop.monthlySaving)}/mês ({savingPercentFormatted}% menor)
                   </div>
-                  <div className="text-[11px] text-[var(--foreground)]/50">
-                    Projeção de {formatCurrencyBRL(annualSaving)}/ano
+                  <div className="text-[11px] text-[var(--foreground)]/50 font-mono">
+                    Projeção anual: {formatCurrencyBRL(annualSaving)} de economia
                   </div>
                 </div>
               </div>
 
               {/* Tabela de Custos Decompostos */}
               <div className="pt-4 border-t border-[var(--border)] grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-                <div className="p-2.5 rounded-lg bg-[var(--background)]">
-                  <span className="text-[11px] text-[var(--foreground)]/60 block">Conta Distribuidora (Fio)</span>
-                  <strong className="text-[var(--foreground)]">{formatCurrencyBRL(prop.costs.residualBill || 0)}</strong>
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+                  <span className="text-[11px] text-[var(--foreground)]/60 block">1. Fio Distribuidora</span>
+                  <strong className="text-[var(--foreground)] text-sm">{formatCurrencyBRL(prop.costs.residualBill || 0)}</strong>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[var(--background)]">
-                  <span className="text-[11px] text-[var(--foreground)]/60 block">Energia Fornecedor</span>
-                  <strong className="text-[var(--foreground)]">{formatCurrencyBRL(prop.costs.supplier || 0)}</strong>
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+                  <span className="text-[11px] text-[var(--foreground)]/60 block">2. Energia Fornecedor</span>
+                  <strong className="text-[var(--foreground)] text-sm">{formatCurrencyBRL(prop.costs.supplier || 0)}</strong>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[var(--background)]">
-                  <span className="text-[11px] text-[var(--foreground)]/60 block">Serviço Milet Transparente</span>
-                  <strong className="text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)]">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+                  <span className="text-[11px] text-[var(--foreground)]/60 block">3. Serviço Milet</span>
+                  <strong className="text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] text-sm">
                     {formatCurrencyBRL(prop.costs.miletService || 0)}
                   </strong>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[var(--background)]">
-                  <span className="text-[11px] text-[var(--foreground)]/60 block">Tributos / Garantias</span>
-                  <strong className="text-[var(--foreground)]">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+                  <span className="text-[11px] text-[var(--foreground)]/60 block">4. Tributos / Garantias</span>
+                  <strong className="text-[var(--foreground)] text-sm">
                     {formatCurrencyBRL((prop.costs.taxes || 0) + (prop.costs.financing || 0))}
                   </strong>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-[var(--foreground)]/70 pt-1">
-                <span className="italic">{prop.remuneration}</span>
-                <span className={`inline-flex items-center gap-1 font-semibold ${isSelected ? "text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)]" : "text-[var(--foreground)]/50"}`}>
-                  {isSelected ? <Check weight="bold" className="w-4 h-4" /> : null}
-                  {isSelected ? "Selecionada" : "Clique para selecionar"}
-                </span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[var(--foreground)]/70 pt-1">
+                <span className="italic leading-relaxed">{prop.remuneration}</span>
+                <div className="shrink-0 flex items-center gap-2">
+                  <button
+                    type="button"
+                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                      isSelected
+                        ? "bg-emerald-500 text-white shadow-xs"
+                        : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--color-milet-amber)]"
+                    }`}
+                  >
+                    {isSelected ? <Check weight="bold" className="w-4 h-4" /> : null}
+                    <span>{isSelected ? "Proposta Marcada ✓" : "Marcar Proposta"}</span>
+                  </button>
+                </div>
               </div>
             </div>
           );

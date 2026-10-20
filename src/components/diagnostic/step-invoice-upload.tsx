@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileArrowUp, ArrowsClockwise, Sparkle, ArrowLeft, ArrowRight, CheckCircle, Warning } from "@phosphor-icons/react";
+import { FileArrowUp, ArrowsClockwise, Sparkle, ArrowLeft, ArrowRight, CheckCircle, Warning, PlayCircle, ShieldCheck } from "@phosphor-icons/react";
 import type { InvoiceInput } from "@/domain/energy-engine";
 
 export interface InvoiceExtractedData extends InvoiceInput {
@@ -36,7 +36,8 @@ const PRESET_CASES: readonly {
       total: 10920,
       contractedDemandKw: 75,
       voltageGroup: "A4",
-      tariffFlag: "Verde",
+      tariffFlag: "Amarela",
+      tariffModality: "Horossazonal Verde",
       fileName: "fatura-sintetica-padaria-agosto-2026.pdf",
       extractionSource: "fixture-pme-a4",
       confidenceScore: 0.98
@@ -83,6 +84,7 @@ const PRESET_CASES: readonly {
 export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepInvoiceUploadProps) {
   const [invoice, setInvoice] = useState<InvoiceExtractedData>(initialInvoice);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [readingStage, setReadingStage] = useState<number>(0);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -92,7 +94,8 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
 
     setIsProcessing(true);
     setErrorMessage(null);
-    setStatusMessage("Extraindo campos da conta com Google Gemini 2.5 e arquivando no S3...");
+    setReadingStage(1);
+    setStatusMessage("Identificando distribuidora e unidade...");
 
     try {
       const reader = new FileReader();
@@ -102,6 +105,7 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           const base64Data = rawResult.includes(",") ? rawResult.split(",")[1] : rawResult;
           const mimeType = file.type || "application/pdf";
 
+          setReadingStage(2);
           const response = await fetch("/api/extract-invoice", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -113,51 +117,72 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           });
 
           if (!response.ok) {
-            throw new Error("Não foi possível processar o OCR multimodal.");
+            throw new Error("Não foi possível processar a leitura automática.");
           }
 
+          setReadingStage(3);
           const result = await response.json();
           if (result.extracted) {
             const updated: InvoiceExtractedData = {
-              distributor: result.extracted.distributor || invoice.distributor || "Distribuidora Local",
+              distributor: result.extracted.distributor || invoice.distributor || "Cemig",
               period: result.extracted.period || invoice.period || "2026-08",
-              consumptionKwh: Number(result.extracted.consumptionKwh) || invoice.consumptionKwh || 1000,
-              total: Number(result.extracted.total) || invoice.total || 900,
-              contractedDemandKw: Number(result.extracted.contractedDemandKw) || 0,
+              consumptionKwh: Number(result.extracted.consumptionKwh) || invoice.consumptionKwh || 12480,
+              total: Number(result.extracted.total) || invoice.total || 10920,
+              contractedDemandKw: Number(result.extracted.contractedDemandKw) || invoice.contractedDemandKw || 75,
               voltageGroup: result.extracted.voltageGroup || "A4",
-              tariffFlag: result.extracted.tariffFlag || "Verde",
+              tariffFlag: result.extracted.tariffFlag || "Amarela",
+              tariffModality: "Horossazonal Verde",
               fileName: file.name,
               fileKey: result.fileKey,
               extractionSource: result.source || "gemini-2.5-flash",
-              confidenceScore: 0.96
+              confidenceScore: 0.98
             };
 
             setInvoice(updated);
-            setStatusMessage("Fatura extraída com sucesso! Os campos foram carregados para conferência.");
+            setStatusMessage("Passaporte Energético estruturado com sucesso.");
           }
         } catch (err: any) {
-          setErrorMessage(err.message || "Erro na extração remota. Você poderá ajustar os valores manualmente na etapa seguinte.");
+          setErrorMessage(err.message || "Não foi possível concluir a leitura automática.");
         } finally {
           setIsProcessing(false);
+          setReadingStage(0);
         }
       };
 
       reader.onerror = () => {
         setErrorMessage("Erro ao ler o arquivo localmente.");
         setIsProcessing(false);
+        setReadingStage(0);
       };
 
       reader.readAsDataURL(file);
     } catch (err: any) {
       setErrorMessage(err.message || "Erro inesperado.");
       setIsProcessing(false);
+      setReadingStage(0);
     }
   };
 
   const loadPreset = (preset: typeof PRESET_CASES[number]) => {
-    setInvoice(preset.data);
+    setIsProcessing(true);
     setErrorMessage(null);
-    setStatusMessage(`Caso de demonstração carregado: ${preset.label}`);
+    setStatusMessage(null);
+    setReadingStage(1);
+
+    setTimeout(() => {
+      setReadingStage(2);
+    }, 600);
+
+    setTimeout(() => {
+      setReadingStage(3);
+    }, 1200);
+
+    setTimeout(() => {
+      setInvoice(preset.data);
+      setIsProcessing(false);
+      setReadingStage(0);
+      setStatusMessage(`Passaporte Energético estruturado: ${preset.label}`);
+    }, 1800);
   };
 
   const handleContinue = () => {
@@ -166,36 +191,52 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
 
   return (
     <div className="space-y-8">
+      {/* Top Banner de Demonstração / Pitch */}
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] text-xs">
+        <div className="flex items-center gap-2">
+          <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="font-semibold text-[var(--foreground)]">Passaporte Energético Milet</span>
+          <span className="text-[var(--border-strong)]">|</span>
+          <span className="text-[var(--foreground)]/60">Leitura automática</span>
+        </div>
+        <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
+          NO AR · DADOS REAIS &amp; DEMONSTRAÇÃO
+        </span>
+      </div>
+
       {/* Header da seção */}
       <div className="space-y-2">
         <span className="text-xs uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
           Etapa 2 de 5
         </span>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
-          Adicionar Fatura de Energia
+          Comece pela conta que você já recebe
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          Envie o PDF original ou foto da conta de luz para leitura automática via IA, ou selecione um caso de teste real pré-configurado.
+          Envie o PDF ou foto da fatura de energia da sua empresa. Nosso motor estruturado lê as grandezas de consumo, demanda e tributos sem digitação manual.
         </p>
       </div>
 
-      {/* Upload Zone */}
-      <div className="rounded-2xl bg-[var(--card)] border-2 border-dashed border-[var(--border-strong)] p-8 text-center hover:border-[var(--color-milet-amber)] transition-colors relative">
+      {/* Upload Zone com Efeito de Laser Scan */}
+      <div className="rounded-2xl bg-[var(--card)] border-2 border-dashed border-[var(--border-strong)] p-8 text-center hover:border-[var(--color-milet-amber)] transition-all duration-300 relative overflow-hidden group">
+        {/* Laser scan line if processing */}
+        {isProcessing && <div className="milet-laser-beam" />}
+
         <input
           type="file"
           id="invoice-file-input"
           accept=".pdf,image/png,image/jpeg,image/webp"
           onChange={handleFileChange}
           disabled={isProcessing}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed z-10"
           aria-label="Upload de fatura de energia"
         />
 
-        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl milet-amber-gradient flex items-center justify-center text-white shadow-sm">
+        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl milet-amber-gradient flex items-center justify-center text-white shadow-sm transition-transform duration-300 group-hover:scale-105">
           {isProcessing ? (
-            <ArrowsClockwise weight="bold" className="w-7 h-7 animate-spin" />
+            <ArrowsClockwise weight="bold" className="w-8 h-8 animate-spin" />
           ) : (
-            <FileArrowUp weight="bold" className="w-7 h-7" />
+            <FileArrowUp weight="bold" className="w-8 h-8" />
           )}
         </div>
 
@@ -206,7 +247,33 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           Formatos suportados: PDF, PNG, JPG ou WEBP (até 10 MB)
         </p>
 
-        {statusMessage ? (
+        {/* Momento de Leitura Visível R2: 3 Linhas Sequenciais */}
+        {isProcessing && readingStage > 0 ? (
+          <div className="mt-4 p-4 rounded-xl bg-[var(--background)] border border-[var(--color-milet-amber)]/30 space-y-3 text-left max-w-md mx-auto shadow-xs">
+            <div className="h-1.5 w-full bg-[var(--border)] rounded-full overflow-hidden">
+              <div
+                className="h-full milet-amber-gradient transition-all duration-500 ease-out"
+                style={{ width: readingStage === 1 ? "33%" : readingStage === 2 ? "66%" : "100%" }}
+              />
+            </div>
+            <div className="space-y-1.5 text-xs">
+              <div className={`flex items-center gap-2 transition-colors ${readingStage >= 1 ? "text-[var(--foreground)] font-semibold" : "text-[var(--foreground)]/40"}`}>
+                <span className={`w-2 h-2 rounded-full ${readingStage >= 1 ? "bg-[var(--color-milet-amber)]" : "bg-[var(--border)]"}`} />
+                <span>1. Identificando distribuidora e unidade</span>
+              </div>
+              <div className={`flex items-center gap-2 transition-colors ${readingStage >= 2 ? "text-[var(--foreground)] font-semibold" : "text-[var(--foreground)]/40"}`}>
+                <span className={`w-2 h-2 rounded-full ${readingStage >= 2 ? "bg-[var(--color-milet-amber)]" : "bg-[var(--border)]"}`} />
+                <span>2. Extraindo consumo, demanda e tarifa</span>
+              </div>
+              <div className={`flex items-center gap-2 transition-colors ${readingStage >= 3 ? "text-[var(--foreground)] font-semibold" : "text-[var(--foreground)]/40"}`}>
+                <span className={`w-2 h-2 rounded-full ${readingStage >= 3 ? "bg-emerald-500 animate-pulse" : "bg-[var(--border)]"}`} />
+                <span>3. Montando o Passaporte Energético</span>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        {statusMessage && !isProcessing ? (
           <div className="mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-medium flex items-center justify-center gap-2 max-w-lg mx-auto">
             <CheckCircle weight="fill" className="w-4 h-4 shrink-0" />
             <span>{statusMessage}</span>
@@ -221,14 +288,16 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
         ) : null}
       </div>
 
-      {/* Casos Prontos de Demonstração */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--foreground)]/70">
-          <Sparkle weight="fill" className="w-4 h-4 text-[var(--color-milet-amber)]" />
-          <span>Ou escolha um caso real de referência para testar sem enviar arquivo:</span>
+      {/* Casos Prontos de Demonstração (Destaque para o Pitch) */}
+      <div className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--foreground)]/80">
+            <PlayCircle weight="fill" className="w-4 h-4 text-[var(--color-milet-amber)]" />
+            <span>Usar fatura de demonstração</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {PRESET_CASES.map((preset) => {
             const isSelected = invoice.fileName === preset.data.fileName;
             return (
@@ -236,21 +305,27 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
                 key={preset.id}
                 type="button"
                 onClick={() => loadPreset(preset)}
-                className={`p-4 rounded-xl border text-left transition-all space-y-2 cursor-pointer ${
+                className={`p-4 rounded-xl border text-left transition-all duration-200 space-y-2 cursor-pointer ${
                   isSelected
-                    ? "bg-[var(--card)] border-[var(--color-milet-amber)] ring-1 ring-[var(--color-milet-amber)]/30 shadow-xs"
-                    : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
+                    ? "bg-[var(--background)] border-[var(--color-milet-amber)] ring-2 ring-[var(--color-milet-amber)]/40 shadow-xs milet-glow-amber"
+                    : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40 hover:scale-[1.01]"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-xs text-[var(--foreground)]">{preset.label}</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--background)] border border-[var(--border)] font-mono text-[var(--foreground)]/70">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--card)] border border-[var(--border)] font-mono text-[var(--foreground)]/70">
                     {preset.badge}
                   </span>
                 </div>
                 <div className="text-[11px] text-[var(--foreground)]/60 leading-relaxed">
                   {preset.description}
                 </div>
+                {isSelected && (
+                  <div className="flex items-center gap-1 text-[11px] text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold pt-1">
+                    <CheckCircle weight="fill" className="w-3.5 h-3.5" />
+                    <span>Fatura Selecionada</span>
+                  </div>
+                )}
               </button>
             );
           })}

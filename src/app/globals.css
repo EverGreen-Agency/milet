@@ -80,3 +80,34 @@ body {
   color: #8C4E18;
   border: 1px solid rgba(204, 136, 0, 0.25);
 }
+
+.milet-glow-amber {
+  box-shadow: 0 0 28px rgba(204, 136, 0, 0.25);
+}
+
+/* Efeito de laser scan para upload de faturas */
+@keyframes laserScan {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 90%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.milet-laser-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #CC8800, #F3C878, #CC8800, transparent);
+  box-shadow: 0 0 16px #CC8800, 0 0 8px #F3C878;
+  animation: laserScan 2.4s ease-in-out infinite;
+  pointer-events-none;
+}

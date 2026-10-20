@@ -97,12 +97,12 @@ describe("Feature: Energy Baseline Calculation and Diagnostics Engine", () => {
         missing: [],
         costs: {
           residualBill: 2940,
-          supplier: 4900,
-          miletService: 280,
+          supplier: 4990,
+          miletService: 190,
           taxes: 1600,
           financing: 0
         },
-        remuneration: "R$ 280/mês de serviço Milet, já incluídos no total."
+        remuneration: "R$ 190/mês de serviço Milet, já incluídos no total."
       };
 
       // When: Proposal is normalized

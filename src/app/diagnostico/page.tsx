@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Navbar } from "@/components/navbar";
@@ -12,6 +12,15 @@ import { StepInvoiceReview } from "@/components/diagnostic/step-invoice-review";
 import { StepTechnicalBaseline } from "@/components/diagnostic/step-technical-baseline";
 import { StepProposalsAllIn } from "@/components/diagnostic/step-proposals-allin";
 import type { ProposalInput } from "@/domain/energy-engine";
+import { VideoCamera, Eye, EyeSlash, Sparkle } from "@phosphor-icons/react";
+
+const PITCH_CUES: readonly { shot: string; time: string; cue: string }[] = [
+  { shot: "SETUP", time: "0:00–1:15", cue: "Identificação inicial da unidade e perfil" },
+  { shot: "SCR-01", time: "1:15–1:21", cue: "Comece pela conta que você já recebe (Carregar fatura de demonstração)" },
+  { shot: "SCR-02", time: "1:21–1:28", cue: "Conferir dados da unidade · Passaporte Energético (12.480 kWh • 75 kW • Cemig)" },
+  { shot: "SCR-03", time: "1:28–1:34", cue: "Diagnóstico, cartões R$ 10.920 e Rotas de suprimento avaliadas" },
+  { shot: "SCR-04", time: "1:34–1:50", cue: "Veja o custo inteiro · Todas as propostas na mesma régua · Marcar proposta" }
+];
 
 const INITIAL_PROPOSALS: ProposalInput[] = [
   {
@@ -25,12 +34,12 @@ const INITIAL_PROPOSALS: ProposalInput[] = [
     missing: [],
     costs: {
       residualBill: 2940,
-      supplier: 4900,
-      miletService: 280,
+      supplier: 4990,
+      miletService: 190,
       taxes: 1600,
       financing: 0
     },
-    remuneration: "R$ 280/mês de taxa de serviço Milet all-in. Sem comissões ocultas de comercializadoras."
+    remuneration: "R$ 190/mês de taxa de serviço Milet all-in. Sem comissões ocultas de comercializadoras."
   },
   {
     id: "PROP-SERRA-02",
@@ -72,11 +81,12 @@ const INITIAL_PROPOSALS: ProposalInput[] = [
 
 export default function DiagnosticoPage() {
   const [currentStep, setCurrentStep] = useState<number>(0);
+  const [showPitchBar, setShowPitchBar] = useState<boolean>(true);
 
   const [lead, setLead] = useState<LeadData>({
-    name: "",
-    email: "",
-    phone: "",
+    name: "Eduardo Ferreira de Mattos",
+    email: "contato@padariahorizonte.com.br",
+    phone: "(31) 98765-4321",
     companyName: "Padaria Horizonte Ltda",
     documentNumber: "12.345.678/0001-90",
     distributor: "Cemig",
@@ -101,6 +111,28 @@ export default function DiagnosticoPage() {
   });
 
   const [proposals, setProposals] = useState<ProposalInput[]>(INITIAL_PROPOSALS);
+
+  // Atalhos de teclado para ensaio e gravação (teclas 1-5, setas e H para ocultar barra de controle)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const activeTag = document.activeElement?.tagName.toLowerCase();
+      if (activeTag === "input" || activeTag === "textarea" || activeTag === "select") {
+        return;
+      }
+
+      if (e.key === "1") setCurrentStep(0);
+      else if (e.key === "2") setCurrentStep(1);
+      else if (e.key === "3") setCurrentStep(2);
+      else if (e.key === "4") setCurrentStep(3);
+      else if (e.key === "5") setCurrentStep(4);
+      else if (e.key === "h" || e.key === "H") setShowPitchBar((prev) => !prev);
+      else if (e.key === "ArrowRight") setCurrentStep((prev) => Math.min(4, prev + 1));
+      else if (e.key === "ArrowLeft") setCurrentStep((prev) => Math.max(0, prev - 1));
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleLeadComplete = (validatedLead: LeadData) => {
     setLead(validatedLead);
@@ -137,7 +169,52 @@ export default function DiagnosticoPage() {
     <div className="min-h-screen flex flex-col bg-[var(--background)]">
       <Navbar />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+        {/* Barra Auxiliar do Modo de Gravação e Pitch Deck (Pressione 'H' para ocultar na gravação) */}
+        {showPitchBar ? (
+          <div className="mb-6 p-3 rounded-2xl bg-[var(--card)] border border-[var(--color-milet-amber)]/30 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-milet-amber)] animate-pulse" />
+              <span className="font-bold text-[var(--foreground)] flex items-center gap-1.5">
+                <VideoCamera weight="fill" className="w-4 h-4 text-[var(--color-milet-amber)]" />
+                <span>Pitch Supernova 2026:</span>
+              </span>
+              <span className="font-mono px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
+                {PITCH_CUES[currentStep]?.shot} ({PITCH_CUES[currentStep]?.time})
+              </span>
+              <span className="text-[var(--foreground)]/70 hidden sm:inline truncate max-w-md">
+                {PITCH_CUES[currentStep]?.cue}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono text-[var(--foreground)]/50 hidden md:inline">
+                Atalhos: Teclas 1-5 | Setas | [H] Ocultar
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowPitchBar(false)}
+                title="Ocultar barra de auxílio para gravar tela limpa (ou pressione tecla H)"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)]/70 hover:text-[var(--foreground)] transition-colors cursor-pointer text-[11px]"
+              >
+                <EyeSlash weight="bold" className="w-3.5 h-3.5" />
+                <span>Ocultar Barra</span>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex justify-end mb-4">
+            <button
+              type="button"
+              onClick={() => setShowPitchBar(true)}
+              className="text-[11px] font-mono text-[var(--foreground)]/40 hover:text-[var(--color-milet-amber)] flex items-center gap-1 transition-colors cursor-pointer"
+            >
+              <Eye weight="bold" className="w-3 h-3" />
+              <span>Exibir Guia do Pitch [H]</span>
+            </button>
+          </div>
+        )}
+
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-[var(--foreground)]/60 mb-6">
           <Link href="/" className="hover:text-[var(--color-milet-amber)]">Início</Link>

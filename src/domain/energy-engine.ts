@@ -6,6 +6,7 @@ export interface InvoiceInput {
   contractedDemandKw?: number;
   voltageGroup?: string;
   tariffFlag?: string;
+  tariffModality?: string;
 }
 
 export interface BaselineComponents {

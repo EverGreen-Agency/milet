@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Receipt, CheckCircle, Warning } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowRight, Receipt, CheckCircle, Lightning, IdentificationCard, ShieldCheck } from "@phosphor-icons/react";
 import { validateInvoice, formatCurrencyBRL, type InvoiceValidationErrors } from "@/domain/energy-engine";
 import type { InvoiceExtractedData } from "./step-invoice-upload";
 
@@ -33,48 +33,89 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
 
   return (
     <form onSubmit={handleContinue} className="space-y-8" noValidate>
-      {/* Header da seção */}
+      {/* Header da seção com badge Passaporte Energético */}
       <div className="space-y-2">
-        <span className="text-xs uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
-          Etapa 3 de 5
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
+            Etapa 3 de 5
+          </span>
+          <span className="text-[var(--border-strong)]">•</span>
+          <span className="inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold border border-[var(--color-milet-amber)]/30">
+            <IdentificationCard weight="fill" className="w-3.5 h-3.5" />
+            Passaporte Energético
+          </span>
+        </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
-          Conferência Assistida dos Dados
+          Conferir dados da unidade
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          Verifique os dados extraídos pelo Gemini 2.5 da sua conta de energia. Você pode corrigir qualquer campo caso necessário para calibrar o diagnóstico técnico.
+          A Milet estruturou os dados da sua fatura em um documento neutro e verificável. Confira os valores antes de avançar para a análise regulatória.
         </p>
       </div>
 
-      {/* Cartão de Resumo e Confiança */}
-      <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-semibold">
-          <CheckCircle weight="fill" className="w-5 h-5 shrink-0" />
-          <span>Fatura processada e quarentenada com integridade (S3 Railway)</span>
-        </div>
-        <div className="flex items-center gap-2 font-mono text-[var(--foreground)]/70">
-          <span>Arquivo: {invoice.fileName || "fatura.pdf"}</span>
-          <span>•</span>
-          <span className="font-bold text-emerald-600">
-            Confiança: {invoice.confidenceScore ? `${(invoice.confidenceScore * 100).toFixed(0)}%` : "Alta"}
+      {/* Cartão de Destaque: As 3 Grandezas-Chave do Vídeo (SCR-02) */}
+      <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--color-milet-amber)]/40 shadow-xs relative overflow-hidden space-y-4">
+        <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <h3 className="font-serif font-bold text-base text-[var(--foreground)]">
+              Passaporte Energético da Unidade
+            </h3>
+          </div>
+          <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)]/70">
+            {invoice.fileName || "Fatura Digitalizada"}
           </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <span className="text-xs text-[var(--foreground)]/60 block">1. Consumo Faturado</span>
+            <div className="font-serif font-bold text-2xl sm:text-3xl text-[var(--foreground)] mt-1">
+              {Number(invoice.consumptionKwh || 0).toLocaleString("pt-BR")}
+              <span className="text-xs font-sans font-normal text-[var(--foreground)]/60 ml-1">kWh/mês</span>
+            </div>
+            <span className="text-[11px] text-emerald-600 font-medium flex items-center gap-1 mt-1">
+              <CheckCircle weight="fill" className="w-3.5 h-3.5" />
+              Leitura verificada por IA
+            </span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <span className="text-xs text-[var(--foreground)]/60 block">2. Demanda Contratada</span>
+            <div className="font-serif font-bold text-2xl sm:text-3xl text-[var(--foreground)] mt-1">
+              {invoice.contractedDemandKw || 0}
+              <span className="text-xs font-sans font-normal text-[var(--foreground)]/60 ml-1">kW</span>
+            </div>
+            <span className="text-[11px] text-[var(--foreground)]/60 font-medium block mt-1">
+              Modalidade {invoice.tariffModality || "Horossazonal Verde"}
+            </span>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)]">
+            <span className="text-xs text-[var(--foreground)]/60 block">3. Distribuidora Concessionária</span>
+            <div className="font-serif font-bold text-2xl sm:text-3xl text-[var(--foreground)] mt-1 truncate">
+              {invoice.distributor || "Cemig"}
+            </div>
+            <span className="text-[11px] text-[var(--foreground)]/60 font-medium block mt-1">
+              Tensão {invoice.voltageGroup || "A4 (Média Tensão)"}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Grid de Formulário de Conferência */}
+      {/* Grid de Edição Manual Fina */}
       <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-6">
         <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
           <h3 className="font-serif font-bold text-base text-[var(--foreground)] flex items-center gap-2">
             <Receipt weight="bold" className="w-5 h-5 text-[var(--color-milet-amber)]" />
-            <span>Métricas Operacionais da Unidade</span>
+            <span>Métricas e Ajuste Fino</span>
           </h3>
-          <span className="text-xs text-[var(--foreground)]/60 font-mono">
-            Subtotal: {formatCurrencyBRL(invoice.total || 0)}
+          <span className="text-xs font-mono text-[var(--foreground)]/60">
+            Total Informado: {formatCurrencyBRL(invoice.total || 0)}
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {/* Distribuidora */}
           <div>
             <label htmlFor="rev-distributor" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
               Distribuidora Concessionária *
@@ -89,7 +130,6 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
             />
           </div>
 
-          {/* Período */}
           <div>
             <label htmlFor="rev-period" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
               Período de Referência *
@@ -107,7 +147,6 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
             {errors.period ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.period}</span> : null}
           </div>
 
-          {/* Consumo */}
           <div>
             <label htmlFor="rev-consumption" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
               Consumo Medido (kWh) *
@@ -125,7 +164,6 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
             {errors.consumptionKwh ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.consumptionKwh}</span> : null}
           </div>
 
-          {/* Valor Total */}
           <div>
             <label htmlFor="rev-total" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
               Valor Total da Conta (R$) *
@@ -143,10 +181,9 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
             {errors.total ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.total}</span> : null}
           </div>
 
-          {/* Grupo de Tensão */}
           <div>
             <label htmlFor="rev-voltage" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
-              Grupo Tarifário
+              Grupo de Tensão
             </label>
             <select
               id="rev-voltage"
@@ -161,7 +198,6 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
             </select>
           </div>
 
-          {/* Demanda Contratada */}
           <div>
             <label htmlFor="rev-demand" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
               Demanda Contratada (kW)
@@ -174,25 +210,6 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
               className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-[var(--border)] bg-[var(--background)] focus:outline-none focus:border-[var(--color-milet-amber)]"
               placeholder="0 se não aplicável"
             />
-          </div>
-
-          {/* Bandeira Tarifária */}
-          <div>
-            <label htmlFor="rev-flag" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
-              Bandeira Tarifária
-            </label>
-            <select
-              id="rev-flag"
-              value={invoice.tariffFlag ?? "Verde"}
-              onChange={(e) => handleFieldChange("tariffFlag", e.target.value)}
-              className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-[var(--border)] bg-[var(--background)] focus:outline-none focus:border-[var(--color-milet-amber)]"
-            >
-              <option value="Verde">Bandeira Verde (Sem adicional)</option>
-              <option value="Amarela">Bandeira Amarela</option>
-              <option value="Vermelha P1">Bandeira Vermelha Patamar 1</option>
-              <option value="Vermelha P2">Bandeira Vermelha Patamar 2</option>
-              <option value="Escassez">Bandeira Escassez Hídrica</option>
-            </select>
           </div>
         </div>
       </div>
@@ -212,7 +229,7 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
           type="submit"
           className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
         >
-          <span>Avançar para Diagnóstico Técnico</span>
+          <span>Aprovar dados e gerar diagnóstico</span>
           <ArrowRight weight="bold" className="w-4 h-4" />
         </button>
       </div>
