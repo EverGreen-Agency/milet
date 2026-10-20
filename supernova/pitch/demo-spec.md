@@ -2,6 +2,16 @@
 
 Para quem está ajustando o frontend Next.js (`src/app/diagnostico`, `src/components/diagnostic/*`). O vídeo usa essa jornada no **bloco 05** do [roteiro](roteiro.md): 34 segundos, quatro momentos. Cada requisito termina num critério verificável; a demo está pronta quando **todos** passam.
 
+## Status em 20/10/2026
+R1–R6 atendidos no código (commit do Antigravity `e798b53` + correções seguintes):
+- Modo demonstração em `/diagnostico?demo=1`: contato fictício preenchido, guia de gravação (H esconde, 1–5 pula etapas). A visita pública começa vazia e sem guia.
+- Serviço Milet de R$ 190 igual nas duas propostas; proposta de geração compartilhada removida (o diagnóstico marca GD como inelegível para este perfil, então ela não podia ranquear em primeiro).
+- Bandeira "Amarela" coerente com a cobrança; parcela de bandeiras zera quando a bandeira é verde.
+- Erro de sintaxe em `globals.css` que derrubava a página inteira (500) corrigido.
+- Texto de bastidor removido do fluxo ("All-In", "S3 da Railway"); logo real no cabeçalho.
+
+**Em aberto:** confirmar que `/diagnostico` está publicado. O `vercel.json` publica só `public/` (site estático) e o build não roda `next build`, então o link de produção provavelmente não existe ainda. O rodapé e a landing ainda citam "Gemini 2.5" e "S3 (Railway)" (fora do trecho gravado).
+
 Leading word: **gravável** — cada tela precisa ser entendida por quem a vê por 6 segundos, a 1080p, sem narração.
 
 ## Os quatro momentos que o vídeo mostra
@@ -10,7 +20,7 @@ Leading word: **gravável** — cada tela precisa ser entendida por quem a vê p
 |---|---|---|
 | M1 · Fatura entra | Fatura & OCR | A empresa só envia a conta que já recebe |
 | M2 · Passaporte | Conferência Assistida | Os dados viram um perfil estruturado, conferido pelo cliente |
-| M3 · Rotas | Diagnóstico & Baseline | A Milet compara rotas (mercado livre, solar, GD), não só fornecedores |
+| M3 · Rotas | Diagnóstico & Baseline | O Milet compara rotas (mercado livre, solar, GD), não só fornecedores |
 | M4 · Mesma régua | Propostas | Custo total lado a lado; nenhuma oferta compra posição |
 
 ## Requisitos
@@ -49,7 +59,7 @@ Um avaliador de engenharia elétrica vai olhar os números. Cada um precisa fech
 - **Bandeira:** a fatura cobra R$ 420 de adicional de bandeira, então `tariffFlag` não pode ser "Verde". Usar "Amarela" (ou zerar a cobrança).
 - **Custo médio:** R$ 10.920 / 12.480 kWh = **R$ 0,88/kWh**. Exibir com 2 casas; nunca arredondar para "R$ 1/kWh".
 - **Percentual em pt-BR:** "11,0%", com vírgula. `savingPercent.toFixed(1)` produz "11.0"; usar `Intl.NumberFormat("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })`. Preferir "11,0% menor" a "(-11.0%)".
-- **Serviço Milet igual em todas as propostas.** Hoje a proposta mais bem colocada paga R$ 280 e a outra R$ 190; no vídeo isso parece a Milet ganhando mais com a oferta que ela mesma ranqueia em primeiro, o oposto do discurso de neutralidade. Usar R$ 190 nas duas e mover os R$ 90 para a energia da Alvorada (R$ 4.900 → R$ 4.990), assim o total continua R$ 9.720 e a ordem não muda.
+- **Serviço Milet igual em todas as propostas.** Hoje a proposta mais bem colocada paga R$ 280 e a outra R$ 190; no vídeo isso parece o Milet ganhando mais com a oferta que ela mesma ranqueia em primeiro, o oposto do discurso de neutralidade. Usar R$ 190 nas duas e mover os R$ 90 para a energia da Alvorada (R$ 4.900 → R$ 4.990), assim o total continua R$ 9.720 e a ordem não muda.
 - **Somas:** cada proposta fecha no centavo: Alvorada 2.940 + 4.990 + 190 + 1.600 + 0 = 9.720; Serra Clara 2.760 + 5.000 + 190 + 1.570 + 420 = 9.940; economia 1.200 (11,0%) e 980 (9,0%).
 
 **Pronto quando:** todos os números das quatro telas batem entre si e com a fatura, e os testes de `src/domain/energy-engine.test.ts` passam com os valores novos.

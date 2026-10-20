@@ -248,6 +248,20 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 .hipoteses { padding-top: 28px; }
 .hipoteses .pill { font-size: 16px; }
 
+/* Funil de aquisição */
+.funil { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: auto; }
+.etapa i { display: block; height: 12px; width: var(--w); border-radius: 999px; background: linear-gradient(90deg, var(--ambar), var(--cobre)); margin-bottom: 28px; }
+.etapa .k { font-family: var(--f-mono); font-size: 19px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ambar-escuro); margin-bottom: 14px; }
+.etapa h3 { font-family: var(--f-display); font-size: 40px; font-weight: 600; line-height: 1.1; margin-bottom: 14px; }
+.etapa p { font-size: 23px; line-height: 1.5; color: var(--texto-2); }
+.etapa .metrica { margin-top: 18px; font-family: var(--f-mono); font-size: 16px; letter-spacing: 0.06em; color: var(--ambar-escuro); }
+
+/* Hipóteses testáveis */
+.hip-lista { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.hip-lista li { display: grid; grid-template-columns: 56px 1fr 300px; align-items: baseline; gap: 16px; font-size: 22px; line-height: 1.4; padding-bottom: 12px; border-bottom: 1px solid var(--linha-clara); }
+.hip-lista b { font-family: var(--f-mono); font-size: 18px; color: var(--ambar-escuro); font-weight: 500; }
+.hip-lista em { font-style: normal; font-family: var(--f-mono); font-size: 17px; color: var(--ambar-escuro); text-align: right; }
+
 /* 11 Linha do tempo */
 .tempo { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: auto; margin-bottom: 40px; position: relative; }
 .tempo::before { content: ""; position: absolute; top: 15px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--ambar), rgba(211, 155, 61, 0.15)); }
@@ -267,6 +281,8 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   font-family: var(--f-display); font-size: 84px; color: var(--ambar-escuro);
 }
 .pessoa h3 { font-family: var(--f-display); font-size: 44px; font-weight: 600; line-height: 1.15; }
+.pessoa .selos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.pessoa .selos .pill { font-size: 15px; padding: 8px 14px; }
 .pessoa p { font-size: 26px; color: var(--texto-2); margin-top: 6px; line-height: 1.4; }
 
 /* 13 Encerramento */
@@ -323,7 +339,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <h1 data-in style="--i:2">Sua empresa escolhe a energia. <em>Sem adivinhar.</em></h1>
   </div>
   <div class="meta" data-in style="--i:3">
-    <p class="lead" style="margin:0;max-width:1100px">A Milet coloca fornecedores de energia para competir pela sua empresa e acompanha a economia depois que você assina.</p>
+    <p class="lead" style="margin:0;max-width:1100px">O Milet coloca fornecedores de energia para competir pela sua empresa e acompanha a economia depois que você assina.</p>
     <span class="pill">Energia em mais liberdade</span>
   </div>
   <aside class="notes">Deixa: nome + promessa em uma frase. No vídeo, o gancho vem antes desta capa.</aside>
@@ -428,7 +444,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
     <div class="passo" data-in style="--i:2">
       <p class="k">01 · Entender</p>
       <h3>Envie a fatura que você já recebe</h3>
-      <p>A Milet lê os dados e monta o Passaporte Energético da empresa: consumo, demanda, contrato e distribuidora.</p>
+      <p>O Milet lê os dados e monta o Passaporte Energético da empresa: consumo, demanda, contrato e distribuidora.</p>
     </div>
     <div class="passo" data-in style="--i:3">
       <p class="k">02 · Comparar</p>
@@ -460,12 +476,11 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <div class="row push" data-in style="--i:3;gap:14px;flex-wrap:wrap">
         <span class="pill ok">No ar · web</span>
         <span class="pill hip">Fornecedores ilustrativos</span>
-        <span class="todo">recapturar a tela no /diagnostico</span>
       </div>
     </div>
     <div class="browser" data-in style="--i:2">
-      <div class="bar"><i></i><i></i><i></i><span>milet · comparar propostas</span></div>
-      <img src="shots/05-comparar-full.png" alt="Tela de comparação de propostas do MVP da Milet">
+      <div class="bar"><i></i><i></i><i></i><span>milet · /diagnostico · comparar propostas</span></div>
+      <img src="shots/diag-04-propostas-full.png" alt="Tela de comparação de propostas do MVP do Milet">
     </div>
   </div>
   <aside class="notes">Deixa: no vídeo este slide vira a demo gravada (SCR-01 a SCR-04). Roteiro bloco 05.</aside>
@@ -474,7 +489,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 <!-- 08 · CONCORRÊNCIA -->
 <section class="slide claro">
   <p class="eyebrow" data-in style="--i:0"><span class="n">07</span> Concorrência e diferencial</p>
-  <h2 data-in style="--i:1;font-size:76px">Outros fazem partes disso. <em>Ninguém fica só do lado da empresa.</em></h2>
+  <h2 data-in style="--i:1;font-size:76px">Outros fazem partes disso. <em>O&nbsp;Milet fica do lado da empresa.</em></h2>
   <table class="comp" data-in style="--i:2">
     <thead>
       <tr>
@@ -494,7 +509,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <tr><th>Dados da empresa portáveis (Passaporte)</th><td class="nao">—</td><td class="nao">—</td><td class="nao">—</td><td class="parcial">◐</td><td class="milet sim">✓</td></tr>
     </tbody>
   </table>
-  <p class="small push" data-in style="--i:3">✓ sim · ◐ parcial · — não. Leitura a partir da comunicação pública das empresas (out/2026). Na Milet, acompanhamento e Passaporte completo estão em construção.</p>
+  <p class="small push" data-in style="--i:3">✓ sim · ◐ parcial · — não. Leitura a partir da comunicação pública das empresas (out/2026). No Milet, acompanhamento e Passaporte completo estão em construção.</p>
   <aside class="notes">Deixa: reconhecer concorrentes antes de diferenciar ("se acha que não tem concorrente…"). Roteiro bloco 06.</aside>
 </section>
 
@@ -525,9 +540,23 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 07.</aside>
 </section>
 
-<!-- 10 · VALIDAÇÃO E TRAÇÃO -->
+<!-- 10 · COMO CHEGAMOS À PME -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">09</span> Validação</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">09</span> Como chegamos à PME</p>
+  <h2 data-in style="--i:1;font-size:76px">Venda B2B consultiva: <em>o diagnóstico abre a conversa.</em></h2>
+  <p class="lead" data-in style="--i:2">Quem decide precisa justificar a escolha para sócio ou financeiro. O dossiê do diagnóstico é o documento que ele leva para essa conversa.</p>
+  <div class="funil">
+    <div class="etapa" data-in style="--i:3"><i style="--w:100%"></i><p class="k">01 · Atrair</p><h3>Conteúdo e indicação</h3><p>Conteúdo sobre mercado livre, indicação de contadores e EPCs, prospecção do decisor financeiro.</p><p class="metrica">Métrica · faturas enviadas</p></div>
+    <div class="etapa" data-in style="--i:4"><i style="--w:78%"></i><p class="k">02 · Engajar</p><h3>Diagnóstico gratuito</h3><p>A partir da fatura, sem compromisso. O Passaporte Energético fica com a empresa.</p><p class="metrica">Métrica · diagnósticos concluídos</p></div>
+    <div class="etapa" data-in style="--i:5"><i style="--w:56%"></i><p class="k">03 · Converter</p><h3>Propostas na mesma régua</h3><p>Fornecedores competem; a contratação é feita com comercializadora habilitada.</p><p class="metrica">Métrica · propostas aceitas</p></div>
+    <div class="etapa" data-in style="--i:6"><i style="--w:38%"></i><p class="k">04 · Relacionar</p><h3>Acompanhamento</h3><p>Economia prevista versus realizada e nova cotação antes do vencimento.</p><p class="metrica">Métrica · renovações pelo Milet</p></div>
+  </div>
+  <aside class="notes">Deixa: canais iguais aos do BMC entregue; uma frase só no vídeo. Roteiro bloco 07.</aside>
+</section>
+
+<!-- 11 · VALIDAÇÃO E TRAÇÃO -->
+<section class="slide claro">
+  <p class="eyebrow" data-in style="--i:0"><span class="n">10</span> Validação</p>
   <h2 data-in style="--i:1;font-size:76px">O que já provamos — <em>e o que vamos provar agora.</em></h2>
   <div class="grid-2 validacao" style="margin-top:44px">
     <div class="card" data-in style="--i:2">
@@ -540,23 +569,22 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <p class="k">Próximas 4 semanas</p>
       <h3>Validar quem paga e quanto</h3>
       <p>10 decisores de PMEs e 5 comercializadoras entrevistados. Primeiros diagnósticos reais em modo concierge.</p>
-      <p style="margin-top:20px"><span class="todo">critério de sucesso: ex. 3 de 5 comercializadoras dispostas a pagar por lead qualificado</span></p>
     </div>
   </div>
   <div class="push hipoteses" data-in style="--i:4">
-    <p class="eyebrow" style="margin-bottom:16px">Hipóteses críticas</p>
-    <div class="row" style="gap:16px;flex-wrap:wrap">
-      <span class="pill hip">PMEs confiam numa plataforma para decidir energia</span>
-      <span class="pill hip">Fornecedores pagam por demanda qualificada</span>
-      <span class="pill hip">Empresas pagam pelo acompanhamento</span>
-    </div>
+    <p class="eyebrow" style="margin-bottom:16px">Hipóteses e critério de sucesso</p>
+    <ol class="hip-lista">
+      <li><b>H1</b><span>Se a PME receber o diagnóstico gratuito, ela pede propostas reais.</span><em>≥ 5 de 10 decisores</em></li>
+      <li><b>H2</b><span>Se a demanda chegar com dados organizados, a comercializadora paga por contrato fechado.</span><em>≥ 3 de 5 comercializadoras</em></li>
+      <li><b>H3</b><span>Se o acompanhamento mostrar economia prevista versus realizada, a PME paga mensalidade.</span><em>≥ 3 de 10 decisores</em></li>
+    </ol>
   </div>
   <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 08.</aside>
 </section>
 
-<!-- 11 · PRÓXIMOS PASSOS -->
+<!-- 12 · PRÓXIMOS PASSOS -->
 <section class="slide">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">10</span> Próximos passos</p>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Próximos passos</p>
   <h2 data-in style="--i:1;font-size:76px">Validar rápido, <em>sem carregar risco cedo.</em></h2>
   <div class="tempo">
     <div class="marco agora" data-in style="--i:2">
@@ -587,20 +615,20 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 08.</aside>
 </section>
 
-<!-- 12 · EQUIPE -->
+<!-- 13 · EQUIPE -->
 <section class="slide claro">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Equipe</p>
-  <h2 data-in style="--i:1;font-size:76px">Quem constrói a Milet <em>e quem orienta.</em></h2>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">12</span> Equipe</p>
+  <h2 data-in style="--i:1;font-size:76px">Quem constrói o Milet <em>e quem orienta.</em></h2>
   <div class="equipe" data-in style="--i:2">
-    <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Fundador · Eng. de Computação<br>Produto e tecnologia</p></div></div>
-    <div class="pessoa"><div class="foto">G</div><div><h3>Gustavo <span class="todo">sobrenome</span></h3><p>Fundador · <span class="todo">curso</span><br><span class="todo">área no projeto</span></p></div></div>
-    <div class="pessoa"><div class="foto">P</div><div><h3>Profa. <span class="todo">nome</span></h3><p>Orientadora · <span class="todo">instituição / área</span></p></div></div>
+    <div class="pessoa"><div class="foto">E</div><div><h3>Eduardo Ferreira de Mattos</h3><p>Fundador · Produto<br>Engenharia de Computação, Mackenzie</p></div></div>
+    <div class="pessoa"><div class="foto">G</div><div><h3>Gustavo Fugulin Soares da Silva</h3><p>Fundador · Código e UI/UX<br>Ciência da Computação, Mackenzie</p></div></div>
+    <div class="pessoa"><div class="foto">M</div><div><h3>Profª Drª Mariana Zuliani Theodoro de Lima</h3><p>Orientadora · Professora de Análise de Dados no Mackenzie<br>Cofundadora e CEO da OncoAI</p><p class="selos"><span class="pill">Shark Tank Brasil</span><span class="pill">Top 10 Female Tech Founders · Aurora Tech Award</span></p></div></div>
   </div>
   <p class="small push" data-in style="--i:3"><span class="todo">trocar as iniciais por fotos (círculo 240×240)</span></p>
-  <aside class="notes">Deixa: cada fundador diz nome, curso e o que cuida; menção à orientadora. Roteiro bloco 09.</aside>
+  <aside class="notes">Deixa: você apresenta os três; as credenciais da orientadora ficam na tela, não na fala. Roteiro bloco 09.</aside>
 </section>
 
-<!-- 13 · ENCERRAMENTO -->
+<!-- 14 · ENCERRAMENTO -->
 <section class="slide fim">
   <div class="hero" style="background-image:url('../../assets/web/milet-hero-rocha-ambar-polida.webp')"></div>
   <div class="veu"></div>
