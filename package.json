@@ -24,6 +24,7 @@
     "ci": "npm run check && npm run typecheck && npm test && npm run build",
     "dev": "npm run build:site && node scripts/serve.mjs",
     "dev:next": "next dev",
+    "dev:demo": "node scripts/run-pitch-demo.mjs",
     "start": "npm run build:site && node scripts/serve.mjs",
     "api:dev": "npm run dev -w @milet/api",
     "api:start": "npm run start -w @milet/api"
