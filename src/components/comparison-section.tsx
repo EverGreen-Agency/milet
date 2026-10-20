@@ -12,12 +12,12 @@ export function ComparisonSection() {
     {
       feature: "Leitura e Diagnóstico da Fatura",
       traditional: "Planilha manual preenchida por estagiários, propensa a erros em datas e demandas",
-      milet: "Extração multimodal instantânea via Gemini 2.5 com conferência humana assistida em tela."
+      milet: "Leitura automática da fatura em segundos, com cada campo conferido por você na tela."
     },
     {
       feature: "Segurança de Dados e LGPD",
       traditional: "Sua fatura circula desprotegida por grupos de WhatsApp e e-mails de corretores autônomos",
-      milet: "Storage privado criptografado S3 na Railway com quarentena e política estrita de expurgo."
+      milet: "Armazenamento privado e criptografado, com prazo de retenção e exclusão sob demanda."
     },
     {
       feature: "Comparação de Custos All-In",

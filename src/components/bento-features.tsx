@@ -29,17 +29,17 @@ export function BentoFeatures() {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: OCR Multimodal & IA Estruturada (Spans 2 cols on md) */}
+          {/* Card 1: Leitura automática da fatura (Spans 2 cols on md) */}
           <div className="md:col-span-2 rounded-2xl bg-[var(--card)] border border-[var(--border)] p-8 shadow-xs hover:border-[var(--color-milet-amber)]/40 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-10 h-10 rounded-xl bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] flex items-center justify-center">
                 <Sparkle weight="fill" className="w-6 h-6" />
               </div>
               <h3 className="font-serif font-bold text-xl text-[var(--foreground)]">
-                OCR Multimodal com Validação Semântica
+                Leitura automática da fatura
               </h3>
               <p className="text-sm text-[var(--foreground)]/70 leading-relaxed max-w-xl">
-                Envie o PDF original ou foto da conta de luz. Nosso motor alimentado por Gemini 2.5 extrai dados estruturados de medição, demanda na ponta e fora de ponta, tributos (ICMS/PIS/COFINS) e bandeiras tarifárias, eliminando erros de digitação manual.
+                Envie o PDF original ou a foto da conta de luz. A leitura automática organiza medição, demanda na ponta e fora de ponta, tributos (ICMS/PIS/COFINS) e bandeiras tarifárias, sem digitação manual, e você confere tudo antes do diagnóstico.
               </p>
             </div>
 
@@ -49,21 +49,21 @@ export function BentoFeatures() {
                 <p className="font-mono font-bold text-sm text-[var(--foreground)]">~2.4 seg</p>
               </div>
               <div className="space-y-1">
-                <span className="text-xs text-[var(--foreground)]/50">Estruturação</span>
-                <p className="font-mono font-bold text-sm text-[var(--foreground)]">JSON Estrito</p>
+                <span className="text-xs text-[var(--foreground)]/50">Resultado</span>
+                <p className="font-mono font-bold text-sm text-[var(--foreground)]">Passaporte Energético</p>
               </div>
               <div className="space-y-1">
-                <span className="text-xs text-[var(--foreground)]/50">Quarentena</span>
-                <p className="font-mono font-bold text-sm text-[var(--foreground)]">S3 Privado</p>
+                <span className="text-xs text-[var(--foreground)]/50">Armazenamento</span>
+                <p className="font-mono font-bold text-sm text-[var(--foreground)]">Privado e criptografado</p>
               </div>
               <div className="space-y-1">
                 <span className="text-xs text-[var(--foreground)]/50">Conferência</span>
-                <p className="font-mono font-bold text-sm text-[var(--foreground)]">Humano no Loop</p>
+                <p className="font-mono font-bold text-sm text-[var(--foreground)]">Feita por você</p>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Segurança Privada S3 & LGPD (1 col) */}
+          {/* Card 2: Armazenamento privado & LGPD (1 col) */}
           <div className="rounded-2xl bg-[var(--card)] border border-[var(--border)] p-8 shadow-xs hover:border-[var(--color-milet-amber)]/40 transition-all duration-300 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-10 h-10 rounded-xl bg-[var(--color-milet-copper)]/10 text-[var(--color-milet-copper)] flex items-center justify-center">
@@ -73,7 +73,7 @@ export function BentoFeatures() {
                 Quarentena Segura de Faturas
               </h3>
               <p className="text-sm text-[var(--foreground)]/70 leading-relaxed">
-                Suas faturas são armazenadas em bucket privado S3 criptografado na Railway com controle estrito de expiração e expurgo sob demanda.
+                Suas faturas ficam em armazenamento privado e criptografado, com prazo de retenção definido e exclusão quando você pedir.
               </p>
             </div>
 

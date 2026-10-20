@@ -153,11 +153,11 @@ export function LandingHero() {
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--card)] border border-[var(--border-strong)] text-xs font-medium shadow-xs">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[var(--foreground)]/80">Storage Privado S3 + OCR Multimodal Ativos</span>
+            <span className="text-[var(--foreground)]/80">Leitura automática de fatura no ar</span>
             <span className="text-[var(--border-strong)]">|</span>
             <span className="text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-semibold flex items-center gap-1">
               <Sparkle weight="fill" className="w-3.5 h-3.5" />
-              Gemini 2.5
+              Beta assistido
             </span>
           </div>
         </div>

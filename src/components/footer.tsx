@@ -70,7 +70,7 @@ export function Footer() {
               Segurança & Governança
             </h4>
             <p className="text-xs leading-relaxed text-[var(--foreground)]/60">
-              Arquivos de faturas armazenados em quarentena criptografada S3 (Railway). Extração multimodal via Gemini 2.5 estruturado com consentimento explícito.
+              Faturas guardadas em armazenamento privado e criptografado. Leitura automática só com o seu consentimento explícito.
             </p>
             <div className="flex items-center gap-1.5 text-xs text-[var(--foreground)]/80">
               <Lock weight="bold" className="w-3.5 h-3.5 text-[var(--color-milet-amber)]" />
