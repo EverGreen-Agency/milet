@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~611 palavras, **~4:21** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~643 palavras, **~4:35** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -185,13 +185,13 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Visão (3:41–3:56) · L2 · slide 12 · Eduardo
+### 08 · Visão (3:41–4:10) · L2 · slide 12 · Eduardo
 
-> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
+> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
 - *(Slide de validação oculto no deck até chegarem as entrevistas e as respostas dos e-mails. Quando voltar, entra aqui por 2 s, em silêncio.)*
-- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências.
+- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências. Em "vira uma API", o trecho "API do Passaporte Energético" do marco de 2º sem/2027 ganha sublinhado âmbar.
 - Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
 - **Se já houver resultado de conversas:** trocar a primeira frase por "Já conversamos com *N* empresas, e *X* nos mandaram a fatura", com o número em Playfair 150 px.
 
@@ -199,7 +199,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (3:56–4:12) · L2 · slide 13 · Eduardo
+### 09 · Equipe (4:10–4:26) · L2 · slide 13 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -212,7 +212,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 10 · Fechamento (4:12–4:21) · L1 → L4 · slide 14 · Eduardo
+### 10 · Fechamento (4:26–4:35) · L1 → L4 · slide 14 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
