@@ -1,17 +1,17 @@
 ﻿prioridade;empresa;papel;site;porta_de_entrada;programa_de_parceiros;observacao;confirmar_na_ccee;status;data_contato;resposta
-A;Comerc Energia (Vibra);comercializadora varejista;https://www.comerc.com.br;https://www.comerc.com.br/contato;não encontrado no site;Tem página de varejo (https://www.comerc.com.br/segmentos/varejo) e conteúdo de baixa tensão;sim;a contatar;;
-A;Voltta (Eneva);comercializadora varejista;https://voltta.com.br;https://voltta.com.br/programa-de-parcerias/;sim (Seja um Parceiro e franquia);Foco em PME no mercado livre · programa de parceiros público;sim;a contatar;;
-A;Serena Energia (ex-Omega);comercializadora e geradora;https://srna.co;https://srna.co/comunidade/parceiros;sim (Parceiros e Indique e Ganhe);Domínio antigo omegaenergia.com.br redireciona para srna.co;sim;a contatar;;
-A;Tradener;comercializadora;https://tradener.com.br;https://tradener.com.br/contato;sim (aba Parceiros na home);Páginas separadas para quem não está e para quem já está no mercado livre;sim;a contatar;;
+A;Comerc Energia (Vibra);comercializadora varejista;https://www.comerc.com.br;faleconosco@comerc.com.br;não encontrado no site;Tem página de varejo (https://www.comerc.com.br/segmentos/varejo) e conteúdo de baixa tensão;sim;a contatar;;
+A;Voltta (Eneva);comercializadora varejista;https://voltta.com.br;contato@voltta.com.br · https://voltta.com.br/programa-de-parcerias/;sim (Seja um Parceiro e franquia);Foco em PME no mercado livre · programa de parceiros público;sim;a contatar;;
+A;Serena Energia (ex-Omega);comercializadora e geradora;https://srna.co;clienteserena@srna.co · https://srna.co/comunidade/parceiros;sim (Parceiros e Indique e Ganhe);Domínio antigo omegaenergia.com.br redireciona para srna.co;sim;a contatar;;
+A;Tradener;comercializadora;https://tradener.com.br;contato@tradener.com.br;sim (aba Parceiros na home);Páginas separadas para quem não está e para quem já está no mercado livre;sim;a contatar;;
 A;EDP;comercializadora (grupo com distribuidora);https://solucoes.edp.com.br;https://www.edp.com.br/atendimento/canais-de-atendimento/;não encontrado no site;Use o braço de soluções (solucoes.edp.com.br), não a distribuidora;sim;a contatar;;
-A;Auren Energia;comercializadora e geradora;https://www.aurenenergia.com.br;formulário no site (carregado por script);a verificar no navegador;Sócia da GUD Energia (JV com Vivo);sim;a contatar;;
-B;Matrix Energia;comercializadora varejista;https://www.matrixenergia.com;(11) 3027-2900 / e-mail institucional do site;a verificar no navegador;Grande varejista independente · em reestruturação (Brazil Journal) · fornecedora, não concorrente direta;sim;a contatar;;
-B;Safira Energia;comercializadora;https://www.safiraenergia.com.br;https://www.safiraenergia.com.br/fale-conosco/;não encontrado no site;;sim;a contatar;;
+A;Auren Energia;comercializadora e geradora;https://www.aurenenergia.com.br;comercial@aurenenergia.com.br;a verificar no navegador;Sócia da GUD Energia (JV com Vivo);sim;a contatar;;
+B;Matrix Energia;comercializadora varejista;https://www.matrixenergia.com;grupomatrix@matrixenergia.com · (11) 3027-2900;a verificar no navegador;Grande varejista independente · em reestruturação (Brazil Journal) · fornecedora, não concorrente direta;sim;a contatar;;
+B;Safira Energia;comercializadora;https://www.safiraenergia.com.br;contato@safiraenergia.com.br;não encontrado no site;;sim;a contatar;;
 B;Engie;comercializadora (grupo gerador);https://www.engie.com.br;formulário no site (bloqueia acesso automatizado);a verificar no navegador;;sim;a contatar;;
 B;CPFL Soluções;comercializadora (grupo com distribuidora);https://www.cpflsolucoes.com.br;formulário no site (bloqueia acesso automatizado);a verificar no navegador;Use o braço de soluções, não a distribuidora CPFL Paulista;sim;a contatar;;
 B;GUD Energia;comercializadora (Auren + Vivo);https://www.gudenergia.com.br;formulário no site (bloqueia acesso automatizado);a verificar no navegador;Canal B2B da Vivo Empresas;sim;a contatar;;
 B;Urca Energia;comercializadora e geradora;https://urcaenergia.com;https://urcaenergia.com/fornecedor/ (seja fornecedor);não para indicação;;sim;a contatar;;
-B;2W Energia;comercializadora;https://www.2wenergia.com.br;formulário no site (bloqueia acesso automatizado);a verificar no navegador;;sim;a contatar;;
+X;2W Energia;comercializadora;https://www.2wenergia.com.br;—;—;Em recuperação judicial (lista da CCEE, out/2026): não abordar agora;sim;descartada;;
 C;Ludfor Energia;comercializadora;https://www.ludforenergia.com.br;formulário no site (carregado por script);a verificar no navegador;;sim;a contatar;;
 C;Kroma Energia;comercializadora;https://www.kromaenergia.com.br;formulário no site (carregado por script);a verificar no navegador;;sim;a contatar;;
 REF;Electy;marketplace GD/ACL (concorrente parcial);https://electy.com.br;https://electy.com.br/ecoagentes/;sim (paga parceiro após contrato assinado);Evidência: recebe % do contrato pago pelas usinas · cliente não paga;não;referência;;
