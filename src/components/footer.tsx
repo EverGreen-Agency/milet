@@ -30,13 +30,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/build-in-public.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
+                <Link href="/build-in-public" className="hover:text-[var(--color-milet-amber)] transition-colors">
                   Build in Public
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/v2" className="hover:text-[var(--color-milet-amber)] transition-colors">
-                  Beta Interativo (v2)
+                <a href="/roadmap.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
+                  Roadmap Aberto
                 </a>
               </li>
             </ul>

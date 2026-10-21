@@ -35,7 +35,19 @@ function resolveLocalTarget(htmlFile, rawTarget) {
   const candidates = [normalized];
   if (normalized.startsWith("app\\") || normalized.startsWith("app/") || normalized === "app") {
     const subPath = normalized === "app" ? "" : normalized.slice(4);
-    candidates.push(path.join("legacy-pwa", subPath));
+    candidates.push(
+      path.join("legacy-pwa", subPath),
+      path.join("archive", "legacy", "legacy-pwa", subPath),
+      path.join("archive", "legacy", "legacy-pwa", subPath, "index.html")
+    );
+  }
+  if (normalized.startsWith("v2\\") || normalized.startsWith("v2/") || normalized === "v2") {
+    const subPath = normalized === "v2" ? "" : normalized.slice(3);
+    candidates.push(
+      path.join("v2", subPath),
+      path.join("archive", "legacy", "v2", subPath),
+      path.join("archive", "legacy", "v2", subPath, "index.html")
+    );
   }
   candidates.push(path.join("public", normalized));
   if (!path.extname(normalized)) {

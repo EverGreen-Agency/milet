@@ -39,9 +39,16 @@ export function Navbar() {
           >
             Diagnóstico
           </Link>
-          <a href="/build-in-public.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
+          <Link
+            href="/build-in-public"
+            className={`transition-colors ${
+              pathname === "/build-in-public"
+                ? "text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-semibold"
+                : "hover:text-[var(--color-milet-amber)]"
+            }`}
+          >
             Build in Public
-          </a>
+          </Link>
           <a href="/brandbook.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
             Brandbook
           </a>
