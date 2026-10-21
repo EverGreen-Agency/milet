@@ -45,6 +45,7 @@ h2 { max-width: 900px; font-size: clamp(2.5rem, 5vw, 5.4rem); }
 .journeys { padding: 8vw 7vw; border-top: 1px solid var(--line); }
 .section-heading { margin-bottom: 50px; }
 .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.journey-grid.single { grid-template-columns: 1fr; }
 .journey-card { min-height: 390px; display: flex; flex-direction: column; padding: 42px; border: 1px solid var(--line); background: rgba(255,255,255,.32); }
 .journey-card.home { background: var(--cream); }
 .card-number { color: var(--amber); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }

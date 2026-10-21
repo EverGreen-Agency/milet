@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Lightning,
   Buildings,
-  HouseLine,
-  ChartLineUp,
   ShieldCheck,
   CheckCircle,
   ArrowRight,
@@ -60,84 +57,19 @@ const PROFILES: Record<string, ProfileData> = {
       missing: [],
       costs: {
         residualBill: 2940,
-        supplier: 4900,
-        miletService: 280,
+        supplier: 4990,
+        miletService: 190,
         taxes: 1600,
         financing: 0
       },
-      remuneration: "R$ 280/mês de serviço Milet, já incluídos no total."
-    }
-  },
-  supplier: {
-    id: "supplier",
-    label: "Comercializadora",
-    badge: "Agrupador / Portfólio",
-    icon: ChartLineUp,
-    description: "Gestores de carteira e tradings buscando PMEs pré-qualificadas.",
-    invoice: {
-      consumptionKwh: 85000,
-      total: 68500,
-      period: "2026-08",
-      distributor: "CPFL Paulista",
-      voltageGroup: "A4",
-      contractedDemandKw: 350
-    },
-    proposal: {
-      id: "PROP-SUP-01",
-      supplier: "Consórcio Sudeste Mercado Livre",
-      route: "Mercado livre",
-      termMonths: 48,
-      renewable: "100% Eólica / Solar",
-      adjustment: "IPCA anual",
-      risk: "Baixo",
-      missing: [],
-      costs: {
-        residualBill: 18200,
-        supplier: 32500,
-        miletService: 1200,
-        taxes: 9800,
-        financing: 0
-      },
-      remuneration: "R$ 1.200/mês de serviço Milet all-in."
-    }
-  },
-  home: {
-    id: "home",
-    label: "Residencial / GD",
-    badge: "Baixa Tensão (Grupo B)",
-    icon: HouseLine,
-    description: "Residências, consultórios e pequenas lojas sem demanda contratada.",
-    invoice: {
-      consumptionKwh: 1450,
-      total: 1580,
-      period: "2026-08",
-      distributor: "Light",
-      voltageGroup: "B1"
-    },
-    proposal: {
-      id: "PROP-GD-01",
-      supplier: "Solar por Assinatura Compartilhada",
-      route: "Geração compartilhada (GD)",
-      termMonths: 12,
-      renewable: "100% Solar Distribuída",
-      adjustment: "Reajuste Tarifário Anual",
-      risk: "Baixo",
-      missing: [],
-      costs: {
-        residualBill: 420,
-        supplier: 890,
-        miletService: 45,
-        taxes: 0,
-        financing: 0
-      },
-      remuneration: "R$ 45/mês de taxa de plataforma Milet inclusa."
+      remuneration: "Serviço Milet: R$ 190/mês, igual em todas as propostas e já incluído no total."
     }
   }
 };
 
 export function LandingHero() {
-  const [activeProfileKey, setActiveProfileKey] = useState<string>("pme");
-  const activeProfile = PROFILES[activeProfileKey] ?? PROFILES.pme!;
+  // Nesta fase o Milet atende só PMEs do Grupo A; os outros perfis entram com a abertura da baixa tensão.
+  const activeProfile = PROFILES.pme!;
 
   const normalized = normalizeProposal(activeProfile.proposal, activeProfile.invoice.total);
   const eligibility = evaluateEligibility(activeProfile.invoice);
@@ -193,38 +125,21 @@ export function LandingHero() {
           </div>
         </div>
 
-        {/* Interactive Profile Tabs */}
+        {/* Exemplo de diagnóstico (PME do Grupo A) */}
         <div className="max-w-4xl mx-auto mt-12 bg-[var(--card)] rounded-2xl border border-[var(--border)] shadow-sm p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-[var(--border)]">
             <div className="text-left w-full sm:w-auto">
               <span className="text-xs uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold">
-                Simulador Dinâmico
+                Exemplo de diagnóstico
               </span>
               <h3 className="font-serif font-bold text-lg text-[var(--foreground)]">
-                Escolha o perfil para ver os números reais:
+                Padaria do Grupo A em Belo Horizonte
               </h3>
             </div>
+            <span className="text-[11px] font-mono px-2.5 py-1 rounded-full border border-[var(--border)] text-[var(--foreground)]/60">
+              Dados de demonstração
+            </span>
 
-            <div className="grid grid-cols-3 gap-1.5 w-full sm:w-auto bg-[var(--background)] p-1 rounded-xl border border-[var(--border)]">
-              {Object.values(PROFILES).map((prof) => {
-                const IconComponent = prof.icon;
-                const isSelected = prof.id === activeProfileKey;
-                return (
-                  <button
-                    key={prof.id}
-                    onClick={() => setActiveProfileKey(prof.id)}
-                    className={`flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
-                      isSelected
-                        ? "bg-[var(--card)] text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] shadow-xs border border-[var(--border)]"
-                        : "text-[var(--foreground)]/60 hover:text-[var(--foreground)]"
-                    }`}
-                  >
-                    <IconComponent weight={isSelected ? "fill" : "regular"} className="w-4 h-4" />
-                    <span>{prof.label.split(" /")[0]}</span>
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           {/* Dynamic Comparison Card */}
@@ -280,10 +195,10 @@ export function LandingHero() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-bold text-xs uppercase tracking-wider">
                     <Lightning weight="fill" className="w-4 h-4" />
-                    <span>Custo All-In Milet</span>
+                    <span>Custo total com o Milet</span>
                   </div>
                   <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-semibold border border-emerald-500/20">
-                    -{normalized.savingPercent.toFixed(1)}% Redução
+                    {new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(normalized.savingPercent)}% menor
                   </span>
                 </div>
 
