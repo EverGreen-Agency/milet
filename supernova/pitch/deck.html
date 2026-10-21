@@ -255,6 +255,11 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 .lado .receita b { color: var(--ambar-claro); display: block; font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
 .lado.dir { text-align: right; }
 .mercado { display: flex; gap: 28px; margin-top: auto; }
+.oferta-print { display: flex; align-items: center; gap: 28px; margin: 22px 0 28px; }
+.oferta-print img { width: 440px; border-radius: 12px; border: 1px solid var(--linha-escura); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45); }
+.oferta-print figcaption { font-size: 24px; line-height: 1.45; color: var(--areia); max-width: 640px; }
+.oferta-print strong { color: var(--ambar-claro); font-weight: 600; }
+.oferta-print span { display: block; margin-top: 6px; font-family: var(--f-mono); font-size: 15px; color: #8E887E; }
 .mercado div { flex: 1; border-top: 1px solid var(--linha-escura); padding-top: 22px; font-size: 22px; color: var(--areia); line-height: 1.45; }
 .mercado b { display: block; font-family: var(--f-mono); font-size: 17px; letter-spacing: 0.14em; color: var(--marfim); margin-bottom: 6px; font-weight: 500; }
 
@@ -288,14 +293,16 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 .hip-lista em { font-style: normal; font-family: var(--f-mono); font-size: 17px; color: var(--ambar-escuro); text-align: right; }
 
 /* 11 Linha do tempo */
-.tempo { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: auto; margin-bottom: 40px; position: relative; }
+.tempo { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: auto; margin-bottom: 40px; position: relative; }
 .tempo::before { content: ""; position: absolute; top: 15px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--ambar), rgba(211, 155, 61, 0.15)); }
 .marco { padding-right: 36px; }
 .marco .ponto { width: 32px; height: 32px; border-radius: 50%; background: var(--carvao); border: 2px solid var(--ambar); margin-bottom: 36px; position: relative; }
 .marco.agora .ponto { background: var(--ambar); box-shadow: 0 0 0 10px rgba(211, 155, 61, 0.18); }
 .marco .quando { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.12em; color: var(--ambar); text-transform: uppercase; margin-bottom: 14px; }
-.marco h3 { font-family: var(--f-display); font-size: 42px; font-weight: 600; line-height: 1.1; margin-bottom: 14px; }
-.marco p { font-size: 24px; line-height: 1.5; color: var(--areia); }
+.marco h3 { font-family: var(--f-display); font-size: 36px; font-weight: 600; line-height: 1.1; margin-bottom: 14px; }
+.marco p { font-size: 21px; line-height: 1.5; color: var(--areia); }
+.marco { padding-right: 28px; }
+.visao-frase { font-family: var(--f-display); font-style: italic; font-size: 34px; color: var(--ambar-claro); margin-top: 8px; }
 
 /* 12 Equipe */
 .equipe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 88px; }
@@ -567,10 +574,14 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <div class="receita"><b>Hipótese 1</b>Taxa por contrato fechado, igual para todos e informada ao cliente.</div>
     </div>
   </div>
-  <div class="mercado" data-in style="--i:5">
-    <div><b>TAM</b><span class="todo">R$ — gasto anual com energia das PMEs do Grupo A</span></div>
-    <div><b>SAM</b>~72 mil PMEs com potencial de migrar (CCEE, 2023) <span class="todo">× ticket</span></div>
-    <div><b>SOM · FASE 0</b>20 a 50 empresas atendidas em modo concierge <span class="todo">× receita por conta</span></div>
+  <figure class="oferta-print" data-in style="--i:5">
+    <img src="shots/ccee-varejistas-140.png" alt="Lista de associados da CCEE filtrada por varejistas: 140 empresas habilitadas">
+    <figcaption><strong>140 comercializadoras varejistas habilitadas</strong> disputam as mesmas PMEs. <span>CCEE · lista de associados · 05/10/2026</span></figcaption>
+  </figure>
+  <div class="mercado" data-in style="--i:6">
+    <div><b>TAM · ~R$ 250 mi/ano</b>72 mil PMEs do Grupo A com potencial (CCEE) × ~R$ 3,5 mil de receita por cliente/ano</div>
+    <div><b>SAM · ~R$ 100 mi/ano</b>~20 mil migrações por ano (CCEE) × taxa de ~R$ 5 mil por contrato</div>
+    <div><b>SOM · 3 anos · ~R$ 2,5 mi/ano</b>1% das PMEs com potencial (~720 empresas). Estimativas; premissas no material de apoio.</div>
   </div>
   <aside class="notes">Deixa: deixar explícito que as duas receitas são hipóteses em teste; a remuneração nunca altera o ranking. Roteiro bloco 07.</aside>
 </section>
@@ -638,37 +649,45 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: honestidade aqui gera confiança. Não chamar plano de tração. Roteiro bloco 08.</aside>
 </section>
 
-<!-- 13 · PRÓXIMOS PASSOS -->
+<!-- 13 · VISÃO -->
 <section class="slide">
-  <p class="eyebrow" data-in style="--i:0"><span class="n">12</span> Próximos passos</p>
-  <h2 data-in style="--i:1;font-size:76px">Validar rápido, <em>sem carregar risco cedo.</em></h2>
+  <p class="eyebrow" data-in style="--i:0"><span class="n">12</span> Visão</p>
+  <h2 data-in style="--i:1;font-size:76px">Das PMEs do Grupo A <em>a qualquer conta de luz.</em></h2>
   <div class="tempo">
     <div class="marco agora" data-in style="--i:2">
       <div class="ponto"></div>
-      <p class="quando">Agora</p>
-      <h3>Entrevistas</h3>
-      <p>Decisores de PMEs e comercializadoras.</p>
+      <p class="quando">Agora · out–dez/2026</p>
+      <h3>Primeiros clientes</h3>
+      <p>Cadastro das primeiras PMEs, comercializadoras e usinas na plataforma.</p>
     </div>
     <div class="marco" data-in style="--i:3">
       <div class="ponto"></div>
-      <p class="quando"><span class="todo">mês/ano</span></p>
-      <h3>Concierge</h3>
-      <p>20 a 50 empresas com diagnóstico e propostas reais.</p>
+      <p class="quando">1º sem/2027</p>
+      <h3>Marketplace aberto</h3>
+      <p>Comercializadoras e usinas enviam propostas direto no Milet, antes do comparador público da CCEE.</p>
     </div>
     <div class="marco" data-in style="--i:4">
       <div class="ponto"></div>
-      <p class="quando"><span class="todo">mês/ano</span></p>
-      <h3>Primeiros contratos</h3>
-      <p>Execução com comercializadoras parceiras habilitadas.</p>
+      <p class="quando">2º sem/2027</p>
+      <h3>Escala com automação</h3>
+      <p>Canais com contadores e EPCs; leitura, cotação e acompanhamento automatizados com IA.</p>
     </div>
     <div class="marco" data-in style="--i:5">
       <div class="ponto"></div>
-      <p class="quando"><span class="todo">mês/ano</span></p>
-      <h3>Acompanhamento</h3>
-      <p>Economia realizada e nova cotação antes do vencimento.</p>
+      <p class="quando">Nov/2027</p>
+      <h3>Pequenos comércios</h3>
+      <p>Lojas e escritórios de baixa tensão passam a poder escolher de quem compram energia.</p>
+    </div>
+    <div class="marco" data-in style="--i:6">
+      <div class="ponto"></div>
+      <p class="quando">Nov/2028</p>
+      <h3>Residências</h3>
+      <p>Qualquer casa passa a poder escolher de quem compra energia, e não só a distribuidora local.</p>
     </div>
   </div>
-  <aside class="notes">Deixa: fases do roteiro estratégico (Fase 0 concierge → Fase 1 acompanhamento). Roteiro bloco 08.</aside>
+  <p class="visao-frase" data-in style="--i:7">Energia de quem você escolher, com os seus dados e preço justo.</p>
+  <p class="fonte" data-in style="--i:8">Abertura do mercado livre para a baixa tensão: Lei 15.269/2025.</p>
+  <aside class="notes">Deixa: a visão cresce com a abertura do mercado; datas legais. Roteiro bloco 08.</aside>
 </section>
 
 <!-- 14 · EQUIPE -->
@@ -691,7 +710,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <h1 data-in style="--i:1">Energia em <em>mais liberdade.</em></h1>
   <div class="contato" data-in style="--i:2">
     <span>milet@evergreenmkt.com.br</span>
-    <span class="todo">site / LinkedIn</span>
+    <span>milet.vercel.app</span>
   </div>
   <aside class="notes">Deixa: assinatura da marca, olhar na câmera, 2 segundos de silêncio antes de cortar. Roteiro bloco 10.</aside>
 </section>

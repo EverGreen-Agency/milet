@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova). Alvo: **2:55** |
-| Fala | ~400 palavras (~145 palavras/min com pausas): no limite. Cortes prontos, nesta ordem: "e o mercado já paga por isso" (bloco 07), a frase do funil (bloco 07), "O que hoje é um vai e vem…" (bloco 04) |
+| Fala | ~400 palavras (~145 palavras/min com pausas): no limite. Cortes prontos, nesta ordem: a frase do funil (bloco 07), "O que hoje é um vai e vem…" (bloco 04), "e depois residências" (bloco 08) |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -165,27 +165,28 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 07 · Modelo de negócio e canais (2:00–2:22) · L3 · slides 09, 10 e 11 · Eduardo
 
-> "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
+> "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
 **Tela**
 - Diagrama do slide 09: o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
 - Selo âmbar `HIPÓTESE` nas duas receitas quando a palavra é dita.
 - Consistência com o BMC entregue: mesmos dois segmentos, mesmas duas receitas.
-- "O mercado já paga por isso": corte para o slide 10 com os prints das fontes (Clarke paga R$ 5 a 10 mil por PME fechada; Electy é paga pelas usinas; Clarke cobra R$ 100/mês da empresa). Zoom lento no print grande; 2 s no total.
+- Logo após "hipóteses em teste": corte para o slide 10, em silêncio, com os prints das fontes (Clarke paga R$ 5 a 10 mil por PME fechada; Electy é paga pelas usinas; Clarke cobra R$ 100/mês da empresa). Zoom lento no print grande; 2 s no total.
 - "E chegamos à PME…": corte para o funil do slide 11; as quatro etapas acendem da esquerda para a direita, com destaque em **02 · Engajar · Diagnóstico gratuito**.
 
 **Assets:** GFX-08 · GFX-13 (referência de mercado) · GFX-12 (funil) · **Som:** `tick` em cada seta.
 
 ---
 
-### 08 · Validação e próximos passos (2:22–2:35) · L2 · slides 12 e 13 · Eduardo
+### 08 · Validação e visão (2:22–2:35) · L2 · slides 12 e 13 · Eduardo
 
-> "Nas próximas semanas, vamos ouvir dez decisores de PMEs e cinco comercializadoras, e fazer os primeiros diagnósticos com empresas reais, em modo concierge."
+> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace e escalamos com automação, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
-- As três hipóteses do slide 12 aparecem com o critério de sucesso ao lado (formato do Módulo 3: mudança, público, resultado, evidência).
-- Linha do tempo do slide 13 se desenha da esquerda para a direita; o ponto "Agora" pulsa.
-- **Se já houver resultado** de conversas: trocar a fala por "Já conversamos com *N* decisores, e *X* disseram que…", com o número em Playfair 150 px.
+- Slide 12 (validação) por 2 s, em silêncio: hipóteses e critérios de sucesso na tela.
+- "Agora, cadastramos…": slide 13 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace, automação, pequenos comércios, residências.
+- Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
+- **Se já houver resultado de conversas:** trocar a primeira frase por "Já conversamos com *N* empresas, e *X* nos mandaram a fatura", com o número em Playfair 150 px.
 
 **Assets:** GFX-09 · **Som:** música começa a subir.
 
