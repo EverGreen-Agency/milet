@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Buildings, HouseLine, ChartLineUp, ArrowRight, ShieldCheck } from "@phosphor-icons/react";
+import { Buildings, ArrowRight, ShieldCheck } from "@phosphor-icons/react";
 
 export interface LeadData {
   name: string;
@@ -71,90 +71,20 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
           Seu contexto e identificação
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          Para que o diagnóstico calcule tarifas exatas e rotas regulatórias viáveis, selecione o seu perfil e informe a concessionária local.
+          Para que o diagnóstico calcule tarifas exatas e rotas regulatórias viáveis, informe os dados da empresa e a concessionária local.
         </p>
       </div>
 
-      {/* Seletor de Perfil */}
-      <div className="space-y-3">
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--foreground)]/70">
-          Escolha o perfil da unidade consumidora:
-        </label>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <button
-            type="button"
-            onClick={() => setLead({ ...lead, profile: "company" })}
-            className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between space-y-3 ${
-              lead.profile === "company"
-                ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-xs ring-1 ring-[var(--color-milet-amber)]/20"
-                : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] flex items-center justify-center">
-                <Buildings weight="fill" className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)]">
-                Grupo A / PME
-              </span>
-            </div>
-            <div>
-              <div className="font-bold text-sm text-[var(--foreground)]">Empresa / PME</div>
-              <div className="text-xs text-[var(--foreground)]/60 mt-0.5 leading-relaxed">
-                Padarias, indústrias, comércios e galpões com demanda contratada.
-              </div>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setLead({ ...lead, profile: "supplier" })}
-            className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between space-y-3 ${
-              lead.profile === "supplier"
-                ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-xs ring-1 ring-[var(--color-milet-amber)]/20"
-                : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-milet-copper)]/10 text-[var(--color-milet-copper)] flex items-center justify-center">
-                <ChartLineUp weight="fill" className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-milet-copper)]/10 text-[var(--color-milet-copper)]">
-                Oferta / Trading
-              </span>
-            </div>
-            <div>
-              <div className="font-bold text-sm text-[var(--foreground)]">Comercializadora</div>
-              <div className="text-xs text-[var(--foreground)]/60 mt-0.5 leading-relaxed">
-                Gestores de portfólio e geradores avaliando carteiras de PMEs.
-              </div>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setLead({ ...lead, profile: "home" })}
-            className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between space-y-3 ${
-              lead.profile === "home"
-                ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-xs ring-1 ring-[var(--color-milet-amber)]/20"
-                : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--color-milet-amber)]/40"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-                <HouseLine weight="fill" className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600">
-                Grupo B / GD
-              </span>
-            </div>
-            <div>
-              <div className="font-bold text-sm text-[var(--foreground)]">Residencial / GD</div>
-              <div className="text-xs text-[var(--foreground)]/60 mt-0.5 leading-relaxed">
-                Residências, consultórios e condomínios sem demanda contratada.
-              </div>
-            </div>
-          </button>
+      {/* Perfil atendido nesta fase: só PMEs do Grupo A (média tensão). */}
+      <div className="p-4 rounded-xl border border-[var(--color-milet-amber)] bg-[var(--card)] shadow-xs flex items-start gap-3">
+        <div className="w-8 h-8 shrink-0 rounded-lg bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] flex items-center justify-center">
+          <Buildings weight="fill" className="w-5 h-5" />
+        </div>
+        <div>
+          <div className="font-bold text-sm text-[var(--foreground)]">Empresas do Grupo A (média tensão)</div>
+          <div className="text-xs text-[var(--foreground)]/60 mt-0.5 leading-relaxed">
+            Comércios, serviços e indústrias com demanda contratada, que já podem escolher de quem compram energia.
+          </div>
         </div>
       </div>
 

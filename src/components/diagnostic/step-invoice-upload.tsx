@@ -17,6 +17,7 @@ interface StepInvoiceUploadProps {
   onComplete: (invoice: InvoiceExtractedData) => void;
 }
 
+// Casos para fases futuras ficam guardados; nesta fase a demonstração mostra só a PME do Grupo A.
 const PRESET_CASES: readonly {
   id: string;
   label: string;
@@ -297,8 +298,8 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {PRESET_CASES.map((preset) => {
+        <div className="grid grid-cols-1 gap-3">
+          {PRESET_CASES.filter((preset) => preset.id === "padaria").map((preset) => {
             const isSelected = invoice.fileName === preset.data.fileName;
             return (
               <button
