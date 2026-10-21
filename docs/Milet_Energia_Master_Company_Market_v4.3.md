@@ -487,7 +487,7 @@ Clarke, Ynova, Electy, UC Livre, Deskonta e a futura plataforma da CCEE comprime
 | Monitoramento solar | SolarZ, SolarView | Via integração primeiro | Projeto→Ativo→Market→Finance loop. |
 | CRM/propostas EPC | SolarZ, OpenSolar, Aurora | Módulo/integrado | Economia do negócio padronizado \+ mercado digital bridge. |
 | Tarifa dinâmica/smart control | Tibber, Octopus | Futuro | Copiloto \+ flex mercado digital no Brasil quando elegível. |
-| Utility data API | Arcadia | Desejável | Brazil bill/tariff intelligence API para parceiros. |
+| Utility data API | Arcadia | Desejável | Brazil bill/tariff intelligence API para parceiros, cobrada por empresa conectada e só com consentimento dela. Gatilho: Open Energy (ANEEL, CP 7/2025), cuja fase 2 propõe compartilhamento por API com consentimento e a CCEE como diretório central. |
 | Energy Autopilot / rebid contínuo | Energy Ogre; players locais evoluindo para agentes/gestão | Core estratégico a validar | Monitorar vencimentos, mercado e consumo; recomendar/executar dentro de política e mandato explícitos. |
 | Passaporte Energético do consumidor | Energy Ogre usa curva de consumo; soluções locais têm dados parciais | Core Milet | Memória estruturada de consumo, contrato, risco, preferências, UCs, histórico de ofertas, economia e decisões. |
 | Agregação de demanda | Prática de procurement/portfólios; formato Milet a validar | Experimento | Transformar UCs fragmentadas em poder de compra, respeitando representação e regulação aplicável. |
