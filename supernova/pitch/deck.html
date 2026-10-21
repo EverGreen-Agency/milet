@@ -175,15 +175,17 @@ body.hide-todo .todo { display: none; }
 .pergunta h2 { font-size: 80px; }
 
 /* 04 Dimensão */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 72px; border-top: 1px solid var(--linha-escura); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; border-top: 1px solid var(--linha-escura); }
 .stat { padding: 48px 48px 0 0; border-right: 1px solid var(--linha-escura); }
 .stat + .stat { padding-left: 48px; }
 .stat:last-child { border-right: 0; }
-.stat .num { font-family: var(--f-display); font-size: 150px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; color: var(--marfim); }
+.stat .num { font-family: var(--f-display); font-size: 120px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; color: var(--marfim); }
 .stat .num small { font-size: 0.4em; color: var(--ambar); margin-left: 8px; }
 .stat .num.queda { color: var(--ambar-claro); }
 .stat p { font-size: 28px; line-height: 1.45; color: var(--areia); margin-top: 22px; max-width: 460px; }
-.stat .fonte { margin-top: 18px; }
+.stat .fonte { margin-top: 14px; }
+.stat p { font-size: 25px; margin-top: 16px; }
+.stat .print { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; margin-top: 18px; border-radius: 12px; border: 1px solid var(--linha-escura); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45); }
 
 /* 05 Descobertas */
 .descoberta .idx { font-family: var(--f-display); font-size: 72px; color: var(--ambar-escuro); line-height: 1; margin-bottom: 28px; font-style: italic; }
@@ -194,6 +196,18 @@ body.hide-todo .todo { display: none; }
 .passo .k { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.16em; color: var(--ambar); margin-bottom: 18px; text-transform: uppercase; }
 .passo h3 { font-family: var(--f-display); font-size: 52px; font-weight: 600; line-height: 1.08; margin-bottom: 18px; }
 .passo p { font-size: 26px; line-height: 1.5; color: var(--areia); }
+
+/* 06 Jornada encurtada (hoje x Milet) */
+.jornada { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: auto; }
+.etapa-j { border-top: 2px solid var(--ambar); padding-top: 26px; display: flex; flex-direction: column; gap: 18px; }
+.etapa-j .k { font-family: var(--f-mono); font-size: 19px; letter-spacing: 0.14em; color: var(--ambar); text-transform: uppercase; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.etapa-j .selo { font-size: 13px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--linha-escura); color: #8E887E; }
+.etapa-j .selo.ok { color: var(--ok); border-color: rgba(127, 163, 107, 0.5); }
+.etapa-j p b { display: block; font-family: var(--f-mono); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+.etapa-j .hoje { font-size: 22px; line-height: 1.45; color: #8E887E; padding: 18px 20px; border-radius: 16px; background: rgba(247, 243, 234, 0.04); text-decoration: line-through; text-decoration-color: rgba(142, 136, 126, 0.55); }
+.etapa-j .hoje b { color: #8E887E; text-decoration: none; display: block; }
+.etapa-j .milet { font-size: 25px; line-height: 1.4; color: var(--marfim); padding: 18px 20px; border-radius: 16px; background: rgba(211, 155, 61, 0.12); border: 1px solid rgba(211, 155, 61, 0.4); }
+.etapa-j .milet b { color: var(--ambar-claro); }
 
 /* 07 MVP */
 .mvp { padding-right: 0; }
@@ -407,16 +421,19 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <p class="num">72<small>mil</small></p>
       <p>empresas de pequeno e médio porte com potencial de migrar após a abertura do Grupo A.</p>
       <p class="fonte">CCEE, estimativa de 2023</p>
+      <img class="print" src="shots/thumb-72mil.png" alt="Manchete do Canal Solar: CCEE diz que o mercado livre tem potencial de atrair 72 mil empresas">
     </div>
     <div class="stat" data-in style="--i:3">
       <p class="num">21,7<small>mil</small></p>
       <p>migrações para o mercado livre em 2025 — serviços e comércio somam quase metade.</p>
       <p class="fonte">CCEE, balanço 2025</p>
+      <img class="print" src="shots/thumb-21707.png" alt="Estudo da CCEE: mais de 21,7 mil migrações ao mercado livre em 2025">
     </div>
     <div class="stat" data-in style="--i:4">
       <p class="num queda">−36,5%</p>
       <p>no ritmo de migrações do 1º trimestre de 2026 em relação ao mesmo período de 2025.</p>
       <p class="fonte">CCEE, 1T2026</p>
+      <img class="print" src="shots/thumb-36-5.png" alt="Manchete do Canal Solar: migrações para o mercado livre caem 36,5% no 1º trimestre">
     </div>
   </div>
   <p class="fonte push" data-in style="--i:5">Fontes: CCEE, potencial da abertura do Grupo A (2023) · balanço 2025: 21.707 migrações · 1T2026: 4.827 migrações contra 7.603 no 1T2025.</p>
@@ -448,28 +465,34 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: três descobertas, uma frase cada. Se houver entrevistas, a citação real entra no lugar da marcação. Roteiro bloco 03.</aside>
 </section>
 
-<!-- 06 · SOLUÇÃO -->
+<!-- 06 · SOLUÇÃO: JORNADA ENCURTADA -->
 <section class="slide">
   <p class="eyebrow" data-in style="--i:0"><span class="n">05</span> A solução</p>
-  <h2 data-in style="--i:1">Uma forma independente de contratar energia — <em>e de continuar acompanhando.</em></h2>
-  <div class="passos">
-    <div class="passo" data-in style="--i:2">
-      <p class="k">01 · Entender</p>
-      <h3>Envie a fatura que você já recebe</h3>
-      <p>O Milet lê os dados e monta o Passaporte Energético da empresa: consumo, demanda, contrato e distribuidora.</p>
+  <h2 data-in style="--i:1;font-size:80px">Do vai e vem de e-mails <em>a uma decisão na mesma tela.</em></h2>
+  <div class="jornada">
+    <div class="etapa-j" data-in style="--i:2">
+      <p class="k">01 · Entender <span class="selo ok">no MVP</span></p>
+      <p class="hoje"><b>Hoje</b>Mandar as faturas por e-mail e esperar alguém estudar e retornar.</p>
+      <p class="milet"><b>Com o Milet</b>Envie a fatura: leitura e diagnóstico na hora.</p>
     </div>
-    <div class="passo" data-in style="--i:3">
-      <p class="k">02 · Comparar</p>
-      <h3>Rotas e fornecedores na mesma régua</h3>
-      <p>Mercado livre, solar própria ou compartilhada. Depois, custo total, prazo e risco lado a lado. Nenhuma oferta compra posição.</p>
+    <div class="etapa-j" data-in style="--i:3">
+      <p class="k">02 · Comparar <span class="selo ok">no MVP</span></p>
+      <p class="hoje"><b>Hoje</b>Propostas em formatos diferentes, comparadas em planilha.</p>
+      <p class="milet"><b>Com o Milet</b>Rotas e propostas na mesma régua, com o custo total.</p>
     </div>
-    <div class="passo" data-in style="--i:4">
-      <p class="k">03 · Acompanhar</p>
-      <h3>A relação não termina na assinatura</h3>
-      <p>Economia prevista versus realizada, alertas de vencimento e nova cotação antes de o contrato acabar.</p>
+    <div class="etapa-j" data-in style="--i:4">
+      <p class="k">03 · Contratar <span class="selo">próxima fase</span></p>
+      <p class="hoje"><b>Hoje</b>Contrato, documentos e prazos espalhados em e-mail e WhatsApp.</p>
+      <p class="milet"><b>Com o Milet</b>Um checklist com o status de cada etapa, com comercializadora habilitada.</p>
+    </div>
+    <div class="etapa-j" data-in style="--i:5">
+      <p class="k">04 · Acompanhar <span class="selo">próxima fase</span></p>
+      <p class="hoje"><b>Hoje</b>Depois de assinar, ninguém confere a economia.</p>
+      <p class="milet"><b>Com o Milet</b>Economia prevista versus realizada e nova cotação antes do vencimento.</p>
     </div>
   </div>
-  <aside class="notes">Deixa: três passos, verbos simples. Passo 03 é visão (ainda não construído) — dizer "vamos acompanhar". Roteiro bloco 04.</aside>
+  <p class="fonte" data-in style="--i:6;margin-top:28px">O que encurta é a decisão. A migração segue o prazo regulatório de saída do mercado cativo.</p>
+  <aside class="notes">Deixa: o antes e depois estilo QuintoAndar. "No MVP" é o que a demo mostra; contratar e acompanhar são a próxima fase. Roteiro bloco 04.</aside>
 </section>
 
 <!-- 07 · MVP -->

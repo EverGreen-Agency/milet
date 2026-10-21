@@ -4,8 +4,8 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 
 | Item | Valor |
 |---|---|
-| Limite | **3:00** (regra da Supernova). Alvo: **2:45**, para sobrar margem |
-| Fala | ~385 palavras (~145 palavras/min com pausas) |
+| Limite | **3:00** (regra da Supernova). Alvo: **2:55** |
+| Fala | ~400 palavras (~145 palavras/min com pausas): no limite. Cortes prontos, nesta ordem: "e o mercado já paga por isso" (bloco 07), a frase do funil (bloco 07), "O que hoje é um vai e vem…" (bloco 04) |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -107,7 +107,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 03 · Descobertas (0:43–0:58) · L2 · slide 05 · Eduardo
 
-> "Vimos três coisas. Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E os problemas aparecem depois da assinatura."
+> "Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E os problemas aparecem depois da assinatura."
 
 **Tela**
 - Os três cards do slide 05 entram à direita, um por frase, numerais romanos em itálico âmbar.
@@ -118,20 +118,21 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 04 · Solução (0:58–1:06) · L1 → L4 · slide 06 · Eduardo
+### 04 · Solução (0:58–1:10) · L1 → L4 · slide 06 · Eduardo
 
-> "Por isso criamos o Milet: um jeito independente de contratar energia sem adivinhar."
+> "Por isso criamos o Milet: um jeito independente de contratar energia sem adivinhar. O que hoje é um vai e vem de e-mails vira um diagnóstico na hora."
 
 **Tela**
 - IMG-05 (medidor) em L4 por 2 s enquanto o `riser` sobe.
 - Em "Milet": *logo sting* de 1,5 s (símbolo âmbar gira 15° e assenta sobre carvão).
-- "Sem adivinhar": palavra-chave em itálico âmbar, rosto em L1.
+- "Vai e vem de e-mails…": slide 06 (jornada "hoje × com o Milet"). As quatro colunas entram da esquerda para a direita; em cada uma, o "hoje" aparece e é riscado, e o "com o Milet" acende em âmbar logo abaixo. É o antes e depois estilo QuintoAndar.
+- Selos "no MVP" (entender, comparar) e "próxima fase" (contratar, acompanhar) visíveis: a banca vê o que já existe.
 
 **Assets:** IMG-05 · GFX-05 (logo sting) · **Som:** `riser` → `hit` suave.
 
 ---
 
-### 05 · Demo do produto (1:06–1:40) · L3 · slide 07 · Eduardo
+### 05 · Demo do produto (1:10–1:44) · L3 · slide 07 · Eduardo
 
 > "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. O diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E as propostas aparecem na mesma régua: custo total, prazo e risco. Nenhum fornecedor paga para aparecer primeiro. Isso já funciona hoje, com dados de demonstração."
 
@@ -148,7 +149,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 06 · Diferencial (1:40–1:56) · L2 → L3 · slide 08 · Eduardo
+### 06 · Diferencial (1:44–2:00) · L2 → L3 · slide 08 · Eduardo
 
 > "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: independência de fornecedor, dados que pertencem ao cliente e acompanhamento depois da assinatura, voltando a cotar antes do vencimento."
 
@@ -162,7 +163,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 07 · Modelo de negócio e canais (1:56–2:18) · L3 · slides 09, 10 e 11 · Eduardo
+### 07 · Modelo de negócio e canais (2:00–2:22) · L3 · slides 09, 10 e 11 · Eduardo
 
 > "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
@@ -177,7 +178,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Validação e próximos passos (2:18–2:31) · L2 · slides 12 e 13 · Eduardo
+### 08 · Validação e próximos passos (2:22–2:35) · L2 · slides 12 e 13 · Eduardo
 
 > "Nas próximas semanas, vamos ouvir dez decisores de PMEs e cinco comercializadoras, e fazer os primeiros diagnósticos com empresas reais, em modo concierge."
 
@@ -190,7 +191,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (2:31–2:42) · L2 · slide 14 · Eduardo
+### 09 · Equipe (2:35–2:46) · L2 · slide 14 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -203,7 +204,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 10 · Fechamento (2:42–2:51) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (2:46–2:55) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
