@@ -7,7 +7,7 @@ export function ComparisonSection() {
     {
       feature: "Remuneração e Conflito de Interesses",
       traditional: "Comissão percentual secreta paga pela comercializadora por kWh contratado (incentivo a inflar consumo)",
-      milet: "Taxa de serviço fixa declarada de R$ 45 a R$ 280/mês. Zero comissão oculta de fornecedores."
+      milet: "Remuneração fixa, igual para todos os fornecedores e mostrada na comparação. Nenhuma oferta paga para aparecer primeiro."
     },
     {
       feature: "Leitura e Diagnóstico da Fatura",

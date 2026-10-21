@@ -20,10 +20,10 @@ export function BentoFeatures() {
             Arquitetura & Rigor Técnico
           </span>
           <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-bold text-[var(--foreground)]">
-            Por que a Milet é diferente de um corretor tradicional?
+            Por que o Milet é diferente de um corretor tradicional?
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[var(--foreground)]/70 leading-relaxed">
-            Corretores convencionais ganham comissão percentual paga pela comercializadora — incentivando contratos mais longos e caros. A Milet cobra taxa fixa e audita cada linha da sua fatura.
+            Corretores convencionais costumam ganhar comissão percentual, variável e não informada, paga pela comercializadora, o que incentiva contratos mais longos e caros. No Milet, a remuneração é fixa, igual para todos os fornecedores e mostrada a você, e cada linha da sua fatura é conferida.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export function BentoFeatures() {
                 Comparação All-In Sem Pegadinhas
               </h3>
               <p className="text-sm text-[var(--foreground)]/70 leading-relaxed">
-                Contratos de mercado livre escondem taxa de custódia CCEE, encargos de rede e garantias bancárias. A Milet unifica todos os custos na ponta do lápis.
+                Contratos de mercado livre escondem taxa de custódia CCEE, encargos de rede e garantias bancárias. O Milet unifica todos os custos na ponta do lápis.
               </p>
             </div>
 
