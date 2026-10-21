@@ -180,11 +180,11 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 08 · Visão (2:22–2:35) · L2 · slide 12 · Eduardo
 
-> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace e escalamos com automação, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
+> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
 - *(Slide de validação oculto no deck até chegarem as entrevistas e as respostas dos e-mails. Quando voltar, entra aqui por 2 s, em silêncio.)*
-- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace, automação, pequenos comércios, residências.
+- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências.
 - Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
 - **Se já houver resultado de conversas:** trocar a primeira frase por "Já conversamos com *N* empresas, e *X* nos mandaram a fatura", com o número em Playfair 150 px.
 
