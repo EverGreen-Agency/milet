@@ -178,13 +178,13 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Validação e visão (2:22–2:35) · L2 · slides 12 e 13 · Eduardo
+### 08 · Visão (2:22–2:35) · L2 · slide 12 · Eduardo
 
 > "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace e escalamos com automação, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
-- Slide 12 (validação) por 2 s, em silêncio: hipóteses e critérios de sucesso na tela.
-- "Agora, cadastramos…": slide 13 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace, automação, pequenos comércios, residências.
+- *(Slide de validação oculto no deck até chegarem as entrevistas e as respostas dos e-mails. Quando voltar, entra aqui por 2 s, em silêncio.)*
+- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace, automação, pequenos comércios, residências.
 - Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
 - **Se já houver resultado de conversas:** trocar a primeira frase por "Já conversamos com *N* empresas, e *X* nos mandaram a fatura", com o número em Playfair 150 px.
 
@@ -192,26 +192,26 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (2:35–2:46) · L2 · slide 14 · Eduardo
+### 09 · Equipe (2:35–2:46) · L2 · slide 13 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
 **Tela**
-- Rosto em L2; à direita, a grade do slide 14 acende pessoa por pessoa, em sincronia com cada nome.
+- Rosto em L2; à direita, a grade do slide 13 acende pessoa por pessoa, em sincronia com cada nome.
 - *Lower third* na sua primeira aparição do bloco: `EDUARDO FERREIRA DE MATTOS · COFUNDADOR` (mono, âmbar).
 - O card da orientadora diz "Professora de Análise de Dados no Mackenzie". Na menção a ela, o card ganha o selo `SHARK TANK BRASIL · TOP 10 FEMALE TECH FOUNDERS` por 2 s: credencial na tela, sem gastar fala.
 
-**Assets:** GFX-10 (slide 14 com as três fotos).
+**Assets:** GFX-10 (slide 13 com as três fotos).
 
 ---
 
-### 10 · Fechamento (2:46–2:55) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (2:46–2:55) · L1 → L4 · slide 14 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
 **Tela**
 - Primeira frase em L1, olhar fixo na câmera, sem gráfico.
-- "Energia em mais liberdade": corte para o slide 15 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
+- "Energia em mais liberdade": corte para o slide 14 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
 - Segurar 2 s na tela final; cortar para preto antes de 2:50.
 
 **Assets:** GFX-11 · **Som:** `hit` grave no logo; música resolve e corta.
@@ -241,9 +241,9 @@ Caminho rápido: abrir o deck em tela cheia (**F**), esconder as marcações com
 | GFX-06 | Slide 06 | usado como apoio se o bloco 04 precisar |
 | GFX-07 | Slide 08 | ✱ coluna Milet acendendo |
 | GFX-08 | Slide 09 | ✱ setas de dados e receita |
-| GFX-09 | Slide 13 | ✱ linha do tempo se desenhando |
-| GFX-10 | Slide 14 | fotos reais |
-| GFX-11 | Slide 15 | — |
+| GFX-09 | Slide 12 | ✱ linha do tempo se desenhando |
+| GFX-10 | Slide 13 | fotos reais |
+| GFX-11 | Slide 14 | — |
 | GFX-12 | Slide 11 (funil) | entrada já existe |
 | GFX-13 | Slide 10 (referência de mercado) | prints das fontes em [../pesquisa/evidencias/](../pesquisa/evidencias/) |
 

@@ -131,6 +131,10 @@ h1 em, h2 em { font-style: italic; color: var(--ambar); font-weight: 500; }
 .pill.hip::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ambar); }
 .claro .pill { border-color: var(--linha-clara); color: var(--texto-2); }
 
+/* Conteúdo que depende das entrevistas: fica no código, fora da apresentação.
+   Para mostrar de novo, remova o atributo data-oculto. */
+[data-oculto] { display: none !important; }
+
 /* Marcação de conteúdo a completar — tecla T esconde para exportar */
 .todo {
   display: inline-block; font-family: var(--f-mono); font-size: 0.62em; letter-spacing: 0.04em;
@@ -468,7 +472,7 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
       <p>Reclamações públicas se concentram no pós-contratação: cobranças, cancelamento e economia que não aparece na conta.</p>
     </div>
   </div>
-  <p class="small push" data-in style="--i:5">Pesquisa de mesa: regulação ANEEL/CCEE, 12 concorrentes e avaliações públicas. <span class="todo">+ RESULTADO DAS ENTREVISTAS: nº de decisores PME e comercializadoras ouvidos e a frase mais marcante</span></p>
+  <p class="small push" data-in style="--i:5">Pesquisa de mesa: regulação ANEEL/CCEE, 12 concorrentes e avaliações públicas. <span class="todo" data-oculto="entrevistas">+ RESULTADO DAS ENTREVISTAS: nº de decisores PME e comercializadoras ouvidos e a frase mais marcante</span></p>
   <aside class="notes">Deixa: três descobertas, uma frase cada. Se houver entrevistas, a citação real entra no lugar da marcação. Roteiro bloco 03.</aside>
 </section>
 
@@ -621,8 +625,8 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
   <aside class="notes">Deixa: canais iguais aos do BMC entregue; uma frase só no vídeo. Roteiro bloco 07.</aside>
 </section>
 
-<!-- 12 · VALIDAÇÃO E TRAÇÃO -->
-<section class="slide claro">
+<!-- 12 · VALIDAÇÃO E TRAÇÃO (oculto até chegarem as entrevistas e as respostas dos e-mails) -->
+<section class="slide claro" data-oculto="entrevistas">
   <p class="eyebrow" data-in style="--i:0"><span class="n">11</span> Validação</p>
   <h2 data-in style="--i:1;font-size:76px">O que já provamos — <em>e o que vamos provar agora.</em></h2>
   <div class="grid-2 validacao" style="margin-top:44px">
@@ -723,7 +727,13 @@ table.comp { width: 100%; border-collapse: collapse; margin-top: 56px; font-size
 
 <script>
 (() => {
-  const slides = [...document.querySelectorAll('.slide')];
+  const slides = [...document.querySelectorAll('.slide:not([data-oculto])')];
+  // Numera as seções (01, 02…) pela ordem visível, para não sobrar buraco quando um slide está oculto.
+  let secao = 0;
+  slides.forEach((slide) => {
+    const n = slide.querySelector('.eyebrow .n');
+    if (n) n.textContent = String(++secao).padStart(2, '0');
+  });
   const stage = document.getElementById('stage');
   const bar = document.querySelector('#hud i');
   const counter = document.getElementById('contador');
