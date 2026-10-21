@@ -59,11 +59,11 @@ Feita com os dados que já temos; substitua quando a pesquisa voltar.
 
 | Camada | Cálculo | Ordem de grandeza |
 |---|---|---|
-| **Receita por cliente/ano** | Taxa de R$ 5.000 por contrato, paga em cerca de 2 anos (piso da tabela da Clarke) ≈ R$ 2.000/ano + mensalidade de R$ 100 a R$ 190 ≈ R$ 1.200 a R$ 2.300/ano | ~R$ 3.500/ano |
-| **TAM** | 72 mil PMEs do Grupo A com potencial (CCEE, 2023) × R$ 3.500 | ~R$ 250 milhões/ano |
+| **Receita por cliente/ano** | Taxa de R$ 5.000 por contrato, paga em 2 anos (piso da tabela da Clarke) = R$ 2.500/ano + mensalidade de R$ 100 (Clarke) = R$ 1.200/ano | ~R$ 3.700/ano |
+| **TAM** | 72 mil PMEs do Grupo A com potencial (CCEE, 2023) × R$ 3.700 | ~R$ 266 milhões/ano |
 | **SAM** | ~21,7 mil migrações/ano (CCEE, 2025) × R$ 5.000 por nova contratação | ~R$ 110 milhões/ano |
-| **SOM (fase 0)** | 20 a 50 PMEs × R$ 3.500 | ~R$ 70 a 175 mil/ano |
-| **Meta de 3 anos** | 1% do TAM ≈ 720 PMEs × R$ 3.500 | ~R$ 2,5 milhões/ano |
+| **SOM (fase 0)** | 20 a 50 PMEs × R$ 3.700 | ~R$ 74 a 185 mil/ano |
+| **Meta de 3 anos** | 1% do TAM ≈ 720 PMEs × R$ 3.700 | ~R$ 2,7 milhões/ano |
 | **Upside** | Abertura da baixa tensão: comercial/industrial em nov/2027, residencial em nov/2028 (Lei 15.269/2025) | fora do TAM atual |
 
 Premissas mais frágeis: a taxa por contrato (vem de uma gestora, não de comercializadora), a duração média do contrato, e quantas das 72 mil PMEs ainda estão no cativo.
