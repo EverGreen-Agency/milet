@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, ArrowRight } from "@phosphor-icons/react";
+import { usePathname } from "next/navigation";
+import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isDiagnostic = pathname === "/diagnostico";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] milet-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -25,7 +29,14 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[var(--foreground)]/80">
-          <Link href="/diagnostico" className="hover:text-[var(--color-milet-amber)] transition-colors">
+          <Link
+            href="/diagnostico"
+            className={`transition-colors ${
+              isDiagnostic
+                ? "text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-semibold"
+                : "hover:text-[var(--color-milet-amber)]"
+            }`}
+          >
             Diagnóstico
           </Link>
           <a href="/build-in-public.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
@@ -37,13 +48,20 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/diagnostico"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-white milet-amber-gradient shadow-sm hover:opacity-95 transition-all duration-200 active:scale-95"
-          >
-            <span>Analisar Fatura</span>
-            <ArrowRight weight="bold" className="w-4 h-4" />
-          </Link>
+          {isDiagnostic ? (
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[var(--color-milet-amber)]/10 text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] border border-[var(--color-milet-amber)]/25">
+              <Sparkle weight="fill" className="w-3.5 h-3.5 text-[var(--color-milet-amber)]" />
+              <span>Diagnóstico em Andamento</span>
+            </span>
+          ) : (
+            <Link
+              href="/diagnostico"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-white milet-amber-gradient shadow-sm hover:opacity-95 transition-all duration-200 active:scale-95"
+            >
+              <span>Analisar Fatura</span>
+              <ArrowRight weight="bold" className="w-4 h-4" />
+            </Link>
+          )}
         </div>
       </div>
     </header>
