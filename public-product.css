@@ -436,42 +436,374 @@ a {
   color: var(--milet-text-primary);
 }
 
-.changelog-entry {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  overflow: hidden;
+/* =============================================================
+   Changelog & Timeline Impeccable Refinement
+   ============================================================= */
+
+/* Rail Minimalista Lateral (Expandable on Hover - ChatGPT/Editorial style) */
+.changelog-rail {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: 20px;
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
 }
 
-.changelog-meta {
-  padding: 28px;
-  background: var(--milet-bg-surface-secondary);
+.changelog-rail:hover {
+  background: color-mix(in srgb, var(--milet-bg-surface) 92%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--milet-border-hairline);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(204, 136, 0, 0.1);
+  padding: 18px 20px;
 }
 
-.changelog-meta time {
-  display: block;
+.rail-header {
+  display: none;
   font-family: var(--milet-font-mono);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--milet-color-ambar-dark);
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--milet-border-hairline);
 }
 
-.changelog-body {
-  padding: 28px;
+.theme-dark .rail-header {
+  color: var(--milet-color-ambar-light);
 }
 
-.changelog-body h3 {
-  margin: 0 0 10px;
-  font-family: var(--milet-font-display);
-  font-size: 1.8rem;
+.changelog-rail:hover .rail-header {
+  display: block;
+}
+
+.rail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.rail-dash {
+  width: 14px;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--milet-border-strong);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.rail-item:hover .rail-dash {
+  background: var(--milet-color-ambar);
+  width: 20px;
+}
+
+.rail-item.active .rail-dash {
+  width: 28px;
+  height: 3px;
+  background: var(--milet-color-ambar);
+  box-shadow: 0 0 12px rgba(204, 136, 0, 0.5);
+}
+
+.rail-label {
+  display: none;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--milet-text-secondary);
+  transition: color 0.15s ease;
+}
+
+.changelog-rail:hover .rail-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rail-item.active .rail-label {
+  color: var(--milet-text-primary);
+  font-weight: 600;
+}
+
+.rail-item:hover .rail-label {
+  color: var(--milet-color-ambar);
+}
+
+.rail-label .rail-date {
+  font-family: var(--milet-font-mono);
+  font-size: 0.68rem;
+  color: var(--milet-text-muted);
+}
+
+@media (max-width: 1200px) {
+  .changelog-rail {
+    display: none;
+  }
+}
+
+/* Container Timeline dos Cards */
+.changelog-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.changelog-list::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(204, 136, 0, 0.4),
+    var(--milet-border-hairline) 20%,
+    var(--milet-border-hairline) 80%,
+    rgba(204, 136, 0, 0.1)
+  );
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .changelog-list::before {
+    left: 16px;
+  }
+}
+
+/* Card Redesenhado - Unificado, Editorial e Impecável */
+.changelog-entry {
+  position: relative;
+  display: block;
+  padding: clamp(24px, 4vw, 40px);
+  padding-left: clamp(56px, 7vw, 84px);
+  border: 1px solid var(--milet-border-hairline);
+  border-radius: 24px;
+  background: var(--milet-bg-surface);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+  scroll-margin-top: 100px;
+}
+
+.changelog-entry:hover {
+  transform: translateY(-2px);
+  border-color: rgba(204, 136, 0, 0.35);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.14),
+              0 0 0 1px rgba(204, 136, 0, 0.15);
+}
+
+/* Nó luminoso da Timeline */
+.changelog-entry::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 42px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--milet-bg-canvas);
+  border: 3px solid var(--milet-color-ambar);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--milet-color-ambar) 20%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.changelog-entry:hover::before {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--milet-color-ambar) 35%, transparent);
+}
+
+@media (max-width: 768px) {
+  .changelog-entry {
+    padding-left: 48px;
+  }
+  .changelog-entry::before {
+    left: 10px;
+  }
+}
+
+/* Header do Card */
+.changelog-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--milet-border-hairline);
+}
+
+.changelog-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.changelog-header time {
+  font-family: var(--milet-font-mono);
+  font-size: 0.76rem;
+  color: var(--milet-text-secondary);
   font-weight: 500;
 }
 
-.changelog-body ul,
-.limitation-list {
-  padding-left: 20px;
+.meta-label-tag {
+  font-family: var(--milet-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--milet-bg-surface-secondary);
+  color: var(--milet-text-secondary);
+  border: 1px solid var(--milet-border-hairline);
 }
 
-.changelog-body li,
-.limitation-list li {
-  margin: 8px 0;
+/* Título Serifado de Autoridade */
+.changelog-entry h3 {
+  margin: 0 0 16px;
+  font-family: var(--milet-font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--milet-text-primary);
+}
+
+/* Bloco Problema Tratado */
+.changelog-problem {
+  position: relative;
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--milet-color-ambar) 4%, transparent);
+  border-left: 3px solid var(--milet-color-ambar);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--milet-text-primary);
+}
+
+.changelog-problem strong {
+  color: var(--milet-color-ambar-dark);
+}
+
+.theme-dark .changelog-problem strong {
+  color: var(--milet-color-ambar-light);
+}
+
+/* Lista de Mudanças com Marcadores Customizados */
+.changelog-deliveries {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.changelog-deliveries li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--milet-text-secondary);
+}
+
+.changelog-deliveries li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--milet-color-ambar);
+  font-weight: 700;
+}
+
+.changelog-deliveries code {
+  font-family: var(--milet-font-mono);
+  font-size: 0.82em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--milet-bg-surface-secondary);
+  border: 1px solid var(--milet-border-hairline);
+  color: var(--milet-text-primary);
+}
+
+/* Box de Evidência */
+.changelog-evidence {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--milet-bg-surface-secondary);
+  border: 1px solid var(--milet-border-hairline);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--milet-text-secondary);
+}
+
+.changelog-evidence strong {
+  color: var(--milet-text-primary);
+}
+
+/* Box de Limites / Honestidade Radical */
+.changelog-limit {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--milet-color-cobre) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--milet-color-cobre) 20%, transparent);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--milet-text-muted);
+}
+
+.changelog-limit strong {
+  color: var(--milet-color-cobre);
+}
+
+/* Botões do Card */
+.changelog-entry .card-actions {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--milet-border-hairline);
+}
+
+.button-chip {
+  min-height: 38px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  background: var(--milet-bg-surface-secondary);
+  border: 1px solid var(--milet-border-hairline);
+  color: var(--milet-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.button-chip:hover {
+  background: var(--milet-color-ambar);
+  color: #121110;
+  border-color: var(--milet-color-ambar);
+  transform: translateY(-1px);
 }
 
 .question-card {

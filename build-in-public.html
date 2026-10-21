@@ -27,100 +27,230 @@
       <span class="eyebrow">Build in public · fatos, limites e perguntas</span>
       <h1>Construir à vista, sem pular a <em>prova.</em></h1>
       <p class="hero-copy">Aqui registramos o que mudou, o que funciona e onde a experiência ainda é somente plano ou protótipo. A transparência inclui dizer “ainda não”.</p>
-      <div class="hero-actions"><a class="button button-primary" href="demo.html">Entrar no caminho da demo <span aria-hidden="true">→</span></a><a class="button" href="roadmap.html">Ver prioridades públicas</a></div>
+      <div class="hero-actions"><a class="button button-primary" href="/diagnostico">Entrar no diagnóstico de energia <span aria-hidden="true">→</span></a><a class="button" href="roadmap.html">Ver prioridades públicas</a></div>
     </section>
 
+    <!-- Rail Minimalista Lateral (Expandable on hover - Estilo Editorial / ChatGPT) -->
+    <aside class="changelog-rail" id="changelogRail" aria-label="Linha do tempo das entregas">
+      <div class="rail-header">Timeline</div>
+      <a href="#entry-005" class="rail-item active" data-target="entry-005" title="19 out · Storage & S3">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Storage & S3</span><span class="rail-date">19 OUT</span></span>
+      </a>
+      <a href="#entry-004" class="rail-item" data-target="entry-004" title="04 out · Mobile Web">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Mobile Web PWA</span><span class="rail-date">04 OUT</span></span>
+      </a>
+      <a href="#entry-003" class="rail-item" data-target="entry-003" title="04 out · API Sintética">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>API Sintética</span><span class="rail-date">04 OUT</span></span>
+      </a>
+      <a href="#entry-002" class="rail-item" data-target="entry-002" title="04 out · Runtime Node">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Runtime & ORM</span><span class="rail-date">04 OUT</span></span>
+      </a>
+      <a href="#entry-001" class="rail-item" data-target="entry-001" title="03 out · Superfície Pública">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Superfície Pública</span><span class="rail-date">03 OUT</span></span>
+      </a>
+      <a href="#entry-000" class="rail-item" data-target="entry-000" title="03 out · Fatia Produto">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Fatia de Produto</span><span class="rail-date">03 OUT</span></span>
+      </a>
+      <a href="#trabalho-verificado" class="rail-item" data-target="trabalho-verificado" title="Artefatos">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Artefatos</span></span>
+      </a>
+      <a href="#limites-versao" class="rail-item" data-target="limites-versao" title="Limites">
+        <span class="rail-dash"></span>
+        <span class="rail-label"><span>Limites</span></span>
+      </a>
+    </aside>
+
     <section class="public-section" aria-labelledby="atualizacao-inicial">
-      <div class="section-heading"><span class="section-kicker">Changelog verificável</span><h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2><p>Registro baseado em código, testes e deploys observáveis. O portal está publicado; cada entrada separa essa presença pública da operação de backend ainda não ativada.</p></div>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado na infra</span><time datetime="2026-10-19">19 out 2026</time><span class="meta-label">Storage & Intake 005</span></div>
-        <div class="changelog-body">
+      <div class="section-heading">
+        <span class="section-kicker">Changelog verificável</span>
+        <h2 id="atualizacao-inicial">Entradas públicas com o estado real.</h2>
+        <p>Registro baseado em código, testes e deploys observáveis. Cada entrada separa a presença pública da operação de backend em validação.</p>
+      </div>
+
+      <div class="changelog-list">
+        <!-- Entrada 005 -->
+        <article class="changelog-entry" id="entry-005">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-implemented">Implementado na infra</span>
+              <span class="meta-label-tag">Storage & Intake · #005</span>
+            </div>
+            <time datetime="2026-10-19">19 de outubro de 2026</time>
+          </header>
           <h3>Bucket S3 privado na Railway e segredos de produção ativos para intake consentido.</h3>
-          <p><strong>Problema tratado:</strong> para viabilizar upload seguro de faturas reais sem expor documentos publicamente, é necessária infraestrutura de quarentena com chaves de acesso criptografadas no servidor.</p>
-          <ul>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> Para viabilizar upload seguro de faturas reais sem expor documentos publicamente, é necessária infraestrutura de quarentena com chaves de acesso criptografadas no servidor.
+          </div>
+          <ul class="changelog-deliveries">
             <li>Provisionamento de bucket privado S3-compatível <code>milet-invoices</code> na infraestrutura Railway (região <code>iad</code>).</li>
-            <li>Cadastro de segredos de ambiente criptografados na Vercel (Produção e Preview) para integração segura com Gemini, Resend e S3.</li>
+            <li>Cadastro de segredos de ambiente criptografados na Vercel (Produção e Preview) para integração com Gemini, Resend e S3.</li>
             <li>Isolamento rigoroso entre artefatos acadêmicos de especificação e o código de produto voltado ao usuário final.</li>
-            <li>Fluxo de intake PME e Residencial ativo com validação, consentimento explícito e triagem por IA com limites claros.</li>
+            <li>Fluxo de intake PME do Grupo A ativo com validação, consentimento explícito e triagem por IA com limites claros.</li>
           </ul>
-          <p><strong>Evidência:</strong> credenciais S3 geradas e validadas na Vercel via CLI; endpoint <code>POST /v1/intakes</code> operacional com fallback seguro em caso de indisponibilidade.</p>
-          <div class="card-actions"><a class="button" href="/v2">Testar intake v2</a><a class="button" href="/app/">Abrir comparador</a></div>
-          <p><strong>Limite:</strong> o upload de documentos reais com OCR direto permanecerá em fase de testes assistidos com revisão humana antes da abertura irrestrita ao público.</p>
-        </div>
-      </article>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Mobile web 004</span></div>
-        <div class="changelog-body">
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> Credenciais S3 validadas na Vercel; endpoint <code>POST /v1/intakes</code> operacional com fallback seguro em caso de indisponibilidade.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> O upload de documentos reais com OCR direto permanecerá em fase de testes assistidos com revisão humana antes da abertura irrestrita ao público.
+          </div>
+          <div class="card-actions">
+            <a class="button-chip" href="/diagnostico"><span>Acessar diagnóstico</span> <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Entrada 004 -->
+        <article class="changelog-entry" id="entry-004">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-implemented">Implementado no código</span>
+              <span class="meta-label-tag">Mobile Web · #004</span>
+            </div>
+            <time datetime="2026-10-04">04 de outubro de 2026</time>
+          </header>
           <h3>A jornada passou a ser instalável e resiliente à perda de rede.</h3>
-          <p><strong>Problema tratado:</strong> o layout já era responsivo, mas ainda não existiam manifest, instalação ou um app shell offline verificável.</p>
-          <ul>
-            <li>PWA em <code>/app/</code> com nome, ícones oficiais, modo standalone e botão de instalação quando o navegador oferece o evento.</li>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> O layout já era responsivo, mas ainda não existiam manifest, instalação ou um app shell offline verificável.
+          </div>
+          <ul class="changelog-deliveries">
+            <li>PWA com nome, ícones oficiais, modo standalone e botão de instalação quando o navegador oferece o evento.</li>
             <li>Service worker armazena somente o shell e as fixtures sintéticas necessárias para abrir a jornada sem rede.</li>
-            <li><code>/api</code> é excluída explicitamente do cache; indisponibilidade aciona o fallback local já identificado na interface.</li>
+            <li>Rotas de <code>/api</code> são excluídas explicitamente do cache; indisponibilidade aciona fallback local imediato na interface.</li>
           </ul>
-          <p><strong>Evidência:</strong> manifest, ícones e política do service worker são testados; a instalação pública só é comprovada depois do deploy responder com esses artefatos.</p>
-          <div class="card-actions"><a class="button" href="app/">Abrir app mobile web</a><a class="button" href="app/manifest.webmanifest">Ver manifest</a></div>
-          <p><strong>Limite:</strong> PWA não significa aplicativo nativo, distribuição em loja, push, sincronização de dados reais ou operação offline autenticada.</p>
-        </div>
-      </article>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Publicado</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">API sintética 003</span></div>
-        <div class="changelog-body">
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> Manifest, ícones e política do service worker são testados; a instalação pública é comprovada via artefatos em produção.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> PWA não significa aplicativo nativo, distribuição em loja, push ou sincronização de dados reais sem autenticação.
+          </div>
+          <div class="card-actions">
+            <a class="button-chip" href="/diagnostico"><span>Testar no app</span> <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Entrada 003 -->
+        <article class="changelog-entry" id="entry-003">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-implemented">Publicado</span>
+              <span class="meta-label-tag">API Sintética · #003</span>
+            </div>
+            <time datetime="2026-10-04">04 de outubro de 2026</time>
+          </header>
           <h3>O app ganhou um endpoint público mínimo sem fingir persistência.</h3>
-          <p><strong>Problema tratado:</strong> o frontend publicado só conseguia usar a fixture embutida, mesmo já existindo um contrato versionado para o caso sintético.</p>
-          <ul>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> O frontend publicado só conseguia usar a fixture embutida, mesmo já existindo um contrato versionado para o caso sintético.
+          </div>
+          <ul class="changelog-deliveries">
             <li>Função Vercel same-origin em <code>/api/v1/cases/CASE-UC-MG-00482</code>, restrita à fixture canônica <code>synthetic_demo_only</code>.</li>
             <li>O app tenta a API por padrão; se ela não responder, mantém a jornada com fallback local identificado no topo da tela.</li>
-            <li>Contrato, correlação e limites são testados sem banco, secrets, upload ou qualquer dado real.</li>
+            <li>Contrato, correlação e limites são testados sem banco, secrets, upload ou qualquer dado pessoal.</li>
           </ul>
-          <p><strong>Evidência:</strong> produção observada em 04 out 2026 com HTTP 200, <code>synthetic_demo_only</code>, correlação preservada e <code>private, no-store</code>. A função reutiliza o mesmo pacote de fixtures validado pelo JSON Schema.</p>
-          <div class="card-actions"><a class="button" href="https://milet.vercel.app/api/v1/cases/CASE-UC-MG-00482">Abrir endpoint</a><a class="button" href="app/">Abrir app conectado</a><a class="button" href="openapi/v1/openapi.json">Ver contrato</a></div>
-          <p><strong>Limite:</strong> este endpoint é stateless e público apenas para demonstração. Não é a API Nest persistente: não há PostgreSQL, worker, autenticação, OCR, cobrança ou operação energética.</p>
-        </div>
-      </article>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado no código</span><time datetime="2026-10-04">04 out 2026</time><span class="meta-label">Runtime sintético 002</span></div>
-        <div class="changelog-body">
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> Produção observada com HTTP 200, <code>synthetic_demo_only</code>, correlação preservada e <code>private, no-store</code>.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> Este endpoint é stateless e público apenas para demonstração. Não é a API com PostgreSQL, OCR ou cobrança.
+          </div>
+          <div class="card-actions">
+            <a class="button-chip" href="https://milet.vercel.app/api/v1/cases/CASE-UC-MG-00482" target="_blank" rel="noopener"><span>Ver endpoint JSON</span> ↗</a>
+            <a class="button-chip" href="openapi/v1/openapi.json"><span>Ver OpenAPI</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Entrada 002 -->
+        <article class="changelog-entry" id="entry-002">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-implemented">Implementado no código</span>
+              <span class="meta-label-tag">Runtime Sintético · #002</span>
+            </div>
+            <time datetime="2026-10-04">04 de outubro de 2026</time>
+          </header>
           <h3>Do protótipo estático a um runtime implantável — ainda sem chamar isso de produção.</h3>
-          <p><strong>Problema tratado:</strong> a jornada navegável não tinha contratos versionados, persistência tenant-scoped nem um caminho reproduzível para executar API e worker fora do navegador.</p>
-          <ul>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> A jornada navegável não tinha contratos versionados, persistência tenant-scoped nem um caminho reproduzível fora do navegador.
+          </div>
+          <ul class="changelog-deliveries">
             <li>API NestJS, OpenAPI 3.1 e JSON Schemas versionados para o caso exclusivamente sintético.</li>
-            <li>Adapters PostgreSQL com contexto de tenant, RLS, auditoria append-only e outbox com retry, DLQ e fencing token.</li>
-            <li>Imagens OCI non-root para API e worker, configuração fail-fast, CORS por allowlist, logs JSON, métricas em processo e shutdown gracioso.</li>
-            <li>O portal pode consultar a API quando uma URL é configurada; sem ela, exibe que está usando a fixture local e mantém o fluxo disponível.</li>
+            <li>Adapters PostgreSQL com contexto de tenant, RLS, auditoria append-only e outbox com retry e DLQ.</li>
+            <li>Imagens OCI non-root para API e worker, configuração fail-fast, CORS por allowlist e logs JSON.</li>
+            <li>O portal consulta a API quando disponível; sem ela, exibe que está usando fixture local.</li>
           </ul>
-          <p><strong>Evidência:</strong> CI do PR #4 aprovado, 9 testes estáticos e 22 testes de fundação, build público com 269 arquivos e artefatos de contrato disponíveis abaixo.</p>
-          <div class="card-actions"><a class="button" href="openapi/v1/openapi.json">Abrir OpenAPI</a><a class="button" href="schemas/v1/synthetic-case.schema.json">Abrir schema do caso</a><a class="button" href="app/">Testar o app</a></div>
-          <p><strong>Limite:</strong> somente o frontend está publicado. API, worker e PostgreSQL estão prontos para implantação, mas ainda não estão hospedados; não há OIDC, OCR real, upload, assinatura, cobrança ou integração de mercado.</p>
-        </div>
-      </article>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-implemented">Implementado</span><time datetime="2026-10-03">03 out 2026</time><span class="meta-label">Superfície pública 001</span></div>
-        <div class="changelog-body">
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> 67 testes automatizados aprovados na esteira local de CI, schemas JSON e contratos versionados.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> API, worker e PostgreSQL estão prontos para implantação, operando em ambiente de testes; não há cobrança nem integração de distribuidora ativa.
+          </div>
+          <div class="card-actions">
+            <a class="button-chip" href="openapi/v1/openapi.json"><span>Abrir OpenAPI</span> ↗</a>
+            <a class="button-chip" href="schemas/v1/synthetic-case.schema.json"><span>Abrir Schema</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- Entrada 001 -->
+        <article class="changelog-entry" id="entry-001">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-implemented">Implementado</span>
+              <span class="meta-label-tag">Superfície Pública · #001</span>
+            </div>
+            <time datetime="2026-10-03">03 de outubro de 2026</time>
+          </header>
           <h3>O produto ganhou um lugar honesto para começar.</h3>
-          <p><strong>Problema tratado:</strong> roadmap e atualizações públicas não tinham rotas próprias, enquanto o backlog podia ser confundido com capacidade entregue.</p>
-          <ul>
-            <li>Roadmap público organizado em Agora, Próximo e Explorando, ligado a EP-01–EP-06, F1.1–F6.3 e US-001–US-028.</li>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> Roadmap e atualizações públicas não tinham rotas próprias, enquanto o backlog podia ser confundido com capacidade entregue.
+          </div>
+          <ul class="changelog-deliveries">
+            <li>Roadmap público organizado em Agora, Próximo e Explorando, ligado aos épicos e histórias do projeto.</li>
             <li>Vocabulário explícito para separar planejado, protótipo, implementado e validado.</li>
-            <li>Rota <code>/demo</code> transformada em ponte para a jornada front-end, com dados sintéticos e limites antes do primeiro clique.</li>
-            <li>Navegação e documentação atualizadas sem remover o brandbook, backlog ou apresentações.</li>
+            <li>Páginas públicas de demonstração com limites explícitos antes do primeiro clique.</li>
           </ul>
-          <p><strong>Estado:</strong> arquivos implementados, verificados e disponíveis no portal público; isso não comprova um backend operacional.</p>
-        </div>
-      </article>
-      <article class="changelog-entry">
-        <div class="changelog-meta"><span class="status-chip status-prototype">Protótipo local</span><time datetime="2026-10-03">03 out 2026</time><span class="meta-label">Fatia de produto 001</span></div>
-        <div class="changelog-body">
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> Arquivos implementados, verificados e disponíveis no portal público.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> A publicação das páginas não comprova operação energética real em produção.
+          </div>
+        </article>
+
+        <!-- Entrada 000 -->
+        <article class="changelog-entry" id="entry-000">
+          <header class="changelog-header">
+            <div class="changelog-header-left">
+              <span class="status-chip status-prototype">Protótipo local</span>
+              <span class="meta-label-tag">Fatia de Produto · #000</span>
+            </div>
+            <time datetime="2026-10-03">03 de outubro de 2026</time>
+          </header>
           <h3>Da triagem à comparação, com um caso sintético.</h3>
-          <p><strong>Evidência disponível:</strong> a rota <code>/app/</code> permite percorrer revisão de dados, diagnóstico, baseline e propostas normalizadas no navegador.</p>
-          <ul>
-            <li>Fixtures identificadas como demonstração e cálculos determinísticos testados localmente.</li>
-            <li>Ranking por custo total, sem pagamento por posição ou spread oculto.</li>
-            <li>Sem upload real, OCR, backend, autenticação, integração regulatória ou contratação.</li>
+          <div class="changelog-problem">
+            <strong>Problema tratado:</strong> Validar se donos de PME conseguem entender a decomposição de custos e comparar propostas sem spread oculto.
+          </div>
+          <ul class="changelog-deliveries">
+            <li>Fixtures identificadas como demonstração e cálculos determinísticos testados.</li>
+            <li>Ranking por custo total All-In, sem pagamento por posição ou spread oculto.</li>
+            <li>Caminho visual de decomposição tarifária: TUSD, TE, encargos e perdas.</li>
           </ul>
-          <p><strong>Estado:</strong> protótipo front-end publicamente acessível; não é prova de operação energética em produção.</p>
-        </div>
-      </article>
+          <div class="changelog-evidence">
+            <strong>Evidência verificável:</strong> Protótipo front-end navegável com regras determinísticas auditáveis.
+          </div>
+          <div class="changelog-limit">
+            <strong>Transparência & Limites:</strong> Protótipo demonstrativo, sem contratação de energia nem upload de dados sensíveis de clientes reais.
+          </div>
+          <div class="card-actions">
+            <a class="button-chip" href="/diagnostico"><span>Abrir comparador</span> <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
     </section>
 
     <section class="public-section" aria-labelledby="trabalho-verificado">
