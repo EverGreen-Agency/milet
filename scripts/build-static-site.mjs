@@ -4,13 +4,13 @@ import path from "node:path";
 const root = process.cwd();
 const output = path.join(root, "public");
 const siteDirectories = [
-  { source: "legacy-pwa", destination: "app" },
+  { source: "archive/legacy/legacy-pwa", destination: "app" },
   { source: "assets", destination: "assets" },
   { source: "brandbook-web", destination: "brandbook-web" },
   { source: "tokens", destination: "tokens" },
   { source: "openapi", destination: "openapi" },
   { source: "schemas", destination: "schemas" },
-  { source: "v2", destination: "v2" },
+  { source: "archive/legacy/v2", destination: "v2" },
 ];
 const deployableExtensions = new Set([
   ".css",

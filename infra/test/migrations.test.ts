@@ -87,7 +87,7 @@ test("local compose separates migration owner from the RLS application role", as
 });
 
 test("database fixtures preserve every public ID used by the static synthetic case", async () => {
-  const frontend = await readFile(join(process.cwd(), "legacy-pwa", "src", "fixtures.js"), "utf8");
+  const frontend = await readFile(join(process.cwd(), "archive", "legacy", "legacy-pwa", "src", "fixtures.js"), "utf8");
   const sql = await readFile(join(process.cwd(), "infra", "postgres", "migrations", "002_deterministic_demo_fixture.sql"), "utf8");
   for (const id of ["ORG-0007", "UC-MG-00482", "INV-2026-08-00482"]) {
     assert.match(frontend, new RegExp(id));
