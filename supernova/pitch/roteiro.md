@@ -1,11 +1,11 @@
-# Roteiro do vídeo de pitch · Milet · Sebrae Supernova 2026 (v2)
+# Roteiro do vídeo de pitch · Milet · Sebrae Supernova 2026 (v3)
 
 Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; quando uma fala mudar, mude aqui. A jornada do produto que aparece no vídeo está especificada em [demo-spec.md](demo-spec.md); as imagens, em [prompts-imagens.md](prompts-imagens.md).
 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas (~495 palavras, ~3:25 em ritmo de 145 palavras/min). O Eduardo lapida para caber em 3:00; falas extras no banco da seção 2b |
+| Fala | Versão completa, com todas as falas: ~611 palavras, **~4:21** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -45,7 +45,7 @@ Critérios da Supernova segundo a cópia pública do regulamento citada no kit a
 - Títulos e palavras-chave: **Playfair Display** 600; palavra de ênfase em itálico âmbar `#D39B3D`.
 - Apoio: **Plus Jakarta Sans**. Rótulos e fontes de dados: **JetBrains Mono** em caixa alta, espaçamento largo.
 - Fundo carvão `#1A1A1A`, texto marfim `#F7F3EA`, apoio areia `#C9B89F`. Nada de branco puro, nada de vermelho.
-- Cor do rosto: leve aquecimento (+5 de temperatura), pretos levemente lavados, para casar com o deck. Mesma correção para os dois apresentadores.
+- Cor do rosto: leve aquecimento (+5 de temperatura), pretos levemente lavados, para casar com o deck. Mesma correção em todos os takes.
 
 ### Legendas
 - **Só palavras-chave**: 1–3 palavras por vez, Playfair 600, 96 px, centro-baixo (L1) ou ao lado do rosto (L2).
@@ -62,7 +62,7 @@ Critérios da Supernova segundo a cópia pública do regulamento citada no kit a
 
 Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a tela, os assets e o som.
 
-### 00 · Gancho (0:00–0:10) · L4 → L1 · slide 02 · Eduardo
+### 00 · Gancho (0:00–0:09) · L4 → L1 · slide 02 · Eduardo
 
 > "Desde 2024, toda empresa do Grupo A pode escolher de quem compra energia. Mas olha o que acontece quando ela tenta."
 
@@ -75,37 +75,40 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 01 · Problema (0:10–0:27) · L4 → L2 · slide 03 · Eduardo
+### 01 · Problema (0:09–0:28) · L4 → L2 · slide 03 · Eduardo
 
 > "Chegam três propostas. Uma em reais por megawatt-hora. Outra em percentual de desconto. Outra com preço fixo, flexibilidade e uma multa escondida no anexo. Qual é a mais barata? *(pausa)* Nem o dono da empresa sabe. E é ele quem assina por três, cinco anos."
 
 **Tela**
-- 0:10–0:12: IMG-01 (conta no balcão), *push-in* lento.
-- 0:12–0:19: as três propostas do slide 03 entram uma a uma, levemente rotacionadas, em sincronia com "uma", "outra", "outra"; IMG-02 desfocada ao fundo.
-- 0:19–0:22: **"Qual é a mais barata?"** em Playfair 120 px no centro; propostas desfocam. Música corta por 0,6 s.
-- 0:22–0:25: rosto em L2, palavra-chave **"nem o dono sabe"**.
-- 0:25–0:27: IMG-04 (caneta assinando) em L4 na palavra "assina".
+- "Chegam três propostas": IMG-01 (conta no balcão), *push-in* lento.
+- "Uma… Outra… Outra…": as três propostas do slide 03 entram uma a uma, levemente rotacionadas; IMG-02 desfocada ao fundo. Em "multa escondida no anexo", a letra miúda da proposta C ("Multa rescisória e garantias no anexo III") ganha sublinhado âmbar.
+- **"Qual é a mais barata?"** em Playfair 120 px no centro; propostas desfocam. Música corta por 0,6 s.
+- "Nem o dono da empresa sabe": rosto em L2, palavra-chave **"nem o dono sabe"**.
+- "Assina por três, cinco anos": IMG-04 (caneta assinando) em L4.
 - Rodapé durante o bloco: `EXEMPLOS ILUSTRATIVOS` (JetBrains Mono 18 px, areia).
 
 **Assets:** GFX-02 · IMG-01 · IMG-02 · IMG-04 · **Som:** papel deslizando em cada proposta; silêncio na pergunta.
 
 ---
 
-### 02 · Dimensão (0:27–0:43) · L3 · slide 04 · Eduardo
+### 02 · Dimensão (0:28–1:02) · L3 · slide 04 · Eduardo
 
-> "E isso não é um caso isolado. A CCEE estimou em cerca de setenta e duas mil as pequenas e médias empresas que poderiam migrar com a abertura. Em 2025, foram cerca de vinte e uma mil migrações. E no começo de 2026, o ritmo caiu mais de um terço. A porta abriu. A maioria ainda não atravessou."
+> "E isso não é um caso isolado. A CCEE estimou em cerca de setenta e duas mil as pequenas e médias empresas que poderiam migrar com a abertura. Em 2025, foram cerca de vinte e uma mil migrações. E o processo até ficou mais simples: mais de setenta por cento das migrações do começo de 2026 já usaram o modelo simplificado da CCEE. Mesmo assim, o ritmo caiu mais de um terço. A porta abriu. A maioria ainda não atravessou."
 
 **Tela**
-- Os três números do slide 04 entram um por vez com contador animado (0 → 72 mil em 0,8 s; 0 → 21,7 mil; 0 → −36,5%), cada um com a fonte em mono embaixo, visível por no mínimo 2 s.
+- Os três números do slide 04 entram um por vez, cada um na sua frase, com contador animado (0 → 72 mil em 0,8 s; 0 → 21,7 mil; 0 → −36,5%) e a fonte em mono embaixo, visível por no mínimo 2 s.
+- "O processo até ficou mais simples": entre o segundo e o terceiro número, corte para L2 com **70%** em Playfair ao lado do rosto e `MODELO SIMPLIFICADO · CCEE · 1T2026` em mono. É sobreposição na edição; o slide não muda.
+- "Mesmo assim, o ritmo caiu": volta ao slide 04 no contador de −36,5%.
 - "A porta abriu": IMG-03 (torres ao entardecer), 2 s, com a frase na área vazia à direita.
 - "A maioria ainda não atravessou": rosto em L1, *punch-in*.
 
 **Assets:** GFX-03 · IMG-03 · **Som:** `tick` por número.
-**Números conferidos em 20/10/2026** (CCEE: 21.707 migrações em 2025; 4.827 no 1T2026 contra 7.603 no 1T2025). A Abraceel cita 18.928 para 2025: use sempre o número da CCEE e diga "CCEE" na tela.
+**Números conferidos em 20/10/2026** (CCEE: 21.707 migrações em 2025; 4.827 no 1T2026 contra 7.603 no 1T2025). A Abraceel cita 18.928 para 2025: use sempre o número da CCEE e diga "CCEE" na tela. Modelo simplificado: mais de 70% das migrações do 1T2026, em vigor desde julho de 2025 (CCEE, via [Cenário Energia](https://cenarioenergia.com.br/2026/05/06/migracao-simplificada-mercado-livre-energia-1-trimestre-2026/), 06/05/2026).
+**Não dizer** que "o Brasil paga a conta de luz mais cara do mundo": com ajuste por poder de compra, o estudo mais recente (CLP, 2026) coloca o Brasil em 66º de 138 países.
 
 ---
 
-### 03 · Descobertas (0:43–0:58) · L2 · slide 05 · Eduardo
+### 03 · Descobertas (1:02–1:20) · L2 · slide 05 · Eduardo
 
 > "Estudando o mercado, vimos três coisas. Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E as reclamações se concentram depois da assinatura: cobrança, cancelamento, economia que não aparece."
 
@@ -118,38 +121,40 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 04 · Solução (0:58–1:10) · L1 → L4 · slide 06 · Eduardo
+### 04 · Solução (1:20–1:49) · L1 → L4 · slide 06 · Eduardo
 
-> "Por isso criamos o Milet: um jeito independente de a empresa contratar energia sem adivinhar. O que hoje é um vai e vem de e-mails vira um diagnóstico na hora. Funciona assim."
+> "Por isso criamos o Milet: um jeito independente de a empresa contratar energia sem adivinhar. A ideia é fazer com a energia o que o QuintoAndar fez com o aluguel: entender, comparar, contratar e acompanhar num lugar só. O que hoje é um vai e vem de e-mails vira uma decisão na mesma tela. A migração continua no prazo da regulação; o que fica rápido é decidir. Funciona assim."
 
 **Tela**
 - IMG-05 (medidor) em L4 por 2 s enquanto o `riser` sobe.
 - Em "Milet": *logo sting* de 1,5 s (símbolo âmbar gira 15° e assenta sobre carvão).
-- "Vai e vem de e-mails…": slide 06 (jornada "hoje × com o Milet"). As quatro colunas entram da esquerda para a direita; em cada uma, o "hoje" aparece e é riscado, e o "com o Milet" acende em âmbar logo abaixo. É o antes e depois estilo QuintoAndar.
+- "O que o QuintoAndar fez com o aluguel": slide 06 (jornada "hoje × com o Milet"). As quatro colunas acendem uma por verbo: entender, comparar, contratar, acompanhar. Só texto, sem o logo do QuintoAndar.
+- "Vai e vem de e-mails…": em cada coluna, o "hoje" é riscado e o "com o Milet" acende em âmbar logo abaixo.
+- "O que fica rápido é decidir": palavra-chave **"decidir"** sobre o slide.
 - Selos "no MVP" (entender, comparar) e "próxima fase" (contratar, acompanhar) visíveis: a banca vê o que já existe.
 
 **Assets:** IMG-05 · GFX-05 (logo sting) · **Som:** `riser` → `hit` suave.
 
 ---
 
-### 05 · Demo do produto (1:10–1:44) · L3 · slide 07 · Eduardo
+### 05 · Demo do produto (1:49–2:33) · L3 · slide 07 · Eduardo
 
-> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. O diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Isso já funciona hoje, com dados de demonstração."
+> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. Esses dados ficam com a empresa, que pode levá-los para onde quiser, na lógica do Open Energy que a ANEEL já discute. Com isso, o diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Entender e comparar já funcionam hoje, com dados de demonstração. Contratar e acompanhar são a próxima fase."
 
 **Tela:** gravação real do `/diagnostico` dentro da moldura de navegador do slide 07, rosto em PiP. Os quatro momentos e os requisitos de cada tela estão em [demo-spec.md](demo-spec.md).
 
-| Tempo | Momento | Zoom e destaque |
+| Fala | Momento | Zoom e destaque |
 |---|---|---|
-| 1:06–1:13 | **M1** clique em *Usar fatura de demonstração* e estado de leitura | Zoom 1,6× no botão; anel âmbar no clique; manter a leitura inteira na tela |
-| 1:13–1:21 | **M2** conferência: consumo, demanda, distribuidora | Destaque em sequência nos três campos; rótulo flutuante **Passaporte Energético** |
-| 1:21–1:29 | **M3** rotas: mercado livre, solar própria, compartilhada | Zoom na lista de rotas; cada rota acende quando é dita |
-| 1:29–1:40 | **M4** propostas na mesma régua | Começa no banner "Nenhuma oferta compra posição" (sublinhado âmbar); rolagem lenta pelas duas propostas de mercado livre; zoom 1,8× no custo total e no "Serviço Milet: R$ 190/mês, igual em todas as propostas"; selo `NO AR · DADOS DE DEMONSTRAÇÃO` no fim |
+| "A empresa envia a fatura" | **M1** clique em *Usar fatura de demonstração* e estado de leitura | Zoom 1,6× no botão; anel âmbar no clique; manter a leitura inteira na tela |
+| "…monta o Passaporte Energético… Open Energy" | **M2** conferência: consumo, demanda, distribuidora | Destaque em sequência nos três campos; rótulo flutuante **Passaporte Energético**; em "Open Energy", selo `ANEEL · OPEN ENERGY · CONSULTA PÚBLICA 7/2025` por 2 s |
+| "…compara rotas…" | **M3** rotas: mercado livre, solar própria, compartilhada | Zoom na lista de rotas; cada rota acende quando é dita |
+| "…todas as propostas na mesma régua…" até o fim | **M4** propostas na mesma régua | Começa no banner "Nenhuma oferta compra posição" (sublinhado âmbar); rolagem lenta pelas duas propostas de mercado livre; zoom 1,8× no custo total e no "Serviço Milet: R$ 190/mês, igual em todas as propostas"; selo `NO AR · DADOS DE DEMONSTRAÇÃO` em "dados de demonstração" |
 
 **Assets:** SCR-01 a SCR-04 · **Som:** `click` de UI em cada clique; música baixa.
 
 ---
 
-### 06 · Diferencial (1:44–2:00) · L2 → L3 · slide 08 · Eduardo
+### 06 · Diferencial (2:33–2:53) · L2 → L3 · slide 08 · Eduardo
 
 > "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo de energia, os dados são da empresa, e a gente continua depois da assinatura, acompanhando a economia e voltando a cotar antes do vencimento."
 
@@ -163,22 +168,24 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 07 · Modelo de negócio e canais (2:00–2:22) · L3 · slides 09, 10 e 11 · Eduardo
+### 07 · Modelo de negócio e canais (2:53–3:41) · L3 · slides 09, 10 e 11 · Eduardo
 
-> "O modelo tem dois lados. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por MWh, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
+> "O modelo tem dois lados. De um, as PMEs. Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na CCEE, são cento e quarenta disputando as mesmas empresas. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada e cobra da empresa cem reais por mês pela gestão. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
 **Tela**
-- Diagrama do slide 09: o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
+- "Dois lados": slide 09, os dois cards (PMEs do Grupo A; comercializadoras e geradores) acendem um por vez.
+- "Cento e quarenta": zoom no print da CCEE do slide 09, número **140** com sublinhado âmbar.
+- "O fornecedor recebe…": diagrama do slide 09, o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
 - Selo âmbar `HIPÓTESE` nas duas receitas quando a palavra é dita.
 - Consistência com o BMC entregue: mesmos dois segmentos, mesmas duas receitas.
-- Logo após "hipóteses em teste": corte para o slide 10, em silêncio, com os prints das fontes (Clarke paga R$ 5 a 10 mil por PME fechada; Electy é paga pelas usinas; Clarke cobra R$ 100/mês da empresa). Zoom lento no print grande; 2 s no total.
+- "O mercado já paga por isso": corte para o slide 10. Zoom no print da Clarke (R$ 5 a 10 mil por PME fechada) em "cinco a dez mil" e no print de R$ 100/mês em "cem reais por mês". O print da Electy (paga pelas usinas) fica visível ao lado.
 - "E chegamos à PME…": corte para o funil do slide 11; as quatro etapas acendem da esquerda para a direita, com destaque em **02 · Engajar · Diagnóstico gratuito**.
 
 **Assets:** GFX-08 · GFX-13 (referência de mercado) · GFX-12 (funil) · **Som:** `tick` em cada seta.
 
 ---
 
-### 08 · Visão (2:22–2:35) · L2 · slide 12 · Eduardo
+### 08 · Visão (3:41–3:56) · L2 · slide 12 · Eduardo
 
 > "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia, a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
@@ -192,7 +199,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (2:35–2:46) · L2 · slide 13 · Eduardo
+### 09 · Equipe (3:56–4:12) · L2 · slide 13 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -205,32 +212,16 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 10 · Fechamento (2:46–2:55) · L1 → L4 · slide 14 · Eduardo
+### 10 · Fechamento (4:12–4:21) · L1 → L4 · slide 14 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
 **Tela**
 - Primeira frase em L1, olhar fixo na câmera, sem gráfico.
 - "Energia em mais liberdade": corte para o slide 14 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
-- Segurar 2 s na tela final; cortar para preto antes de 2:50.
+- Segurar 2 s na tela final e cortar para preto.
 
 **Assets:** GFX-11 · **Som:** `hit` grave no logo; música resolve e corta.
-
----
-
-## 2b. Banco de falas extras (para lapidar)
-Falas pesquisadas e com fonte, fora do roteiro principal. Use no lugar de outra frase quando fizer sentido.
-
-| Onde | Fala | Fonte |
-|---|---|---|
-| Bloco 02 (por que agora) | "Mais de 70% das migrações do começo de 2026 já passaram pelo modelo simplificado da CCEE, todo digital. A infraestrutura para migrar pela internet está pronta." | CCEE, via [Cenário Energia](https://cenarioenergia.com.br/2026/05/06/migracao-simplificada-mercado-livre-energia-1-trimestre-2026/) |
-| Bloco 04 (solução) | "É o que o QuintoAndar fez com o aluguel: procurar, comparar, contratar e acompanhar num lugar só." | Analogia (documento mestre, seção 0A.7) |
-| Bloco 04 (honestidade) | "O que encurta é a decisão. A migração continua seguindo o prazo legal, só que acompanhada." | Prazo de saída do mercado cativo (ANEEL) |
-| Bloco 05 (Passaporte) | "A ANEEL já discute o Open Energy, para o consumidor levar os próprios dados de consumo para onde quiser. O Passaporte Energético segue essa lógica desde já." | ANEEL, Consulta Pública 7/2025, via [Cenário Energia](https://cenarioenergia.com.br/2025/02/19/aneel-abre-consulta-publica-para-revisar-regras-do-mercado-livre-e-implementar-open-energy/) |
-| Bloco 07 (oferta) | "Hoje são 140 comercializadoras varejistas habilitadas disputando as mesmas PMEs." | Lista de associados da CCEE, 05/10/2026 (print em `supernova/pesquisa/evidencias/`) |
-| Bloco 08 (validação, quando voltar) | "Já conversamos com *N* empresas e *X* comercializadoras; *Y* nos mandaram a fatura." | Entrevistas (pendente) |
-
-**Fora do pitch:** "o Brasil paga a conta de luz mais cara do mundo". O estudo mais recente com ajuste por poder de compra (CLP, 2026) coloca o Brasil em 66º de 138 países.
 
 ---
 
@@ -300,7 +291,7 @@ Trilhas, de baixo para cima:
 3. A-roll (já com *jump cuts*)
 4. B-roll e IMG
 5. GFX e SCR (com as máscaras de PiP do L3)
-6. Palavras-chave e selos (`EXEMPLOS ILUSTRATIVOS`, `DADOS DE DEMONSTRAÇÃO`, `HIPÓTESE`)
+6. Palavras-chave e selos (`EXEMPLOS ILUSTRATIVOS`, `70% · MODELO SIMPLIFICADO`, `ANEEL · OPEN ENERGY`, `DADOS DE DEMONSTRAÇÃO`, `HIPÓTESE`)
 
 Ordem de trabalho: cortar a fala primeiro (o tempo final vem dela), depois encaixar layouts, depois gráficos, por último som e cor.
 
@@ -314,5 +305,5 @@ Ordem de trabalho: cortar a fala primeiro (o tempo final vem dela), depois encai
 - [ ] As duas receitas aparecem como hipótese e batem com o BMC entregue; nenhuma frase sugere tração que não existe.
 - [ ] Nenhuma marcação "A PREENCHER" visível (deck com **T** ligado ao gravar).
 - [ ] Sempre "o Milet" (masculino) na fala, no deck e no BMC.
-- [ ] Voz limpa, sem eco; música nunca acima da fala; os dois apresentadores com o mesmo som e a mesma cor.
+- [ ] Voz limpa, sem eco; música nunca acima da fala; todos os takes com o mesmo som e a mesma cor.
 - [ ] Assistido uma vez sem som (as palavras-chave contam a história?) e uma vez só com som (a fala se sustenta sozinha?).
