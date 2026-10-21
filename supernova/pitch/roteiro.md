@@ -4,8 +4,8 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 
 | Item | Valor |
 |---|---|
-| Limite | **3:00** (regra da Supernova). Alvo: **2:55** |
-| Fala | ~400 palavras (~145 palavras/min com pausas): no limite. Cortes prontos, nesta ordem: a frase do funil (bloco 07), "O que hoje é um vai e vem…" (bloco 04), "e depois residências" (bloco 08) |
+| Limite | **3:00** (regra da Supernova) |
+| Fala | Versão completa, com todas as falas (~495 palavras, ~3:25 em ritmo de 145 palavras/min). O Eduardo lapida para caber em 3:00; falas extras no banco da seção 2b |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -77,7 +77,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 01 · Problema (0:10–0:27) · L4 → L2 · slide 03 · Eduardo
 
-> "Chegam três propostas. Uma em reais por megawatt-hora, outra em percentual de desconto, outra com preço fixo e multa no anexo. Qual é a mais barata? *(pausa)* Nem o dono da empresa sabe. E é ele quem assina por anos."
+> "Chegam três propostas. Uma em reais por megawatt-hora. Outra em percentual de desconto. Outra com preço fixo, flexibilidade e uma multa escondida no anexo. Qual é a mais barata? *(pausa)* Nem o dono da empresa sabe. E é ele quem assina por três, cinco anos."
 
 **Tela**
 - 0:10–0:12: IMG-01 (conta no balcão), *push-in* lento.
@@ -93,7 +93,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 02 · Dimensão (0:27–0:43) · L3 · slide 04 · Eduardo
 
-> "A CCEE estimou em setenta e duas mil as pequenas e médias empresas que poderiam migrar. Em 2025, foram cerca de vinte e uma mil migrações. E no começo de 2026, o ritmo caiu mais de um terço. A porta abriu. A maioria ainda não atravessou."
+> "E isso não é um caso isolado. A CCEE estimou em cerca de setenta e duas mil as pequenas e médias empresas que poderiam migrar com a abertura. Em 2025, foram cerca de vinte e uma mil migrações. E no começo de 2026, o ritmo caiu mais de um terço. A porta abriu. A maioria ainda não atravessou."
 
 **Tela**
 - Os três números do slide 04 entram um por vez com contador animado (0 → 72 mil em 0,8 s; 0 → 21,7 mil; 0 → −36,5%), cada um com a fonte em mono embaixo, visível por no mínimo 2 s.
@@ -107,7 +107,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 03 · Descobertas (0:43–0:58) · L2 · slide 05 · Eduardo
 
-> "Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E os problemas aparecem depois da assinatura."
+> "Estudando o mercado, vimos três coisas. Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E as reclamações se concentram depois da assinatura: cobrança, cancelamento, economia que não aparece."
 
 **Tela**
 - Os três cards do slide 05 entram à direita, um por frase, numerais romanos em itálico âmbar.
@@ -120,7 +120,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 04 · Solução (0:58–1:10) · L1 → L4 · slide 06 · Eduardo
 
-> "Por isso criamos o Milet: um jeito independente de contratar energia sem adivinhar. O que hoje é um vai e vem de e-mails vira um diagnóstico na hora."
+> "Por isso criamos o Milet: um jeito independente de a empresa contratar energia sem adivinhar. O que hoje é um vai e vem de e-mails vira um diagnóstico na hora. Funciona assim."
 
 **Tela**
 - IMG-05 (medidor) em L4 por 2 s enquanto o `riser` sobe.
@@ -134,7 +134,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 05 · Demo do produto (1:10–1:44) · L3 · slide 07 · Eduardo
 
-> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. O diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E as propostas aparecem na mesma régua: custo total, prazo e risco. Nenhum fornecedor paga para aparecer primeiro. Isso já funciona hoje, com dados de demonstração."
+> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. O diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Isso já funciona hoje, com dados de demonstração."
 
 **Tela:** gravação real do `/diagnostico` dentro da moldura de navegador do slide 07, rosto em PiP. Os quatro momentos e os requisitos de cada tela estão em [demo-spec.md](demo-spec.md).
 
@@ -151,7 +151,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 06 · Diferencial (1:44–2:00) · L2 → L3 · slide 08 · Eduardo
 
-> "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: independência de fornecedor, dados que pertencem ao cliente e acompanhamento depois da assinatura, voltando a cotar antes do vencimento."
+> "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo de energia, os dados são da empresa, e a gente continua depois da assinatura, acompanhando a economia e voltando a cotar antes do vencimento."
 
 **Tela**
 - "Gestoras e comercializadoras…": tabela do slide 08 em L3, colunas aparecendo da esquerda para a direita.
@@ -165,7 +165,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ### 07 · Modelo de negócio e canais (2:00–2:22) · L3 · slides 09, 10 e 11 · Eduardo
 
-> "São dois lados. O fornecedor recebe demanda qualificada e paga uma taxa por contrato fechado, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
+> "O modelo tem dois lados. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por MWh, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
 **Tela**
 - Diagrama do slide 09: o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
@@ -215,6 +215,22 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 - Segurar 2 s na tela final; cortar para preto antes de 2:50.
 
 **Assets:** GFX-11 · **Som:** `hit` grave no logo; música resolve e corta.
+
+---
+
+## 2b. Banco de falas extras (para lapidar)
+Falas pesquisadas e com fonte, fora do roteiro principal. Use no lugar de outra frase quando fizer sentido.
+
+| Onde | Fala | Fonte |
+|---|---|---|
+| Bloco 02 (por que agora) | "Mais de 70% das migrações do começo de 2026 já passaram pelo modelo simplificado da CCEE, todo digital. A infraestrutura para migrar pela internet está pronta." | CCEE, via [Cenário Energia](https://cenarioenergia.com.br/2026/05/06/migracao-simplificada-mercado-livre-energia-1-trimestre-2026/) |
+| Bloco 04 (solução) | "É o que o QuintoAndar fez com o aluguel: procurar, comparar, contratar e acompanhar num lugar só." | Analogia (documento mestre, seção 0A.7) |
+| Bloco 04 (honestidade) | "O que encurta é a decisão. A migração continua seguindo o prazo legal, só que acompanhada." | Prazo de saída do mercado cativo (ANEEL) |
+| Bloco 05 (Passaporte) | "A ANEEL já discute o Open Energy, para o consumidor levar os próprios dados de consumo para onde quiser. O Passaporte Energético segue essa lógica desde já." | ANEEL, Consulta Pública 7/2025, via [Cenário Energia](https://cenarioenergia.com.br/2025/02/19/aneel-abre-consulta-publica-para-revisar-regras-do-mercado-livre-e-implementar-open-energy/) |
+| Bloco 07 (oferta) | "Hoje são 140 comercializadoras varejistas habilitadas disputando as mesmas PMEs." | Lista de associados da CCEE, 05/10/2026 (print em `supernova/pesquisa/evidencias/`) |
+| Bloco 08 (validação, quando voltar) | "Já conversamos com *N* empresas e *X* comercializadoras; *Y* nos mandaram a fatura." | Entrevistas (pendente) |
+
+**Fora do pitch:** "o Brasil paga a conta de luz mais cara do mundo". O estudo mais recente com ajuste por poder de compra (CLP, 2026) coloca o Brasil em 66º de 138 países.
 
 ---
 
