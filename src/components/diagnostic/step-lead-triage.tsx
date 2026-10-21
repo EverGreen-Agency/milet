@@ -85,6 +85,11 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
           <div className="text-xs text-[var(--foreground)]/60 mt-0.5 leading-relaxed">
             Comércios, serviços e indústrias com demanda contratada, que já podem escolher de quem compram energia.
           </div>
+          <ul className="mt-3 space-y-1.5 text-xs text-[var(--foreground)]/75 leading-relaxed list-disc pl-4 marker:text-[var(--color-milet-amber)]">
+            <li>Na sua conta aparece <strong>demanda contratada</strong> e o subgrupo <strong>A4</strong> ou <strong>A3a</strong> (tensão a partir de 2,3 kV).</li>
+            <li>Em geral, compensa para contas a partir de cerca de <strong>R$ 10 mil por mês</strong>.</li>
+            <li>Não sabe? Siga em frente: a leitura da fatura confere isso para você.</li>
+          </ul>
         </div>
       </div>
 
@@ -261,7 +266,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
             />
             <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              <strong>Consentimento de Tratamento de Dados (LGPD):</strong> Autorizo o Milet a processar as informações técnicas desta unidade, guardadas em armazenamento privado e criptografado, para fins exclusivos de diagnóstico energético e comparação neutra.
+              <strong>Consentimento de Tratamento de Dados (LGPD), obrigatório:</strong> Autorizo o Milet a processar as informações técnicas desta unidade, guardadas em armazenamento privado e criptografado, para fazer o diagnóstico energético, comparar propostas de forma neutra e enviar o resultado para o meu e-mail.
             </span>
           </label>
           {errors.consentDataProcessing ? (
@@ -276,7 +281,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
             />
             <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              Aceito receber o relatório formal por e-mail e ser contatado por um consultor técnico independente do Milet.
+              <strong>Opcional:</strong> quero que um consultor do Milet entre em contato para tirar dúvidas sobre as propostas.
             </span>
           </label>
         </div>
