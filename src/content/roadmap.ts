@@ -80,7 +80,7 @@ export const ROADMAP_LANES: RoadmapLane[] = [
   {
     id: "explorando",
     name: "Explorando",
-    summary: "P2 · 3 hipóteses",
+    summary: "P2 · 4 hipóteses",
     cards: [
       {
         status: { label: "Planejado", tone: "planned" },
@@ -97,6 +97,15 @@ export const ROADMAP_LANES: RoadmapLane[] = [
           "Consolidar oportunidades e riscos de múltiplas unidades consumidoras para apoiar priorização.",
         ids: ["EP-06", "F6.1", "US-028"],
         evidence: "especificação recuperada; implementação não verificada.",
+      },
+      {
+        status: { label: "Explorando · depende do Open Energy", tone: "planned" },
+        title: "Passaporte Energético por API",
+        description:
+          "Contadores, ERPs, EPCs e comercializadoras acessam por API apenas os dados que a empresa autorizar, com consentimento revogável.",
+        ids: ["UC-28"],
+        evidence:
+          "hipótese de negócio; o Open Energy segue em discussão na ANEEL (CP 7/2025) e nenhuma integração com parceiros existe.",
       },
     ],
   },
