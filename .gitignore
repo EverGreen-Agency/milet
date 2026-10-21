@@ -36,7 +36,6 @@ novas-imgs2/
 # Next.js & Coverage
 .next/
 coverage/
-AGENTS.md
 
 # Heavy course slides & PDFs
 supernova/*.pptx

@@ -72,4 +72,6 @@
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v2 (2026-10-21) — Integração com roteiro de pitch Supernova 2026 (v3), unificação da plataforma em Next.js 16 App Router e especificação dos 4 Portais (Consumidor, Comercializadora, Usina, Admin) com matching determinístico.
 - v1 (2026-10-12) — Contexto inicial da V2 criado a partir do documento mestre e dos dois ICPs prioritários.
+
