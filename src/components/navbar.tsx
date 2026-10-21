@@ -40,6 +40,16 @@ export function Navbar() {
             Diagnóstico
           </Link>
           <Link
+            href="/roadmap"
+            className={`transition-colors ${
+              pathname === "/roadmap"
+                ? "text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-semibold"
+                : "hover:text-[var(--color-milet-amber)]"
+            }`}
+          >
+            Roadmap
+          </Link>
+          <Link
             href="/build-in-public"
             className={`transition-colors ${
               pathname === "/build-in-public"

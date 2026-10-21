@@ -35,9 +35,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/roadmap.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
+                <Link href="/roadmap" className="hover:text-[var(--color-milet-amber)] transition-colors">
                   Roadmap Aberto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

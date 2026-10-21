@@ -3,13 +3,17 @@
   "rewrites": [
     { "source": "/v1/intakes", "destination": "/api/v1/intakes" },
     { "source": "/v1/extract-invoice", "destination": "/api/v1/extract-invoice" },
-    { "source": "/roadmap", "destination": "/roadmap.html" },
     { "source": "/brandbook", "destination": "/brandbook.html" }
   ],
   "redirects": [
     {
       "source": "/build-in-public.html",
       "destination": "/build-in-public",
+      "permanent": true
+    },
+    {
+      "source": "/roadmap.html",
+      "destination": "/roadmap",
       "permanent": true
     },
     {
