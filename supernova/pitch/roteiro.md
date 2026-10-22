@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~732 palavras, **~5:12** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~762 palavras, **~5:24** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -186,12 +186,12 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Validação e visão (4:01–4:47) · L2 · slides 12 e 13 · Eduardo
+### 08 · Validação e visão (4:01–4:59) · L2 · slides 12 e 13 · Eduardo
 
-> "Já começamos a ouvir o mercado. O primeiro fornecedor que respondeu quer conhecer o piloto, com uma condição: que a gente escolha bem os fornecedores, olhando atendimento e reputação. Nas próximas semanas, vamos ouvir dez empresas e cinco fornecedores. Ao mesmo tempo, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
+> "Já começamos a ouvir o mercado. O primeiro fornecedor que respondeu quer conhecer o piloto, com uma condição: que a gente escolha bem os fornecedores, olhando atendimento e reputação. E o primeiro dono de PME que respondeu cuida da energia numa planilha, ignorou as propostas que recebeu e quer saber se as placas solares estão entregando o que prometeram. Nas próximas semanas, vamos ouvir dez empresas e cinco fornecedores. Ao mesmo tempo, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
-- "Já começamos a ouvir o mercado…": slide 12 (validação). O card "Feito" acende na linha da entrevista; em "dez empresas e cinco fornecedores", acende o card "Próximas 4 semanas", com as hipóteses H1–H3 visíveis embaixo. Não chamar isso de tração.
+- "Já começamos a ouvir o mercado…": slide 12 (validação). O card "Feito" acende na linha das entrevistas; em "o primeiro dono de PME", print da resposta (sem identificação, `shots/evid-pme-respostas.png`) por 2 s, com sublinhado âmbar em "Sim, mas ignoramos" e na linha das placas; em "dez empresas e cinco fornecedores", acende o card "Próximas 4 semanas", com as hipóteses H1–H3 visíveis embaixo. Não chamar isso de tração.
 - "Ao mesmo tempo, cadastramos…": slide 13 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências. Em "vira uma API", o trecho "API do Passaporte Energético" do marco de 2º sem/2027 ganha sublinhado âmbar.
 - Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
 - Quando chegarem mais respostas (e-mails às comercializadoras, PMEs), atualizar os números da fala e do slide 12.
@@ -200,7 +200,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (4:47–5:03) · L2 · slide 14 · Eduardo
+### 09 · Equipe (4:59–5:15) · L2 · slide 14 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -213,7 +213,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 10 · Fechamento (5:03–5:12) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (5:15–5:24) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
