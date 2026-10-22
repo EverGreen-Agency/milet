@@ -80,7 +80,7 @@ export const ROADMAP_LANES: RoadmapLane[] = [
   {
     id: "explorando",
     name: "Explorando",
-    summary: "P2 · 4 hipóteses",
+    summary: "P2 · 5 hipóteses",
     cards: [
       {
         status: { label: "Planejado", tone: "planned" },
@@ -106,6 +106,15 @@ export const ROADMAP_LANES: RoadmapLane[] = [
         ids: ["UC-28"],
         evidence:
           "hipótese de negócio; o Open Energy segue em discussão na ANEEL (CP 7/2025) e nenhuma integração com parceiros existe.",
+      },
+      {
+        status: { label: "Explorando · veio de entrevista", tone: "planned" },
+        title: "Conferir a economia de quem já tem solar",
+        description:
+          "Ler na fatura a energia injetada, a compensada e o saldo de créditos e comparar com a geração prometida no projeto. Depois, dados do inversor via parceiros de monitoramento.",
+        ids: ["US-021"],
+        evidence:
+          "pedido de uma PME entrevistada em out/2026; a fatura lida hoje ainda não traz os campos de geração distribuída.",
       },
     ],
   },
