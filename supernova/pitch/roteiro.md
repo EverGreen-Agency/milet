@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~643 palavras, **~4:35** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~732 palavras, **~5:12** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -108,20 +108,20 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 03 · Descobertas (1:02–1:20) · L2 · slide 05 · Eduardo
+### 03 · Descobertas (1:02–1:29) · L2 · slide 05 · Eduardo
 
-> "Estudando o mercado, vimos três coisas. Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E as reclamações se concentram depois da assinatura: cobrança, cancelamento, economia que não aparece."
+> "Estudando o mercado, vimos três coisas. Comparar preço virou commodity: um decreto de 2026 prevê até um comparador público da CCEE. Quem aconselha a empresa geralmente vende a energia. E as reclamações se concentram depois da assinatura: cobrança, cancelamento, economia que não aparece. Um fornecedor que entrevistamos resumiu assim: “o vendedor some, ganha a sua comissão, e fica a responsabilidade com a empresa”."
 
 **Tela**
 - Os três cards do slide 05 entram à direita, um por frase, numerais romanos em itálico âmbar.
 - Ao citar o decreto, selo mono: `DECRETO Nº 13.097/2026`.
-- **Se houver entrevistas antes da gravação:** trocar a terceira frase por uma citação real em tela cheia (L4, Playfair itálico, "— decisor de PME, setor X"). Uma frase real de cliente vale mais que qualquer gráfico.
+- Na citação: tela cheia em L4, Playfair itálico, “O vendedor some, ganha a sua comissão, e fica a responsabilidade com a empresa.”, assinada em mono `GERADORA DE GD · INTERIOR DE SP · ENTREVISTA, OUT/2026`. Sem o nome da empresa: a pesquisa foi apresentada como exploratória e o repositório é público.
 
 **Assets:** GFX-04 · **Som:** `whoosh` leve por card.
 
 ---
 
-### 04 · Solução (1:20–1:49) · L1 → L4 · slide 06 · Eduardo
+### 04 · Solução (1:29–1:58) · L1 → L4 · slide 06 · Eduardo
 
 > "Por isso criamos o Milet: um jeito independente de a empresa contratar energia sem adivinhar. A ideia é fazer com a energia o que o QuintoAndar fez com o aluguel: entender, comparar, contratar e acompanhar num lugar só. O que hoje é um vai e vem de e-mails vira uma decisão na mesma tela. A migração continua no prazo da regulação; o que fica rápido é decidir. Funciona assim."
 
@@ -137,9 +137,9 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 05 · Demo do produto (1:49–2:33) · L3 · slide 07 · Eduardo
+### 05 · Demo do produto (1:58–2:53) · L3 · slide 07 · Eduardo
 
-> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. Esses dados ficam com a empresa, que pode levá-los para onde quiser, na lógica do Open Energy que a ANEEL já discute. Com isso, o diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Entender e comparar já funcionam hoje, com dados de demonstração. Contratar e acompanhar são a próxima fase."
+> "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. Esses dados ficam com a empresa, que pode levá-los para onde quiser, na lógica do Open Energy que a ANEEL já discute. E nem sempre o mercado livre é a melhor rota: um fornecedor nos contou que, sem o antigo desconto na tarifa de uso da rede, a economia encolheu. Por isso o diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Entender e comparar já funcionam hoje, com dados de demonstração. Contratar e acompanhar são a próxima fase."
 
 **Tela:** gravação real do `/diagnostico` dentro da moldura de navegador do slide 07, rosto em PiP. Os quatro momentos e os requisitos de cada tela estão em [demo-spec.md](demo-spec.md).
 
@@ -151,10 +151,11 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 | "…todas as propostas na mesma régua…" até o fim | **M4** propostas na mesma régua | Começa no banner "Nenhuma oferta compra posição" (sublinhado âmbar); rolagem lenta pelas duas propostas de mercado livre; zoom 1,8× no custo total e no "Serviço Milet: R$ 190/mês, igual em todas as propostas"; selo `NO AR · DADOS DE DEMONSTRAÇÃO` em "dados de demonstração" |
 
 **Assets:** SCR-01 a SCR-04 · **Som:** `click` de UI em cada clique; música baixa.
+**Fonte do "desconto":** a Lei 14.120/2021 encerrou o desconto de 50% na TUSD/TUST para usinas incentivadas novas; as antigas mantêm o desconto e a MP 1.212/2024 ampliou prazos. Não dizer que o mercado livre "deixou de compensar": a economia depende do perfil e da distribuidora.
 
 ---
 
-### 06 · Diferencial (2:33–2:53) · L2 → L3 · slide 08 · Eduardo
+### 06 · Diferencial (2:53–3:13) · L2 → L3 · slide 08 · Eduardo
 
 > "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo de energia, os dados são da empresa, e a gente continua depois da assinatura, acompanhando a economia e voltando a cotar antes do vencimento."
 
@@ -168,7 +169,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 07 · Modelo de negócio e canais (2:53–3:41) · L3 · slides 09, 10 e 11 · Eduardo
+### 07 · Modelo de negócio e canais (3:13–4:01) · L3 · slides 09, 10 e 11 · Eduardo
 
 > "O modelo tem dois lados. De um, as PMEs. Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na CCEE, são cento e quarenta disputando as mesmas empresas. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada e cobra da empresa cem reais por mês pela gestão. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
@@ -185,40 +186,40 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Visão (3:41–4:10) · L2 · slide 12 · Eduardo
+### 08 · Validação e visão (4:01–4:47) · L2 · slides 12 e 13 · Eduardo
 
-> "Agora, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
+> "Já começamos a ouvir o mercado. O primeiro fornecedor que respondeu quer conhecer o piloto, com uma condição: que a gente escolha bem os fornecedores, olhando atendimento e reputação. Nas próximas semanas, vamos ouvir dez empresas e cinco fornecedores. Ao mesmo tempo, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
 **Tela**
-- *(Slide de validação oculto no deck até chegarem as entrevistas e as respostas dos e-mails. Quando voltar, entra aqui por 2 s, em silêncio.)*
-- "Agora, cadastramos…": slide 12 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências. Em "vira uma API", o trecho "API do Passaporte Energético" do marco de 2º sem/2027 ganha sublinhado âmbar.
+- "Já começamos a ouvir o mercado…": slide 12 (validação). O card "Feito" acende na linha da entrevista; em "dez empresas e cinco fornecedores", acende o card "Próximas 4 semanas", com as hipóteses H1–H3 visíveis embaixo. Não chamar isso de tração.
+- "Ao mesmo tempo, cadastramos…": slide 13 (visão). A linha do tempo se desenha da esquerda para a direita, um marco por trecho da fala: primeiros clientes, marketplace e app, ferramentas para quem vende, pequenos comércios, residências. Em "vira uma API", o trecho "API do Passaporte Energético" do marco de 2º sem/2027 ganha sublinhado âmbar.
 - Fecha na frase âmbar "Energia de quem você escolher, com os seus dados e preço justo." e na fonte (Lei 15.269/2025).
-- **Se já houver resultado de conversas:** trocar a primeira frase por "Já conversamos com *N* empresas, e *X* nos mandaram a fatura", com o número em Playfair 150 px.
+- Quando chegarem mais respostas (e-mails às comercializadoras, PMEs), atualizar os números da fala e do slide 12.
 
-**Assets:** GFX-09 · **Som:** música começa a subir.
+**Assets:** GFX-14 · GFX-09 · **Som:** música começa a subir.
 
 ---
 
-### 09 · Equipe (4:10–4:26) · L2 · slide 13 · Eduardo
+### 09 · Equipe (4:47–5:03) · L2 · slide 14 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
 **Tela**
-- Rosto em L2; à direita, a grade do slide 13 acende pessoa por pessoa, em sincronia com cada nome.
+- Rosto em L2; à direita, a grade do slide 14 acende pessoa por pessoa, em sincronia com cada nome.
 - *Lower third* na sua primeira aparição do bloco: `EDUARDO FERREIRA DE MATTOS · COFUNDADOR` (mono, âmbar).
 - O card da orientadora diz "Professora de Análise de Dados no Mackenzie". Na menção a ela, o card ganha o selo `SHARK TANK BRASIL · TOP 10 FEMALE TECH FOUNDERS` por 2 s: credencial na tela, sem gastar fala.
 
-**Assets:** GFX-10 (slide 13 com as três fotos).
+**Assets:** GFX-10 (slide 14 com as três fotos).
 
 ---
 
-### 10 · Fechamento (4:26–4:35) · L1 → L4 · slide 14 · Eduardo
+### 10 · Fechamento (5:03–5:12) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
 **Tela**
 - Primeira frase em L1, olhar fixo na câmera, sem gráfico.
-- "Energia em mais liberdade": corte para o slide 14 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
+- "Energia em mais liberdade": corte para o slide 15 (rocha âmbar, *push-in* lento de 105% → 100% em 4 s), contato embaixo.
 - Segurar 2 s na tela final e cortar para preto.
 
 **Assets:** GFX-11 · **Som:** `hit` grave no logo; música resolve e corta.
@@ -248,11 +249,12 @@ Caminho rápido: abrir o deck em tela cheia (**F**), esconder as marcações com
 | GFX-06 | Slide 06 | usado como apoio se o bloco 04 precisar |
 | GFX-07 | Slide 08 | ✱ coluna Milet acendendo |
 | GFX-08 | Slide 09 | ✱ setas de dados e receita |
-| GFX-09 | Slide 12 | ✱ linha do tempo se desenhando |
-| GFX-10 | Slide 13 | fotos reais |
-| GFX-11 | Slide 14 | — |
+| GFX-09 | Slide 13 | ✱ linha do tempo se desenhando |
+| GFX-10 | Slide 14 | fotos reais |
+| GFX-11 | Slide 15 | — |
 | GFX-12 | Slide 11 (funil) | entrada já existe |
 | GFX-13 | Slide 10 (referência de mercado) | prints das fontes em [../pesquisa/evidencias/](../pesquisa/evidencias/) |
+| GFX-14 | Slide 12 (validação) | cards acendendo na ordem da fala |
 
 ### Gravações de tela (SCR)
 - Abrir `/diagnostico?demo=1`: o modo demonstração preenche um contato fictício e liga o guia de gravação (tecla **H** esconde o guia; teclas **1–5** pulam etapas). A visita sem `?demo=1` é a do público e começa vazia.
