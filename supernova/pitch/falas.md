@@ -2,9 +2,14 @@
 
 Só o que o Eduardo fala, slide por slide. Telas, efeitos e assets ficam no [roteiro](roteiro.md), que é a fonte; se lapidar aqui, sincronize lá.
 
-**Total:** 849 palavras, cerca de 5:51 a 145 palavras/min, sem contar pausas. **Limite:** 3:00 (cerca de 435 palavras).
+**Total:** 906 palavras, cerca de 6:15 a 145 palavras/min, sem contar pausas. **Limite:** 3:00 (cerca de 435 palavras).
 
-O slide 01 (capa) não tem fala.
+---
+
+## Slide 01 · Capa
+<sub>16 palavras · ~7 s</sub>
+
+Eu sou o Eduardo, do Milet: ajudamos pequenas e médias empresas a contratar energia sem adivinhar.
 
 ---
 
@@ -88,7 +93,7 @@ Funciona assim.
 ---
 
 ## Slide 07 · Demo do produto
-<sub>132 palavras · ~55 s</sub>
+<sub>143 palavras · ~59 s</sub>
 
 A empresa envia a fatura.
 
@@ -110,14 +115,18 @@ Entender e comparar já funcionam hoje, com dados de demonstração.
 
 Contratar e acompanhar são a próxima fase.
 
+E já está no ar: dá para testar no nosso site.
+
 ---
 
 ## Slide 08 · Diferencial
-<sub>46 palavras · ~19 s</sub>
+<sub>77 palavras · ~32 s</sub>
 
 Gestoras e comercializadoras já fazem partes disso.
 
 Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo de energia, os dados são da empresa, e a gente continua depois da assinatura, acompanhando a economia e voltando a cotar antes do vencimento.
+
+E essa vantagem cresce com o uso: cada empresa acompanhada traz mais dados e atrai mais fornecedores para a mesma régua, e isso não se copia da noite para o dia.
 
 ---
 
@@ -185,9 +194,9 @@ Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolhe
 ---
 
 ## Slide 14 · Equipe
-<sub>38 palavras · ~16 s</sub>
+<sub>37 palavras · ~15 s</sub>
 
-Sou o Eduardo, de Engenharia de Computação, e cuido do produto.
+Eu venho da Engenharia de Computação e cuido do produto.
 
 Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência.
 
