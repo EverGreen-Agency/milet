@@ -142,16 +142,17 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 > "A empresa envia a fatura. O Milet lê os dados e monta o Passaporte Energético: consumo, demanda, contrato, distribuidora. Esses dados ficam com a empresa, que pode levá-los para onde quiser, na lógica do Open Energy que a ANEEL já discute. E nem sempre o mercado livre é a melhor rota: um fornecedor nos contou que, sem o antigo desconto na tarifa de uso da rede, a economia encolheu. Por isso o diagnóstico compara rotas, não só fornecedores: mercado livre, solar própria ou compartilhada. E aí vem a parte que importa: todas as propostas na mesma régua. Custo total, prazo, risco e o que ainda falta de informação. E nenhum fornecedor paga para aparecer primeiro. Entender e comparar já funcionam hoje, com dados de demonstração. Contratar e acompanhar são a próxima fase. E já está no ar: dá para testar no nosso site."
 
-**Tela:** gravação real do `/diagnostico` dentro da moldura de navegador do slide 07, rosto em PiP. Os quatro momentos e os requisitos de cada tela estão em [demo-spec.md](demo-spec.md).
+**Tela:** sem gravação de tela. O slide 07 (print real da comparação de propostas) carrega a demo, com o rosto em PiP.
 
-| Fala | Momento | Zoom e destaque |
+| Fala | Na tela | Zoom e destaque |
 |---|---|---|
-| "A empresa envia a fatura" | **M1** clique em *Usar fatura de demonstração* e estado de leitura | Zoom 1,6× no botão; anel âmbar no clique; manter a leitura inteira na tela |
-| "…monta o Passaporte Energético… Open Energy" | **M2** conferência: consumo, demanda, distribuidora | Destaque em sequência nos três campos; rótulo flutuante **Passaporte Energético**; em "Open Energy", selo `ANEEL · OPEN ENERGY · CONSULTA PÚBLICA 7/2025` por 2 s |
-| "…compara rotas…" | **M3** rotas: mercado livre, solar própria, compartilhada | Zoom na lista de rotas; cada rota acende quando é dita |
-| "…todas as propostas na mesma régua…" até o fim | **M4** propostas na mesma régua | Começa no banner "Nenhuma oferta compra posição" (sublinhado âmbar); rolagem lenta pelas duas propostas de mercado livre; zoom 1,8× no custo total e no "Serviço Milet: R$ 190/mês, igual em todas as propostas"; selo `NO AR · DADOS DE DEMONSTRAÇÃO` em "dados de demonstração"; em "já está no ar", o endereço `milet.vercel.app` em mono no rodapé |
+| "A empresa envia a fatura… Open Energy" | `shots/diag-01b-lendo.png` (leitura da fatura), depois `shots/diag-02-conferencia.png` (Passaporte) | *Push-in* lento; em "Passaporte Energético", destaque nos três campos; em "Open Energy", selo `ANEEL · OPEN ENERGY · CONSULTA PÚBLICA 7/2025` por 2 s |
+| "E nem sempre o mercado livre…" e "…compara rotas…" | Rosto em L2 com as três rotas em palavras-chave: mercado livre, solar própria, compartilhada | Cada rota entra quando é dita |
+| "…todas as propostas na mesma régua…" até o fim | Slide 07 | Começa no banner "Nenhuma oferta compra posição" (sublinhado âmbar); zoom lento até o custo total e o "Serviço Milet: R$ 190/mês"; selo `NO AR · DADOS DE DEMONSTRAÇÃO`; em "já está no ar", `milet.vercel.app` no rodapé |
 
-**Assets:** SCR-01 a SCR-04 · **Som:** `click` de UI em cada clique; música baixa.
+Os prints são de 20/10, em tema claro. Não usar `shots/diag-01-fatura.png`: ainda mostra os três perfis antigos, inclusive "Condomínio / Residência".
+
+**Assets:** slide 07 · `shots/diag-01b-lendo.png` · `shots/diag-02-conferencia.png` · **Som:** `whoosh` leve em cada troca; música baixa.
 **Fonte do "desconto":** a Lei 14.120/2021 encerrou o desconto de 50% na TUSD/TUST para usinas incentivadas novas; as antigas mantêm o desconto e a MP 1.212/2024 ampliou prazos. Não dizer que o mercado livre "deixou de compensar": a economia depende do perfil e da distribuidora.
 
 ---
@@ -260,14 +261,9 @@ Caminho rápido: abrir o deck em tela cheia (**F**), esconder as marcações com
 | GFX-14 | Slide 12 (validação) | cards acendendo na ordem da fala |
 | GFX-15 | Slide 01 (capa) | — |
 
-### Gravações de tela (SCR)
-- Abrir `/diagnostico?demo=1`: o modo demonstração preenche um contato fictício e liga o guia de gravação (tecla **H** esconde o guia; teclas **1–5** pulam etapas). A visita sem `?demo=1` é a do público e começa vazia.
-- Gravar no site publicado, não no `next dev` (o modo dev mostra o selo "N" do Next.js no canto). Antes, confirmar que `/diagnostico` está no ar: o deploy atual publica só o site estático.
-- Edge em janela 1920×1080, zoom 125%, tema claro, sem favoritos nem extensões visíveis.
-- Parar antes do formulário de envio do dossiê e não rolar até o rodapé.
-- OBS a 60 fps; mouse lento e em linha reta; 1 s parado antes de cada clique.
-- Os zooms são feitos na edição, não ao vivo.
-- Só gravar depois que a demo passar em todos os requisitos de [demo-spec.md](demo-spec.md).
+### Prints da demo
+- Não há gravação de tela: a demo usa o slide 07 e dois prints de [shots/](shots/) (ver bloco 05).
+- Para um print novo: `milet.vercel.app/diagnostico?demo=1`, tecla **H** para esconder o guia, janela 1920×1080 com zoom de 125%.
 
 ### Imagens (IMG)
 Cinco imagens de B-roll, prompts prontos em [prompts-imagens.md](prompts-imagens.md). Só momentos emocionais, nunca dado ou produto; sem rostos.
