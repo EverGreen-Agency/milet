@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~938 palavras, **~6:37** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~945 palavras, **~6:40** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -157,21 +157,21 @@ Os prints são de 20/10, em tema claro. Não usar `shots/diag-01-fatura.png`: ai
 
 ---
 
-### 06 · Diferencial (3:05–3:37) · L2 → L3 · slide 08 · Eduardo
+### 06 · Diferencial (3:05–3:40) · L2 → L3 · slide 08 · Eduardo
 
-> "Gestoras e comercializadoras já fazem partes disso. Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo de energia, os dados são da empresa, e a gente continua depois da assinatura, acompanhando a economia e voltando a cotar antes do vencimento. E essa vantagem cresce com o uso: cada empresa acompanhada traz mais dados e atrai mais fornecedores para a mesma régua, e isso não se copia da noite para o dia."
+> "A UC Livre, a Clarke e a Electy já comparam fornecedores, e a Clarke também acompanha os clientes depois da contratação. O Milet se diferencia em três pontos: não pertence a nenhum grupo de energia, compara todas as rotas, inclusive a solar própria, e deixa os dados com a empresa, no Passaporte Energético. E essa vantagem cresce com o uso: cada empresa acompanhada traz mais dados e atrai mais fornecedores para a mesma régua, e isso não se copia da noite para o dia."
 
 **Tela**
-- "Gestoras e comercializadoras…": tabela do slide 08 em L3, colunas aparecendo da esquerda para a direita.
-- "Nosso diferencial…": a coluna **Milet** acende; as outras ficam a 40% de opacidade.
+- "A UC Livre, a Clarke e a Electy…": tabela do slide 08 em L3, colunas aparecendo da esquerda para a direita, no ritmo dos nomes.
+- "O Milet se diferencia…": a coluna **Milet** acende; as outras ficam a 40% de opacidade.
 - Cada critério dito ganha um *highlight* âmbar na linha correspondente.
-- **Cuidado:** nunca dizer "somos os únicos". Clarke, UC Livre e Ynova já anunciam RFQ e gestão.
+- **Cuidado:** nunca dizer "somos os únicos". Também não vender "acompanhar depois da contratação" como diferencial: a Clarke e a UC Livre comunicam isso. Cada célula da tabela foi conferida nos sites em 23/10/2026 (fontes nas notas do slide 08).
 
 **Assets:** GFX-07 · **Som:** `whoosh` na coluna Milet.
 
 ---
 
-### 07 · Modelo de negócio e canais (3:37–5:01) · L3 · slides 09, 10 e 11 · Eduardo
+### 07 · Modelo de negócio e canais (3:40–5:04) · L3 · slides 09, 10 e 11 · Eduardo
 
 > "O modelo tem dois lados. De um, as PMEs. Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na CCEE, são cento e quarenta disputando as mesmas empresas. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. Somando as duas receitas, cada PME pode render cerca de três mil e setecentos reais por ano. Com as setenta e duas mil PMEs que podem migrar, o mercado total é de cerca de duzentos e sessenta e cinco milhões de reais por ano. Só as cerca de vinte mil migrações de cada ano somam uns cem milhões em taxas. E a meta em três anos é chegar a um por cento dessas empresas: cerca de setecentas PMEs e dois milhões e setecentos mil reais por ano. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada e cobra da empresa cem reais por mês pela gestão. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
@@ -189,7 +189,7 @@ Os prints são de 20/10, em tema claro. Não usar `shots/diag-01-fatura.png`: ai
 
 ---
 
-### 08 · Validação e visão (5:01–5:59) · L2 · slides 12 e 13 · Eduardo
+### 08 · Validação e visão (5:04–6:02) · L2 · slides 12 e 13 · Eduardo
 
 > "Já começamos a ouvir o mercado. O primeiro fornecedor que respondeu quer conhecer o piloto, com uma condição: que a gente escolha bem os fornecedores, olhando atendimento e reputação. E o primeiro dono de PME que respondeu cuida da energia numa planilha, ignorou as propostas que recebeu e quer saber se as placas solares estão entregando o que prometeram. Nas próximas semanas, vamos ouvir dez empresas e cinco fornecedores. Ao mesmo tempo, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
@@ -203,7 +203,7 @@ Os prints são de 20/10, em tema claro. Não usar `shots/diag-01-fatura.png`: ai
 
 ---
 
-### 09 · Equipe (5:59–6:28) · L2 · slide 14 · Eduardo
+### 09 · Equipe (6:02–6:31) · L2 · slide 14 · Eduardo
 
 > "Eu venho da Engenharia de Computação e cuido do produto. E o setor não é novo para mim: meu pai é engenheiro e tem a ElectROM, que instala usinas solares. Isso nos dá acesso direto a quem constrói a oferta de energia. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -217,7 +217,7 @@ Os prints são de 20/10, em tema claro. Não usar `shots/diag-01-fatura.png`: ai
 
 ---
 
-### 10 · Fechamento (6:28–6:37) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (6:31–6:40) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
