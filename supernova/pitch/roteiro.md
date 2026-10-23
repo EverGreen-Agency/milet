@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~906 palavras, **~6:24** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~938 palavras, **~6:37** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -202,20 +202,21 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (5:59–6:15) · L2 · slide 14 · Eduardo
+### 09 · Equipe (5:59–6:28) · L2 · slide 14 · Eduardo
 
-> "Eu venho da Engenharia de Computação e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
+> "Eu venho da Engenharia de Computação e cuido do produto. E o setor não é novo para mim: meu pai é engenheiro e tem a ElectROM, que instala usinas solares. Isso nos dá acesso direto a quem constrói a oferta de energia. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
 **Tela**
 - Rosto em L2; à direita, a grade do slide 14 acende pessoa por pessoa, em sincronia com cada nome.
 - *Lower third* repetido no início do bloco: `EDUARDO FERREIRA DE MATTOS · COFUNDADOR` (mono, âmbar).
+- Em "ElectROM": selo mono `ELECTROM · EPC DE USINAS SOLARES` ao lado do card do Eduardo por 2 s.
 - O card da orientadora diz "Professora de Análise de Dados no Mackenzie". Na menção a ela, o card ganha o selo `SHARK TANK BRASIL · TOP 10 FEMALE TECH FOUNDERS` por 2 s: credencial na tela, sem gastar fala.
 
 **Assets:** GFX-10 (slide 14 com as três fotos).
 
 ---
 
-### 10 · Fechamento (6:15–6:24) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (6:28–6:37) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 
