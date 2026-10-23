@@ -5,7 +5,7 @@ Fonte única da **fala**. O [deck](deck.html) guarda só a deixa de cada slide; 
 | Item | Valor |
 |---|---|
 | Limite | **3:00** (regra da Supernova) |
-| Fala | Versão completa, com todas as falas: ~762 palavras, **~5:24** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
+| Fala | Versão completa, com todas as falas: ~849 palavras, **~6:00** a 145 palavras/min (os tempos de cada bloco abaixo seguem esse ritmo). O Eduardo lapida para caber em 3:00 |
 | Quem fala | **Eduardo, sozinho, do início ao fim**. Gustavo e a orientadora aparecem em foto no bloco de equipe |
 | Formato | 1920×1080 · 30 fps · H.264 · voz a -14 LUFS |
 | Estilo | *Talking head* com motion graphics, versão premium (Iman Gadzhi): fundo escuro, título serifado, B-roll cinematográfico, sound design discreto |
@@ -169,16 +169,17 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 07 · Modelo de negócio e canais (3:13–4:01) · L3 · slides 09, 10 e 11 · Eduardo
+### 07 · Modelo de negócio e canais (3:13–4:37) · L3 · slides 09, 10 e 11 · Eduardo
 
-> "O modelo tem dois lados. De um, as PMEs. Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na CCEE, são cento e quarenta disputando as mesmas empresas. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada e cobra da empresa cem reais por mês pela gestão. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
+> "O modelo tem dois lados. De um, as PMEs. Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na CCEE, são cento e quarenta disputando as mesmas empresas. O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente. A empresa pode assinar o acompanhamento contínuo. Somando as duas receitas, cada PME pode render cerca de três mil e setecentos reais por ano. Com as setenta e duas mil PMEs que podem migrar, o mercado total é de cerca de duzentos e sessenta e cinco milhões de reais por ano. Só as cerca de vinte mil migrações de cada ano somam uns cem milhões em taxas. E a meta em três anos é chegar a um por cento dessas empresas: cerca de setecentas PMEs e dois milhões e setecentos mil reais por ano. As duas são hipóteses em teste, e o mercado já paga por isso: uma gestora do setor paga a parceiros de cinco a dez mil reais por empresa fechada e cobra da empresa cem reais por mês pela gestão. E chegamos à PME pelo diagnóstico gratuito, com indicação de contadores e EPCs."
 
 **Tela**
 - "Dois lados": slide 09, os dois cards (PMEs do Grupo A; comercializadoras e geradores) acendem um por vez.
 - "Cento e quarenta": zoom no print da CCEE do slide 09, número **140** com sublinhado âmbar.
 - "O fornecedor recebe…": diagrama do slide 09, o nó Milet pulsa uma vez; seta de **dados** PME → Milet → fornecedor; seta de **receita** voltando de cada lado, em sincronia com a fala.
+- "Somando as duas receitas…": o quadro TAM, SAM e SOM do slide 09 acende uma linha por frase (TAM em "mercado total", SAM em "migrações de cada ano", SOM em "meta em três anos"), com a fonte visível.
 - Selo âmbar `HIPÓTESE` nas duas receitas quando a palavra é dita.
-- Consistência com o BMC entregue: mesmos dois segmentos, mesmas duas receitas.
+- Consistência com o BMC entregue: mesmos dois segmentos, mesmas duas receitas e os mesmos números do card "Potencial de receita".
 - "O mercado já paga por isso": corte para o slide 10. Zoom no print da Clarke (R$ 5 a 10 mil por PME fechada) em "cinco a dez mil" e no print de R$ 100/mês em "cem reais por mês". O print da Electy (paga pelas usinas) fica visível ao lado.
 - "E chegamos à PME…": corte para o funil do slide 11; as quatro etapas acendem da esquerda para a direita, com destaque em **02 · Engajar · Diagnóstico gratuito**.
 
@@ -186,7 +187,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 08 · Validação e visão (4:01–4:59) · L2 · slides 12 e 13 · Eduardo
+### 08 · Validação e visão (4:37–5:35) · L2 · slides 12 e 13 · Eduardo
 
 > "Já começamos a ouvir o mercado. O primeiro fornecedor que respondeu quer conhecer o piloto, com uma condição: que a gente escolha bem os fornecedores, olhando atendimento e reputação. E o primeiro dono de PME que respondeu cuida da energia numa planilha, ignorou as propostas que recebeu e quer saber se as placas solares estão entregando o que prometeram. Nas próximas semanas, vamos ouvir dez empresas e cinco fornecedores. Ao mesmo tempo, cadastramos as primeiras empresas, comercializadoras e usinas. Em 2027, abrimos o marketplace, o app e as ferramentas para quem vende energia. O Passaporte Energético também vira uma API: contadores, ERPs e EPCs usam os dados que a empresa autorizar, e com o Open Energy esses dados podem vir direto da distribuidora. Tudo isso a tempo de pequenos comércios, e depois residências, poderem escolher de quem compram energia."
 
@@ -200,7 +201,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 09 · Equipe (4:59–5:15) · L2 · slide 14 · Eduardo
+### 09 · Equipe (5:35–5:51) · L2 · slide 14 · Eduardo
 
 > "Sou o Eduardo, de Engenharia de Computação, e cuido do produto. Meu cofundador, o Gustavo, de Ciência da Computação, cuida do código e da experiência. E temos a orientação da professora Mariana Zuliani, do Mackenzie, fundadora da OncoAI."
 
@@ -213,7 +214,7 @@ Cada bloco: **tempo · layout · slide do deck · quem fala**, depois a fala, a 
 
 ---
 
-### 10 · Fechamento (5:15–5:24) · L1 → L4 · slide 15 · Eduardo
+### 10 · Fechamento (5:51–6:00) · L1 → L4 · slide 15 · Eduardo
 
 > "O Milet existe para a empresa escolher a energia sem adivinhar. *(pausa)* Energia em mais liberdade."
 

@@ -2,7 +2,7 @@
 
 Só o que o Eduardo fala, slide por slide. Telas, efeitos e assets ficam no [roteiro](roteiro.md), que é a fonte; se lapidar aqui, sincronize lá.
 
-**Total:** 762 palavras, cerca de 5:15 a 145 palavras/min, sem contar pausas. **Limite:** 3:00 (cerca de 435 palavras).
+**Total:** 849 palavras, cerca de 5:51 a 145 palavras/min, sem contar pausas. **Limite:** 3:00 (cerca de 435 palavras).
 
 O slide 01 (capa) não tem fala.
 
@@ -122,7 +122,7 @@ Nosso diferencial é ficar do lado da empresa: o Milet não pertence a um grupo 
 ---
 
 ## Slide 09 · Modelo de negócio
-<sub>63 palavras · ~26 s</sub>
+<sub>150 palavras · ~62 s</sub>
 
 O modelo tem dois lados.
 
@@ -133,6 +133,14 @@ Do outro, quem vende energia: só de comercializadoras varejistas habilitadas na
 O fornecedor recebe demanda qualificada e dados prontos para cotar, e paga uma taxa por contrato fechado, ou por megawatt-hora, igual para todos e informada ao cliente.
 
 A empresa pode assinar o acompanhamento contínuo.
+
+Somando as duas receitas, cada PME pode render cerca de três mil e setecentos reais por ano.
+
+Com as setenta e duas mil PMEs que podem migrar, o mercado total é de cerca de duzentos e sessenta e cinco milhões de reais por ano.
+
+Só as cerca de vinte mil migrações de cada ano somam uns cem milhões em taxas.
+
+E a meta em três anos é chegar a um por cento dessas empresas: cerca de setecentas PMEs e dois milhões e setecentos mil reais por ano.
 
 ---
 
