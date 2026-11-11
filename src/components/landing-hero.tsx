@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Lightning,
@@ -20,6 +21,8 @@ import {
   type InvoiceInput,
   type ProposalInput
 } from "@/domain/energy-engine";
+import { PME_VARIANTS, assignPmeVariant, type PmeVariant } from "@/domain/experiments";
+import { getValidationSessionId, trackValidationEvent } from "@/lib/experiment-tracking";
 
 interface ProfileData {
   id: string;
@@ -70,10 +73,20 @@ const PROFILES: Record<string, ProfileData> = {
 export function LandingHero() {
   // Nesta fase o Milet atende só PMEs do Grupo A; os outros perfis entram com a abertura da baixa tensão.
   const activeProfile = PROFILES.pme!;
+  const [variant, setVariant] = useState<PmeVariant>("A");
+  const [residentialInterestRegistered, setResidentialInterestRegistered] = useState(false);
+  const [supplierInterestRegistered, setSupplierInterestRegistered] = useState(false);
+
+  useEffect(() => {
+    const assigned = assignPmeVariant(getValidationSessionId());
+    setVariant(assigned);
+    trackValidationEvent("pme_landing_view", assigned);
+  }, []);
 
   const normalized = normalizeProposal(activeProfile.proposal, activeProfile.invoice.total);
   const eligibility = evaluateEligibility(activeProfile.invoice);
   const bestRoute = eligibility.find((e) => e.status === "eligible") ?? eligibility[0]!;
+  const copy = PME_VARIANTS[variant];
 
   return (
     <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24">
@@ -97,23 +110,20 @@ export function LandingHero() {
         {/* Main Headline */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[var(--foreground)] leading-[1.15]">
-            Menos economês. Mais transparência na sua{" "}
-            <span className="bg-gradient-to-r from-[var(--color-milet-amber)] to-[var(--color-milet-copper)] bg-clip-text text-transparent">
-              conta de energia
-            </span>
-            .
+            {copy.headline}
           </h1>
           <p className="mt-5 text-base sm:text-lg text-[var(--foreground)]/70 max-w-2xl mx-auto leading-relaxed">
-            Plataforma independente que audita sua fatura de luz, calcula o custo real de transição e compara propostas de mercado livre e energia solar sem comissões escondidas.
+            {copy.description}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/diagnostico"
+              onClick={() => trackValidationEvent("pme_cta_clicked", variant)}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:shadow-lg hover:brightness-105 transition-all duration-200 active:scale-98"
             >
               <FileArrowUp weight="bold" className="w-5 h-5" />
-              <span>Simular com Minha Fatura</span>
+              <span>{copy.cta}</span>
             </Link>
             <a
               href="#como-funciona"
@@ -123,6 +133,50 @@ export function LandingHero() {
               <ArrowRight weight="bold" className="w-4 h-4 text-[var(--foreground)]/60" />
             </a>
           </div>
+        </div>
+
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2">
+          <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 text-left">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)]">
+              Residencial · em breve
+            </p>
+            <h2 className="mt-2 font-serif text-xl font-bold text-[var(--foreground)]">Uma jornada residencial mais simples</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--foreground)]/70">
+              Estamos testando interesse antes de construir essa experiência. Ainda não coletamos faturas nem dados de contato aqui.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                trackValidationEvent("residential_coming_soon_clicked");
+                setResidentialInterestRegistered(true);
+              }}
+              className="mt-4 inline-flex rounded-xl border border-[var(--border-strong)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition-colors hover:border-[var(--color-milet-amber)]"
+            >
+              Tenho interesse na jornada residencial
+            </button>
+            {residentialInterestRegistered ? <p className="mt-3 text-xs text-emerald-700 dark:text-emerald-400">Interesse registrado anonimamente para este experimento.</p> : null}
+          </section>
+
+          <section className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 text-left">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)]">
+              Fornecedores · piloto B2B
+            </p>
+            <h2 className="mt-2 font-serif text-xl font-bold text-[var(--foreground)]">Carta de intenção não vinculante</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--foreground)]/70">
+              O piloto mede disposição para responder a RFQs qualificados. A carta não cria exclusividade, compra nem obrigação de contratação.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                trackValidationEvent("supplier_loi_requested");
+                setSupplierInterestRegistered(true);
+              }}
+              className="mt-4 inline-flex rounded-xl border border-[var(--border-strong)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition-colors hover:border-[var(--color-milet-amber)]"
+            >
+              Solicitar conversa sobre LOI
+            </button>
+            {supplierInterestRegistered ? <p className="mt-3 text-xs text-emerald-700 dark:text-emerald-400">Interesse registrado anonimamente; a formalização é feita em conversa com a equipe.</p> : null}
+          </section>
         </div>
 
         {/* Exemplo de diagnóstico (PME do Grupo A) */}

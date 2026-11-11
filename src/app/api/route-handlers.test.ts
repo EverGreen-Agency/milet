@@ -1,6 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { POST as extractInvoicePost } from "./extract-invoice/route";
 import { POST as intakesPost } from "./intakes/route";
+import {
+  GET as experimentsGet,
+  POST as experimentsPost,
+  resetExperimentEventsForTest
+} from "./experiments/route";
 
 describe("Feature: Next.js Route Handlers", () => {
   const originalEnv = { ...process.env };
@@ -8,6 +13,7 @@ describe("Feature: Next.js Route Handlers", () => {
 
   beforeEach(() => {
     process.env = { ...originalEnv };
+    resetExperimentEventsForTest();
   });
 
   afterEach(() => {
@@ -293,6 +299,57 @@ describe("Feature: Next.js Route Handlers", () => {
       expect(res.status).toBe(500);
       const data = await res.json();
       expect(data.message).toBe("Erro interno ao processar intake.");
+    });
+  });
+
+  describe("Rule: validation telemetry API", () => {
+    it("Scenario: records an anonymous PME experiment event", async () => {
+      const res = await experimentsPost(
+        new Request("http://localhost/api/experiments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            event: "pme_landing_view",
+            variant: "A",
+            visitorId: "session-8b7e1f2a"
+          })
+        })
+      );
+
+      expect(res.status).toBe(201);
+      expect(await res.json()).toEqual({ status: "recorded" });
+    });
+
+    it("Scenario: rejects telemetry that contains an e-mail identifier", async () => {
+      const res = await experimentsPost(
+        new Request("http://localhost/api/experiments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ event: "pme_landing_view", visitorId: "pessoa@empresa.com" })
+        })
+      );
+
+      expect(res.status).toBe(400);
+      expect((await res.json()).errors).toHaveProperty("visitorId");
+    });
+
+    it("Scenario: exposes a collecting-data summary without declaring a winner", async () => {
+      const res = await experimentsGet();
+      const data = await res.json();
+
+      expect(res.status).toBe(200);
+      expect(data.storage).toBe("memory_per_instance");
+      expect(data.pme.status).toBe("collecting_data");
+      expect(data.totalEvents).toBe(0);
+    });
+
+    it("Scenario: rejects malformed telemetry input safely", async () => {
+      const res = await experimentsPost({
+        json: vi.fn().mockRejectedValue(new Error("bad payload"))
+      } as unknown as Request);
+
+      expect(res.status).toBe(400);
+      expect((await res.json()).message).toBe("Não foi possível registrar o evento de validação.");
     });
   });
 });

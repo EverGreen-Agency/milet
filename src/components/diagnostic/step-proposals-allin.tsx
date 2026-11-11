@@ -10,6 +10,8 @@ import {
 } from "@/domain/energy-engine";
 import type { LeadData } from "./step-lead-triage";
 import type { InvoiceExtractedData } from "./step-invoice-upload";
+import { assignPmeVariant } from "@/domain/experiments";
+import { getValidationSessionId, trackValidationEvent } from "@/lib/experiment-tracking";
 
 interface StepProposalsAllInProps {
   lead: LeadData;
@@ -76,6 +78,7 @@ export function StepProposalsAllIn({
       const data = await res.json();
       setProtocolId(data.id || `INT-${Date.now()}`);
       setSubmissionSuccess(true);
+      trackValidationEvent("pme_intake_submitted", assignPmeVariant(getValidationSessionId()));
     } catch (err: any) {
       setErrorMessage(err.message || "Erro de conexão ao submeter o diagnóstico.");
     } finally {
