@@ -1,6 +1,7 @@
 "use client";
 
 import type { PmeVariant, TelemetryEventName } from "@/domain/experiments";
+import { captureValidationEvent } from "@/lib/posthog-client";
 
 const STORAGE_KEY = "milet-validation-session";
 
@@ -13,11 +14,7 @@ export function getValidationSessionId(): string {
 }
 
 export function trackValidationEvent(event: TelemetryEventName, variant?: PmeVariant): void {
-  const payload = JSON.stringify({ event, variant, visitorId: getValidationSessionId() });
-  void fetch("/api/experiments", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: payload,
-    keepalive: true
-  }).catch(() => undefined);
+  // The local session id never leaves the browser. PostHog generates its own
+  // anonymous distinct id after the visitor opts in.
+  captureValidationEvent(event, variant);
 }

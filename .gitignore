@@ -9,6 +9,13 @@ venv/
 # Vercel
 .vercel/
 
+# Local configuration (including public browser analytics configuration)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # System & IDE
 .DS_Store
 Thumbs.db

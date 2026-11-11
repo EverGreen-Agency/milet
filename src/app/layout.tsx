@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 
 export const metadata: Metadata = {
   title: "Milet | Transparência Radical no Mercado Livre de Energia",
@@ -45,6 +46,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--color-milet-amber)] selection:text-white">
         {children}
+        <AnalyticsConsent />
       </body>
     </html>
   );

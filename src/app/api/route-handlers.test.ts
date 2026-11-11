@@ -3,9 +3,9 @@ import { POST as extractInvoicePost } from "./extract-invoice/route";
 import { POST as intakesPost } from "./intakes/route";
 import {
   GET as experimentsGet,
-  POST as experimentsPost,
-  resetExperimentEventsForTest
+  POST as experimentsPost
 } from "./experiments/route";
+import { resetExperimentEventsForTest } from "@/lib/experiment-event-store";
 
 describe("Feature: Next.js Route Handlers", () => {
   const originalEnv = { ...process.env };
