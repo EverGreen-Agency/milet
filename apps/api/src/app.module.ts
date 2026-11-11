@@ -18,6 +18,7 @@ import { RequestObservabilityMiddleware } from "./http/request-observability.mid
 import { SecurityHeadersMiddleware } from "./http/security-headers.middleware";
 import { MetricsController } from "./observability/metrics.controller";
 import { ApiOperationalMetrics } from "./observability/operational-metrics";
+import { PosthogAiService } from "./observability/posthog-ai.service";
 import { FakeTenantAccessService } from "./tenancy/fake-tenant-access.service";
 import { PostgresTenantAccessService } from "./tenancy/postgres-tenant-access.service";
 import { TenantGuard } from "./tenancy/tenant.guard";
@@ -31,6 +32,7 @@ import { TOKENS } from "./tokens";
     SecurityHeadersMiddleware,
     RequestObservabilityMiddleware,
     ApiOperationalMetrics,
+    PosthogAiService,
     FakeTenantAccessService,
     PostgresTenantAccessService,
     InMemoryAuditStore,

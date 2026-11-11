@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FileArrowUp, ArrowsClockwise, Sparkle, ArrowLeft, ArrowRight, CheckCircle, Warning, PlayCircle, ShieldCheck } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 import type { InvoiceInput } from "@/domain/energy-engine";
 
 export interface InvoiceExtractedData extends InvoiceInput {
@@ -140,6 +141,11 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
             };
 
             setInvoice(updated);
+            posthog.capture("invoice_extraction_completed", {
+              extraction_method: "upload",
+              mime_type: mimeType,
+              extraction_source: updated.extractionSource
+            });
             setStatusMessage("Passaporte Energético estruturado com sucesso.");
           }
         } catch (err: any) {
@@ -180,6 +186,11 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
 
     setTimeout(() => {
       setInvoice(preset.data);
+      posthog.capture("invoice_extraction_completed", {
+        extraction_method: "demo",
+        preset_id: preset.id,
+        extraction_source: preset.data.extractionSource
+      });
       setIsProcessing(false);
       setReadingStage(0);
       setStatusMessage(`Passaporte Energético estruturado: ${preset.label}`);

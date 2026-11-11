@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { captureGeminiGeneration } from "./posthog-ai.js";
 
 const ALLOWED_MIME_TYPES = new Set([
   "application/pdf",
@@ -138,42 +139,86 @@ Extraia com o máximo de precisão os seguintes campos regulatórios e técnicos
 Se algum dado não estiver legível ou não for aplicável, retorne nulo ou omitido.`;
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(config.geminiModel)}:generateContent`;
-
-  const response = await httpFetch(url, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-goog-api-key": config.geminiApiKey
-    },
-    body: JSON.stringify({
-      contents: [{
-        role: "user",
-        parts: [
-          { inlineData: { mimeType, data: fileBase64 } },
-          { text: prompt }
-        ]
-      }],
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: extractionSchema,
-        temperature: 0.1
-      }
-    })
-  });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    throw problem(502, `Falha no processamento pelo modelo de IA: ${errorBody.slice(0, 200)}`);
-  }
-
-  const payload = await response.json();
-  const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw problem(502, "A IA não retornou conteúdo estruturado legível.");
+  const traceId = crypto.randomUUID();
+  const startedAt = performance.now();
+  const aiInput = [{ role: "user", content: [{ type: "file", mimeType }, { type: "text", text: prompt }] }];
+  let generationCaptured = false;
 
   try {
-    return JSON.parse(text);
-  } catch {
-    throw problem(502, "Erro ao interpretar resposta JSON da IA.");
+    const response = await httpFetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-goog-api-key": config.geminiApiKey
+      },
+      body: JSON.stringify({
+        contents: [{
+          role: "user",
+          parts: [
+            { inlineData: { mimeType, data: fileBase64 } },
+            { text: prompt }
+          ]
+        }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: extractionSchema,
+          temperature: 0.1
+        }
+      })
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, status: response.status,
+        error: `Gemini request failed with status ${response.status}`,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "invoice_extraction"
+      });
+      generationCaptured = true;
+      throw problem(502, `Falha no processamento pelo modelo de IA: ${errorBody.slice(0, 200)}`);
+    }
+
+    const payload = await response.json();
+    const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!text) {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, status: response.status,
+        error: "Gemini did not return structured content", inputTokens: payload?.usageMetadata?.promptTokenCount,
+        outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "invoice_extraction"
+      });
+      generationCaptured = true;
+      throw problem(502, "A IA não retornou conteúdo estruturado legível.");
+    }
+
+    try {
+      const extracted = JSON.parse(text);
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, output: text, status: response.status,
+        inputTokens: payload?.usageMetadata?.promptTokenCount, outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "invoice_extraction"
+      });
+      generationCaptured = true;
+      return extracted;
+    } catch {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, output: text, status: response.status,
+        error: "Gemini returned invalid JSON", inputTokens: payload?.usageMetadata?.promptTokenCount,
+        outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "invoice_extraction"
+      });
+      generationCaptured = true;
+      throw problem(502, "Erro ao interpretar resposta JSON da IA.");
+    }
+  } catch (error) {
+    if (!generationCaptured) {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput,
+        error: error instanceof Error ? error.message : "Gemini request failed",
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "invoice_extraction"
+      });
+    }
+    throw error;
   }
 }
 

@@ -1,7 +1,9 @@
 import { BadGatewayException, BadRequestException, Inject, Injectable, ServiceUnavailableException } from "@nestjs/common";
+import crypto from "node:crypto";
 import { TOKENS } from "../tokens";
 import type { AppConfig } from "../config/app-config";
 import type { ExternalFetch, IntakeGuidance, IntakeRequest } from "./intake.types";
+import { PosthogAiService } from "../observability/posthog-ai.service";
 
 const schema = {
   type: "object",
@@ -19,6 +21,7 @@ export class IntakeService {
   constructor(
     @Inject(TOKENS.appConfig) private readonly config: AppConfig,
     @Inject(TOKENS.externalFetch) private readonly http: ExternalFetch,
+    private readonly posthogAi?: PosthogAiService,
   ) {}
 
   async submit(raw: IntakeRequest): Promise<{ submissionId: string; guidance: IntakeGuidance; acknowledgementSent: boolean }> {
@@ -33,18 +36,61 @@ export class IntakeService {
   }
 
   private async generateGuidance(input: IntakeRequest): Promise<IntakeGuidance> {
-    const response = await this.http.fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(this.config.geminiModel!)}:generateContent`, {
-      method: "POST",
-      headers: { "content-type": "application/json", "x-goog-api-key": this.config.geminiApiKey! },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text: promptFor(input) }] }],
-        generationConfig: { responseMimeType: "application/json", responseSchema: schema, temperature: 0.1 },
-      }),
-    });
-    const payload = await safeJson(response);
-    if (!response.ok) throw new BadGatewayException("A análise por IA não está disponível agora. Tente novamente mais tarde.");
-    const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
-    try { return validateGuidance(JSON.parse(String(text))); } catch { throw new BadGatewayException("A IA não retornou uma orientação válida. Tente novamente mais tarde."); }
+    const prompt = promptFor(input);
+    const traceId = crypto.randomUUID();
+    const startedAt = performance.now();
+    const aiInput = [{ role: "user", content: prompt }];
+    let generationCaptured = false;
+
+    try {
+      const response = await this.http.fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(this.config.geminiModel!)}:generateContent`, {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-goog-api-key": this.config.geminiApiKey! },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json", responseSchema: schema, temperature: 0.1 },
+        }),
+      });
+      const payload = await safeJson(response);
+      const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!response.ok) {
+        this.posthogAi?.captureGeminiGeneration({
+          traceId, model: this.config.geminiModel!, input: aiInput, status: response.status,
+          error: `Gemini request failed with status ${response.status}`,
+          latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+        });
+        generationCaptured = true;
+        throw new BadGatewayException("A análise por IA não está disponível agora. Tente novamente mais tarde.");
+      }
+      try {
+        const guidance = validateGuidance(JSON.parse(String(text)));
+        this.posthogAi?.captureGeminiGeneration({
+          traceId, model: this.config.geminiModel!, input: aiInput, output: String(text), status: response.status,
+          inputTokens: payload?.usageMetadata?.promptTokenCount, outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+          latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+        });
+        generationCaptured = true;
+        return guidance;
+      } catch {
+        this.posthogAi?.captureGeminiGeneration({
+          traceId, model: this.config.geminiModel!, input: aiInput, output: text, status: response.status,
+          error: "Gemini returned invalid guidance", inputTokens: payload?.usageMetadata?.promptTokenCount,
+          outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+          latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+        });
+        generationCaptured = true;
+        throw new BadGatewayException("A IA não retornou uma orientação válida. Tente novamente mais tarde.");
+      }
+    } catch (error) {
+      if (!generationCaptured) {
+        this.posthogAi?.captureGeminiGeneration({
+          traceId, model: this.config.geminiModel!, input: aiInput,
+          error: error instanceof Error ? error.message : "Gemini request failed",
+          latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+        });
+      }
+      throw error;
+    }
   }
 
   private async notifyTeam(input: IntakeRequest, guidance: IntakeGuidance): Promise<void> {

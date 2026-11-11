@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Receipt, CheckCircle, Lightning, IdentificationCard, ShieldCheck } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 import { validateInvoice, formatCurrencyBRL, type InvoiceValidationErrors } from "@/domain/energy-engine";
 import type { InvoiceExtractedData } from "./step-invoice-upload";
 
@@ -28,6 +29,10 @@ export function StepInvoiceReview({ invoice: initialInvoice, onBack, onComplete 
       setErrors(currentErrors);
       return;
     }
+    posthog.capture("invoice_review_completed", {
+      voltage_group: invoice.voltageGroup,
+      has_contracted_demand: Boolean(invoice.contractedDemandKw)
+    });
     onComplete(invoice);
   };
 

@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight, ShieldCheck, CheckCircle, WarningCircle, Scales, Lightning, ChartPieSlice } from "@phosphor-icons/react";
 import { formatCurrencyBRL, evaluateEligibility, type EligibilityResult } from "@/domain/energy-engine";
+import posthog from "posthog-js";
 import type { InvoiceExtractedData } from "./step-invoice-upload";
 
 interface StepTechnicalBaselineProps {
@@ -27,6 +28,14 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
   const distributionPercent = Math.round((distributionCost / total) * 100);
   const taxesPercent = Math.round((taxesCost / total) * 100);
   const flagsPercent = 100 - (energyPercent + distributionPercent + taxesPercent);
+
+  const handleComplete = () => {
+    posthog.capture("diagnostic_generated", {
+      eligible_route_count: eligibility.filter((item) => item.status === "eligible").length,
+      requires_review_route_count: eligibility.filter((item) => item.status === "review").length
+    });
+    onComplete();
+  };
 
   return (
     <div className="space-y-8">
@@ -234,7 +243,7 @@ export function StepTechnicalBaseline({ invoice, onBack, onComplete }: StepTechn
 
         <button
           type="button"
-          onClick={onComplete}
+          onClick={handleComplete}
           className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
         >
           <span>Comparar propostas</span>

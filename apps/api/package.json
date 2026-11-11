@@ -5,13 +5,14 @@
   "type": "commonjs",
   "main": "dist/main.js",
   "dependencies": {
-    "@nestjs/common": "^11.1.6",
-    "@nestjs/core": "^11.1.6",
-    "@nestjs/platform-express": "^11.1.6",
     "@milet/contracts": "*",
     "@milet/domain": "*",
     "@milet/test-fixtures": "*",
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/platform-express": "^11.1.6",
     "pg": "^8.16.3",
+    "posthog-node": "^5.69.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2"
   },
