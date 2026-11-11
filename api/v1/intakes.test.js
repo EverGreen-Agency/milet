@@ -30,4 +30,27 @@ test("Vercel intake fails closed without real-intake flags", async () => {
   );
 });
 
+test("Vercel intake encodes untrusted LLM output before placing it in e-mail HTML", async () => {
+  const calls = [];
+  const httpFetch = async (url, init) => {
+    calls.push({ url, init });
+    if (url.includes("generativelanguage.googleapis.com")) {
+      return json({ candidates: [{ content: { parts: [{ text: JSON.stringify({
+        whatWeKnow: ["<img src=x onerror=alert('xss')>"],
+        whatToVerify: ["<script>alert('xss')</script>"],
+        nextAction: "<b>Validar manualmente</b>",
+        limits: "<a href=javascript:alert('xss')>Não é cotação</a>",
+      }) }] } }] });
+    }
+    return json({ id: "email_123" });
+  };
+
+  await processIntake(input, environment, httpFetch);
+
+  const teamMail = JSON.parse(calls[1].init.body);
+  assert.doesNotMatch(teamMail.html, /<img|<script|<b>|<a /i);
+  assert.match(teamMail.html, /&lt;img src=x onerror=alert\(&#39;xss&#39;\)&gt;/);
+  assert.match(teamMail.html, /&lt;script&gt;alert\(&#39;xss&#39;\)&lt;\/script&gt;/);
+});
+
 function json(body) { return new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json" } }); }
