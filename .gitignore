@@ -42,3 +42,4 @@ supernova/*.pptx
 supernova/*.pdf
 
 .vercel
+.env.local

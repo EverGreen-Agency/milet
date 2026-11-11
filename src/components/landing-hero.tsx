@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import posthog from "posthog-js";
 import {
   Lightning,
   Buildings,
@@ -110,6 +111,7 @@ export function LandingHero() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/diagnostico"
+              onClick={() => posthog.capture("diagnostic_started", { entry_point: "hero" })}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:shadow-lg hover:brightness-105 transition-all duration-200 active:scale-98"
             >
               <FileArrowUp weight="bold" className="w-5 h-5" />
@@ -238,6 +240,7 @@ export function LandingHero() {
 
                 <Link
                   href="/diagnostico"
+                  onClick={() => posthog.capture("diagnostic_started", { entry_point: "example" })}
                   className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-white milet-amber-gradient shadow-xs hover:opacity-90 transition-all"
                 >
                   <span>Analisar Meu Caso Real</span>

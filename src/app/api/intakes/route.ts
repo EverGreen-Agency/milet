@@ -1,6 +1,22 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import crypto from "node:crypto";
+import { SeverityNumber } from "@opentelemetry/api-logs";
 import { validateInvoice, type InvoiceInput } from "@/domain/energy-engine";
+import { posthogLogger, posthogLoggerProvider } from "../../../../instrumentation";
+
+function emitIntakeLog(status: "success" | "failed") {
+  posthogLogger?.emit({
+    body: "diagnostic intake completed",
+    severityNumber: status === "success" ? SeverityNumber.INFO : SeverityNumber.ERROR,
+    attributes: { endpoint: "/api/intakes", operation: "diagnostic_intake", status }
+  });
+
+  after(async () => {
+    if (posthogLoggerProvider) {
+      await posthogLoggerProvider.forceFlush().catch(() => {});
+    }
+  });
+}
 
 export async function POST(request: Request) {
   try {
@@ -28,8 +44,10 @@ export async function POST(request: Request) {
       status: "received"
     };
 
+    emitIntakeLog("success");
     return NextResponse.json(intakeRecord, { status: 201 });
   } catch (error: any) {
+    emitIntakeLog("failed");
     return NextResponse.json({ message: error?.message || "Erro interno ao processar intake." }, { status: 500 });
   }
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowLeft, Lightning, CheckCircle, Warning, Sparkle, ShieldCheck, Printer, Check, Star } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 import {
   rankProposals,
   formatCurrencyBRL,
@@ -74,6 +75,10 @@ export function StepProposalsAllIn({
       }
 
       const data = await res.json();
+      posthog.capture("diagnostic_submitted", {
+        selected_proposal_id: selectedProposal?.id,
+        proposal_route: selectedProposal?.route
+      });
       setProtocolId(data.id || `INT-${Date.now()}`);
       setSubmissionSuccess(true);
     } catch (err: any) {
@@ -84,7 +89,17 @@ export function StepProposalsAllIn({
   };
 
   const handlePrint = () => {
+    posthog.capture("diagnostic_report_printed");
     window.print();
+  };
+
+  const handleProposalSelection = (proposal: NormalizedProposal) => {
+    setSelectedProposalId(proposal.id);
+    posthog.capture("proposal_selected", {
+      proposal_id: proposal.id,
+      proposal_rank: proposal.rank,
+      proposal_route: proposal.route
+    });
   };
 
   if (submissionSuccess) {
@@ -182,7 +197,7 @@ export function StepProposalsAllIn({
           return (
             <div
               key={prop.id}
-              onClick={() => setSelectedProposalId(prop.id)}
+              onClick={() => handleProposalSelection(prop)}
               className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer relative space-y-4 ${
                 isSelected
                   ? "bg-[var(--card)] border-[var(--color-milet-amber)] shadow-md ring-2 ring-[var(--color-milet-amber)]/40 milet-glow-amber scale-[1.005]"

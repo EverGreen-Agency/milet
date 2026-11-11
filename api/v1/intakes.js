@@ -1,3 +1,6 @@
+import crypto from "node:crypto";
+import { captureGeminiGeneration } from "./posthog-ai.js";
+
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const attempts = new Map();
@@ -63,19 +66,61 @@ function loadConfig(environment) {
 }
 
 async function generateGuidance(input, config, httpFetch) {
-  const response = await httpFetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(config.geminiModel)}:generateContent`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "x-goog-api-key": config.geminiApiKey },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts: [{ text: promptFor(input) }]}],
-      generationConfig: { responseMimeType: "application/json", responseSchema: guidanceSchema, temperature: 0.1 },
-    }),
-  });
-  const payload = await safeJson(response);
-  if (!response.ok) throw problem(502, "A análise por IA não está disponível agora. Tente novamente mais tarde.");
-  const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
-  try { return validateGuidance(JSON.parse(String(text))); }
-  catch { throw problem(502, "A IA não retornou uma orientação válida. Tente novamente mais tarde."); }
+  const prompt = promptFor(input);
+  const traceId = crypto.randomUUID();
+  const startedAt = performance.now();
+  const aiInput = [{ role: "user", content: prompt }];
+  let generationCaptured = false;
+
+  try {
+    const response = await httpFetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(config.geminiModel)}:generateContent`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-goog-api-key": config.geminiApiKey },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: prompt }]}],
+        generationConfig: { responseMimeType: "application/json", responseSchema: guidanceSchema, temperature: 0.1 },
+      }),
+    });
+    const payload = await safeJson(response);
+    const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!response.ok) {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, status: response.status,
+        error: `Gemini request failed with status ${response.status}`,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+      });
+      generationCaptured = true;
+      throw problem(502, "A análise por IA não está disponível agora. Tente novamente mais tarde.");
+    }
+    try {
+      const guidance = validateGuidance(JSON.parse(String(text)));
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, output: String(text), status: response.status,
+        inputTokens: payload?.usageMetadata?.promptTokenCount, outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+      });
+      generationCaptured = true;
+      return guidance;
+    } catch {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput, output: text, status: response.status,
+        error: "Gemini returned invalid guidance", inputTokens: payload?.usageMetadata?.promptTokenCount,
+        outputTokens: payload?.usageMetadata?.candidatesTokenCount,
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+      });
+      generationCaptured = true;
+      throw problem(502, "A IA não retornou uma orientação válida. Tente novamente mais tarde.");
+    }
+  } catch (error) {
+    if (!generationCaptured) {
+      await captureGeminiGeneration({
+        traceId, model: config.geminiModel, input: aiInput,
+        error: error instanceof Error ? error.message : "Gemini request failed",
+        latencySeconds: (performance.now() - startedAt) / 1000, spanName: "intake_guidance"
+      });
+    }
+    throw error;
+  }
 }
 
 async function notifyTeam(input, guidance, config, httpFetch) {

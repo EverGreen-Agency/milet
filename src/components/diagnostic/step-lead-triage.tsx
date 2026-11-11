@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Buildings, ArrowRight, ShieldCheck } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 
 export interface LeadData {
   name: string;
@@ -56,6 +57,10 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
+      posthog.capture("lead_triage_completed", {
+        profile: lead.profile,
+        opted_in_to_contact: lead.optInContact
+      });
       onComplete(lead);
     }
   };
