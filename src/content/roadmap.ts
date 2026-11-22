@@ -15,10 +15,10 @@ export interface RoadmapLane {
   cards: RoadmapCard[];
 }
 
-export const ROADMAP_UPDATED_AT = "21 out 2026";
+export const ROADMAP_UPDATED_AT = "22 nov 2026";
 
 export const ROADMAP_INTRO =
-  "“Agora” representa a frente priorizada no backlog consolidado. A fatia de US-001–003, US-006–009 e US-013 já tem PWA pública, função sintética e uma fundação de contratos, PostgreSQL e worker validada em CI; serviços reais e os containers persistentes continuam pendentes.";
+  "“Agora” representa a frente priorizada no backlog consolidado. O diagnóstico PME, `/login`, os 4 portais protegidos por RBAC e a fundação de contratos, PostgreSQL RLS e worker já somam 97 testes aprovados no repositório; deploy das últimas entregas em nuvem, OIDC corporativo e parceiros reais seguem pendentes.";
 
 export const ROADMAP_LANES: RoadmapLane[] = [
   {
@@ -171,7 +171,7 @@ export const PORTALS: PortalPlan[] = [
     ],
     neverSees: "Dados de outras empresas ou a margem negociada entre terceiros.",
     roles: ["Responsável", "Analista"],
-    status: { label: "Planejado", tone: "planned" },
+    status: { label: "Protótipo · Código + CI", tone: "implemented" },
   },
   {
     id: "comercializadora",
@@ -184,7 +184,7 @@ export const PORTALS: PortalPlan[] = [
     ],
     neverSees: "Propostas de concorrentes ou a posição comprada em ranking — ela não existe.",
     roles: ["Administrador", "Operador"],
-    status: { label: "Planejado", tone: "planned" },
+    status: { label: "Protótipo · Código + CI", tone: "implemented" },
   },
   {
     id: "usina",
@@ -196,7 +196,7 @@ export const PORTALS: PortalPlan[] = [
     ],
     neverSees: "Clientes que não escolheram a usina.",
     roles: ["Administrador", "Operador"],
-    status: { label: "Explorando · escopo a validar", tone: "planned" },
+    status: { label: "Protótipo · Código + CI", tone: "implemented" },
   },
   {
     id: "backoffice",
@@ -208,7 +208,7 @@ export const PORTALS: PortalPlan[] = [
     ],
     neverSees: "Nada fora da trilha de auditoria: todo acesso deixa registro imutável.",
     roles: ["Operação", "Compliance (somente leitura)", "Administrador"],
-    status: { label: "Planejado", tone: "planned" },
+    status: { label: "Protótipo · Código + CI", tone: "implemented" },
   },
 ];
 
@@ -235,13 +235,20 @@ export const CURRENT_EVIDENCE: EvidenceCard[] = [
   },
   {
     status: { label: "Código + CI", tone: "implemented" },
-    title: "Fundação de runtime",
+    title: "Fundação de runtime e RLS multi-tenant",
     description:
-      "A função sintética está pública. API persistente, PostgreSQL, auditoria, outbox e worker têm containers e testes reproduzíveis, mas ainda não estão hospedados nem operam dados reais.",
+      "API NestJS, contratos, PostgreSQL RLS (migrações 001–008), auditoria append-only e worker têm containers e 97 testes aprovados localmente; hospedagem contínua em nuvem segue pendente.",
     links: [
       { label: "Ver contrato da API", href: "/openapi/v1/openapi.json", external: true },
       { label: "Ler a evidência", href: "/build-in-public" },
     ],
+  },
+  {
+    status: { label: "Protótipo", tone: "prototype" },
+    title: "Portais, login e RBAC multi-tenant",
+    description:
+      "Rotas `/login`, `/portal/consumidor`, `/portal/comercializadora`, `/portal/usinas` e `/portal/admin` protegidas por cookie HttpOnly assinado (HMAC-SHA256) e middleware por papel, com perfis e dados demonstrativos.",
+    links: [{ label: "Acessar portais demo", href: "/login" }],
   },
   {
     status: { label: "Protótipo", tone: "prototype" },

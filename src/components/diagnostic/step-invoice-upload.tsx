@@ -1,8 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { FileArrowUp, ArrowsClockwise, Sparkle, ArrowLeft, ArrowRight, CheckCircle, Warning, PlayCircle, ShieldCheck } from "@phosphor-icons/react";
+import { FileArrowUp, ArrowsClockwise, Sparkle, ArrowLeft, ArrowRight, CheckCircle, Warning, PlayCircle, ShieldCheck, DownloadSimple } from "@phosphor-icons/react";
 import type { InvoiceInput } from "@/domain/energy-engine";
+
+const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
+
+const SYNTHETIC_SAMPLE_FILES = [
+  {
+    label: "Cemig A4 · Padaria",
+    fileName: "fatura-sintetica-cemig-a4-padaria-horizonte.png",
+    href: "/assets/samples/fatura-sintetica-cemig-a4-padaria-horizonte.png"
+  },
+  {
+    label: "CPFL A4 · Indústria",
+    fileName: "fatura-sintetica-cpfl-a4-metalurgica-modelo.png",
+    href: "/assets/samples/fatura-sintetica-cpfl-a4-metalurgica-modelo.png"
+  },
+  {
+    label: "Enel B3 · Clínica",
+    fileName: "fatura-sintetica-enel-b3-clinica-modelo.png",
+    href: "/assets/samples/fatura-sintetica-enel-b3-clinica-modelo.png"
+  }
+] as const;
 
 export interface InvoiceExtractedData extends InvoiceInput {
   fileName?: string;
@@ -88,13 +108,22 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
   const [readingStage, setReadingStage] = useState<number>(0);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fallbackNotice, setFallbackNotice] = useState<boolean>(false);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setErrorMessage("A fatura excede o limite de 3 MB suportado pela leitura direta. Reduza o arquivo ou use uma amostra sintética abaixo.");
+      setStatusMessage(null);
+      setFallbackNotice(false);
+      return;
+    }
+
     setIsProcessing(true);
     setErrorMessage(null);
+    setFallbackNotice(false);
     setReadingStage(1);
     setStatusMessage("Identificando distribuidora e unidade...");
 
@@ -124,23 +153,46 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           setReadingStage(3);
           const result = await response.json();
           if (result.extracted) {
+            const voltageGroup = String(result.extracted.voltageGroup || invoice.voltageGroup || "A4");
+            const parsedDemand = Number(result.extracted.contractedDemandKw);
+            const normalizedDemand = voltageGroup.toUpperCase().startsWith("B")
+              ? 0
+              : Number.isFinite(parsedDemand) && parsedDemand >= 0
+                ? parsedDemand
+                : 0;
+            const parsedConfidence = Number(result.extracted.confidence);
+            const usedFallback = Boolean(result.isFallback);
+
             const updated: InvoiceExtractedData = {
               distributor: result.extracted.distributor || invoice.distributor || "Cemig",
               period: result.extracted.period || invoice.period || "2026-08",
               consumptionKwh: Number(result.extracted.consumptionKwh) || invoice.consumptionKwh || 12480,
               total: Number(result.extracted.total) || invoice.total || 10920,
-              contractedDemandKw: Number(result.extracted.contractedDemandKw) || invoice.contractedDemandKw || 75,
-              voltageGroup: result.extracted.voltageGroup || "A4",
+              contractedDemandKw: normalizedDemand,
+              voltageGroup,
               tariffFlag: result.extracted.tariffFlag || "Amarela",
-              tariffModality: "Horossazonal Verde",
+              tariffModality:
+                typeof result.extracted.tariffModality === "string" && result.extracted.tariffModality.trim()
+                  ? result.extracted.tariffModality
+                  : undefined,
               fileName: file.name,
               fileKey: result.fileKey,
-              extractionSource: result.source || "gemini-2.5-flash",
-              confidenceScore: 0.98
+              extractionSource: result.source || "gemini-3.5-flash-lite",
+              confidenceScore:
+                Number.isFinite(parsedConfidence) && parsedConfidence > 0
+                  ? parsedConfidence
+                  : usedFallback
+                    ? 0.98
+                    : 0.9
             };
 
             setInvoice(updated);
-            setStatusMessage("Passaporte Energético estruturado com sucesso.");
+            setFallbackNotice(usedFallback);
+            setStatusMessage(
+              usedFallback
+                ? "Modo demonstração (sem GEMINI_API_KEY ativa): dados canônicos da Padaria Horizonte carregados para conferência."
+                : "Passaporte Energético estruturado com sucesso."
+            );
           }
         } catch (err: any) {
           setErrorMessage(err.message || "Não foi possível concluir a leitura automática.");
@@ -168,6 +220,7 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
     setIsProcessing(true);
     setErrorMessage(null);
     setStatusMessage(null);
+    setFallbackNotice(false);
     setReadingStage(1);
 
     setTimeout(() => {
@@ -245,7 +298,7 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           {invoice.fileName ? invoice.fileName : "Arraste sua fatura aqui ou clique para selecionar"}
         </h3>
         <p className="mt-1 text-xs text-[var(--foreground)]/60">
-          Formatos suportados: PDF, PNG, JPG ou WEBP (até 10 MB)
+          Formatos suportados: PDF, PNG, JPG ou WEBP (até 3 MB)
         </p>
 
         {/* Momento de Leitura Visível R2: 3 Linhas Sequenciais */}
@@ -275,8 +328,18 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
         ) : null}
 
         {statusMessage && !isProcessing ? (
-          <div className="mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-medium flex items-center justify-center gap-2 max-w-lg mx-auto">
-            <CheckCircle weight="fill" className="w-4 h-4 shrink-0" />
+          <div
+            className={`mt-4 p-3 rounded-xl border text-xs font-medium flex items-center justify-center gap-2 max-w-lg mx-auto ${
+              fallbackNotice
+                ? "bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300"
+                : "bg-emerald-500/10 border-emerald-500/20 text-emerald-600"
+            }`}
+          >
+            {fallbackNotice ? (
+              <Warning weight="fill" className="w-4 h-4 shrink-0" />
+            ) : (
+              <CheckCircle weight="fill" className="w-4 h-4 shrink-0" />
+            )}
             <span>{statusMessage}</span>
           </div>
         ) : null}
@@ -330,6 +393,25 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
               </button>
             );
           })}
+        </div>
+
+        <div className="pt-3 border-t border-[var(--border)] space-y-2">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-[var(--foreground)]/70">
+            Faturas B2B sintéticas para testar OCR real
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            {SYNTHETIC_SAMPLE_FILES.map((sample) => (
+              <a
+                key={sample.href}
+                href={sample.href}
+                download={sample.fileName}
+                className="flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-[var(--background)] border border-[var(--border)] hover:border-[var(--color-milet-amber)]/50 text-[11px] font-medium text-[var(--foreground)]/80 transition-colors"
+              >
+                <span className="truncate">{sample.label}</span>
+                <DownloadSimple weight="bold" className="w-3.5 h-3.5 shrink-0 text-[var(--color-milet-amber)]" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 

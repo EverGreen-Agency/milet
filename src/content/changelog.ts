@@ -26,6 +26,33 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    id: "entry-007",
+    number: "007",
+    area: "Portais, Matching & Segurança",
+    railLabel: "4 Portais & RBAC",
+    date: "2026-11-22",
+    dateLabel: "22 de novembro de 2026",
+    dateShort: "22 NOV",
+    status: { label: "Implementado no código", tone: "implemented" },
+    title: "Área logada dos 4 portais com sessão assinada, middleware RBAC, RLS no banco e hardening de API.",
+    problem:
+      "Os 4 portais da arquitetura-alvo estavam apenas planejados, enquanto o fluxo de entrada de faturas e APIs precisava de trava de tamanho, bloqueio de headers sintéticos em produção, assinatura S3 e proteção de PII antes do aceite.",
+    deliveries: [
+      "Criação de `/login`, `/api/portal/session` (cookie `HttpOnly` assinado via HMAC-SHA256) e middleware RBAC isolando `/portal/consumidor`, `/portal/comercializadora`, `/portal/usinas` e `/portal/admin`.",
+      "Motor de matching multi-portal (`src/domain/matching-engine.ts`) e contratos (`@milet/contracts`) com regra Fio B (Lei 14.300), mascaramento LGPD de leads, alocação de cotas em usina GD e taxa Milet explícita.",
+      "Migrações PostgreSQL `007_portals_schema.sql` e `008_portals_rls_grants.sql` com políticas RLS por organização e triggers append-only em `audit_trail`, testadas em PGlite.",
+      "Três faturas B2B sintéticas em `assets/samples/` (Cemig A4, CPFL A4 e Enel B3), limite de 3 MB no upload, assinatura AWS SigV4 no adapter S3, escape HTML/rate-limit no intake e correção de segurança do Next.js para `16.4.6`.",
+    ],
+    evidence:
+      "97 testes automatizados aprovados (static, foundation + PGlite RLS, Vercel e Next/Vitest com 100% de cobertura V8 em 10 arquivos de `src/`), `npm audit` sem vulnerabilidades e build de produção com 15 rotas.",
+    limit:
+      "Os portais autenticam perfis demo em sessão assinada e aguardam provedor OIDC/SSO, deploy na Vercel/Railway com variáveis reais (`MILET_SESSION_SECRET`, Postgres em nuvem, `GEMINI_API_KEY`) e parceiros comerciais.",
+    links: [
+      { label: "Abrir login dos portais", href: "/login" },
+      { label: "Ver status no roadmap", href: "/roadmap#portais" },
+    ],
+  },
+  {
     id: "entry-006",
     number: "006",
     area: "Arquitetura & Stack",
@@ -238,24 +265,24 @@ export const VERSION_LIMITS: ReadonlyArray<{ title: string; items: string[] }> =
   {
     title: "Produto e dados",
     items: [
-      "O fluxo PME tenta a função sintética pública e mantém uma fixture local como fallback visível.",
-      "A função é stateless: não há leitura OCR real, persistência, upload nem faturas reais.",
-      "Os cálculos são demonstrativos e não validam economia ou recomendação no mercado.",
+      "O fluxo PME aceita faturas de até 3 MB e disponibiliza 3 amostras B2B sintéticas com fallback visível em modo demo.",
+      "Sem GEMINI_API_KEY ativa em runtime ou banco conectado em nuvem, leitura real com OCR e persistência contínua não operam.",
+      "Os cálculos são determinísticos sobre premissas explícitas, mas não equivalem a proposta comercial vinculante.",
     ],
   },
   {
     title: "Mercado e operação",
     items: [
-      "Não há clientes, pilotos ou tração declarados.",
-      "Não há fornecedores, parceiros ou integrações confirmados.",
-      "Não há contratação, assinatura, pagamento ou troca de fornecedor.",
+      "Não há clientes pagantes, pilotos contratados ou tração recorrente declarados.",
+      "Não há fornecedores, parceiros ou integrações com distribuidoras homologados.",
+      "Não há contratação, assinatura, pagamento ou troca real de fornecedor.",
     ],
   },
   {
     title: "Confiança",
     items: [
-      "Headers de tenant não são autenticação; OIDC e autorização real ainda faltam.",
-      "RLS e auditoria append-only foram testadas localmente, não operadas em produção.",
+      "A área logada usa sessão HMAC-SHA256 em cookie HttpOnly e middleware RBAC com perfis demo; OIDC/SSO corporativo ainda falta.",
+      "Headers sintéticos x-organization-id são bloqueados em produção na API NestJS; RLS e auditoria append-only foram validados em PGlite.",
       "Dados sintéticos e estados simulados são identificados como tais.",
     ],
   },
