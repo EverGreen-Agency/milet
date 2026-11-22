@@ -7,6 +7,7 @@ import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 export function Navbar() {
   const pathname = usePathname();
   const isDiagnostic = pathname === "/diagnostico";
+  const isPortals = pathname === "/login" || pathname.startsWith("/portal");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] milet-glass">
@@ -58,6 +59,16 @@ export function Navbar() {
             }`}
           >
             Build in Public
+          </Link>
+          <Link
+            href="/login"
+            className={`transition-colors ${
+              isPortals
+                ? "text-[var(--color-milet-amber-dark)] dark:text-[var(--color-milet-amber-light)] font-semibold"
+                : "hover:text-[var(--color-milet-amber)]"
+            }`}
+          >
+            Portais
           </Link>
           <a href="/brandbook.html" className="hover:text-[var(--color-milet-amber)] transition-colors">
             Brandbook

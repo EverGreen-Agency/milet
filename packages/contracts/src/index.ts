@@ -83,3 +83,5 @@ export interface SignaturePort {
 export interface BillingPort {
   createChargeDisabled(): Promise<never>;
 }
+
+export * from "./portals";
