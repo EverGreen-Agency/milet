@@ -22,6 +22,7 @@ Thumbs.db
 .idea/
 .vscode/
 .codex-history/
+.claude-code-history/
 
 # Logs & scratch
 *.log
