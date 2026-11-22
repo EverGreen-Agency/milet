@@ -67,4 +67,19 @@ test("health, correlation and tenant-first case access", async (t) => {
   assert.equal(snapshot.externalBackend, false);
   assert.ok(snapshot.requests >= 8);
   assert.ok(snapshot.errors >= 0);
+
+  const prevNodeEnv = process.env.NODE_ENV;
+  const prevAllowSynthetic = process.env.ALLOW_SYNTHETIC_TENANT_HEADERS;
+  try {
+    process.env.NODE_ENV = "production";
+    delete process.env.ALLOW_SYNTHETIC_TENANT_HEADERS;
+    const blockedProd = await fetch(`${base}/v1/cases/${DEMO_IDS.caseId}`, {
+      headers: { "x-organization-id": DEMO_IDS.organizationPublicId, "x-user-id": DEMO_IDS.userPublicId },
+    });
+    assert.equal(blockedProd.status, 401);
+  } finally {
+    process.env.NODE_ENV = prevNodeEnv;
+    if (prevAllowSynthetic === undefined) delete process.env.ALLOW_SYNTHETIC_TENANT_HEADERS;
+    else process.env.ALLOW_SYNTHETIC_TENANT_HEADERS = prevAllowSynthetic;
+  }
 });

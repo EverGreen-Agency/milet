@@ -47,7 +47,7 @@ function loadConfig(environment) {
   }
   const config = {
     geminiApiKey: clean(environment.GEMINI_API_KEY),
-    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-1.5-flash",
+    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-3.5-flash-lite",
     resendApiKey: clean(environment.RESEND_API_KEY),
     resendFrom: clean(environment.RESEND_FROM),
     resendReplyTo: clean(environment.RESEND_REPLY_TO),

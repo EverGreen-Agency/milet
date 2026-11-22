@@ -64,6 +64,9 @@ test("processInvoiceExtraction parses invoice via Gemini multimodal and archives
   assert.ok(result.fileKey.startsWith("invoices/"));
   assert.equal(calls.length, 2); // 1 S3 upload + 1 Gemini API call
   assert.ok(calls[0].url.includes("milet-invoices"));
+  assert.match(calls[0].init.headers.authorization, /^AWS4-HMAC-SHA256 Credential=mock-access-key\//);
+  assert.match(calls[0].init.headers["x-amz-date"], /^\d{8}T\d{6}Z$/);
+  assert.match(calls[0].init.headers["x-amz-content-sha256"], /^[0-9a-f]{64}$/);
   assert.ok(calls[1].url.includes("generativelanguage.googleapis.com"));
 });
 

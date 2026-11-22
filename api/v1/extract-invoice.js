@@ -99,7 +99,7 @@ function loadExtractionConfig(environment) {
 
   return {
     geminiApiKey: apiKey,
-    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-2.5-flash-lite",
+    geminiModel: clean(environment.GEMINI_MODEL) || "gemini-3.5-flash-lite",
     s3
   };
 }
@@ -180,18 +180,56 @@ Se algum dado não estiver legível ou não for aplicável, retorne nulo ou omit
 async function uploadToS3(buffer, key, contentType, s3, httpFetch) {
   const endpoint = s3.endpoint.replace(/\/$/, "");
   const url = `${endpoint}/${s3.bucket}/${key}`;
+  const payloadHash = crypto.createHash("sha256").update(buffer).digest("hex");
+  const headers = signS3PutHeaders({
+    endpoint,
+    bucket: s3.bucket,
+    key,
+    contentType,
+    payloadHash,
+    region: s3.region,
+    accessKeyId: s3.accessKeyId,
+    secretAccessKey: s3.secretAccessKey,
+    date: new Date()
+  });
 
-  // Upload simples S3 compatível
   const response = await httpFetch(url, {
     method: "PUT",
-    headers: {
-      "content-type": contentType,
-      "x-amz-content-sha256": crypto.createHash("sha256").update(buffer).digest("hex")
-    },
+    headers,
     body: buffer
   });
 
   return response;
+}
+
+function hmacSha256(key, data) {
+  return crypto.createHmac("sha256", key).update(data).digest();
+}
+
+function signS3PutHeaders({ endpoint, bucket, key, contentType, payloadHash, region, accessKeyId, secretAccessKey, date }) {
+  const isoDate = date.toISOString().replace(/[:-]|\.\d{3}/g, "");
+  const dateStamp = isoDate.slice(0, 8);
+  const parsedEndpoint = new URL(endpoint);
+  const basePath = parsedEndpoint.pathname.replace(/\/$/, "");
+  const canonicalUri = `${basePath}/${bucket}/${key}`.replace(/\/{2,}/g, "/");
+  const canonicalHeaders = `host:${parsedEndpoint.host}\nx-amz-content-sha256:${payloadHash}\nx-amz-date:${isoDate}\n`;
+  const signedHeaders = "host;x-amz-content-sha256;x-amz-date";
+  const canonicalRequest = `PUT\n${canonicalUri}\n\n${canonicalHeaders}\n${signedHeaders}\n${payloadHash}`;
+  const credentialScope = `${dateStamp}/${region}/s3/aws4_request`;
+  const canonicalHash = crypto.createHash("sha256").update(canonicalRequest).digest("hex");
+  const stringToSign = `AWS4-HMAC-SHA256\n${isoDate}\n${credentialScope}\n${canonicalHash}`;
+  const kDate = hmacSha256(`AWS4${secretAccessKey}`, dateStamp);
+  const kRegion = hmacSha256(kDate, region);
+  const kService = hmacSha256(kRegion, "s3");
+  const kSigning = hmacSha256(kService, "aws4_request");
+  const signature = crypto.createHmac("sha256", kSigning).update(stringToSign).digest("hex");
+
+  return {
+    "content-type": contentType,
+    "x-amz-content-sha256": payloadHash,
+    "x-amz-date": isoDate,
+    authorization: `AWS4-HMAC-SHA256 Credential=${accessKeyId}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`
+  };
 }
 
 function sanitizeFileName(name) {

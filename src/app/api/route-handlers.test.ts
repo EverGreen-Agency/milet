@@ -1,10 +1,20 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { POST as extractInvoicePost } from "./extract-invoice/route";
-import { POST as intakesPost } from "./intakes/route";
+import {
+  escapeHtml,
+  POST as intakesPost,
+  resetIntakeRateLimitForTest
+} from "./intakes/route";
+import {
+  DELETE as portalSessionDelete,
+  GET as portalSessionGet,
+  POST as portalSessionPost
+} from "./portal/session/route";
 import {
   GET as experimentsGet,
   POST as experimentsPost
 } from "./experiments/route";
+import { PORTAL_SESSION_COOKIE } from "@/lib/portal-auth";
 import { resetExperimentEventsForTest } from "@/lib/experiment-event-store";
 
 describe("Feature: Next.js Route Handlers", () => {
@@ -14,6 +24,7 @@ describe("Feature: Next.js Route Handlers", () => {
   beforeEach(() => {
     process.env = { ...originalEnv };
     resetExperimentEventsForTest();
+    resetIntakeRateLimitForTest();
   });
 
   afterEach(() => {
@@ -38,6 +49,21 @@ describe("Feature: Next.js Route Handlers", () => {
       expect(res.status).toBe(400);
       const data = await res.json();
       expect(data.message).toBe("Conteúdo do arquivo ausente.");
+    });
+
+    it("Scenario: Reject oversized base64 payload with 413 Payload Too Large", async () => {
+      const req = new Request("http://localhost/api/extract-invoice", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fileBase64: "a".repeat(4_200_001)
+        })
+      });
+
+      const res = await extractInvoicePost(req);
+      expect(res.status).toBe(413);
+      const data = await res.json();
+      expect(data.message).toBe("Arquivo excede o limite seguro de 3 MB.");
     });
 
     it("Scenario: Reject unsupported MIME type with 400 Bad Request", async () => {
@@ -79,11 +105,16 @@ describe("Feature: Next.js Route Handlers", () => {
       expect(res.status).toBe(200);
       const data = await res.json();
       expect(data.source).toBe("synthetic-intake-fallback");
+      expect(data.isFallback).toBe(true);
+      expect(data.extracted.tariffFlag).toBe("Amarela");
+      expect(data.extracted.tariffModality).toBe("Horossazonal Verde");
+      expect(data.extracted.confidence).toBe(0.98);
     });
 
     it("Scenario: Call Gemini API when GEMINI_API_KEY is configured", async () => {
 
       // Given: GEMINI_API_KEY set and mocked fetch returning valid candidate JSON
+      delete process.env.GEMINI_MODEL;
       process.env.GEMINI_API_KEY = "test-gemini-key";
       const mockGeminiResponse = {
         candidates: [
@@ -107,10 +138,11 @@ describe("Feature: Next.js Route Handlers", () => {
         ]
       };
 
-      globalThis.fetch = vi.fn().mockResolvedValue({
+      const fetchMock = vi.fn().mockResolvedValue({
         ok: true,
         json: async () => mockGeminiResponse
       } as any);
+      globalThis.fetch = fetchMock;
 
       const req = new Request("http://localhost/api/extract-invoice", {
         method: "POST",
@@ -125,16 +157,20 @@ describe("Feature: Next.js Route Handlers", () => {
       // When: Handled by extract-invoice route
       const res = await extractInvoicePost(req);
 
-      // Then: Returns parsed Gemini data
+      // Then: Returns parsed Gemini data via x-goog-api-key header
       expect(res.status).toBe(200);
       const data = await res.json();
-      expect(data.source).toBe("gemini-2.5-flash");
+      expect(data.source).toBe("gemini-3.5-flash-lite");
+      expect(data.isFallback).toBe(false);
       expect(data.extracted.distributor).toBe("CPFL");
+      const [, fetchInit] = fetchMock.mock.calls[0]!;
+      expect((fetchInit.headers as Record<string, string>)["x-goog-api-key"]).toBe("test-gemini-key");
     });
 
     it("Scenario: Fall back when Gemini returns candidates without text", async () => {
-      // Given: Gemini returns empty content parts
+      // Given: Gemini returns empty content parts and custom GEMINI_MODEL override
       process.env.GEMINI_API_KEY = "test-gemini-key";
+      process.env.GEMINI_MODEL = "gemini-3.8-flash";
       globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: async () => ({ candidates: [] })
@@ -299,6 +335,174 @@ describe("Feature: Next.js Route Handlers", () => {
       expect(res.status).toBe(500);
       const data = await res.json();
       expect(data.message).toBe("Erro interno ao processar intake.");
+    });
+
+    it("Scenario: Escape HTML entities and reject missing LGPD consent in demo and real modes", async () => {
+      expect(escapeHtml(`<a href="x" data-x='1'>&</a>`)).toBe(
+        "&lt;a href=&quot;x&quot; data-x=&#39;1&#39;&gt;&amp;&lt;/a&gt;"
+      );
+
+      const deniedDemo = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            consumptionKwh: 12480,
+            total: 10920,
+            period: "2026-08",
+            consentGranted: false
+          })
+        })
+      );
+      expect(deniedDemo.status).toBe(400);
+
+      process.env.INTAKE_ENABLED = "true";
+      process.env.DEMO_DATA_ONLY = "true";
+      const sanitizedRes = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            consumptionKwh: 12480,
+            total: 10920,
+            period: "2026-08",
+            distributor: "<script>Cemig</script>",
+            voltageGroup: "A4",
+            tariffFlag: "Amarela",
+            tariffModality: "Verde"
+          })
+        })
+      );
+      expect(sanitizedRes.status).toBe(201);
+      const sanitizedData = await sanitizedRes.json();
+      expect(sanitizedData.invoice.distributor).toBe("&lt;script&gt;Cemig&lt;/script&gt;");
+
+      process.env.DEMO_DATA_ONLY = "false";
+      const missingOptIn = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            consumptionKwh: 12480,
+            total: 10920,
+            period: "2026-08",
+            consentGranted: true,
+            optInContact: false
+          })
+        })
+      );
+      expect(missingOptIn.status).toBe(400);
+
+      const payload = {
+        consumptionKwh: 12480,
+        total: 10920,
+        period: "2026-08",
+        consentGranted: true,
+        optInContact: true
+      };
+
+      const ok1 = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-forwarded-for": "198.51.100.42, 10.0.0.1"
+          },
+          body: JSON.stringify(payload)
+        })
+      );
+      const ok2 = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-forwarded-for": "198.51.100.42"
+          },
+          body: JSON.stringify(payload)
+        })
+      );
+      const ok3 = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-forwarded-for": "198.51.100.42"
+          },
+          body: JSON.stringify(payload)
+        })
+      );
+      const rateLimited = await intakesPost(
+        new Request("http://localhost/api/intakes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-forwarded-for": "198.51.100.42"
+          },
+          body: JSON.stringify(payload)
+        })
+      );
+
+      expect(ok1.status).toBe(201);
+      expect(ok2.status).toBe(201);
+      expect(ok3.status).toBe(201);
+      expect(rateLimited.status).toBe(429);
+
+      const errCrash = await intakesPost({
+        json: vi.fn().mockRejectedValue(new Error("Crash explícito"))
+      } as unknown as Request);
+      expect(errCrash.status).toBe(500);
+      expect((await errCrash.json()).message).toBe("Crash explícito");
+    });
+  });
+
+  describe("Rule: Portal Session API", () => {
+    it("Scenario: Handles GET, POST, and DELETE for portal sessions", async () => {
+      const unauthRes = await portalSessionGet(
+        new Request("http://localhost/api/portal/session")
+      );
+      expect(unauthRes.status).toBe(401);
+
+      const badJsonRes = await portalSessionPost({
+        json: vi.fn().mockRejectedValue(new Error("bad"))
+      } as unknown as Request);
+      expect(badJsonRes.status).toBe(400);
+
+      const unknownRoleRes = await portalSessionPost(
+        new Request("http://localhost/api/portal/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        })
+      );
+      expect(unknownRoleRes.status).toBe(400);
+
+      const loginRes = await portalSessionPost(
+        new Request("http://localhost/api/portal/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ role: "USINA" })
+        })
+      );
+      expect(loginRes.status).toBe(201);
+      const loginBody = await loginRes.json();
+      expect(loginBody.redirectTo).toBe("/portal/usinas");
+      expect(loginBody.auditHash).toHaveLength(64);
+      const setCookie = loginRes.headers.get("set-cookie") ?? "";
+      expect(setCookie).toContain(`${PORTAL_SESSION_COOKIE}=`);
+      expect(setCookie.toLowerCase()).toContain("httponly");
+
+      const cookiePair = setCookie.split(";")[0]!;
+      const authGetRes = await portalSessionGet(
+        new Request("http://localhost/api/portal/session", {
+          headers: { cookie: cookiePair }
+        })
+      );
+      expect(authGetRes.status).toBe(200);
+      expect((await authGetRes.json()).session.role).toBe("USINA");
+
+      const logoutRes = await portalSessionDelete();
+      expect(logoutRes.status).toBe(200);
+      expect(logoutRes.headers.get("set-cookie")).toContain("Max-Age=0");
     });
   });
 

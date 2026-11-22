@@ -8,6 +8,25 @@ const ALLOWED_MIME_TYPES = new Set([
   "image/webp"
 ]);
 
+// Base64 expande ~33%; ~4,2M chars (~3,0 MB binários) mantém margem segura abaixo do teto 4,5 MB Vercel.
+const MAX_BASE64_LENGTH = 4_200_000;
+
+export const EXTRACTION_SCHEMA = {
+  type: "object",
+  properties: {
+    distributor: { type: "string" },
+    period: { type: "string" },
+    consumptionKwh: { type: "number" },
+    total: { type: "number" },
+    contractedDemandKw: { type: "number" },
+    voltageGroup: { type: "string" },
+    tariffFlag: { type: "string" },
+    tariffModality: { type: "string" },
+    confidence: { type: "number" }
+  },
+  required: ["distributor", "consumptionKwh", "total"]
+} as const;
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -19,22 +38,27 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Conteúdo do arquivo ausente." }, { status: 400 });
     }
 
+    if (String(fileData).length > MAX_BASE64_LENGTH) {
+      return NextResponse.json({ message: "Arquivo excede o limite seguro de 3 MB." }, { status: 413 });
+    }
+
     if (!ALLOWED_MIME_TYPES.has(mimeType)) {
       return NextResponse.json({ message: "Tipo de arquivo não suportado." }, { status: 400 });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
 
-    // Se a chave do Gemini estiver disponível, faz a chamada real
+    // Se a chave do Gemini estiver disponível, faz a chamada real com schema estrito
     if (apiKey) {
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      const geminiModel = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(geminiModel)}:generateContent`;
       const payload = {
         contents: [
           {
             role: "user",
             parts: [
               {
-                text: "Você é um auditor regulatório especialista em faturas de energia elétrica do Brasil. Extraia estritamente os campos solicitados em JSON válido: distributor, period (AAAA-MM), consumptionKwh (número), total (número), contractedDemandKw (número ou zero), voltageGroup (ex: A4, B1), tariffFlag."
+                text: "Você é um auditor regulatório especialista em faturas de energia elétrica do Brasil. Extraia estritamente os campos solicitados em JSON válido: distributor, period (AAAA-MM), consumptionKwh (número), total (número), contractedDemandKw (número ou zero), voltageGroup (ex: A4, B1, B3), tariffFlag, tariffModality (ex: Horossazonal Verde, Horossazonal Azul, Convencional) e confidence (número de 0 a 1)."
               },
               {
                 inlineData: {
@@ -46,13 +70,18 @@ export async function POST(request: Request) {
           }
         ],
         generationConfig: {
-          responseMimeType: "application/json"
+          responseMimeType: "application/json",
+          responseSchema: EXTRACTION_SCHEMA,
+          temperature: 0.1
         }
       };
 
       const geminiRes = await fetch(geminiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey
+        },
         body: JSON.stringify(payload)
       });
 
@@ -64,14 +93,15 @@ export async function POST(request: Request) {
           return NextResponse.json({
             ok: true,
             extracted: parsed,
-            source: "gemini-2.5-flash",
+            source: geminiModel,
+            isFallback: false,
             fileKey: `invoices/${crypto.randomUUID()}-${fileName}`
           });
         }
       }
     }
 
-    // Fallback gracioso com valores padrão calibrados para PME (Cemig A4)
+    // Fallback determinístico alinhado ao caso canônico Padaria Horizonte (Cemig A4 · Bandeira Amarela)
     return NextResponse.json({
       ok: true,
       extracted: {
@@ -81,15 +111,16 @@ export async function POST(request: Request) {
         total: 10920,
         contractedDemandKw: 75,
         voltageGroup: "A4",
-        tariffFlag: "Verde"
+        tariffFlag: "Amarela",
+        tariffModality: "Horossazonal Verde",
+        confidence: 0.98
       },
       source: "synthetic-intake-fallback",
+      isFallback: true,
       fileKey: `invoices/fallback-${crypto.randomUUID()}`
     });
-  } catch (error: any) {
-    return NextResponse.json(
-      { message: error?.message || "Erro no processamento da fatura." },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    const message = error instanceof Error && error.message ? error.message : "Erro no processamento da fatura.";
+    return NextResponse.json({ message }, { status: 500 });
   }
 }

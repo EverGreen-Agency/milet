@@ -34,7 +34,7 @@ export function loadConfig(environment: NodeJS.ProcessEnv = process.env): AppCon
   const demoDataOnly = (environment.DEMO_DATA_ONLY ?? "true") === "true";
   const intakeEnabled = environment.INTAKE_ENABLED === "true";
   const geminiApiKey = environment.GEMINI_API_KEY?.trim();
-  const geminiModel = environment.GEMINI_MODEL?.trim() || "gemini-2.5-flash-lite";
+  const geminiModel = environment.GEMINI_MODEL?.trim() || "gemini-3.5-flash-lite";
   const resendApiKey = environment.RESEND_API_KEY?.trim();
   const resendFrom = environment.RESEND_FROM?.trim();
   const resendReplyTo = environment.RESEND_REPLY_TO?.trim();

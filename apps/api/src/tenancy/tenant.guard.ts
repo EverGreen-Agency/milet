@@ -1,4 +1,4 @@
-import { BadRequestException, CanActivate, ExecutionContext, ForbiddenException, Inject, Injectable } from "@nestjs/common";
+import { BadRequestException, CanActivate, ExecutionContext, ForbiddenException, Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import type { TenantAccessPort } from "@milet/contracts";
 import { isValidTenantId, isValidUserId } from "@milet/domain";
@@ -16,6 +16,11 @@ export class TenantGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(PUBLIC_ROUTE, [context.getHandler(), context.getClass()]);
     if (isPublic) return true;
+
+    // Bloqueia headers sintéticos em produção até integração OIDC (OWASP ASVS V2)
+    if (process.env.NODE_ENV === "production" && process.env.ALLOW_SYNTHETIC_TENANT_HEADERS !== "true") {
+      throw new UnauthorizedException("Headers sintéticos de tenant são bloqueados em produção; configure OIDC.");
+    }
 
     const request = context.switchToHttp().getRequest<Request>();
     const organizationId = request.header("x-organization-id");
