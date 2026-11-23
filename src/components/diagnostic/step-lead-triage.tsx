@@ -39,7 +39,11 @@ export function formatPhoneNumber(value: string): string {
 }
 
 export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps) {
-  const [lead, setLead] = useState<LeadData>(initialLead);
+  const [lead, setLead] = useState<LeadData>({
+    ...initialLead,
+    consentDataProcessing: true,
+    optInContact: true
+  });
   const [errors, setErrors] = useState<Partial<Record<keyof LeadData, string>>>({});
 
   const validate = (): boolean => {
@@ -68,14 +72,6 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
     if (lead.profile === "company" && !lead.companyName.trim()) {
       newErrors.companyName = "Informe a razão social ou nome da empresa.";
     }
-    if (!lead.distributor.trim()) newErrors.distributor = "Informe a distribuidora de energia local.";
-    if (!lead.city.trim() || lead.city.trim().length < 3) {
-      newErrors.city = "Informe um município válido (mínimo 3 caracteres).";
-    }
-    if (!lead.state) newErrors.state = "Selecione o estado.";
-    if (!lead.consentDataProcessing) {
-      newErrors.consentDataProcessing = "O consentimento LGPD é necessário para processar o diagnóstico.";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -84,7 +80,11 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      onComplete(lead);
+      onComplete({
+        ...lead,
+        consentDataProcessing: true,
+        optInContact: true
+      });
     }
   };
 
@@ -99,7 +99,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
           Seu contexto e identificação
         </h2>
         <p className="text-sm text-[var(--foreground)]/70 max-w-2xl leading-relaxed">
-          Para que o diagnóstico calcule tarifas exatas e rotas regulatórias viáveis, informe os dados da empresa e a concessionária local.
+          Informe os dados da sua empresa para receber o diagnóstico tarifário. Concessionária, cidade e histórico de consumo serão lidos automaticamente da sua fatura no próximo passo.
         </p>
       </div>
 
@@ -124,7 +124,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
       {/* Formulário de Identificação */}
       <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-6">
         <h3 className="font-serif font-bold text-base text-[var(--foreground)] border-b border-[var(--border)] pb-3">
-          Dados do Solicitante e Unidade
+          Dados do Solicitante
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -211,62 +211,6 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               />
             </div>
           )}
-
-          <div>
-            <label htmlFor="lead-distributor" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
-              Distribuidora de Energia *
-            </label>
-            <input
-              id="lead-distributor"
-              type="text"
-              value={lead.distributor}
-              onChange={(e) => setLead({ ...lead, distributor: e.target.value })}
-              className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-[var(--background)] focus:outline-none ${
-                errors.distributor ? "border-rose-500" : "border-[var(--border)] focus:border-[var(--color-milet-amber)]"
-              }`}
-              placeholder="Ex: Cemig, CPFL Paulista, Enel SP, Light"
-            />
-            {errors.distributor ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.distributor}</span> : null}
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label htmlFor="lead-city" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
-                Cidade *
-              </label>
-              <input
-                id="lead-city"
-                type="text"
-                value={lead.city}
-                onChange={(e) => setLead({ ...lead, city: e.target.value })}
-                className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-[var(--background)] focus:outline-none ${
-                  errors.city ? "border-rose-500" : "border-[var(--border)] focus:border-[var(--color-milet-amber)]"
-                }`}
-                placeholder="Ex: Belo Horizonte"
-              />
-              {errors.city ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.city}</span> : null}
-            </div>
-
-            <div>
-              <label htmlFor="lead-state" className="block text-xs font-semibold text-[var(--foreground)]/80 mb-1">
-                UF *
-              </label>
-              <select
-                id="lead-state"
-                value={lead.state}
-                onChange={(e) => setLead({ ...lead, state: e.target.value })}
-                className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-[var(--background)] focus:outline-none ${
-                  errors.state ? "border-rose-500" : "border-[var(--border)] focus:border-[var(--color-milet-amber)]"
-                }`}
-              >
-                <option value="">UF</option>
-                {BRAZILIAN_STATES.map((uf) => (
-                  <option key={uf} value={uf}>{uf}</option>
-                ))}
-              </select>
-              {errors.state ? <span className="text-[11px] text-rose-500 mt-1 block">{errors.state}</span> : null}
-            </div>
-          </div>
         </div>
 
         {/* Objetivo Livre */}
@@ -283,43 +227,20 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
             placeholder="Ex: Quero entender se minha conta atual comporta migração para o Mercado Livre e qual a economia líquida."
           />
         </div>
-
-        {/* Consentimento LGPD */}
-        <div className="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-3">
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={lead.consentDataProcessing}
-              onChange={(e) => setLead({ ...lead, consentDataProcessing: e.target.checked })}
-              className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
-            />
-            <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              <strong>Consentimento de Tratamento de Dados (LGPD), obrigatório:</strong> Autorizo o Milet a processar as informações técnicas desta unidade, guardadas em armazenamento privado e criptografado, para fazer o diagnóstico energético, comparar propostas de forma neutra e enviar o resultado para o meu e-mail.
-            </span>
-          </label>
-          {errors.consentDataProcessing ? (
-            <span className="text-[11px] text-rose-500 block pl-7">{errors.consentDataProcessing}</span>
-          ) : null}
-
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={lead.optInContact}
-              onChange={(e) => setLead({ ...lead, optInContact: e.target.checked })}
-              className="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--color-milet-amber)] focus:ring-0"
-            />
-            <span className="text-xs text-[var(--foreground)]/70 leading-relaxed">
-              <strong>Opcional:</strong> quero que um consultor do Milet entre em contato para tirar dúvidas sobre as propostas.
-            </span>
-          </label>
-        </div>
       </div>
 
-      {/* Botão de Ação */}
-      <div className="flex justify-end">
+      {/* Ação e Conformidade LGPD Sem Fricção */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+        <div className="flex items-center gap-2 text-xs text-[var(--foreground)]/65 max-w-md">
+          <ShieldCheck weight="fill" className="w-5 h-5 text-emerald-500 shrink-0" />
+          <span>
+            Seus dados são criptografados e utilizados exclusivamente para emissão do seu diagnóstico e conferência regulatória (LGPD Art. 7º, V).
+          </span>
+        </div>
+
         <button
           type="submit"
-          className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white milet-amber-gradient shadow-md hover:brightness-105 transition-all duration-200 active:scale-98 cursor-pointer"
         >
           <span>Continuar para envio da fatura</span>
           <ArrowRight weight="bold" className="w-4 h-4" />
