@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Keynote Pitch de Vídeo (Estilo Apple / Lançamento)</title>
+  
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #07080b;
+      --bg-card: rgba(22, 25, 34, 0.7);
+      --border-card: rgba(211, 155, 61, 0.2);
+      --color-amber: #d39b3d;
+      --color-amber-glow: rgba(211, 155, 61, 0.35);
+      --color-copper: #c87a54;
+      --color-ivory: #f7f5ef;
+      --color-sand: #a39e93;
+      --color-sand-muted: #6b675e;
+      --color-emerald: #48bb78;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--color-ivory);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* CONTAINER 16:9 CINEMÁTICO */
+    #keynote-stage {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 ratio */
+      max-height: 100vh;
+      max-width: 177.78vh; /* 16:9 ratio */
+      background: radial-gradient(circle at 50% 40%, #11141d 0%, var(--bg-dark) 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .keynote-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: clamp(30px, 6vh, 70px) clamp(40px, 8vw, 100px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(20px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                  visibility 0.65s;
+      pointer-events: none;
+    }
+
+    .keynote-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ELEMENTOS TIPOGRÁFICOS APPLE STYLE */
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: clamp(11px, 1.4vh, 14px);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-amber);
+      background: rgba(211, 155, 61, 0.12);
+      border: 1px solid var(--border-card);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: clamp(16px, 2.5vh, 28px);
+    }
+
+    .eyebrow-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-amber);
+      box-shadow: 0 0 8px var(--color-amber);
+    }
+
+    .headline-giant {
+      font-family: var(--font-serif);
+      font-size: clamp(38px, 6.5vh, 74px);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--color-ivory);
+      max-width: 950px;
+      margin-bottom: clamp(14px, 2.2vh, 24px);
+      letter-spacing: -0.01em;
+    }
+
+    .headline-giant em {
+      font-style: italic;
+      color: var(--color-amber);
+      font-weight: 400;
+    }
+
+    .lead-text {
+      font-size: clamp(16px, 2.4vh, 23px);
+      font-weight: 300;
+      color: var(--color-sand);
+      max-width: 780px;
+      line-height: 1.5;
+    }
+
+    .lead-text strong {
+      color: var(--color-ivory);
+      font-weight: 600;
+    }
+
+    /* BRAND LOGO DISPLAY */
+    .brand-hero-logo {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .brand-hero-logo svg {
+      width: clamp(50px, 7vh, 80px);
+      height: clamp(50px, 7vh, 80px);
+      filter: drop-shadow(0 0 25px var(--color-amber-glow));
+    }
+
+    .brand-hero-logo span {
+      font-family: var(--font-sans);
+      font-size: clamp(34px, 5.5vh, 60px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--color-ivory);
+    }
+
+    /* PERSONA CARD HORIZONTAL */
+    .persona-apple-card {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: clamp(20px, 3vh, 32px);
+      max-width: 860px;
+      gap: clamp(24px, 3.5vw, 44px);
+      text-align: left;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .persona-apple-avatar {
+      width: clamp(130px, 18vh, 190px);
+      height: clamp(130px, 18vh, 190px);
+      border-radius: 16px;
+      object-fit: cover;
+      border: 2px solid var(--color-amber);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+      flex-shrink: 0;
+    }
+
+    /* GRID DE MÉTRICAS */
+    .stats-apple-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.5vw, 32px);
+      width: 100%;
+      max-width: 1020px;
+      margin-top: 10px;
+    }
+
+    .stat-apple-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: clamp(18px, 2.8vh, 32px) clamp(16px, 1.8vw, 24px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 3px solid var(--color-amber);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-apple-number {
+      font-family: var(--font-mono);
+      font-size: clamp(32px, 5vh, 52px);
+      font-weight: 700;
+      color: var(--color-amber);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* DISCREET CONTROLS HUD */
+    .keynote-hud {
+      position: absolute;
+      bottom: 16px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-sand-muted);
+      pointer-events: none;
+    }
+
+    .keynote-hud-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .keynote-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--color-sand);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      transition: all 0.2s;
+    }
+
+    .keynote-btn:hover {
+      background: rgba(211, 155, 61, 0.2);
+      color: var(--color-amber);
+      border-color: var(--color-amber);
+    }
+  </style>
+</head>
+<body>
+
+  <main id="keynote-stage">
+
+    <!-- SLIDE 1: ABERTURA & MISSÃO -->
+    <section class="keynote-slide active" data-slide="1">
+      <div class="brand-hero-logo">
+        <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet" style="width: clamp(48px, 6.5vh, 72px); height: auto;">
+        <span>Milet</span>
+      </div>
+      <div class="eyebrow-pill"><span class="dot"></span> Inteligência Energética Independente</div>
+      <h1 class="headline-giant">Contratar energia <em>sem adivinhar</em>.</h1>
+      <p class="lead-text">Desmistificando a conta de luz e conectando PMEs às melhores rotas de economia no Mercado Livre e Geração Distribuída.</p>
+    </section>
+
+    <!-- SLIDE 2: O GANCHO DA DOR -->
+    <section class="keynote-slide" data-slide="2">
+      <div class="eyebrow-pill"><span class="dot"></span> O Choque da Realidade</div>
+      <h2 class="headline-giant">A energia é a 3ª maior despesa de uma empresa. <em>E ninguém entende</em>.</h2>
+      <p class="lead-text">Bandeiras tarifárias, demanda na ponta e fora de ponta, TUSD, TE, encargos da CCEE... Um emaranhado regulatório feito para especialistas.</p>
+    </section>
+
+    <!-- SLIDE 3: O DILEMA DAS PROPOSTAS -->
+    <section class="keynote-slide" data-slide="3">
+      <div class="eyebrow-pill"><span class="dot"></span> O Paradoxo da Escolha</div>
+      <h2 class="headline-giant">3 propostas na mesa. 3 formatos diferentes. <em>Nenhuma comparável</em>.</h2>
+      <p class="lead-text">Uma promete 25% de desconto. A outra fala em tarifa fixa em R$/MWh. A terceira embutiu a tarifa de fio no cálculo. <strong>Qual é a mais barata?</strong></p>
+    </section>
+
+    <!-- SLIDE 4: A PERSONA REAL -->
+    <section class="keynote-slide" data-slide="4">
+      <div class="eyebrow-pill"><span class="dot"></span> Voz do Cliente Real</div>
+      <div class="persona-apple-card">
+        <img src="assets/persona-carlos.png" alt="Carlos Mendes" class="persona-apple-avatar">
+        <div>
+          <h3 style="font-size: clamp(20px, 3vh, 28px); font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">Carlos Mendes, 46 anos</h3>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--color-amber); margin-bottom: 12px;">Sócio e Diretor Financeiro · PME do Grupo A (SP)</div>
+          <p style="font-size: clamp(14px, 1.9vh, 16px); color: var(--color-sand); line-height: 1.45; margin-bottom: 12px;">
+            Paga <strong>R$ 14.500 por mês</strong> de energia. Ele não quer virar especialista no setor elétrico nem passar horas em planilhas confusas.
+          </p>
+          <div style="background: rgba(224, 86, 67, 0.12); border-left: 3px solid #e05643; padding: 8px 12px; border-radius: 4px; font-size: 13px; color: var(--color-ivory);">
+            <strong>O maior medo:</strong> Assinar um contrato de 3 ou 5 anos com pegadinha e tomar uma multa rescisória de R$ 40 mil.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: O CONFLITO DE INTERESSES -->
+    <section class="keynote-slide" data-slide="5">
+      <div class="eyebrow-pill"><span class="dot"></span> O Mercado Tradicional</div>
+      <h2 class="headline-giant">Quem aconselha, vende. <em>O conflito de interesses na mesa</em>.</h2>
+      <p class="lead-text">No modelo tradicional, o consultor ganha comissão de quem vende a energia. Ele sempre vai empurrar o contrato que paga o maior bônus — não o que é melhor para o cliente.</p>
+    </section>
+
+    <!-- SLIDE 6: A SOLUÇÃO MILET -->
+    <section class="keynote-slide" data-slide="6">
+      <div class="eyebrow-pill"><span class="dot"></span> A Inovação Milet</div>
+      <h2 class="headline-giant">O <em>QuintoAndar</em> da energia no Brasil.</h2>
+      <p class="lead-text">Uma plataforma neutra e independente que organiza os dados da fatura, coloca todas as propostas na mesma régua e protege a decisão da PME.</p>
+    </section>
+
+    <!-- SLIDE 7: COMO FUNCIONA (2 PASSOS) -->
+    <section class="keynote-slide" data-slide="7">
+      <div class="eyebrow-pill"><span class="dot"></span> Experiência Simples</div>
+      <div class="stats-apple-grid">
+        <div class="stat-apple-box">
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--color-sand); margin-bottom: 6px;">PASSO 1</span>
+          <div style="font-size: 18px; font-weight: 600; color: var(--color-ivory); margin-bottom: 8px;">Upload da Fatura</div>
+          <p style="font-size: 13px; color: var(--color-sand); line-height: 1.4;">A IA lê o PDF, confere o checksum matemático e gera o Passaporte Energético instantâneo.</p>
+        </div>
+        <div class="stat-apple-box" style="border-top-color: var(--color-copper);">
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--color-sand); margin-bottom: 6px;">PASSO 2</span>
+          <div style="font-size: 18px; font-weight: 600; color: var(--color-ivory); margin-bottom: 8px;">Comparação All-In</div>
+          <p style="font-size: 13px; color: var(--color-sand); line-height: 1.4;">Todas as ofertas auditadas na mesma régua: economia líquida, risco, prazo e custo total real.</p>
+        </div>
+        <div class="stat-apple-box" style="border-top-color: var(--color-emerald);">
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--color-sand); margin-bottom: 6px;">REGRA DE OURO</span>
+          <div style="font-size: 18px; font-weight: 600; color: var(--color-emerald); margin-bottom: 8px;">Neutralidade Total</div>
+          <p style="font-size: 13px; color: var(--color-sand); line-height: 1.4;">Nenhum fornecedor paga para aparecer primeiro. O algoritmo recomenda a melhor opção para a PME.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: O PRODUTO EM PRODUÇÃO -->
+    <section class="keynote-slide" data-slide="8">
+      <div class="eyebrow-pill"><span class="dot"></span> Software Ativo</div>
+      <h2 class="headline-giant">Não é só uma ideia. <em>Já está no ar</em>.</h2>
+      <p class="lead-text" style="margin-bottom: 24px;">Protótipo funcional em Next.js 16 + TypeScript em produção na Vercel com dados de demonstração interativos.</p>
+      <a href="https://milet.vercel.app/diagnostico" target="_blank" style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: #07080b; background: var(--color-amber); padding: 12px 28px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 30px rgba(211, 155, 61, 0.4); display: inline-flex; align-items: center; gap: 8px;">
+        <span>🚀 Abrir Protótipo: milet.vercel.app</span>
+      </a>
+    </section>
+
+    <!-- SLIDE 9: O TAMANHO DO MERCADO -->
+    <section class="keynote-slide" data-slide="9">
+      <div class="eyebrow-pill"><span class="dot"></span> Oportunidade Bilionária</div>
+      <div class="stats-apple-grid">
+        <div class="stat-apple-box">
+          <div class="stat-apple-number">R$ 266 mi</div>
+          <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">TAM Nacional</div>
+          <p style="font-size: 12px; color: var(--color-sand);">72.000 PMEs aptas a migrar no Grupo A (CCEE).</p>
+        </div>
+        <div class="stat-apple-box" style="border-top-color: var(--color-copper);">
+          <div class="stat-apple-number" style="color: var(--color-copper);">10.746</div>
+          <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">SAM Migrações / Ano</div>
+          <p style="font-size: 12px; color: var(--color-sand);">Migrações reais de comércio e serviços em 2025.</p>
+        </div>
+        <div class="stat-apple-box" style="border-top-color: var(--color-emerald);">
+          <div class="stat-apple-number" style="color: var(--color-emerald);">80</div>
+          <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">SOM (Meta Ano 3)</div>
+          <p style="font-size: 12px; color: var(--color-sand);">Contratos ativos gerando R$ 296 mil de receita anual.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: MODELO DE NEGÓCIOS -->
+    <section class="keynote-slide" data-slide="10">
+      <div class="eyebrow-pill"><span class="dot"></span> Modelo Bilateral</div>
+      <h2 class="headline-giant">Dois lados ganham. <em>Os dois podem pagar</em>.</h2>
+      <div class="stats-apple-grid" style="max-width: 780px;">
+        <div class="stat-apple-box">
+          <div class="stat-apple-number">R$ 5.000</div>
+          <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Taxa de Sucesso</div>
+          <p style="font-size: 12px; color: var(--color-sand);">Paga pelo fornecedor no fechamento do contrato (lead qualificado pronto para assinar).</p>
+        </div>
+        <div class="stat-apple-box" style="border-top-color: var(--color-emerald);">
+          <div class="stat-apple-number" style="color: var(--color-emerald);">R$ 100/mês</div>
+          <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Assinatura PME</div>
+          <p style="font-size: 12px; color: var(--color-sand);">Auditoria mensal contínua de faturas e acompanhamento de encargos e multas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: VALIDAÇÃO REAL -->
+    <section class="keynote-slide" data-slide="11">
+      <div class="eyebrow-pill"><span class="dot"></span> Tração e Validação</div>
+      <h2 class="headline-giant">Validação direta no <em>Sebrae Supernova 2026</em>.</h2>
+      <p class="lead-text">Submetido na trilha oficial de inovação do Sebrae. Entrevistas com decisores financeiros e 12 comercializadoras varejistas confirmando a demanda por canais neutros e leads qualificados.</p>
+    </section>
+
+    <!-- SLIDE 12: FECHAMENTO -->
+    <section class="keynote-slide" data-slide="12">
+      <div class="brand-hero-logo" style="margin-bottom: 16px;">
+        <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Milet" style="width: clamp(48px, 6.5vh, 72px); height: auto;">
+        <span style="font-size: 44px;">Milet</span>
+      </div>
+      <h2 class="headline-giant" style="font-size: clamp(34px, 5.5vh, 60px);">A energia certa, pelo preço justo, sem adivinhar.</h2>
+      <p class="lead-text" style="margin-bottom: 24px;">Universidade Presbiteriana Mackenzie · Projetos Empreendedores 2026.2</p>
+      <div style="font-family: var(--font-mono); font-size: 12px; color: var(--color-amber);">
+        Eduardo Mattos · Enzo Larese · Heloísa Confessor · Leonardo Dourado · Maria Luíza Nogueira · Mell Ferreira
+      </div>
+    </section>
+
+    <!-- FOOTER HUD COM CONTROLES DISCRETOS -->
+    <footer class="keynote-hud">
+      <div id="keynote-counter">01 / 12</div>
+      <div class="keynote-hud-center">
+        <button id="btn-prev" class="keynote-btn">◀ Anterior</button>
+        <button id="btn-next" class="keynote-btn">Próximo ▶</button>
+        <button id="btn-fullscreen" class="keynote-btn">⛶ Tela Cheia [F]</button>
+      </div>
+      <div>Milet · Keynote Deck</div>
+    </footer>
+
+  </main>
+
+  <script>
+    (function() {
+      'use strict';
+      const slides = document.querySelectorAll('.keynote-slide');
+      const counter = document.getElementById('keynote-counter');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const totalSlides = slides.length;
+      let current = 1;
+
+      function updateSlide(n) {
+        if (n < 1) n = 1;
+        if (n > totalSlides) n = totalSlides;
+        current = n;
+
+        slides.forEach((s, idx) => {
+          s.classList.toggle('active', (idx + 1) === current);
+        });
+
+        if (counter) {
+          counter.textContent = `${String(current).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+        }
+      }
+
+      function next() { updateSlide(current + 1); }
+      function prev() { updateSlide(current - 1); }
+
+      btnNext.addEventListener('click', next);
+      btnPrev.addEventListener('click', prev);
+
+      btnFullscreen.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen();
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          next();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          prev();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          btnFullscreen.click();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(1);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides);
+        }
+      });
+
+      updateSlide(1);
+    })();
+  </script>
+</body>
+</html>

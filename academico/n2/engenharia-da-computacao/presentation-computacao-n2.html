@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Apresentação N2 · Projetos de Engenharia da Computação I (Mackenzie 2026.2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg: #1A1A1A;
+  --bg-deep: #121212;
+  --card: #232321;
+  --card-alt: #2B2720;
+  --border: #453B2C;
+  --border-dim: #333333;
+  --amber: #D39B3D;
+  --amber-lt: #E8B862;
+  --copper: #B87333;
+  --ivory: #F7F3EA;
+  --sand: #C9B89F;
+  --sand-lt: #EFE9DC;
+  --emerald: #48BB78;
+  --coral: #E57373;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-deep);
+  color: var(--ivory);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+#presentation-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 54px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-deep);
+  overflow: hidden;
+}
+
+#deck-stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: center center;
+  background: var(--bg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg);
+  padding: 36px 72px 28px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.slide-cover {
+  background:
+    radial-gradient(circle at 82% 24%, rgba(211, 155, 61, 0.10) 0%, transparent 55%),
+    radial-gradient(circle at 12% 84%, rgba(184, 115, 51, 0.06) 0%, transparent 48%),
+    var(--bg);
+  padding: 58px 84px 36px 84px;
+}
+
+/* Header padrão */
+.s-header {
+  flex-shrink: 0;
+}
+
+.s-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.s-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.s-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.s-brand-name {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ivory);
+  letter-spacing: 0.4px;
+}
+
+.s-discipline {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--sand);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-left: 16px;
+}
+
+.s-badge {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber-lt);
+  background: var(--card-alt);
+  border: 1.5px solid var(--amber);
+  border-radius: 8px;
+  padding: 8px 18px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.s-title-wrap {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.s-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ivory);
+  letter-spacing: -0.4px;
+}
+
+.s-title em {
+  color: var(--amber-lt);
+  font-style: italic;
+}
+
+.s-subtitle {
+  margin-top: 6px;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--sand);
+}
+
+/* Body */
+.s-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 8px 0;
+}
+
+/* Footer padrão */
+.s-footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1.5px solid var(--border-dim);
+  font-size: 13px;
+  color: var(--sand);
+}
+
+.s-page-num {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--amber-lt);
+}
+
+/* Cards & Code Blocks */
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--accent, var(--amber));
+}
+
+.card.accent-emerald { --accent: var(--emerald); }
+.card.accent-copper { --accent: var(--copper); }
+.card.accent-coral { --accent: var(--coral); }
+.card.accent-sand { --accent: var(--sand); }
+.card.alt { background: var(--card-alt); }
+
+.card-kicker {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent, var(--amber-lt));
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.code-panel {
+  background: var(--bg-deep);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-header {
+  background: var(--card-alt);
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber-lt);
+}
+
+.code-header.emerald { color: var(--emerald); }
+
+.code-pre {
+  padding: 13px 16px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.44;
+  color: var(--sand-lt);
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* Callout banner */
+.callout {
+  background: var(--card-alt);
+  border: 1.5px solid var(--amber);
+  border-left: 8px solid var(--amber);
+  border-radius: 8px;
+  padding: 14px 20px;
+}
+
+.callout.coral {
+  border-color: var(--coral);
+  border-left-color: var(--coral);
+}
+
+.callout.copper {
+  border-color: var(--copper);
+  border-left-color: var(--copper);
+}
+
+.callout-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber-lt);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.callout.coral .callout-title { color: var(--coral); }
+
+/* Grids */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-asymm-left { display: grid; grid-template-columns: 1.52fr 1fr; gap: 24px; }
+.grid-asymm-right { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+
+.big-num {
+  font-family: var(--font-mono);
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.list-clean {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 18px;
+  line-height: 1.48;
+}
+
+.list-clean strong.hl { color: var(--amber-lt); }
+.list-clean strong.em { color: var(--emerald); }
+
+/* Browser screenshot box */
+.shot-frame {
+  background: var(--bg-deep);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.shot-frame.amber { border-color: var(--amber); }
+
+.shot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.shot-caption {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--sand);
+  text-align: center;
+}
+
+/* Comparison table */
+.cmp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+}
+
+.cmp-table th {
+  background: var(--card-alt);
+  color: var(--amber-lt);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: right;
+  border-bottom: 2px solid var(--amber);
+}
+
+.cmp-table th:first-child { text-align: left; }
+
+.cmp-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-dim);
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--ivory);
+}
+
+.cmp-table td:first-child {
+  text-align: left;
+  font-family: var(--font-ui);
+}
+
+.cmp-table tr.row-warn td.col-b {
+  background: rgba(229, 115, 115, 0.14);
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.cmp-table tr.row-total td {
+  font-weight: 700;
+  font-size: 16.5px;
+  border-top: 1.5px solid var(--border);
+}
+
+.cmp-table tr.row-total td.col-a {
+  background: rgba(72, 187, 120, 0.14);
+  color: var(--emerald);
+}
+
+/* HUD & Speaker Notes (Screen Only) */
+#presentation-hud {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  background: #111111;
+  border-top: 1px solid var(--border-dim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--sand);
+}
+
+.hud-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--ivory);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
+.hud-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber-lt);
+}
+
+#progress-track {
+  position: fixed;
+  bottom: 54px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #222;
+  z-index: 101;
+}
+
+#progress-fill {
+  height: 100%;
+  background: var(--amber);
+  width: 7.14%;
+  transition: width 0.2s ease;
+}
+
+#notes-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  height: calc(100vh - 54px);
+  background: #141414;
+  border-left: 1.5px solid var(--amber);
+  padding: 24px;
+  z-index: 120;
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+#notes-drawer.open { display: flex; }
+
+/* Print / PDF Export 1920x1080 exato */
+@page {
+  size: 1920px 1080px;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 1920px !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: var(--bg) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #presentation-viewport {
+    position: static !important;
+    width: 1920px !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  #deck-stage {
+    position: static !important;
+    width: 1920px !important;
+    height: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    width: 1920px !important;
+    height: 1080px !important;
+    min-height: 1080px !important;
+    max-height: 1080px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+  }
+
+  .slide:last-of-type {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  #presentation-hud, #progress-track, #notes-drawer {
+    display: none !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <main id="presentation-viewport">
+    <div id="deck-stage">
+      
+    <section class="slide slide-cover active" data-title="Capa" data-notes="0:00–0:30 · Apresentar a Milet, identificação acadêmica (Eduardo Mattos, TIA 10402800, Turma 6, Prof. Dr. Rodrigo Juliani) e o caso sintético reproduzível Padaria Horizonte, destacando rigor factual: 76 testes e 2 entrevistas WhatsApp.">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:18px;">
+          <img src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet" style="width:68px; height:68px; object-fit:contain;">
+          <span style="font-family:var(--font-display); font-size:40px; font-weight:700; color:var(--ivory);">Milet</span>
+          <span class="s-badge" style="margin-left:16px;">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · N2</span>
+        </div>
+        <span style="font-family:var(--font-mono); font-size:14px; color:var(--sand);">MACKENZIE · 2026.2</span>
+      </div>
+
+      <div class="grid-asymm-left" style="align-items:center; margin:auto 0;">
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <span style="font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--amber); letter-spacing:1.4px;">
+            AVALIAÇÃO N2 · ARQUITETURA, SEGURANÇA E VALIDAÇÃO DO MVP
+          </span>
+          <h1 style="font-family:var(--font-display); font-size:78px; font-weight:600; line-height:1.02; color:var(--ivory);">
+            Engenharia da<br>decisão <em style="color:var(--amber-lt);">energética</em>
+          </h1>
+          <p style="font-size:21px; line-height:1.45; color:var(--sand); max-width:960px;">
+            Plataforma independente que lê faturas por OCR multimodal, consolida o Passaporte Energético e compara propostas do Mercado Livre (ACL) e Geração Distribuída em custo total (All-In) sem conflito de comissão.
+          </p>
+          <div class="callout" style="margin-top:6px;">
+            <div style="font-size:16.5px; line-height:1.45; color:var(--ivory);">
+              <strong style="color:var(--amber-lt);">Caso de demonstração reproduzível:</strong> Padaria Horizonte · Cemig A4 · 12.480 kWh/mês · 75 kW · R$ 10.920/mês<br>
+              <span style="color:var(--sand); font-size:15px;"><strong>Escopo de rigor:</strong> 76 testes automatizados + 2 entrevistas WhatsApp (Dacoli Alimentos e CGC Energia); produção e PostHog A/B como próximos passos.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:32px 34px; gap:18px;">
+          <div class="card-kicker">FICHA ACADÊMICA &amp; ESCOPO N2</div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--sand); text-transform:uppercase;">Autor</div>
+            <div style="font-size:22px; font-weight:700; color:var(--ivory); margin-top:2px;">Eduardo Ferreira de Mattos</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--sand); text-transform:uppercase;">Identificação</div>
+            <div style="font-size:18px; color:var(--ivory); margin-top:2px;">TIA 10402800 · Turma 6 · Eng. de Computação</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--sand); text-transform:uppercase;">Docente Orientador</div>
+            <div style="font-size:18px; color:var(--ivory); margin-top:2px;">Prof. Dr. Rodrigo Juliani</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--sand); text-transform:uppercase;">Instituição &amp; Período</div>
+            <div style="font-size:18px; color:var(--ivory); margin-top:2px;">Universidade Presbiteriana Mackenzie · 2026.2</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--sand); text-transform:uppercase;">Formato da Banca</div>
+            <div style="font-size:17px; font-weight:600; color:var(--amber-lt); margin-top:2px;">10 min apresentação + 5 min arguição · 11 critérios (10,0 pts)</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="s-footer">
+        <span style="font-family:var(--font-mono);">Repositório: github.com/EverGreen-Agency/milet &nbsp;·&nbsp; Demo pública: milet.vercel.app/diagnostico?demo=1</span>
+        <span class="s-page-num">S01 / 14</span>
+      </footer>
+    </section>
+    
+    <section class="slide" data-title="1. Tema e Motivação [0.5]" data-notes="0:30–1:10 · Critério 1 (Tema e Motivação, 0,5 pt). Contextualizar a abertura do Grupo A pela Portaria MME 50/2022, os números da CCEE de 2025 e 1T2026 (>70% varejista) e a Lei 15.269/2025 para baixa tensão em 2027/2028.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">1. TEMA E MOTIVAÇÃO · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Abertura do Mercado Livre e a <em>lacuna de decisão para PMEs</em></h1>
+          <p class="s-subtitle">Recorte do setor elétrico brasileiro: a liberdade tarifária avançou mais rápido que a infraestrutura neutra de decisão.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-3">
+          <div class="card">
+            <div class="big-num" style="color:var(--amber);">21.707</div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory); margin-bottom:8px;">migrações ao ACL em 2025 (CCEE)</div>
+            <p style="font-size:15.5px; line-height:1.4; color:var(--sand);">49,5% concentradas em Serviços (6.648) e Comércio (4.098) = 10.746 PMEs; 73% no eixo Sul-Sudeste.</p>
+          </div>
+          <div class="card accent-emerald">
+            <div class="big-num" style="color:var(--emerald);">&gt;70%</div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory); margin-bottom:8px;">via modelo varejista no 1T2026</div>
+            <p style="font-size:15.5px; line-height:1.4; color:var(--sand);">4.827 migrações no 1T2026 (-36,5% vs 1T25), sendo 3.387 varejistas e 140 comercializadoras habilitadas na CCEE.</p>
+          </div>
+          <div class="card accent-copper">
+            <div class="big-num" style="color:var(--copper);">72 mil</div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory); margin-bottom:8px;">PMEs Grupo A ainda no cativo</div>
+            <p style="font-size:15.5px; line-height:1.4; color:var(--sand);">Recorte econômico após filtro de MMGD (CCEE); 220–230 mil UCs totais no Grupo A (ANEEL SIGEL).</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="flex:1;">
+          <div class="card">
+            <div class="card-kicker">LINHA REGULATÓRIA DA ABERTURA NO BRASIL</div>
+            <ul class="list-clean">
+              <li><strong class="hl">• REN ANEEL 1.000/2021 (art. 136):</strong> define o Grupo A (média/alta tensão) a partir de 30 kW de demanda contratada.</li>
+              <li><strong class="hl">• Portaria MME 50/2022 (vigência 01/01/2024):</strong> abriu integralmente o Grupo A ao Mercado Livre de Energia (ACL).</li>
+              <li><strong class="em">• Lei 15.269/2025 + Decreto 13.097/2026:</strong> abertura da baixa tensão (&lt; 2,3 kV) em 25/11/2027 (comercial/industrial — 6,2 mi UCs, 104 TWh EPE) e 25/11/2028 (demais).</li>
+            </ul>
+          </div>
+          <div class="card accent-emerald">
+            <div class="card-kicker">POR QUE UM PROBLEMA DE ENGENHARIA DE COMPUTAÇÃO?</div>
+            <ul class="list-clean">
+              <li><strong>1. Ingestão heterogênea:</strong> 104 distribuidoras brasileiras com layouts de fatura e regras tarifárias dispersas.</li>
+              <li><strong>2. Normalização matemática auditável:</strong> traduzir R$/MWh, % OFF e R$/kWh para custo mensal equivalente sem caixa-preta.</li>
+              <li><strong>3. Infraestrutura neutra escalável:</strong> reduzir o custo de transação das PMEs hoje e preparar a escala de milhões de UCs em 2027/2028.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S02 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="2. Problema Tratado [0.5]" data-notes="1:10–1:50 · Critério 2 (Problema Tratado, 0,5 pt). Explicar as 4 causas da paralisia de decisão das PMEs e apresentar o caso âncora Padaria Horizonte.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">2. PROBLEMA TRATADO · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Assimetria informacional, propostas incomparáveis <em>e conflito de agência</em></h1>
+          <p class="s-subtitle">Por que PMEs elegíveis ignoram propostas ou contratam com surpresa de fatura dupla e multa rescisória.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-asymm-left" style="flex:1; align-items:stretch;">
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div class="grid-2" style="flex:1;">
+              <div class="card accent-coral">
+                <div class="card-kicker">01 · RÉGUAS INCOMPATÍVEIS</div>
+                <p style="font-size:16.5px; line-height:1.45; color:var(--ivory);">Propostas cotadas em R$/MWh, % OFF (sobre TE ou TE+TUSD) e R$/kWh omitindo encargos, garantias e tributos.</p>
+              </div>
+              <div class="card">
+                <div class="card-kicker">02 · FATURA DUPLA NO PÓS-VENDA</div>
+                <p style="font-size:16.5px; line-height:1.45; color:var(--ivory);">PME compara apenas o boleto da comercializadora sem somar TUSD demanda, iluminação e encargos da concessionária.</p>
+              </div>
+              <div class="card accent-copper">
+                <div class="card-kicker">03 · CONFLITO DE COMISSÃO</div>
+                <p style="font-size:16.5px; line-height:1.45; color:var(--ivory);">Corretor comissionado à vista (R$ 5–10 mil) prioriza fechamento rápido; após assinatura, pós-venda desaparece.</p>
+              </div>
+              <div class="card accent-sand">
+                <div class="card-kicker">04 · ATRITO E MULTAS CONTRATUAIS</div>
+                <p style="font-size:16.5px; line-height:1.45; color:var(--ivory);">Fidelidade de 2–5 anos, denúncia de 180 dias (CCER) e troca de medidor sem trilha de acompanhamento.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <div class="callout-title">SINAL DE MERCADO (VOC DOCUMENTAL + ENTREVISTAS)</div>
+              <p style="font-size:15.5px; line-height:1.4; font-style:italic; color:var(--ivory);">
+                “Prometeram 25% de desconto fixo, mas quando somo o boleto da comercializadora com o da concessionária, estou pagando quase a mesma coisa.” — Gestor PME MG (Reclame Aqui). <span style="font-style:normal; color:var(--sand); font-size:14px;">Nota metodológica: reclamações são sinais qualitativos, não estatística de prevalência.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="card accent-emerald" style="justify-content:space-between; padding:26px 28px;">
+            <div class="card-kicker">CASO ÂNCORA DO MVP · PADARIA HORIZONTE</div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:12.5px; color:var(--sand);">PERFIL DA UNIDADE (DEMO SINTÉTICA)</div>
+              <div style="font-size:21px; font-weight:700; color:var(--ivory); margin-top:4px;">Padaria Horizonte Ltda · Belo Horizonte / MG</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:12.5px; color:var(--sand);">DISTRIBUIDORA &amp; ENQUADRAMENTO</div>
+              <div style="font-size:20px; font-weight:700; color:var(--amber-lt); margin-top:4px;">Cemig · Grupo A4 Horossazonal Verde</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:12.5px; color:var(--sand);">CONSUMO / DEMANDA CONTRATADA</div>
+              <div style="font-family:var(--font-mono); font-size:26px; font-weight:700; color:var(--ivory); margin-top:4px;">12.480 kWh/mês · 75 kW</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:12.5px; color:var(--sand);">FATURA CATIVA ATUAL (BASELINE)</div>
+              <div style="font-family:var(--font-mono); font-size:32px; font-weight:700; color:var(--coral); margin-top:4px;">R$ 10.920 / mês <span style="font-family:var(--font-ui); font-size:15px; color:var(--sand); font-weight:400;">(R$ 0,88/kWh)</span></div>
+            </div>
+            <div style="border-top:1px solid var(--border-dim); padding-top:14px;">
+              <div style="font-family:var(--font-mono); font-size:12.5px; color:var(--sand); margin-bottom:4px;">DILEMA DE DECISÃO</div>
+              <p style="font-size:15.5px; line-height:1.4; color:var(--ivory);">Elegível ao ACL (≥ 30 kW) e GD. Recebe ofertas em formatos incompatíveis; uma garantia bancária oculta de R$ 420/mês inverte o ranking real.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S03 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="3. Estado da Arte [0.5]" data-notes="1:50–2:35 · Critério 3 (Estado da Arte, 0,5 pt — aprofundado). Articular literatura científica, marco regulatório até Decreto 13.097/2026 Art. 10, benchmarks internacionais e tese de lacuna.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">3. ESTADO DA ARTE · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Literatura científica, regulação vigente <em>e tese de integração contínua</em></h1>
+          <p class="s-subtitle">Comparação estática de ofertas tende a virar infraestrutura pública; o diferencial reside na execução contínua auditável.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-3" style="flex:1;">
+          <div class="card">
+            <div class="card-kicker">LITERATURA CIENTÍFICA (PEER-REVIEWED)</div>
+            <ul class="list-clean" style="font-size:15.5px;">
+              <li><strong class="hl">• Sousa et al. (2019, RSER):</strong> mercados P2P e comunitários exigem transparência de preços e confiança operacional.</li>
+              <li><strong class="hl">• Capper et al. (2022, RSER, 139 artigos):</strong> revisão sistemática aponta fragmentação e baixa interoperabilidade entre agentes.</li>
+              <li><strong class="hl">• Gunarathna et al. (2022, ERSS, 50 proj.):</strong> barreiras regulatórias e custos de transação travam adoção em menor porte.</li>
+              <li><strong class="hl">• Schwidtal et al. (2023, RSER):</strong> agregadores e varejistas demandam padronização contratual e métrica líquida.</li>
+            </ul>
+          </div>
+          <div class="card accent-emerald">
+            <div class="card-kicker">MARCO REGULATÓRIO BRASIL</div>
+            <ul class="list-clean" style="font-size:15.5px;">
+              <li><strong class="em">• REN 1.000/2021 + Portaria MME 50/2022:</strong> elegibilidade ≥ 30 kW e abertura total do Grupo A; REN 1.009/2022 rege varejistas.</li>
+              <li><strong class="em">• Lei 14.300/2022 + REN 1.059/2023:</strong> marco da MMGD/SCEE e escalonamento do Fio B.</li>
+              <li><strong class="hl">• Decreto 13.097/2026 (Art. 10) + Lei 15.269/25:</strong> baixa tensão 2027/28 e comparador público de ofertas pela CCEE.</li>
+              <li><strong class="em">• CP ANEEL 07/2025 + Submódulo 1.8 CCEE:</strong> Open Energy e acesso LGPD ao histórico de medição (12 meses).</li>
+            </ul>
+          </div>
+          <div class="card accent-copper">
+            <div class="card-kicker">BENCHMARKS NACIONAIS E GLOBAIS</div>
+            <ul class="list-clean" style="font-size:15.5px;">
+              <li><strong class="hl">• Brasil (Clarke, Electy, UC Livre, Lemon):</strong> intermediam ACL/GD; receita atrelada a comissão/success fee (Clarke: R$ 5–10 mil + R$ 100/mês).</li>
+              <li><strong class="hl">• Energy Ogre (Texas/ERCOT):</strong> assinatura fixa US$ 10–12/mês sem comissão de fornecedor (alinhamento fiduciário).</li>
+              <li><strong class="hl">• EnergySage (EUA):</strong> cotação padronizada lado a lado para reduzir assimetria.</li>
+              <li><strong class="hl">• Arcadia &amp; Piclo (EUA/UK):</strong> APIs de dados de fatura (Arc) e marketplace regulado (Ofgem).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout" style="padding:18px 24px;">
+          <div class="callout-title">TESE DE LACUNA INVESTIGADA PELA MILET</div>
+          <p style="font-size:17px; line-height:1.45; color:var(--ivory);">
+            Com o Decreto 13.097/2026 (Art. 10), a vitrine simples de ofertas vira infraestrutura pública da CCEE. A lacuna tecnológica é a <strong style="color:var(--amber-lt);">integração contínua</strong>: extrair a fatura (Passaporte Energético), rotear Grupo A/B, normalizar propostas em custo total (All-In), orquestrar workflow e auditar a economia realizada mês a mês.
+          </p>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S04 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="4. Plano de Projeto e Resultados [0.5]" data-notes="2:35–3:15 · Critério 4 (Plano de Projeto e Resultados Esperados, 0,5 pt). Mostrar 6 Épicos / 28 User Stories, arquitetura monorepo e 4 resultados mensuráveis do MVP.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">4. PLANO DE PROJETO E RESULTADOS · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">6 Épicos, 28 User Stories <em>e arquitetura de 4 portais RBAC</em></h1>
+          <p class="s-subtitle">Evolução planejada em Especificação Orientada por Domínio (SDD) do núcleo determinístico à plataforma multitenant.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-2" style="flex:1;">
+          <div class="card">
+            <div class="card-kicker">BACKLOG ESTRUTURADO (N1 -&gt; N2 · 6 ÉPICOS / 28 US)</div>
+            <ul class="list-clean" style="font-size:16px;">
+              <li><strong class="hl">• EP-01 · Intake &amp; Passaporte Energético:</strong> triagem + OCR + conferência humana.</li>
+              <li><strong class="hl">• EP-02 · Diagnóstico &amp; Elegibilidade:</strong> decomposição TE/TUSD/Tributos e rotas Grupo A/B.</li>
+              <li><strong class="hl">• EP-03 · Comparação All-In:</strong> ranking transparente por custo total sem venda de posição.</li>
+              <li><strong class="hl">• EP-04 · Fluxo de Propostas &amp; RFQ:</strong> padronização de lances de comercializadoras/usinas.</li>
+              <li><strong class="hl">• EP-05 · Auditoria Pós-Migração:</strong> conferência da economia realizada e reavaliação.</li>
+              <li><strong class="hl">• EP-06 · Portfólio Multi-Unidade &amp; RBAC:</strong> 4 portais (Consumidor, Comercializadora, Usina, Admin).</li>
+            </ul>
+          </div>
+          <div class="card accent-emerald">
+            <div class="card-kicker">ARQUITETURA ALVO EM MONOREPO TYPESCRIPT</div>
+            <ul class="list-clean" style="font-size:16px;">
+              <li><strong class="em">• Fronteira Pública &amp; Portais (Next.js 16 + React 19):</strong> /diagnostico, /roadmap, /build-in-public e futuros /portal/*.</li>
+              <li><strong class="em">• Núcleo Puro (@milet/domain + src/domain):</strong> regras tarifárias e All-In sem dependência de framework.</li>
+              <li><strong class="em">• Contratos (@milet/contracts + OpenAPI/JSON Schema):</strong> seams validados por Ajv.</li>
+              <li><strong class="em">• Fundação Persistente (@milet/api NestJS + @milet/worker):</strong> PostgreSQL RLS, audit_events append-only e Outbox/DLQ.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card accent-copper" style="padding:18px 24px;">
+          <div class="card-kicker">RESULTADOS ESPERADOS MENSURÁVEIS DO MVP (COMPUTAÇÃO I)</div>
+          <div class="grid-4">
+            <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:8px; padding:14px;">
+              <div style="font-family:var(--font-mono); font-size:13.5px; font-weight:700; color:var(--amber-lt); margin-bottom:6px;">R1 · Jornada Reproduzível</div>
+              <p style="font-size:14.5px; line-height:1.38; color:var(--ivory);">Fluxo de 5 etapas navegável (/diagnostico?demo=1) com OCR Gemini + fallback determinístico.</p>
+            </div>
+            <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:8px; padding:14px;">
+              <div style="font-family:var(--font-mono); font-size:13.5px; font-weight:700; color:var(--emerald); margin-bottom:6px;">R2 · Cálculo Auditável</div>
+              <p style="font-size:14.5px; line-height:1.38; color:var(--ivory);">100% de cobertura unitária no motor All-In e validação de fatura antes do envio.</p>
+            </div>
+            <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:8px; padding:14px;">
+              <div style="font-family:var(--font-mono); font-size:13.5px; font-weight:700; color:var(--amber-lt); margin-bottom:6px;">R3 · Segurança &amp; Isolamento</div>
+              <p style="font-size:14.5px; line-height:1.38; color:var(--ivory);">Matriz OWASP ASVS L1 + LLM05 testada; RLS e triggers append-only validados em PGlite.</p>
+            </div>
+            <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:8px; padding:14px;">
+              <div style="font-family:var(--font-mono); font-size:13.5px; font-weight:700; color:var(--sand-lt); margin-bottom:6px;">R4 · Base de Campo</div>
+              <p style="font-size:14.5px; line-height:1.38; color:var(--ivory);">Testes automatizados verdes + entrevistas exploratórias reais orientando backlog de Projetos II.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S05 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="5. Cronograma Atualizado [0.5]" data-notes="3:15–3:50 · Critério 5 (Cronograma Atualizado, 0,5 pt). Contrastar marcos realizados até 19/11/2026 com a fase pendente de Projetos II (fev–jun/2027).">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">5. CRONOGRAMA ATUALIZADO · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Execução realizada (ago–nov/2026) <em>vs. roadmap de Projetos II</em></h1>
+          <p class="s-subtitle">Separação explícita entre entregas verificadas até 19/11/2026 e escopo planejado para Fev–Jun/2027.</p>
+        </div>
+      </header>
+    
+      <div class="s-body" style="gap:14px;">
+        
+          <div style="display:grid; grid-template-columns:290px 380px 1fr; align-items:center; gap:24px; background:var(--card); border:1.5px solid var(--border); border-left:8px solid var(--emerald); border-radius:8px; padding:18px 24px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:15.5px; font-weight:700; color:var(--emerald);">10/08 – 20/09/2026</div>
+              <span style="display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--emerald); background:var(--bg-deep); border:1px solid var(--emerald); border-radius:4px; padding:3px 10px;">REALIZADO</span>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory);">Discovery &amp; Estado da Arte</div>
+            <div style="font-size:16px; line-height:1.4; color:var(--sand-lt);">Perfis de usuário (Fibery), mapeamento regulatório ANEEL/CCEE e revisão bibliográfica P2P/varejista.</div>
+          </div>
+        
+          <div style="display:grid; grid-template-columns:290px 380px 1fr; align-items:center; gap:24px; background:var(--card); border:1.5px solid var(--border); border-left:8px solid var(--emerald); border-radius:8px; padding:18px 24px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:15.5px; font-weight:700; color:var(--emerald);">21/09 – 28/09/2026</div>
+              <span style="display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--emerald); background:var(--bg-deep); border:1px solid var(--emerald); border-radius:4px; padding:3px 10px;">REALIZADO</span>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory);">Plano de Projeto (N1)</div>
+            <div style="font-size:16px; line-height:1.4; color:var(--sand-lt);">BMC v0.1, 6 Épicos e 28 User Stories, especificação de seams e critérios de aceitação BDD.</div>
+          </div>
+        
+          <div style="display:grid; grid-template-columns:290px 380px 1fr; align-items:center; gap:24px; background:var(--card); border:1.5px solid var(--border); border-left:8px solid var(--emerald); border-radius:8px; padding:18px 24px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:15.5px; font-weight:700; color:var(--emerald);">29/09 – 19/10/2026</div>
+              <span style="display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--emerald); background:var(--bg-deep); border:1px solid var(--emerald); border-radius:4px; padding:3px 10px;">REALIZADO</span>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory);">1ª Versão MVP &amp; Deploy</div>
+            <div style="font-size:16px; line-height:1.4; color:var(--sand-lt);">Jornada /diagnostico sintética, fundação NestJS + PostgreSQL RLS + Outbox, deploy inicial Vercel.</div>
+          </div>
+        
+          <div style="display:grid; grid-template-columns:290px 380px 1fr; align-items:center; gap:24px; background:var(--card); border:1.5px solid var(--border); border-left:8px solid var(--emerald); border-radius:8px; padding:18px 24px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:15.5px; font-weight:700; color:var(--emerald);">20/10 – 19/11/2026</div>
+              <span style="display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--emerald); background:var(--bg-deep); border:1px solid var(--emerald); border-radius:4px; padding:3px 10px;">REALIZADO</span>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory);">Unificação, Segurança &amp; Campo</div>
+            <div style="font-size:16px; line-height:1.4; color:var(--sand-lt);">Next.js 16 (/roadmap, /build-in-public, 404), PostHog opt-in, OWASP ASVS L1, 76 testes verdes, 2 entrevistas WhatsApp.</div>
+          </div>
+        
+          <div style="display:grid; grid-template-columns:290px 380px 1fr; align-items:center; gap:24px; background:var(--card-alt); border:1.5px solid var(--amber); border-left:8px solid var(--amber-lt); border-radius:8px; padding:18px 24px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:15.5px; font-weight:700; color:var(--amber-lt);">FEV – JUN / 2027</div>
+              <span style="display:inline-block; margin-top:6px; font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--amber-lt); background:var(--bg-deep); border:1px solid var(--amber-lt); border-radius:4px; padding:3px 10px;">PENDENTE (PROJETOS II)</span>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ivory);">Produção, 4 Portais &amp; Campo Ampliado</div>
+            <div style="font-size:16px; line-height:1.4; color:var(--sand-lt);">OIDC/MFA + RBAC 4 portais, matching-engine.ts, unificação /api/* &lt;-&gt; @milet/api + Postgres Brasil + S3 SigV4/antivírus, 10+ PMEs, 5+ comercializadoras, A/B PostHog &gt;= 14 dias.</div>
+          </div>
+        
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S06 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="6. Conceitos e Tecnologias [1.0]" data-notes="3:50–4:35 · Critério 6 (Conceitos e Tecnologias, 1,0 pt). Justificar monorepo TypeScript sem type drift, PostgreSQL RLS + PGlite, Outbox Pattern e Gemini/PostHog opt-in.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">6. CONCEITOS E TECNOLOGIAS · 1,0 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Decisões de engenharia: <em>zero type drift, RLS e Outbox</em></h1>
+          <p class="s-subtitle">Por que o monorepo TypeScript unificado elimina desalinhamento regulatório e sustenta segurança por construção.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-3" style="flex:1; gap:22px;">
+          
+          <div class="card " style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">01 · SDD / BDD / TDD</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">docs/specs/plataforma-portais/</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Especificações em Gherkin e fronteiras explícitas (Seams) guiam suítes automatizadas (Vitest, node:test e PGlite).</p>
+          </div>
+        
+          <div class="card accent-emerald" style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">02 · ZERO TYPE DRIFT (DDD)</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">@milet/domain &amp; src/domain</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Mesmas funções puras (validateInvoice, rankProposals, evaluateEligibility) rodam no browser e na API sem traduzir Python/Go.</p>
+          </div>
+        
+          <div class="card " style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">03 · NEXT.JS 16 + REACT 19</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">App Router + Turbopack (Vercel)</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Cold start ~50 ms na Vercel para superfície pública e jornada /diagnostico; contratos estruturados via JSON Schema/Ajv.</p>
+          </div>
+        
+          <div class="card accent-emerald" style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">04 · POSTGRESQL RLS + PGLITE</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">infra/postgres/migrations/001..006</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Row-Level Security por app.organization_id e triggers append-only validados em @electric-sql/pglite em memória.</p>
+          </div>
+        
+          <div class="card accent-copper" style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">05 · OUTBOX PATTERN &amp; DLQ</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">apps/worker/src/outbox-worker.ts</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Claim concorrente com FOR UPDATE SKIP LOCKED, fencing por claim_token, retry exponencial e tabela outbox_dead_letters.</p>
+          </div>
+        
+          <div class="card " style="padding:24px 26px;">
+            <div class="card-kicker" style="margin-bottom:6px;">06 · GEMINI 2.5 FLASH + POSTHOG</div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--sand); margin-bottom:14px;">OCR Multimodal &amp; Telemetria Opt-In</div>
+            <p style="font-size:17px; line-height:1.45; color:var(--ivory);">Extração REST server-side com fallback determinístico; PostHog só inicia após consentimento (autocapture: false, EXP-01 FNV-1a).</p>
+          </div>
+        
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S07 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="7. Desenvolvimento (1/2) [1.0]" data-notes="4:35–5:20 · Critério 7 (Desenvolvimento 1/2, 1,0 pt). Mostrar código literal de TenantGuard + set_config para RLS (explicitando ausência de OIDC/portais) e o fluxo OCR em /api/extract-invoice + conferência humana.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">7. DESENVOLVIMENTO (1/2) · 1,0 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Código real: isolamento por tenant (RLS) <em>e fluxo OCR de faturas</em></h1>
+          <p class="s-subtitle">Evidência direta dos arquivos do repositório e transparência sobre a fronteira atual entre fundação e OIDC.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-2" style="flex:1; align-items:stretch;">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="code-panel">
+              <div class="code-header">apps/api/src/tenancy/tenant.guard.ts (linhas 20–30)</div>
+              <pre class="code-pre">const organizationId = request.header(&quot;x-organization-id&quot;);
+const userId = request.header(&quot;x-user-id&quot;);
+if (!organizationId || !userId)
+  throw new BadRequestException(&quot;x-organization-id e x-user-id são obrigatórios&quot;);
+if (!isValidTenantId(organizationId) || !isValidUserId(userId))
+  throw new BadRequestException(&quot;tenant ou usuário em formato inválido&quot;);
+if (!(await this.access.canAccess(organizationId, userId)))
+  throw new ForbiddenException(&quot;acesso ao tenant negado&quot;);
+request.tenantContext = { organizationId, userId, correlationId: request.correlationId };</pre>
+            </div>
+            <div class="code-panel">
+              <div class="code-header emerald">apps/api/src/database/postgres-tenant-database.ts (linhas 50–59)</div>
+              <pre class="code-pre">await client.query(&quot;BEGIN&quot;);
+const tenant = await client.query&lt;{ id: string }&gt;(
+  &quot;SELECT id::text AS id FROM organizations WHERE public_id = $1&quot;, [context.organizationId]);
+const organizationUuid = tenant.rows[0]?.id;
+if (!organizationUuid) throw new TenantNotFoundError(context.organizationId);
+await client.query(&quot;SELECT set_config(&#x27;app.organization_id&#x27;, $1, true)&quot;, [organizationUuid]);
+await client.query(&quot;SELECT set_config(&#x27;app.user_public_id&#x27;, $1, true)&quot;, [context.userId]);</pre>
+            </div>
+            <div class="callout copper" style="margin-top:auto;">
+              <div class="callout-title" style="color:var(--amber-lt);">FRONTEIRA EXPLÍCITA (OWASP_ASVS_L1_INTAKE.MD:33)</div>
+              <p style="font-size:15px; line-height:1.38; color:var(--ivory);">
+                <code style="font-family:var(--font-mono); color:var(--amber-lt);">x-organization-id</code> e <code style="font-family:var(--font-mono); color:var(--amber-lt);">x-user-id</code> simulam contexto pós-login na fundação. OIDC/MFA e rotas <code style="font-family:var(--font-mono);">/portal/*</code> são pendências mapeadas para Projetos II.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="code-panel">
+              <div class="code-header">src/app/api/extract-invoice/route.ts (linhas 4–9, 29–71, 75–88)</div>
+              <pre class="code-pre">const ALLOWED_MIME_TYPES = new Set([
+  &quot;application/pdf&quot;, &quot;image/png&quot;, &quot;image/jpeg&quot;, &quot;image/webp&quot;]);
+if (apiKey) { // gemini-2.5-flash:generateContent (server-side)
+  // inlineData: { mimeType, data: fileData }, responseMimeType: &quot;application/json&quot;
+  if (geminiRes.ok &amp;&amp; candidateText)
+    return NextResponse.json({ ok: true, extracted: JSON.parse(candidateText),
+      source: &quot;gemini-2.5-flash&quot;, fileKey: `invoices/${crypto.randomUUID()}-${fileName}` });
+}
+// Fallback determinístico calibrado (Padaria Horizonte / Cemig A4):
+return NextResponse.json({ ok: true, extracted: {
+  distributor: &quot;Cemig&quot;, period: &quot;2026-08&quot;, consumptionKwh: 12480,
+  total: 10920, contractedDemandKw: 75, voltageGroup: &quot;A4&quot;, tariffFlag: &quot;Verde&quot; },
+  source: &quot;synthetic-intake-fallback&quot; });</pre>
+            </div>
+            <div class="card accent-emerald" style="flex:1; justify-content:center;">
+              <div class="card-kicker">VALIDAÇÃO HUMANA &amp; DUALIDADE API DETECTADA</div>
+              <ul class="list-clean" style="font-size:15.5px; gap:8px;">
+                <li><strong class="em">• Conferência obrigatória:</strong> <code style="font-family:var(--font-mono);">step-invoice-review.tsx:24-32</code> valida campos com <code style="font-family:var(--font-mono);">validateInvoice()</code> (<code style="font-family:var(--font-mono);">energy-engine.ts:65-77</code>).</li>
+                <li><strong class="hl">• Schema estrito em api/v1/extract-invoice.js:10-40,158:</strong> define <code style="font-family:var(--font-mono);">extractionSchema</code> + <code style="font-family:var(--font-mono);">temperature: 0.1</code> (<code style="font-family:var(--font-mono);">gemini-2.5-flash-lite</code>).</li>
+                <li><strong style="color:var(--coral);">• Gap auditado:</strong> unificar <code style="font-family:var(--font-mono);">/api/extract-invoice</code> com <code style="font-family:var(--font-mono);">api/v1/extract-invoice.js</code> e adicionar assinatura AWS SigV4 no <code style="font-family:var(--font-mono);">uploadToS3</code>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S08 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="7. Desenvolvimento (2/2) [1.0]" data-notes="5:20–6:05 · Critério 7 (Desenvolvimento 2/2, 1,0 pt). Mostrar a jornada de 5 etapas operando em milet.vercel.app/diagnostico?demo=1 com capturas reais das etapas 3 e 4 e o código de rankProposals em energy-engine.ts.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">7. DESENVOLVIMENTO (2/2) · 1,0 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Jornada de 5 etapas no ar <em>(milet.vercel.app/diagnostico?demo=1)</em></h1>
+          <p class="s-subtitle">O motor energy-engine.ts executa a mesma normalização no cliente e nos testes unitários (Padaria Horizonte · Cemig A4).</p>
+        </div>
+      </header>
+    
+      <div class="s-body" style="gap:14px;">
+        <div class="grid-asymm-right" style="align-items:stretch;">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px;">
+              
+          <div style="background:var(--card); border:1.5px solid var(--border); border-radius:6px; padding:10px 8px; text-align:center; font-family:var(--font-mono); font-size:13px; font-weight:500; color:var(--sand-lt);">1. Triagem</div>
+        
+          <div style="background:var(--card); border:1.5px solid var(--border); border-radius:6px; padding:10px 8px; text-align:center; font-family:var(--font-mono); font-size:13px; font-weight:500; color:var(--sand-lt);">2. Fatura &amp; OCR</div>
+        
+          <div style="background:var(--card-alt); border:1.5px solid var(--amber); border-radius:6px; padding:10px 8px; text-align:center; font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--amber-lt);">3. Passaporte (Conferência)</div>
+        
+          <div style="background:var(--card-alt); border:1.5px solid var(--amber); border-radius:6px; padding:10px 8px; text-align:center; font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--amber-lt);">4. Baseline &amp; Rotas</div>
+        
+          <div style="background:var(--card); border:1.5px solid var(--border); border-radius:6px; padding:10px 8px; text-align:center; font-family:var(--font-mono); font-size:13px; font-weight:500; color:var(--sand-lt);">5. Propostas All-In</div>
+        
+            </div>
+            <div class="card" style="flex:1; padding:16px 20px;">
+              <div class="card-kicker" style="margin-bottom:6px;">ELEGIBILIDADE DETERMINÍSTICA (ENERGY-ENGINE.TS:105-127)</div>
+              <p style="font-size:15.5px; line-height:1.4; color:var(--ivory);">
+                Grupo A ou demanda &ge; 30 kW (Padaria Horizonte: A4, 75 kW) &rarr; <strong style="color:var(--emerald);">Mercado Livre Varejista: ELIGIBLE</strong>; Solar Local e GD Compartilhada: <strong style="color:var(--amber-lt);">REVIEW</strong> (créditos GD não abatem demanda contratada).
+              </p>
+            </div>
+          </div>
+
+          <div class="code-panel">
+            <div class="code-header emerald">src/domain/energy-engine.ts (linhas 83–103)</div>
+            <pre class="code-pre" style="font-size:13px; line-height:1.38;">export function normalizeProposal(proposal, baselineTotal) {
+  const total = calculateBaseline(proposal.costs);
+  const monthlySaving = baselineTotal - total;
+  return { ...proposal, total, monthlySaving, savingPercent };
+}
+export function rankProposals(proposals, baselineTotal) {
+  return proposals.map((p) =&gt; normalizeProposal(p, baselineTotal))
+    .sort((a, b) =&gt; a.total - b.total)
+    .map((proposal, index) =&gt; ({ ...proposal, rank: index + 1 }));
+}</pre>
+          </div>
+        </div>
+
+        <div class="grid-2" style="flex:1; align-items:center;">
+          <div class="shot-frame">
+            <img class="shot-img" style="max-height:430px;" src="../../../supernova/pitch/shots/diag-02-conferencia.png" alt="Etapa 3: Conferência Passaporte Energético">
+            <div class="shot-caption">Captura real · Etapa 3: Passaporte Energético (12.480 kWh/mês · 75 kW · Cemig A4)</div>
+          </div>
+          <div class="shot-frame">
+            <img class="shot-img" style="max-height:430px;" src="../../../supernova/pitch/shots/diag-03-diagnostico.png" alt="Etapa 4: Diagnóstico e Decomposição da Fatura">
+            <div class="shot-caption">Captura real · Etapa 4: Decomposição Baseline (R$ 10.920/mês · TE/TUSD/Tributos/Bandeiras)</div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S09 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="8. Segurança [1.0]" data-notes="6:05–6:50 · Critério 8 (Segurança, 1,0 pt). Mostrar 4 trechos literais de segurança (Headers CSP/DENY, RLS + triggers imutáveis, escapeHtml anti-XSS LLM05 testado em intakes.test.js, Fail-Closed + Rate Limit) e o backlog transparente antes de PII real.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">8. SEGURANÇA · 1,0 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">OWASP ASVS 5.0.0 L1, Top 10:2025 <em>e LLM Security no código</em></h1>
+          <p class="s-subtitle">Controles verificados em código e testes automatizados, com backlog explícito antes de operar com PII real.</p>
+        </div>
+      </header>
+    
+      <div class="s-body" style="gap:14px;">
+        <div class="grid-2" style="flex:1; gap:16px;">
+          <div class="code-panel">
+            <div class="code-header">V9 / A02 · apps/api/src/http/security-headers.middleware.ts (6–15)</div>
+            <pre class="code-pre" style="font-size:13px;">response.setHeader(&quot;x-content-type-options&quot;, &quot;nosniff&quot;);
+response.setHeader(&quot;x-frame-options&quot;, &quot;DENY&quot;);
+response.setHeader(&quot;referrer-policy&quot;, &quot;no-referrer&quot;);
+response.setHeader(&quot;permissions-policy&quot;,
+  &quot;camera=(), microphone=(), geolocation=(), payment=()&quot;);
+response.setHeader(&quot;content-security-policy&quot;,
+  &quot;default-src &#x27;none&#x27;; frame-ancestors &#x27;none&#x27;; base-uri &#x27;none&#x27;&quot;);</pre>
+          </div>
+          <div class="code-panel">
+            <div class="code-header emerald">V4 / A01 · infra/postgres/migrations/001_transactional_foundation.sql (145–167)</div>
+            <pre class="code-pre" style="font-size:13px;">CREATE OR REPLACE FUNCTION reject_audit_mutation() RETURNS trigger AS $$
+BEGIN RAISE EXCEPTION &#x27;audit_events is append-only&#x27;; END; $$ ...;
+CREATE TRIGGER audit_events_no_update BEFORE UPDATE ON audit_events ...;
+CREATE TRIGGER audit_events_no_delete BEFORE DELETE ON audit_events ...;
+ALTER TABLE invoices ENABLE ROW LEVEL SECURITY;
+CREATE POLICY invoice_tenant_isolation ON invoices
+  USING (organization_id::text = current_setting(&#x27;app.organization_id&#x27;, true));</pre>
+          </div>
+          <div class="code-panel">
+            <div class="code-header">LLM05 / V5 · api/v1/intakes.js (129–165) &amp; intakes.test.js (33–54)</div>
+            <pre class="code-pre" style="font-size:13px;">// Saída do Gemini passa por responseSchema + validateGuidance() + escapeHtml():
+function escapeHtml(value) { return String(value).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g, ...); }
+// Teste de regressão (api/v1/intakes.test.js:39-53):
+whatWeKnow: [&quot;&lt;img src=x onerror=alert(&#x27;xss&#x27;)&gt;&quot;],
+whatToVerify: [&quot;&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;],
+assert.doesNotMatch(teamMail.html, /&lt;img|&lt;script|&lt;b&gt;|&lt;a /i);
+assert.match(teamMail.html, /&amp;lt;script&amp;gt;alert\(&amp;#39;xss&amp;#39;\)&amp;lt;\/script&amp;gt;/);</pre>
+          </div>
+          <div class="code-panel">
+            <div class="code-header emerald">V14 / V13 / LLM01 · Fail-Closed, Rate Limit &amp; Guardrail</div>
+            <pre class="code-pre" style="font-size:13px;">// api/v1/intakes.js:44-47 (Fail-Closed V14):
+if (environment.INTAKE_ENABLED !== &quot;true&quot; || environment.DEMO_DATA_ONLY !== &quot;false&quot;)
+  throw problem(503, &quot;O intake real ainda não está configurado neste ambiente.&quot;);
+// api/v1/intakes.js:1-3,168 (Rate Limit V13 / LLM10):
+const RATE_LIMIT_MAX = 3; const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+// Prompt LLM01/06: proíbe prometer economia/preço/prazo e não expõe tools.
+// Logging V7: correlation-id sem body, query ou headers PII.</pre>
+          </div>
+        </div>
+
+        <div class="callout coral">
+          <div class="callout-title">BACKLOG DE SEGURANÇA OBRIGATÓRIO ANTES DE DADOS REAIS EM PRODUÇÃO (OWASP_ASVS_L1_INTAKE.MD:73-80)</div>
+          <p style="font-size:15.5px; line-height:1.4; color:var(--ivory);">
+            <strong>1)</strong> Autenticação OIDC/MFA + RBAC nos 4 portais (V2); &nbsp;
+            <strong>2)</strong> S3 privado com AWS SigV4 + antivírus/quarentena para uploads; &nbsp;
+            <strong>3)</strong> Rate limit distribuído Redis/Upstash substituindo Map em memória (V13); &nbsp;
+            <strong>4)</strong> <code style="font-family:var(--font-mono);">npm audit</code> ativo no CI (V10) e política/retenção/DPA LGPD com Gemini &amp; Resend (V8).
+          </p>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S10 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="9. Validação [2.0]" data-notes="6:50–7:50 · Critério 9 (Validação, 2,0 pts). Reportar estritamente os 76 testes automatizados (11+28+5+32) e as exatamente 2 entrevistas reais via WhatsApp (Dacoli Alimentos e CGC Energia, sem telefones por LGPD). Produção, PostHog e A/B seguem como próximos passos.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">9. VALIDAÇÃO · 2,0 PTS</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">76 testes automatizados e <em>2 entrevistas reais via WhatsApp</em></h1>
+          <p class="s-subtitle">Rigor empírico: reportamos estritamente os testes executados e as 2 entrevistas reais; produção e A/B seguem como próximos passos.</p>
+        </div>
+      </header>
+    
+      <div class="s-body" style="gap:14px;">
+        <div style="display:grid; grid-template-columns:1fr 1.28fr; gap:22px; flex:1;">
+          <div class="card accent-emerald" style="justify-content:space-between;">
+            <div class="card-kicker">VERIFICAÇÃO AUTOMATIZADA · 76/76 PASS (100%)</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-family:var(--font-mono); font-size:48px; font-weight:700; color:var(--emerald); line-height:1;">76 / 76</span>
+              <div style="font-family:var(--font-mono); font-size:13.5px; color:var(--sand-lt); text-align:right; line-height:1.4;">
+                npm run check + typecheck + test<br>Exit 0 · 21 HTML &amp; 24 JSON válidos
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:6px; padding:12px 14px;">
+                <div style="display:flex; justify-content:space-between; font-weight:700;"><span>test:static (PWA legado)</span><span style="font-family:var(--font-mono); color:var(--emerald);">11 pass</span></div>
+                <div style="font-size:13.5px; color:var(--sand); margin-top:2px;">node --test archive/legacy/legacy-pwa/tests/*.test.js</div>
+              </div>
+              <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:6px; padding:12px 14px;">
+                <div style="display:flex; justify-content:space-between; font-weight:700;"><span>test:foundation (API/Worker/RLS)</span><span style="font-family:var(--font-mono); color:var(--emerald);">28 pass</span></div>
+                <div style="font-size:13.5px; color:var(--sand); margin-top:2px;">API (11), Worker Outbox (8), Infra PGlite (5), Contracts (3), Domain (1)</div>
+              </div>
+              <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:6px; padding:12px 14px;">
+                <div style="display:flex; justify-content:space-between; font-weight:700;"><span>test:vercel (Serverless v1)</span><span style="font-family:var(--font-mono); color:var(--emerald);">5 pass</span></div>
+                <div style="font-size:13.5px; color:var(--sand); margin-top:2px;">intakes.test.js (3 c/ anti-XSS LLM) + extract-invoice.test.js (2)</div>
+              </div>
+              <div style="background:var(--bg-deep); border:1px solid var(--border-dim); border-radius:6px; padding:12px 14px;">
+                <div style="display:flex; justify-content:space-between; font-weight:700;"><span>test:next (Vitest + coverage)</span><span style="font-family:var(--font-mono); color:var(--emerald);">32 pass</span></div>
+                <div style="font-size:13.5px; color:var(--sand); margin-top:2px;">100% Stmts / Branch / Funcs / Lines nos 6 módulos de src/</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="justify-content:space-between;">
+            <div class="card-kicker">VALIDAÇÃO DE CAMPO REAL · 2 ENTREVISTAS WHATSAPP + VOC</div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div>
+                <div style="font-size:17px; font-weight:700; color:var(--amber-lt);">1. Demanda (PME) — Dacoli Alimentos <span style="font-weight:400; color:var(--sand); font-size:14.5px;">(Guilherme, proprietário · Porto Feliz/SP · +35 anos, +100 produtos)</span></div>
+                <p style="font-size:15.5px; line-height:1.4; color:var(--ivory); margin-top:4px;">Controle próprio em planilha; já possui solar; recebeu e ignorou propostas; quer <strong style="color:var(--emerald);">auditar se placas entregam o prometido</strong> e comparar fontes.</p>
+              </div>
+              <div>
+                <div style="font-size:17px; font-weight:700; color:var(--amber-lt);">2. Oferta (GD) — CGC Energia <span style="font-weight:400; color:var(--sand); font-size:14.5px;">(Gerente de Novos Negócios · São José do Rio Preto/SP)</span></div>
+                <p style="font-size:15.5px; line-height:1.4; color:var(--ivory); margin-top:4px;"><em>“O vendedor some, ganha a sua comissão, e fica a responsabilidade com a empresa.”</em> Apontou efeito TUSD/Lei 14.120 no ACL e condicionou piloto à curadoria de atendimento e reputação.</p>
+              </div>
+            </div>
+            <div class="shot-frame" style="padding:10px 14px;">
+              <img class="shot-img" style="max-height:178px; width:100%; object-fit:contain;" src="../../../supernova/pitch/shots/evid-pme-respostas.png" alt="Respostas anonimizadas Dacoli Alimentos WhatsApp">
+              <div class="shot-caption">Evidência real anonimizada (Dacoli Alimentos, 15:40 — sem telefone/endereço por LGPD)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-title">ESCOPO EM COLETA &amp; PRÓXIMOS PASSOS (SEM DADOS FABRICADOS)</div>
+          <p style="font-size:15.5px; line-height:1.4; color:var(--ivory);">
+            PostHog (<code style="font-family:var(--font-mono);">src/lib/posthog-client.ts</code>) e experimento A/B <code style="font-family:var(--font-mono);">EXP-01</code> estão instrumentados e testados em código, mas sem coleta em produção. Ampliação para 10+ PMEs, 5+ comercializadoras, LOIs e janela A/B &ge; 14 dias compõem o protocolo de Projetos II.
+          </p>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S11 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="10. Resultados [2.0]" data-notes="7:50–8:55 · Critério 10 (Resultados, 2,0 pts). Demonstrar o resultado quantitativo do caso Padaria Horizonte (R$ 10.920 -> Alvorada R$ 9.720 vs Serra Clara R$ 9.940), explicando a inversão pela garantia de R$ 420/mês e o impacto da entrevista da Dacoli Alimentos no roadmap (US-021).">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">10. RESULTADOS · 2,0 PTS</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Comparativo All-In na Padaria Horizonte <em>e entregáveis do MVP</em></h1>
+          <p class="s-subtitle">Como a inclusão da garantia bancária (R$ 420/mês) inverte o ranking real e protege a PME contra custo oculto.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div style="display:grid; grid-template-columns:1.22fr 1fr; gap:22px; flex:1; align-items:stretch;">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="shot-frame amber" style="flex:1; justify-content:center;">
+              <img class="shot-img" style="max-height:515px;" src="../../../supernova/pitch/shots/diag-04-propostas.png" alt="Etapa 5: Propostas com custo total">
+              <div class="shot-caption">Etapa 5 em produção demo (milet.vercel.app/diagnostico?demo=1) · Nenhuma oferta compra posição</div>
+            </div>
+            <div class="card accent-emerald" style="padding:16px 22px;">
+              <div class="card-kicker" style="margin-bottom:6px;">ENTREGÁVEIS CONCRETOS &amp; IMPACTO NO ROADMAP</div>
+              <ul class="list-clean" style="font-size:15px; gap:5px;">
+                <li>• MVP no ar (Next.js 16) + fundação RLS/Outbox (PGlite) + matriz OWASP ASVS L1.</li>
+                <li><strong class="em">• Impacto da entrevista Dacoli Alimentos:</strong> originou card “Conferir a economia de quem já tem solar” (US-021, <code style="font-family:var(--font-mono);">src/content/roadmap.ts:111-118</code>).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" style="justify-content:space-between; padding:22px 24px;">
+            <div class="card-kicker">COMPOSIÇÃO ALL-IN · PADARIA HORIZONTE (BASELINE R$ 10.920)</div>
+            <table class="cmp-table">
+              <thead>
+                <tr>
+                  <th>Parcela Mensal</th>
+                  <th>Alvorada (#1)</th>
+                  <th>Serra Clara (#2)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Fio Residual (Cemig)</td><td>R$ 2.940</td><td>R$ 2.760</td></tr>
+                <tr><td>Energia Fornecedor</td><td>R$ 4.990</td><td>R$ 5.000</td></tr>
+                <tr><td>Serviço Milet (fixo)</td><td>R$ 190</td><td>R$ 190</td></tr>
+                <tr><td>Tributos (ICMS/PIS/COF)</td><td>R$ 1.600</td><td>R$ 1.570</td></tr>
+                <tr class="row-warn"><td>Garantia Bancária</td><td>R$ 0</td><td class="col-b">R$ 420</td></tr>
+                <tr><td>Total sem Garantia</td><td>R$ 9.720</td><td style="color:var(--amber-lt);">R$ 9.520 *</td></tr>
+                <tr class="row-total"><td>CUSTO TOTAL ALL-IN</td><td class="col-a">R$ 9.720 / mês</td><td>R$ 9.940 / mês</td></tr>
+                <tr class="row-total"><td>Economia Líquida</td><td class="col-a">R$ 1.200 (11,0%)</td><td>R$ 980 (9,0%)</td></tr>
+              </tbody>
+            </table>
+            <div style="background:var(--bg-deep); border:1.5px solid var(--amber); border-radius:8px; padding:16px 18px;">
+              <div style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--amber-lt); margin-bottom:4px;">* POR QUE A RÉGUA ALL-IN IMPORTA:</div>
+              <p style="font-size:15px; line-height:1.42; color:var(--ivory);">Sem a garantia bancária de R$ 420/mês, Serra Clara pareceria R$ 200 mais barata (R$ 9.520 vs R$ 9.720). Ao somar o custo total, Alvorada assume o Rank #1 com economia real de R$ 14.400/ano.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S12 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="11. Conclusão e Próximos Passos [0.5]" data-notes="8:55–10:00 · Critério 11 (Conclusão e Próximos Passos, 0,5 pt). Sintetizar a contribuição técnica verificada em Computação I e os 4 blocos de lacunas mapeadas para Projetos II (fev–jun/2027).">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">11. CONCLUSÃO E PRÓXIMOS PASSOS · 0,5 PT</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Contribuição técnica entregue e <em>lacunas mapeadas para Projetos II</em></h1>
+          <p class="s-subtitle">O MVP comprova a tese de comparação All-In e estabelece uma fundação segura, auditada e pronta para evolução controlada.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-2" style="flex:1;">
+          <div class="card accent-emerald" style="padding:28px 30px;">
+            <div class="card-kicker">CONTRIBUIÇÃO TÉCNICA VERIFICADA (COMPUTAÇÃO I)</div>
+            <ul class="list-clean" style="font-size:18px; gap:18px; margin-top:8px;">
+              <li><strong class="em">1. Núcleo determinístico único:</strong> cálculo All-In e elegibilidade Grupo A/B compartilhados em TypeScript sem type drift e com 100% de cobertura Vitest.</li>
+              <li><strong class="em">2. Segurança desde a fundação:</strong> RLS multitenant, triggers imutáveis em audit_events, escapeHtml contra XSS em saída de LLM e fail-closed validados em 76 testes.</li>
+              <li><strong class="em">3. Jornada pública reproduzível:</strong> 5 etapas operacionais no ar via <code style="font-family:var(--font-mono);">/diagnostico?demo=1</code> com o caso Padaria Horizonte.</li>
+              <li><strong class="em">4. Escuta real direcionada:</strong> Dacoli Alimentos (auditoria solar pós-implantação) e CGC Energia (curadoria de atendimento) moldaram os requisitos prioritários.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="padding:28px 30px;">
+            <div class="card-kicker">LACUNAS AUDITADAS &amp; ROADMAP PROJETOS II (FEV–JUN/2027)</div>
+            <ul class="list-clean" style="font-size:17.5px; gap:16px; margin-top:8px;">
+              <li><strong class="hl">• Bloco A — Auth &amp; 4 Portais RBAC:</strong> OIDC/MFA, middleware RBAC, páginas <code style="font-family:var(--font-mono);">/portal/{consumidor,comercializadora,usinas,admin}</code> e <code style="font-family:var(--font-mono);">matching-engine.ts</code>.</li>
+              <li><strong class="hl">• Bloco B — Unificação Backend &amp; Storage:</strong> consolidar <code style="font-family:var(--font-mono);">/api/*</code> e <code style="font-family:var(--font-mono);">api/v1/*</code> no <code style="font-family:var(--font-mono);">@milet/api</code>, PostgreSQL em região Brasil, AWS SigV4 + antivírus no S3 e rate limit distribuído.</li>
+              <li><strong class="hl">• Bloco C — Dados Tarifários &amp; Corpus OCR:</strong> ingestão ANEEL/CCEE, <code style="font-family:var(--font-mono);">responseSchema</code> unificado em <code style="font-family:var(--font-mono);">/api/extract-invoice</code> e corpus de faturas B2B multi-distribuidora (&le; 1,5 MB).</li>
+              <li><strong class="hl">• Bloco D — Validação de Campo:</strong> 10+ PMEs, 5+ comercializadoras, LOIs, política/DPA LGPD e experimento A/B PostHog &ge; 14 dias.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S13 / 14</span>
+      </footer>
+    
+    </section>
+    
+    <section class="slide" data-title="Apêndice: Referências e Reprodução" data-notes="Apêndice de suporte para os 5 minutos de arguição técnica da banca. Contém referências peer-reviewed, normas ANEEL/CCEE/MME e comandos exatos de reprodução local.">
+      
+      <header class="s-header">
+        <div class="s-topbar">
+          <div class="s-brand-left">
+            <img class="s-logo" src="../../../assets/logo/png/transparent/milet-symbol-amber.png" alt="Logo Milet">
+            <span class="s-brand-name">Milet</span>
+            <span class="s-discipline">PROJETOS DE ENGENHARIA DA COMPUTAÇÃO I · AVALIAÇÃO N2</span>
+          </div>
+          <span class="s-badge">APÊNDICE · REFERÊNCIAS E REPRODUÇÃO</span>
+        </div>
+        <div class="s-title-wrap">
+          <h1 class="s-title">Referências bibliográficas, regulação <em>e verificação independente</em></h1>
+          <p class="s-subtitle">Fontes primárias utilizadas no relatório, no código-fonte e na demonstração reproduzível.</p>
+        </div>
+      </header>
+    
+      <div class="s-body">
+        <div class="grid-3" style="flex:1;">
+          <div class="card">
+            <div class="card-kicker">REFERÊNCIAS CIENTÍFICAS &amp; ENGENHARIA</div>
+            <ul class="list-clean" style="font-size:15px;">
+              <li><strong class="hl">• Sousa, T. et al. (2019).</strong> Peer-to-peer and community-based markets. <em>Renewable &amp; Sustainable Energy Reviews (RSER)</em>.</li>
+              <li><strong class="hl">• Capper, T. et al. (2022).</strong> Peer-to-peer, community self-consumption, and transactive energy: 139 studies. <em>RSER</em>.</li>
+              <li><strong class="hl">• Gunarathna, C. et al. (2022).</strong> P2P energy trading projects review. <em>Energy Research &amp; Social Science (ERSS)</em>.</li>
+              <li><strong class="hl">• Schwidtal, J. et al. (2023).</strong> Emerging business models in local energy markets. <em>RSER</em>.</li>
+              <li><strong>• North, D. (2006) / Cohn, M. (2004).</strong> BDD &amp; User Stories.</li>
+              <li><strong>• OWASP (2025).</strong> ASVS 5.0.0 L1, Top 10:2025 e Top 10 for LLM Applications 2025.</li>
+            </ul>
+          </div>
+
+          <div class="card accent-emerald">
+            <div class="card-kicker">REGULAÇÃO &amp; MERCADO BRASIL</div>
+            <ul class="list-clean" style="font-size:15px;">
+              <li><strong class="em">• ANEEL REN 1.000/2021 &amp; REN 1.009/2022:</strong> condições de fornecimento e comercialização varejista.</li>
+              <li><strong class="em">• Portaria MME 50/2022:</strong> abertura do Mercado Livre ao Grupo A (01/01/2024).</li>
+              <li><strong class="em">• Lei 14.300/2022 + REN 1.059/2023:</strong> marco legal da MMGD e SCEE.</li>
+              <li><strong class="em">• Lei 15.269/2025 &amp; Decreto 13.097/2026:</strong> abertura baixa tensão 2027/2028 e comparador público CCEE (Art. 10).</li>
+              <li><strong class="em">• CP ANEEL 07/2025 &amp; Submódulo 1.8 CCEE:</strong> Open Energy e acesso LGPD de medição.</li>
+              <li><strong>• CCEE (2025 / 1T2026) &amp; EPE / Abraceel:</strong> 21.707 migrações (2025), 4.827 (1T26), &gt;70% varejista.</li>
+            </ul>
+          </div>
+
+          <div class="card accent-copper" style="justify-content:space-between;">
+            <div class="card-kicker">REPRODUÇÃO &amp; VERIFICAÇÃO LOCAL</div>
+            <div class="code-panel">
+              <div class="code-header">Comandos verificados no repositório</div>
+              <pre class="code-pre" style="font-size:13.5px;">git clone EverGreen-Agency/milet
+npm ci
+npm run check       # 21 HTML, 24 JSON
+npm run typecheck   # tsc foundation + app
+npm test            # 76/76 pass (4 suítes)
+npm run dev         # /diagnostico?demo=1</pre>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:13.5px; line-height:1.5; color:var(--ivory);">
+              <div style="color:var(--amber-lt); font-weight:700; margin-bottom:4px;">EVIDÊNCIAS DE SEGURANÇA &amp; ARQUITETURA</div>
+              • docs/security/OWASP_ASVS_L1_INTAKE.md<br>
+              • docs/specs/plataforma-portais/<br>
+              • docs/academic/VALIDACAO_PROJETO_COMPUTACAO.md
+            </div>
+            <div style="font-family:var(--font-mono); font-size:13.5px; line-height:1.45;">
+              <div style="color:var(--amber-lt); font-weight:700;">DEPLOY PÚBLICO DE DEMONSTRAÇÃO</div>
+              <span style="color:var(--emerald); font-weight:700;">https://milet.vercel.app/diagnostico?demo=1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="s-footer">
+        <span>Universidade Presbiteriana Mackenzie · 2026.2 · Eduardo Ferreira de Mattos (TIA 10402800) · Orientador: Prof. Dr. Rodrigo Juliani</span>
+        <span class="s-page-num">S14 / 14</span>
+      </footer>
+    
+    </section>
+    
+    </div>
+  </main>
+
+  <div id="progress-track"><div id="progress-fill"></div></div>
+
+  <footer id="presentation-hud">
+    <div class="hud-group">
+      <button id="btn-prev" class="hud-btn" title="Slide Anterior (←)">◀</button>
+      <span id="hud-counter">01 / 14</span>
+      <button id="btn-next" class="hud-btn" title="Próximo Slide (→ / Espaço)">▶</button>
+    </div>
+    <div style="color:var(--sand);">Milet · Engenharia da Computação I (N2) · Mackenzie 2026.2</div>
+    <div class="hud-group">
+      <button id="btn-notes" class="hud-btn" title="Notas (N)">Notas (N)</button>
+      <button id="btn-fs" class="hud-btn" title="Tela Cheia (F)">Tela Cheia (F)</button>
+    </div>
+  </footer>
+
+  <aside id="notes-drawer" aria-label="Notas do Orador">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:10px;">
+      <strong id="notes-title" style="font-family:var(--font-mono); color:var(--amber-lt); font-size:13.5px;">Slide 01</strong>
+      <button id="btn-close-notes" class="hud-btn">✕</button>
+    </div>
+    <p id="notes-body" style="font-size:15px; line-height:1.55; color:var(--ivory);"></p>
+  </aside>
+
+  <script>
+
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
+
+  const counterEl = document.getElementById('hud-counter');
+  const progressEl = document.getElementById('progress-fill');
+  const stageEl = document.getElementById('deck-stage');
+  const viewportEl = document.getElementById('presentation-viewport');
+  const notesDrawer = document.getElementById('notes-drawer');
+  const notesBody = document.getElementById('notes-body');
+  const notesTitle = document.getElementById('notes-title');
+
+  function fitStage() {
+    if (!stageEl || !viewportEl) return;
+    const vw = viewportEl.clientWidth;
+    const vh = viewportEl.clientHeight;
+    const scale = Math.min(vw / 1920, vh / 1080);
+    stageEl.style.transform = `scale(${scale})`;
+  }
+
+  function showSlide(index) {
+    current = Math.max(0, Math.min(total - 1, index));
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    if (counterEl) counterEl.textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+    if (progressEl) progressEl.style.width = `${((current + 1) / total) * 100}%`;
+    const active = slides[current];
+    if (notesTitle) notesTitle.textContent = `Slide ${String(current + 1).padStart(2, '0')} — ${active.dataset.title || ''}`;
+    if (notesBody) notesBody.textContent = active.dataset.notes || '';
+  }
+
+  document.getElementById('btn-prev')?.addEventListener('click', () => showSlide(current - 1));
+  document.getElementById('btn-next')?.addEventListener('click', () => showSlide(current + 1));
+  document.getElementById('btn-notes')?.addEventListener('click', () => notesDrawer?.classList.toggle('open'));
+  document.getElementById('btn-close-notes')?.addEventListener('click', () => notesDrawer?.classList.remove('open'));
+  document.getElementById('btn-fs')?.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); showSlide(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); showSlide(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); showSlide(total - 1); }
+    else if (e.key === 'n' || e.key === 'N') { notesDrawer?.classList.toggle('open'); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+  });
+
+  window.addEventListener('resize', fitStage);
+  fitStage();
+  showSlide(0);
+})();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milet — Apresentação Projetos Empreendedores N2 (Mackenzie 2026.2)</title>
+  <meta name="description" content="Apresentação Oficial de Avaliação N2 da Milet para a disciplina Projetos Empreendedores (Mackenzie 2026.2). Profa. Julia Gebara.">
+  
+  <link rel="icon" type="image/png" href="assets/logo/png/solid/favicon-light-32x32.png">
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="presentation-empreendedores.css?v=20261121_2">
+  
+  <style>
+    /* AJUSTES DE ALTA PRECISÃO RESPONSIVA N2 (ANTI-OVERFLOW EM 100% DE ZOOM) */
+    .n2-grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(12px, 1.8vw, 24px);
+      align-items: stretch;
+      margin: auto 0;
+    }
+
+    .n2-card-stat {
+      background: var(--color-carbon-card);
+      border: 1px solid var(--color-carbon-border);
+      border-radius: 8px;
+      padding: clamp(16px, 2.2vh, 26px) clamp(16px, 1.8vw, 22px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 3px solid var(--color-amber);
+    }
+
+    .n2-big-num {
+      font-family: var(--font-mono);
+      font-size: clamp(30px, 3.8vh, 46px);
+      font-weight: 700;
+      color: var(--color-amber);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .n2-table-compact {
+      width: 100%;
+      border-collapse: collapse;
+      margin: auto 0;
+      font-size: clamp(12px, 1.45vh, 14px);
+    }
+
+    .n2-table-compact th {
+      background: var(--color-carbon-card-alt);
+      color: var(--color-sand-light);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.2vw, 16px);
+      text-align: left;
+      border-bottom: 2px solid var(--color-amber);
+    }
+
+    .n2-table-compact td {
+      padding: clamp(8px, 1.2vh, 13px) clamp(10px, 1.2vw, 16px);
+      border-bottom: 1px solid var(--color-carbon-border);
+      color: var(--color-ivory);
+      vertical-align: top;
+    }
+
+    .n2-persona-story {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: clamp(16px, 2.5vw, 32px);
+      align-items: stretch;
+      margin: auto 0;
+    }
+
+    .n2-persona-photo-box {
+      background: var(--color-carbon-card);
+      border: 1px solid var(--color-carbon-border);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .n2-persona-photo-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 6px;
+      border: 1px solid var(--color-carbon-border);
+      margin-bottom: 10px;
+    }
+
+    .n2-quote-voc {
+      background: var(--color-amber-surface);
+      border-left: 3px solid var(--color-amber);
+      padding: clamp(10px, 1.4vh, 14px) 16px;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: var(--color-ivory);
+      font-size: clamp(13px, 1.5vh, 14.5px);
+      line-height: 1.45;
+    }
+
+    .n2-dre-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: auto 0;
+      font-size: clamp(11.5px, 1.35vh, 13.5px);
+    }
+
+    .n2-dre-table th {
+      background: var(--color-carbon-card-alt);
+      color: var(--color-sand-light);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: clamp(6px, 1vh, 9px) 12px;
+      text-align: right;
+      border-bottom: 2px solid var(--color-amber);
+    }
+
+    .n2-dre-table th:first-child { text-align: left; }
+
+    .n2-dre-table td {
+      padding: clamp(6px, 0.95vh, 8.5px) 12px;
+      border-bottom: 1px solid var(--color-carbon-border);
+      text-align: right;
+      font-family: var(--font-mono);
+      color: var(--color-ivory);
+    }
+
+    .n2-dre-table td:first-child {
+      text-align: left;
+      font-family: var(--font-ui);
+      font-weight: 500;
+    }
+
+    .n2-dre-highlight {
+      background: rgba(211, 155, 61, 0.08);
+      font-weight: 700;
+      color: var(--color-amber) !important;
+    }
+
+    .n2-dre-payback {
+      background: rgba(76, 175, 80, 0.12);
+      font-weight: 700;
+      color: var(--color-emerald) !important;
+    }
+  
+    /* ESTILOS DA MATRIZ COMPARATIVA SUPERNOVA */
+    .n2-table-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin: auto 0;
+      font-size: clamp(12px, 1.4vh, 13.5px);
+    }
+    .n2-table-matrix th {
+      background: var(--color-carbon-card-alt);
+      color: var(--color-sand-light);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: clamp(8px, 1.2vh, 12px) 10px;
+      text-align: center;
+      border-bottom: 2px solid var(--color-carbon-border);
+    }
+    .n2-table-matrix th.col-milet {
+      background: rgba(211, 155, 61, 0.15);
+      color: var(--color-amber);
+      border-bottom: 2px solid var(--color-amber);
+      font-weight: 700;
+    }
+    .n2-table-matrix td {
+      padding: clamp(8px, 1.1vh, 11px) 10px;
+      border-bottom: 1px solid var(--color-carbon-border);
+      color: var(--color-ivory);
+      text-align: center;
+      vertical-align: middle;
+    }
+    .n2-table-matrix td:first-child {
+      text-align: left;
+      font-weight: 500;
+    }
+    .n2-table-matrix td.col-milet {
+      background: rgba(211, 155, 61, 0.08);
+      border-left: 1px solid rgba(211, 155, 61, 0.25);
+      border-right: 1px solid rgba(211, 155, 61, 0.25);
+    }
+    .badge-yes {
+      color: var(--color-emerald);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .badge-partial {
+      color: var(--color-amber);
+      font-size: 16px;
+    }
+    .badge-no {
+      color: var(--color-sand);
+      font-size: 16px;
+      opacity: 0.6;
+    }
+
+    /* CARDS DIFERENCIADOS: RECEITAS (VERDE) VS CUSTOS (COBRE/TERRACOTA) */
+    .n2-card-revenue {
+      background: rgba(72, 187, 120, 0.04);
+      border: 1px solid rgba(72, 187, 120, 0.25);
+      border-radius: 8px;
+      padding: clamp(14px, 2vh, 22px) clamp(12px, 1.5vw, 18px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 3px solid var(--color-emerald);
+    }
+    .badge-rev {
+      border-color: var(--color-emerald);
+      color: var(--color-emerald);
+      font-size: 9px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+    .num-rev {
+      color: var(--color-emerald) !important;
+    }
+
+    .n2-card-cost {
+      background: rgba(200, 122, 84, 0.04);
+      border: 1px solid rgba(200, 122, 84, 0.25);
+      border-radius: 8px;
+      padding: clamp(14px, 2vh, 22px) clamp(12px, 1.5vw, 18px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 3px solid var(--color-copper);
+    }
+    .badge-cost {
+      border-color: var(--color-copper);
+      color: var(--color-copper);
+      font-size: 9px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+    .num-cost {
+      color: var(--color-copper) !important;
+    }
+
+  
+    /* SLIDE 08: MVP & MOCKUP DE BROWSER (SUPERNOVA STYLE ANTI-SLOP) */
+    .n2-mvp-grid {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      gap: clamp(18px, 3vw, 36px);
+      align-items: stretch;
+      height: 100%;
+      margin: auto 0;
+    }
+
+    .n2-mvp-col-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 12px;
+    }
+
+    .n2-mvp-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 1.4vh, 16px);
+      padding: 0;
+      margin: 0;
+    }
+
+    .n2-mvp-steps li {
+      font-size: clamp(12.5px, 1.5vh, 14.5px);
+      line-height: 1.35;
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      color: var(--color-sand);
+    }
+
+    .n2-mvp-steps li b {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-amber);
+      font-weight: 700;
+      min-width: 24px;
+    }
+
+    .n2-mvp-steps li strong {
+      color: var(--color-ivory);
+    }
+
+    .n2-mvp-badges-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .pill-badge-ok {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--color-emerald);
+      border: 1px solid rgba(72, 187, 120, 0.4);
+      background: rgba(72, 187, 120, 0.08);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-badge-amber {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--color-amber);
+      border: 1px solid rgba(211, 155, 61, 0.4);
+      background: rgba(211, 155, 61, 0.08);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .n2-clean-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-ivory);
+      text-decoration: none;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-carbon-border);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .n2-clean-link:hover {
+      background: rgba(211, 155, 61, 0.12);
+      border-color: var(--color-amber);
+      color: var(--color-amber);
+    }
+
+    .n2-clean-link .link-arrow {
+      color: var(--color-amber);
+      font-size: 13px;
+    }
+
+    .n2-browser-window {
+      background: #141720;
+      border: 1px solid var(--color-carbon-border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .n2-browser-bar {
+      background: #1b1f2b;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--color-carbon-border);
+      flex-shrink: 0;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-red { background: #e05643; }
+    .dot-yellow { background: #d39b3d; }
+    .dot-green { background: #48bb78; }
+
+    .browser-address {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-sand);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 12px;
+      border-radius: 4px;
+      flex: 1;
+      max-width: 360px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .n2-browser-viewport {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      background: #0b0d12;
+      cursor: zoom-in;
+    }
+
+    .n2-browser-viewport img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .n2-browser-viewport:hover img {
+      transform: scale(1.015);
+    }
+
+    /* SLIDE 14: ENCERRAMENTO OFICIAL SUPERNOVA */
+    .slide-closure {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .closure-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/web/milet-hero-rocha-ambar-polida.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.28;
+      filter: saturate(0.85);
+      z-index: 0;
+    }
+
+    .closure-veil {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(13, 15, 20, 0.4) 0%, rgba(7, 8, 11, 0.95) 85%);
+      z-index: 1;
+    }
+
+    .closure-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 820px;
+      margin: auto;
+    }
+
+    .closure-logo-mark svg {
+      width: clamp(54px, 7vh, 76px);
+      height: clamp(54px, 7vh, 76px);
+      margin-bottom: clamp(14px, 2vh, 22px);
+      filter: drop-shadow(0 0 20px rgba(211, 155, 61, 0.45));
+    }
+
+    .closure-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vh, 64px);
+      font-weight: 500;
+      line-height: 1.05;
+      color: var(--color-ivory);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .closure-title em {
+      font-style: italic;
+      color: var(--color-amber);
+      font-weight: 400;
+    }
+
+    .closure-lead {
+      font-size: clamp(16px, 2.2vh, 20px);
+      color: var(--color-sand);
+      margin-bottom: clamp(24px, 3.5vh, 36px);
+      font-weight: 300;
+    }
+
+    .closure-meta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .closure-links {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-amber);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .closure-link {
+      color: var(--color-amber);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .closure-link:hover {
+      color: var(--color-ivory);
+    }
+
+    .closure-sep {
+      color: var(--color-sand);
+      opacity: 0.5;
+    }
+
+    .closure-email {
+      color: var(--color-sand);
+    }
+
+    .closure-academic {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--color-sand-light);
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+  
+    /* SLIDE 08 v2 — layout fiel ao MVP do Supernova */
+    .slide.mvp2 { padding-right: 0; }
+    .mvp2-wrap { display: grid; grid-template-columns: 30% 1fr; gap: clamp(28px, 3.4vw, 64px); flex: 1; min-height: 0; }
+    .mvp2-text { display: flex; flex-direction: column; min-height: 0; padding-top: clamp(4px, 1vh, 12px); }
+    .mvp2-eyebrow { font-family: var(--font-mono); font-size: clamp(10px, 1.2vh, 12px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-amber); display: flex; gap: 12px; margin-bottom: clamp(14px, 2.4vh, 26px); }
+    .mvp2-eyebrow .n { color: var(--color-sand); }
+    .mvp2-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 5.4vh, 54px); line-height: 1.04; letter-spacing: -0.02em; color: var(--color-ivory); margin: 0; }
+    .mvp2-title em { display: block; font-style: italic; font-weight: 500; color: var(--color-amber); }
+    .mvp2-list { list-style: none; padding: 0; margin: clamp(20px, 3.6vh, 40px) 0 0; display: flex; flex-direction: column; gap: clamp(12px, 2.2vh, 24px); }
+    .mvp2-list li { display: flex; gap: 14px; align-items: baseline; font-size: clamp(13px, 1.75vh, 17px); line-height: 1.4; color: var(--color-ivory); }
+    .mvp2-list li b { font-family: var(--font-mono); font-size: clamp(10px, 1.2vh, 12px); font-weight: 500; color: var(--color-amber); min-width: 22px; }
+    .mvp2-foot { margin-top: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 4px; }
+    .mvp2-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+    .mvp2-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-sand); border: 1px solid var(--color-carbon-border); border-radius: 999px; padding: 5px 12px; }
+    .mvp2-pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-amber); }
+    .mvp2-pill.ok::before { background: var(--color-emerald); }
+    .mvp2-link { font-family: var(--font-mono); font-size: 11.5px; color: var(--color-sand); text-decoration: none; border-bottom: 1px solid transparent; width: fit-content; transition: color .2s, border-color .2s; }
+    .mvp2-link:hover { color: var(--color-amber); border-color: var(--color-amber); }
+    .mvp2-browser { border-radius: 14px 0 0 14px; overflow: hidden; background: #141720; border: 1px solid var(--color-carbon-border); border-right: 0; box-shadow: 0 30px 70px rgba(0,0,0,.5); display: flex; flex-direction: column; min-height: 0; height: 100%; cursor: zoom-in; position: relative; }
+    .mvp2-bar { height: 34px; flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #1f1d1b; }
+    .mvp2-bar i { width: 10px; height: 10px; border-radius: 50%; background: #55504a; }
+    .mvp2-bar span { margin-left: 12px; font-family: var(--font-mono); font-size: 11px; color: #8e887e; }
+    .mvp2-browser img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: top left; display: block; }
+
+  
+    /* LOGO REAL NO ENCERRAMENTO & REFINO PRINT 1920x1080 */
+    .closure-logo-img {
+      width: clamp(68px, 10vh, 110px);
+      height: auto;
+      margin-bottom: clamp(16px, 2.4vh, 28px);
+      filter: drop-shadow(0 0 24px rgba(211, 155, 61, 0.4));
+    }
+
+    @media print {
+      .slide.mvp2 { padding-right: 0 !important; }
+      .slide.slide-closure { display: flex !important; align-items: center !important; justify-content: center !important; }
+      .closure-hero-bg { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .mvp2-title { font-size: 54px !important; }
+      .mvp2-list li { font-size: 20px !important; }
+      .closure-title { font-size: 72px !important; }
+      .closure-logo-img { width: 110px !important; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- VIEWPORT E CONTAINER ESCALADO 16:9 -->
+  <div id="presentation-viewport">
+    <div id="deck-container">
+
+            <!-- ====================================================================
+           SLIDE 1 — CAPA OFICIAL (MACKENZIE · N2 · PROFA. JULIA GEBARA)
+           ==================================================================== -->
+      <section class="slide slide-cover active" id="slide-1" data-slide="1">
+        <div class="cover-brand-row">
+          <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Símbolo Oficial Milet" class="cover-logo-icon">
+          <span class="cover-brand-name">Milet</span>
+          <span class="cover-badge">Projetos Empreendedores · Avaliação N2 (2026.2)</span>
+        </div>
+
+        <div class="cover-main-grid">
+          <div class="cover-left-col">
+            <span class="cover-formal-theme">Universidade Presbiteriana Mackenzie · Eixo Universal</span>
+            <h1 class="cover-tagline">Milet</h1>
+            <p class="cover-subheadline">
+              Plataforma independente de inteligência energética para PMEs compararem rotas, contratarem sem adivinhar e auditarem a economia continuamente.
+            </p>
+            <p class="cover-support-quote">
+              “Contratar energia sem adivinhar.”
+            </p>
+            <div class="cover-pills-row">
+              <span class="cover-pill">Docente: Profa. Julia Gebara</span>
+              <span class="cover-pill">Avaliação N2 · Modelo de Negócio & Validação</span>
+            </div>
+          </div>
+
+          <div class="cover-right-col">
+            <div class="cover-card-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span class="slide-badge-empreendedores">TESE EMPREENDEDORA</span>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">Marketplace Bilateral Neutro</span>
+              </div>
+              <h3 style="font-family: var(--font-display); font-size: 21px; color: var(--color-ivory); margin-bottom: 10px; line-height: 1.25;">
+                O Propósito da Milet
+              </h3>
+              <div style="background: var(--color-amber-surface); border-left: 3px solid var(--color-amber); padding: 12px; border-radius: 0 6px 6px 0;">
+                <p style="font-size: 14.5px; color: var(--color-ivory); line-height: 1.45; font-style: italic;">
+                  “Transformar uma decisão energética hoje fragmentada, opaca e passiva em uma jornada digital contínua, transparente e economicamente auditável.”
+                </p>
+              </div>
+              <div style="margin-top: 10px; font-size: 11.5px; color: var(--color-sand); line-height: 1.35;">
+                Conectando PMEs do Grupo A (Demanda) a comercializadoras varejistas e geradores de energia (Oferta) — submissão oficial Sebrae Supernova 2026.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-footer">
+          <div class="cover-academic-info" style="width: 100%;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-sand); text-transform: uppercase; letter-spacing: 1px;">
+                INTEGRANTES DO GRUPO (ORDEM ALFABÉTICA)
+              </span>
+              <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-amber); font-weight: 700;">
+                DOCENTE: PROFA. JULIA GEBARA
+              </span>
+            </div>
+            <div class="cover-team-grid">
+              <div class="cover-team-member">
+                <span class="cover-team-name">Eduardo Ferreira de Mattos</span>
+                <span class="cover-team-meta">Eng. Computação · TIA 10402800</span>
+              </div>
+              <div class="cover-team-member">
+                <span class="cover-team-name">Enzo Engrich Larese</span>
+                <span class="cover-team-meta">Eng. Elétrica · TIA 10427357</span>
+              </div>
+              <div class="cover-team-member">
+                <span class="cover-team-name">Heloísa Carvalho Confessor</span>
+                <span class="cover-team-meta">Administração · TIA 10420092</span>
+              </div>
+              <div class="cover-team-member">
+                <span class="cover-team-name">Leonardo Dourado</span>
+                <span class="cover-team-meta">Eng. Computação · TIA 10736460</span>
+              </div>
+              <div class="cover-team-member">
+                <span class="cover-team-name">Maria Luíza Sampaio Nogueira</span>
+                <span class="cover-team-meta">Arquitetura e Urbanismo · TIA 10753285</span>
+              </div>
+              <div class="cover-team-member">
+                <span class="cover-team-name">Mell Castro Pereira Junqueira Ferreira</span>
+                <span class="cover-team-meta">Direito · TIA 10435518</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2 — O PROBLEMA & O GANCHO DO CONFLITO
+           ==================================================================== -->
+      <section class="slide" id="slide-2" data-slide="2">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 02 · O Problema Real</span>
+              <span class="slide-badge-empreendedores">O Paradoxo da Escolha</span>
+            </div>
+            <h2 class="slide-title">Três propostas. Três formatos. <em>Nenhuma comparável</em>.</h2>
+            <p class="slide-subtitle">A energia é a terceira maior despesa de uma PME. Mas escolher um fornecedor no mercado livre virou um labirinto regulatório.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 2 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-grid-3col">
+            <div class="n2-card-stat" style="border-top-color: var(--color-amber);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">PROPOSTA A</span>
+                <div class="n2-big-num">R$ 289<span style="font-size: 16px; color: var(--color-sand); font-weight: 400;">/MWh</span></div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Preço Fixo Flat (5 Anos)</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Não informa encargos da CCEE, risco de PLD horário nem tarifa de fio (TUSD) mantida com a distribuidora.</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-copper);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-copper); color: var(--color-copper);">PROPOSTA B</span>
+                <div class="n2-big-num" style="color: var(--color-copper);">25% OFF</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Desconto Garantido na Tarifa</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Desconto incide apenas sobre a Tarifa de Energia (TE). Se o consumo oscilar, o cliente responde por sobras e déficits.</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-emerald);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-emerald); color: var(--color-emerald);">PROPOSTA C</span>
+                <div class="n2-big-num" style="color: var(--color-emerald);">R$ 0,58<span style="font-size: 16px; color: var(--color-sand); font-weight: 400;">/kWh</span></div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Geração Compartilhada (GD)</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Crédito compensatório de usina solar. Sem taxa de migração CCEE, mas com fidelidade de 36 meses e multa rescisória pesada.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(224, 86, 67, 0.08); border-left: 3px solid #e05643; padding: 10px 16px; border-radius: 0 6px 6px 0; margin-top: 14px;">
+            <p style="font-size: 13px; color: var(--color-ivory); margin: 0;">
+              <strong>A pergunta de R$ 40 mil do decisor:</strong> <em>"Qual delas é realmente a mais vantajosa para o meu perfil de consumo sem pegadinhas contratuais?"</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3 — A PERSONA REAL (CARLOS MENDES COM FOCO EM GESTÃO)
+           ==================================================================== -->
+      <section class="slide" id="slide-3" data-slide="3">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 03 · Perfil do Cliente Ideal</span>
+              <span class="slide-badge-empreendedores">Voice of Customer Real</span>
+            </div>
+            <h2 class="slide-title">Carlos Mendes: <em>"Tenho uma operação para rodar, não posso errar"</em>.</h2>
+            <p class="slide-subtitle">Sócio e Diretor Financeiro · PME comercial/industrial no Grupo A (A4 em SP) com 45 colaboradores.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 4 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-persona-story">
+            <div class="n2-persona-photo-box canvas-image-stage" title="Clique para expandir em tela cheia (Zoom)">
+              <img src="assets/persona-carlos.png" alt="Carlos Mendes - Diretor Financeiro PME" class="n2-persona-photo-img">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CARLOS MENDES · 46 ANOS</div>
+              <div style="font-size: 10.5px; color: var(--color-sand); margin-top: 2px;">Diretor Financeiro / Sócio · PME do Grupo A (SP)</div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+              <div class="n2-quote-voc">
+                "Energia para nós bate direto na margem: são R$ 14.500 todo santo mês. Eu preciso enxugar custos para manter a competitividade da empresa, mas não tenho equipe de engenharia e nem tempo para auditar memórias de cálculo de distribuidora. Preciso de uma recomendação limpa, em preto no branco, que eu possa defender de cabeça erguida perante meus sócios."
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 6px; padding: 10px 14px;">
+                  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-coral); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Dores de Gestão</div>
+                  <ul style="font-size: 12px; color: var(--color-sand); line-height: 1.4; padding-left: 14px; margin: 0;">
+                    <li>Tempo escasso dividido entre fluxo de caixa, tributos e RH.</li>
+                    <li>Desconfiança de consultores comissionados que somem pós-fechamento.</li>
+                    <li>Risco de penalidade financeira por descompasso de demanda.</li>
+                  </ul>
+                </div>
+
+                <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 6px; padding: 10px 14px;">
+                  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-emerald); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">O que a Milet Entrega a Ele</div>
+                  <ul style="font-size: 12px; color: var(--color-sand); line-height: 1.4; padding-left: 14px; margin: 0;">
+                    <li>Dossiê executivo em 2 minutos a partir do PDF da fatura.</li>
+                    <li>Recomendação 100% neutra auditada no custo total All-In.</li>
+                    <li>Acompanhamento mensal contínuo para prestar contas aos sócios.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4 — TAM · SAM · SOM (DADOS CCEE 2025/2026)
+           ==================================================================== -->
+      <section class="slide" id="slide-4" data-slide="4">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 04 · Dimensionamento de Mercado</span>
+              <span class="slide-badge-empreendedores">Dados CCEE + TAM · SAM · SOM</span>
+            </div>
+            <h2 class="slide-title">A porta abriu. <em>A maioria ainda não atravessou</em>.</h2>
+            <p class="slide-subtitle">Abertura integral do Grupo A pela Portaria 50/2022 e o dimensionamento do mercado de comércio e serviços no Brasil.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIOS 2 & 3 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-grid-3col">
+            <div class="n2-card-stat" style="border-top-color: var(--color-amber);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">TAM · MERCADO TOTAL</span>
+                <div class="n2-big-num">R$ 266,4 mi</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">72.000 PMEs no Grupo A</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Potencial total estimado pela CCEE na abertura do Grupo A, a R$ 3.700/ano de receita de referência por unidade.</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-copper);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-copper); color: var(--color-copper);">SAM · SEGMENTO ENDEREÇÁVEL</span>
+                <div class="n2-big-num" style="color: var(--color-copper);">R$ 39,76 mi</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">10.746 Migrações / Ano</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Volume real de migrações de comércio e serviços registrado pela CCEE em 2025 (49,5% do total nacional).</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-emerald);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-emerald); color: var(--color-emerald);">SOM · MERCADO ACESSÍVEL (ANO 3)</span>
+                <div class="n2-big-num" style="color: var(--color-emerald);">R$ 296 mil</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">80 Contratos / Ano</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Meta de operação focada na Grande São Paulo com parceiros contábeis e comercializadoras credenciadas.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 6px; padding: 10px 16px; margin-top: 14px;">
+            <span style="font-size: 12px; color: var(--color-sand-light);"><strong>Evidência Regulatória:</strong> Em 2025 foram 21.707 migrações. No 1T2026, >70% já adotaram o modelo simplificado varejista da CCEE.</span>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber);">CCEE (Fev/2026 & Mai/2026)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 5 — BENCHMARKING DE MERCADO (TABELA ORIGINAL RESTAURADA N2)
+           ==================================================================== -->
+      <section class="slide" id="slide-5" data-slide="5">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 05 · Benchmarking & Análise Competitiva</span>
+              <span class="slide-badge-empreendedores">Quem Aconselha, Vende</span>
+            </div>
+            <h2 class="slide-title">O que o mercado ensina: <em>A dor aparece depois</em>.</h2>
+            <p class="slide-subtitle">Comparar preço virou commodity. O modelo tradicional tem conflito de interesses na indicação.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 2 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <table class="n2-table-compact">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Player de Referência</th>
+                <th style="width: 38%;">Oferta Observada</th>
+                <th style="width: 40%;">Aprendizado Crítico para a Milet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Clarke Energia</strong><br><span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">B2B Nacional</span></td>
+                <td>Consultoria e gestão da conta de energia com foco em médias e grandes empresas.</td>
+                <td>Validou a viabilidade de cobrar assinatura mensal fixa pelo acompanhamento e auditoria.</td>
+              </tr>
+              <tr>
+                <td><strong>Electy</strong><br><span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">GD Compartilhada</span></td>
+                <td>Conexão de usinas e cooperativas a consumidores com foco no suporte operacional.</td>
+                <td>Mostrou que comercializadoras e geradores sofrem com altos custos de aquisição e precisam de demanda qualificada.</td>
+              </tr>
+              <tr>
+                <td><strong>Energy Ogre</strong><br><span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-sand);">Texas (ERCOT / EUA)</span></td>
+                <td>Gestão algorítmica de planos para membros pagantes com modelo de assinatura independente.</td>
+                <td>Provou que a decisão inicial pode ser convertida em acompanhamento recorrente pago pelo cliente.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="background: rgba(211, 155, 61, 0.08); border: 1px solid var(--color-amber); border-radius: 6px; padding: 12px 18px; margin-top: 14px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="slide-badge-empreendedores" style="white-space: nowrap;">DIFERENCIAL MILET</span>
+              <p style="font-size: 13px; color: var(--color-ivory); line-height: 1.4; margin: 0;">
+                <strong>Passaporte Energético neutro</strong> e <strong>Comparação All-In</strong>: o sistema calcula o custo total real (energia + encargos CCEE + tarifa de fio da concessionária mantida). <strong>Nenhum fornecedor paga para aparecer primeiro</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 6 — CONCORRÊNCIA: MATRIZ COMPARATIVA (SUPERNOVA SLIDE 8)
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-slide="6">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 06 · Concorrência e Diferencial</span>
+              <span class="slide-badge-empreendedores">Matriz Comparativa de Mercado</span>
+            </div>
+            <h2 class="slide-title">Outros fazem partes disso. <em>O Milet fica do lado da empresa</em>.</h2>
+            <p class="slide-subtitle">Comparativo direto de soluções e posicionamento frente aos grupos tradicionais do setor elétrico.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 2 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <table class="n2-table-matrix">
+            <thead>
+              <tr>
+                <th style="width: 32%; text-align: left;">Critério de Avaliação Competitiva</th>
+                <th style="width: 14%;">UC Livre</th>
+                <th style="width: 15%;">Clarke</th>
+                <th style="width: 13%;">Electy</th>
+                <th style="width: 13%;">Comercializadora de Grupo</th>
+                <th style="width: 13%;" class="col-milet">Milet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Compara rotas (Mercado Livre, GD e Solar própria)</td>
+                <td><span class="badge-partial">◐</span></td>
+                <td><span class="badge-partial">◐</span></td>
+                <td><span class="badge-partial">◐</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td class="col-milet"><span class="badge-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Compara múltiplos fornecedores neutros</td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td class="col-milet"><span class="badge-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Sem vínculo societário com grupo de energia (independência)</td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-no">—</span> <span style="font-size: 9.5px; color: var(--color-sand); display: block;">70% Energisa</span></td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td class="col-milet"><span class="badge-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Acompanha a economia após a contratação (Auditoria)</td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-yes">✓</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td><span class="badge-partial">◐</span></td>
+                <td class="col-milet"><span class="badge-yes">✓</span></td>
+              </tr>
+              <tr>
+                <td>Dados e histórico portáveis da empresa (Passaporte Energético)</td>
+                <td><span class="badge-no">—</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td><span class="badge-no">—</span></td>
+                <td class="col-milet"><span class="badge-yes">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(211, 155, 61, 0.08); border: 1px solid var(--color-amber); border-radius: 6px; padding: 9px 16px; margin-top: 12px;">
+            <span style="font-size: 12px; color: var(--color-ivory);"><strong>Diferencial Crítico:</strong> <em>"Nenhum fornecedor paga para aparecer primeiro no Milet."</em> As propostas são normalizadas pelo custo total efetivo (All-In).</span>
+            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--color-amber);">✓ Sim · ◐ Em parte · — Não</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 7 — EVIDÊNCIAS DE MONETIZAÇÃO (SUPERNOVA SLIDE 10)
+           ==================================================================== -->
+      <section class="slide" id="slide-7" data-slide="7">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 07 · Referências de Mercado</span>
+              <span class="slide-badge-empreendedores">Validação da Disposição a Pagar</span>
+            </div>
+            <h2 class="slide-title">O mercado já paga por isso. <em>Dos dois lados</em>.</h2>
+            <p class="slide-subtitle">Evidências públicas do setor comprovam que comercializadoras pagam pela originação e clientes pagam pela gestão.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIOS 5 & 6 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-grid-3col">
+            <div class="n2-card-stat" style="border-top-color: var(--color-emerald);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-emerald); color: var(--color-emerald);">ORIGINAÇÃO (B2B)</span>
+                <div class="n2-big-num" style="color: var(--color-emerald);">R$ 5 a 10 mil</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Por Cliente Fechado</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Valor que comercializadoras pagam no mercado por contratos assinados de PMEs (Fonte: <em>Clarke Energia · Programa de Parceria 2025</em>).</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-amber);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">FORNECEDOR REMUNERA</span>
+                <div class="n2-big-num">0 Custo</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Diagnóstico sem Fricção</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">O fornecedor absorve o custo de aquisição; o cliente PME tem custo zero para comparar rotas (Fonte: <em>Electy FAQ Parcerias 2026</em>).</div>
+              </div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-copper);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-copper); color: var(--color-copper);">RECORRÊNCIA (SAAS)</span>
+                <div class="n2-big-num" style="color: var(--color-copper);">R$ 100<span style="font-size: 16px; color: var(--color-sand); font-weight: 400;">/mês</span></div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Gestão Contínua da PME</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.35;">Empresas contratam auditoria mensal para acompanhar faturas e evitar desvios tarifários (Fonte: <em>Clarke Energia Relatórios 2025</em>).</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--color-carbon-card); border: 1px solid var(--color-carbon-border); border-radius: 6px; padding: 10px 16px; margin-top: 14px;">
+            <p style="font-size: 12px; color: var(--color-sand-light); margin: 0;">
+              <strong>Conclusão Estratégica:</strong> O modelo bilateral do Milet alinha o incentivo: monetiza no sucesso da comercializadora e fideliza a PME com auditoria contínua independente.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 8 — O PROTÓTIPO TANGÍVEL (SUPERNOVA SLIDE 7 MVP)
+           ==================================================================== -->
+      <section class="slide mvp2" id="slide-8" data-slide="8">
+        <div class="mvp2-wrap">
+          <div class="mvp2-text">
+            <p class="mvp2-eyebrow"><span class="n">08</span> O MVP <span class="n">· Critério 7</span></p>
+            <h2 class="mvp2-title">Já funciona. <em>Da fatura à comparação.</em></h2>
+            <ul class="mvp2-list">
+              <li><b>01</b>Triagem do perfil e da distribuidora</li>
+              <li><b>02</b>Envio da fatura com leitura automática</li>
+              <li><b>03</b>Conferência dos dados pelo cliente</li>
+              <li><b>04</b>Diagnóstico com as rotas possíveis</li>
+              <li><b>05</b>Propostas normalizadas lado a lado</li>
+            </ul>
+            <div class="mvp2-foot">
+              <div class="mvp2-pills">
+                <span class="mvp2-pill ok">No ar · web</span>
+                <span class="mvp2-pill">Fornecedores ilustrativos</span>
+              </div>
+              <a class="mvp2-link" href="https://milet.vercel.app/diagnostico" target="_blank" rel="noopener">milet.vercel.app/diagnostico ↗</a>
+            </div>
+          </div>
+          <div class="mvp2-browser canvas-image-stage" title="Clique para ampliar">
+            <div class="mvp2-bar"><i></i><i></i><i></i><span>milet · /diagnostico · comparar propostas</span></div>
+            <img src="assets/diag-04-propostas-full.png" alt="Tela de comparação de propostas do MVP do Milet">
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 9 — GO-TO-MARKET / FUNIL B2B (SUPERNOVA SLIDE 11)
+           ==================================================================== -->
+      <section class="slide" id="slide-9" data-slide="9">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 09 · Canais & Go-To-Market</span>
+              <span class="slide-badge-empreendedores">Funil B2B Consultivo</span>
+            </div>
+            <h2 class="slide-title">Venda consultiva: <em>O diagnóstico abre a conversa</em>.</h2>
+            <p class="slide-subtitle">Quem decide precisa justificar a escolha para o sócio ou conselho. O dossiê do diagnóstico é a ferramenta de fechamento.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 5 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-grid-3col">
+            <div class="n2-card-stat">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">01 · ATRAÇÃO</span>
+                <div style="font-size: 16px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">Prospecção & Parceiros</div>
+                <div style="font-size: 12.5px; color: var(--color-sand); line-height: 1.4;">
+                  SDR outbound dedicado a PMEs do Grupo A + indicações de escritórios de contabilidade e integradores solares (EPCistas).
+                </div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); margin-top: 8px;">Métrica: Faturas Recebidas</div>
+            </div>
+
+            <div class="n2-card-stat">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">02 · CONVERSÃO</span>
+                <div style="font-size: 16px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">Dossiê All-In</div>
+                <div style="font-size: 12.5px; color: var(--color-sand); line-height: 1.4;">
+                  Apresentação interativa com comparativo auditado de 3 propostas normalizadas e minuta padrão de migração.
+                </div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); margin-top: 8px;">Métrica: Contratos Assinados</div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-emerald);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-emerald); color: var(--color-emerald);">03 · RETENÇÃO</span>
+                <div style="font-size: 16px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">Auditoria Mensal</div>
+                <div style="font-size: 12.5px; color: var(--color-sand); line-height: 1.4;">
+                  Conferência mensal da economia faturada contra a distribuidora e alertas automáticos de reotimização tarifária.
+                </div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-emerald); margin-top: 8px;">Métrica: Retenção SaaS (Churn < 1%)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 10 — BUSINESS MODEL CANVAS BILATERAL (O BMC DO SUPERNOVA)
+           ==================================================================== -->
+      <section class="slide" id="slide-10" data-slide="10">
+        <div class="slide-header" style="margin-bottom: 6px; padding-bottom: 4px;">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 10 · Modelo de Negócios</span>
+              <span class="slide-badge-empreendedores">Business Model Canvas Oficial</span>
+            </div>
+            <h2 class="slide-title" style="font-size: clamp(20px, 2.7vh, 26px); margin: 0;">Dois lados ganham. <em>Os dois podem pagar</em>.</h2>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 5 · N2</span>
+            <span style="font-size: 11px; color: var(--color-sand);">Clique na imagem para expandir em tela cheia (Zoom)</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="canvas-image-stage" title="Clique para expandir em tela cheia (Zoom de Alta Resolução)">
+            <img src="assets/supernova-bmc-completo.png" alt="Business Model Canvas Milet — Submissão Oficial Sebrae Supernova">
+            <div class="canvas-zoom-badge"><span>🔍</span> Clique para Zoom</div>
+          </div>
+          <div class="canvas-image-footer">
+            <span><strong>Artefato Oficial:</strong> Business Model Canvas estruturado e submetido no Sebrae Supernova 2026 conectando PMEs (Demanda) e Comercializadoras (Oferta).</span>
+            <span style="font-family: var(--font-mono); color: var(--color-amber);">assets/supernova-bmc-completo.png</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 11 — ANÁLISE FINANCEIRA 1: ENTRADAS VS SAÍDAS
+           ==================================================================== -->
+      <section class="slide" id="slide-11" data-slide="11">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 11 · Análise Financeira</span>
+              <span class="slide-badge-empreendedores">Fontes de Receita vs Custos Enxutos</span>
+            </div>
+            <h2 class="slide-title">Equilíbrio financeiro: <em>Receitas e Custos Claros</em>.</h2>
+            <p class="slide-subtitle">Diferenciação nítida entre entradas de caixa (taxa de originação e SaaS) e saídas operacionais enxutas.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 6 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: auto 0;">
+            <!-- CARD 1: RECEITA ORIGINAÇÃO (VERDE ESMERALDA) -->
+            <div class="n2-card-revenue" style="background: rgba(72, 187, 120, 0.05); border: 1px solid rgba(72, 187, 120, 0.35); border-top: 4px solid #48bb78; border-radius: 8px; padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="cover-badge badge-rev" style="border-color: #48bb78; color: #48bb78; font-size: 9.5px; font-weight: 700; margin-bottom: 6px; display: inline-block;">ENTRADA · SUCESSO</span>
+                <div class="n2-big-num num-rev" style="color: #48bb78 !important; font-family: var(--font-mono); font-size: 34px; font-weight: 700; margin-bottom: 6px;">R$ 5.000</div>
+                <div style="font-size: 13.5px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Taxa de Originação</div>
+                <div style="font-size: 11.5px; color: var(--color-sand); line-height: 1.35;">Paga pela comercializadora no fechamento de cada contrato de PME.</div>
+              </div>
+            </div>
+
+            <!-- CARD 2: RECEITA RECORRENTE (VERDE ESMERALDA) -->
+            <div class="n2-card-revenue" style="background: rgba(72, 187, 120, 0.05); border: 1px solid rgba(72, 187, 120, 0.35); border-top: 4px solid #48bb78; border-radius: 8px; padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="cover-badge badge-rev" style="border-color: #48bb78; color: #48bb78; font-size: 9.5px; font-weight: 700; margin-bottom: 6px; display: inline-block;">ENTRADA · RECORRENTE</span>
+                <div class="n2-big-num num-rev" style="color: #48bb78 !important; font-family: var(--font-mono); font-size: 34px; font-weight: 700; margin-bottom: 6px;">R$ 100<span style="font-size: 14px; font-weight: 400; color: var(--color-sand);">/mês</span></div>
+                <div style="font-size: 13.5px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Assinatura SaaS PME</div>
+                <div style="font-size: 11.5px; color: var(--color-sand); line-height: 1.35;">Auditoria mensal contínua de faturas e acompanhamento de encargos.</div>
+              </div>
+            </div>
+
+            <!-- CARD 3: CUSTOS FIXOS (COBRE / TERRACOTA) -->
+            <div class="n2-card-cost" style="background: rgba(200, 122, 84, 0.05); border: 1px solid rgba(200, 122, 84, 0.35); border-top: 4px solid #c87a54; border-radius: 8px; padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="cover-badge badge-cost" style="border-color: #c87a54; color: #c87a54; font-size: 9.5px; font-weight: 700; margin-bottom: 6px; display: inline-block;">SAÍDA · FIXOS ANO 1</span>
+                <div class="n2-big-num num-cost" style="color: #c87a54 !important; font-family: var(--font-mono); font-size: 34px; font-weight: 700; margin-bottom: 6px;">R$ 60 mil<span style="font-size: 14px; font-weight: 400; color: var(--color-sand);">/ano</span></div>
+                <div style="font-size: 13.5px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">R$ 5.000 / mês</div>
+                <div style="font-size: 11.5px; color: var(--color-sand); line-height: 1.35;">1 SDR (R$ 2.500) + Google Ads B2B (R$ 1.000) + Jurídico (R$ 800) + Serverless (R$ 200) + Softwares.</div>
+              </div>
+            </div>
+
+            <!-- CARD 4: INVESTIMENTO INICIAL (COBRE / TERRACOTA) -->
+            <div class="n2-card-cost" style="background: rgba(200, 122, 84, 0.05); border: 1px solid rgba(200, 122, 84, 0.35); border-top: 4px solid #c87a54; border-radius: 8px; padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="cover-badge badge-cost" style="border-color: #c87a54; color: #c87a54; font-size: 9.5px; font-weight: 700; margin-bottom: 6px; display: inline-block;">APORTE · IMPLANTAÇÃO</span>
+                <div class="n2-big-num num-cost" style="color: #c87a54 !important; font-family: var(--font-mono); font-size: 34px; font-weight: 700; margin-bottom: 6px;">R$ 25.000</div>
+                <div style="font-size: 13.5px; font-weight: 600; color: var(--color-ivory); margin-bottom: 4px;">Investimento Inicial</div>
+                <div style="font-size: 11.5px; color: var(--color-sand); line-height: 1.35;">Abertura jurídica, registro de marca INPI e reserva inicial de capital de giro.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 12 — ANÁLISE FINANCEIRA 2: DRE DE 3 ANOS & PAYBACK
+           ==================================================================== -->
+      <section class="slide" id="slide-12" data-slide="12">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 12 · Viabilidade Financeira</span>
+              <span class="slide-badge-empreendedores">Demonstração de Resultados (36 Meses)</span>
+            </div>
+            <h2 class="slide-title">Projeção financeira e <em>retorno sustentável</em>.</h2>
+            <p class="slide-subtitle">DRE em reais demonstrando breakeven no 1º ano e payback integral logo no início do Ano 2.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 6 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <table class="n2-dre-table">
+            <thead>
+              <tr>
+                <th>Indicador Gerencial (R$)</th>
+                <th>Ano 1 (Validação)</th>
+                <th>Ano 2 (Tração)</th>
+                <th>Ano 3 (Escala)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Novos Contratos Efetivados</td>
+                <td>20 contratos</td>
+                <td>45 contratos</td>
+                <td>80 contratos</td>
+              </tr>
+              <tr>
+                <td>Receita de Originação (Taxa de Sucesso R$ 5k)</td>
+                <td>R$ 100.000</td>
+                <td>R$ 225.000</td>
+                <td>R$ 400.000</td>
+              </tr>
+              <tr>
+                <td>Receita de Assinaturas (SaaS R$ 100/mês)</td>
+                <td>R$ 7.200</td>
+                <td>R$ 27.700</td>
+                <td>R$ 63.900</td>
+              </tr>
+              <tr class="n2-dre-highlight">
+                <td>Receita Bruta Total</td>
+                <td>R$ 107.200</td>
+                <td>R$ 252.700</td>
+                <td>R$ 463.900</td>
+              </tr>
+              <tr>
+                <td>Custos Fixos (SDR, Ads, Jurídico, Serverless, Ferramental)</td>
+                <td>(R$ 60.000)</td>
+                <td>(R$ 84.000)</td>
+                <td>(R$ 115.000)</td>
+              </tr>
+              <tr>
+                <td>Custos Variáveis (Comissão Vendedor R$ 1k + Impostos Simples)</td>
+                <td>(R$ 26.000)</td>
+                <td>(R$ 58.500)</td>
+                <td>(R$ 104.000)</td>
+              </tr>
+              <tr class="n2-dre-highlight">
+                <td>Resultado Operacional Anual (Lucro do Exercício)</td>
+                <td style="color: var(--color-emerald);">+ R$ 21.200 (Lucro)</td>
+                <td style="color: var(--color-emerald);">+ R$ 110.200</td>
+                <td style="color: var(--color-emerald);">+ R$ 244.900</td>
+              </tr>
+              <tr class="n2-dre-payback">
+                <td>Saldo Acumulado de Caixa (pós-investimento inicial R$ 25k)</td>
+                <td style="color: var(--color-coral);">- R$ 3.800</td>
+                <td style="color: var(--color-emerald);">+ R$ 106.400 (Payback!)</td>
+                <td style="color: var(--color-emerald);">+ R$ 351.300</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 13 — VALIDAÇÃO DE CAMPO & APRENDIZADOS
+           ==================================================================== -->
+      <section class="slide" id="slide-13" data-slide="13">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> 13 · Validação de Campo</span>
+              <span class="slide-badge-empreendedores">Resultados do Piloto Real</span>
+            </div>
+            <h2 class="slide-title">O que o piloto <em>comprovou no mercado</em>.</h2>
+            <p class="slide-subtitle">Três hipóteses estruturais testadas e confirmadas em entrevistas com decisores e comercializadoras.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">CRITÉRIO 7 · N2</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="n2-grid-3col">
+            <div class="n2-card-stat">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">HIPÓTESE 1 · DECISOR</span>
+                <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">PMEs Fogem da Complexidade</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.4;">100% dos entrevistados relataram insegurança com propostas não comparáveis e medo de multas contratuais.</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-emerald); font-weight: 700; margin-top: 8px;">✓ Hipótese Confirmada</div>
+            </div>
+
+            <div class="n2-card-stat">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block;">HIPÓTESE 2 · COMERCIALIZADORAS</span>
+                <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">CAC Alto na Venda Direta</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.4;">Comercializadoras têm CAC elevado ao caçar PMEs e valorizam canais com dados e faturas já auditadas.</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-emerald); font-weight: 700; margin-top: 8px;">✓ Hipótese Confirmada</div>
+            </div>
+
+            <div class="n2-card-stat" style="border-top-color: var(--color-emerald);">
+              <div>
+                <span class="cover-badge" style="font-size: 9.5px; margin-bottom: 6px; display: inline-block; border-color: var(--color-emerald); color: var(--color-emerald);">HIPÓTESE 3 · MONETIZAÇÃO</span>
+                <div style="font-size: 15px; font-weight: 600; color: var(--color-ivory); margin-bottom: 6px;">Disposição a Pagar por Auditoria</div>
+                <div style="font-size: 12px; color: var(--color-sand); line-height: 1.4;">Gestores aceitam pagar R$ 100/mês para ter auditoria contínua de encargos e relatórios para a diretoria.</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-emerald); font-weight: 700; margin-top: 8px;">✓ Hipótese Confirmada</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- ====================================================================
+           SLIDE 14 — ENCERRAMENTO OFICIAL (MODELO SUPERNOVA ASSINATURA)
+           ==================================================================== -->
+      <section class="slide slide-closure" id="slide-14" data-slide="14">
+        <div class="closure-hero-bg"></div>
+        <div class="closure-veil"></div>
+
+        <div class="closure-content">
+          <img src="assets/logo/png/transparent/milet-symbol-amber.png" alt="Símbolo Oficial Milet" class="closure-logo-img">
+
+          <h2 class="closure-title">Energia em <em>mais liberdade</em>.</h2>
+          <p class="closure-lead">A energia certa, pelo preço justo, sem adivinhar.</p>
+
+          <div class="closure-meta-row">
+            <div class="closure-links">
+              <a href="https://milet.vercel.app" target="_blank" class="closure-link">milet.vercel.app ↗</a>
+              <span class="closure-sep">·</span>
+              <span class="closure-email">milet@evergreenmkt.com.br</span>
+            </div>
+            <div class="closure-academic">
+              Universidade Presbiteriana Mackenzie · Projetos Empreendedores 2026.2 · Profa. Julia Gebara
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- ====================================================================
+           SLIDE 15 — APÊNDICE A: DECLARAÇÃO E MATRIZ DO PROBLEMA (N1 BACKUP)
+           ==================================================================== -->
+      <section class="slide" id="slide-15" data-slide="15">
+        <div class="slide-header">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> APÊNDICE A · Acervo N1</span>
+              <span class="slide-badge-empreendedores">Estrutura Oficial N1</span>
+            </div>
+            <h2 class="slide-title">Declaração e <em>Matriz do Problema</em>.</h2>
+            <p class="slide-subtitle">Documentação analítica da N1 preservada para suporte em arguição detalhada da banca.</p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-sand);">APÊNDICE DE SUPORTE</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="problem-statement-card">
+            <span class="problem-statement-tag">DECLARAÇÃO EM 1 FRASE</span>
+            <p class="problem-statement-text">
+              “Decisores de PMEs têm dificuldade para perceber quando possuem alternativas ao modelo atual de energia e, quando as descobrem, para avaliar sua elegibilidade, comparar propostas em bases equivalentes e acompanhar o resultado da contratação, devido à complexidade técnica e à fragmentação das informações e agentes do setor.”
+            </p>
+          </div>
+
+          <div class="problem-matrix-6boxes">
+            <div class="problem-box">
+              <div class="problem-box-header"><span class="problem-box-tag">01 · GATILHO</span></div>
+              <h4 class="problem-box-title">Quando o Problema Acontece?</h4>
+              <div class="problem-box-content">
+                <ul>
+                  <li>Aumento expressivo ou inesperado da fatura de energia.</li>
+                  <li>Abordagem comercial ativa de corretores ou comercializadoras.</li>
+                  <li>Busca institucional por redução de despesas fixas da empresa.</li>
+                  <li>Renovação de contratos, abertura ou troca de unidade física.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="problem-box">
+              <div class="problem-box-header"><span class="problem-box-tag">02 · PÚBLICO AFETADO</span></div>
+              <h4 class="problem-box-title">Quem Geralmente é Afetado?</h4>
+              <div class="problem-box-content">
+                <ul>
+                  <li>Decisores de PMEs (proprietários, diretores e CFOs do Grupo A).</li>
+                  <li>Gestores de facilities sem suporte especializado em energia.</li>
+                  <li>Empresas com contas acima de R$ 5.000 sem consultor técnico.</li>
+                  <li>Fornecedores de energia sofrendo com atrito na conversão.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="problem-box">
+              <div class="problem-box-header"><span class="problem-box-tag">03 · ORIGEM</span></div>
+              <h4 class="problem-box-title">Causa Raiz do Problema</h4>
+              <div class="problem-box-content">
+                <ul>
+                  <li>Baixa conscientização sobre o direito regulatório de escolha.</li>
+                  <li>Jargões técnicos (tarifa binômia, TUSD, TE, demanda).</li>
+                  <li>Dispersão de regras entre concessionárias de distribuição.</li>
+                  <li>Falta de uma régua comparativa neutra e independente.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="problem-box highlight">
+              <div class="problem-box-header"><span class="problem-box-tag" style="color: var(--color-amber);">04 · ESTADO EMOCIONAL</span></div>
+              <h4 class="problem-box-title" style="color: var(--color-ivory);">Como a Pessoa Afetada se Sente?</h4>
+              <div class="problem-box-content">
+                <p style="font-style: italic; line-height: 1.45; color: var(--color-ivory);">
+                  “Inseguro, sobrecarregado e desconfiado ao tomar uma decisão de alto impacto sem dominar as regras do setor. Teme contratar uma alternativa inadequada, assumir condições desfavoráveis ou descobrir posteriormente que a economia prometida não se concretizou.”
+                </p>
+              </div>
+            </div>
+
+            <div class="problem-box">
+              <div class="problem-box-header"><span class="problem-box-tag">05 · ALTERNATIVAS</span></div>
+              <h4 class="problem-box-title">Quais Alternativas São Usadas?</h4>
+              <div class="problem-box-content">
+                <ul>
+                  <li>Inércia: permanecer na distribuidora cativa pagando tarifas cheias.</li>
+                  <li>Pedir propostas avulsas a diferentes comercializadoras por e-mail.</li>
+                  <li>Tentar consolidar orçamentos manualmente em planilhas internas.</li>
+                  <li>Contratar consultorias tradicionais (custo elevado para PMEs).</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="problem-box">
+              <div class="problem-box-header"><span class="problem-box-tag">06 · LIMITAÇÕES</span></div>
+              <h4 class="problem-box-title">Desvantagens das Alternativas</h4>
+              <div class="problem-box-content">
+                <ul>
+                  <li>Contato fragmentado com múltiplos agentes e formatos distintos.</li>
+                  <li>Premissas tributárias díspares que impedem comparação direta.</li>
+                  <li>Consolidação manual demorada e propensa a erros de cálculo.</li>
+                  <li>Ausência de acompanhamento contínuo entre decisão e resultado mensal.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 16 — APÊNDICE B: MAPA DA EMPATIA — CONSUMIDOR PME (IMAGEM N1)
+           ==================================================================== -->
+      <section class="slide" id="slide-16" data-slide="16">
+        <div class="slide-header" style="margin-bottom: 6px; padding-bottom: 4px;">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> APÊNDICE B · Acervo N1</span>
+              <span class="slide-badge-empreendedores">UP-01 · Consumidor PME</span>
+            </div>
+            <h2 class="slide-title" style="font-size: clamp(20px, 2.7vh, 26px); margin: 0;">Mapa da Empatia — <em>Consumidor PME / Decisor Energético</em>.</h2>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">ARTEFATO VISUAL OFICIAL · N1</span>
+            <span style="font-size: 11px; color: var(--color-sand);">Clique na imagem para expandir em tela cheia (Zoom)</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="canvas-image-stage" title="Clique para expandir em tela cheia (Zoom de Alta Resolução)">
+            <img src="assets/mapa-empatia-pme.png" alt="Mapa da Empatia Milet - Perfil 1: Consumidor PME">
+            <div class="canvas-zoom-badge"><span>🔍</span> Clique para Zoom</div>
+          </div>
+          <div class="canvas-image-footer">
+            <span><strong>Artefato Oficial:</strong> Mapa da Empatia investigando percepções, estímulos, dores e necessidades do Decisor de PME.</span>
+            <span style="font-family: var(--font-mono); color: var(--color-amber);">assets/mapa-empatia-pme.png</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 17 — APÊNDICE C: MAPA DA EMPATIA — COMERCIALIZADORA (IMAGEM N1)
+           ==================================================================== -->
+      <section class="slide" id="slide-17" data-slide="17">
+        <div class="slide-header" style="margin-bottom: 6px; padding-bottom: 4px;">
+          <div>
+            <div class="slide-eyebrow-row">
+              <span class="slide-eyebrow"><span class="dot"></span> APÊNDICE C · Acervo N1</span>
+              <span class="slide-badge-empreendedores">UP-02 · Comercializadora / Gerador</span>
+            </div>
+            <h2 class="slide-title" style="font-size: clamp(20px, 2.7vh, 26px); margin: 0;">Mapa da Empatia — <em>Comercializadora / Fornecedor</em>.</h2>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px;">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">ARTEFATO VISUAL OFICIAL · N1</span>
+            <span style="font-size: 11px; color: var(--color-sand);">Clique na imagem para expandir em tela cheia (Zoom)</span>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <div class="canvas-image-stage" title="Clique para expandir em tela cheia (Zoom de Alta Resolução)">
+            <img src="assets/mapa-empatia-fornecedor.png" alt="Mapa da Empatia Milet - Perfil 2: Comercializadora / Fornecedor">
+            <div class="canvas-zoom-badge"><span>🔍</span> Clique para Zoom</div>
+          </div>
+          <div class="canvas-image-footer">
+            <span><strong>Artefato Oficial:</strong> Mapa da Empatia estruturado para Comercializadoras e Fornecedores de Energia no ACL.</span>
+            <span style="font-family: var(--font-mono); color: var(--color-amber);">assets/mapa-empatia-fornecedor.png</span>
+          </div>
+        </div>
+      </section>
+
+  </div>
+
+  <!-- HUD INFERIOR COM CONTROLES -->
+  <footer id="presentation-hud">
+    <div id="progress-bar-container">
+      <div id="progress-bar-fill"></div>
+    </div>
+
+    <div class="hud-left">
+      <button id="btn-prev" class="hud-btn" title="Slide Anterior (← ou PageUp)">❮</button>
+      <span id="slide-counter" class="hud-counter">01 / 11</span>
+      <button id="btn-next" class="hud-btn" title="Próximo Slide (→, Espaço ou PageDown)">❯</button>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-timer-badge" title="Timer em andamento (Clique ou [T] para pausar | [R] para reiniciar)">
+        <span class="timer-dot"></span>
+        <span id="timer-display">00:00</span> / 10:00
+      </div>
+      <button id="btn-notes" class="hud-action-btn" style="display: none;" title="Notas do Orador (Tecla N)">
+        <span>📝</span> Notas
+      </button>
+      <button id="btn-fullscreen" class="hud-action-btn" title="Tela Cheia (Tecla F)">
+        <span>⛶</span> Tela Cheia
+      </button>
+      <button id="btn-print" class="hud-action-btn" title="Exportar Deck completo em PDF 16:9 Horizontal (Paisagem)">
+        <span>🖨</span> PDF (16:9)
+      </button>
+    </div>
+  </footer>
+
+  <!-- GAVETA DE SPEAKER NOTES (DRAWER LATERAL PARA TELEPROMPTER) -->
+  <aside id="speaker-notes-drawer" aria-label="Notas do Orador">
+    <div class="notes-header">
+      <div>
+        <span class="slide-badge-empreendedores">ROTEIRO DE BANCA · PROFA. JULIA GEBARA</span>
+        <h3 id="notes-title" style="margin-top: 4px;">Slide 1 — Capa</h3>
+      </div>
+      <button id="btn-close-notes" class="btn-close-notes" title="Fechar Notas (N)">✕</button>
+    </div>
+    <div class="notes-content">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span id="notes-rubric" class="notes-rubric-badge">Critério 1: Abertura</span>
+        <span id="notes-target" class="notes-target-time">Tempo alvo: 40s</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">TÓPICOS ESSENCIAIS A ENFATIZAR</span>
+        <div id="notes-bullets" class="notes-bullets-box">
+          • Apresentação formal da Milet e integrantes em ordem alfabética
+          • Profa. Julia Gebara e componente curricular Projetos Empreendedores
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-amber); font-weight: 700;">SUGESTÃO DE FALA DO APRESENTADOR (EDUARDO)</span>
+        <div id="notes-text" class="notes-speech-text">
+          Texto de fala calibrado para o tempo do slide...
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- LIGHTBOX MODAL PARA EXPANSÃO DE IMAGENS COM ZOOM (BMC E FOTOS) -->
+  <div id="image-lightbox-modal" role="dialog" aria-label="Visualização em Alta Resolução">
+    <button id="image-lightbox-close" title="Fechar (Esc)">✕</button>
+    <img id="lightbox-image" src="" alt="Canvas em Alta Definição">
+  </div>
+
+  <script src="presentation-empreendedores-n2.js?v=20261121_3"></script>
+</body>
+</html>
