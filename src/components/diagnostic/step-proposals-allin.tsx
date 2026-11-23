@@ -62,7 +62,8 @@ export function StepProposalsAllIn({
         voltageGroup: invoice.voltageGroup,
         tariffFlag: invoice.tariffFlag,
         selectedProposalId: selectedProposal?.id,
-        consentGranted: lead.consentDataProcessing
+        consentGranted: Boolean(lead.consentDataProcessing),
+        optInContact: lead.optInContact !== false
       };
 
       const res = await fetch("/api/intakes", {
@@ -261,13 +262,12 @@ export function StepProposalsAllIn({
                 <div className="shrink-0 flex items-center gap-2">
                   <button
                     type="button"
-                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                    className={`inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                       isSelected
                         ? "bg-emerald-500 text-white shadow-xs"
                         : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--color-milet-amber)]"
                     }`}
                   >
-                    {isSelected ? <Check weight="bold" className="w-4 h-4" /> : null}
                     <span>{isSelected ? "Proposta Marcada ✓" : "Marcar Proposta"}</span>
                   </button>
                 </div>
