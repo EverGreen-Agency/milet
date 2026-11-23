@@ -29,6 +29,15 @@ const BRAZILIAN_STATES = [
   "RS", "RO", "RR", "SC", "SP", "SE", "TO"
 ] as const;
 
+export function formatPhoneNumber(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length === 0) return "";
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
 export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps) {
   const [lead, setLead] = useState<LeadData>(initialLead);
   const [errors, setErrors] = useState<Partial<Record<keyof LeadData, string>>>({});
@@ -38,12 +47,31 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
 
     if (!lead.name.trim()) newErrors.name = "Informe o seu nome completo.";
     if (!lead.email.trim() || !lead.email.includes("@")) newErrors.email = "Informe um e-mail válido.";
-    if (!lead.phone.trim()) newErrors.phone = "Informe o WhatsApp ou telefone de contato.";
+    
+    // Validação estrita de Telefone / WhatsApp com DDD brasileiro
+    const phoneDigits = lead.phone.replace(/\D/g, "");
+    if (!phoneDigits) {
+      newErrors.phone = "Informe o WhatsApp ou telefone de contato.";
+    } else if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      newErrors.phone = "Informe um telefone válido com DDD (10 ou 11 dígitos).";
+    } else if (/^(\d)\1+$/.test(phoneDigits)) {
+      newErrors.phone = "Número de telefone inválido (dígitos repetidos).";
+    } else {
+      const ddd = parseInt(phoneDigits.slice(0, 2), 10);
+      if (ddd < 11 || ddd > 99) {
+        newErrors.phone = "DDD informado é inválido.";
+      } else if (phoneDigits.length === 11 && phoneDigits[2] !== "9") {
+        newErrors.phone = "Celulares de 11 dígitos devem iniciar com o dígito 9 após o DDD.";
+      }
+    }
+
     if (lead.profile === "company" && !lead.companyName.trim()) {
       newErrors.companyName = "Informe a razão social ou nome da empresa.";
     }
     if (!lead.distributor.trim()) newErrors.distributor = "Informe a distribuidora de energia local.";
-    if (!lead.city.trim()) newErrors.city = "Informe a cidade.";
+    if (!lead.city.trim() || lead.city.trim().length < 3) {
+      newErrors.city = "Informe um município válido (mínimo 3 caracteres).";
+    }
     if (!lead.state) newErrors.state = "Selecione o estado.";
     if (!lead.consentDataProcessing) {
       newErrors.consentDataProcessing = "O consentimento LGPD é necessário para processar o diagnóstico.";
@@ -142,7 +170,7 @@ export function StepLeadTriage({ initialLead, onComplete }: StepLeadTriageProps)
               id="lead-phone"
               type="tel"
               value={lead.phone}
-              onChange={(e) => setLead({ ...lead, phone: e.target.value })}
+              onChange={(e) => setLead({ ...lead, phone: formatPhoneNumber(e.target.value) })}
               className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-[var(--background)] focus:outline-none ${
                 errors.phone ? "border-rose-500" : "border-[var(--border)] focus:border-[var(--color-milet-amber)]"
               }`}

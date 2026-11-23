@@ -129,7 +129,7 @@ export function LandingHero() {
               href="#como-funciona"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-[var(--card)] border border-[var(--border-strong)] text-[var(--foreground)] hover:bg-[var(--background)] transition-all duration-200"
             >
-              <span>Ver Demonstração Abaixo</span>
+              <span>Como Funciona</span>
               <ArrowRight weight="bold" className="w-4 h-4 text-[var(--foreground)]/60" />
             </a>
           </div>

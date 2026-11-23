@@ -55,15 +55,7 @@ export function AnalyticsConsent() {
             </button>
           </div>
         </aside>
-      ) : (
-        <button
-          type="button"
-          onClick={() => setConsent("preferences")}
-          className="fixed bottom-3 left-3 z-40 rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-xs text-[var(--foreground)]/70 shadow-sm transition hover:border-[var(--color-milet-amber)]"
-        >
-          Preferências de métricas
-        </button>
-      )}
+      ) : null}
     </>
   );
 }

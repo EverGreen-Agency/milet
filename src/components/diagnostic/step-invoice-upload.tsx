@@ -105,15 +105,13 @@ const PRESET_CASES: readonly {
 export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepInvoiceUploadProps) {
   const [invoice, setInvoice] = useState<InvoiceExtractedData>(initialInvoice);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const [readingStage, setReadingStage] = useState<number>(0);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [fallbackNotice, setFallbackNotice] = useState<boolean>(false);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
+  const processFile = async (file: File) => {
     if (file.size > MAX_UPLOAD_BYTES) {
       setErrorMessage("A fatura excede o limite de 3 MB suportado pela leitura direta. Reduza o arquivo ou use uma amostra sintética abaixo.");
       setStatusMessage(null);
@@ -216,6 +214,45 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
     }
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      processFile(file);
+    }
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isProcessing) setIsDragging(true);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isProcessing) setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Apenas desativa quando sai do contêiner raiz
+    if (e.currentTarget.contains(e.relatedTarget as Node)) return;
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    if (isProcessing) return;
+
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      processFile(file);
+    }
+  };
+
   const loadPreset = (preset: typeof PRESET_CASES[number]) => {
     setIsProcessing(true);
     setErrorMessage(null);
@@ -271,8 +308,18 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
         </p>
       </div>
 
-      {/* Upload Zone com Efeito de Laser Scan */}
-      <div className="rounded-2xl bg-[var(--card)] border-2 border-dashed border-[var(--border-strong)] p-8 text-center hover:border-[var(--color-milet-amber)] transition-all duration-300 relative overflow-hidden group">
+      {/* Upload Zone com Efeito de Laser Scan e Drag & Drop */}
+      <div
+        onDragEnter={handleDragEnter}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        className={`rounded-2xl p-8 text-center transition-all duration-300 relative overflow-hidden group ${
+          isDragging
+            ? "bg-[var(--color-milet-amber)]/10 border-2 border-[var(--color-milet-amber)] ring-4 ring-[var(--color-milet-amber)]/20 scale-[1.01]"
+            : "bg-[var(--card)] border-2 border-dashed border-[var(--border-strong)] hover:border-[var(--color-milet-amber)]"
+        }`}
+      >
         {/* Laser scan line if processing */}
         {isProcessing && <div className="milet-laser-beam" />}
 
@@ -286,7 +333,7 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
           aria-label="Upload de fatura de energia"
         />
 
-        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl milet-amber-gradient flex items-center justify-center text-white shadow-sm transition-transform duration-300 group-hover:scale-105">
+        <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl milet-amber-gradient flex items-center justify-center text-white shadow-sm transition-transform duration-300 ${isDragging ? "scale-110" : "group-hover:scale-105"}`}>
           {isProcessing ? (
             <ArrowsClockwise weight="bold" className="w-8 h-8 animate-spin" />
           ) : (
@@ -295,7 +342,11 @@ export function StepInvoiceUpload({ initialInvoice, onBack, onComplete }: StepIn
         </div>
 
         <h3 className="font-serif font-bold text-base text-[var(--foreground)]">
-          {invoice.fileName ? invoice.fileName : "Arraste sua fatura aqui ou clique para selecionar"}
+          {isDragging
+            ? "Solte a fatura aqui para iniciar a leitura automática"
+            : invoice.fileName
+              ? invoice.fileName
+              : "Arraste sua fatura aqui ou clique para selecionar"}
         </h3>
         <p className="mt-1 text-xs text-[var(--foreground)]/60">
           Formatos suportados: PDF, PNG, JPG ou WEBP (até 3 MB)
